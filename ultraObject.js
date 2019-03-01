@@ -1,10 +1,10 @@
-function wait(   ms   ){
-   var start = new Date().getTime();
-   var end = start;
-   while(   end < start + ms   ) {
-     end = new Date().getTime();
-   }
-}
+        function wait(   ms   ){
+           var start = new Date().getTime();
+           var end = start;
+           while(   end < start + ms   ) {
+             end = new Date().getTime();
+           }
+        }
 // if node use exports or figure how to get external modules in here
 
 // an OOP way to do everything javascript, I meant to have this done in python with a superclass oh well
@@ -16,6 +16,8 @@ function wait(   ms   ){
 // templates
 // FL_0_i for loop object in the purpose action
 // BOOL for boolean object
+// SA for a selectAll object
+// O stands for Object for this functionality like thisfn has thisfnO
 /*
 {
     forLoop_0_i:0,
@@ -67,6 +69,8 @@ function ultraObjectReset(   dev_obj   ){
     eCSearch:eCSearch,
     isArray:isArray,
     isObject:isObject,
+    isDOMElement:isDOMElement,
+    
     elementFound:{}, // holds found elements needed by the ultraObject
     removeCN:removeCN,
     removeOP:removeOP,
@@ -79,11 +83,16 @@ function ultraObjectReset(   dev_obj   ){
     severalOr:severalOr,
     packIt:packIt,
     selectAll:selectAll,
-    isDOMElement:isDOMElement
+    
+    
+    subGroups:subGroups,
+    subGroupsO:{},
     }
 }
 var ultraObject = ultraObjectReset()
 function objInvloved(   dev_obj   ){
+    // console.log a list of the dev_obj  values to be outputted to the console to help the dev know how is items are in the middle of an API
+    
         ultraObject.objIO = dev_obj
         var objInvloved_0_i = 0
         ultraObject.objIFL_0_i={
@@ -588,8 +597,11 @@ function forLoop(   dev_obj   ){
         
     }
 }
-function severalOr(   dev_obj   ){ // if you have several OR comparisons for the same object use it here
-
+function severalOr(   dev_obj   ){
+    //.compAgn the several items to find a true value
+    //.spot I should have returned an object but hopefully you get your value back else make function that returns an object
+    // severalOrReturn value item
+        //.spot where the function returned true
 
     if(   dev_obj !== undefined   ){
         
@@ -608,13 +620,16 @@ function severalOr(   dev_obj   ){ // if you have several OR comparisons for the
                         forLoop_0_i:0,
                         forLoopLength:dev_obj.compAgn.length,//compare Against
                         fn:function(   dev_obj   ){
-                                
-                                
+                            
+                                console.group('subGroups')
+                                    console.log(dev_obj.compTo,dev_obj.compAgn[severalOrFL_O_i.forLoop_0_i] )
+                                console.groupEnd()
                                 if(   dev_obj.compTo === dev_obj.compAgn[severalOrFL_O_i.forLoop_0_i]   ){
                                     
                                     
                                     dev_obj.boolean[dev_obj.which] = true // if you have problems remember this wants a object
                                     severalOrReturn = dev_obj.boolean // just in case  ultraObject can't re-reference the object back
+                                    severalOrReturn.spot = severalOrFL_O_i.forLoop_0_i
                                     return true
                                     
                                     
@@ -634,7 +649,7 @@ function severalOr(   dev_obj   ){ // if you have several OR comparisons for the
     }
     
     
-}
+}// if you have several OR comparisons for the same object use it here
 function identifyE(   dev_obj   ){
     var identifyELength = Object.keys(   ultraObject.elementFound   ).length
     var identifyEC = {} //identify element  Check checls for parents and children for the right node
@@ -735,8 +750,82 @@ function identifyE(   dev_obj   ){
     
         
 } // identifies tags in elementFound and what is needed to do the next task so for it looks through descemdats not siblings
+function subGroups(   dev_obj   ){
+    //.nextItem, indicates to the function that needs to find the path of the next item
+    //.val a factual represenation of how to use functionality to get to the item for another complex item
+    // .map a place to keep the mapping list
+    // ultraObject.subGroupsO , keeps a list of all subgroup maps
+        //consider using .start and complete to make new subgroup maps in the list
+    // it does this using strings
+    
+    if(   dev_obj !== undefined   ){
+        
+        
+        var subGroupsBOOL = {0:false}
+        subGroupsBOOL = ultraObject.severalOr({
+                compTo: dev_obj.map,
+                compAgn: ultraObject.subGroupsO,
+                boolean:subGroupsBOOL,
+                which:0
+        })
+        
+        
+        if(   !subGroupsBOOL[0]   ){
+            ultraObject.subGroupsO[ultraObject.subGroupsO.length] = dev_obj.map
+            ultraObject.subGroupsO.length += 1
+            subGroupsBOOL = ultraObject.severalOr({
+                    compTo: dev_obj.map,
+                    compAgn: ultraObject.subGroupsO,
+                    boolean:subGroupsBOOL,
+                    which:0
+            })
+            //this is done so it can add the first item
+        }
+        
+      
+        
+        if(   subGroupsBOOL[0]   ){
+            
+            
+            if(   ultraObject.subGroupsO[subGroupsBOOL.spot].length === 0 &&  ultraObject.subGroupsO[subGroupsBOOL.spot][ultraObject.subGroupsO[subGroupsBOOL.spot].length] === undefined ){
+                
+                
+                ultraObject.subGroupsO[subGroupsBOOL.spot][ultraObject.subGroupsO[subGroupsBOOL.spot].length] = ''
+                
+                
+            }
+            
+            
+            ultraObject.subGroupsO[subGroupsBOOL.spot][ultraObject.subGroupsO[subGroupsBOOL.spot].length] += dev_obj.val + ' '
+            //hopefully ' ' is a gr8 sepereator
+            
+            if(   dev_obj.nextItem === 'true'   ){
+                
+                
+                ultraObject.subGroupsO[subGroupsBOOL.spot].length += 1
+                ultraObject.subGroupsO[subGroupsBOOL.spot][ultraObject.subGroupsO[subGroupsBOOL.spot].length] = ''
+                
+            }
+            
+            
+
+            
+            
+        }
+            
+        
+        dev_obj.map +=  dev_obj.val.toString()
+        
+        
+        
+    }
+        
+        
+}// returns ordering information about nested items
 function selectAll(   dev_obj   ){
+        // this function also returns the group ordering if looked for nested items
         //.target item to get all values from
+        // .typeOnly, what specific values were looking for
     
         if(   dev_obj !== undefined   ){
             
@@ -752,17 +841,28 @@ function selectAll(   dev_obj   ){
                     
                     
                     var selectReturn = {}
+                    var selectReturnMD = {length:0,str:''}//selectReturnMetaData contains grouping information about the .target
                     var selectAllFL_0_i = {
                         forLoop_0_i:0,
                         forLoopLength:Object.keys(   dev_obj.target   ).length,
                         fn:function(   dev_obj   ){
                             console.log(   selectAllFL_0_i.forLoop_0_i,'walk in'   )
-                            console.log(   Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]   )
-                            var selectCheckpoint =  {}  // when it leave recurison it restore the values
+                            console.log(   Object.keys(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]   )
+                            var selectCheckpoint = {}  // when it leave recurison it restore the values
+                            ultraObject.subGroups({
+                                    map:selectReturnMD,
+                                    val:Object.keys(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i],
+                                })
                             
                             
                             if(   ultraObject.isDOMElement(   {type:Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]}   )   ){
                                 selectReturn[Object.keys(   selectReturn   ).length] = Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]
+                                ultraObject.subGroups({
+                                        map:selectReturnMD,
+                                        val:'element',
+                                        nextItem:'true'
+                                    })
+                                    
                                 
                             }
                             
@@ -792,9 +892,11 @@ function selectAll(   dev_obj   ){
                     console.group(   'grabbing the chosen elements from the object'   )
                         ultraObject.objInvloved({
                                 0:selectReturn,
-                                1:ultraObject.identifyEO
+                                1:ultraObject.identifyEO,
+                                2:selectReturnMD
                             })
                     console.groupEnd()
+                    selectReturn.subGroupsMap = selectReturnMD
                     return selectReturn
                     
                 }
@@ -825,21 +927,36 @@ function packIt(   dev_obj   ){
                 
                                     
                 if(   dev_obj.directions[packItFL_0_i.forLoop_0_i] === 'match'   ){
-                        
                     
+                    console.group(   'an attempt to fill items'   )
+                        ultraObject.objInvloved({
+                                0:packItSA,
+                                1:ultraObject.identifyEO,
+                                2:ultraObject.elementFound,
+                                3:ultraObject.subGroupsO
+                            })
+                    console.groupEnd()
+                    var packItFL_1_i = {
+                        forLoop_0_i:0,
+                        forLoopLength:Object.keys(      ).length,
+                        fn:function(   dev_obj   ){},
+                        args:{}
+                    }
+                    ultraObject.forLoop(   packItFL_1_i   )
+                    packItSA
                     
-                        
                 }
                 
                 
                 if(   dev_obj.directions[packItFL_0_i.forLoop_0_i] === 'gather element'   ){
                         
-                    
-                    
+                                        
                     packItSA = ultraObject.selectAll({
                         target:dev_obj.order,
                         typeOnly : {0:'element'}
                     })
+                    
+                    
                 }
             
             },
@@ -877,8 +994,8 @@ function preFillForm(   dev_obj   ){
     ultraObject.packIt({
         order:ultraObject.identifyEO,
         directions:{
-                        0:'match',
-                        1:'gather element',
+                        0:'gather element',
+                        1:'match',
                         length:1
                     },
         matchMap:ultraObject.elementFound
