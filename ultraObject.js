@@ -18,6 +18,7 @@
 // BOOL for boolean object
 // SA for a selectAll object
 // O stands for Object for this functionality like thisfn has thisfnO
+// MB_0_i stands for memory bank used when its hard to contain needed data inside a nested function
 /*
 {
     forLoop_0_i:0,
@@ -89,6 +90,10 @@ function ultraObjectReset(   dev_obj   ){
     
     subGroups:subGroups,
     subGroupsO:{},
+    objectLength:objectLength,
+    MB:{}, // memory bank for functionality thats needs misc. in several places
+    
+    iterableObject:iterableObject
     }
 }
 var ultraObject = ultraObjectReset()
@@ -806,6 +811,55 @@ function identifyE(   dev_obj   ){
     
         
 } // identifies tags in elementFound and what is needed to do the next task so for it looks through descemdats not siblings
+function objectLength(   dev_obj   ){ // finds object lenghts
+        //.val the object itself
+        dev_obj.val.length = 0
+        var objectLengthFL_0_i = {
+            forLoop_0_i:0,
+            forLoopLength:Object.keys(   dev_obj.val   ).length,
+            fn:function(   dev_obj   ){
+                
+                 
+                if(   !isNaN(Object.keys(   dev_obj.val   )[objectLengthFL_0_i.forLoop_0_i  ])   ){
+                    
+                    
+                    dev_obj.val.length += 1
+                    
+                    
+                }
+            },
+            args:{val:dev_obj.val}
+        }
+        ultraObject.forLoop(   objectLengthFL_0_i   )
+    
+}
+function iterableObject(   dev_obj   ){ //retuns or converts an object with which you can easily iterate
+    //. value the actual item your are adding to the object
+    //
+     var iterableObjectO = {
+        length:0,
+        add:function(   dev_obj   ){
+                iterableObjectO[iterableObjectO.length] = dev_obj.value
+                iterableObjectO.length += 1
+                return iterableObjectO
+            },
+        minus:function(   dev_obj   ){
+            var iterableObjectO_BOOL = {0:false}
+            iterableObjectO_BOOL = ultraObject.severalOr({
+                        compTo: dev_obj.value,
+                        compAgn: iterableObjectO,
+                        boolean:iterableObjectO_BOOL,
+                        which:0
+            })
+            if(   iterableObjectO_BOOL[0]   ){
+                delete iterableObjectO[iterableObjectO_BOOL.spot]
+                ultraObject.objectLength(   {val:iterableObjectO}   )
+            }
+            
+        }
+     }
+     return iterableObjectO
+}
 function subGroups(   dev_obj   ){
     //.nextItem, indicates to the function that needs to find the path of the next item
     //.val a factual represenation of how to use functionality to get to the item for another complex item
@@ -830,6 +884,7 @@ function subGroups(   dev_obj   ){
         
         
         var subGroupsBOOL = {0:false}
+        var subGroupsMB_0_i = {}
         subGroupsBOOL = ultraObject.severalOr({
                 compTo: dev_obj.map,
                 compAgn: ultraObject.subGroupsO,
@@ -877,6 +932,7 @@ function subGroups(   dev_obj   ){
                 }
                 ultraObject.forLoop(   subGroupsFL_0_i   )
                 dev_obj.val = ''
+                
                 var subGroupsBOOL_1_i = {0:false}
                 var subGroupsFL_1_i ={
                     forLoop_0_i:0,
@@ -905,6 +961,7 @@ function subGroups(   dev_obj   ){
                                 
                                 }
                                 
+                                
                                 else if(   dev_obj.compAgnI === undefined   ){
                                     
                                     
@@ -913,17 +970,23 @@ function subGroups(   dev_obj   ){
                                     
                                 }
                                 
-                            }, // see how this works
+                            },
                             result:'true'
                         })
                     },
                     args:{}
                 }
                 ultraObject.forLoop(   subGroupsFL_1_i   )
+                console.group(   'proper length'   )
+                    ultraObject.objectLength(   {val:ultraObject.subGroupsO[subGroupsBOOL.spot]}   )
+                console.groupEnd()
                 ultraObject.objInvloved({
                             0:dev_obj.map.ending,
                             1:ultraObject.subGroupsO[subGroupsBOOL.spot]
                         })
+
+                        
+                                        
                         throw('e')
             console.groupEnd()
             
@@ -948,7 +1011,7 @@ function subGroups(   dev_obj   ){
             
             if(   dev_obj.nextItem === 'true'   ){
 
-                                
+                console.log(   ultraObject.subGroupsO[subGroupsBOOL.spot][ultraObject.subGroupsO[subGroupsBOOL.spot].length]   )
                 ultraObject.subGroupsO[subGroupsBOOL.spot].length += 1
                 ultraObject.subGroupsO[subGroupsBOOL.spot][ultraObject.subGroupsO[subGroupsBOOL.spot].length] = ''
                 
