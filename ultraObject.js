@@ -813,6 +813,8 @@ function identifyE(   dev_obj   ){
 } // identifies tags in elementFound and what is needed to do the next task so for it looks through descemdats not siblings
 function objectLength(   dev_obj   ){ // finds object lenghts
         //.val the object itself
+        // .getLen function descrbing how to get the length
+        // .result if function reutrns it equal increase the length by one
         dev_obj.val.length = 0
         var objectLengthFL_0_i = {
             forLoop_0_i:0,
@@ -820,15 +822,21 @@ function objectLength(   dev_obj   ){ // finds object lenghts
             fn:function(   dev_obj   ){
                 
                  
-                if(   !isNaN(Object.keys(   dev_obj.val   )[objectLengthFL_0_i.forLoop_0_i  ])   ){
-                    
+                if(   dev_obj.getLen(   {val:dev_obj.val,   index:objectLengthFL_0_i.forLoop_0_i}   ) === dev_obj.result    ){
+                                        
                     
                     dev_obj.val.length += 1
                     
                     
                 }
+                
+                
             },
-            args:{val:dev_obj.val}
+            args:{
+                val:dev_obj.val,
+                getLen:dev_obj.getLen,
+                result:dev_obj.result
+                }
         }
         ultraObject.forLoop(   objectLengthFL_0_i   )
     
@@ -978,7 +986,23 @@ function subGroups(   dev_obj   ){
                 }
                 ultraObject.forLoop(   subGroupsFL_1_i   )
                 console.group(   'proper length'   )
-                    ultraObject.objectLength(   {val:ultraObject.subGroupsO[subGroupsBOOL.spot]}   )
+                    ultraObject.objectLength({
+                        val:ultraObject.subGroupsO[subGroupsBOOL.spot],
+                        getLen:function(   dev_obj   ){
+                            
+                            
+                            if(   !isNaN(   Object.keys(   dev_obj.val   )[dev_obj.index]   )   ){
+                                
+                                
+                                return 'true'
+                                
+                                
+                            }
+                            
+                            
+                        },
+                        result:'true'
+                        })
                 console.groupEnd()
                 ultraObject.objInvloved({
                             0:dev_obj.map.ending,
