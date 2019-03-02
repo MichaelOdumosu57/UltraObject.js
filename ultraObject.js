@@ -91,9 +91,9 @@ function ultraObjectReset(   dev_obj   ){
     subGroups:subGroups,
     subGroupsO:{},
     objectLength:objectLength,
-    MB:{}, // memory bank for functionality thats needs misc. in several places
+    iterableObject:iterableObject,
+    MB_0_i:iterableObject() // memory bank for functionality thats needs misc. in several places
     
-    iterableObject:iterableObject
     }
 }
 var ultraObject = ultraObjectReset()
@@ -841,15 +841,15 @@ function objectLength(   dev_obj   ){ // finds object lenghts
         ultraObject.forLoop(   objectLengthFL_0_i   )
     
 }
-function iterableObject(   dev_obj   ){ //retuns or converts an object with which you can easily iterate
+function iterableObject(   dev_obj   ){
     //. value the actual item your are adding to the object
     //
      var iterableObjectO = {
         length:0,
-        add:function(   dev_obj   ){
+        add:function(   dev_obj   ){// returns the index that it was added to an object
                 iterableObjectO[iterableObjectO.length] = dev_obj.value
                 iterableObjectO.length += 1
-                return iterableObjectO
+                return iterableObjectO.length -1
             },
         minus:function(   dev_obj   ){
             var iterableObjectO_BOOL = {0:false}
@@ -859,20 +859,68 @@ function iterableObject(   dev_obj   ){ //retuns or converts an object with whic
                         boolean:iterableObjectO_BOOL,
                         which:0
             })
+            
+            
             if(   iterableObjectO_BOOL[0]   ){
+                
+                
                 delete iterableObjectO[iterableObjectO_BOOL.spot]
-                ultraObject.objectLength(   {val:iterableObjectO}   )
+                ultraObject.objectLength({
+                        val:iterableObjectO,
+                        getLen:function(   dev_obj   ){
+                            
+                            
+                            if(   !isNaN(   Object.keys(   dev_obj.val   )[dev_obj.index]   )   ){
+                                
+                                
+                                return 'true'
+                                
+                                
+                            }
+                            
+                            
+                        },
+                        result:'true'
+                    })
+                if(    dev_obj.correct === 'true'   ){
+                    //correct the indexing operation
+                }
+                
             }
             
+        },
+        resetLength:function(   dev_obj   ){
+            ultraObject.objectLength({
+                    val:iterableObjectO,
+                    getLen:function(   dev_obj   ){
+                        
+                        
+                        if(   !isNaN(   Object.keys(   dev_obj.val   )[dev_obj.index]   )   ){
+                            
+                            
+                            return 'true'
+                            
+                            
+                        }
+                        
+                        
+                    },
+                    result:'true'
+            })
         }
      }
      return iterableObjectO
-}
+} //retuns or converts an object with which you can easily iterate but this is an array accroding to chrome 72
 function subGroups(   dev_obj   ){
+    // it needs to be used when gathering path information for specifc items in a complex object, at every path open, a will be recorded here
     //.nextItem, indicates to the function that needs to find the path of the next item
     //.val a factual represenation of how to use functionality to get to the item for another complex item
     // .map a place to keep the mapping list
         //.ending, the cutoff to determine the good from the bad
+        //.MB_0_i the object representing the mapping assumption
+            //.groupHead index of the last head group
+            // .groupHeadLength lenght to precat the children
+            // .seperator, seperator to make the paths and get their lengths
     // ultraObject.subGroupsO , keeps a list of all subgroup maps
         //consider using .start and complete to make new subgroup maps in the list
     // it does this using strings
@@ -887,12 +935,26 @@ function subGroups(   dev_obj   ){
 "1 item 0 item element " parent
 ....
 */
+        //
     
     if(   dev_obj !== undefined   ){
         
         
         var subGroupsBOOL = {0:false}
-        var subGroupsMB_0_i = {}
+        var subGroupsSeperator = ' ' // how to seperate the items
+        
+        if(   dev_obj.map.MB_0_i === undefined   ){
+            
+            
+            dev_obj.map.MB_0_i = ultraObject.iterableObject()
+            dev_obj.map.MB_0_i.globalMB = ultraObject.MB_0_i.add(   {value:dev_obj.map.MB_0_i}   ) //if problem get the answer for a variable and assign it back
+            dev_obj.map.MB_0_i.seperator = ' ' // how fn makes a path to a child element
+            dev_obj.map.MB_0_i.groupHeadLength = ultraObject.max // for the length of the path representing the head group
+            subGroupsSeperator =  dev_obj.map.MB_0_i.seperator
+            
+        }
+        
+        
         subGroupsBOOL = ultraObject.severalOr({
                 compTo: dev_obj.map,
                 compAgn: ultraObject.subGroupsO,
@@ -940,7 +1002,6 @@ function subGroups(   dev_obj   ){
                 }
                 ultraObject.forLoop(   subGroupsFL_0_i   )
                 dev_obj.val = ''
-                
                 var subGroupsBOOL_1_i = {0:false}
                 var subGroupsFL_1_i ={
                     forLoop_0_i:0,
@@ -954,7 +1015,7 @@ function subGroups(   dev_obj   ){
                             which:0,
                             how:function(   dev_obj   ){
                                 
-                                console.log(dev_obj.compAgnI)
+                                
                                 if(   dev_obj.compAgnI !== undefined   ){
                                     
                                                                         
@@ -1006,7 +1067,8 @@ function subGroups(   dev_obj   ){
                 console.groupEnd()
                 ultraObject.objInvloved({
                             0:dev_obj.map.ending,
-                            1:ultraObject.subGroupsO[subGroupsBOOL.spot]
+                            1:ultraObject.subGroupsO[subGroupsBOOL.spot],
+                            2:dev_obj.map.MB_0_i
                         })
 
                         
@@ -1030,12 +1092,32 @@ function subGroups(   dev_obj   ){
             }
             
             
-            ultraObject.subGroupsO[subGroupsBOOL.spot][ultraObject.subGroupsO[subGroupsBOOL.spot].length] += dev_obj.val + ' '
+            ultraObject.subGroupsO[subGroupsBOOL.spot][ultraObject.subGroupsO[subGroupsBOOL.spot].length] += dev_obj.val + subGroupsSeperator
             //hopefully ' ' is a gr8 sepereator
             
             if(   dev_obj.nextItem === 'true'   ){
 
-                console.log(   ultraObject.subGroupsO[subGroupsBOOL.spot][ultraObject.subGroupsO[subGroupsBOOL.spot].length]   )
+
+                dev_obj.map.MB_0_i.lastAddedIndex = dev_obj.map.MB_0_i.add(   {value:ultraObject.subGroupsO[subGroupsBOOL.spot][ultraObject.subGroupsO[subGroupsBOOL.spot].length].split(   subGroupsSeperator   )}   )
+                
+                
+                if(   dev_obj.map.MB_0_i.groupHeadLength <=  dev_obj.map.MB_0_i[dev_obj.map.MB_0_i.lastAddedIndex].length   ){
+                    
+                    dev_obj.map.MB_0_i.groupHead = dev_obj.map.MB_0_i.lastAddedIndex
+                    dev_obj.map.MB_0_i.groupHeadLength = dev_obj.map.MB_0_i[dev_obj.map.MB_0_i.lastAddedIndex].length
+                    
+                    
+                }
+                
+                
+                else if(   dev_obj.map.MB_0_i.groupHeadLength >  dev_obj.map.MB_0_i[dev_obj.map.MB_0_i.lastAddedIndex].length   ){
+                    
+                    dev_obj.map.MB_0_i[dev_obj.map.MB_0_i.lastAddedIndex].unshift.apply(   dev_obj.map.MB_0_i[dev_obj.map.MB_0_i.lastAddedIndex],dev_obj.map.MB_0_i[dev_obj.map.MB_0_i.groupHead].slice(   0,dev_obj.map.MB_0_i.groupHeadLength -  dev_obj.map.MB_0_i[dev_obj.map.MB_0_i.lastAddedIndex].length   )   )
+                   // takes the path of coming from sub children and makes it of parents
+                    
+                    ultraObject.subGroupsO[subGroupsBOOL.spot][ultraObject.subGroupsO[subGroupsBOOL.spot].length] =  dev_obj.map.MB_0_i[dev_obj.map.MB_0_i.lastAddedIndex].join(   subGroupsSeperator   )
+                    
+                }
                 ultraObject.subGroupsO[subGroupsBOOL.spot].length += 1
                 ultraObject.subGroupsO[subGroupsBOOL.spot][ultraObject.subGroupsO[subGroupsBOOL.spot].length] = ''
                 
@@ -1340,3 +1422,22 @@ function recurisveForLoop(   dev_obj   ){
 // whats a good rules if parameters are part of the ultraObject or come in as an argument
 // if a function naturally passes arguments to a function, dev params must go to the ultraObject
 
+function increaseObjectLengthByNumKeys(   dev_obj   ){
+ultraObject.objectLength({
+                        val:dev_obj.object,
+                        getLen:function(   dev_obj   ){
+                            
+                            
+                            if(   !isNaN(   Object.keys(   dev_obj.val   )[dev_obj.index]   )   ){
+                                
+                                
+                                return 'true'
+                                
+                                
+                            }
+                            
+                            
+                        },
+                        result:'true'
+                        })
+    }
