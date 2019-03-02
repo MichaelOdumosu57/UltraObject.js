@@ -22,7 +22,9 @@
 {
     forLoop_0_i:0,
     forLoopLength:Object.keys(   ultraObject.identifyEO   ).length,
-    fn:function(   dev_obj   ){},
+    fn:function(   dev_obj   ){
+    
+    },
     args:{}
 }
 ultraObject.forLoop(   selectAllFL_0_i   )
@@ -458,7 +460,8 @@ function eCSearch(   dev_obj   ){
                                 
                                 item:eCSearchElem,
                                 query:eCSearchProp,
-                                xMark:eCSearchLook[eCSearch_1_i]
+                                xMark:eCSearchLook[eCSearch_1_i],
+                                keyword:eCSearchProp_obj.cBQ
                             
                                 } // the bug for removing pharma charts
                                 
@@ -581,8 +584,8 @@ function forLoop(   dev_obj   ){
                 // console.log(   dev_obj.forLoop_0_i   )
                 forLoopbreak = dev_obj.fn(   dev_obj.args   )// find a better way to do this
                 
-                
-                if(   forLoopbreak === 'true'   ){
+                                
+                if(   forLoopbreak === 'true' || forLoopbreak === 'premature'  ){
                     
                     
                     break;
@@ -602,6 +605,10 @@ function severalOr(   dev_obj   ){
     //.spot I should have returned an object but hopefully you get your value back else make function that returns an object
     // severalOrReturn value item
         //.spot where the function returned true
+    //.how how tomake the comparison so the default is a  === its a function
+        // indexOf dev_obj.compAgn[index].indexOF(dev_obj.compTo)
+        // . reuslt if dev_obj.how is a function, result is optional for what ever makes it true
+    // .premature ,  bool if the loop should break early
 
     if(   dev_obj !== undefined   ){
         
@@ -609,41 +616,90 @@ function severalOr(   dev_obj   ){
         if(   dev_obj.compAgn.length === undefined   ){
             
             
-            dev_obj.compAgn.length =  Object.keys(   dev_obj.compAgn   ).length
+            dev_obj.compAgn.length = Object.keys(   dev_obj.compAgn   ).length
             
             
         }
         
-        
+        var severalOrFnAnswer // if dev_obj.how is a function this holds the return value
         var severalOrReturn = dev_obj.boolean
         var severalOrFL_O_i  = {
-                        forLoop_0_i:0,
-                        forLoopLength:dev_obj.compAgn.length,//compare Against
-                        fn:function(   dev_obj   ){
+            forLoop_0_i:0,
+            forLoopLength:dev_obj.compAgn.length,//compare Against
+            fn:function(   dev_obj   ){
+                
+                    console.log(   severalOrFL_O_i.forLoop_0_i   )
+                    if(   dev_obj.how === undefined   ){
+                                                            
+                        
+                        if(   dev_obj.compTo === dev_obj.compAgn[severalOrFL_O_i.forLoop_0_i]   ){
                             
-                                console.group('subGroups')
-                                    console.log(dev_obj.compTo,dev_obj.compAgn[severalOrFL_O_i.forLoop_0_i] )
-                                console.groupEnd()
-                                if(   dev_obj.compTo === dev_obj.compAgn[severalOrFL_O_i.forLoop_0_i]   ){
-                                    
-                                    
-                                    dev_obj.boolean[dev_obj.which] = true // if you have problems remember this wants a object
-                                    severalOrReturn = dev_obj.boolean // just in case  ultraObject can't re-reference the object back
-                                    severalOrReturn.spot = severalOrFL_O_i.forLoop_0_i
-                                    return true
-                                    
-                                    
-                                }
-                                
-                                
-                            },
-                        args:{
-                                compTo: dev_obj.compTo,
-                                compAgn:dev_obj.compAgn,
-                                boolean:dev_obj.boolean,
-                                which:dev_obj.which
-                            }
+                            
+                            dev_obj.boolean[dev_obj.which] = true // if you have problems remember this wants a object
+                            severalOrReturn = dev_obj.boolean // just in case  ultraObject can't re-reference the object back
+                            severalOrReturn.spot = severalOrFL_O_i.forLoop_0_i
+                            return 'true'
+                            
+                            
+                        }
+                        
+                        
                     }
+                    
+                    
+                    else if(   dev_obj.how !== undefined   ){
+                        
+                        
+                        if(   typeof(   dev_obj.how   ) === 'function'   ){
+                            
+                            
+                            severalOrFnAnswer = dev_obj.how({
+                                compAgnI:dev_obj.compAgn[severalOrFL_O_i.forLoop_0_i],
+                                compTo:dev_obj.compTo,
+                                index:severalOrFL_O_i.forLoop_0_i
+                            })
+                            
+                            
+                            if(   severalOrFnAnswer === dev_obj.result   ){
+                                
+                                
+                                dev_obj.boolean[dev_obj.which] = true // if you have problems remember this wants a object
+                                severalOrReturn = dev_obj.boolean // just in case  ultraObject can't re-reference the object back
+                                severalOrReturn.spot = severalOrFL_O_i.forLoop_0_i
+                                return 'true'
+                                
+                                
+                            }
+                            
+                            
+                            else if(   severalOrFnAnswer === 'premature'   ){
+                                
+                                                                
+                                return 'premature'
+                                
+                                
+                            }
+                    
+                            
+                        }
+                        
+                        
+                    }
+                    
+                    
+
+                    
+                    
+                },
+            args:{
+                    compTo: dev_obj.compTo,
+                    compAgn:dev_obj.compAgn,
+                    boolean:dev_obj.boolean,
+                    which:dev_obj.which,
+                    how:dev_obj.how,
+                    result:dev_obj.result
+                }
+        }
         ultraObject.forLoop(   severalOrFL_O_i   )
         return severalOrReturn
     }
@@ -754,9 +810,21 @@ function subGroups(   dev_obj   ){
     //.nextItem, indicates to the function that needs to find the path of the next item
     //.val a factual represenation of how to use functionality to get to the item for another complex item
     // .map a place to keep the mapping list
+        //.ending, the cutoff to determine the good from the bad
     // ultraObject.subGroupsO , keeps a list of all subgroup maps
         //consider using .start and complete to make new subgroup maps in the list
     // it does this using strings
+    // to provide a proper subgroup list assumptions have to be made
+    // if on item map is longer than the other, the first contains the parent
+    // if the items after are as long as the first, then the next item contains the parent for the next set
+    //
+/*
+"0 item 0 item element " parent
+"1 item element "       children
+"2 item element "
+"1 item 0 item element " parent
+....
+*/
     
     if(   dev_obj !== undefined   ){
         
@@ -782,12 +850,91 @@ function subGroups(   dev_obj   ){
             //this is done so it can add the first item
         }
         
-      
         
-        if(   subGroupsBOOL[0]   ){
+        if(   dev_obj.nextItem === 'complete'   ){
+            //here the map is recreated based on the assumption
+            //gets rid of bad results
             
             
-            if(   ultraObject.subGroupsO[subGroupsBOOL.spot].length === 0 &&  ultraObject.subGroupsO[subGroupsBOOL.spot][ultraObject.subGroupsO[subGroupsBOOL.spot].length] === undefined ){
+            
+            console.group(   'complete'   )
+                ultraObject.subGroupsO[subGroupsBOOL.spot].length = 0
+                var subGroupsFL_0_i = {
+                    forLoop_0_i:0,
+                    forLoopLength:Object.keys(   ultraObject.subGroupsO[subGroupsBOOL.spot]   ).length,
+                    fn:function(   dev_obj   ){
+                        
+                         
+                        if(   !isNaN(Object.keys(   ultraObject.subGroupsO[subGroupsBOOL.spot]   )[subGroupsFL_0_i.forLoop_0_i  ])   ){
+                            
+                            
+                            ultraObject.subGroupsO[subGroupsBOOL.spot].length += 1
+                            
+                            
+                        }
+                    },
+                    args:{}
+                }
+                ultraObject.forLoop(   subGroupsFL_0_i   )
+                dev_obj.val = ''
+                var subGroupsBOOL_1_i = {0:false}
+                var subGroupsFL_1_i ={
+                    forLoop_0_i:0,
+                    forLoopLength:Object.keys(   ultraObject.subGroupsO[subGroupsBOOL.spot].ending   ).length,
+                    fn:function(   dev_obj   ){
+                        console.log
+                        subGroupsBOOL_1_i = ultraObject.severalOr({
+                            compTo: ultraObject.subGroupsO[subGroupsBOOL.spot].ending[subGroupsFL_1_i.forLoop_0_i],
+                            compAgn: ultraObject.subGroupsO[subGroupsBOOL.spot],
+                            boolean:subGroupsBOOL_1_i,
+                            which:0,
+                            how:function(   dev_obj   ){
+                                
+                                console.log(dev_obj.compAgnI)
+                                if(   dev_obj.compAgnI !== undefined   ){
+                                    
+                                                                        
+                                    if(   dev_obj.compAgnI.indexOf(   dev_obj.compTo   ) === -1   ){
+                                        
+                                        
+                                        delete ultraObject.subGroupsO[subGroupsBOOL.spot][dev_obj.index]
+                                        
+                                        
+                                    }
+                                    
+                                
+                                }
+                                
+                                else if(   dev_obj.compAgnI === undefined   ){
+                                    
+                                    
+                                    return 'premature'
+                                    
+                                    
+                                }
+                                
+                            }, // see how this works
+                            result:'true'
+                        })
+                    },
+                    args:{}
+                }
+                ultraObject.forLoop(   subGroupsFL_1_i   )
+                ultraObject.objInvloved({
+                            0:dev_obj.map.ending,
+                            1:ultraObject.subGroupsO[subGroupsBOOL.spot]
+                        })
+                        throw('e')
+            console.groupEnd()
+            
+                        
+        }
+        
+        
+        else if(   subGroupsBOOL[0]   ){
+            
+            
+            if(   ultraObject.subGroupsO[subGroupsBOOL.spot].length === 0 &&  ultraObject.subGroupsO[subGroupsBOOL.spot][ultraObject.subGroupsO[subGroupsBOOL.spot].length] === undefined   ){
                 
                 
                 ultraObject.subGroupsO[subGroupsBOOL.spot][ultraObject.subGroupsO[subGroupsBOOL.spot].length] = ''
@@ -800,10 +947,11 @@ function subGroups(   dev_obj   ){
             //hopefully ' ' is a gr8 sepereator
             
             if(   dev_obj.nextItem === 'true'   ){
-                
-                
+
+                                
                 ultraObject.subGroupsO[subGroupsBOOL.spot].length += 1
                 ultraObject.subGroupsO[subGroupsBOOL.spot][ultraObject.subGroupsO[subGroupsBOOL.spot].length] = ''
+                
                 
             }
             
@@ -841,7 +989,7 @@ function selectAll(   dev_obj   ){
                     
                     
                     var selectReturn = {}
-                    var selectReturnMD = {length:0,str:''}//selectReturnMetaData contains grouping information about the .target
+                    var selectReturnMD = {length:0,str:'',ending:{0:'element'}}//selectReturnMetaData contains grouping information about the .target
                     var selectAllFL_0_i = {
                         forLoop_0_i:0,
                         forLoopLength:Object.keys(   dev_obj.target   ).length,
@@ -860,7 +1008,7 @@ function selectAll(   dev_obj   ){
                                 ultraObject.subGroups({
                                         map:selectReturnMD,
                                         val:'element',
-                                        nextItem:'true'
+                                        nextItem:'true',
                                     })
                                     
                                 
@@ -889,6 +1037,10 @@ function selectAll(   dev_obj   ){
                         args:{target:dev_obj.target}
                     }
                     ultraObject.forLoop(   selectAllFL_0_i   )
+                    ultraObject.subGroups({
+                            map:selectReturnMD,
+                            nextItem:'complete',
+                        })
                     console.group(   'grabbing the chosen elements from the object'   )
                         ultraObject.objInvloved({
                                 0:selectReturn,
@@ -938,12 +1090,15 @@ function packIt(   dev_obj   ){
                     console.groupEnd()
                     var packItFL_1_i = {
                         forLoop_0_i:0,
-                        forLoopLength:Object.keys(      ).length,
-                        fn:function(   dev_obj   ){},
+                        forLoopLength:packItSA.subGroupsMap.length,
+                        fn:function(   dev_obj   ){
+                            // console.log(    packItFL_1_i.forLoop_0_i,packItSA[packItFL_1_i.forLoop_0_i],packItSA.subGroupsMap[packItFL_1_i.forLoop_0_i],ultraObject.elementFound[packItSA.subGroupsMap[packItFL_1_i.forLoop_0_i].split(' ')[0]]   )
+                                //left off here, the subGroupMap is given but we need to make it meaning ful fo this loop
+                        },
                         args:{}
                     }
                     ultraObject.forLoop(   packItFL_1_i   )
-                    packItSA
+                    
                     
                 }
                 
