@@ -466,7 +466,8 @@ function eCSearch(   dev_obj   ){
                                 item:eCSearchElem,
                                 query:eCSearchProp,
                                 xMark:eCSearchLook[eCSearch_1_i],
-                                keyword:eCSearchProp_obj.cBQ
+                                keyword:eCSearchProp_obj.cBQ,
+                                valuePhrase:dev_obj.list[eCSearchProp_obj.cBQ]
                             
                                 } // the bug for removing pharma charts
                                 
@@ -1070,10 +1071,6 @@ function subGroups(   dev_obj   ){
                             1:ultraObject.subGroupsO[subGroupsBOOL.spot],
                             2:dev_obj.map.MB_0_i
                         })
-
-                        
-                                        
-                        throw('e')
             console.groupEnd()
             
                         
@@ -1124,10 +1121,7 @@ function subGroups(   dev_obj   ){
                 
             }
             
-            
-
-            
-            
+                    
         }
             
         
@@ -1261,8 +1255,10 @@ function packIt(   dev_obj   ){
                         forLoop_0_i:0,
                         forLoopLength:packItSA.subGroupsMap.length,
                         fn:function(   dev_obj   ){
-                            // console.log(    packItFL_1_i.forLoop_0_i,packItSA[packItFL_1_i.forLoop_0_i],packItSA.subGroupsMap[packItFL_1_i.forLoop_0_i],ultraObject.elementFound[packItSA.subGroupsMap[packItFL_1_i.forLoop_0_i].split(' ')[0]]   )
-                                //left off here, the subGroupMap is given but we need to make it meaning ful fo this loop
+                            console.log(   packItSA[packItFL_1_i.forLoop_0_i],packItSA.subGroupsMap.MB_0_i[packItFL_1_i.forLoop_0_i][0],ultraObject.elementFound[packItSA.subGroupsMap.MB_0_i[packItFL_1_i.forLoop_0_i][0]   ].keyword   )
+                            
+                            packItSA[packItFL_1_i.forLoop_0_i].value = ultraObject.elementFound[packItSA.subGroupsMap.MB_0_i[packItFL_1_i.forLoop_0_i][0]   ].valuePhrase
+                            
                         },
                         args:{}
                     }
