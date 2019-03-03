@@ -1387,7 +1387,6 @@ function sort(   dev_obj   ){
         	                sortFL_0_i.itO[sortFL_0_i.itO.swapO].minus(   {value:dev_obj.target[sortFL_0_i.forLoop_0_i+1]}   )
         	                dev_obj.target[sortFL_0_i.forLoop_0_i] = sortO[0]
         	                dev_obj.target[sortFL_0_i.forLoop_0_i+1] = sortO[1]
-        	                debugger
         	                
         	                
         	            }
@@ -1426,7 +1425,6 @@ function sort(   dev_obj   ){
     }
     
     
-    debugger
     return dev_obj.target
 }//you kneew uO would need this one
 function swap(   dev_obj   ){
@@ -1463,7 +1461,6 @@ function swap(   dev_obj   ){
                     }
                 }
                 ultraObject.forLoop(   swapFL_0_i   )
-                debugger
                 return swapO_0_i
                 
                 
@@ -1511,7 +1508,7 @@ function preFillForm(   dev_obj   ){
         args:{}
     }
     ultraObject.forLoop(   FL_0_i   )
-    throw('e')
+    debugger //left off here properly organized
     ultraObject.eCSearch({
         list:dev_obj.list,
         look:dev_obj.look,
@@ -1622,16 +1619,7 @@ function recurisveForLoop(   dev_obj   ){
                     ultraObject.forLoop(   recurisveForLoop_0_i   )
     }
 
-            preFillForm({
-                // allTags : [document.querySelectorAll("body *")[129],document.querySelectorAll("body *")[135],document.querySelectorAll("body *")[140],document.querySelectorAll("body *")[147]],
-                allTags:document.querySelectorAll("body *"), // bug it just grabs the whole query
-                list:{
-                    'LinkedIn Profile':'https://www.linkedin.com/in/michael-odumosu-a58367b1',
-                    'Website':'https://ualbanyasist.github.io/',
-                    'How did you hear about this job?':'Linkedin',
-                    'What is your desired Salary?': '$80,000'},
-                look:{ 'innerHTML':null,'innerText':null,'textContext':null}
-            })
+
 // whats a good rules if parameters are part of the ultraObject or come in as an argument
 // if a function naturally passes arguments to a function, dev params must go to the ultraObject
 
@@ -1674,3 +1662,6 @@ dev_obj.allTags = ultraObject.sort({
             
         })
 }
+
+
+
