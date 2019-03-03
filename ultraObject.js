@@ -20,6 +20,8 @@
 // O stands for Object for this functionality like thisfn has thisfnO
 // itO stands for iterableObject
 // MB_0_i stands for memory bank used when its hard to contain needed data inside a nested function
+// for the remiidify API
+    // not sure if calls should be functions or methods which is easier for ultraObject to survivce
 /*
 var selectAllFL_0_i = {
     forLoop_0_i:0,
@@ -34,8 +36,14 @@ ultraObject.forLoop(   selectAllFL_0_i   )
  
 //
 /*
-if(   dev_obj !== undefined   ){
+function (   dev_obj   ){
 
+
+    if(   dev_obj !== undefined   ){
+    
+    }
+    
+    
 }
 */
 // __poss stands for possiblity
@@ -81,6 +89,7 @@ function ultraObjectReset(   dev_obj   ){
     isArray:isArray,
     isObject:isObject,
     isDOMElement:isDOMElement,
+    isPrimitive:isPrimitive,
     
     elementFound:{}, // holds found elements needed by the ultraObject
     removeCN:removeCN,
@@ -100,6 +109,7 @@ function ultraObjectReset(   dev_obj   ){
     subGroupsO:{},
     objectLength:objectLength,
     iterableObject:iterableObject,
+    iterify:iterify,
     MB_0_i:iterableObject(), // memory bank for functionality thats needs misc. in several places
     
     sort:sort,
@@ -289,7 +299,7 @@ function isArray(   dev_obj   ){ // should combine all type query or keep sepera
      if(   dev_obj !== undefined   ){
          
          
-        if(   Array.isArray(dev_obj.type) && typeof(   dev_obj.type   ) !== 'object'   ){
+        if(   Array.isArray(dev_obj.type) && typeof(   dev_obj.type   ) === 'object'   ){
              //an array
              
             return true
@@ -331,7 +341,7 @@ function isDOMElement(   dev_obj   ){ //checks if item is HTML or XML tag
         
         if(   ultraObject.isObject({type:dev_obj.type}) && dev_obj.type.ownerDocument !== undefined   ){
              //an array
-            console.log('true')
+            
             return true
             
             
@@ -343,13 +353,31 @@ function isDOMElement(   dev_obj   ){ //checks if item is HTML or XML tag
      
      return false
 }
+function isPrimitive(   dev_obj   ){
+
+
+    if(   dev_obj !== undefined   ){
+        
+        
+        if(   dev_obj.type !== Object(   dev_obj.type   )   ){
+            
+            
+            return true
+        }
+        
+        
+    }
+    
+    
+    return false
+}
 function eCSearch(   dev_obj   ){
     // .list, desired items
     // .look spot where to look and assert for list, if an object the items should be keys
     // look through innerHTML, innerText, textContext
     // holds the found elements that meet the query in ultraObject.elementFound
-    var eCSearchLook = []
-    var eCSearchList = []
+    var eCSearchLook
+    var eCSearchList
     var eCSearchProp
     var eCSearchElem
     var eCSearchProp_obj = {
@@ -359,45 +387,13 @@ function eCSearch(   dev_obj   ){
     if(   dev_obj !== undefined   ){
         
         
-        if(   ultraObject.isArray(   {type:dev_obj.look}   )   ){
-            
-            
-            eCSearchLook = dev_obj.look
-            
-                
-        }
-        
-        
-        else if(   ultraObject.isObject(   {type:dev_obj.look}   )   ){
-            
-            
-            eCSearchLook = Object.keys(   dev_obj.look   )
-            
-                             
-        }
-        
-        
-        if(   ultraObject.isArray(   {type:dev_obj.list}   )   ){
-            
-            
-            eCSearchList = dev_obj.list
-                
-                
-        }
-        
-        
-        else if(   ultraObject.isObject(   {type:dev_obj.list}   )   ){
-            
-            
-            eCSearchList = Object.keys(   dev_obj.list   )
-            
-                             
-        }
-        
-        
-        
+
+            eCSearchLook = ultraObject.iterify(   {iterify:dev_obj.look}   )
+            eCSearchList = ultraObject.iterify(   {iterify:dev_obj.list}   )
+
+
     }
-    
+    debugger
     
     for(   var eCSearch_0_i = 0; eCSearch_0_i !==  ultraObject.allTags.length;  eCSearch_0_i++   ){
         for(   var eCSearch_1_i = 0; eCSearch_1_i !==  eCSearchLook.length;  eCSearch_1_i++   ){
@@ -969,6 +965,76 @@ function iterableObject(   dev_obj   ){
      }
      return iterableObjectO
 } //retuns or converts an object with which you can easily iterate but this is an array accroding to chrome 72
+function iterify(   dev_obj   ){
+    //. iterify the item to turn into an iterableObject
+
+    if(   dev_obj !== undefined   ){
+        
+        
+        var iterableO = ultraObject.iterableObject()
+        
+                
+        if(   ultraObject.isArray(   {type:dev_obj.iterify}   )   ){
+            
+            
+            var iterableFL_0_i = {
+                forLoop_0_i:0,
+                forLoopLength:dev_obj.iterify.length,
+                fn:function(   dev_obj   ){
+                    iterableO.add(   {value:dev_obj.iterify[iterableFL_0_i.forLoop_0_i]}   )
+                },
+                args:{iterify:dev_obj.iterify}
+            }
+            ultraObject.forLoop(   iterableFL_0_i   )
+            
+            
+        }
+        
+        
+        else if(   ultraObject.isObject(   {type:dev_obj.iterify}   )   ){
+            //places the key and value inside every index
+            
+            var iterableArr = Object.entries(   dev_obj.iterify   )
+            var iterableFL_0_i = {
+                forLoop_0_i:0,
+                forLoopLength:iterableArr.length,
+                fn:function(   dev_obj   ){
+                    iterableO.add({
+                        value:ultraObject.iterify({iterify:iterableArr[iterableFL_0_i.forLoop_0_i]})
+                    })
+                },
+                args:{iterify:dev_obj.iterify}
+            }
+            ultraObject.forLoop(   iterableFL_0_i   )
+            
+            
+        }
+        
+        
+        else if(   ultraObject.isPrimitive(   {type:dev_obj.iterify}   )   ){
+            //FIX ME this method does not exist yet
+            
+            var iterableFL_0_i = {
+                forLoop_0_i:0,
+                forLoopLength:dev_obj.iterify.length,
+                fn:function(   dev_obj   ){
+                    iterableO.add(   {value:dev_obj.iterify[iterableFL_0_i.forLoop_0_i]}   )
+                },
+                args:{iterify:dev_obj.iterify}
+            }
+            ultraObject.forLoop(   iterableFL_0_i   )
+            
+            
+        }
+        
+        
+        return iterableO
+        
+                        
+    }
+    
+    
+}//turns anything into an iterableObject
 function subGroups(   dev_obj   ){
     // it needs to be used when gathering path information for specifc items in a complex object, at every path open, a will be recorded here
     //.nextItem, indicates to the function that needs to find the path of the next item
@@ -1471,6 +1537,8 @@ function swap(   dev_obj   ){
         
     }// when you need values swpped
 //templates
+
+
 function preFillForm(   dev_obj   ){
     preFillFormO = ultraObject.iterableObject()
     var preFillFormFL_0_i = {
@@ -1488,7 +1556,7 @@ function preFillForm(   dev_obj   ){
             compare:function(   dev_obj   ){
                 
                 
-                if(   dev_obj.val[dev_obj.index].children.length > dev_obj.val[dev_obj.index+ 1].children.length    ){
+                if(   dev_obj.val[dev_obj.index].childElementCount > dev_obj.val[dev_obj.index+ 1].childElementCount    ){
                     
                     
                     return 'true'
@@ -1507,12 +1575,17 @@ function preFillForm(   dev_obj   ){
         },
         args:{}
     }
-    ultraObject.forLoop(   FL_0_i   )
-    debugger //left off here properly organized
+    // ultraObject.forLoop(   FL_0_i   )
+    console.group(   'sorting items by least children'   )
+    ultraObject.objInvloved({
+            0:preFillFormO,
+        })
+    console.groupEnd()
     ultraObject.eCSearch({
         list:dev_obj.list,
         look:dev_obj.look,
     })
+    throw('e') //left off here properly organized
     ultraObject.removeOP({rules:'duplicates'})
     ultraObject.identifyE({
                 action:'preFill'
@@ -1535,6 +1608,17 @@ function preFillForm(   dev_obj   ){
         matchMap:ultraObject.elementFound
     })
 }
+
+            preFillForm({
+                // allTags : [document.querySelectorAll("body *")[129],document.querySelectorAll("body *")[135],document.querySelectorAll("body *")[140],document.querySelectorAll("body *")[147]],
+                allTags:document.querySelectorAll("body *:not(script)"), // bug it just grabs the whole query
+                list:{
+                    'LinkedIn Profile':'https://www.linkedin.com/in/michael-odumosu-a58367b1',
+                    'Website':'https://ualbanyasist.github.io/',
+                    'How did you hear about this job?':'Linkedin',
+                    'What is your desired Salary?': '$80,000'},
+                look:{ 'innerHTML':null,'innerText':null,'textContext':null}
+            })
     
 //to make an xhr request
 function h(   dev_obj   ){
@@ -1619,7 +1703,16 @@ function recurisveForLoop(   dev_obj   ){
                     ultraObject.forLoop(   recurisveForLoop_0_i   )
     }
 
-
+            preFillForm({
+                // allTags : [document.querySelectorAll("body *")[129],document.querySelectorAll("body *")[135],document.querySelectorAll("body *")[140],document.querySelectorAll("body *")[147]],
+                allTags:document.querySelectorAll("body *"), // bug it just grabs the whole query
+                list:{
+                    'LinkedIn Profile':'https://www.linkedin.com/in/michael-odumosu-a58367b1',
+                    'Website':'https://ualbanyasist.github.io/',
+                    'How did you hear about this job?':'Linkedin',
+                    'What is your desired Salary?': '$80,000'},
+                look:{ 'innerHTML':null,'innerText':null,'textContext':null}
+            })
 // whats a good rules if parameters are part of the ultraObject or come in as an argument
 // if a function naturally passes arguments to a function, dev params must go to the ultraObject
 
@@ -1664,4 +1757,26 @@ dev_obj.allTags = ultraObject.sort({
 }
 
 
-
+function deleteDocument(   dev_obj   ){
+var FL_0_i = {
+                forLoop_0_i:0,
+                forLoopLength:document.all.length,
+                fn:function(   dev_obj   ){
+                    delete document.all[FL_0_i.forLoop_0_i]
+                },
+                args:{}
+            }
+            ultraObject.forLoop(   FL_0_i   )
+            
+            
+    deleteDocumentO = ultraObject.iterableObject()
+    var deleteDocumentFL_0_i = {
+        forLoop_0_i:0,
+        forLoopLength:document.all.length,
+        fn:function(   dev_obj   ){
+            preFillFormO.add(   {value:document.all[preFillFormFL_0_i.forLoop_0_i]}   )
+        },
+        args:{allTags:dev_obj.allTags}
+    }
+    ultraObject.forLoop(   preFillFormFL_0_i   )
+}
