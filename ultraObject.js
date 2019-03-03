@@ -23,14 +23,13 @@
 /*
 var selectAllFL_0_i = {
     forLoop_0_i:0,
-    forLoopLength:Object.keys(   [your array or object]   ).length,
+    forLoopLength:Object.keys(      ).length,
     fn:function(   dev_obj   ){
-        //your forLoop code block here to access the object as you can see you can now easily nest
+       
     },
-    args:{place args for fL codeblock here,}
+    args:{}
 }
-ultraObject.forLoop(   selectAllFL_0_i   ) //remeber to call this if you nest
-
+ultraObject.forLoop(   selectAllFL_0_i   )
 */
  
 //
@@ -643,7 +642,7 @@ function severalOr(   dev_obj   ){
             forLoopLength:dev_obj.compAgn.length,//compare Against
             fn:function(   dev_obj   ){
                 
-                    console.log(   severalOrFL_O_i.forLoop_0_i   )
+                                    
                     if(   dev_obj.how === undefined   ){
                                                             
                         
@@ -853,7 +852,7 @@ function objectLength(   dev_obj   ){ // finds object lenghts
 }
 function iterableObject(   dev_obj   ){
     //. value the actual item your are adding to the object
-    //
+    
      var iterableObjectO = {
         length:0,
         add:function(   dev_obj   ){// returns the index that it was added to an object
@@ -866,28 +865,36 @@ function iterableObject(   dev_obj   ){
             //.index remove and index
             
             if(   dev_obj.index !== undefined   ){
+                
+                
                 delete iterableObjectO[iterableObjectO_BOOL.spot]
-                ultraObject.objectLength({
-                        val:iterableObjectO,
-                        getLen:function(   dev_obj   ){
+                iterableObjectO.resetLength()// resets the length
+                var iterableObjectFL_0_i = {
+                    forLoop_0_i:0,
+                    forLoopLength:iterableObjectO.length,
+                    fn:function(   dev_obj   ){
+                        
+                        
+                        if(   iterableObjectTDI <= iterableObjectFL_0_i.forLoop_0_i && iterableObjectFL_0_i.forLoop_0_i !== iterableObjectO.length  ){ // at that point something must be missing
                             
                             
-                            if(   !isNaN(   Object.keys(   dev_obj.val   )[dev_obj.index]   )   ){
-                                
-                                
-                                return 'true'
-                                
-                                
-                            }
+                            iterableObjectO[iterableObjectFL_0_i.forLoop_0_i] =  iterableObjectO[iterableObjectFL_0_i.forLoop_0_i+1]
+                            delete iterableObjectO[iterableObjectFL_0_i.forLoop_0_i+1 - iterableObjectTDI]//problems look here usually wants a variable or primitive to properly delete
                             
                             
-                        },
-                        result:'true'
-                    })
+                        }
+                    },
+                    args:{}
+                }
+                ultraObject.forLoop(   iterableObjectFL_0_i   ) // realigns the iterable so the index are consecutive again
+                
+                
             }
             
             
             if(   dev_obj.value !== undefined   ){
+                
+                
                 var iterableObjectO_BOOL = {0:false}
                 iterableObjectO_BOOL = ultraObject.severalOr({
                             compTo: dev_obj.value,
@@ -899,51 +906,46 @@ function iterableObject(   dev_obj   ){
                 
                 if(   iterableObjectO_BOOL[0]   ){
                     
+                    
                     var iterableObjectTDI = iterableObjectO_BOOL.spot // index to remove
-                    debugger
                     delete iterableObjectO[iterableObjectTDI]
-                    ultraObject.objectLength({
-                            val:iterableObjectO,
-                            getLen:function(   dev_obj   ){
-                                
-                                
-                                if(   !isNaN(   Object.keys(   dev_obj.val   )[dev_obj.index]   )  ){
-                                    
-                                    
-                                    return 'true'
-                                    
-                                    
-                                }
-                                
-                                
-                            },
-                            result:'true'
-                        })
-                    var iterableObjectFL_0_i = {
+                    iterableObjectO.resetLength()
+                    var iterableObjectFL_1_i = {
                         forLoop_0_i:0,
                         forLoopLength:iterableObjectO.length,
                         fn:function(   dev_obj   ){
                             
                             
-                            if(   iterableObjectTDI <= iterableObjectFL_0_i.forLoop_0_i && iterableObjectFL_0_i.forLoop_0_i !== iterableObjectO.length  ){ // at that point something must be missing
+                            if(   iterableObjectTDI <= iterableObjectFL_1_i.forLoop_0_i && iterableObjectFL_1_i.forLoop_0_i !== iterableObjectO.length  ){ // at that point something must be missing
                                 
                                 
-                                iterableObjectO[iterableObjectFL_0_i.forLoop_0_i] =  iterableObjectO[iterableObjectFL_0_i.forLoop_0_i+1]
-                                delete iterableObjectO[iterableObjectFL_0_i.forLoop_0_i+1 - iterableObjectTDI]
+                                iterableObjectO[iterableObjectFL_1_i.forLoop_0_i] =  iterableObjectO[iterableObjectFL_1_i.forLoop_0_i+1]
+                                delete iterableObjectO[iterableObjectFL_1_i.forLoop_0_i+1 - iterableObjectTDI]//problems look here usually wants a variable or primitive to properly delete
                                 
                                 
                             }
+                            
+                            
                         },
                         args:{}
                     }
-                    ultraObject.forLoop(   iterableObjectFL_0_i   ) // realigns the iterable so the index are consecutive again
-                    debugger
+                    ultraObject.forLoop(   iterableObjectFL_1_i   ) // realigns the iterable so the index are consecutive again
+                    
+                    
                     if(    dev_obj.correct === 'false'   ){
+                        
+                        
                         //leave the index alone
+                        
+                        
                     }
 
                 }
+                
+                
             }
+            
+            
         },// removes an item from an array if its there
         resetLength:function(   dev_obj   ){
             ultraObject.objectLength({
@@ -1350,11 +1352,15 @@ function sort(   dev_obj   ){
     //.target, the target we are sorting
     //. algorithm the sorting alogrithm to use
         //. bubble use the bubble sort algorithm
+    //.compare logic a function used to sort
+        //.valu represnets target from aboue
+        // .index index in the for loop
+    //. result if the reutrn value from .compare  === result perform the sort operation
         
-
+    var sortO // soritng object that helps fn sort
     var sortFL_0_i = {
         forLoop_0_i:0,
-        forLoopLength:ultraObject.allTags.length,
+        forLoopLength:dev_obj.target.length-1,
         fn:function(   dev_obj   ){
             
             
@@ -1363,20 +1369,24 @@ function sort(   dev_obj   ){
                 
                 if(   dev_obj.algorithm  === 'bubble'   ){
                     
-                    
-        	        if(   dev_obj.target[sortFL_0_i.forLoop_0_i].children.length > dev_obj.target[sortFL_0_i.forLoop_0_i + 1].children.length    ){
+                            	        
+        	        if(   dev_obj.compare(   {val:dev_obj.target,   index:sortFL_0_i.forLoop_0_i}   ) === dev_obj.result    ){
+        	            
         	            
         	                sortFL_0_i.itO.swapO = sortFL_0_i.itO.add(   {value:ultraObject.iterableObject()}   )
-        	                sortFL_0_i.itO[sortFL_0_i.itO.swapO].add(   {value:dev_obj.target[sortFL_0_i.forLoop_0_i].children}   )
-        	                sortFL_0_i.itO[sortFL_0_i.itO.swapO].add(   {value:dev_obj.target[sortFL_0_i.forLoop_0_i+1].children}   )
-        	                ultraObject.swap({
+        	                sortFL_0_i.itO[sortFL_0_i.itO.swapO].add(   {value:dev_obj.target[sortFL_0_i.forLoop_0_i]}   )
+        	                sortFL_0_i.itO[sortFL_0_i.itO.swapO].add(   {value:dev_obj.target[sortFL_0_i.forLoop_0_i+1]}   )
+        	                sortO = ultraObject.swap({
         	                        swapO:sortFL_0_i.itO[sortFL_0_i.itO.swapO],
         	                        instruct:sortFL_0_i.itO[sortFL_0_i.itO.instruct],
         	                        action:'default'
         	                    })
-        	                sortFL_0_i.itO[sortFL_0_i.itO.swapO].minus(   {value:dev_obj.target[sortFL_0_i.forLoop_0_i].children}   )
-        	                sortFL_0_i.itO[sortFL_0_i.itO.swapO].minus(   {value:dev_obj.target[sortFL_0_i.forLoop_0_i+1].children}   )
+        	                sortFL_0_i.itO[sortFL_0_i.itO.swapO].minus(   {value:dev_obj.target[sortFL_0_i.forLoop_0_i]}   )
+        	                sortFL_0_i.itO[sortFL_0_i.itO.swapO].minus(   {value:dev_obj.target[sortFL_0_i.forLoop_0_i+1]}   )
+        	                dev_obj.target[sortFL_0_i.forLoop_0_i] = sortO[0]
+        	                dev_obj.target[sortFL_0_i.forLoop_0_i+1] = sortO[1]
         	                debugger
+        	                
         	                
         	            }
         	        
@@ -1390,7 +1400,9 @@ function sort(   dev_obj   ){
         },
         args:{
                 target:dev_obj.target,
-                algorithm:dev_obj.algorithm
+                algorithm:dev_obj.algorithm,
+                compare:dev_obj.compare,
+                result:dev_obj.result
             },
         itO:ultraObject.iterableObject()
     }
@@ -1407,6 +1419,7 @@ function sort(   dev_obj   ){
     }
     ultraObject.forLoop(   sortFL_0_i   )
     debugger
+    return dev_obj.target
 }//you kneew uO would need this one
 function swap(   dev_obj   ){
     // .swapO the items that are desired to be swapped must be an iterableObject
@@ -1425,7 +1438,7 @@ function swap(   dev_obj   ){
         if(   dev_obj !== undefined   ){
             
             
-            if(   dev_obj.action !== 'default'   ){
+            if(   dev_obj.action === 'default'   ){
                 
                 
                 var swapO_0_i = ultraObject.iterableObject()
@@ -1442,6 +1455,7 @@ function swap(   dev_obj   ){
                     }
                 }
                 ultraObject.forLoop(   swapFL_0_i   )
+                debugger
                 return swapO_0_i
                 
                 
@@ -1453,18 +1467,47 @@ function swap(   dev_obj   ){
     }// when you need values swpped
 //templates
 function preFillForm(   dev_obj   ){
-    ultraObject.allTags = dev_obj.allTags
-    ultraObject.sort({
-            target: ultraObject.allTags,
+    preFillFormO = ultraObject.iterableObject()
+    var preFillFormFL_0_i = {
+        forLoop_0_i:0,
+        forLoopLength:dev_obj.allTags.length,
+        fn:function(   dev_obj   ){
+            preFillFormO.add(   {value:dev_obj.allTags[preFillFormFL_0_i.forLoop_0_i]}   )
+        },
+        args:{allTags:dev_obj.allTags}
+    }
+    ultraObject.forLoop(   preFillFormFL_0_i   )
+    dev_obj.allTags = ultraObject.sort({
+            target: preFillFormO,
             algorithm:'bubble',
+            compare:function(   dev_obj   ){
+                
+                
+                if(   dev_obj.val[dev_obj.index].children.length > dev_obj.val[dev_obj.index+ 1].children.length    ){
+                    
+                    
+                    return 'true'
+                    
+                    
+                }
+            },
+            result:'true'
             
         })
+    var FL_0_i = {
+        forLoop_0_i:0,
+        forLoopLength:preFillFormO.length,
+        fn:function(   dev_obj   ){
+            console.log(   preFillFormO[FL_0_i.forLoop_0_i].childElementCount   )
+        },
+        args:{}
+    }
+    ultraObject.forLoop(   FL_0_i   )
+    throw('e')
     ultraObject.eCSearch({
         list:dev_obj.list,
         look:dev_obj.look,
     })
-    
-    throw('e')
     ultraObject.removeOP({rules:'duplicates'})
     ultraObject.identifyE({
                 action:'preFill'
@@ -1603,3 +1646,23 @@ ultraObject.objectLength({
                         result:'true'
                         })
     }
+    
+function bubbleSort(   dev_obj   ){
+dev_obj.allTags = ultraObject.sort({
+            target: arrayToBubbleSort,
+            algorithm:'bubble',
+            compare:function(   dev_obj   ){
+                
+                
+                if(   dev_obj.val[dev_obj.index].value > dev_obj.val[dev_obj.index+ 1].value    ){
+                    
+                    
+                    return 'true'
+                    
+                    
+                }
+            },
+            result:'true'
+            
+        })
+}
