@@ -18,17 +18,19 @@
 // BOOL for boolean object
 // SA for a selectAll object
 // O stands for Object for this functionality like thisfn has thisfnO
+// itO stands for iterableObject
 // MB_0_i stands for memory bank used when its hard to contain needed data inside a nested function
 /*
-{
+var selectAllFL_0_i = {
     forLoop_0_i:0,
-    forLoopLength:Object.keys(   ultraObject.identifyEO   ).length,
+    forLoopLength:Object.keys(   [your array or object]   ).length,
     fn:function(   dev_obj   ){
-    
+        //your forLoop code block here to access the object as you can see you can now easily nest
     },
-    args:{}
+    args:{place args for fL codeblock here,}
 }
-ultraObject.forLoop(   selectAllFL_0_i   )
+ultraObject.forLoop(   selectAllFL_0_i   ) //remeber to call this if you nest
+
 */
  
 //
@@ -38,6 +40,13 @@ if(   dev_obj !== undefined   ){
 }
 */
 // __poss stands for possiblity
+/*
+items that should be placed in the ultraObject
+    finished products that are to be used by other API, they shold be stored in an iterableObject and used using iterableObject methods
+    functions
+    absolute primitive values like Infinity or XMLHTTPRequest
+        
+ */
 function ultraObjectReset(   dev_obj   ){
     //I know about ES6 but this is an ultraObject right???
     return {
@@ -92,7 +101,10 @@ function ultraObjectReset(   dev_obj   ){
     subGroupsO:{},
     objectLength:objectLength,
     iterableObject:iterableObject,
-    MB_0_i:iterableObject() // memory bank for functionality thats needs misc. in several places
+    MB_0_i:iterableObject(), // memory bank for functionality thats needs misc. in several places
+    
+    sort:sort,
+    swap:swap
     
     }
 }
@@ -437,7 +449,7 @@ function eCSearch(   dev_obj   ){
                     
                     else if(   eCSearchList[eCSearch_2_i].indexOf('?') === -1   ){
                         
-                        
+                        //FIX ME left Off teriible assumption we should look at elements that have no kids first
                         if(   eCSearchProp.match(   eCSearchList[eCSearch_2_i]   ) !== null   ){
                             
                             
@@ -462,17 +474,14 @@ function eCSearch(   dev_obj   ){
                             
                             
                             ultraObject.elementFound[Object.keys(   ultraObject.elementFound   ).length] = {
-                                
                                 item:eCSearchElem,
                                 query:eCSearchProp,
                                 xMark:eCSearchLook[eCSearch_1_i],
                                 keyword:eCSearchProp_obj.cBQ,
                                 valuePhrase:dev_obj.list[eCSearchProp_obj.cBQ]
-                            
-                                } // the bug for removing pharma charts
+                            } // the bug for removing pharma charts
                                 
-                            
-                            
+                                                        
                         }
                                             
                         
@@ -851,20 +860,12 @@ function iterableObject(   dev_obj   ){
                 iterableObjectO[iterableObjectO.length] = dev_obj.value
                 iterableObjectO.length += 1
                 return iterableObjectO.length -1
-            },
+            },// adds a value and retuns its place in the array
         minus:function(   dev_obj   ){
-            var iterableObjectO_BOOL = {0:false}
-            iterableObjectO_BOOL = ultraObject.severalOr({
-                        compTo: dev_obj.value,
-                        compAgn: iterableObjectO,
-                        boolean:iterableObjectO_BOOL,
-                        which:0
-            })
+            //.value value to remove
+            //.index remove and index
             
-            
-            if(   iterableObjectO_BOOL[0]   ){
-                
-                
+            if(   dev_obj.index !== undefined   ){
                 delete iterableObjectO[iterableObjectO_BOOL.spot]
                 ultraObject.objectLength({
                         val:iterableObjectO,
@@ -883,13 +884,67 @@ function iterableObject(   dev_obj   ){
                         },
                         result:'true'
                     })
-                if(    dev_obj.correct === 'true'   ){
-                    //correct the indexing operation
-                }
-                
             }
             
-        },
+            
+            if(   dev_obj.value !== undefined   ){
+                var iterableObjectO_BOOL = {0:false}
+                iterableObjectO_BOOL = ultraObject.severalOr({
+                            compTo: dev_obj.value,
+                            compAgn: iterableObjectO,
+                            boolean:iterableObjectO_BOOL,
+                            which:0
+                })
+                
+                
+                if(   iterableObjectO_BOOL[0]   ){
+                    
+                    var iterableObjectTDI = iterableObjectO_BOOL.spot // index to remove
+                    debugger
+                    delete iterableObjectO[iterableObjectTDI]
+                    ultraObject.objectLength({
+                            val:iterableObjectO,
+                            getLen:function(   dev_obj   ){
+                                
+                                
+                                if(   !isNaN(   Object.keys(   dev_obj.val   )[dev_obj.index]   )  ){
+                                    
+                                    
+                                    return 'true'
+                                    
+                                    
+                                }
+                                
+                                
+                            },
+                            result:'true'
+                        })
+                    var iterableObjectFL_0_i = {
+                        forLoop_0_i:0,
+                        forLoopLength:iterableObjectO.length,
+                        fn:function(   dev_obj   ){
+                            
+                            
+                            if(   iterableObjectTDI <= iterableObjectFL_0_i.forLoop_0_i && iterableObjectFL_0_i.forLoop_0_i !== iterableObjectO.length  ){ // at that point something must be missing
+                                
+                                
+                                iterableObjectO[iterableObjectFL_0_i.forLoop_0_i] =  iterableObjectO[iterableObjectFL_0_i.forLoop_0_i+1]
+                                delete iterableObjectO[iterableObjectFL_0_i.forLoop_0_i+1 - iterableObjectTDI]
+                                
+                                
+                            }
+                        },
+                        args:{}
+                    }
+                    ultraObject.forLoop(   iterableObjectFL_0_i   ) // realigns the iterable so the index are consecutive again
+                    debugger
+                    if(    dev_obj.correct === 'false'   ){
+                        //leave the index alone
+                    }
+
+                }
+            }
+        },// removes an item from an array if its there
         resetLength:function(   dev_obj   ){
             ultraObject.objectLength({
                     val:iterableObjectO,
@@ -1291,14 +1346,125 @@ function packIt(   dev_obj   ){
     
         
 } //fills anything as you tell it, use pack to avoid missspelling
-//templates
+function sort(   dev_obj   ){
+    //.target, the target we are sorting
+    //. algorithm the sorting alogrithm to use
+        //. bubble use the bubble sort algorithm
+        
 
+    var sortFL_0_i = {
+        forLoop_0_i:0,
+        forLoopLength:ultraObject.allTags.length,
+        fn:function(   dev_obj   ){
+            
+            
+            if(   dev_obj !== undefined   ){
+                
+                
+                if(   dev_obj.algorithm  === 'bubble'   ){
+                    
+                    
+        	        if(   dev_obj.target[sortFL_0_i.forLoop_0_i].children.length > dev_obj.target[sortFL_0_i.forLoop_0_i + 1].children.length    ){
+        	            
+        	                sortFL_0_i.itO.swapO = sortFL_0_i.itO.add(   {value:ultraObject.iterableObject()}   )
+        	                sortFL_0_i.itO[sortFL_0_i.itO.swapO].add(   {value:dev_obj.target[sortFL_0_i.forLoop_0_i].children}   )
+        	                sortFL_0_i.itO[sortFL_0_i.itO.swapO].add(   {value:dev_obj.target[sortFL_0_i.forLoop_0_i+1].children}   )
+        	                ultraObject.swap({
+        	                        swapO:sortFL_0_i.itO[sortFL_0_i.itO.swapO],
+        	                        instruct:sortFL_0_i.itO[sortFL_0_i.itO.instruct],
+        	                        action:'default'
+        	                    })
+        	                sortFL_0_i.itO[sortFL_0_i.itO.swapO].minus(   {value:dev_obj.target[sortFL_0_i.forLoop_0_i].children}   )
+        	                sortFL_0_i.itO[sortFL_0_i.itO.swapO].minus(   {value:dev_obj.target[sortFL_0_i.forLoop_0_i+1].children}   )
+        	                debugger
+        	                
+        	            }
+        	        
+        	        
+                }
+        	    
+        	    
+            }
+            
+            
+        },
+        args:{
+                target:dev_obj.target,
+                algorithm:dev_obj.algorithm
+            },
+        itO:ultraObject.iterableObject()
+    }
+    
+    
+    if(   dev_obj.algorithm  === 'bubble'   ){
+        
+        
+    	   sortFL_0_i.itO.instruct = sortFL_0_i.itO.add(   {value:ultraObject.iterableObject()}   )
+    	   sortFL_0_i.itO[sortFL_0_i.itO.instruct].add(   {value:1}   )
+    	   sortFL_0_i.itO[sortFL_0_i.itO.instruct].add(   {value:0}   )
+    	   
+    	   
+    }
+    ultraObject.forLoop(   sortFL_0_i   )
+    debugger
+}//you kneew uO would need this one
+function swap(   dev_obj   ){
+    // .swapO the items that are desired to be swapped must be an iterableObject
+    // .instruct expects two iterableObject why does it need the second it will provide one
+    /*
+        {
+            0:1,
+            1:0,
+            2:4,
+            3:2,
+            4:3,
+            ...
+        }
+    */
+    //retunrs an object with the proper function
+        if(   dev_obj !== undefined   ){
+            
+            
+            if(   dev_obj.action !== 'default'   ){
+                
+                
+                var swapO_0_i = ultraObject.iterableObject()
+                var swapFL_0_i =  {
+                    forLoop_0_i:0,
+                    forLoopLength:dev_obj.instruct.length,
+                    fn:function(   dev_obj   ){
+                        
+                        swapO_0_i.add(  {value:dev_obj.swapO[dev_obj.instruct[swapFL_0_i.forLoop_0_i]]}   )
+                    },
+                    args:{
+                            swapO:dev_obj.swapO,
+                            instruct:dev_obj.instruct
+                    }
+                }
+                ultraObject.forLoop(   swapFL_0_i   )
+                return swapO_0_i
+                
+                
+            }
+            
+        }
+        
+        
+    }// when you need values swpped
+//templates
 function preFillForm(   dev_obj   ){
     ultraObject.allTags = dev_obj.allTags
+    ultraObject.sort({
+            target: ultraObject.allTags,
+            algorithm:'bubble',
+            
+        })
     ultraObject.eCSearch({
         list:dev_obj.list,
         look:dev_obj.look,
     })
+    
+    throw('e')
     ultraObject.removeOP({rules:'duplicates'})
     ultraObject.identifyE({
                 action:'preFill'
@@ -1406,8 +1572,8 @@ function recurisveForLoop(   dev_obj   ){
     }
 
             preFillForm({
-                allTags : [document.querySelectorAll("body *")[129],document.querySelectorAll("body *")[135],document.querySelectorAll("body *")[140],document.querySelectorAll("body *")[147]],
-                //allTags:document.querySelectorAll("body *"), // bug it just grabs the whole query
+                // allTags : [document.querySelectorAll("body *")[129],document.querySelectorAll("body *")[135],document.querySelectorAll("body *")[140],document.querySelectorAll("body *")[147]],
+                allTags:document.querySelectorAll("body *"), // bug it just grabs the whole query
                 list:{
                     'LinkedIn Profile':'https://www.linkedin.com/in/michael-odumosu-a58367b1',
                     'Website':'https://ualbanyasist.github.io/',
