@@ -406,6 +406,7 @@ function eCSearch(   dev_obj   ){
     
     
     var eCSearchSelectTags = ultraObject.allTags.add(   {value:ultraObject.iterableObject()}   )
+    ultraObject.allTags.eCSST = eCSearchSelectTags
     console.group(   'items needed to search for elements based on keywords'   )
     ultraObject.objInvloved({
             0:ultraObject.allTags[dev_obj.aTIndex],
@@ -417,7 +418,6 @@ function eCSearch(   dev_obj   ){
         forLoop_0_i:0,
         forLoopLength: eCSearchList.length,
         fn:function(   dev_obj   ){
-            console.log(   eCSearchList[eCSearchFL_0_i.forLoop_0_i]   )
             var eCSearchFL_1_i = {
                 forLoop_0_i:0,
                 forLoopLength:eCSearchAllTags.length,
@@ -432,10 +432,15 @@ function eCSearch(   dev_obj   ){
                                     
                                     
                                 if(   eCSearchAllTags[eCSearchFL_1_i.forLoop_0_i][eCSearchLook[eCSearchFL_2_i.forLoop_0_i][0]].indexOf(   eCSearchList[eCSearchFL_0_i.forLoop_0_i][0]   ) !== -1   ){
-                                
-                                    ultraObject.allTags[eCSearchSelectTags].add(   {value:eCSearchAllTags[eCSearchFL_1_i.forLoop_0_i]}   )
-                                    console.log(   ultraObject.allTags[eCSearchSelectTags]   )
-                                    debugger
+                                    
+                                    
+                                    ultraObject.allTags[eCSearchSelectTags]['query'+eCSearchFL_0_i.forLoop_0_i] = ultraObject.allTags[eCSearchSelectTags].add(   {value:ultraObject.iterableObject()}   )
+                                    ultraObject.allTags[eCSearchSelectTags][ultraObject.allTags[eCSearchSelectTags]['query'+eCSearchFL_0_i.forLoop_0_i]].item = eCSearchAllTags[eCSearchFL_1_i.forLoop_0_i]
+                                    ultraObject.allTags[eCSearchSelectTags][ultraObject.allTags[eCSearchSelectTags]['query'+eCSearchFL_0_i.forLoop_0_i]].query = eCSearchAllTags[eCSearchFL_1_i.forLoop_0_i][eCSearchLook[eCSearchFL_2_i.forLoop_0_i][0]]
+                                    ultraObject.allTags[eCSearchSelectTags][ultraObject.allTags[eCSearchSelectTags]['query'+eCSearchFL_0_i.forLoop_0_i]].xMark = eCSearchLook[eCSearchFL_2_i.forLoop_0_i][0]
+                                    ultraObject.allTags[eCSearchSelectTags][ultraObject.allTags[eCSearchSelectTags]['query'+eCSearchFL_0_i.forLoop_0_i]].keyword = eCSearchList[eCSearchFL_0_i.forLoop_0_i][0]
+                                    ultraObject.allTags[eCSearchSelectTags][ultraObject.allTags[eCSearchSelectTags]['query'+eCSearchFL_0_i.forLoop_0_i]].valuePhrase = eCSearchList[eCSearchFL_0_i.forLoop_0_i][1]
+                                    ultraObject.allTags[eCSearchSelectTags][ultraObject.allTags[eCSearchSelectTags]['query'+eCSearchFL_0_i.forLoop_0_i]].eCSIndex = eCSearchFL_1_i.forLoop_0_i // very important
                                     return 'premature'
                                 
                                 
@@ -480,25 +485,13 @@ to cover every posibility in the table
 */
 
 
-if(   ultraObject.elementFound[Object.keys(   ultraObject.elementFound   ).length] !== eCSearchElem   ){
-                            
-                            
-                            ultraObject.elementFound[Object.keys(   ultraObject.elementFound   ).length] = {
-                                item:eCSearchElem,
-                                query:eCSearchProp,
-                                xMark:eCSearchLook[eCSearch_1_i],
-                                keyword:eCSearchProp_obj.cBQ,
-                                valuePhrase:dev_obj.list[eCSearchProp_obj.cBQ]
-                            } // the bug for removing pharma charts
-                                
-                                                        
-                        }
+
     
     
     
     
     
-    console.log(   eCSearchLook   )
+    
 }// seaches for elements with the queried filters and does things to them
 function removeCN(   dev_obj   ){
     // removes specified childNodes from the DOM
@@ -1592,7 +1585,7 @@ function preFillForm(   dev_obj   ){
             result:'true'
             
         })
-    var preFillFormIndex = ultraObject.allTags.add(   {value:preFillFormO}   ) //number were all tags is located in the ultraObject
+    ultraObject.allTags.pFFATI = ultraObject.allTags.add(   {value:preFillFormO}   ) //number were all tags is located in the ultraObject
     console.group(   'sorting items by least children'   )
     ultraObject.objInvloved({
             0:preFillFormO,
@@ -1601,7 +1594,7 @@ function preFillForm(   dev_obj   ){
     ultraObject.eCSearch({
         list:dev_obj.list,
         look:dev_obj.look,
-        aTIndex: preFillFormIndex
+        aTIndex: ultraObject.allTags.pFFATI
     })
     throw('e') //left off here properly organized
     ultraObject.removeOP({rules:'duplicates'})
