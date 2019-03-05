@@ -12,6 +12,12 @@
 
 //if your find problems search PROBLEMS to see whats going on
 
+// finshed products should be left in the ultraObject
+
+// customization paramters should be passed among microservices
+
+// if another API just needs a primitive, just provide it no need for an iterable Object
+
 //is {}[] allowed in ES5
 // templates
 // FL_0_i for loop object in the purpose action
@@ -23,15 +29,15 @@
 // for the remiidify API
     // not sure if calls should be functions or methods which is easier for ultraObject to survivce
 /*
-var selectAllFL_0_i = {
+var FL_0_i = {
     forLoop_0_i:0,
-    forLoopLength:Object.keys(      ).length,
+    forLoopLength:.length,
     fn:function(   dev_obj   ){
        
     },
     args:{}
+ultraObject.forLoop(   FL_0_i   )
 }
-ultraObject.forLoop(   selectAllFL_0_i   )
 */
  
 //
@@ -59,7 +65,7 @@ function ultraObjectReset(   dev_obj   ){
     return {
     eventName:"",           //wants a DOMString event name
     event_obj:undefined,              //wants an Event
-    DOM_child:{0:undefined}, // wants a DOM element
+    DOM_child:iterableObject(), // wants a DOM element
     addEventListener:addEventListener, //  dev_obj.fn is used for 1st party dev to add their custom function to the listener
     passing_args: function(   dev_obj   ){console.log(arguments)}, // use this to see parameters from functions that have something to offer
     dispatchEvent: function(   dev_obj   ){ultraObject.DOM_child[0].dispatchEvent(   ultraObject.event_obj   )},    // sync fires
@@ -84,14 +90,14 @@ function ultraObjectReset(   dev_obj   ){
     notes_entries_fn:notes_entries_fn,// makes the note_entries
     pretty_do:pretty_do,
     
-    allTags:undefined, // should i hold this here?? represents serach range for the ultraObject concerning elements
+    allTags:iterableObject(), // represents serach range for the ultraObject concerning elements
     eCSearch:eCSearch,
     isArray:isArray,
     isObject:isObject,
     isDOMElement:isDOMElement,
     isPrimitive:isPrimitive,
     
-    elementFound:{}, // holds found elements needed by the ultraObject
+    elementFound:iterableObject(), // holds found elements needed by the ultraObject
     removeCN:removeCN,
     removeOP:removeOP,
     identifyE:identifyE,
@@ -113,7 +119,9 @@ function ultraObjectReset(   dev_obj   ){
     MB_0_i:iterableObject(), // memory bank for functionality thats needs misc. in several places
     
     sort:sort,
-    swap:swap
+    swap:swap,
+    
+    misc:iterableObject() //holds finished products with which we cannot assign a name
     
     }
 }
@@ -378,94 +386,101 @@ function eCSearch(   dev_obj   ){
     // holds the found elements that meet the query in ultraObject.elementFound
     var eCSearchLook
     var eCSearchList
-    var eCSearchProp
+    var eCSearchAllTags
+    var eCSearchSelectTags
     var eCSearchElem
     var eCSearchProp_obj = {
                                 cBQ:undefined  //chop question marl
                             }
     
+    
     if(   dev_obj !== undefined   ){
         
         
 
-            eCSearchLook = ultraObject.iterify(   {iterify:dev_obj.look}   )
-            eCSearchList = ultraObject.iterify(   {iterify:dev_obj.list}   )
+        eCSearchLook = ultraObject.iterify(   {iterify:dev_obj.look}   )
+        eCSearchList = ultraObject.iterify(   {iterify:dev_obj.list}   )
 
 
     }
-    debugger
     
-    for(   var eCSearch_0_i = 0; eCSearch_0_i !==  ultraObject.allTags.length;  eCSearch_0_i++   ){
-        for(   var eCSearch_1_i = 0; eCSearch_1_i !==  eCSearchLook.length;  eCSearch_1_i++   ){
-            for(   var eCSearch_2_i = 0; eCSearch_2_i !==  eCSearchList.length;  eCSearch_2_i++   ){
-                eCSearchProp = ultraObject.allTags[eCSearch_0_i][eCSearchLook[eCSearch_1_i]]
-                eCSearchElem = ultraObject.allTags[eCSearch_0_i]
-                
-                            
-                if(   eCSearchProp === undefined   ){
-                    
-                    
-                    continue;
-                    
-                    
-                }
-                
-                
-                else if(   eCSearchProp !== undefined   ){
-                    
-                    
-                    eCSearchProp = eCSearchProp.toString()
-                    // console.log(   eCSearchProp    )
-                    // console.log(   eCSearchList[eCSearch_2_i]   )
-                    // console.log(   eCSearchProp.match(   eCSearchList[eCSearch_2_i]  )   )
-                    // console.log(   eCSearchProp.match(   eCSearchList[eCSearch_2_i]   ) !== null ? eCSearchProp.match(   eCSearchList[eCSearch_2_i]   )[0] === eCSearchList[eCSearch_2_i] : null    )
-                        // match chops off the question mark for some reason
-                        //sdafdfa?sassa'.match('a?s') does not work as intenede
-                }
-                
-                
-                try{//async might have a problem with this
-                    
-                    
-                    if(   eCSearchList[eCSearch_2_i].indexOf('?') !== -1   ){
-                    
-                    
-                        if(   eCSearchProp.match(   eCSearchList[eCSearch_2_i]   ) !== null   ){
+    
+    var eCSearchSelectTags = ultraObject.allTags.add(   {value:ultraObject.iterableObject()}   )
+    console.group(   'items needed to search for elements based on keywords'   )
+    ultraObject.objInvloved({
+            0:ultraObject.allTags[dev_obj.aTIndex],
+            1:eCSearchList,
+        })
+    console.groupEnd()
+    eCSearchAllTags = ultraObject.allTags[dev_obj.aTIndex]
+    var eCSearchFL_0_i = {
+        forLoop_0_i:0,
+        forLoopLength: eCSearchList.length,
+        fn:function(   dev_obj   ){
+            console.log(   eCSearchList[eCSearchFL_0_i.forLoop_0_i]   )
+            var eCSearchFL_1_i = {
+                forLoop_0_i:0,
+                forLoopLength:eCSearchAllTags.length,
+                fn:function(   dev_obj   ){
+                    var eCSearchFL_2_i = {
+                        forLoop_0_i:0,
+                        forLoopLength:eCSearchLook.length,
+                        fn:function(   dev_obj   ){
                             
                             
-                            eCSearchProp_obj.cBQ = eCSearchProp.match(   eCSearchList[eCSearch_2_i]   )[0] + "?"
-                        
-                        
-                        }
-                        
-                        
+                            if(   eCSearchAllTags[eCSearchFL_1_i.forLoop_0_i][eCSearchLook[eCSearchFL_2_i.forLoop_0_i][0]] !== undefined   ){
+                                    
+                                    
+                                if(   eCSearchAllTags[eCSearchFL_1_i.forLoop_0_i][eCSearchLook[eCSearchFL_2_i.forLoop_0_i][0]].indexOf(   eCSearchList[eCSearchFL_0_i.forLoop_0_i][0]   ) !== -1   ){
+                                
+                                    ultraObject.allTags[eCSearchSelectTags].add(   {value:eCSearchAllTags[eCSearchFL_1_i.forLoop_0_i]}   )
+                                    console.log(   ultraObject.allTags[eCSearchSelectTags]   )
+                                    debugger
+                                    return 'premature'
+                                
+                                
+                                }
+                             
+                                
+                            }
+                            
+                            
+                        },
+                        args:{},
+                        bubble:'true'
                     }
-                    
-                    
-                    else if(   eCSearchList[eCSearch_2_i].indexOf('?') === -1   ){
-                        
-                        //FIX ME left Off teriible assumption we should look at elements that have no kids first
-                        if(   eCSearchProp.match(   eCSearchList[eCSearch_2_i]   ) !== null   ){
-                            
-                            
-                            eCSearchProp_obj.cBQ = eCSearchProp.match(   eCSearchList[eCSearch_2_i]   )[0]
-                            
-                            
-                        }
-                        
-                        
-                    }
-                    
-                    
-                    // console.log(   eCSearchProp_obj.cBQ, eCSearchList[eCSearch_2_i]   )
-                    // console.log(   eCSearchProp_obj.cBQ === eCSearchList[eCSearch_2_i]     )
-                    if(   eCSearchProp_obj.cBQ === eCSearchList[eCSearch_2_i]     ){
-                        //PROBLEMS
-                        
-                        // console.log(   eCSearchList[eCSearch_2_i].match(   eCSearchProp.toString()   )[0]    )
-                        // console.log(   eCSearchElem    )
-                    
-                        if(   ultraObject.elementFound[Object.keys(   ultraObject.elementFound   ).length] !== eCSearchElem   ){
+                    return ultraObject.forLoop(   eCSearchFL_2_i   )
+                },
+                args:{},
+            }
+            return ultraObject.forLoop(   eCSearchFL_1_i   )
+        },
+        args:{},
+    }
+    var sd = ultraObject.forLoop(   eCSearchFL_0_i   )
+    debugger
+    // find the first that matches the condition, and hold it when all four match exit, if the form doesn't like what I did each value must try everything in the allTapgs itO before telling the end user they cant figure out whats going on.grabs three and swaps one
+    
+    // so like
+/*
++---+---+---+---+
+| 0 | 1 | 2 | 3 |
++---+---+---+---+
+| 0 | 1 | 2 | 3 |
++---+---+---+---+
+| 0 | 1 | 3 | 3 |
++---+---+---+---+
+| 0 | 1 | 2 | 3 |
++---+---+---+---+
+
+[0,0,0,0] -> [0,0,0,3] -> [0,0,1,0] -> [0,0,1,3] -> [0,0,3,3] -> [0,3,3,3]  [1,0,0,0] -> [1,0,0,3] -> [1,3,3,3] -> [3,3,3,3]
+
+to cover every posibility in the table
+
+*/
+
+
+if(   ultraObject.elementFound[Object.keys(   ultraObject.elementFound   ).length] !== eCSearchElem   ){
                             
                             
                             ultraObject.elementFound[Object.keys(   ultraObject.elementFound   ).length] = {
@@ -478,18 +493,11 @@ function eCSearch(   dev_obj   ){
                                 
                                                         
                         }
-                                            
-                        
-                    }
-                    
-                    
-                }
-                catch(   e   ){
-                    // console.log(e)
-                }
-            }
-        }
-    }
+    
+    
+    
+    
+    
     console.log(   eCSearchLook   )
 }// seaches for elements with the queried filters and does things to them
 function removeCN(   dev_obj   ){
@@ -585,6 +593,11 @@ function removeOP(   dev_obj   ){
         
 } //remove specific properties from obj
 function forLoop(   dev_obj   ){
+    //.forLoop_0_i the iteration
+    //.forLoopLength the length to iterate to
+    //.fn what to do
+    // .args, since they are out scroped this is a way to access the args
+    // .bubble 'true' or 'false' indicating whether to send the break back up nested
     
     var forLoopbreak = false
     if(   dev_obj !== undefined   ){
@@ -596,9 +609,19 @@ function forLoop(   dev_obj   ){
                 
                                 
                 if(   forLoopbreak === 'true' || forLoopbreak === 'premature'  ){
+                    // premature  provided when you dont want to bubble up the value just break
                     
-                    
+                    if(   dev_obj.bubble === 'true'   ){
+                        
+                        
+                        return forLoopbreak
+                        
+                        
+                    }
                     break;
+                    
+                    
+
                     
                     
                 }
@@ -992,7 +1015,7 @@ function iterify(   dev_obj   ){
         
         
         else if(   ultraObject.isObject(   {type:dev_obj.iterify}   )   ){
-            //places the key and value inside every index
+            //places the key and value inside every index , So 0,1 represents the key and 1 the value
             
             var iterableArr = Object.entries(   dev_obj.iterify   )
             var iterableFL_0_i = {
@@ -1540,6 +1563,8 @@ function swap(   dev_obj   ){
 
 
 function preFillForm(   dev_obj   ){
+    //findings
+        //i find that form items are not dependent on the number of children, the form can have children than containing the input
     preFillFormO = ultraObject.iterableObject()
     var preFillFormFL_0_i = {
         forLoop_0_i:0,
@@ -1567,15 +1592,7 @@ function preFillForm(   dev_obj   ){
             result:'true'
             
         })
-    var FL_0_i = {
-        forLoop_0_i:0,
-        forLoopLength:preFillFormO.length,
-        fn:function(   dev_obj   ){
-            console.log(   preFillFormO[FL_0_i.forLoop_0_i].childElementCount   )
-        },
-        args:{}
-    }
-    // ultraObject.forLoop(   FL_0_i   )
+    var preFillFormIndex = ultraObject.allTags.add(   {value:preFillFormO}   ) //number were all tags is located in the ultraObject
     console.group(   'sorting items by least children'   )
     ultraObject.objInvloved({
             0:preFillFormO,
@@ -1584,6 +1601,7 @@ function preFillForm(   dev_obj   ){
     ultraObject.eCSearch({
         list:dev_obj.list,
         look:dev_obj.look,
+        aTIndex: preFillFormIndex
     })
     throw('e') //left off here properly organized
     ultraObject.removeOP({rules:'duplicates'})
@@ -1617,7 +1635,7 @@ function preFillForm(   dev_obj   ){
                     'Website':'https://ualbanyasist.github.io/',
                     'How did you hear about this job?':'Linkedin',
                     'What is your desired Salary?': '$80,000'},
-                look:{ 'innerHTML':null,'innerText':null,'textContext':null}
+                look:{ 'innerHTML':null,'innerText':null,'textContent':null}
             })
     
 //to make an xhr request
@@ -1703,16 +1721,7 @@ function recurisveForLoop(   dev_obj   ){
                     ultraObject.forLoop(   recurisveForLoop_0_i   )
     }
 
-            preFillForm({
-                // allTags : [document.querySelectorAll("body *")[129],document.querySelectorAll("body *")[135],document.querySelectorAll("body *")[140],document.querySelectorAll("body *")[147]],
-                allTags:document.querySelectorAll("body *"), // bug it just grabs the whole query
-                list:{
-                    'LinkedIn Profile':'https://www.linkedin.com/in/michael-odumosu-a58367b1',
-                    'Website':'https://ualbanyasist.github.io/',
-                    'How did you hear about this job?':'Linkedin',
-                    'What is your desired Salary?': '$80,000'},
-                look:{ 'innerHTML':null,'innerText':null,'textContext':null}
-            })
+
 // whats a good rules if parameters are part of the ultraObject or come in as an argument
 // if a function naturally passes arguments to a function, dev params must go to the ultraObject
 
