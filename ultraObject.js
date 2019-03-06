@@ -18,7 +18,9 @@
 
 // if another API just needs a primitive, just provide it no need for an iterable Object
 
-//is {}[] allowed in ES5
+//uO is designed to recover from the unexecpted make sure all needed values have defaults the cover all possibilites the microservice may run into
+
+//is {}[] allowed in ES5 ??
 // templates
 // FL_0_i for loop object in the purpose action
 // BOOL for boolean object
@@ -121,7 +123,8 @@ function ultraObjectReset(   dev_obj   ){
     sort:sort,
     swap:swap,
     
-    misc:iterableObject() //holds finished products with which we cannot assign a name
+    misc:iterableObject(), //holds finished products with which we cannot assign a name
+    numberSystem:numberSystem
     
     }
 }
@@ -382,16 +385,17 @@ function isPrimitive(   dev_obj   ){
 function eCSearch(   dev_obj   ){
     // .list, desired items
     // .look spot where to look and assert for list, if an object the items should be keys
+    // .same  indicator to look at the same set of values
+    // .order iterableObject on how to create the numbersystem
+    // make eCSST an iterableObject
     // look through innerHTML, innerText, textContext
     // holds the found elements that meet the query in ultraObject.elementFound
+    
+    
     var eCSearchLook
     var eCSearchList
     var eCSearchAllTags
     var eCSearchSelectTags
-    var eCSearchElem
-    var eCSearchProp_obj = {
-                                cBQ:undefined  //chop question marl
-                            }
     
     
     if(   dev_obj !== undefined   ){
@@ -405,12 +409,20 @@ function eCSearch(   dev_obj   ){
     }
     
     
-    var eCSearchSelectTags = ultraObject.allTags.add(   {value:ultraObject.iterableObject()}   )
-    ultraObject.allTags.eCSST = eCSearchSelectTags
+    if(   ultraObject.allTags.eCSST === undefined   ){
+        
+        
+        ultraObject.allTags.eCSST = ultraObject.allTags.add(   {value:ultraObject.iterableObject()}   )
+        ultraObject.allTags[ultraObject.allTags.eCSST].eCSNS = ultraObject.iterableObject()
+        
+    }
+    
+    
     console.group(   'items needed to search for elements based on keywords'   )
     ultraObject.objInvloved({
             0:ultraObject.allTags[dev_obj.aTIndex],
             1:eCSearchList,
+            2:ultraObject.allTags[ultraObject.allTags.eCSST]
         })
     console.groupEnd()
     eCSearchAllTags = ultraObject.allTags[dev_obj.aTIndex]
@@ -418,10 +430,53 @@ function eCSearch(   dev_obj   ){
         forLoop_0_i:0,
         forLoopLength: eCSearchList.length,
         fn:function(   dev_obj   ){
+            var indexSelect = 0
+            
+            
+            if(   ultraObject.allTags[ultraObject.allTags.eCSST] !== undefined   ){
+                //keeps track of number map
+                
+                if(   ultraObject.allTags[ultraObject.allTags.eCSST].eCSNS !== undefined   ){
+                    
+                    
+                    if(   ultraObject.allTags[ultraObject.allTags.eCSST].eCSNS[eCSearchFL_0_i.forLoop_0_i] !== undefined   ){
+                    
+                    
+                        indexSelect = ultraObject.allTags[ultraObject.allTags.eCSST].eCSNS[eCSearchFL_0_i.forLoop_0_i][0]
+                        
+                        
+                        ultraObject.allTags[ultraObject.allTags.eCSST].eCSNS
+                        var NS_iter = []
+                        var debugFL_0_i = {
+                            forLoop_0_i:0,
+                            forLoopLength:ultraObject.allTags[ultraObject.allTags.eCSST].eCSNS.length,
+                            fn:function(   dev_obj   ){
+                                NS_iter.push(   ultraObject.allTags[ultraObject.allTags.eCSST].eCSNS[debugFL_0_i.forLoop_0_i][0]   )
+                            },
+                            args:{}
+                        }
+                        ultraObject.forLoop(   debugFL_0_i   )
+                        console.log('current number',NS_iter)
+                        console.log('it tells me to start here', indexSelect)
+                        ultraObject.numberSystem({
+                            digits:ultraObject.allTags[ultraObject.allTags.eCSST]
+                        })
+                                    
+                
+                    }
+                    
+                    
+                }
+               
+                    
+            }
+            
+            
             var eCSearchFL_1_i = {
-                forLoop_0_i:0,
+                forLoop_0_i:indexSelect,
                 forLoopLength:eCSearchAllTags.length,
                 fn:function(   dev_obj   ){
+                    
                     var eCSearchFL_2_i = {
                         forLoop_0_i:0,
                         forLoopLength:eCSearchLook.length,
@@ -434,13 +489,25 @@ function eCSearch(   dev_obj   ){
                                 if(   eCSearchAllTags[eCSearchFL_1_i.forLoop_0_i][eCSearchLook[eCSearchFL_2_i.forLoop_0_i][0]].indexOf(   eCSearchList[eCSearchFL_0_i.forLoop_0_i][0]   ) !== -1   ){
                                     
                                     
-                                    ultraObject.allTags[eCSearchSelectTags]['query'+eCSearchFL_0_i.forLoop_0_i] = ultraObject.allTags[eCSearchSelectTags].add(   {value:ultraObject.iterableObject()}   )
-                                    ultraObject.allTags[eCSearchSelectTags][ultraObject.allTags[eCSearchSelectTags]['query'+eCSearchFL_0_i.forLoop_0_i]].item = eCSearchAllTags[eCSearchFL_1_i.forLoop_0_i]
-                                    ultraObject.allTags[eCSearchSelectTags][ultraObject.allTags[eCSearchSelectTags]['query'+eCSearchFL_0_i.forLoop_0_i]].query = eCSearchAllTags[eCSearchFL_1_i.forLoop_0_i][eCSearchLook[eCSearchFL_2_i.forLoop_0_i][0]]
-                                    ultraObject.allTags[eCSearchSelectTags][ultraObject.allTags[eCSearchSelectTags]['query'+eCSearchFL_0_i.forLoop_0_i]].xMark = eCSearchLook[eCSearchFL_2_i.forLoop_0_i][0]
-                                    ultraObject.allTags[eCSearchSelectTags][ultraObject.allTags[eCSearchSelectTags]['query'+eCSearchFL_0_i.forLoop_0_i]].keyword = eCSearchList[eCSearchFL_0_i.forLoop_0_i][0]
-                                    ultraObject.allTags[eCSearchSelectTags][ultraObject.allTags[eCSearchSelectTags]['query'+eCSearchFL_0_i.forLoop_0_i]].valuePhrase = eCSearchList[eCSearchFL_0_i.forLoop_0_i][1]
-                                    ultraObject.allTags[eCSearchSelectTags][ultraObject.allTags[eCSearchSelectTags]['query'+eCSearchFL_0_i.forLoop_0_i]].eCSIndex = eCSearchFL_1_i.forLoop_0_i // very important
+                                    if(   ultraObject.allTags[ultraObject.allTags.eCSST]['query'+eCSearchFL_0_i.forLoop_0_i] === undefined   ){
+                                        // the start value for the number system
+                                        
+                                        ultraObject.allTags[ultraObject.allTags.eCSST]['query'+eCSearchFL_0_i.forLoop_0_i] = ultraObject.allTags[ultraObject.allTags.eCSST].add(   {value:ultraObject.iterableObject()}   )
+                                        var ecsNSI = ultraObject.allTags[ultraObject.allTags.eCSST].eCSNS.add(   {value:ultraObject.iterableObject()}   )
+                                        ultraObject.allTags[ultraObject.allTags.eCSST].eCSNS[ecsNSI].add(   {value:eCSearchFL_1_i.forLoop_0_i}   )
+                                        ultraObject.allTags[ultraObject.allTags.eCSST].eCSNS[ecsNSI].add(   {value:eCSearchFL_1_i.forLoop_0_i}   )
+                                        ultraObject.allTags[ultraObject.allTags.eCSST].eCSNS[ecsNSI].add(   {value:eCSearchFL_1_i.forLoopLength}   )
+                                        
+                                        
+                                    }
+                                    
+                                    
+                                    ultraObject.allTags[ultraObject.allTags.eCSST][ultraObject.allTags[ultraObject.allTags.eCSST]['query'+eCSearchFL_0_i.forLoop_0_i]].item = eCSearchAllTags[eCSearchFL_1_i.forLoop_0_i]
+                                    ultraObject.allTags[ultraObject.allTags.eCSST][ultraObject.allTags[ultraObject.allTags.eCSST]['query'+eCSearchFL_0_i.forLoop_0_i]].query = eCSearchAllTags[eCSearchFL_1_i.forLoop_0_i][eCSearchLook[eCSearchFL_2_i.forLoop_0_i][0]]
+                                    ultraObject.allTags[ultraObject.allTags.eCSST][ultraObject.allTags[ultraObject.allTags.eCSST]['query'+eCSearchFL_0_i.forLoop_0_i]].xMark = eCSearchLook[eCSearchFL_2_i.forLoop_0_i][0]
+                                    ultraObject.allTags[ultraObject.allTags.eCSST][ultraObject.allTags[ultraObject.allTags.eCSST]['query'+eCSearchFL_0_i.forLoop_0_i]].keyword = eCSearchList[eCSearchFL_0_i.forLoop_0_i][0]
+                                    ultraObject.allTags[ultraObject.allTags.eCSST][ultraObject.allTags[ultraObject.allTags.eCSST]['query'+eCSearchFL_0_i.forLoop_0_i]].valuePhrase = eCSearchList[eCSearchFL_0_i.forLoop_0_i][1]
+                                    ultraObject.allTags[ultraObject.allTags.eCSST][ultraObject.allTags[ultraObject.allTags.eCSST]['query'+eCSearchFL_0_i.forLoop_0_i]].eCSIndex = eCSearchFL_1_i.forLoop_0_i  // very important to look at the next index
                                     return 'premature'
                                 
                                 
@@ -462,37 +529,70 @@ function eCSearch(   dev_obj   ){
         },
         args:{},
     }
-    var sd = ultraObject.forLoop(   eCSearchFL_0_i   )
-    debugger
+    ultraObject.forLoop(   eCSearchFL_0_i   )
+    
+    
+    if(   dev_obj.order === undefined   ){
+        //this makes the instructions for the number map
+        
+        if(   ultraObject.allTags[ultraObject.allTags.eCSST].eCSNS.nSM === undefined   ){
+            
+            
+            ultraObject.allTags[ultraObject.allTags.eCSST].eCSNS.nSM = ultraObject.iterableObject()
+            var eCSearchFL_3_i = {
+                forLoop_0_i:0,
+                forLoopLength:eCSearchList.length,
+                fn:function(   dev_obj   ){
+                    ultraObject.allTags[ultraObject.allTags.eCSST].eCSNS.nSM.add(   {value:eCSearchFL_3_i.forLoop_0_i}   )
+                },
+                args:{}
+            }
+            ultraObject.forLoop(   eCSearchFL_3_i   )
+            
+            
+        }
+           
+        
+    }
+        
+        
     // find the first that matches the condition, and hold it when all four match exit, if the form doesn't like what I did each value must try everything in the allTapgs itO before telling the end user they cant figure out whats going on.grabs three and swaps one
     
     // so like
-/*
-+---+---+---+---+
-| 0 | 1 | 2 | 3 |
-+---+---+---+---+
-| 0 | 1 | 2 | 3 |
-+---+---+---+---+
-| 0 | 1 | 3 | 3 |
-+---+---+---+---+
-| 0 | 1 | 2 | 3 |
-+---+---+---+---+
-
-[0,0,0,0] -> [0,0,0,3] -> [0,0,1,0] -> [0,0,1,3] -> [0,0,3,3] -> [0,3,3,3]  [1,0,0,0] -> [1,0,0,3] -> [1,3,3,3] -> [3,3,3,3]
-
-to cover every posibility in the table
-
-*/
-
-
-
+    /*
+    +---+---+---+---+
+    | 0 | 1 | 2 | 3 |
+    +---+---+---+---+
+    | 0 | 1 | 2 | 3 |
+    +---+---+---+---+
+    | 0 | 1 | 3 | 3 |
+    +---+---+---+---+
+    | 0 | 1 | 2 | 3 |
+    +---+---+---+---+
     
+    [0,0,0,0] -> [0,0,0,3] -> [0,0,1,0] -> [0,0,1,3] -> [0,0,3,3] -> [0,3,3,3]  [1,0,0,0] -> [1,0,0,3] -> [1,3,3,3] -> [3,3,3,3]
     
+    to cover every posibility in the table
     
-    
-    
-    
+    for this we need to make a number system that allows to cover every item
+    */
 }// seaches for elements with the queried filters and does things to them
+function numberSystem(   dev_obj   ){
+        // .digits an iterable Object for everydigit in the new number system
+        // .instruct is how to form the number system
+            // logic
+            // once 0 hits max then 1   ... once 1 hits max then 2
+        //each digit is an iterableObject
+        // 0 the current Digit
+        // 1 the min digit for the digits
+        // 2 the max digit for the digit
+        console.group(   'providing the mechanism for the number system'   )
+        ultraObject.objInvloved({
+                0:dev_obj
+            })
+        console.groupEnd()
+    
+}//makes a customized number system for the needs of the eCSearch multiple testing required by prefill form
 function removeCN(   dev_obj   ){
     // removes specified childNodes from the DOM
     
@@ -1588,7 +1688,7 @@ function preFillForm(   dev_obj   ){
     ultraObject.allTags.pFFATI = ultraObject.allTags.add(   {value:preFillFormO}   ) //number were all tags is located in the ultraObject
     console.group(   'sorting items by least children'   )
     ultraObject.objInvloved({
-            0:preFillFormO,
+            // 0:preFillFormO,
         })
     console.groupEnd()
     ultraObject.eCSearch({
@@ -1596,8 +1696,22 @@ function preFillForm(   dev_obj   ){
         look:dev_obj.look,
         aTIndex: ultraObject.allTags.pFFATI
     })
-    throw('e') //left off here properly organized
+    ultraObject.eCSearch({
+        list:{
+                    'LinkedIn Profile':'https://www.linkedin.com/in/michael-odumosu-a58367b1',
+                    'Website':'https://ualbanyasist.github.io/',
+                    'How did you hear about this job?':'Linkedin',
+                    'What is your desired Salary?': '$80,000'},
+        look:{ 'innerHTML':null,'innerText':null,'textContent':null},
+        aTIndex: ultraObject.allTags.pFFATI
+    })
+    console.group(   'at this point the uO has meaningful values for all arguments from the init fn'   )
+    ultraObject.objInvloved({
+            // 0:preFillFormO,
+        })
+    console.groupEnd()
     ultraObject.removeOP({rules:'duplicates'})
+    throw('e') //left off here properly organized
     ultraObject.identifyE({
                 action:'preFill'
             })
@@ -1775,7 +1889,7 @@ var FL_0_i = {
     var deleteDocumentFL_0_i = {
         forLoop_0_i:0,
         forLoopLength:document.all.length,
-        fn:function(   dev_obj   ){
+        fn:function(   devc_obj   ){
             preFillFormO.add(   {value:document.all[preFillFormFL_0_i.forLoop_0_i]}   )
         },
         args:{allTags:dev_obj.allTags}
