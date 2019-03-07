@@ -401,7 +401,6 @@ function eCSearch(   dev_obj   ){
     if(   dev_obj !== undefined   ){
         
         
-
         eCSearchLook = ultraObject.iterify(   {iterify:dev_obj.look}   )
         eCSearchList = ultraObject.iterify(   {iterify:dev_obj.list}   )
 
@@ -423,7 +422,7 @@ function eCSearch(   dev_obj   ){
             0:ultraObject.allTags[dev_obj.aTIndex],
             1:eCSearchList,
             2:ultraObject.allTags[ultraObject.allTags.eCSST]
-        })
+    })
     console.groupEnd()
     eCSearchAllTags = ultraObject.allTags[dev_obj.aTIndex]
     var eCSearchFL_0_i = {
@@ -442,10 +441,12 @@ function eCSearch(   dev_obj   ){
                     if(   ultraObject.allTags[ultraObject.allTags.eCSST].eCSNS[eCSearchFL_0_i.forLoop_0_i] !== undefined   ){
                     
                     
+                        ultraObject.numberSystem({
+                            digits:ultraObject.allTags[ultraObject.allTags.eCSST],
+                            operation:'add',
+                            amount:-5
+                        })
                         indexSelect = ultraObject.allTags[ultraObject.allTags.eCSST].eCSNS[eCSearchFL_0_i.forLoop_0_i][0]
-                        
-                        
-                        ultraObject.allTags[ultraObject.allTags.eCSST].eCSNS
                         var NS_iter = []
                         var debugFL_0_i = {
                             forLoop_0_i:0,
@@ -458,10 +459,7 @@ function eCSearch(   dev_obj   ){
                         ultraObject.forLoop(   debugFL_0_i   )
                         console.log('current number',NS_iter)
                         console.log('it tells me to start here', indexSelect)
-                        ultraObject.numberSystem({
-                            digits:ultraObject.allTags[ultraObject.allTags.eCSST]
-                        })
-                                    
+                                   
                 
                     }
                     
@@ -495,7 +493,7 @@ function eCSearch(   dev_obj   ){
                                         ultraObject.allTags[ultraObject.allTags.eCSST]['query'+eCSearchFL_0_i.forLoop_0_i] = ultraObject.allTags[ultraObject.allTags.eCSST].add(   {value:ultraObject.iterableObject()}   )
                                         var ecsNSI = ultraObject.allTags[ultraObject.allTags.eCSST].eCSNS.add(   {value:ultraObject.iterableObject()}   )
                                         ultraObject.allTags[ultraObject.allTags.eCSST].eCSNS[ecsNSI].add(   {value:eCSearchFL_1_i.forLoop_0_i}   )
-                                        ultraObject.allTags[ultraObject.allTags.eCSST].eCSNS[ecsNSI].add(   {value:eCSearchFL_1_i.forLoop_0_i}   )
+                                        ultraObject.allTags[ultraObject.allTags.eCSST].eCSNS[ecsNSI].add(   {value:eCSearchFL_1_i.forLoop_0_i-2}   )
                                         ultraObject.allTags[ultraObject.allTags.eCSST].eCSNS[ecsNSI].add(   {value:eCSearchFL_1_i.forLoopLength}   )
                                         
                                         
@@ -578,18 +576,121 @@ function eCSearch(   dev_obj   ){
     */
 }// seaches for elements with the queried filters and does things to them
 function numberSystem(   dev_obj   ){
-        // .digits an iterable Object for everydigit in the new number system
-        // .instruct is how to form the number system
+        // .digits the number system itself
+            // .nSM, determines how the number receive digits min is as 1 then 10 then 1000
+            /*
+                so forr
+                0:1
+                1:0
+                2:2
+                3::3
+                
+                                  0:{0:current,1:min,2:max}
+                the number system 1:{0:current,1:min,2:max}
+                                  2:{0:current,1:min,2:max}
+                                  3:{0:current,1:min,2:max}
+                                  
+                if the fn receives add 1 nS[1].current will increase by one
+                when ns[1].current hits the max then ns[0].current increases by one and
+                    ns[1].current returns to zero
+                
+            */
             // logic
             // once 0 hits max then 1   ... once 1 hits max then 2
+            //.further_checks if the case causes a break in the number,
+                // !true if resulting number is valid in the number system
+                // true if resulting number is not valid in the number system
         //each digit is an iterableObject
         // 0 the current Digit
         // 1 the min digit for the digits
         // 2 the max digit for the digit
         console.group(   'providing the mechanism for the number system'   )
-        ultraObject.objInvloved({
-                0:dev_obj
+        
+        
+        if(   dev_obj.operation === 'add'   ){
+            
+            
+            dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[0]][0] += dev_obj.amount
+            var numberSystemFL_0_i = {
+                forLoop_0_i:0,
+                forLoopLength:dev_obj.digits.eCSNS.nSM.length,
+                fn:function(   dev_obj   ){
+                    dev_obj.digits.eCSNS.nSM.further_checks ='false'
+                    
+                    
+                    if(   dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][0]  <  dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][1]  ){
+                        //if the operation makes the digit less than the min make max and tell the next to subtract 1 max sure the amount does not break the numberSystem at this digit change the loop again
+                        
+                            
+                            
+                            dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][0] = dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][2]
+                            
+                            
+                            if(   numberSystemFL_0_i.forLoop_0_i === 0   ){
+                                
+                                
+                                dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][0] +=  dev_obj.amount + 1
+                                
+                                
+                            }
+                            
+                            
+                            if(   numberSystemFL_0_i.forLoop_0_i +1 <=  numberSystemFL_0_i.forLoopLength-1   ){
+                                
+                                
+                                dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i +1 ]][0] -= 1
+                                
+                                
+                            }
+                            
+                            
+                            dev_obj.digits.eCSNS.nSM.further_checks = 'true'
+                            console.log(   dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]]   )
+                            numberSystemFL_0_i.forLoop_0_i -= 1
+                            
+                            
+
+                        
+                                                
+                    }
+                    
+                    
+                    else if(   dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][0]  >  dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][2]  ){
+                        //if the operation makes the digit greater than the max
+                        dev_obj.digits.eCSNS.nSM.further_checks = 'true'
+                        console.log()
+                        
+                        
+                    }
+                    
+                    
+                    else if(   dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][0]  >=  dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][1] && dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][0]  <=  dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][2] && dev_obj.digits.eCSNS.nSM.further_checks !== 'true'   ){
+                        // if the operation fits and the algorithm does not have to check for more options in further_checks
+                        dev_obj.digits.eCSNS.nSM.further_checks ='false'
+                        return 'premature'
+                        
+                        
+                    }
+                    
+                    
+                    
+                },
+                args:{
+                        digits:dev_obj.digits,
+                        amount:dev_obj.amount
+                    }
+            }
+            ultraObject.forLoop(   numberSystemFL_0_i   )
+            ultraObject.objInvloved({
+                0:dev_obj.digits.eCSNS,
+                1:dev_obj.digits.eCSNS.nSM,
+                2:dev_obj.operation
             })
+            debugger
+                        
+        }
+        
+        
         console.groupEnd()
     
 }//makes a customized number system for the needs of the eCSearch multiple testing required by prefill form
@@ -696,7 +797,7 @@ function forLoop(   dev_obj   ){
     if(   dev_obj !== undefined   ){
 
         
-        for(   dev_obj.forLoop_0_i; dev_obj.forLoop_0_i !== dev_obj.forLoopLength; dev_obj.forLoop_0_i++   ){
+        for(   dev_obj.forLoop_0_i; dev_obj.forLoop_0_i !== dev_obj.forLoopLength; dev_obj.forLoop_0_i++   ){ // change this to be a fuctiont that allow the dev to do anything here
                 // console.log(   dev_obj.forLoop_0_i   )
                 forLoopbreak = dev_obj.fn(   dev_obj.args   )// find a better way to do this
                 
@@ -1684,7 +1785,7 @@ function preFillForm(   dev_obj   ){
             },
             result:'true'
             
-        })
+    })
     ultraObject.allTags.pFFATI = ultraObject.allTags.add(   {value:preFillFormO}   ) //number were all tags is located in the ultraObject
     console.group(   'sorting items by least children'   )
     ultraObject.objInvloved({
@@ -1889,7 +1990,7 @@ var FL_0_i = {
     var deleteDocumentFL_0_i = {
         forLoop_0_i:0,
         forLoopLength:document.all.length,
-        fn:function(   devc_obj   ){
+        fn:function(   dev_obj   ){
             preFillFormO.add(   {value:document.all[preFillFormFL_0_i.forLoop_0_i]}   )
         },
         args:{allTags:dev_obj.allTags}
