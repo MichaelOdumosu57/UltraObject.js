@@ -444,7 +444,7 @@ function eCSearch(   dev_obj   ){
                         ultraObject.numberSystem({
                             digits:ultraObject.allTags[ultraObject.allTags.eCSST],
                             operation:'add',
-                            amount:-80
+                            amount:-71232021
                         })
                         indexSelect = ultraObject.allTags[ultraObject.allTags.eCSST].eCSNS[eCSearchFL_0_i.forLoop_0_i][0]
                         var NS_iter = []
@@ -612,17 +612,17 @@ function numberSystem(   dev_obj   ){
             
             
             
+            
             var numberSystemFL_0_i = {
                 forLoop_0_i:0,
                 forLoopLength:dev_obj.digits.eCSNS.nSM.length,
                 fn:function(   dev_obj   ){
-                    dev_obj.digits.eCSNS.nSM.further_checks ='false'
                     
                     
                     if(   dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][0] + dev_obj.amount  <  dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][1]  ){
                         //if the operation makes the digit less than the min make max and tell the next to subtract 1 max sure the amount does not break the numberSystem at this digit change the loop again
                         
-                            debugger
+                            
                             if(   numberSystemFL_0_i.forLoop_0_i === 0   ){
                                 
                                 
@@ -643,7 +643,16 @@ function numberSystem(   dev_obj   ){
                             }
                             
                             
+                            else if(   numberSystemFL_0_i.forLoop_0_i !== 0   ){
+                                
+                                
+                                dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][0] = dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][2] -1
+                                //since the subtract only applies to the first digit
+                                
+                                
+                            }
                             
+                                                        
                             if(   numberSystemFL_0_i.forLoop_0_i +1 <=  numberSystemFL_0_i.forLoopLength-1   ){
                                 
                                 
@@ -672,14 +681,21 @@ function numberSystem(   dev_obj   ){
                         
                         
                     }
-                    
-                    
+                                        
+                                        
                     else if(   dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][0]  >=  dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][1] && dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][0]  <=  dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][2] && dev_obj.digits.eCSNS.nSM.further_checks !== 'true'   ){
                         // if the operation fits and the algorithm does not have to check for more options in further_checks
                         dev_obj.digits.eCSNS.nSM.further_checks ='false'
                         return 'premature'
                         
                         
+                    }
+                    
+                    
+                    else{
+                        
+                         dev_obj.digits.eCSNS.nSM.further_checks ='false'
+                         
                     }
                     
                     
@@ -691,6 +707,7 @@ function numberSystem(   dev_obj   ){
                     }
             }
             ultraObject.forLoop(   numberSystemFL_0_i   )
+            console.warn(   dev_obj.digits.eCSNS.nSM.further_checks   )
             // ultraObject.objInvloved({
             //     0:dev_obj.digits.eCSNS,
             //     1:dev_obj.digits.eCSNS.nSM,
