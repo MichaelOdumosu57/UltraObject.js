@@ -444,7 +444,7 @@ function eCSearch(   dev_obj   ){
                         ultraObject.numberSystem({
                             digits:ultraObject.allTags[ultraObject.allTags.eCSST],
                             operation:'add',
-                            amount:-71232021
+                            amount:-71200
                         })
                         indexSelect = ultraObject.allTags[ultraObject.allTags.eCSST].eCSNS[eCSearchFL_0_i.forLoop_0_i][0]
                         var NS_iter = []
@@ -609,6 +609,7 @@ function numberSystem(   dev_obj   ){
         
         
         if(   dev_obj.operation === 'add'   ){
+            //you might not supposed to be chaning the value of dev_obj.amount becuase wher it leaves here it calls its its original amount but this should work properly
             
             
             
@@ -621,43 +622,47 @@ function numberSystem(   dev_obj   ){
                     
                     if(   dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][0] + dev_obj.amount  <  dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][1]  ){
                         //if the operation makes the digit less than the min make max and tell the next to subtract 1 max sure the amount does not break the numberSystem at this digit change the loop again
-                        
-                            
-                            if(   numberSystemFL_0_i.forLoop_0_i === 0   ){
+                            if(   numberSystemFL_0_i.forLoop_0_i !== 0   ){
                                 
                                 
-                                dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[0]][0] += dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[0]][2]  - dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[0]][1] - 1
+                                dev_obj.amount =  dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][3]
+                                dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]].minus(   {value:dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][3]}   )
+                                dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][0] +=  dev_obj.amount
+                                //allows to start from sratch but this must be called only once
+                                
+                            }
+                                                                                       
+                                
+                                dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][0] += dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][2]  - dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][1] - 1
                                 // because the max is 1 before the max
                                 // were going to borrow form the next digit until were big enough for subtraction
                                 
-                                if(   dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[0]][0] + dev_obj.amount >= dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[0]][1]   ){
+                                if(   dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][0] - Math.abs(   dev_obj.amount   ) >= dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][1]   ){
                                     
                                     
-                                    dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][0] += dev_obj.amount
+                                    dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][0] -= Math.abs(   dev_obj.amount   )
+                                    // deals with an  absolute value problem coming from negative ##
                                     dev_obj.amount -= dev_obj.amount
                                     // so we do not have to loop
                                     
                                 }
-
-
-                            }
-                            
-                            
-                            else if(   numberSystemFL_0_i.forLoop_0_i !== 0   ){
-                                
-                                
-                                dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][0] = dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][2] -1
-                                //since the subtract only applies to the first digit
-                                
-                                
-                            }
-                            
+                                                                                    
                                                         
                             if(   numberSystemFL_0_i.forLoop_0_i +1 <=  numberSystemFL_0_i.forLoopLength-1   ){
                                 
                                 
-                                dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i +1 ]][0] -= 1
+                                if(   dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i +1 ]][3] === undefined   ){
+                                        
+                                        
+                                      dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i +1 ]].add(   {value:0}   )
+                                      
+                                      
+                                }
                                 
+                                
+                                dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i +1 ]][3] += 1
+                                dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i +1 ]][0] -= 1
+                                // this will be the amount for the next digit
                                 
                             }
                             
