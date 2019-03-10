@@ -1,10 +1,10 @@
-        function wait(   ms   ){
-           var start = new Date().getTime();
-           var end = start;
-           while(   end < start + ms   ) {
-             end = new Date().getTime();
-           }
-        }
+function wait(   ms   ){
+   var start = new Date().getTime();
+   var end = start;
+   while(   end < start + ms   ) {
+     end = new Date().getTime();
+   }
+}
 // if node use exports or figure how to get external modules in here
 
 // an OOP way to do everything javascript, I meant to have this done in python with a superclass oh well
