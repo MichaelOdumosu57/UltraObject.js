@@ -440,11 +440,11 @@ function eCSearch(   dev_obj   ){
                     
                     if(   ultraObject.allTags[ultraObject.allTags.eCSST].eCSNS[eCSearchFL_0_i.forLoop_0_i] !== undefined   ){
                     
-                    
+                        
                         ultraObject.numberSystem({
                             digits:ultraObject.allTags[ultraObject.allTags.eCSST],
                             operation:'add',
-                            amount:-461090 // smallest number I can add to fix the problem
+                            amount:-1 // smallest number I can add to fix the problem
                         })
                         indexSelect = ultraObject.allTags[ultraObject.allTags.eCSST].eCSNS[eCSearchFL_0_i.forLoop_0_i][0]
                         var NS_iter = []
@@ -492,12 +492,27 @@ function eCSearch(   dev_obj   ){
                                         
                                         ultraObject.allTags[ultraObject.allTags.eCSST]['query'+eCSearchFL_0_i.forLoop_0_i] = ultraObject.allTags[ultraObject.allTags.eCSST].add(   {value:ultraObject.iterableObject()}   )
                                         var ecsNSI = ultraObject.allTags[ultraObject.allTags.eCSST].eCSNS.add(   {value:ultraObject.iterableObject()}   )
-                                        ultraObject.allTags[ultraObject.allTags.eCSST].eCSNS[ecsNSI].add(   {value:eCSearchFL_1_i.forLoop_0_i}   )
-                                        ultraObject.allTags[ultraObject.allTags.eCSST].eCSNS[ecsNSI].add(   {value:eCSearchFL_1_i.forLoop_0_i-2}   )
-                                        ultraObject.allTags[ultraObject.allTags.eCSST].eCSNS[ecsNSI].add(   {value:eCSearchFL_1_i.forLoopLength}   )
                                         
                                         
-                                    }
+                                        if(eCSearchFL_0_i.forLoop_0_i === 0){
+                                            
+                                            
+                                            ultraObject.allTags[ultraObject.allTags.eCSST].eCSNS[ecsNSI].add(   {value:eCSearchFL_1_i.forLoop_0_i}   )
+                                            
+                                            
+                                        }
+                                        
+                                        
+                                        else if(eCSearchFL_0_i.forLoop_0_i !== 0 ){
+                                            
+                                            
+                                            ultraObject.allTags[ultraObject.allTags.eCSST].eCSNS[ecsNSI].add(   {value:eCSearchFL_1_i.forLoop_0_i+ 2}   )
+                                            }
+                                            ultraObject.allTags[ultraObject.allTags.eCSST].eCSNS[ecsNSI].add(   {value:eCSearchFL_1_i.forLoop_0_i}   )
+                                            ultraObject.allTags[ultraObject.allTags.eCSST].eCSNS[ecsNSI].add(   {value:eCSearchFL_1_i.forLoopLength}   )
+                                        
+                                        
+                                        }
                                     
                                     
                                     ultraObject.allTags[ultraObject.allTags.eCSST][ultraObject.allTags[ultraObject.allTags.eCSST]['query'+eCSearchFL_0_i.forLoop_0_i]].item = eCSearchAllTags[eCSearchFL_1_i.forLoop_0_i]
@@ -625,6 +640,9 @@ function numberSystem(   dev_obj   ){
                             if(   numberSystemFL_0_i.forLoop_0_i === numberSystemFL_0_i.forLoopLength - 1   ){
                                 throw(' the operation caused the number to be less than the NS version of 0, use a smaller number')
                             }
+                            if( numberSystemFL_0_i.forLoop_0_i === 0 ){
+                                debugger
+                            }
                         
                             
                             if(   numberSystemFL_0_i.forLoop_0_i !== 0 && dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][3] !== undefined  ){
@@ -638,7 +656,7 @@ function numberSystem(   dev_obj   ){
                             }
                                                                                        
                                 
-                                dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][0] += dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][2]  - dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][1] - 1
+                                dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][0] += dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][2]  - dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][1]
                                 // because the max is 1 before the max
                                 // were going to borrow form the next digit until were big enough for subtraction
                                 
@@ -695,6 +713,18 @@ function numberSystem(   dev_obj   ){
                                         
                     else if(   dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][0]  >=  dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][1] && dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][0]  <=  dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][2] && dev_obj.digits.eCSNS.nSM.further_checks !== 'true'   ){
                         // if the operation fits and the algorithm does not have to check for more options in further_checks
+                        
+                        
+                        if(   numberSystemFL_0_i.forLoop_0_i === 0 && dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i + 1]][3] === undefined   ){
+                            
+                            
+                            dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][0] += dev_obj.amount
+                            // at this point it was not going to break the number system and regular addition needed to be perofrmed
+                            
+                        }
+                        
+                        
+                        dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]].minus(   {value:dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][3]}   )
                         dev_obj.digits.eCSNS.nSM.further_checks ='false'
                         return 'premature'
                         
@@ -703,8 +733,10 @@ function numberSystem(   dev_obj   ){
                     
                     
                     else{
-                        
+
+                         
                          dev_obj.digits.eCSNS.nSM.further_checks ='false'
+
                          
                     }
                     
@@ -717,7 +749,10 @@ function numberSystem(   dev_obj   ){
                     }
             }
             ultraObject.forLoop(   numberSystemFL_0_i   )
-            console.warn(   dev_obj.digits.eCSNS.nSM.further_checks   )
+            // if it somehow how leaves the number system
+            if(   dev_obj.digits.eCSNS.nSM.further_checks !== 'true'  ){
+                // dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][0]
+            }
             // ultraObject.objInvloved({
             //     0:dev_obj.digits.eCSNS,
             //     1:dev_obj.digits.eCSNS.nSM,
