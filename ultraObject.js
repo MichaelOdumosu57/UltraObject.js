@@ -1,10 +1,10 @@
-function wait(   ms   ){
-   var start = new Date().getTime();
-   var end = start;
-   while(   end < start + ms   ) {
-     end = new Date().getTime();
-   }
-}
+        function wait(   ms   ){
+           var start = new Date().getTime();
+           var end = start;
+           while(   end < start + ms   ) {
+             end = new Date().getTime();
+           }
+        }
 // if node use exports or figure how to get external modules in here
 
 // an OOP way to do everything javascript, I meant to have this done in python with a superclass oh well
@@ -444,7 +444,7 @@ function eCSearch(   dev_obj   ){
                         ultraObject.numberSystem({
                             digits:ultraObject.allTags[ultraObject.allTags.eCSST],
                             operation:'add',
-                            amount:-447024 // smallest number I can add to fix the problem
+                            amount: 92// smallest number I can add to fix the problem -447024
                         })
                         indexSelect = ultraObject.allTags[ultraObject.allTags.eCSST].eCSNS[eCSearchFL_0_i.forLoop_0_i][0]
                         var NS_iter = []
@@ -494,7 +494,7 @@ function eCSearch(   dev_obj   ){
                                         var ecsNSI = ultraObject.allTags[ultraObject.allTags.eCSST].eCSNS.add(   {value:ultraObject.iterableObject()}   )
                                         
                                         
-                                        if(eCSearchFL_0_i.forLoop_0_i === 0){
+                                        if(   eCSearchFL_0_i.forLoop_0_i === 0   ){
                                             
                                             
                                             ultraObject.allTags[ultraObject.allTags.eCSST].eCSNS[ecsNSI].add(   {value:eCSearchFL_1_i.forLoop_0_i}   )
@@ -503,13 +503,17 @@ function eCSearch(   dev_obj   ){
                                         }
                                         
                                         
-                                        else if(eCSearchFL_0_i.forLoop_0_i !== 0 ){
+                                        else if(   eCSearchFL_0_i.forLoop_0_i !== 0   ){
                                             
                                             
-                                            ultraObject.allTags[ultraObject.allTags.eCSST].eCSNS[ecsNSI].add(   {value:eCSearchFL_1_i.forLoop_0_i+ 2}   )
-                                            }
                                             ultraObject.allTags[ultraObject.allTags.eCSST].eCSNS[ecsNSI].add(   {value:eCSearchFL_1_i.forLoop_0_i}   )
-                                            ultraObject.allTags[ultraObject.allTags.eCSST].eCSNS[ecsNSI].add(   {value:eCSearchFL_1_i.forLoopLength}   )
+                                            
+                                            
+                                        }
+                                        
+                                        
+                                        ultraObject.allTags[ultraObject.allTags.eCSST].eCSNS[ecsNSI].add(   {value:eCSearchFL_1_i.forLoop_0_i}   )
+                                        ultraObject.allTags[ultraObject.allTags.eCSST].eCSNS[ecsNSI].add(   {value:eCSearchFL_1_i.forLoopLength}   )
                                         
                                         
                                         }
@@ -628,6 +632,18 @@ function numberSystem(   dev_obj   ){
             // when it asks to borrow once
             // when it borrows several times
             //when it hits the NS  0
+            
+        // when working on max ask these questions
+            //what  happens when i am at the current val max how do it increase the digits properly
+                //works properly
+            // when the sum is greater than the max how do I allocate to increase the digits properly
+                /* that is working properly, you have to subtract the length down one to one before the min and do the addition,
+                    you also have to increase the next digit by one
+                */
+            // when the sum is less than the max do I handle it simply
+                //yes the first conditional does the math, checks if there is a [3] fo the NS for the next digit and returns 'premature'
+            //do i interefere with the functionality meant for other circumstances
+                //well for the min so far no, but as min used [3] to hold borrowed digits, we can use [4] for adding
         console.group(   'providing the mechanism for the number system'   )
         
         
@@ -640,6 +656,8 @@ function numberSystem(   dev_obj   ){
                 forLoopLength:dev_obj.digits.eCSNS.nSM.length,
                 fn:function(   dev_obj   ){
                     
+                    
+                    debugger
                     if(   dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][0] + dev_obj.amount  >=  dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][1] && dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][0]  + dev_obj.amount  <  dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][2] && dev_obj.digits.eCSNS.nSM.further_checks !== 'true'   ){
                         // if the operation fits and the algorithm does not have to check for more options in further_checks
                         
@@ -661,16 +679,18 @@ function numberSystem(   dev_obj   ){
                     }
                     
                     
-                    else if(   dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][0] - Math.abs(   dev_obj.amount   )  <  dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][1]  ){
+                    else if(   dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][0] - Math.abs(   dev_obj.amount   )  <  dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][1]   ){
                         //if the operation makes the digit less than the min make max and tell the next to subtract 1 max sure the amount does not break the numberSystem at this digit change the loop again
-                            if(   numberSystemFL_0_i.forLoop_0_i === numberSystemFL_0_i.forLoopLength - 1   ){
-                                throw(' the operation caused the number to be less than the NS version of 0, use a smaller number')
-                            }
-                            if( numberSystemFL_0_i.forLoop_0_i === 0 ){
-                                // debugger
-                            }
                         
+                            if(   numberSystemFL_0_i.forLoop_0_i === numberSystemFL_0_i.forLoopLength - 1   ){
+                                
+                                
+                                throw(' the operation caused the number to be less than the NS version of 0, use a smaller number')
+                                
+                                
+                            }
                             
+                                                    
                             if(   numberSystemFL_0_i.forLoop_0_i !== 0 && dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][3] !== undefined  ){
                                 //resets the digit only once so we can know the true form and borrow form the next digit
                                 
@@ -682,19 +702,19 @@ function numberSystem(   dev_obj   ){
                             }
                                                                                        
                                 
-                                dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][0] += dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][2]  - dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][1]
-                                // because the max is 1 before the max
-                                // were going to borrow form the next digit until were big enough for subtraction
+                            dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][0] += dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][2]  - dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][1]
+                            // because the max is 1 before the max
+                            // were going to borrow form the next digit until were big enough for subtraction
+                            
+                            if(   dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][0] - Math.abs(   dev_obj.amount   ) >= dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][1]   ){
                                 
-                                if(   dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][0] - Math.abs(   dev_obj.amount   ) >= dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][1]   ){
-                                    
-                                    
-                                    dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][0] -= Math.abs(   dev_obj.amount   )
-                                    // deals with an  absolute value problem coming from negative ##
-                                    dev_obj.amount -= dev_obj.amount
-                                    // so we do not have to loop
-                                    
-                                }
+                                
+                                dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][0] -= Math.abs(   dev_obj.amount   )
+                                // deals with an  absolute value problem coming from negative ##
+                                dev_obj.amount -= dev_obj.amount
+                                // so we do not have to loop
+                                
+                            }
                                                                                     
                                                         
                             if(   numberSystemFL_0_i.forLoop_0_i +1 <=  numberSystemFL_0_i.forLoopLength-1   ){
@@ -718,7 +738,6 @@ function numberSystem(   dev_obj   ){
                             
                             dev_obj.digits.eCSNS.nSM.further_checks = 'true'
                             // console.log(   dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]]   )
-                            // dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]].minus(   {value:dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][3]}   )
                             numberSystemFL_0_i.forLoop_0_i -= 1
                             
                             
@@ -728,10 +747,57 @@ function numberSystem(   dev_obj   ){
                     }
                     
                     
-                    else if(   dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][0] + Math.abs(   dev_obj.amount   ) >  dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][2]   ){
+                    else if(   dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][0] + Math.abs(   dev_obj.amount   ) >=  dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][2]   ){
                         //if the operation makes the digit greater than the max
+                        
+                        if(   numberSystemFL_0_i.forLoop_0_i !== 0 && dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][3] !== undefined  ){
+                            //resets the digit only once so we can know the true form and borrow form the next digit
+                            
+                            dev_obj.amount =  dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][3]
+                            dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]].minus(   {value:dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][3]}   )
+                            dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][0] -=  dev_obj.amount
+                            //allows to start from sratch but this must be called only once
+                            
+                        }
+                        
+                        dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][0] -= dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][2]  - dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][1]
+                        
+                        
+                        if(   dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][0] + Math.abs(   dev_obj.amount   ) < dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][2]   ){
+                            
+                            
+                            dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][0] += Math.abs(   dev_obj.amount   )
+                            // deals with an  absolute value problem coming from negative ##
+                            dev_obj.amount -= dev_obj.amount
+                            // so we do not have to loop
+                            
+                            
+                        }
+                        
+                        
+                        if(   numberSystemFL_0_i.forLoop_0_i +1 <=  numberSystemFL_0_i.forLoopLength-1   ){
+                                
+                                
+                            if(   dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i +1 ]][3] === undefined   ){
+                                    
+                                    
+                                  dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i +1 ]].add(   {value:0}   )
+                                  
+                                  
+                            }
+                            
+                            
+                            dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i +1 ]][3] += 1
+                            dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i +1 ]][0] += 1
+                            // this will be the amount for the next digit
+                                
+                                
+                        }
+                        
+                        
+                        debugger
                         dev_obj.digits.eCSNS.nSM.further_checks = 'true'
-                        console.log()
+                        numberSystemFL_0_i.forLoop_0_i -= 1
                         
                         
                     }
@@ -1941,9 +2007,10 @@ function h(   dev_obj   ){
 
 //to add an eventListener
 function a(   dev_obj   ){
-    ultraObject.eventName = 'click'
-    ultraObject.DOM_child[0] = document
+    ultraObject.eventName = dev_obj.eventName || 'click'
+    ultraObject.DOM_child[0] = dev_obj.DOMchild || document
     ultraObject.addEventListener()
+    // you can place a function here
 }
 
 //to remove elements from a page
