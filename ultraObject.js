@@ -447,17 +447,6 @@ function eCSearch(   dev_obj   ){
                             amount: 26334554// smallest number I can add to fix the problem -240357 111100112
                         })
                         indexSelect = ultraObject.allTags[ultraObject.allTags.eCSST].eCSNS[eCSearchFL_0_i.forLoop_0_i][0]
-                        var NS_iter = []
-                        var debugFL_0_i = {
-                            forLoop_0_i:0,
-                            forLoopLength:ultraObject.allTags[ultraObject.allTags.eCSST].eCSNS.length,
-                            fn:function(   dev_obj   ){
-                                NS_iter.push(   ultraObject.allTags[ultraObject.allTags.eCSST].eCSNS[debugFL_0_i.forLoop_0_i][0]   )
-                            },
-                            args:{}
-                        }
-                        ultraObject.forLoop(   debugFL_0_i   )
-                        console.log('current number',NS_iter)
                         console.log('it tells me to start here', indexSelect)
                                    
                 
@@ -667,7 +656,17 @@ function numberSystem(   dev_obj   ){
                 forLoop_0_i:0,
                 forLoopLength:dev_obj.digits.eCSNS.nSM.length,
                 fn:function(   dev_obj   ){
-                    console.log(   dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_1_i.forLoop_0_i]]   )
+                    
+                    
+                    if(   dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_1_i.forLoop_0_i]][0] < dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_1_i.forLoop_0_i]][1] || dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_1_i.forLoop_0_i]][0] >= dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_1_i.forLoop_0_i]][2]   ){
+                     
+                     
+                        throw(   'invalid number for the numberSystem'   )
+                        
+                        
+                    }
+                    
+                    
                 },
                 args:{
                         digits:dev_obj.digits,
@@ -716,7 +715,7 @@ function numberSystem(   dev_obj   ){
                             if(   numberSystemFL_0_i.forLoop_0_i === numberSystemFL_0_i.forLoopLength - 1   ){
                                 
                                 
-                                throw(' the operation caused the number to be less than the NS version of 0, use a smaller number')
+                                throw(' the operation caused the number to be less than the NS version of 0, use a smaller number. this is a memory leak fix now')
                                 //if the head digit is less than the min, the number is less than the smallest number
                                 
                             }
@@ -786,7 +785,7 @@ function numberSystem(   dev_obj   ){
                         if(   numberSystemFL_0_i.forLoop_0_i === numberSystemFL_0_i.forLoopLength - 1   ){
                             
                             
-                            throw(' the operation caused the number to be greater than the NS max use a smaller number')
+                            throw(' the operation caused the number to be greater than the NS max use a smaller number. this is a memory leak fix now')
                             //if the head digit is 1 above the max off the conditional to get in here, throw an error
                             
                         }
@@ -881,7 +880,19 @@ function numberSystem(   dev_obj   ){
         }
         
         
-
+        var NS_iter = []
+        var debugFL_0_i = {
+            forLoop_0_i:0,
+            forLoopLength:dev_obj.digits.eCSNS.nSM.length,
+            fn:function(   dev_obj   ){
+                NS_iter.push(   dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[debugFL_0_i.forLoop_0_i]][0]  )
+            },
+            args:{
+                    digits:dev_obj.digits
+                }
+        }
+        ultraObject.forLoop(   debugFL_0_i   )
+        console.log('current number',NS_iter)
         
         console.groupEnd()
     
