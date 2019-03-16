@@ -475,12 +475,13 @@ function eCSearch(   dev_obj   ){
                     
                     if(   ultraObject.allTags[ultraObject.allTags.eCSST].eCSNS[eCSearchFL_0_i.forLoop_0_i] !== undefined   ){
                     
-                        
-                        ultraObject.numberSystem({
-                            digits:ultraObject.allTags[ultraObject.allTags.eCSST],
-                            operation:'add',
-                            amount: 26// smallest number I can add to fix the problem -240357 111100112
-                        })
+                        if(   eCSearchFL_0_i.forLoop_0_i === 0   ){
+                            ultraObject.numberSystem({
+                                digits:ultraObject.allTags[ultraObject.allTags.eCSST],
+                                operation:'add',
+                                amount: 1 //helps the function look at the next combination set
+                            })
+                        }
                         indexSelect = ultraObject.allTags[ultraObject.allTags.eCSST].eCSNS[eCSearchFL_0_i.forLoop_0_i][0]
                         console.log('it tells me to start here', indexSelect)
                                    
@@ -505,49 +506,40 @@ function eCSearch(   dev_obj   ){
                             
                             
                             if(   eCSearchAllTags[eCSearchFL_1_i.forLoop_0_i][eCSearchLook[eCSearchFL_2_i.forLoop_0_i][0]] !== undefined   ){
-                                    
+                                //means if the comparison from the element property actually produces a string
                                     
                                 if(   eCSearchAllTags[eCSearchFL_1_i.forLoop_0_i][eCSearchLook[eCSearchFL_2_i.forLoop_0_i][0]].indexOf(   eCSearchList[eCSearchFL_0_i.forLoop_0_i][0]   ) !== -1   ){
+                                    //this must mean it found a match
                                     
-                                    
+                                
                                     if(   ultraObject.allTags[ultraObject.allTags.eCSST]['query'+eCSearchFL_0_i.forLoop_0_i] === undefined   ){
-                                        // the start value for the number system
-                                        
+                                        // the start value for the number system it means a NS is not available
+                                        ultraObject.allTags[ultraObject.allTags.eCSST].eCSNS.ready = 'false'
                                         ultraObject.allTags[ultraObject.allTags.eCSST]['query'+eCSearchFL_0_i.forLoop_0_i] = ultraObject.allTags[ultraObject.allTags.eCSST].add(   {value:ultraObject.iterableObject()}   )
                                         var ecsNSI = ultraObject.allTags[ultraObject.allTags.eCSST].eCSNS.add(   {value:ultraObject.iterableObject()}   )
-                                        
-                                        
-                                        if(   eCSearchFL_0_i.forLoop_0_i === 0   ){
-                                            
-                                            
-                                            ultraObject.allTags[ultraObject.allTags.eCSST].eCSNS[ecsNSI].add(   {value:eCSearchFL_1_i.forLoop_0_i}   )
-                                            
-                                            
-                                        }
-                                        
-                                        
-                                        else if(   eCSearchFL_0_i.forLoop_0_i !== 0   ){
-                                            
-                                            
-                                            ultraObject.allTags[ultraObject.allTags.eCSST].eCSNS[ecsNSI].add(   {value:eCSearchFL_1_i.forLoop_0_i + 2}   )
-                                            
-                                            
-                                        }
-                                        
-                                        
                                         ultraObject.allTags[ultraObject.allTags.eCSST].eCSNS[ecsNSI].add(   {value:eCSearchFL_1_i.forLoop_0_i}   )
-                                        ultraObject.allTags[ultraObject.allTags.eCSST].eCSNS[ecsNSI].add(   {value:eCSearchFL_1_i.forLoopLength}   )
+                                        ultraObject.allTags[ultraObject.allTags.eCSST].eCSNS[ecsNSI].add(   {value:eCSearchFL_1_i.forLoop_0_i}   )
+                                        ultraObject.allTags[ultraObject.allTags.eCSST].eCSNS[ecsNSI].add(   {value:eCSearchFL_1_i.forLoopLength+1}   )
                                         
                                         
-                                        }
+                                    }
                                     
                                     
+                                    ultraObject.allTags[ultraObject.allTags.eCSST].eCSNS[eCSearchFL_0_i.forLoop_0_i][0] = eCSearchFL_1_i.forLoop_0_i
+                                    //helps change the number when the match is found so the NS doesnt take over
+                                    //if problems look here idk if it supposed to follow the nSM or not
                                     ultraObject.allTags[ultraObject.allTags.eCSST][ultraObject.allTags[ultraObject.allTags.eCSST]['query'+eCSearchFL_0_i.forLoop_0_i]].item = eCSearchAllTags[eCSearchFL_1_i.forLoop_0_i]
                                     ultraObject.allTags[ultraObject.allTags.eCSST][ultraObject.allTags[ultraObject.allTags.eCSST]['query'+eCSearchFL_0_i.forLoop_0_i]].query = eCSearchAllTags[eCSearchFL_1_i.forLoop_0_i][eCSearchLook[eCSearchFL_2_i.forLoop_0_i][0]]
                                     ultraObject.allTags[ultraObject.allTags.eCSST][ultraObject.allTags[ultraObject.allTags.eCSST]['query'+eCSearchFL_0_i.forLoop_0_i]].xMark = eCSearchLook[eCSearchFL_2_i.forLoop_0_i][0]
                                     ultraObject.allTags[ultraObject.allTags.eCSST][ultraObject.allTags[ultraObject.allTags.eCSST]['query'+eCSearchFL_0_i.forLoop_0_i]].keyword = eCSearchList[eCSearchFL_0_i.forLoop_0_i][0]
                                     ultraObject.allTags[ultraObject.allTags.eCSST][ultraObject.allTags[ultraObject.allTags.eCSST]['query'+eCSearchFL_0_i.forLoop_0_i]].valuePhrase = eCSearchList[eCSearchFL_0_i.forLoop_0_i][1]
-                                    ultraObject.allTags[ultraObject.allTags.eCSST][ultraObject.allTags[ultraObject.allTags.eCSST]['query'+eCSearchFL_0_i.forLoop_0_i]].eCSIndex = eCSearchFL_1_i.forLoop_0_i  // very important to look at the next index
+                                    ultraObject.allTags[ultraObject.allTags.eCSST][ultraObject.allTags[ultraObject.allTags.eCSST]['query'+eCSearchFL_0_i.forLoop_0_i]].eCSIndex = eCSearchFL_1_i.forLoop_0_i
+                                    
+                                    
+                                    if(   ultraObject.allTags[ultraObject.allTags.eCSST].eCSNS.ready  !== 'false'   ){
+                                    }
+                                    
+                                    
                                     return 'premature'
                                 
                                 
@@ -588,12 +580,16 @@ function eCSearch(   dev_obj   ){
                 args:{}
             }
             ultraObject.forLoop(   eCSearchFL_3_i   )
-            
+            ultraObject.allTags[ultraObject.allTags.eCSST].eCSNS.ready = 'true'
             
         }
            
         
     }
+    ultraObject.numberSystem({
+        digits:ultraObject.allTags[ultraObject.allTags.eCSST],
+        operation:'print',
+    })
         
         
     // find the first that matches the condition, and hold it when all four match exit, if the form doesn't like what I did each value must try everything in the allTapgs itO before telling the end user they cant figure out whats going on.grabs three and swaps one
