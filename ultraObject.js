@@ -58,6 +58,7 @@ function (   dev_obj   ){
 /*
 items that should be placed in the ultraObject
     finished products that are to be used by other API, they shold be stored in an iterableObject and used using iterableObject methods
+    all objects with a specific purpose should be stored in seperate itO
     functions
     absolute primitive values like Infinity or XMLHTTPRequest
         
@@ -444,7 +445,7 @@ function eCSearch(   dev_obj   ){
                         ultraObject.numberSystem({
                             digits:ultraObject.allTags[ultraObject.allTags.eCSST],
                             operation:'add',
-                            amount: 26334554// smallest number I can add to fix the problem -240357 111100112
+                            amount: 26// smallest number I can add to fix the problem -240357 111100112
                         })
                         indexSelect = ultraObject.allTags[ultraObject.allTags.eCSST].eCSNS[eCSearchFL_0_i.forLoop_0_i][0]
                         console.log('it tells me to start here', indexSelect)
@@ -686,6 +687,7 @@ function numberSystem(   dev_obj   ){
                     
             var decimalNS = dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[0]][0] -  dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[0]][1]
             var rangeNS = dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[0]][2] - dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[0]][1]
+            var originalNS = dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[1]][0]
             //first digit range that influences the 2nd digit
             var numberSystemFL_2_i = {
                 forLoop_0_i:1,// because the first digit is already of base decimal unless we decide how the digits count for the NS
@@ -693,7 +695,7 @@ function numberSystem(   dev_obj   ){
                 fn:function(   dev_obj   ){
                     
                    
-                   if(   dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_2_i.forLoop_0_i]][0] !==  dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_2_i.forLoop_0_i]][1] ){
+                   if(   dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_2_i.forLoop_0_i]][0] !==  dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_2_i.forLoop_0_i]][1]  ){
                     
                     
                         dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_2_i.forLoop_0_i]][0] -= 1
@@ -707,9 +709,17 @@ function numberSystem(   dev_obj   ){
                     
                     else if(   dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_2_i.forLoop_0_i]][0] ===  dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_2_i.forLoop_0_i]][1] ){
                         
+                        dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_2_i.forLoop_0_i]][0] = originalNS
                         
-                        rangeNS *=  dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_2_i.forLoop_0_i-1]][2] - dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_2_i.forLoop_0_i-1]][1]
                         
+                        if(   numberSystemFL_2_i.forLoop_0_i+1 !==  numberSystemFL_2_i.forLoopLength){
+                            
+                            
+                            rangeNS *=  dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_2_i.forLoop_0_i-1]][2] - dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_2_i.forLoop_0_i-1]][1]
+                            originalNS = dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_2_i.forLoop_0_i+1]][0]
+                        
+                        
+                        }
                         
                     }
                     
@@ -724,6 +734,33 @@ function numberSystem(   dev_obj   ){
             return decimalNS
             
         }
+        
+        
+        if(   dev_obj.operation === 'multiply'   ){
+            
+        
+            var decimalNS = ultraObject.numberSystem({
+                digits:dev_obj.digits,
+                operation:'decimal',
+            })
+            var numberSystemFL_2_i = {
+                forLoop_0_i:0,
+                forLoopLength:dev_obj.amount,
+                fn:function(   dev_obj   ){
+                    ultraObject.numberSystem({
+                        digits:dev_obj.digits,
+                        operation:'add',
+                        amount:decimalNS
+                    })
+                },
+                args:{
+                    digits:dev_obj.digits
+                    }
+            }
+            ultraObject.forLoop(   numberSystemFL_2_i   )
+            
+        }
+        if(   dev_obj.operation === 'divide'   ){}
         
         
         if(   dev_obj.operation === 'add' ){
@@ -927,21 +964,23 @@ function numberSystem(   dev_obj   ){
                         
         }
         
-        
-        var NS_iter = []
-        var debugFL_0_i = {
-            forLoop_0_i:0,
-            forLoopLength:dev_obj.digits.eCSNS.nSM.length,
-            fn:function(   dev_obj   ){
-                NS_iter.push(   dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[debugFL_0_i.forLoop_0_i]][0]  )
-            },
-            args:{
-                    digits:dev_obj.digits
-                }
+        if(   dev_obj.operation === 'print' ){
+            var NS_iter = []
+            var debugFL_0_i = {
+                forLoop_0_i:0,
+                forLoopLength:dev_obj.digits.eCSNS.nSM.length,
+                fn:function(   dev_obj   ){
+                    NS_iter.push(   dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[debugFL_0_i.forLoop_0_i]][0]  )
+                },
+                args:{
+                        digits:dev_obj.digits
+                    }
+            }
+            ultraObject.forLoop(   debugFL_0_i   )
+            console.log('current number',NS_iter)
         }
-        ultraObject.forLoop(   debugFL_0_i   )
-        console.log('current number',NS_iter)
         
+
         console.groupEnd()
     
 }//makes a customized number system for the needs of the eCSearch multiple testing required by prefill form
