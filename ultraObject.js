@@ -826,8 +826,7 @@ function numberSystem(   dev_obj   ){
         
         if(   dev_obj.operation === 'divide'   ){
             
-            
-            
+                        
             if(   dev_obj.amount === 1   ){
                 
                 
@@ -849,7 +848,8 @@ function numberSystem(   dev_obj   ){
             var decimalNS = ultraObject.numberSystem({
                 digits:dev_obj.digits,
                 operation:'decimal',
-            })/dev_obj.amount
+            })
+            decimalNS -= (decimalNS/dev_obj.amount)
             
             
             if(   ultraObject.isInt(   {type:decimalNS}   ) === 'true'   ){
@@ -858,21 +858,11 @@ function numberSystem(   dev_obj   ){
                 if(   dev_obj.amount > 1   ){
                 
                 
-                    var numberSystemFL_3_i = {
-                        forLoop_0_i:0,
-                        forLoopLength:dev_obj.amount-1,
-                        fn:function(   dev_obj   ){
-                            ultraObject.numberSystem({
-                                digits:dev_obj.digits,
-                                operation:'add',
-                                amount:-decimalNS
-                            })
-                        },
-                        args:{
-                            digits:dev_obj.digits
-                        }
-                    }
-                    ultraObject.forLoop(   numberSystemFL_3_i   )
+                    ultraObject.numberSystem({
+                        digits:dev_obj.digits,
+                        operation:'add',
+                        amount:-decimalNS
+                    })
                                 
                                 
                 }
