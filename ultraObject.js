@@ -444,7 +444,7 @@ function eCSearch(   dev_obj   ){
                         ultraObject.numberSystem({
                             digits:ultraObject.allTags[ultraObject.allTags.eCSST],
                             operation:'add',
-                            amount: 110// smallest number I can add to fix the problem -447024
+                            amount: 26334554// smallest number I can add to fix the problem -240357 111100112
                         })
                         indexSelect = ultraObject.allTags[ultraObject.allTags.eCSST].eCSNS[eCSearchFL_0_i.forLoop_0_i][0]
                         var NS_iter = []
@@ -474,7 +474,6 @@ function eCSearch(   dev_obj   ){
                 forLoop_0_i:indexSelect,
                 forLoopLength:eCSearchAllTags.length,
                 fn:function(   dev_obj   ){
-                    
                     var eCSearchFL_2_i = {
                         forLoop_0_i:0,
                         forLoopLength:eCSearchLook.length,
@@ -558,7 +557,7 @@ function eCSearch(   dev_obj   ){
             ultraObject.allTags[ultraObject.allTags.eCSST].eCSNS.nSM = ultraObject.iterableObject()
             var eCSearchFL_3_i = {
                 forLoop_0_i:0,
-                forLoopLength:eCSearchList.length,
+                forLoopLength:ultraObject.allTags[ultraObject.allTags.eCSST].eCSNS.length,
                 fn:function(   dev_obj   ){
                     ultraObject.allTags[ultraObject.allTags.eCSST].eCSNS.nSM.add(   {value:eCSearchFL_3_i.forLoop_0_i}   )
                 },
@@ -643,7 +642,8 @@ function numberSystem(   dev_obj   ){
             // when the sum is less than the max do I handle it simply
                 //yes the first conditional does the math, checks if there is a [3] fo the NS for the next digit and returns 'premature'
             //do i interefere with the functionality meant for other circumstances
-                //well for the min so far no, but as min used [3] to hold borrowed digits, we can use [4] for adding
+                //for the min make the dev_amount negative so it wont break bounds
+                
         console.group(   'providing the mechanism for the number system'   )
         
         
@@ -685,7 +685,7 @@ function numberSystem(   dev_obj   ){
                                 
                                 
                                 throw(' the operation caused the number to be less than the NS version of 0, use a smaller number')
-                                
+                                //if the head digit is less than the min, the number is less than the smallest number
                                 
                             }
                                                                                     
@@ -729,6 +729,7 @@ function numberSystem(   dev_obj   ){
                                 }
                                 
                                 
+                                
                                 dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i +1 ]][3] += 1
                                 dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i +1 ]][0] -= 1
                                 // this will be the amount for the next digit
@@ -747,18 +748,28 @@ function numberSystem(   dev_obj   ){
                     }
                     
                     
-                    else if(   dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][0] + dev_obj.amount   >=  dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][2]   ){
+                    else if(   dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][0] + dev_obj.amount >= dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][2]   ){
                         //if the operation makes the digit greater than the max
                         
+                        if(   numberSystemFL_0_i.forLoop_0_i === numberSystemFL_0_i.forLoopLength - 1   ){
+                            
+                            
+                            throw(' the operation caused the number to be greater than the NS max use a smaller number')
+                            //if the head digit is 1 above the max off the conditional to get in here, throw an error
+                            
+                        }
+                        
+                    
                         if(   numberSystemFL_0_i.forLoop_0_i !== 0 && dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][3] !== undefined  ){
                             //resets the digit only once so we can know the true form and borrow form the next digit
                             
-                            dev_obj.amount =  dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][3]
+                            dev_obj.amount = dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][3]
                             dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]].minus(   {value:dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][3]}   )
                             dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][0] -=  dev_obj.amount
                             //allows to start from sratch but this must be called only once
                             
                         }
+                        
                         
                         dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][0] -= dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][2]  - dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i]][1]
                         
@@ -781,7 +792,7 @@ function numberSystem(   dev_obj   ){
                             if(   dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i +1 ]][3] === undefined   ){
                                     
                                     
-                                  dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i +1 ]].add(   {value:0}   )
+                                dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i +1 ]].add(   {value:0}   )
                                   
                                   
                             }
@@ -790,11 +801,14 @@ function numberSystem(   dev_obj   ){
                             dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i +1 ]][3] += 1
                             dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_0_i.forLoop_0_i +1 ]][0] += 1
                             // this will be the amount for the next digit
+                            
+                            
+
                                 
                                 
                         }
                         
-                                                
+                        
                         dev_obj.digits.eCSNS.nSM.further_checks = 'true'
                         numberSystemFL_0_i.forLoop_0_i -= 1
                         
@@ -1946,7 +1960,7 @@ function preFillForm(   dev_obj   ){
                     'LinkedIn Profile':'https://www.linkedin.com/in/michael-odumosu-a58367b1',
                     'Website':'https://ualbanyasist.github.io/',
                     'How did you hear about this job?':'Linkedin',
-                    'What is your desired Salary?': '$80,000'},
+                    'Phone': '$80,000'},
         look:{ 'innerHTML':null,'innerText':null,'textContent':null},
         aTIndex: ultraObject.allTags.pFFATI
     })
@@ -1986,7 +2000,7 @@ function preFillForm(   dev_obj   ){
                     'LinkedIn Profile':'https://www.linkedin.com/in/michael-odumosu-a58367b1',
                     'Website':'https://ualbanyasist.github.io/',
                     'How did you hear about this job?':'Linkedin',
-                    'What is your desired Salary?': '$80,000'},
+                    'Phone': '$80,000'},
                 look:{ 'innerHTML':null,'innerText':null,'textContent':null}
             })
     
