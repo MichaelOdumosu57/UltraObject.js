@@ -595,8 +595,9 @@ function eCSearch(   dev_obj   ){
 }// seaches for elements with the queried filters and does things to them
 function numberSystem(   dev_obj   ){
         // .digits the number system itself
+        /*
             // .nSM, determines how the number receive digits min is as 1 then 10 then 1000
-            /*
+            
                 so forr
                 0:1
                 1:0
@@ -612,7 +613,7 @@ function numberSystem(   dev_obj   ){
                 when ns[1].current hits the max then ns[0].current increases by one and
                     ns[1].current returns to zero
                 
-            */
+            
             // logic
             // once 0 hits max then 1   ... once 1 hits max then 2
             //.further_checks if the case causes a break in the number,
@@ -636,18 +637,49 @@ function numberSystem(   dev_obj   ){
             //what  happens when i am at the current val max how do it increase the digits properly
                 //works properly
             // when the sum is greater than the max how do I allocate to increase the digits properly
-                /* that is working properly, you have to subtract the length down one to one before the min and do the addition,
+                 that is working properly, you have to subtract the length down one to one before the min and do the addition,
                     you also have to increase the next digit by one
-                */
+                
             // when the sum is less than the max do I handle it simply
                 //yes the first conditional does the math, checks if there is a [3] fo the NS for the next digit and returns 'premature'
             //do i interefere with the functionality meant for other circumstances
                 //for the min make the dev_amount negative so it wont break bounds
+        */
+        // .operation
+            /*
+                what the number system is needed to do
+                add, will be used for addition and subtract of decimal based integer values to the number system
+                    it needs an .amount as an int
+                validate, make sure the resulting number obeys the NS laws
                 
+            */
+        // .amount
+            /*
+                if the operation is add, then this is the amount to add, negative int to subtract
+            */
         console.group(   'providing the mechanism for the number system'   )
         
         
-        if(   dev_obj.operation === 'add'   ){
+        if(   dev_obj.operation === 'validate'   ){
+                    
+                            
+            var numberSystemFL_1_i = {
+                forLoop_0_i:0,
+                forLoopLength:dev_obj.digits.eCSNS.nSM.length,
+                fn:function(   dev_obj   ){
+                    console.log(   dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_1_i.forLoop_0_i]]   )
+                },
+                args:{
+                        digits:dev_obj.digits,
+                    }
+            }
+            ultraObject.forLoop(   numberSystemFL_1_i   )
+                        
+            
+        }
+        
+        
+        if(   dev_obj.operation === 'add' ){
             //you might not supposed to be chaning the value of dev_obj.amount becuase wher it leaves here it calls its its original amount but this should work properly
             
                                     
@@ -848,6 +880,8 @@ function numberSystem(   dev_obj   ){
                         
         }
         
+        
+
         
         console.groupEnd()
     
