@@ -738,29 +738,70 @@ function numberSystem(   dev_obj   ){
         
         if(   dev_obj.operation === 'multiply'   ){
             
-        
+            if(   dev_obj.amount < 0   ){
+                
+                
+                throw(' the NS does not undestand what to do, if the ranges are all positive its assumed there are no negative numbers, the NS starts from 0 and to supply negative numbers requires future implemenation' )
+                
+                
+            }
+            
+            
             var decimalNS = ultraObject.numberSystem({
                 digits:dev_obj.digits,
                 operation:'decimal',
             })
-            var numberSystemFL_2_i = {
-                forLoop_0_i:0,
-                forLoopLength:dev_obj.amount,
-                fn:function(   dev_obj   ){
-                    ultraObject.numberSystem({
-                        digits:dev_obj.digits,
-                        operation:'add',
-                        amount:decimalNS
-                    })
-                },
-                args:{
-                    digits:dev_obj.digits
-                    }
+            
+            
+            if(   dev_obj.amount > 1   ){
+                //any number times one is a no op
+                
+                var numberSystemFL_2_i = {
+                    forLoop_0_i:0,
+                    forLoopLength:dev_obj.amount,
+                    fn:function(   dev_obj   ){
+                        ultraObject.numberSystem({
+                            digits:dev_obj.digits,
+                            operation:'add',
+                            amount:decimalNS
+                        })
+                    },
+                    args:{
+                        digits:dev_obj.digits
+                        }
+                }
+                ultraObject.forLoop(   numberSystemFL_2_i   )
+                
+                
             }
-            ultraObject.forLoop(   numberSystemFL_2_i   )
+            
+            
+            else if(   dev_obj.amount === 0   ){
+                
+                
+                ultraObject.numberSystem({
+                    digits:dev_obj.digits,
+                    operation:'add',
+                    amount:-decimalNS
+                })
+                
+                
+            }
+                
             
         }
-        if(   dev_obj.operation === 'divide'   ){}
+        
+        
+        if(   dev_obj.operation === 'divide'   ){
+            
+            
+            var decimalNS = ultraObject.numberSystem({
+                digits:dev_obj.digits,
+                operation:'decimal',
+            })
+            
+            
+        }
         
         
         if(   dev_obj.operation === 'add' ){
