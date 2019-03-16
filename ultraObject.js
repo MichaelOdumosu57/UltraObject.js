@@ -640,9 +640,8 @@ function numberSystem(   dev_obj   ){
                 add, will be used for addition and subtract of decimal based integer values to the number system
                     it needs an .amount as an int
                 validate, make sure the resulting number obeys the NS laws
-                compare, returns an itO of all required  compareisons as evaluations
-                    amount an itO of all comparison operators
-                    digits, an itO how it works digits[0] [operation] digits[1]
+                decimal, returns the decimal version of the number, good if you need to perform comparison or you are trying to do computation with different numberSystem since js is based off the decimal system this works perfectly
+                    returns a int
             */
         // .amount
             /*
@@ -682,26 +681,46 @@ function numberSystem(   dev_obj   ){
         }
         
         
-        if(   dev_obj.operation === 'compare'   ){
+        if(   dev_obj.operation === 'decimal'   ){
+                   
                     
-                                        
+            var decimalNS = dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[0]][0] -  dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[0]][1]
+            var rangeNS = 1
             var numberSystemFL_2_i = {
-                forLoop_0_i:0,
-                forLoopLength:dev_obj.amount.length,
+                forLoop_0_i:1,// because the first digit is already of base decimal unless we decide how the digits count for the NS
+                forLoopLength:dev_obj.digits.eCSNS.nSM.length,
                 fn:function(   dev_obj   ){
                     
+                   
+                   if(   dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_2_i.forLoop_0_i]][0] !==  dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_2_i.forLoop_0_i]][1] ){
                     
-                    console.log(   dev_obj.amount[numberSystemFL_2_i.forLoop_0_i]   )
                     
+                        dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_2_i.forLoop_0_i]][0] -= 1
+                        decimalNS += rangeNS
+                        //effect adding the next digits worth for the decimal system
+                        numberSystemFL_2_i.forLoop_0_i -= 1
+                        // so we can get back to the min
+                       
+                    }
+                    
+                    
+                    else if(   dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_2_i.forLoop_0_i]][0] ===  dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_2_i.forLoop_0_i]][1] ){
+                        
+                        
+                        rangeNS *=  dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_2_i.forLoop_0_i-1]][2] - dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_2_i.forLoop_0_i-1]][1]
+                        
+                        
+                    }
                     
                 },
+                
                 args:{
                         digits:dev_obj.digits,
                         amount:dev_obj.amount
                     }
             }
             ultraObject.forLoop(   numberSystemFL_2_i   )
-                        
+            return decimalNS
             
         }
         
