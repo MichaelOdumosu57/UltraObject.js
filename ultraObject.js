@@ -685,7 +685,8 @@ function numberSystem(   dev_obj   ){
                    
                     
             var decimalNS = dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[0]][0] -  dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[0]][1]
-            var rangeNS = 1
+            var rangeNS = dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[0]][2] - dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[0]][1]
+            //first digit range that influences the 2nd digit
             var numberSystemFL_2_i = {
                 forLoop_0_i:1,// because the first digit is already of base decimal unless we decide how the digits count for the NS
                 forLoopLength:dev_obj.digits.eCSNS.nSM.length,
