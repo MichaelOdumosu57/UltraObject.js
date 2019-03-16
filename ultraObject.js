@@ -677,6 +677,10 @@ function numberSystem(   dev_obj   ){
                 validate, make sure the resulting number obeys the NS laws
                 decimal, returns the decimal version of the number, good if you need to perform comparison or you are trying to do computation with different numberSystem since js is based off the decimal system this works perfectly
                     returns a int
+                multiply
+                    multiples the NS number according to the ns, the amount mustbe an int
+                divide
+                    divides the NS number according the NS, the decimal division reslt must be an int
             */
         // .amount
             /*
@@ -771,21 +775,12 @@ function numberSystem(   dev_obj   ){
         
         
         if(   dev_obj.operation === 'multiply'   ){
-            
-            
-            if(   dev_obj.amount === 1   ){
+                    
+                        
+            if(   dev_obj.amount < 0  ){
                 
                 
-                //no -op
-                                
-                                
-            }
-            
-            
-            if(   dev_obj.amount < 0   ){
-                
-                
-                throw(' the NS does not undestand what to do, if the ranges are all positive its assumed there are no negative numbers, the NS starts from 0 and to supply negative numbers requires future implemenation' )
+                throw(' the NS does not undestand what to do the NS starts from 0 and to supply negative numbers requires future implemenation, also the amount must be an int' )
                 
                 
             }
@@ -795,44 +790,37 @@ function numberSystem(   dev_obj   ){
                 digits:dev_obj.digits,
                 operation:'decimal',
             })
+            ultraObject.numberSystem({
+                digits:dev_obj.digits,
+                operation:'add',
+                amount:-decimalNS
+            })
+            // gets to  0 so we can do the multiplcation through the decimal system much easier
+            decimalNS *= dev_obj.amount
+
             
-            
-            if(   dev_obj.amount > 1   ){
-                //any number times one is a no op
+            if(   ultraObject.isInt(   {type:decimalNS}   ) === 'false'   ){
                 
-                var numberSystemFL_2_i = {
-                    forLoop_0_i:0,
-                    forLoopLength:dev_obj.amount,
-                    fn:function(   dev_obj   ){
-                        ultraObject.numberSystem({
-                            digits:dev_obj.digits,
-                            operation:'add',
-                            amount:decimalNS
-                        })
-                    },
-                    args:{
-                        digits:dev_obj.digits
-                        }
-                }
-                ultraObject.forLoop(   numberSystemFL_2_i   )
+                
+                throw(   'this will make the number invalid no-op'   )
                 
                 
             }
             
             
-            else if(   dev_obj.amount === 0   ){
-                
+            else if(   ultraObject.isInt(   {type:decimalNS}   ) === 'true' && dev_obj.amount !== 0  ){
+                //since the NS number is already 0 no need for noop
                 
                 ultraObject.numberSystem({
                     digits:dev_obj.digits,
                     operation:'add',
-                    amount:-decimalNS
+                    amount:decimalNS
                 })
                 
                 
             }
-                
             
+                            
         }
         
         
