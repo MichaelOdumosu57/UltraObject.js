@@ -101,6 +101,7 @@ function ultraObjectReset(   dev_obj   ){
     isDOMElement:isDOMElement,
     isPrimitive:isPrimitive,
     isInt:isInt,
+    isNodeList:isNodeList,
     
     elementFound:iterableObject(), // holds found elements needed by the ultraObject
     removeCN:removeCN,
@@ -417,6 +418,33 @@ function isInt(   dev_obj   ){
     
     
 }
+function isNodeList(   dev_obj   ){
+
+
+    if(   dev_obj !== undefined   ){
+        
+        
+        if(   (   dev_obj.type.toString() || dev_obj.type.toLocaleString() || 'str'   ) === '[object NodeList]'   ){
+            
+            
+            return true
+            
+            
+        }
+        
+        
+        else if(   (   dev_obj.type.toString() || dev_obj.type.toLocaleString() || 'str'   ) !== '[object NodeList]'   ){
+            
+            
+            return false
+            
+            
+        }
+        
+    }
+    
+    
+}
 function eCSearch(   dev_obj   ){
     // .list, desired items
     // .look spot where to look and assert for list, if an object the items should be keys
@@ -614,25 +642,29 @@ function eCSearch(   dev_obj   ){
     */
 }// seaches for elements with the queried filters and does things to them
 function numberSystem(   dev_obj   ){
-        // .digits the number system itself
+        // this
+        // .digits the object holding the NS and its map
         /*
-            // .nSM, determines how the number receive digits min is as 1 then 10 then 1000
+            //.eCSNS a property in an object that contains the digits of the numbers as well the min max range of each digit
+                // .nSM, determines how the number receive digits min is as 1 then 10 then 1000
             
                 so forr
                 0:1
                 1:0
                 2:2
                 3::3
-                
-                                  0:{0:current,1:min,2:max}
-                the number system 1:{0:current,1:min,2:max}
-                                  2:{0:current,1:min,2:max}
-                                  3:{0:current,1:min,2:max}
-                                  
+                            .eCSNS:{
+                              0:{0:current,1:min,2:max}
+            the number system 1:{0:current,1:min,2:max}
+                              2:{0:current,1:min,2:max}
+                              3:{0:current,1:min,2:max}
+                                nSM:{}
+                            }
                 if the fn receives add 1 nS[1].current will increase by one
                 when ns[1].current hits the max then ns[0].current increases by one and
                     ns[1].current returns to zero
                 
+            
             
             // logic
             // once 0 hits max then 1   ... once 1 hits max then 2
@@ -1596,8 +1628,8 @@ function iterify(   dev_obj   ){
         
         var iterableO = ultraObject.iterableObject()
         
-                
-        if(   ultraObject.isArray(   {type:dev_obj.iterify}   )   ){
+        debugger
+        if(   ultraObject.isArray(   {type:dev_obj.iterify}   ) || ultraObject.isNodeList(   {type:dev_obj.iterify}   )   ){
             
             
             var iterableFL_0_i = {
@@ -2165,32 +2197,24 @@ function swap(   dev_obj   ){
 function preFillForm(   dev_obj   ){
     //findings
         //i find that form items are not dependent on the number of children, the form can have children than containing the input
-    preFillFormO = ultraObject.iterableObject()
-    var preFillFormFL_0_i = {
-        forLoop_0_i:0,
-        forLoopLength:dev_obj.allTags.length,
-        fn:function(   dev_obj   ){
-            preFillFormO.add(   {value:dev_obj.allTags[preFillFormFL_0_i.forLoop_0_i]}   )
-        },
-        args:{allTags:dev_obj.allTags}
-    }
-    ultraObject.forLoop(   preFillFormFL_0_i   )
+    preFillFormO = ultraObject.iterify(   {iterify:dev_obj.allTags}   )
     dev_obj.allTags = ultraObject.sort({
-            target: preFillFormO,
-            algorithm:'bubble',
-            compare:function(   dev_obj   ){
-                
-                
-                if(   dev_obj.val[dev_obj.index].childElementCount > dev_obj.val[dev_obj.index+ 1].childElementCount    ){
-                    
-                    
-                    return 'true'
-                    
-                    
-                }
-            },
-            result:'true'
+        target: preFillFormO,
+        algorithm:'bubble',
+        compare:function(   dev_obj   ){
             
+            
+            if(   dev_obj.val[dev_obj.index].childElementCount > dev_obj.val[dev_obj.index+ 1].childElementCount    ){
+                
+                
+                return 'true'
+                
+                
+            }
+            
+            
+        },
+        result:'true'
     })
     ultraObject.allTags.pFFATI = ultraObject.allTags.add(   {value:preFillFormO}   ) //number were all tags is located in the ultraObject
     console.group(   'sorting items by least children'   )
