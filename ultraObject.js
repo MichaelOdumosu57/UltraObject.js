@@ -640,12 +640,16 @@ function numberSystem(   dev_obj   ){
                 add, will be used for addition and subtract of decimal based integer values to the number system
                     it needs an .amount as an int
                 validate, make sure the resulting number obeys the NS laws
-                
+                compare, returns an itO of all required  compareisons as evaluations
+                    amount an itO of all comparison operators
+                    digits, an itO how it works digits[0] [operation] digits[1]
             */
         // .amount
             /*
                 if the operation is add, then this is the amount to add, negative int to subtract
+                if the operation is compare, this is a iterable Object of all desired comparisons
             */
+         
         console.group(   'providing the mechanism for the number system'   )
         
         
@@ -673,6 +677,30 @@ function numberSystem(   dev_obj   ){
                     }
             }
             ultraObject.forLoop(   numberSystemFL_1_i   )
+                        
+            
+        }
+        
+        
+        if(   dev_obj.operation === 'compare'   ){
+                    
+                                        
+            var numberSystemFL_2_i = {
+                forLoop_0_i:0,
+                forLoopLength:dev_obj.amount.length,
+                fn:function(   dev_obj   ){
+                    
+                    
+                    console.log(   dev_obj.amount[numberSystemFL_2_i.forLoop_0_i]   )
+                    
+                    
+                },
+                args:{
+                        digits:dev_obj.digits,
+                        amount:dev_obj.amount
+                    }
+            }
+            ultraObject.forLoop(   numberSystemFL_2_i   )
                         
             
         }
