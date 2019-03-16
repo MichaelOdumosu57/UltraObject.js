@@ -95,10 +95,12 @@ function ultraObjectReset(   dev_obj   ){
     
     allTags:iterableObject(), // represents serach range for the ultraObject concerning elements
     eCSearch:eCSearch,
+    
     isArray:isArray,
     isObject:isObject,
     isDOMElement:isDOMElement,
     isPrimitive:isPrimitive,
+    isInt:isInt,
     
     elementFound:iterableObject(), // holds found elements needed by the ultraObject
     removeCN:removeCN,
@@ -375,6 +377,8 @@ function isPrimitive(   dev_obj   ){
             
             
             return true
+            
+            
         }
         
         
@@ -382,6 +386,36 @@ function isPrimitive(   dev_obj   ){
     
     
     return false
+}
+function isInt(   dev_obj   ){
+    
+    
+    if(   dev_obj !== undefined   ){
+        //hope IIFE are in ES5
+        
+        if(   Number.isInteger(dev_obj.type) || (function() {
+          return typeof dev_obj.type === 'number' &&
+            isFinite(dev_obj.type) &&
+            Math.floor(dev_obj.type) === dev_obj.type;
+        })()   ){
+            
+            
+            return 'true'
+            
+            
+        }
+        
+        
+        else{
+            
+            return 'false'
+            
+            }
+    
+    
+    }
+    
+    
 }
 function eCSearch(   dev_obj   ){
     // .list, desired items
@@ -738,6 +772,16 @@ function numberSystem(   dev_obj   ){
         
         if(   dev_obj.operation === 'multiply'   ){
             
+            
+            if(   dev_obj.amount === 1   ){
+                
+                
+                //no -op
+                                
+                                
+            }
+            
+            
             if(   dev_obj.amount < 0   ){
                 
                 
@@ -795,11 +839,67 @@ function numberSystem(   dev_obj   ){
         if(   dev_obj.operation === 'divide'   ){
             
             
+            
+            if(   dev_obj.amount === 1   ){
+                
+                
+                //no -op
+                                
+                                
+            }
+            
+            
+            if(   dev_obj.amount <= 0   ){
+                
+                
+                throw(' in the decimal system divide by zero cannot be expressed so its an error. if the amount was negative, the implemnetation to express it is not available yet' )
+                
+                           
+            }
+            
+            
             var decimalNS = ultraObject.numberSystem({
                 digits:dev_obj.digits,
                 operation:'decimal',
-            })
+            })/dev_obj.amount
             
+            
+            if(   ultraObject.isInt(   {type:decimalNS}   ) === 'true'   ){
+                
+                
+                if(   dev_obj.amount > 1   ){
+                
+                
+                    var numberSystemFL_3_i = {
+                        forLoop_0_i:0,
+                        forLoopLength:dev_obj.amount-1,
+                        fn:function(   dev_obj   ){
+                            ultraObject.numberSystem({
+                                digits:dev_obj.digits,
+                                operation:'add',
+                                amount:-decimalNS
+                            })
+                        },
+                        args:{
+                            digits:dev_obj.digits
+                        }
+                    }
+                    ultraObject.forLoop(   numberSystemFL_3_i   )
+                                
+                                
+                }
+                
+                
+            }
+            
+            
+            else if(   ultraObject.isInt(   {type:decimalNS}   ) === 'false'   ){
+                
+                
+                console.error('the result must be an int no-op')
+                
+                
+            }
             
         }
         
@@ -1004,6 +1104,7 @@ function numberSystem(   dev_obj   ){
             
                         
         }
+        
         
         if(   dev_obj.operation === 'print' ){
             var NS_iter = []
