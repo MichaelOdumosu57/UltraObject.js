@@ -102,6 +102,7 @@ function ultraObjectReset(   dev_obj   ){
     isPrimitive:isPrimitive,
     isInt:isInt,
     isNodeList:isNodeList,
+    isitO:isitO,
     
     elementFound:iterableObject(), // holds found elements needed by the ultraObject
     removeCN:removeCN,
@@ -334,7 +335,7 @@ function isObject(   dev_obj   ){ // should combine all type query or keep seper
      if(   dev_obj !== undefined   ){
          
          
-        if(   !Array.isArray(dev_obj.type) && typeof(   dev_obj.type   ) === 'object'   ){
+        if(   !Array.isArray(dev_obj.type) && typeof(   dev_obj.type   ) === 'object' && dev_obj.type.isitO === undefined   ){
              //an array
              
             return true
@@ -425,7 +426,7 @@ function isNodeList(   dev_obj   ){
         
         
         if(   (   dev_obj.type.toString() || dev_obj.type.toLocaleString() || 'str'   ) === '[object NodeList]'   ){
-            
+            // if a polyfill is needed use severalOr to get a string
             
             return true
             
@@ -444,6 +445,20 @@ function isNodeList(   dev_obj   ){
     }
     
     
+}
+function isitO(   dev_obj   ){
+    
+    
+    if(   dev_obj.type.isitO !== undefined && dev_obj.type.isitO() === 'true'   ){
+        
+        
+        return true
+        
+        
+    }
+    
+    
+    return false
 }
 function eCSearch(   dev_obj   ){
     // .list, desired items
@@ -503,12 +518,19 @@ function eCSearch(   dev_obj   ){
                     
                     if(   ultraObject.allTags[ultraObject.allTags.eCSST].eCSNS[eCSearchFL_0_i.forLoop_0_i] !== undefined   ){
                     
-                        if(   eCSearchFL_0_i.forLoop_0_i === 0   ){
-                            ultraObject.numberSystem({
-                                digits:ultraObject.allTags[ultraObject.allTags.eCSST],
-                                operation:'add',
-                                amount: 1 //helps the function look at the next combination set
-                            })
+                    
+                        if(   dev_obj.same !== 'true'   ){
+                            //look at the next set of values
+                            
+                            if(   eCSearchFL_0_i.forLoop_0_i === 0   ){
+                                ultraObject.numberSystem({
+                                    digits:ultraObject.allTags[ultraObject.allTags.eCSST],
+                                    operation:'add',
+                                    amount: 1 //helps the function look at the next combination set
+                                })
+                            }
+                            
+                            
                         }
                         indexSelect = ultraObject.allTags[ultraObject.allTags.eCSST].eCSNS[eCSearchFL_0_i.forLoop_0_i][0]
                         console.log('it tells me to start here', indexSelect)
@@ -1616,7 +1638,10 @@ function iterableObject(   dev_obj   ){
                     },
                     result:'true'
             })
-        }
+        }, //if corrputed resets the lengths
+        isitO:function(   dev_obj   ){
+            return 'true'
+        }//confirms if its an itO, make it refuse to bind
      }
      return iterableObjectO
 } //retuns or converts an object with which you can easily iterate but this is an array accroding to chrome 72
@@ -1628,7 +1653,7 @@ function iterify(   dev_obj   ){
         
         var iterableO = ultraObject.iterableObject()
         
-        debugger
+        
         if(   ultraObject.isArray(   {type:dev_obj.iterify}   ) || ultraObject.isNodeList(   {type:dev_obj.iterify}   )   ){
             
             
@@ -1786,7 +1811,6 @@ function subGroups(   dev_obj   ){
                     forLoop_0_i:0,
                     forLoopLength:Object.keys(   ultraObject.subGroupsO[subGroupsBOOL.spot].ending   ).length,
                     fn:function(   dev_obj   ){
-                        console.log
                         subGroupsBOOL_1_i = ultraObject.severalOr({
                             compTo: ultraObject.subGroupsO[subGroupsBOOL.spot].ending[subGroupsFL_1_i.forLoop_0_i],
                             compAgn: ultraObject.subGroupsO[subGroupsBOOL.spot],
@@ -1921,42 +1945,57 @@ function selectAll(   dev_obj   ){
             
                 var selectAllBOOL = {0:false}
                 selectAllBOOL = ultraObject.severalOr({
-                            compTo: 'element',
-                            compAgn: dev_obj.typeOnly,
-                            boolean:selectAllBOOL,
-                            which:0
+                    compTo: 'element',
+                    compAgn: dev_obj.typeOnly,
+                    boolean:selectAllBOOL,
+                    which:0
                 })
-                if(   ultraObject.isObject({type:dev_obj.target}) && selectAllBOOL[0]   ){
+                
+                
+                if(   ultraObject.isObject(   {type:dev_obj.target}   ) || ultraObject.isitO(   {type:dev_obj.target}   ) && selectAllBOOL[0]   ){
                     
                     
                     var selectReturn = {}
-                    var selectReturnMD = {length:0,str:'',ending:{0:'element'}}//selectReturnMetaData contains grouping information about the .target
+                    var selectReturnMD = {
+                        length:0,
+                        str:'',
+                        ending:dev_obj.typeOnly
+                    }
+                    //selectReturnMetaData contains grouping information about the .target
                     var selectAllFL_0_i = {
                         forLoop_0_i:0,
-                        forLoopLength:Object.keys(   dev_obj.target   ).length,
+                        forLoopLength:dev_obj.length,
                         fn:function(   dev_obj   ){
                             console.log(   selectAllFL_0_i.forLoop_0_i,'walk in'   )
                             console.log(   Object.keys(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]   )
                             var selectCheckpoint = {}  // when it leave recurison it restore the values
                             ultraObject.subGroups({
-                                    map:selectReturnMD,
-                                    val:Object.keys(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i],
-                                })
+                                map:selectReturnMD,
+                                val:Object.keys(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i],
+                            })
+                        
+                            debugger
+                            if(   ultraObject.isObject(   {type:Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]}   ) || ultraObject.isitO(   {type:Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]}   )    ){
+                            }
                             
                             
                             if(   ultraObject.isDOMElement(   {type:Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]}   )   ){
+                                
+                                
                                 selectReturn[Object.keys(   selectReturn   ).length] = Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]
                                 ultraObject.subGroups({
-                                        map:selectReturnMD,
-                                        val:'element',
-                                        nextItem:'true',
-                                    })
+                                    map:selectReturnMD,
+                                    val:'element',
+                                    nextItem:'true',
+                                })
                                     
                                 
                             }
                             
                             
-                            else if(   ultraObject.isObject(   {type:Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]}   )   ){
+                            else if(   ultraObject.isObject(   {type:Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]}   ) || ultraObject.isitO(   {type:Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]}   )    ){
+                                
+                                
                                 console.group('recursion')
                                     selectCheckpoint.args = selectAllFL_0_i.args
                                     selectCheckpoint.forLoop_0_i =  selectAllFL_0_i.forLoop_0_i
@@ -1972,6 +2011,8 @@ function selectAll(   dev_obj   ){
                                 selectAllFL_0_i.forLoop_0_i = selectCheckpoint.forLoop_0_i
                                 selectAllFL_0_i.forLoopLength = selectCheckpoint.forLoopLength
                                 selectCheckpoint = null
+                                
+                                
                             }
                             
                         },
@@ -1999,9 +2040,10 @@ function selectAll(   dev_obj   ){
         
         
 }
+
 function packIt(   dev_obj   ){
     /*
-     .order what this fn is supposed to fill right now takes objects
+     .order what this fn is supposed to fill right now takes objects or itO is needs to find out what it is
      .directions, what its filling it with
         match use match map and match keys and fills values
         gather use ultraObject.selectAll to gather needed values to pack
@@ -2048,11 +2090,31 @@ function packIt(   dev_obj   ){
                 
                 if(   dev_obj.directions[packItFL_0_i.forLoop_0_i] === 'gather element'   ){
                         
-                                        
-                    packItSA = ultraObject.selectAll({
-                        target:dev_obj.order,
-                        typeOnly : {0:'element'}
-                    })
+                        
+                    if(    ultraObject.isObject(   {value:dev_obj.order}   )   ){
+                        
+                        
+                        packItSA = ultraObject.selectAll({
+                            target:dev_obj.order,
+                            typeOnly : {0:'element'},
+                            length:Object.keys(   dev_obj.order   ).length
+                        })
+                        
+                        
+                    }
+                    
+                    
+                    else if(   ultraObject.isitO(   {type:dev_obj.order}   )     ){
+                    
+                        debugger
+                        packItSA = ultraObject.selectAll({
+                            target:dev_obj.order,
+                            typeOnly : {0:'element'},
+                            length:dev_obj.order.length
+                        })
+                        
+                        
+                    }
                     
                     
                 }
@@ -2197,7 +2259,7 @@ function swap(   dev_obj   ){
 function preFillForm(   dev_obj   ){
     //findings
         //i find that form items are not dependent on the number of children, the form can have children than containing the input
-    preFillFormO = ultraObject.iterify(   {iterify:dev_obj.allTags}   )
+    var preFillFormO = ultraObject.iterify(   {iterify:dev_obj.allTags}   )
     dev_obj.allTags = ultraObject.sort({
         target: preFillFormO,
         algorithm:'bubble',
@@ -2217,52 +2279,37 @@ function preFillForm(   dev_obj   ){
         result:'true'
     })
     ultraObject.allTags.pFFATI = ultraObject.allTags.add(   {value:preFillFormO}   ) //number were all tags is located in the ultraObject
-    console.group(   'sorting items by least children'   )
-    ultraObject.objInvloved({
-            // 0:preFillFormO,
+    /*
+        console.group(   'sorting items by least children'   )
+        ultraObject.objInvloved({
+                // 0:preFillFormO,
         })
-    console.groupEnd()
+        console.groupEnd()
+    */
     ultraObject.eCSearch({
         list:dev_obj.list,
         look:dev_obj.look,
         aTIndex: ultraObject.allTags.pFFATI
     })
     ultraObject.eCSearch({
-        list:{
-                    'LinkedIn Profile':'https://www.linkedin.com/in/michael-odumosu-a58367b1',
-                    'Website':'https://ualbanyasist.github.io/',
-                    'How did you hear about this job?':'Linkedin',
-                    'Phone': '$80,000'},
-        look:{ 'innerHTML':null,'innerText':null,'textContent':null},
+        list:dev_obj.list,
+        look:dev_obj.look,
         aTIndex: ultraObject.allTags.pFFATI
     })
     console.group(   'at this point the uO has meaningful values for all arguments from the init fn'   )
     ultraObject.objInvloved({
-            // 0:preFillFormO,
-        })
-    console.groupEnd()
-    ultraObject.removeOP({rules:'duplicates'})
-    throw('e') //left off here properly organized
-    ultraObject.identifyE({
-                action:'preFill'
-            })
-    console.group('identified elements')
-    ultraObject.objInvloved({
-            0:ultraObject.elementFound,
-            1:ultraObject.identifyEO,
-            2:ultraObject.forLoop,
-            3:ultraObject.objInvloved
-        })
+        0:ultraObject.allTags[ultraObject.allTags.eCSST],
+    })
     console.groupEnd()
     ultraObject.packIt({
-        order:ultraObject.identifyEO,
+        order:ultraObject.allTags[ultraObject.allTags.eCSST],
         directions:{
                         0:'gather element',
                         1:'match',
-                        length:1
+                        length:2
                     },
-        matchMap:ultraObject.elementFound
     })
+    throw('e') //left off here properly organized
 }
 
             preFillForm({
