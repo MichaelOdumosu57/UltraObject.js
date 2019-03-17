@@ -932,7 +932,7 @@ function numberSystem(   dev_obj   ){
         }
         
         
-        if(   dev_obj.operation === 'add' ){
+        if(   dev_obj.operation === 'add'  ){
             //you might not supposed to be chaning the value of dev_obj.amount becuase wher it leaves here it calls its its original amount but this should work properly
             
                                     
@@ -1134,19 +1134,19 @@ function numberSystem(   dev_obj   ){
         }
         
         
-        if(   dev_obj.operation === 'print' ){
+        if(   dev_obj.operation === 'print'   ){
             var NS_iter = []
-            var debugFL_0_i = {
+            var numberSystemFL_1_i = {
                 forLoop_0_i:0,
                 forLoopLength:dev_obj.digits.eCSNS.nSM.length,
                 fn:function(   dev_obj   ){
-                    NS_iter.push(   dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[debugFL_0_i.forLoop_0_i]][0]  )
+                    NS_iter.push(   dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_1_i.forLoop_0_i]][0]  )
                 },
                 args:{
                         digits:dev_obj.digits
                     }
             }
-            ultraObject.forLoop(   debugFL_0_i   )
+            ultraObject.forLoop(   numberSystemFL_1_i   )
             console.log('current number',NS_iter)
         }
         
@@ -1965,8 +1965,8 @@ function selectAll(   dev_obj   ){
                         forLoop_0_i:0,
                         forLoopLength:dev_obj.length,
                         fn:function(   dev_obj   ){
-                            console.log(   selectAllFL_0_i.forLoop_0_i,'walk in'   )
-                            console.log(   Object.keys(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]   )
+                            // console.log(   selectAllFL_0_i.forLoop_0_i,'walk in'   )
+                            // console.log(   Object.keys(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]   )
                             var selectCheckpoint = {}  // when it leave recurison it restore the values
                             
                             
@@ -2002,7 +2002,7 @@ function selectAll(   dev_obj   ){
                             else if(   ultraObject.isObject(   {type:Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]}   ) || ultraObject.isitO(   {type:Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]}   )    ){
                                 
                                 
-                                console.group('recursion')
+                                // console.group('recursion')
                                     selectCheckpoint.args = selectAllFL_0_i.args
                                     selectCheckpoint.forLoop_0_i =  selectAllFL_0_i.forLoop_0_i
                                     selectCheckpoint.forLoopLength = selectAllFL_0_i.forLoopLength
@@ -2012,7 +2012,7 @@ function selectAll(   dev_obj   ){
                                     selectAllFL_0_i.forLoop_0_i = 0
                                     selectAllFL_0_i.forLoopLength = Object.values(   Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]   ).length
                                     ultraObject.forLoop(   selectAllFL_0_i   )
-                                console.groupEnd()
+                                // console.groupEnd()
                                 selectAllFL_0_i.args = selectCheckpoint.args
                                 selectAllFL_0_i.forLoop_0_i = selectCheckpoint.forLoop_0_i
                                 selectAllFL_0_i.forLoopLength = selectCheckpoint.forLoopLength
@@ -2032,7 +2032,6 @@ function selectAll(   dev_obj   ){
                     console.group(   'grabbing the chosen elements from the object'   )
                         ultraObject.objInvloved({
                                 0:selectReturn,
-                                1:ultraObject.identifyEO,
                                 2:selectReturnMD
                             })
                     console.groupEnd()
@@ -2047,14 +2046,16 @@ function selectAll(   dev_obj   ){
         
 }
 function packIt(   dev_obj   ){
+    //for the the .fill and .write it expects them to be prefined in an iterable for .fill this must be found as a property in of the items in packItSA for .write this must be fount as a property in on of the items for dev_obj.order
     /*
-     .order what this fn is supposed to fill right now takes objects or itO is needs to find out what it is
-     .directions, what its filling it with
-        match use match map and match keys and fills values
-        gather use ultraObject.selectAll to gather needed values to pack
-            element, return only elements from the order
-     .matchMap if .directions === match map keys and fill values
-     .fill  where to place the items
+         .order what this fn is supposed to fill right now takes objects or itO is needs to find out what it is
+         .directions, what its filling it with
+            match use match map and match keys and fills values
+            gather use ultraObject.selectAll to gather needed values to pack
+                element, return only elements from the order
+         .matchMap if .directions === match map keys and fill values
+         .fill  where to place the items
+         .write what to place for each fill value
     */
     
     
@@ -2073,8 +2074,7 @@ function packIt(   dev_obj   ){
                         ultraObject.objInvloved({
                                 0:packItSA,
                                 1:dev_obj.order,
-                                2:ultraObject.elementFound,
-                                3:ultraObject.subGroupsO
+                                2:ultraObject.subGroupsO
                             })
                     console.groupEnd()
                     var packItFL_1_i = {
@@ -2084,7 +2084,7 @@ function packIt(   dev_obj   ){
                             packItSA[packItFL_1_i.forLoop_0_i][dev_obj.fill] = dev_obj.order[packItFL_1_i.forLoop_0_i][dev_obj.write]
                             //properly writes to the item that should be filled
                             // console.log(   dev_obj.order[packItFL_1_i.forLoop_0_i][dev_obj.write]   )
-                            console.log(   packItSA[packItFL_1_i.forLoop_0_i].value   )
+                            // console.log(   packItSA[packItFL_1_i.forLoop_0_i].value   )
                         },
                         args:{
                             fill:dev_obj.fill,
@@ -2303,15 +2303,10 @@ function preFillForm(   dev_obj   ){
         look:dev_obj.look,
         aTIndex: ultraObject.allTags.pFFATI
     })
-    ultraObject.eCSearch({
-        list:dev_obj.list,
-        look:dev_obj.look,
-        aTIndex: ultraObject.allTags.pFFATI
-    })
     console.group(   'at this point the uO has meaningful values for all arguments from the init fn'   )
-    ultraObject.objInvloved({
-        0:ultraObject.allTags[ultraObject.allTags.eCSST],
-    })
+    // ultraObject.objInvloved({
+    //     0:ultraObject.allTags[ultraObject.allTags.eCSST],
+    // })
     console.groupEnd()
     ultraObject.packIt({
         order:ultraObject.allTags[ultraObject.allTags.eCSST],
@@ -2326,7 +2321,8 @@ function preFillForm(   dev_obj   ){
     })
     throw('e')
 }
-
+            
+            //it actually completely ignores the fact that the name might not be mentioned in where it needs to go, check every elements that matches at least check their children, or just a combination of every item and have the an end user specify what is correct acoording to memory
             preFillForm({
                 // allTags : [document.querySelectorAll("body *")[129],document.querySelectorAll("body *")[135],document.querySelectorAll("body *")[140],document.querySelectorAll("body *")[147]],
                 allTags:document.querySelectorAll("body *:not(script)"), // bug it just grabs the whole query
