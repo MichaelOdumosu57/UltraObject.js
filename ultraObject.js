@@ -1785,7 +1785,6 @@ function subGroups(   dev_obj   ){
             //gets rid of bad results
             
             
-            
             console.group(   'complete'   )
                 ultraObject.subGroupsO[subGroupsBOOL.spot].length = 0
                 var subGroupsFL_0_i = {
@@ -1817,7 +1816,7 @@ function subGroups(   dev_obj   ){
                             boolean:subGroupsBOOL_1_i,
                             which:0,
                             how:function(   dev_obj   ){
-                                
+                            //this removes bad list that do not lead to an element
                                 
                                 if(   dev_obj.compAgnI !== undefined   ){
                                     
@@ -1970,9 +1969,10 @@ function selectAll(   dev_obj   ){
                             console.log(   Object.keys(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]   )
                             var selectCheckpoint = {}  // when it leave recurison it restore the values
                             
-                                                        
-                            if(   (   ultraObject.isObject(   {type:Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]}   ) || ultraObject.isitO(   {type:Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]}   )   )    ){
+                            
+                            if(   (   ultraObject.isObject(   {type:Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]}   ) || ultraObject.isitO(   {type:Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]}   )   ) || ultraObject.isDOMElement(   {type:Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]}   )     ){
                                 //I cannot add it if its a primitive not an object or an itO
+                                //done like this because what if im looking for a string, this would evaluate to false and the subGroupMap would be improper
                                 
                                 ultraObject.subGroups({
                                     map:selectReturnMD,
@@ -2046,7 +2046,6 @@ function selectAll(   dev_obj   ){
         
         
 }
-
 function packIt(   dev_obj   ){
     /*
      .order what this fn is supposed to fill right now takes objects or itO is needs to find out what it is
@@ -2055,6 +2054,7 @@ function packIt(   dev_obj   ){
         gather use ultraObject.selectAll to gather needed values to pack
             element, return only elements from the order
      .matchMap if .directions === match map keys and fill values
+     .fill  where to place the items
     */
     
     
@@ -2072,21 +2072,26 @@ function packIt(   dev_obj   ){
                     console.group(   'an attempt to fill items'   )
                         ultraObject.objInvloved({
                                 0:packItSA,
-                                1:ultraObject.identifyEO,
+                                1:dev_obj.order,
                                 2:ultraObject.elementFound,
                                 3:ultraObject.subGroupsO
                             })
                     console.groupEnd()
                     var packItFL_1_i = {
                         forLoop_0_i:0,
-                        forLoopLength:packItSA.subGroupsMap.length,
+                        forLoopLength:packItSA.subGroupsMap.MB_0_i.length,
                         fn:function(   dev_obj   ){
-                            console.log(   packItSA[packItFL_1_i.forLoop_0_i],packItSA.subGroupsMap.MB_0_i[packItFL_1_i.forLoop_0_i][0],ultraObject.elementFound[packItSA.subGroupsMap.MB_0_i[packItFL_1_i.forLoop_0_i][0]   ].keyword   )
+                            debugger
+                            console.log(   packItSA[packItFL_1_i.forLoop_0_i],
+                            packItSA.subGroupsMap.MB_0_i[packItFL_1_i.forLoop_0_i][0],
+                            ultraObject.elementFound[packItSA.subGroupsMap.MB_0_i[packItFL_1_i.forLoop_0_i][0]   ].keyword   )
                             
-                            packItSA[packItFL_1_i.forLoop_0_i].value = ultraObject.elementFound[packItSA.subGroupsMap.MB_0_i[packItFL_1_i.forLoop_0_i][0]   ].valuePhrase
+                            packItSA[packItFL_1_i.forLoop_0_i][dev_obj.fill] = ultraObject.elementFound[packItSA.subGroupsMap.MB_0_i[packItFL_1_i.forLoop_0_i][0]   ].valuePhrase
                             
                         },
-                        args:{}
+                        args:{
+                            fill:dev_obj.fill
+                        }
                     }
                     ultraObject.forLoop(   packItFL_1_i   )
                     
@@ -2112,7 +2117,7 @@ function packIt(   dev_obj   ){
                     
                     else if(   ultraObject.isitO(   {type:dev_obj.order}   )     ){
                     
-                        debugger
+                        
                         packItSA = ultraObject.selectAll({
                             target:dev_obj.order,
                             typeOnly : {0:'element'},
@@ -2128,7 +2133,8 @@ function packIt(   dev_obj   ){
             },
             args:{
                 directions:dev_obj.directions,
-                order:dev_obj.order
+                order:dev_obj.order,
+                fill:dev_obj.fill
             }
         }
         ultraObject.forLoop(   packItFL_0_i   )
@@ -2314,6 +2320,7 @@ function preFillForm(   dev_obj   ){
                         1:'match',
                         length:2
                     },
+        fill:'value'
     })
     throw('e')
 }
