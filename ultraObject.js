@@ -27,7 +27,7 @@
 // SA for a selectAll object
 // O stands for Object for this functionality like thisfn has thisfnO
 // itO stands for iterableObject
-// MB_0_i stands for memory bank used when its hard to contain needed data inside a nested function
+// MB_0_i stands for memory bank used when its hard to contain needed data inside a nested function. its also used as the brain of the API to access every related to its project purpose
 // q[int] repesentes the access spot for a cloned purpose object in an itO, used to figure out how to access theses
 // for the remiidify API
     // not sure if calls should be functions or methods which is easier for ultraObject to survivce
@@ -125,6 +125,7 @@ function ultraObjectReset(   dev_obj   ){
     iterableObject:iterableObject,
     iterify:iterify,
     MB_0_i:iterableObject(), // memory bank for functionality thats needs misc. in several places
+    scope:iterableObject(),// makes it very easy for functions to access items made for a project purpose, once done it must be emptied
     
     sort:sort,
     swap:swap,
@@ -1532,7 +1533,7 @@ function iterableObject(   dev_obj   ){
         add:function(   dev_obj   ){// returns the index that it was added to an object
                 iterableObjectO[iterableObjectO.length] = dev_obj.value
                 iterableObjectO.length += 1
-                iterableObjectO['q'+(iterableObjectO.length -1).toString()] = iterableObjectO.length -1
+                // iterableObjectO['q'+(iterableObjectO.length -1).toString()] = iterableObjectO.length -1
                 return iterableObjectO.length -1
             },// adds a value and retuns its place in the array
         minus:function(   dev_obj   ){
@@ -1543,7 +1544,7 @@ function iterableObject(   dev_obj   ){
                 
                 
                 delete iterableObjectO[dev_obj.index]
-                delete iterableObjectO['q'+dev_obj.index.toString()]
+                // delete iterableObjectO['q'+dev_obj.index.toString()]
                 iterableObjectO.resetLength()// resets the length
                 var iterableObjectFL_0_i = {
                     forLoop_0_i:0,
@@ -1587,7 +1588,7 @@ function iterableObject(   dev_obj   ){
                     
                     var iterableObjectTDI = iterableObjectO_BOOL.spot // index to remove
                     delete iterableObjectO[iterableObjectTDI]
-                    delete iterableObjectO['q'+iterableObjectTDI.toString()]
+                    // delete iterableObjectO['q'+iterableObjectTDI.toString()]
                     iterableObjectO.resetLength()
                     var iterableObjectFL_1_i = {
                         forLoop_0_i:0,
@@ -2277,14 +2278,11 @@ function swap(   dev_obj   ){
 function preFillForm(   dev_obj   ){
     //findings
         //i find that form items are not dependent on the number of children, the form can have children than containing the input
-    ultraObject.allTags.add(   {value:ultraObject.iterify(   {iterify:dev_obj.allTags}   )}   )
-    ultraObject.objInvloved({
-            0:ultraObject.allTags,
-    })
-    debugger
-    return
-    dev_obj.allTags = ultraObject.sort({
-        target: preFillFormO,
+        //we are forced to make an outside variable just to access objects we must ask how to access these only using the ultraObject
+    var pFFATI_0_i = ultraObject.scope.add(   {value:ultraObject.allTags.add(   {value:ultraObject.iterify(   {iterify:dev_obj.allTags}   )}   )}   )
+    // ultraObject.MB_0_i[0] contiains allTags needed for this API
+    ultraObject.sort({
+        target: ultraObject.allTags[ultraObject.scope[pFFATI_0_i]],
         algorithm:'bubble',
         compare:function(   dev_obj   ){
             
@@ -2301,6 +2299,13 @@ function preFillForm(   dev_obj   ){
         },
         result:'true'
     })
+    ultraObject.objInvloved({
+        0:ultraObject.allTags,
+        1:ultraObject.scope,
+        2:pFFATI_0_i
+    })
+    debugger
+    return
     ultraObject.allTags.pFFATI = ultraObject.allTags.add(   {value:preFillFormO}   ) //number were all tags is located in the ultraObject
     
         console.group(   'sorting items by least children'   )
