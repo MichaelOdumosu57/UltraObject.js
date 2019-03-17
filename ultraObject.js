@@ -1937,7 +1937,7 @@ function subGroups(   dev_obj   ){
 }// returns ordering information about nested items
 function selectAll(   dev_obj   ){
         // this function also returns the group ordering if looked for nested items
-        //.target item to get all values from
+        //.target item to get all values from must be an itO or an object
         // .typeOnly, what specific values were looking for
     
         if(   dev_obj !== undefined   ){
@@ -1969,13 +1969,17 @@ function selectAll(   dev_obj   ){
                             console.log(   selectAllFL_0_i.forLoop_0_i,'walk in'   )
                             console.log(   Object.keys(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]   )
                             var selectCheckpoint = {}  // when it leave recurison it restore the values
-                            ultraObject.subGroups({
-                                map:selectReturnMD,
-                                val:Object.keys(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i],
-                            })
-                        
-                            debugger
-                            if(   ultraObject.isObject(   {type:Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]}   ) || ultraObject.isitO(   {type:Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]}   )    ){
+                            
+                                                        
+                            if(   (   ultraObject.isObject(   {type:Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]}   ) || ultraObject.isitO(   {type:Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]}   )   )    ){
+                                //I cannot add it if its a primitive not an object or an itO
+                                
+                                ultraObject.subGroups({
+                                    map:selectReturnMD,
+                                    val:Object.keys(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i],
+                                })
+                                
+                                
                             }
                             
                             
@@ -1988,6 +1992,8 @@ function selectAll(   dev_obj   ){
                                     val:'element',
                                     nextItem:'true',
                                 })
+                                // return 'premature'
+                                //this might leave some impt things behind
                                     
                                 
                             }
@@ -2309,7 +2315,7 @@ function preFillForm(   dev_obj   ){
                         length:2
                     },
     })
-    throw('e') //left off here properly organized
+    throw('e')
 }
 
             preFillForm({
