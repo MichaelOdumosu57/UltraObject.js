@@ -2081,16 +2081,15 @@ function packIt(   dev_obj   ){
                         forLoop_0_i:0,
                         forLoopLength:packItSA.subGroupsMap.MB_0_i.length,
                         fn:function(   dev_obj   ){
-                            debugger
-                            console.log(   packItSA[packItFL_1_i.forLoop_0_i],
-                            packItSA.subGroupsMap.MB_0_i[packItFL_1_i.forLoop_0_i][0],
-                            ultraObject.elementFound[packItSA.subGroupsMap.MB_0_i[packItFL_1_i.forLoop_0_i][0]   ].keyword   )
-                            
-                            packItSA[packItFL_1_i.forLoop_0_i][dev_obj.fill] = ultraObject.elementFound[packItSA.subGroupsMap.MB_0_i[packItFL_1_i.forLoop_0_i][0]   ].valuePhrase
-                            
+                            packItSA[packItFL_1_i.forLoop_0_i][dev_obj.fill] = dev_obj.order[packItFL_1_i.forLoop_0_i][dev_obj.write]
+                            //properly writes to the item that should be filled
+                            // console.log(   dev_obj.order[packItFL_1_i.forLoop_0_i][dev_obj.write]   )
+                            console.log(   packItSA[packItFL_1_i.forLoop_0_i].value   )
                         },
                         args:{
-                            fill:dev_obj.fill
+                            fill:dev_obj.fill,
+                            order:dev_obj.order,
+                            write:dev_obj.write
                         }
                     }
                     ultraObject.forLoop(   packItFL_1_i   )
@@ -2134,7 +2133,8 @@ function packIt(   dev_obj   ){
             args:{
                 directions:dev_obj.directions,
                 order:dev_obj.order,
-                fill:dev_obj.fill
+                fill:dev_obj.fill,
+                write:dev_obj.write
             }
         }
         ultraObject.forLoop(   packItFL_0_i   )
@@ -2320,7 +2320,9 @@ function preFillForm(   dev_obj   ){
                         1:'match',
                         length:2
                     },
-        fill:'value'
+        fill:'value',
+        write:'valuePhrase'
+        
     })
     throw('e')
 }
