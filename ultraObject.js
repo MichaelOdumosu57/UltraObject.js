@@ -8,7 +8,7 @@
 // if node use exports or figure how to get external modules in here
 
 // an OOP way to do everything javascript, I meant to have this done in python with a superclass oh well
-// for meaningful use, every property purpose is easily availble to each other
+// for meaningful use, every property purpose is easily availble to each other and you can have several of them
 
 //if your find problems search PROBLEMS to see whats going on
 
@@ -28,6 +28,7 @@
 // O stands for Object for this functionality like thisfn has thisfnO
 // itO stands for iterableObject
 // MB_0_i stands for memory bank used when its hard to contain needed data inside a nested function
+// q[int] repesentes the access spot for a cloned purpose object in an itO, used to figure out how to access theses
 // for the remiidify API
     // not sure if calls should be functions or methods which is easier for ultraObject to survivce
 /*
@@ -58,7 +59,7 @@ function (   dev_obj   ){
 /*
 items that should be placed in the ultraObject
     finished products that are to be used by other API, they shold be stored in an iterableObject and used using iterableObject methods
-    all objects with a specific purpose should be stored in seperate itO
+    all objects with a specific purpose should be stored in seperate indexes in an itO
     functions
     absolute primitive values like Infinity or XMLHTTPRequest
         
@@ -1531,6 +1532,7 @@ function iterableObject(   dev_obj   ){
         add:function(   dev_obj   ){// returns the index that it was added to an object
                 iterableObjectO[iterableObjectO.length] = dev_obj.value
                 iterableObjectO.length += 1
+                iterableObjectO['q'+(iterableObjectO.length -1).toString()] = iterableObjectO.length -1
                 return iterableObjectO.length -1
             },// adds a value and retuns its place in the array
         minus:function(   dev_obj   ){
@@ -1540,7 +1542,8 @@ function iterableObject(   dev_obj   ){
             if(   dev_obj.index !== undefined   ){
                 
                 
-                delete iterableObjectO[iterableObjectO_BOOL.spot]
+                delete iterableObjectO[dev_obj.index]
+                delete iterableObjectO['q'+dev_obj.index.toString()]
                 iterableObjectO.resetLength()// resets the length
                 var iterableObjectFL_0_i = {
                     forLoop_0_i:0,
@@ -1557,7 +1560,9 @@ function iterableObject(   dev_obj   ){
                             
                         }
                     },
-                    args:{}
+                    args:{
+                        index:dev_obj.index
+                        }
                 }
                 ultraObject.forLoop(   iterableObjectFL_0_i   ) // realigns the iterable so the index are consecutive again
                 
@@ -1582,6 +1587,7 @@ function iterableObject(   dev_obj   ){
                     
                     var iterableObjectTDI = iterableObjectO_BOOL.spot // index to remove
                     delete iterableObjectO[iterableObjectTDI]
+                    delete iterableObjectO['q'+iterableObjectTDI.toString()]
                     iterableObjectO.resetLength()
                     var iterableObjectFL_1_i = {
                         forLoop_0_i:0,
@@ -2271,7 +2277,12 @@ function swap(   dev_obj   ){
 function preFillForm(   dev_obj   ){
     //findings
         //i find that form items are not dependent on the number of children, the form can have children than containing the input
-    var preFillFormO = ultraObject.iterify(   {iterify:dev_obj.allTags}   )
+    ultraObject.allTags.add(   {value:ultraObject.iterify(   {iterify:dev_obj.allTags}   )}   )
+    ultraObject.objInvloved({
+            0:ultraObject.allTags,
+    })
+    debugger
+    return
     dev_obj.allTags = ultraObject.sort({
         target: preFillFormO,
         algorithm:'bubble',
@@ -2291,13 +2302,13 @@ function preFillForm(   dev_obj   ){
         result:'true'
     })
     ultraObject.allTags.pFFATI = ultraObject.allTags.add(   {value:preFillFormO}   ) //number were all tags is located in the ultraObject
-    /*
+    
         console.group(   'sorting items by least children'   )
         ultraObject.objInvloved({
                 // 0:preFillFormO,
         })
         console.groupEnd()
-    */
+    
     ultraObject.eCSearch({
         list:dev_obj.list,
         look:dev_obj.look,
