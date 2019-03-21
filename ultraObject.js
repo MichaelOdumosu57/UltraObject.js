@@ -25,6 +25,12 @@
     // when  an item from args is needed, it is put into a scope and added to a meanigunful property representation name in the ultraObject,
     //there will be a function implemented if the developer needs a copy or changes can reflect in the args
     
+//var const and let in function must only represent the index of and item coming from uO.scope
+
+//to access items you must get it though the index in the scope
+// if a outer function needs a scope location from the inner function which started in the inner function use, .itO.abelast which is an itO in order to pull it out
+    
+    
 
 //is {}[] allowed in ES5 ??
 //should items be accessed through the ultraObject because mabye sometimes we cannot call it as a method
@@ -513,9 +519,9 @@ function eCSearch(   dev_obj   ){
         
     console.group(   'items needed to search for elements based on keywords'   )
     ultraObject.objInvloved({
-            0:ultraObject.allTags[ultraObject.scope[dev_obj.aT]],
-            1:ultraObject.misc[ultraObject.scope[dev_obj.list]],
-            2:ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]]
+        0:ultraObject.allTags[ultraObject.scope[dev_obj.aT]],
+        1:ultraObject.misc[ultraObject.scope[dev_obj.list]],
+        2:ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]]
     })
     console.groupEnd()
     var eCSearchFL_0_i = {
@@ -656,7 +662,6 @@ function eCSearch(   dev_obj   ){
         digits:ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]],
         operation:'print',
     })
-    debugger
     ultraObject.scope.minus(   {index:eCSSelectTags_0_i}   )
     // find the first that matches the condition, and hold it when all four match exit, if the form doesn't like what I did each value must try everything in the allTapgs itO before telling the end user they cant figure out whats going on.grabs three and swaps one
     
@@ -1541,9 +1546,19 @@ function objectLength(   dev_obj   ){ // finds object lenghts
 }
 function iterableObject(   dev_obj   ){
     //. value the actual item your are adding to the object
+    // .stop for the abelast
+    if(   dev_obj === undefined   ){
+        
+        
+        var dev_obj  = {stop : 'false'}
+        
+        
+    }
+    
     
      var iterableObjectO = {
         length:0,
+        abelast: dev_obj.stop === 'true' ? iterableObject({stop:'true'}) : null, // if outer function do not have access to scope from the inner functions, the inner function places the required info heree
         add:function(   dev_obj   ){// returns the index that it was added to an object
                 iterableObjectO[iterableObjectO.length] = dev_obj.value
                 iterableObjectO.length += 1
@@ -2090,7 +2105,7 @@ function packIt(   dev_obj   ){
                 
                                     
                 if(   dev_obj.directions[packItFL_0_i.forLoop_0_i] === 'match'   ){
-                    
+                    debugger
                     console.group(   'an attempt to fill items'   )
                         ultraObject.objInvloved({
                                 0:packItSA,
@@ -2293,6 +2308,7 @@ function preFillForm(   dev_obj   ){
     //findings
         //i find that form items are not dependent on the number of children, the form can have children than containing the input
         //we are forced to make an outside variable just to access objects we must ask how to access these only using the ultraObject
+        debugger
     var preFillForm_dev_obj = ultraObject.args.add(   {value:ultraObject.iterify(   {iterify:dev_obj}   )   }   ) // decided to replace or make room on addition
     var pFFATI_0_i = ultraObject.scope.add(   {value:ultraObject.allTags.add(   {value:ultraObject.iterify(   {iterify:dev_obj.allTags}   )}   )}   )
     ultraObject.sort({
@@ -2334,8 +2350,9 @@ function preFillForm(   dev_obj   ){
     //     0:ultraObject.allTags[ultraObject.allTags.eCSST],
     // })
     console.groupEnd()
+    
     ultraObject.packIt({
-        order:ultraObject.allTags[ultraObject.scope[dev_obj.aT]],
+        order:ultraObject.selectTags[ultraObject.scope[pFFATI_0_i]],
         directions:{
                         0:'gather element',
                         1:'match',
