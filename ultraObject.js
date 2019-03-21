@@ -20,6 +20,11 @@
 
 //uO is designed to recover from the unexecpted make sure all needed values have defaults the cover all possibilites the microservice may run into
 
+//for every single function call its arogumetns must be held in ultraObject.args when the function dies or its args are not needed,
+//they are taken from their place in the args. they are each put into another itO with an index just in case of recusion
+    // when  an item from args is needed, it is put into a scope and added to a meanigunful property representation name in the ultraObject,
+    //there will be a function implemented if the developer needs a copy or changes can reflect in the args
+
 //is {}[] allowed in ES5 ??
 // templates
 // FL_0_i for loop object in the purpose action
@@ -95,6 +100,7 @@ function ultraObjectReset(   dev_obj   ){
     pretty_do:pretty_do,
     
     allTags:iterableObject(), // represents serach range for the ultraObject concerning elements
+    selectTags:iterableObject(), // represents a set of chosen items
     eCSearch:eCSearch,
     
     isArray:isArray,
@@ -126,7 +132,9 @@ function ultraObjectReset(   dev_obj   ){
     iterify:iterify,
     MB_0_i:iterableObject(), // memory bank for functionality thats needs misc. in several places
     scope:iterableObject(),// makes it very easy for functions to access items made for a project purpose, once done it must be emptied
-    
+    // to access  ultraObject.allTags[ultraObject.scope[pFFATI_0_i]]
+    args:iterableObject(), // representing the dev_obj from the project purose
+
     sort:sort,
     swap:swap,
     
@@ -290,24 +298,24 @@ function pretty_do(   dev_obj   ){
                                     this.notes_collection += "\n" + this.notes_entries[i][0] + Array(   this.max  - this.notes_entries[i][0].length + this.seperator ).join(" ") + this.s_key
                                     
                                     
-                                     	if(   typeof(   this.notes_entries[i][1]   ) == 'object'   ){
+                                        if(   typeof(   this.notes_entries[i][1]   ) == 'object'   ){
                                 
                                 
-                                     		this.notes_collection += JSON.stringify(   this.notes_entries[i][1],null,2   )
+                                            this.notes_collection += JSON.stringify(   this.notes_entries[i][1],null,2   )
                                 
                                 
-                                     	}
-                                     	
-                                     	
-                                     	else{
+                                        }
+                                        
+                                        
+                                        else{
                                 
                                 
-                                     		this.notes_collection += this.notes_entries[i][1]
+                                            this.notes_collection += this.notes_entries[i][1]
                                 
                                 
-                                     	}
-                                     	
-                                     	
+                                        }
+                                        
+                                        
                                 }
                                 return this.notes_collection
                             }
@@ -471,6 +479,7 @@ function eCSearch(   dev_obj   ){
     // look through innerHTML, innerText, textContext
     // holds the found elements that meet the query in ultraObject.elementFound
     
+    var eCSearch_dev_obj = ultraObject.args.add(   {value:ultraObject.iterify(   {iterify:dev_obj}   )   }   )
     
     var eCSearchLook
     var eCSearchList
@@ -481,22 +490,24 @@ function eCSearch(   dev_obj   ){
     if(   dev_obj !== undefined   ){
         
         
-        eCSearchLook = ultraObject.iterify(   {iterify:dev_obj.look}   )
-        eCSearchList = ultraObject.iterify(   {iterify:dev_obj.list}   )
+        eCSearchLook = ultraObject.misc[ultraObject.scope[dev_obj.look]]
+        eCSearchList = ultraObject.misc[ultraObject.scope[dev_obj.list]]
 
 
     }
     
     
-    if(   ultraObject.allTags.eCSST === undefined   ){
+    if(   eCSSelectTags_0_i === undefined   ){
         
+        var eCSSelectTags_0_i = ultraObject.scope.add(   {value:ultraObject.selectTags.add(   {value:ultraObject.iterableObject()}   )}   )
+        ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].eCSNS = ultraObject.iterableObject()
         
-        ultraObject.allTags.eCSST = ultraObject.allTags.add(   {value:ultraObject.iterableObject()}   )
-        ultraObject.allTags[ultraObject.allTags.eCSST].eCSNS = ultraObject.iterableObject()
         
     }
     
     
+    debugger
+    throw('e')
     console.group(   'items needed to search for elements based on keywords'   )
     ultraObject.objInvloved({
             0:ultraObject.allTags[dev_obj.aTIndex],
@@ -1739,13 +1750,13 @@ function subGroups(   dev_obj   ){
     // if on item map is longer than the other, the first contains the parent
     // if the items after are as long as the first, then the next item contains the parent for the next set
     //
-/*
-"0 item 0 item element " parent
-"1 item element "       children
-"2 item element "
-"1 item 0 item element " parent
-....
-*/
+        /*
+        "0 item 0 item element " parent
+        "1 item element "       children
+        "2 item element "
+        "1 item 0 item element " parent
+        ....
+        */
         //
     
     if(   dev_obj !== undefined   ){
@@ -2173,30 +2184,30 @@ function sort(   dev_obj   ){
                 
                 if(   dev_obj.algorithm  === 'bubble'   ){
                     
-                            	        
-        	        if(   dev_obj.compare(   {val:dev_obj.target,   index:sortFL_0_i.forLoop_0_i}   ) === dev_obj.result    ){
-        	            
-        	                sortFlagO[sortFlagO.bubble]  = 'false'
-        	                sortFL_0_i.itO.swapO = sortFL_0_i.itO.add(   {value:ultraObject.iterableObject()}   )
-        	                sortFL_0_i.itO[sortFL_0_i.itO.swapO].add(   {value:dev_obj.target[sortFL_0_i.forLoop_0_i]}   )
-        	                sortFL_0_i.itO[sortFL_0_i.itO.swapO].add(   {value:dev_obj.target[sortFL_0_i.forLoop_0_i+1]}   )
-        	                sortO = ultraObject.swap({
-        	                        swapO:sortFL_0_i.itO[sortFL_0_i.itO.swapO],
-        	                        instruct:sortFL_0_i.itO[sortFL_0_i.itO.instruct],
-        	                        action:'default'
-        	                    })
-        	                sortFL_0_i.itO[sortFL_0_i.itO.swapO].minus(   {value:dev_obj.target[sortFL_0_i.forLoop_0_i]}   )
-        	                sortFL_0_i.itO[sortFL_0_i.itO.swapO].minus(   {value:dev_obj.target[sortFL_0_i.forLoop_0_i+1]}   )
-        	                dev_obj.target[sortFL_0_i.forLoop_0_i] = sortO[0]
-        	                dev_obj.target[sortFL_0_i.forLoop_0_i+1] = sortO[1]
-        	                
-        	                
-        	            }
-        	        
-        	        
+                                        
+                    if(   dev_obj.compare(   {val:dev_obj.target,   index:sortFL_0_i.forLoop_0_i}   ) === dev_obj.result    ){
+                        
+                            sortFlagO[sortFlagO.bubble]  = 'false'
+                            sortFL_0_i.itO.swapO = sortFL_0_i.itO.add(   {value:ultraObject.iterableObject()}   )
+                            sortFL_0_i.itO[sortFL_0_i.itO.swapO].add(   {value:dev_obj.target[sortFL_0_i.forLoop_0_i]}   )
+                            sortFL_0_i.itO[sortFL_0_i.itO.swapO].add(   {value:dev_obj.target[sortFL_0_i.forLoop_0_i+1]}   )
+                            sortO = ultraObject.swap({
+                                    swapO:sortFL_0_i.itO[sortFL_0_i.itO.swapO],
+                                    instruct:sortFL_0_i.itO[sortFL_0_i.itO.instruct],
+                                    action:'default'
+                                })
+                            sortFL_0_i.itO[sortFL_0_i.itO.swapO].minus(   {value:dev_obj.target[sortFL_0_i.forLoop_0_i]}   )
+                            sortFL_0_i.itO[sortFL_0_i.itO.swapO].minus(   {value:dev_obj.target[sortFL_0_i.forLoop_0_i+1]}   )
+                            dev_obj.target[sortFL_0_i.forLoop_0_i] = sortO[0]
+                            dev_obj.target[sortFL_0_i.forLoop_0_i+1] = sortO[1]
+                            
+                            
+                        }
+                    
+                    
                 }
-        	    
-        	    
+                
+                
             }
             
             
@@ -2214,9 +2225,9 @@ function sort(   dev_obj   ){
     if(   dev_obj.algorithm  === 'bubble'   ){
         
             sortFlagO.bubble = sortFlagO.add(   {value:'false'}   )
-    	    sortFL_0_i.itO.instruct = sortFL_0_i.itO.add(   {value:ultraObject.iterableObject()}   )
-    	    sortFL_0_i.itO[sortFL_0_i.itO.instruct].add(   {value:1}   )
-    	    sortFL_0_i.itO[sortFL_0_i.itO.instruct].add(   {value:0}   )
+            sortFL_0_i.itO.instruct = sortFL_0_i.itO.add(   {value:ultraObject.iterableObject()}   )
+            sortFL_0_i.itO[sortFL_0_i.itO.instruct].add(   {value:1}   )
+            sortFL_0_i.itO[sortFL_0_i.itO.instruct].add(   {value:0}   )
             while(   sortFlagO[sortFlagO.bubble] !== 'true'){
             
                 sortFlagO[sortFlagO.bubble]  = 'true'
@@ -2279,12 +2290,13 @@ function preFillForm(   dev_obj   ){
     //findings
         //i find that form items are not dependent on the number of children, the form can have children than containing the input
         //we are forced to make an outside variable just to access objects we must ask how to access these only using the ultraObject
+    var preFillForm_dev_obj = ultraObject.args.add(   {value:ultraObject.iterify(   {iterify:dev_obj}   )   }   ) // decided to replace or make room on addition
     var pFFATI_0_i = ultraObject.scope.add(   {value:ultraObject.allTags.add(   {value:ultraObject.iterify(   {iterify:dev_obj.allTags}   )}   )}   )
-    // ultraObject.MB_0_i[0] contiains allTags needed for this API
     ultraObject.sort({
         target: ultraObject.allTags[ultraObject.scope[pFFATI_0_i]],
         algorithm:'bubble',
         compare:function(   dev_obj   ){
+            
             
             
             if(   dev_obj.val[dev_obj.index].childElementCount > dev_obj.val[dev_obj.index+ 1].childElementCount    ){
@@ -2299,25 +2311,20 @@ function preFillForm(   dev_obj   ){
         },
         result:'true'
     })
+    console.group(   'making items accessible'   )
     ultraObject.objInvloved({
         0:ultraObject.allTags,
         1:ultraObject.scope,
-        2:pFFATI_0_i
+        2:pFFATI_0_i,
+        3:ultraObject.args
     })
-    debugger
-    return
-    ultraObject.allTags.pFFATI = ultraObject.allTags.add(   {value:preFillFormO}   ) //number were all tags is located in the ultraObject
-    
-        console.group(   'sorting items by least children'   )
-        ultraObject.objInvloved({
-                // 0:preFillFormO,
-        })
-        console.groupEnd()
-    
+    console.groupEnd()
+    var pFFList_0_i = ultraObject.scope.add(   {value:ultraObject.misc.add(   {value:ultraObject.iterify(   {iterify:dev_obj.list}   )}   )}   )
+    var pFFLook_0_i = ultraObject.scope.add(   {value:ultraObject.misc.add(   {value:ultraObject.iterify(   {iterify:dev_obj.look}   )}   )}   )
     ultraObject.eCSearch({
-        list:dev_obj.list,
-        look:dev_obj.look,
-        aTIndex: ultraObject.allTags.pFFATI
+        list:pFFList_0_i,
+        look:pFFLook_0_i,
+        aT: pFFATI_0_i
     })
     console.group(   'at this point the uO has meaningful values for all arguments from the init fn'   )
     // ultraObject.objInvloved({
