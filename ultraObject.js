@@ -506,30 +506,30 @@ function eCSearch(   dev_obj   ){
     }
     
     
-    debugger
-    throw('e')
+    
     console.group(   'items needed to search for elements based on keywords'   )
     ultraObject.objInvloved({
-            0:ultraObject.allTags[dev_obj.aTIndex],
-            1:eCSearchList,
-            2:ultraObject.allTags[ultraObject.allTags.eCSST]
+            0:ultraObject.allTags[ultraObject.scope[dev_obj.aT]],
+            1:ultraObject.misc[ultraObject.scope[dev_obj.list]],
+            2:ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]]
     })
+    
     console.groupEnd()
-    eCSearchAllTags = ultraObject.allTags[dev_obj.aTIndex]
     var eCSearchFL_0_i = {
         forLoop_0_i:0,
-        forLoopLength: eCSearchList.length,
+        forLoopLength: ultraObject.misc[ultraObject.scope[dev_obj.list]].length,
         fn:function(   dev_obj   ){
             var indexSelect = 0
             
             
-            if(   ultraObject.allTags[ultraObject.allTags.eCSST] !== undefined   ){
-                //keeps track of number map
+            if(   ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]] !== undefined   ){
+                debugger
                 
-                if(   ultraObject.allTags[ultraObject.allTags.eCSST].eCSNS !== undefined   ){
+                
+                if(   ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].eCSNS !== undefined   ){
                     
                     
-                    if(   ultraObject.allTags[ultraObject.allTags.eCSST].eCSNS[eCSearchFL_0_i.forLoop_0_i] !== undefined   ){
+                    if(   ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].eCSNS[eCSearchFL_0_i.forLoop_0_i] !== undefined   ){
                     
                     
                         if(   dev_obj.same !== 'true'   ){
@@ -537,7 +537,7 @@ function eCSearch(   dev_obj   ){
                             
                             if(   eCSearchFL_0_i.forLoop_0_i === 0   ){
                                 ultraObject.numberSystem({
-                                    digits:ultraObject.allTags[ultraObject.allTags.eCSST],
+                                    digits:ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]],
                                     operation:'add',
                                     amount: 1 //helps the function look at the next combination set
                                 })
@@ -545,7 +545,7 @@ function eCSearch(   dev_obj   ){
                             
                             
                         }
-                        indexSelect = ultraObject.allTags[ultraObject.allTags.eCSST].eCSNS[eCSearchFL_0_i.forLoop_0_i][0]
+                        indexSelect = ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].eCSNS[eCSearchFL_0_i.forLoop_0_i][0]
                         console.log('it tells me to start here', indexSelect)
                                    
                 
@@ -560,7 +560,7 @@ function eCSearch(   dev_obj   ){
             
             var eCSearchFL_1_i = {
                 forLoop_0_i:indexSelect,
-                forLoopLength:eCSearchAllTags.length,
+                forLoopLength:ultraObject.allTags[ultraObject.scope[dev_obj.aT]].length,
                 fn:function(   dev_obj   ){
                     var eCSearchFL_2_i = {
                         forLoop_0_i:0,
