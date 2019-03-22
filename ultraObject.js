@@ -469,10 +469,16 @@ function isNodeList(   dev_obj   ){
 function isitO(   dev_obj   ){
     
     
-    if(   dev_obj.type.isitO !== undefined && dev_obj.type.isitO() === 'true'   ){
+    if(   dev_obj.type !== undefined   ){
         
         
-        return true
+        if(   dev_obj.type.isitO !== undefined && dev_obj.type.isitO() === 'true'   ){
+            
+            
+            return true
+            
+            
+        }
         
         
     }
@@ -507,13 +513,21 @@ function eCSearch(   dev_obj   ){
     // }
     
     
-    if(   eCSSelectTags_0_i === undefined   ){
+    if(   dev_obj.sT === undefined   ){
         
         
         var eCSSelectTags_0_i = ultraObject.scope.add(   {value:ultraObject.selectTags.add(   {value:ultraObject.iterableObject()}   )}   )
         ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].eCSNS = ultraObject.iterableObject()
-        debugger
-        ultraObject.selectTags.abelast.add(   {value:eCSSelectTags_0_i}   )
+        ultraObject.selectTags.abelast.add(   {value:ultraObject.scope[eCSSelectTags_0_i]}   )
+        
+    }
+    
+    
+    else if(    ultraObject.isInt(   {type:dev_obj.sT}   )   ){
+        
+        
+        var eCSSelectTags_0_i = dev_obj.sT
+        
         
     }
     
@@ -602,7 +616,7 @@ function eCSearch(   dev_obj   ){
                                     //helps change the number when the match is found so the NS doesnt take over
                                     //if problems look here idk if it supposed to follow the nSM or not
                                     ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]][ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]]['query'+eCSearchFL_0_i.forLoop_0_i]].item = ultraObject.allTags[ultraObject.scope[dev_obj.aT]][eCSearchFL_1_i.forLoop_0_i]
-                                    ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]][ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]]['query'+eCSearchFL_0_i.forLoop_0_i]].query = ultraObject.allTags[ultraObject.scope[dev_obj.aT]][eCSearchFL_1_i.forLoop_0_i][ultraObject.misc[ultraObject.scope[dev_obj.list]][eCSearchFL_2_i.forLoop_0_i][0]]
+                                    ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]][ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]]['query'+eCSearchFL_0_i.forLoop_0_i]].query = ultraObject.allTags[ultraObject.scope[dev_obj.aT]][eCSearchFL_1_i.forLoop_0_i][ultraObject.misc[ultraObject.scope[dev_obj.look]][eCSearchFL_2_i.forLoop_0_i][0]]
                                     ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]][ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]]['query'+eCSearchFL_0_i.forLoop_0_i]].xMark = ultraObject.misc[ultraObject.scope[dev_obj.look]][eCSearchFL_2_i.forLoop_0_i][0]
                                     ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]][ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]]['query'+eCSearchFL_0_i.forLoop_0_i]].keyword = ultraObject.misc[ultraObject.scope[dev_obj.list]][eCSearchFL_0_i.forLoop_0_i][0]
                                     ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]][ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]]['query'+eCSearchFL_0_i.forLoop_0_i]].valuePhrase = ultraObject.misc[ultraObject.scope[dev_obj.list]][eCSearchFL_0_i.forLoop_0_i][1]
@@ -2090,7 +2104,9 @@ function selectAll(   dev_obj   ){
         // this function also returns the group ordering if looked for nested items
         //.target item to get all values from must be an itO or an object
         // .typeOnly, what specific values were looking for
-    
+        var selectAll_dev_obj = ultraObject.args.add(   {value:ultraObject.iterify(   {iterify:dev_obj}   )   }   )
+        
+        
         if(   dev_obj !== undefined   ){
             
             
@@ -2122,18 +2138,21 @@ function selectAll(   dev_obj   ){
                             var selectCheckpoint = {}  // when it leave recurison it restore the values
                             
                             
-                            if(   (   ultraObject.isObject(   {type:Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]}   ) || ultraObject.isitO(   {type:Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]}   )   ) || ultraObject.isDOMElement(   {type:Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]}   )     ){
-                                //I cannot add it if its a primitive not an object or an itO
-                                //done like this because what if im looking for a string, this would evaluate to false and the subGroupMap would be improper
-                                
-                                ultraObject.subGroups({
-                                    map:selectReturnMD,
-                                    val:Object.keys(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i],
-                                })
-                                
-                                
+                            try{
+                                if(   (   ultraObject.isObject(   {type:Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]}   ) || ultraObject.isitO(   {type:Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]}   )   ) || ultraObject.isDOMElement(   {type:Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]}   )     ){
+                                    //I cannot add it if its a primitive not an object or an itO
+                                    //done like this because what if im looking for a string, this would evaluate to false and the subGroupMap would be improper
+                                    
+                                    ultraObject.subGroups({
+                                        map:selectReturnMD,
+                                        val:Object.keys(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i],
+                                    })
+                                    
+                                    
+                                }
                             }
                             
+                            catch(e){debugger}
                             
                             if(   ultraObject.isDOMElement(   {type:Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]}   )   ){
                                 
@@ -2209,7 +2228,7 @@ function packIt(   dev_obj   ){
          .fill  where to place the items
          .write what to place for each fill value
     */
-    
+    var packIt_dev_obj = ultraObject.args.add(   {value:ultraObject.iterify(   {iterify:dev_obj}   )   }   )
     
     if(   dev_obj !== undefined   ){
             
@@ -2221,7 +2240,6 @@ function packIt(   dev_obj   ){
                 
                                     
                 if(   dev_obj.directions[packItFL_0_i.forLoop_0_i] === 'match'   ){
-                    debugger
                     console.group(   'an attempt to fill items'   )
                         ultraObject.objInvloved({
                                 0:packItSA,
@@ -2252,8 +2270,8 @@ function packIt(   dev_obj   ){
                 
                 if(   dev_obj.directions[packItFL_0_i.forLoop_0_i] === 'gather element'   ){
                         
-                        
-                    if(    ultraObject.isObject(   {value:dev_obj.order}   )   ){
+                    
+                    if(    ultraObject.isObject(   {type:dev_obj.order}   )   ){
                         
                         
                         packItSA = ultraObject.selectAll({
@@ -2462,12 +2480,8 @@ function preFillForm(   dev_obj   ){
         aT: pFFATI_0_i
     })
     console.group(   'at this point the uO has meaningful values for all arguments from the init fn'   )
-    // ultraObject.objInvloved({
-    //     0:ultraObject.allTags[ultraObject.allTags.eCSST],
-    // })
     console.groupEnd()
-    var pFFST_0_i =  ultraObject.scope.add(   {value:ultraObject.selectTags[ultraObject.scope[ultraObject.selectTags.abelast[0]]]}   )
-    debugger
+    var pFFST_0_i =  ultraObject.scope.add(   {value:ultraObject.selectTags.abelast[0]}   )
     ultraObject.selectTags.abelast.minus(   {index:0}   )
     ultraObject.packIt({
         order:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]],
