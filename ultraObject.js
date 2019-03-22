@@ -497,21 +497,6 @@ function eCSearch(   dev_obj   ){
     
     var eCSearch_dev_obj = ultraObject.args.add(   {value:ultraObject.iterify(   {iterify:dev_obj}   )   }   )
     
-    var eCSearchLook
-    var eCSearchList
-    var eCSearchAllTags
-    var eCSearchSelectTags
-    
-    
-    // if(   dev_obj !== undefined   ){
-        
-        
-    //     ultraObject.misc[ultraObject.scope[dev_obj.look]]
-    //     ultraObject.misc[ultraObject.scope[dev_obj.list]]
-
-
-    // }
-    
     
     if(   dev_obj.sT === undefined   ){
         
@@ -594,7 +579,7 @@ function eCSearch(   dev_obj   ){
                             if(   ultraObject.allTags[ultraObject.scope[dev_obj.aT]][eCSearchFL_1_i.forLoop_0_i][ultraObject.misc[ultraObject.scope[dev_obj.look]][eCSearchFL_2_i.forLoop_0_i][0]] !== undefined   ){
                                 //means if the comparison from the element property actually produces a string
                                     
-                                if(   ultraObject.allTags[ultraObject.scope[dev_obj.aT]][eCSearchFL_1_i.forLoop_0_i][ultraObject.misc[ultraObject.scope[dev_obj.look]][eCSearchFL_2_i.forLoop_0_i][0]].indexOf(   ultraObject.misc[ultraObject.scope[dev_obj.list]][eCSearchFL_0_i.forLoop_0_i][0]   ) !== -1   ){
+                                if(   ultraObject.allTags[ultraObject.scope[dev_obj.aT]][eCSearchFL_1_i.forLoop_0_i][ultraObject.misc[ultraObject.scope[dev_obj.look]][eCSearchFL_2_i.forLoop_0_i][0]].indexOf(   ultraObject.misc[ultraObject.scope[dev_obj.list]][eCSearchFL_0_i.forLoop_0_i][0]   ) !== -1 || dev_obj.all  === 'true'  ){
                                     //this must mean it found a match
                                     
                                 
@@ -1906,6 +1891,7 @@ function subGroups(   dev_obj   ){
         ....
         */
         //
+    var subGroups_dev_obj = ultraObject.args.add(   {value:ultraObject.iterify(   {iterify:dev_obj}   )   }   )
     
     if(   dev_obj !== undefined   ){
         
@@ -2104,9 +2090,7 @@ function selectAll(   dev_obj   ){
         // this function also returns the group ordering if looked for nested items
         //.target item to get all values from must be an itO or an object
         // .typeOnly, what specific values were looking for
-        var selectAll_dev_obj = ultraObject.args.add(   {value:ultraObject.iterify(   {iterify:dev_obj}   )   }   )
-        
-        
+    
         if(   dev_obj !== undefined   ){
             
             
@@ -2474,12 +2458,17 @@ function preFillForm(   dev_obj   ){
     console.groupEnd()
     var pFFList_0_i = ultraObject.scope.add(   {value:ultraObject.misc.add(   {value:ultraObject.iterify(   {iterify:dev_obj.list}   )}   )}   )
     var pFFLook_0_i = ultraObject.scope.add(   {value:ultraObject.misc.add(   {value:ultraObject.iterify(   {iterify:dev_obj.look}   )}   )}   )
+    debugger
     ultraObject.eCSearch({
         list:pFFList_0_i,
         look:pFFLook_0_i,
-        aT: pFFATI_0_i
+        aT: pFFATI_0_i,
+        all:'true'
     })
     console.group(   'at this point the uO has meaningful values for all arguments from the init fn'   )
+    // ultraObject.objInvloved({
+    //     0:ultraObject.allTags[ultraObject.allTags.eCSST],
+    // })
     console.groupEnd()
     var pFFST_0_i =  ultraObject.scope.add(   {value:ultraObject.selectTags.abelast[0]}   )
     ultraObject.selectTags.abelast.minus(   {index:0}   )
@@ -2494,6 +2483,7 @@ function preFillForm(   dev_obj   ){
         write:'valuePhrase'
         
     })
+    debugger
     throw('e')
 }
             
