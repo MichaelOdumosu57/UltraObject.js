@@ -2488,11 +2488,34 @@ function preFillForm(   dev_obj   ){
         forLoop_0_i:0,
         forLoopLength:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]].length,
         fn:function(   dev_obj   ){
-            console.log(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword, ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.value   )
             console.group(   'asking questions about the object'  )
-            console.log(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item   )// is this an input
-            console.log(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.offsetParent   )
-            /*im interested in  offsetParent parentElement & parentnOde*/
+                console.log(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword, ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.value   )
+                console.log(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item   )// is this an input
+                console.log(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.offsetParent   )
+                /*im interested in  offsetParent parentElement & parentnOde*/
+                // do i even find the key in the list
+                var pFFBOOL = {0:false}
+                pFFBOOL = ultraObject.severalOr({
+                            compTo: ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword,
+                            compAgn: ultraObject.misc[ultraObject.scope[pFFLook_0_i]],
+                            boolean:pFFBOOL,
+                            which:0,
+                            how:function(   dev_obj   ){
+                                
+
+                                if(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item[dev_obj.compAgnI[0]].indexOf(   dev_obj.compTo   ) !== -1   ){
+                                    
+                                    
+                                    return 'a'
+                                    
+                                    
+                                }
+                                
+                                
+                            },
+                            result:'a'
+                })
+                console.log(   pFFBOOL   )
             console.groupEnd()
             
         },
