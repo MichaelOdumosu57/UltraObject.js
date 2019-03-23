@@ -2458,7 +2458,6 @@ function preFillForm(   dev_obj   ){
     console.groupEnd()
     var pFFList_0_i = ultraObject.scope.add(   {value:ultraObject.misc.add(   {value:ultraObject.iterify(   {iterify:dev_obj.list}   )}   )}   )
     var pFFLook_0_i = ultraObject.scope.add(   {value:ultraObject.misc.add(   {value:ultraObject.iterify(   {iterify:dev_obj.look}   )}   )}   )
-    debugger
     ultraObject.eCSearch({
         list:pFFList_0_i,
         look:pFFLook_0_i,
@@ -2483,7 +2482,25 @@ function preFillForm(   dev_obj   ){
         write:'valuePhrase'
         
     })
-    debugger
+    ///////////////////////////////////////////////////////////////////////////
+    console.group(   'answers'   )
+    var pFFFL_0_i = {
+        forLoop_0_i:0,
+        forLoopLength:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]].length,
+        fn:function(   dev_obj   ){
+            console.log(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword, ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.value   )
+            console.group(   'asking questions about the object'  )
+            console.log(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item   )// is this an input
+            console.log(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.offsetParent   )
+            /*im interested in  offsetParent parentElement & parentnOde*/
+            console.groupEnd()
+            
+        },
+        args:{}
+    }
+    ultraObject.forLoop(   pFFFL_0_i   )
+    console.groupEnd()
+    ///////////////////////////////////////////////////////////////////////////
     throw('e')
 }
             
