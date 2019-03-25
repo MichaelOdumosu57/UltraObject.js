@@ -689,26 +689,32 @@ function numberSystem(   dev_obj   ){
         // .digits the object holding the NS and its map
         /*
             //.eCSNS a property in an object that contains the digits of the numbers as well the min max range of each digit
-                // .nSM, determines how the number receive digits min is as 1 then 10 then 1000
-            
-                so forr
-                0:1
-                1:0
-                2:2
-                3::3
-                            .eCSNS:{
-                              0:{0:current,1:min,2:max}
-            the number system 1:{0:current,1:min,2:max}
-                              2:{0:current,1:min,2:max}
-                              3:{0:current,1:min,2:max}
-                                nSM:{}
-                            }
-                if the fn receives add 1 nS[1].current will increase by one
-                when ns[1].current hits the max then ns[0].current increases by one and
-                    ns[1].current returns to zero
+                .nSM,
+                /*
+                    
+                    determines how the number receive digits min is as 1 then 10 then 1000
                 
-            
-            
+                    so forr
+                    0:1
+                    1:0
+                    2:2
+                    3::3
+                                .eCSNS:{
+                                      0:{0:current,1:min,2:max}
+                    the number system 1:{0:current,1:min,2:max}
+                                      2:{0:current,1:min,2:max}
+                                      3:{0:current,1:min,2:max}
+                                        nSM:{}
+                                }
+                    if the fn receives add 1 nS[1].current will increase by one
+                    when ns[1].current hits the max then ns[0].current increases by one and
+                        ns[1].current returns to zero
+                
+                */
+                //.currentNumber
+                /*
+                    the current number for the NS
+                */
             // logic
             // once 0 hits max then 1   ... once 1 hits max then 2
             //.further_checks if the case causes a break in the number,
@@ -729,6 +735,7 @@ function numberSystem(   dev_obj   ){
             //when it hits the NS  0
             
         // when working on max ask these questions
+        /*
             //what  happens when i am at the current val max how do it increase the digits properly
                 //works properly
             // when the sum is greater than the max how do I allocate to increase the digits properly
@@ -752,6 +759,7 @@ function numberSystem(   dev_obj   ){
                     multiples the NS number according to the ns, the amount mustbe an int
                 divide
                     divides the NS number according the NS, the decimal division reslt must be an int
+                print prints the current number as well as puts it in the currentNumber property of the eCSNS,this should change so that currentNumber can be evaluated at use but for now its not
             */
         // .amount
             /*
@@ -1156,6 +1164,8 @@ function numberSystem(   dev_obj   ){
         
         
         if(   dev_obj.operation === 'print'   ){
+            
+            
             var NS_iter = []
             var numberSystemFL_1_i = {
                 forLoop_0_i:0,
@@ -1165,13 +1175,21 @@ function numberSystem(   dev_obj   ){
                 },
                 args:{
                         digits:dev_obj.digits
-                    }
+                }
             }
             ultraObject.forLoop(   numberSystemFL_1_i   )
             console.log('current number',NS_iter)
+            dev_obj.digits.eCSNS.currentNumber =  NS_iter
+            return NS_iter
+            
+            
         }
         
-
+        
+        // dev_obj.digits.eCSNS.currentNumber = ultraObject.numberSystem({
+        //     digits:dev_obj.digits,
+        //     operation:'print',
+        // })
         console.groupEnd()
     
 }//makes a customized number system for the needs of the eCSearch multiple testing required by prefill form
