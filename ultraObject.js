@@ -2489,11 +2489,58 @@ function preFillForm(   dev_obj   ){
         forLoopLength:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]].length,
         fn:function(   dev_obj   ){
             console.group(   'asking questions about the object'  )
-                console.log(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword, ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.value   )
-                console.log(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item   )// is this an input
-                console.log(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.offsetParent   )
-                /*im interested in  offsetParent parentElement & parentnOde*/
-                // do i even find the key in the list
+                /*
+                    what is the framework?
+                    turn all string into lowercase
+                */
+                console.log(  'what is the result', ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword  )
+                console.log(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.value,ultraObject.misc[ultraObject.scope[pFFList_0_i]][pFFFL_0_i.forLoop_0_i][1]   )
+                
+                
+                if(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.value.toLowerCase() !== ultraObject.misc[ultraObject.scope[pFFList_0_i]][pFFFL_0_i.forLoop_0_i][1].toLowerCase()   ){
+                
+                    
+                    throw(   'now check to see if if the NS does not have the current number'   )
+                    
+                    
+                }
+                
+                
+                console.log(  'what is the element', ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item   )
+                /*
+                
+                    1. is this an input
+                        a. if yes ask more question   points:2
+                        b. if no ask more questions
+                    what string values does it have
+                    2.is it equal to what I have in list
+                        a.if no it exits and tries again points:5
+                        b. if yes ask more questions
+                
+                */
+                console.group(   'what is its parent '   )
+                    console.log(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.offsetParent   )
+                /*
+                    3. is there a parent
+                        if yes 4. is the parent a div
+                            if yes ask more questions   points:2
+                                what does string values hold
+                            
+                            5. does it have  children?
+                                if yes its assumed they are related to the item in some manner points:3
+                                if no we cant assume that the siblings are related, but this doesn't matter we need more questions
+                            im interested in  offsetParent parentElement & parentnode
+                        if no ask more questions points:1
+                */
+                    console.log(   'who are its siblings'   )
+                    console.log(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.offsetParent.children   )
+                console.groupEnd()
+                console.group(   'who are its children'   )
+                /*
+                    any clues that perhaps the children might be the key value to fill
+                */
+                console.groupEnd()
+                console.log(   'is it found is its strings'   )
                 var pFFBOOL = {0:false}
                 pFFBOOL = ultraObject.severalOr({
                             compTo: ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword,
@@ -2535,7 +2582,9 @@ function preFillForm(   dev_obj   ){
                     'LinkedIn Profile':'https://www.linkedin.com/in/michael-odumosu-a58367b1',
                     'Website':'https://ualbanyasist.github.io/',
                     'How did you hear about this job?':'Linkedin',
-                    'Phone': '$80,000'},
+                    'Phone': '$80,000',
+                    'Cover Letter':'as'
+                    },
                 look:{ 'innerHTML':null,'innerText':null,'textContent':null}
             })
     
