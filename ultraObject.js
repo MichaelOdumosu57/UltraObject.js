@@ -2480,7 +2480,7 @@ function preFillForm(   dev_obj   ){
         list:pFFList_0_i,
         look:pFFLook_0_i,
         aT: pFFATI_0_i,
-        all:'true'
+        // all:'true'
     })
     console.group(   'at this point the uO has meaningful values for all arguments from the init fn'   )
     // ultraObject.objInvloved({
@@ -2517,14 +2517,54 @@ function preFillForm(   dev_obj   ){
                 
                 if(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.value.toLowerCase() !== ultraObject.misc[ultraObject.scope[pFFList_0_i]][pFFFL_0_i.forLoop_0_i][1].toLowerCase()   ){
                 
-                    
-                    throw(   'now check to see if if the NS does not have the current number'   )
+                        console.log(   'index',pFFFL_0_i.forLoop_0_i   )
+                        var pFFBOOL_0_i = {0:false}
+                        pFFBOOL_0_i = ultraObject.severalOr({
+                                    compTo: ultraObject.selectTags[ultraObject.scope[pFFST_0_i]].eCSNS.currentNumber[pFFFL_0_i.forLoop_0_i],
+                                    compAgn: ultraObject.selectTags[ultraObject.scope[pFFST_0_i]].eCSNS.currentNumber,
+                                    boolean:pFFBOOL_0_i,
+                                    which:0,
+                                    how:function(   dev_obj   ){
+                                        
+                                        
+                                        if(   dev_obj.compTo === dev_obj.compAgnI   ){
+                                            
+                                            
+                                            if(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]].suspects === undefined   ){
+                                            //if we have suspects to determine who belongs in the elements value. this might need to be reset
+                                            
+                                                ultraObject.selectTags[ultraObject.scope[pFFST_0_i]].suspects = ultraObject.iterableObject()
+                                                ultraObject.selectTags[ultraObject.scope[pFFST_0_i]].suspects.add(   {value:dev_obj.index}   )
+                                                //see i wrote for the future here
+                                            }
+                                            
+                                            
+                                            else if(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]].suspects !== undefined   ){
+                                                
+                                            
+                                                ultraObject.selectTags[ultraObject.scope[pFFST_0_i]].suspects.add(   {value:dev_obj.index}   )
+                                                
+                                                
+                                            }
+    
+        
+                                        }
+                                        
+                                        
+                                        console.log(   dev_obj,pFFFL_0_i.forLoop_0_i   )
+                                        
+                                    },
+                                    result:'a'
+                        })
+                        //this represents the digits of the NS,which are apparently the same that represents different items in the list however only one in this case should receive the element value here
+                        console.log(   'our suspects',ultraObject.selectTags[ultraObject.scope[pFFST_0_i]].suspects  )
                     
                     
                 }
                 
                 
                 console.log(  'what is the element', ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item   )
+                debugger
                 /*
                 
                     1. is this an input
@@ -2591,8 +2631,12 @@ function preFillForm(   dev_obj   ){
     ///////////////////////////////////////////////////////////////////////////
     throw('e')
 }
+
+function askQuestions(   dev_obj   ){
+    //throw the result in here later
+    }
             
-            //it actually completely ignores the fact that the name might not be mentioned in where it needs to go, check every elements that matches at least check their children, or just a combination of every item and have the an end user specify what is correct acoording to memory
+
             preFillForm({
                 // allTags : [document.querySelectorAll("body *")[129],document.querySelectorAll("body *")[135],document.querySelectorAll("body *")[140],document.querySelectorAll("body *")[147]],
                 allTags:document.querySelectorAll("body *:not(script)"), // bug it just grabs the whole query
