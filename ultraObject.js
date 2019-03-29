@@ -215,7 +215,7 @@ function addEventListener(   dev_obj   ){
         }
         
         
-        console.log(fn)
+        
         ultraObject.DOM_child[0].addEventListener(   ultraObject.eventName,fn   )
 } //  dev_obj.fn is used for 1st party dev to add their custom function to the listener dev_obj.xhttp is for xhr
 function xhttp(   dev_obj   ){
@@ -246,7 +246,7 @@ function open(   dev_obj   ){
     dev_obj.xhttp.open(   dev_obj.protocol,dev_obj.target,dev_obj.unk_bool   )
 } // gets in contact with the host
 function xhttpreadystatechange(){
-    console.log(    this.readyState)
+    console.log(    this   )
     var dev_obj = undefined
     
     if (    this.readyState == 4 && this.status == 200   ) {
@@ -2517,67 +2517,188 @@ function preFillForm(   dev_obj   ){
                 
                 if(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.value.toLowerCase() !== ultraObject.misc[ultraObject.scope[pFFList_0_i]][pFFFL_0_i.forLoop_0_i][1].toLowerCase()   ){
                 
-                        console.log(   'index',pFFFL_0_i.forLoop_0_i   )
-                        var pFFBOOL_0_i = {0:false}
-                        pFFBOOL_0_i = ultraObject.severalOr({
-                                    compTo: ultraObject.selectTags[ultraObject.scope[pFFST_0_i]].eCSNS.currentNumber[pFFFL_0_i.forLoop_0_i],
-                                    compAgn: ultraObject.selectTags[ultraObject.scope[pFFST_0_i]].eCSNS.currentNumber,
-                                    boolean:pFFBOOL_0_i,
-                                    which:0,
-                                    how:function(   dev_obj   ){
+                
+                    console.log(   'index',pFFFL_0_i.forLoop_0_i   )
+                    var pFFBOOL_0_i = {0:false}
+                    pFFBOOL_0_i = ultraObject.severalOr({
+                                compTo: ultraObject.selectTags[ultraObject.scope[pFFST_0_i]].eCSNS.currentNumber[pFFFL_0_i.forLoop_0_i],
+                                compAgn: ultraObject.selectTags[ultraObject.scope[pFFST_0_i]].eCSNS.currentNumber,
+                                boolean:pFFBOOL_0_i,
+                                which:0,
+                                how:function(   dev_obj   ){
+                                    
+                                    
+                                    if(   dev_obj.compTo === dev_obj.compAgnI   ){
                                         
                                         
-                                        if(   dev_obj.compTo === dev_obj.compAgnI   ){
-                                            
-                                            
-                                            if(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]].suspects === undefined   ){
-                                            //if we have suspects to determine who belongs in the elements value. this might need to be reset
-                                            
-                                                ultraObject.selectTags[ultraObject.scope[pFFST_0_i]].suspects = ultraObject.iterableObject()
-                                                ultraObject.selectTags[ultraObject.scope[pFFST_0_i]].suspects.add(   {value:dev_obj.index}   )
-                                                //see i wrote for the future here
-                                            }
-                                            
-                                            
-                                            else if(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]].suspects !== undefined   ){
-                                                
-                                            
-                                                ultraObject.selectTags[ultraObject.scope[pFFST_0_i]].suspects.add(   {value:dev_obj.index}   )
-                                                
-                                                
-                                            }
-    
-        
+                                        if(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]].suspects === undefined   ){
+                                        //if we have suspects to determine who belongs in the elements value. this might need to be reset
+                                        
+                                            ultraObject.selectTags[ultraObject.scope[pFFST_0_i]].suspects = ultraObject.iterableObject()
+                                            ultraObject.selectTags[ultraObject.scope[pFFST_0_i]].suspects.add(   {value:dev_obj.index}   )
+                                            //see i wrote for the future here
                                         }
                                         
                                         
-                                        console.log(   dev_obj,pFFFL_0_i.forLoop_0_i   )
+                                        else if(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]].suspects !== undefined   ){
+                                            
                                         
-                                    },
-                                    result:'a'
-                        })
-                        //this represents the digits of the NS,which are apparently the same that represents different items in the list however only one in this case should receive the element value here
-                        console.log(   'our suspects',ultraObject.selectTags[ultraObject.scope[pFFST_0_i]].suspects  )
+                                            ultraObject.selectTags[ultraObject.scope[pFFST_0_i]].suspects.add(   {value:dev_obj.index}   )
+                                            
+                                            
+                                        }
+
+    
+                                    }
+                                    
+                                    
+                                    console.log(   dev_obj,pFFFL_0_i.forLoop_0_i   )
+                                    
+                                },
+                                result:'a'
+                    })
+                    //this represents the digits of the NS,which are apparently the same that represents different items in the list however only one in this case should receive the element value here
+                    console.log(   'our suspects',ultraObject.selectTags[ultraObject.scope[pFFST_0_i]].suspects  )
                     
                     
                 }
                 
                 
-                console.log(  'what is the element', ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item   )
+                console.group(  'what is the element', ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item  )
+                    console.log(   'things I should know'   )
+                    var pFFMisc_0_i = ultraObject.scope.add(   {value:ultraObject.misc.add(   {value:ultraObject.iterify(   {iterify:['tagName','classList','className','hidden','id']}   )}   )}   );
+                    var pFFFL_1_i = {
+                        forLoop_0_i:0,
+                        forLoopLength:ultraObject.misc[ultraObject.scope[pFFMisc_0_i]].length,
+                        fn:function(   dev_obj   ){
+                            console.log(   ultraObject.misc[ultraObject.scope[pFFMisc_0_i]][pFFFL_1_i.forLoop_0_i]   )
+                        },
+                        args:{}
+                    ultraObject.forLoop(   pFFFL_1_i   )
+                    }
+                console.groupEnd()
                 debugger
+                throw('e')
                 /*
-                
+                {
                     1. is this an input
+                        <input>     -<html>
+                        <textarea>  -<head>
+                        <select>    -<title>
+                        <optgroup>  -<body>
+                        <option>    -<h1 -h6><p>
+                        <label>     -<br>
+                        <a>         -<hr>
+                        <link>      -<abbr>
+                        <div>       -<address>
+                                    -<b>
+                                    -<bdi>
+                                    -<bdo>
+                                    -<blockquote>
+                                    -<center>
+                                    -<cite>
+                                    -<code>
+                                    -<del>
+                                    -<dfn>
+                                    -<em>
+                                    -<font>
+                                    -<i>
+                                    -<ins>
+                                    -<kbd>
+                                    -<mark>
+                                    -<meter>
+                                    -<progress>
+                                   -<q>
+                                   -<rp>
+                                   -<rt>
+                                   -<ruby>
+                                   -<s>
+                                   -<samp>
+                                   -<small>
+                                   -<strike>
+                                   -<strong>
+                                   -<sub>
+                                   -<sup>
+                                   -<template>
+                                   -<time>
+                                   -<tt>
+                                   -<u>
+                                   -<var>
+                                   -var
+                                   -<wbr>
+                                   -<form>
+                                   -<fieldset>
+                                   -<legend>
+                                   -<datalist>
+                                   -<output>
+                                   -<frame>
+                                   -<frameset>
+                                   -<noframes>
+                                   -<iframe>
+                                   -<img>
+                                   -<map>
+                                   -<area>
+                                   -<canvas>
+                                   -<figcaption>
+                                   -<figure>
+                                   -<picture>
+                                   -<svg>
+                                   -<audio>
+                                   -<source>
+                                   -<track>
+                                   -<video>
+                                   -<nav>
+                                   -<ul>
+                                   -<ol>
+                                   -<li>
+                                   -<dir>
+                                   -<dl>
+                                   -<dt>
+                                   -<dd>
+                                   -<table>
+                                   -<caption>
+                                   -<th>
+                                   -<tr>
+                                   -<td>
+                                   -<thead>
+                                   -<tbody>
+                                   -<tfoot>
+                                   -<col>
+                                   -<colgroup>
+                                   -<style>
+                                   -<span>
+                                   -<header>
+                                   -<footer>
+                                   -<main>
+                                   -<section>
+                                   -<article>
+                                   -<aside>
+                                   -<details>
+                                   -<dialog>
+                                   -<summary>
+                                   -<data>
+                                   -<head>
+                                   -<meta>
+                                   -<base>
+                                   -<basefont>
+                                   -<script>
+                                   -<noscript>
+                                   -<applet>
+                                   -<embed>
+                                   -<object>
+                                   -<param>
+                }
                         a. if yes ask more question   points:2
                         b. if no ask more questions
                     what string values does it have
+                        in its classList, className,hidden as well as what is look
                     2.is it equal to what I have in list
                         a.if no it exits and tries again points:5
                         b. if yes ask more questions
                 
                 */
                 console.group(   'what is its parent '   )
-                    console.log(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.offsetParent   )
+                    
                 /*
                     3. is there a parent
                         if yes 4. is the parent a div
