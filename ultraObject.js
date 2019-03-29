@@ -29,6 +29,9 @@
 
 //to access items you must get it though the index in the scope
 // if a outer function needs a scope location from the inner function which started in the inner function use, .itO.abelast which is an itO in order to pull it out
+
+//use [   item   ], where item is a whole compact piece of code not an iteration or property
+//use  (   item   ) always unless there is nothing there or its multiline
     
     
 
@@ -2437,7 +2440,7 @@ function swap(   dev_obj   ){
         
         
     }// when you need values swpped
-//templates
+//templates, can swap in infinite places
 
 
 function preFillForm(   dev_obj   ){
@@ -2521,41 +2524,41 @@ function preFillForm(   dev_obj   ){
                     console.log(   'index',pFFFL_0_i.forLoop_0_i   )
                     var pFFBOOL_0_i = {0:false}
                     pFFBOOL_0_i = ultraObject.severalOr({
-                                compTo: ultraObject.selectTags[ultraObject.scope[pFFST_0_i]].eCSNS.currentNumber[pFFFL_0_i.forLoop_0_i],
-                                compAgn: ultraObject.selectTags[ultraObject.scope[pFFST_0_i]].eCSNS.currentNumber,
-                                boolean:pFFBOOL_0_i,
-                                which:0,
-                                how:function(   dev_obj   ){
+                        compTo: ultraObject.selectTags[ultraObject.scope[pFFST_0_i]].eCSNS.currentNumber[pFFFL_0_i.forLoop_0_i],
+                        compAgn: ultraObject.selectTags[ultraObject.scope[pFFST_0_i]].eCSNS.currentNumber,
+                        boolean:pFFBOOL_0_i,
+                        which:0,
+                        how:function(   dev_obj   ){
+                            
+                            
+                            if(   dev_obj.compTo === dev_obj.compAgnI   ){
+                                
+                                
+                                if(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]].suspects === undefined   ){
+                                //if we have suspects to determine who belongs in the elements value. this might need to be reset
+                                
+                                    ultraObject.selectTags[ultraObject.scope[pFFST_0_i]].suspects = ultraObject.iterableObject()
+                                    ultraObject.selectTags[ultraObject.scope[pFFST_0_i]].suspects.add(   {value:dev_obj.index}   )
+                                    //see i wrote for the future here
+                                }
+                                
+                                
+                                else if(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]].suspects !== undefined   ){
+                                    
+                                
+                                    ultraObject.selectTags[ultraObject.scope[pFFST_0_i]].suspects.add(   {value:dev_obj.index}   )
                                     
                                     
-                                    if(   dev_obj.compTo === dev_obj.compAgnI   ){
-                                        
-                                        
-                                        if(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]].suspects === undefined   ){
-                                        //if we have suspects to determine who belongs in the elements value. this might need to be reset
-                                        
-                                            ultraObject.selectTags[ultraObject.scope[pFFST_0_i]].suspects = ultraObject.iterableObject()
-                                            ultraObject.selectTags[ultraObject.scope[pFFST_0_i]].suspects.add(   {value:dev_obj.index}   )
-                                            //see i wrote for the future here
-                                        }
-                                        
-                                        
-                                        else if(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]].suspects !== undefined   ){
-                                            
-                                        
-                                            ultraObject.selectTags[ultraObject.scope[pFFST_0_i]].suspects.add(   {value:dev_obj.index}   )
-                                            
-                                            
-                                        }
+                                }
 
-    
-                                    }
-                                    
-                                    
-                                    console.log(   dev_obj,pFFFL_0_i.forLoop_0_i   )
-                                    
-                                },
-                                result:'a'
+
+                            }
+                            
+                            
+                            console.log(   dev_obj,pFFFL_0_i.forLoop_0_i   )
+                            
+                        },
+                        result:'a'
                     })
                     //this represents the digits of the NS,which are apparently the same that represents different items in the list however only one in this case should receive the element value here
                     console.log(   'our suspects',ultraObject.selectTags[ultraObject.scope[pFFST_0_i]].suspects  )
@@ -2571,13 +2574,13 @@ function preFillForm(   dev_obj   ){
                         forLoop_0_i:0,
                         forLoopLength:ultraObject.misc[ultraObject.scope[pFFMisc_0_i]].length,
                         fn:function(   dev_obj   ){
-                            console.log(   ultraObject.misc[ultraObject.scope[pFFMisc_0_i]][pFFFL_1_i.forLoop_0_i]   )
+                            console.log(   [   ultraObject.misc[ultraObject.scope[pFFMisc_0_i]][pFFFL_1_i.forLoop_0_i]   ]   )
+                            console.log(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item[   ultraObject.misc[ultraObject.scope[pFFMisc_0_i]][pFFFL_1_i.forLoop_0_i]   ]   )
                         },
                         args:{}
-                    ultraObject.forLoop(   pFFFL_1_i   )
                     }
+                    ultraObject.forLoop(   pFFFL_1_i   )
                 console.groupEnd()
-                debugger
                 throw('e')
                 /*
                 {
@@ -2693,7 +2696,7 @@ function preFillForm(   dev_obj   ){
                     what string values does it have
                         in its classList, className,hidden as well as what is look
                     2.is it equal to what I have in list
-                        a.if no it exits and tries again points:5
+                        a.if no 
                         b. if yes ask more questions
                 
                 */
