@@ -2463,7 +2463,37 @@ function swap(   dev_obj   ){
     }// when you need values swpped
 //templates, can swap in infinite places
 function partialMatch(   dev_obj   ){
-    
+    /*
+        this function expects strings but there can be others objects arrays
+        what will happen is that we will convert it to an itO and look at each property and ask about the range and the number of spaces
+        .compTo the value we want to see
+        .compAgn the value that the API can determine that its equal to compTo but its misspelt using this function
+        .range the length it has to
+            so if range is 7 and
+            compTo  = 'abbacus'
+            compAgn = 'abbaacus'
+            the function sees
+            abba  cus
+            7 in a row which is true
+            and same for reverse
+        .spaces max allowed spaces before it rejects
+            so if spaces is two and
+            compTo  = 'abbacus'
+            compAgn = 'abbaacusa'
+            the function would point out
+            a a
+            and accept and
+            vice versa
+        .gap max allowed items between spaces that account for range
+            say if we have .gap = 3 and
+            compTo  = 'abbacus'
+            compAgn = 'abbadabacus'
+            the gap is daba which is 4 greater than the allowed gap
+            so it would reject
+            and we would not have a partial match
+            
+            
+    */
     
 }/*this helps the API when its expected to be a inconsitencies in searches that have the same meaning, the developer can adjust how many values they want from all the way to complete difference to one char difference  in order for the API to say hey, that just a mispelled word it s okay*/
 
@@ -2656,7 +2686,9 @@ function preFillForm(   dev_obj   ){
                                     boolean:pFFBOOL_2_I,
                                     which:0
                                     how:function(   dev_obj   ){
-                                            
+                                        ultraObject.partialMatch({
+                                                
+                                        })
                                     },
                                     result:'a'
                                 })
