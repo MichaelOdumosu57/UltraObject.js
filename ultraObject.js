@@ -59,6 +59,16 @@ var FL_0_i = {
 ultraObject.forLoop(   FL_0_i   )
 }
 */
+/*
+    var checkingAllValuesBOOL = {0:false}
+    checkingAllValuesBOOL = ultraObject.severalOr({
+                compTo: 'match',
+                compAgn: {0:'do I Match',1:'does they match',2:'does it match',3:'match', length:4},
+                boolean:checkingAllValuesBOOL,
+                which:0
+    })
+    console.log(   checkingAllValuesBOOL   )
+*/
  
 //
 /*
@@ -150,6 +160,7 @@ function ultraObjectReset(   dev_obj   ){
 
     sort:sort,
     swap:swap,
+    partialMatch:partialMatch,
     
     misc:iterableObject(), //holds finished products with which we cannot assign a name
     numberSystem:numberSystem
@@ -2441,6 +2452,10 @@ function swap(   dev_obj   ){
         
     }// when you need values swpped
 //templates, can swap in infinite places
+function partialMatch(   dev_obj   ){
+    
+    
+}/*this helps the API when its expected to be a inconsitencies in searches that have the same meaning, the developer can adjust how many values they want from all the way to complete difference to one char difference  in order for the API to say hey, that just a mispelled word it s okay*/
 
 
 function preFillForm(   dev_obj   ){
@@ -2505,7 +2520,11 @@ function preFillForm(   dev_obj   ){
     })
     ///////////////////////////////////////////////////////////////////////////
     console.group(   'answers'   )
+    var pFFMisc_0_i = ultraObject.scope.add(   {value:ultraObject.misc.add(   {value:ultraObject.iterify(   {iterify:['tagName','classList','className','hidden','id']}   )}   )}   );
+    var pFFMisc_1_i = ultraObject.scope.add(   {value:ultraObject.misc.add(   {value:ultraObject.iterify(   {iterify:['input','select','textarea','option']}   )}   )}   );
     var pFFFL_0_i = {
+        //these for spots, the amount that claims the element, the objects related properties the family and the string matching all help determine where this object belongs
+        //POINT VALUE the spot where we add points
         forLoop_0_i:0,
         forLoopLength:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]].length,
         fn:function(   dev_obj   ){
@@ -2514,6 +2533,7 @@ function preFillForm(   dev_obj   ){
                     what is the framework?
                     turn all string into lowercase
                 */
+                ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].pointValue = 0 // used to deterime if valuePhrasre belongs in the elements value
                 console.log(  'what is the result', ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword  )
                 console.log(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.value,ultraObject.misc[ultraObject.scope[pFFList_0_i]][pFFFL_0_i.forLoop_0_i][1]   )
                 
@@ -2567,14 +2587,38 @@ function preFillForm(   dev_obj   ){
                 }
                 
                 
-                console.group(  'what is the element', ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item  )
+                console.group(  'what is the element'   )
                     console.log(   'things I should know'   )
-                    var pFFMisc_0_i = ultraObject.scope.add(   {value:ultraObject.misc.add(   {value:ultraObject.iterify(   {iterify:['tagName','classList','className','hidden','id']}   )}   )}   );
                     var pFFFL_1_i = {
                         forLoop_0_i:0,
                         forLoopLength:ultraObject.misc[ultraObject.scope[pFFMisc_0_i]].length,
                         fn:function(   dev_obj   ){
                             console.log(   [   ultraObject.misc[ultraObject.scope[pFFMisc_0_i]][pFFFL_1_i.forLoop_0_i]   ]   )
+                            
+                            
+                            if(   ultraObject.misc[ultraObject.scope[pFFMisc_0_i]][pFFFL_1_i.forLoop_0_i] === 'tagName'   ){
+                            
+                                                                                            
+                                var pFFBOOL_1_i = {0:false}
+                                pFFBOOL_1_i = ultraObject.severalOr({
+                                            compTo: ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item[   ultraObject.misc[ultraObject.scope[pFFMisc_0_i]][pFFFL_1_i.forLoop_0_i]   ].toLowerCase(),
+                                            compAgn:ultraObject.misc[ultraObject.scope[pFFMisc_1_i]] ,
+                                            boolean:pFFBOOL_1_i,
+                                            which:0
+                                })
+                                console.log(   pFFBOOL_1_i   )
+                                
+                                
+                                if(   pFFBOOL_1_i[0]   ){
+                                    //POINT VALUE
+                                    ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].pointValue += 1
+                                        
+                                }
+                                
+                                
+                            }
+                            
+                            
                             console.log(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item[   ultraObject.misc[ultraObject.scope[pFFMisc_0_i]][pFFFL_1_i.forLoop_0_i]   ]   )
                         },
                         args:{}
@@ -2693,10 +2737,14 @@ function preFillForm(   dev_obj   ){
                 }
                         a. if yes ask more question   points:2
                         b. if no ask more questions
-                    what string values does it have
-                        in its classList, className,hidden as well as what is look
+                    what property values does it have
+                        in hidden I want to see false for this case
+                        in tagName I want to see input, textarea, select,option
+                        in classList I want a partial match I will make a function just for this
+                        same with className
+                        id also related
                     2.is it equal to what I have in list
-                        a.if no 
+                        a.if no
                         b. if yes ask more questions
                 
                 */
@@ -2725,24 +2773,24 @@ function preFillForm(   dev_obj   ){
                 console.log(   'is it found is its strings'   )
                 var pFFBOOL = {0:false}
                 pFFBOOL = ultraObject.severalOr({
-                            compTo: ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword,
-                            compAgn: ultraObject.misc[ultraObject.scope[pFFLook_0_i]],
-                            boolean:pFFBOOL,
-                            which:0,
-                            how:function(   dev_obj   ){
-                                
+                    compTo: ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword,
+                    compAgn: ultraObject.misc[ultraObject.scope[pFFLook_0_i]],
+                    boolean:pFFBOOL,
+                    which:0,
+                    how:function(   dev_obj   ){
+                        
 
-                                if(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item[dev_obj.compAgnI[0]].indexOf(   dev_obj.compTo   ) !== -1   ){
-                                    
-                                    
-                                    return 'a'
-                                    
-                                    
-                                }
-                                
-                                
-                            },
-                            result:'a'
+                        if(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item[dev_obj.compAgnI[0]].indexOf(   dev_obj.compTo   ) !== -1   ){
+                            
+                            
+                            return 'a'
+                            
+                            
+                        }
+                        
+                        
+                    },
+                    result:'a'
                 })
                 console.log(   pFFBOOL   )
             console.groupEnd()
@@ -2807,7 +2855,7 @@ function b(   dev_obj   ){
 }
 
 
-function checkingAllValues(   dev_obj   ){
+function checkingAllValues(   dev_obj   ){ //
     var checkingAllValuesBOOL = {0:false}
     checkingAllValuesBOOL = ultraObject.severalOr({
                 compTo: 'match',
