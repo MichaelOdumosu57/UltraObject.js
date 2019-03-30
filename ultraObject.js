@@ -43,6 +43,7 @@
         ...
     }
 */
+// all functions should perform comparision one at the time this allows for more
     
 
 //is {}[] allowed in ES5 ??
@@ -142,6 +143,7 @@ function ultraObjectReset(   dev_obj   ){
     isInt:isInt,
     isNodeList:isNodeList,
     isitO:isitO,
+    isString:isString,
     
     elementFound:iterableObject(), // holds found elements needed by the ultraObject
     removeCN:removeCN,
@@ -509,6 +511,27 @@ function isitO(   dev_obj   ){
     
     
     return false
+}
+function isString(   dev_obj   ){
+    
+    
+    if(   dev_obj !== undefined   ){
+        
+         
+        if(   typeof dev_obj.type === 'string'   ){
+            
+            
+            return true
+            
+            
+        }
+        
+        
+    }
+    
+    
+    return false
+        
 }
 function eCSearch(   dev_obj   ){
     // .list, desired items
@@ -1885,7 +1908,7 @@ function iterify(   dev_obj   ){
         
         
         else if(   ultraObject.isPrimitive(   {type:dev_obj.iterify}   )   ){
-            //FIX ME this method does not exist yet
+            //for strings it neatly splits it into an itO
             
             var iterableFL_0_i = {
                 forLoop_0_i:0,
@@ -2468,7 +2491,7 @@ function partialMatch(   dev_obj   ){
         what will happen is that we will convert it to an itO and look at each property and ask about the range and the number of spaces
         .compTo the value we want to see
         .compAgn the value that the API can determine that its equal to compTo but its misspelt using this function
-        .range the length it has to
+        .range the length it has to get to equal the string
             so if range is 7 and
             compTo  = 'abbacus'
             compAgn = 'abbaacus'
@@ -2476,6 +2499,7 @@ function partialMatch(   dev_obj   ){
             abba  cus
             7 in a row which is true
             and same for reverse
+            but if compTo is shorter than the string its satisfies on the max
         .spaces max allowed spaces before it rejects
             so if spaces is two and
             compTo  = 'abbacus'
@@ -2483,6 +2507,10 @@ function partialMatch(   dev_obj   ){
             the function would point out
             a a
             and accept and
+            also if we have
+            compTo  = 'Linkedin'
+            compAgn = 'Link'
+            spaces would be 1
             vice versa
         .gap max allowed items between spaces that account for range
             say if we have .gap = 3 and
@@ -2491,9 +2519,55 @@ function partialMatch(   dev_obj   ){
             the gap is daba which is 4 greater than the allowed gap
             so it would reject
             and we would not have a partial match
-            
-            
+        .version
+            1  (default) use basic implementation
+            2 a future implementation which so that range spaces and gap can be granular to user input
+        .type
+            the type for comparison I plan to make this obsolete allowing the fn to do more
+            .cCase
+                when type is string, turns to desired cases such as upper lower camel, if not availble result is toLowerCase
     */
+    
+    
+    
+    if(   dev_obj !== undefined   ){
+        
+        
+        if(   dev_obj.version === undefined   ){
+            
+            
+            dev_obj.version = 1
+            
+            
+        }
+        
+        
+        if(   dev_obj.version === 1 && dev_obj.type === 'string'  ){ // handles strings only allow it to do more with the same algorithm
+            
+            var partialMatch_dev_obj = ultraObject.args.add(   {value:ultraObject.iterify(   {iterify:dev_obj}   )   }   )
+            pMMisc_0_i =  ultraObject.scope.add(   {value:ultraObject.misc.add(   {value:ultraObject.iterableObject()}   )}   )
+            
+            
+            if(   dev_obj.cCase === undefined ||
+            dev_obj.compTo = ultraObject.iterify(   {iterify:dev_obj.compTo[dev_obj.cCase]()}   )
+            dev_obj.compAgn = ultraObject.iterify(   {iterify:dev_obj.compAgn[dev_obj.cCase]()}   )
+            var pMFL_0_i = { //find if the range for compAgn satisfies
+                forLoop_0_i:0,
+                forLoopLength: dev_obj.compTo.length < dev_obj.compAgn.length ? dev_obj.compTo.length  :  dev_obj.compAgn.length,
+                fn:function(   dev_obj   ){
+                   console.table([   dev_obj.compTo[pMFL_0_i.forLoop_0_i],dev_obj.compAgn[pMFL_0_i.forLoop_0_i]   ])
+                },
+                args:dev_obj
+            }
+            ultraObject.forLoop(   pMFL_0_i   )
+            
+        
+        }
+        
+                
+    }
+    
+    
     
 }/*this helps the API when its expected to be a inconsitencies in searches that have the same meaning, the developer can adjust how many values they want from all the way to complete difference to one char difference  in order for the API to say hey, that just a mispelled word it s okay*/
 
@@ -2538,7 +2612,7 @@ function preFillForm(   dev_obj   ){
         list:pFFList_0_i,
         look:pFFLook_0_i,
         aT: pFFATI_0_i,
-        // all:'true'
+        all:'true'
     })
     console.group(   'at this point the uO has meaningful values for all arguments from the init fn'   )
     // ultraObject.objInvloved({
@@ -2560,7 +2634,7 @@ function preFillForm(   dev_obj   ){
     })
     ///////////////////////////////////////////////////////////////////////////
     console.group(   'answers'   )
-    var pFFMisc_0_i = ultraObject.scope.add(   {value:ultraObject.misc.add(   {value:ultraObject.iterify(   {iterify:['tagName','classList','className','hidden','id']}   )}   )}   );
+    var pFFMisc_0_i = ultraObject.scope.add(   {value:ultraObject.misc.add(   {value:ultraObject.iterify(   {iterify:['tagName','className','hidden','id']}   )}   )}   );
     var pFFMisc_1_i = ultraObject.scope.add(   {value:ultraObject.misc.add(   {value:ultraObject.iterify(   {iterify:['input','select','textarea','option']}   )}   )}   );
     var pFFFL_0_i = {
         //these for spots, the amount that claims the element, the objects related properties the family and the string matching all help determine where this object belongs
@@ -2676,23 +2750,30 @@ function preFillForm(   dev_obj   ){
                             if(   ultraObject.misc[ultraObject.scope[pFFMisc_0_i]][pFFFL_1_i.forLoop_0_i] === 'className'   ){
                                 /*the spaces between are classNames I will apply partial match here */
                                 ultraObject.misc[ultraObject.scope[pFFMisc_0_i]].classes = ultraObject.iterify(   {iterify:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item[   ultraObject.misc[ultraObject.scope[pFFMisc_0_i]][pFFFL_1_i.forLoop_0_i]   ].split(' ')}   )
-                                ultraObject.misc[ultraObject.scope[pFFMisc_0_i]].classes.add(   {value:'abbaacus'}   )
+                                ultraObject.misc[ultraObject.scope[pFFMisc_0_i]].classes.add(   {value:'Linkedin'}   )
                                 /**/
                                 /*to loop through classNames and find a partial match*/
                                 var pFFBOOL_2_I = {0:false}
                                 pFFBOOL_2_I = ultraObject.severalOr({
-                                    compTo: ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i],
+                                    compTo: ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword,
                                     compAgn: ultraObject.misc[ultraObject.scope[pFFMisc_0_i]].classes,
                                     boolean:pFFBOOL_2_I,
-                                    which:0
+                                    which:0,
                                     how:function(   dev_obj   ){
                                         ultraObject.partialMatch({
-                                                
+                                            compTo:dev_obj.compTo,
+                                            compAgn:dev_obj.compAgnI,
+                                            range:8,
+                                            spaces:2,
+                                            gap:2,
+                                            type:'string',
+                                            cCase:'toLowerCase'
                                         })
                                     },
                                     result:'a'
                                 })
                                 console.log(   pFFBOOL_2_I   )
+                                throw('e')
                                 /**/
                                 
                             }
