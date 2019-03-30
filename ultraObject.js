@@ -32,7 +32,17 @@
 
 //use [   item   ], where item is a whole compact piece of code not an iteration or property
 //use  (   item   ) always unless there is nothing there or its multiline
-    
+//function temp items should not be in the target object but  in the object the function uses to manipulate the target object. unless the fn does not use a temp object
+/*
+    ex
+    obj
+    fn increase(   dev_obj   ){
+        ...
+            var a = uO.(...)
+            a shoud go on dev_obj not in the actual object because oce the object is made the scaffolding should be thrown  away
+        ...
+    }
+*/
     
 
 //is {}[] allowed in ES5 ??
@@ -62,10 +72,10 @@ ultraObject.forLoop(   FL_0_i   )
 /*
     var checkingAllValuesBOOL = {0:false}
     checkingAllValuesBOOL = ultraObject.severalOr({
-                compTo: 'match',
-                compAgn: {0:'do I Match',1:'does they match',2:'does it match',3:'match', length:4},
-                boolean:checkingAllValuesBOOL,
-                which:0
+        compTo: 'match',
+        compAgn: {0:'do I Match',1:'does they match',2:'does it match',3:'match', length:4},
+        boolean:checkingAllValuesBOOL,
+        which:0
     })
     console.log(   checkingAllValuesBOOL   )
 */
@@ -2589,7 +2599,7 @@ function preFillForm(   dev_obj   ){
                 
                 console.group(  'what is the element'   )
                     console.log(   'things I should know'   )
-                    var pFFFL_1_i = {
+                    var pFFFL_1_i = { //looking at the elements related properties
                         forLoop_0_i:0,
                         forLoopLength:ultraObject.misc[ultraObject.scope[pFFMisc_0_i]].length,
                         fn:function(   dev_obj   ){
@@ -2601,10 +2611,10 @@ function preFillForm(   dev_obj   ){
                                                                                             
                                 var pFFBOOL_1_i = {0:false}
                                 pFFBOOL_1_i = ultraObject.severalOr({
-                                            compTo: ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item[   ultraObject.misc[ultraObject.scope[pFFMisc_0_i]][pFFFL_1_i.forLoop_0_i]   ].toLowerCase(),
-                                            compAgn:ultraObject.misc[ultraObject.scope[pFFMisc_1_i]] ,
-                                            boolean:pFFBOOL_1_i,
-                                            which:0
+                                    compTo: ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item[   ultraObject.misc[ultraObject.scope[pFFMisc_0_i]][pFFFL_1_i.forLoop_0_i]   ].toLowerCase(),
+                                    compAgn:ultraObject.misc[ultraObject.scope[pFFMisc_1_i]],
+                                    boolean:pFFBOOL_1_i,
+                                    which:0
                                 })
                                 console.log(   pFFBOOL_1_i   )
                                 
@@ -2618,6 +2628,42 @@ function preFillForm(   dev_obj   ){
                                 
                             }
                             
+                            
+                            if(   ultraObject.misc[ultraObject.scope[pFFMisc_0_i]][pFFFL_1_i.forLoop_0_i] === 'hidden'   ){
+                                
+                                
+                                if(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item[   ultraObject.misc[ultraObject.scope[pFFMisc_0_i]][pFFFL_1_i.forLoop_0_i]   ]   ){
+                                    
+                                    
+                                    ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].pointValue += 1
+                                    
+                                    
+                                }
+                                    
+                            }
+                            
+                            
+                            if(   ultraObject.misc[ultraObject.scope[pFFMisc_0_i]][pFFFL_1_i.forLoop_0_i] === 'className'   ){
+                                /*the spaces between are classNames I will apply partial match here */
+                                ultraObject.misc[ultraObject.scope[pFFMisc_0_i]].classes = ultraObject.iterify(   {iterify:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item[   ultraObject.misc[ultraObject.scope[pFFMisc_0_i]][pFFFL_1_i.forLoop_0_i]   ].split(' ')}   )
+                                ultraObject.misc[ultraObject.scope[pFFMisc_0_i]].classes.add(   {value:'abbaacus'}   )
+                                /**/
+                                /*to loop through classNames and find a partial match*/
+                                var pFFBOOL_2_I = {0:false}
+                                pFFBOOL_2_I = ultraObject.severalOr({
+                                    compTo: ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i],
+                                    compAgn: ultraObject.misc[ultraObject.scope[pFFMisc_0_i]].classes,
+                                    boolean:pFFBOOL_2_I,
+                                    which:0
+                                    how:function(   dev_obj   ){
+                                            
+                                    },
+                                    result:'a'
+                                })
+                                console.log(   pFFBOOL_2_I   )
+                                /**/
+                                
+                            }
                             
                             console.log(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item[   ultraObject.misc[ultraObject.scope[pFFMisc_0_i]][pFFFL_1_i.forLoop_0_i]   ]   )
                         },
