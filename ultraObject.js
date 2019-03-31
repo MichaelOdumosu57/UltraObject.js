@@ -2569,6 +2569,8 @@ function partialMatch(   dev_obj   ){
             pMSpaces_0_i = ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].add(   {value:ultraObject.iterableObject()}  )
             pMGap_0_i = ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].add(   {value:ultraObject.iterableObject()}   )
             ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMRange_0_i].add(   {value:0}   )
+            ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMSpaces_0_i].add(   {value:0}   )
+            ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i].add(   {value:0}   )
             /**/
             var pMFL_0_i = { //find if the range for compAgn satisfies
                 forLoop_0_i:0,
@@ -2577,6 +2579,7 @@ function partialMatch(   dev_obj   ){
                     /*range service for itO[0]
                         these contain the letters for each match
                     */
+                    
                     if(   dev_obj.compTo[pMFL_0_i.forLoop_0_i] === dev_obj.compAgn[pMFL_0_i.forLoop_0_i]   ){
                         
                         
@@ -2587,7 +2590,40 @@ function partialMatch(   dev_obj   ){
                     
                     
                     else if(   dev_obj.compTo[pMFL_0_i.forLoop_0_i] !== dev_obj.compAgn[pMFL_0_i.forLoop_0_i]   ){
-                        debugger
+                        
+                        
+                        if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i][   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i].length-1   ]> dev_obj.gap   ){
+                                                        
+                            throw('this cant be a match')
+                            
+                            
+                        }
+                        
+                        
+                        else if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i][   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i].length-1   ] <= dev_obj.gap   ){
+                            
+                            
+                            if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i][   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i].length-1   ] === 0   ){
+                                //we came across a new gap space = 1
+                                ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMSpaces_0_i][   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMSpaces_0_i].length-1   ] += 1
+                                    
+                            }
+                                                    
+                            
+                            ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i][   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i].length-1   ] +=1
+                            
+                            
+                        }
+                                            
+                        
+                        if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMSpaces_0_i][   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMSpaces_0_i].length-1   ]   > dev_obj.spaces   ){
+                        
+                            throw('error in spaces')
+                            
+                            
+                        }
+                        
+                        
                     }
                     
                     //or assert.equal
@@ -2786,7 +2822,7 @@ function preFillForm(   dev_obj   ){
                             if(   ultraObject.misc[ultraObject.scope[pFFMisc_0_i]][pFFFL_1_i.forLoop_0_i] === 'className'   ){
                                 /*the spaces between are classNames I will apply partial match here */
                                 ultraObject.misc[ultraObject.scope[pFFMisc_0_i]].classes = ultraObject.iterify(   {iterify:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item[   ultraObject.misc[ultraObject.scope[pFFMisc_0_i]][pFFFL_1_i.forLoop_0_i]   ].split(' ')}   )
-                                ultraObject.misc[ultraObject.scope[pFFMisc_0_i]].classes.add(   {value:'abbacus'}   )
+                                ultraObject.misc[ultraObject.scope[pFFMisc_0_i]].classes.add(   {value:'linkspoInasd'}   )
                                 /**/
                                 /*to loop through classNames and find a partial match*/
                                 var pFFBOOL_2_I = {0:false}
@@ -2800,13 +2836,13 @@ function preFillForm(   dev_obj   ){
                                             compTo:dev_obj.compTo,
                                             compAgn:dev_obj.compAgnI,
                                             range:8,
-                                            spaces:2,
-                                            gap:2,
+                                            spaces:1,
+                                            gap:5,
                                             type:'string',
                                             cCase:'toLowerCase'
                                         })
-                                        ultraObject.misc.minus(   {index:ultraObject.misc.length-1}   )
-                                        ultraObject.misc.abelast.minus(   {index:ultraObject.misc.abelast.length-1}   )
+                                        // ultraObject.misc.minus(   {index:ultraObject.misc.length-1}   )
+                                        // ultraObject.misc.abelast.minus(   {index:ultraObject.misc.abelast.length-1}   )
                                     },
                                     result:'a'
                                 })
