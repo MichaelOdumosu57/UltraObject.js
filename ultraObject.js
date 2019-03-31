@@ -44,6 +44,7 @@
     }
 */
 // all functions should perform comparision one at the time this allows for more
+// the inside fn adds meaning the outside decides whether to take them out
     
 
 //is {}[] allowed in ES5 ??
@@ -513,7 +514,8 @@ function isitO(   dev_obj   ){
     return false
 }
 function isString(   dev_obj   ){
-    
+    //should check for string object and string primitive
+    //. type item in questions
     
     if(   dev_obj !== undefined   ){
         
@@ -2533,6 +2535,9 @@ function partialMatch(   dev_obj   ){
     if(   dev_obj !== undefined   ){
         
         
+        var partialMatch_dev_obj = ultraObject.args.add(   {value:ultraObject.iterify(   {iterify:dev_obj}   )   }   )
+        
+        
         if(   dev_obj.version === undefined   ){
             
             
@@ -2544,24 +2549,55 @@ function partialMatch(   dev_obj   ){
         
         if(   dev_obj.version === 1 && dev_obj.type === 'string'  ){ // handles strings only allow it to do more with the same algorithm
             
-            var partialMatch_dev_obj = ultraObject.args.add(   {value:ultraObject.iterify(   {iterify:dev_obj}   )   }   )
+                        
+            if(   dev_obj.cCase !== undefined  ){
+                //turns to case comparision of users desire
+                
+                dev_obj.compTo = dev_obj.compTo[dev_obj.cCase]()
+                dev_obj.compAgn = dev_obj.compAgn[dev_obj.cCase]()
+                
+                                
+            }
+            
+            
+            dev_obj.compTo = ultraObject.iterify(    {iterify:dev_obj.compTo}   )
+            dev_obj.compAgn = ultraObject.iterify(   {iterify:dev_obj.compAgn}   )
+            /*initealize items to track range space and gap */
             pMMisc_0_i =  ultraObject.scope.add(   {value:ultraObject.misc.add(   {value:ultraObject.iterableObject()}   )}   )
-            
-            
-            if(   dev_obj.cCase === undefined ||
-            dev_obj.compTo = ultraObject.iterify(   {iterify:dev_obj.compTo[dev_obj.cCase]()}   )
-            dev_obj.compAgn = ultraObject.iterify(   {iterify:dev_obj.compAgn[dev_obj.cCase]()}   )
+            ultraObject.misc.abelast.add(   {value:ultraObject.scope[pMMisc_0_i]}   )
+            pMRange_0_i = ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].add(   {value:ultraObject.iterableObject()}   )
+            pMSpaces_0_i = ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].add(   {value:ultraObject.iterableObject()}  )
+            pMGap_0_i = ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].add(   {value:ultraObject.iterableObject()}   )
+            ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMRange_0_i].add(   {value:0}   )
+            /**/
             var pMFL_0_i = { //find if the range for compAgn satisfies
                 forLoop_0_i:0,
                 forLoopLength: dev_obj.compTo.length < dev_obj.compAgn.length ? dev_obj.compTo.length  :  dev_obj.compAgn.length,
                 fn:function(   dev_obj   ){
-                   console.table([   dev_obj.compTo[pMFL_0_i.forLoop_0_i],dev_obj.compAgn[pMFL_0_i.forLoop_0_i]   ])
+                    /*range service for itO[0]
+                        these contain the letters for each match
+                    */
+                    if(   dev_obj.compTo[pMFL_0_i.forLoop_0_i] === dev_obj.compAgn[pMFL_0_i.forLoop_0_i]   ){
+                        
+                        
+                        ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMRange_0_i][   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMRange_0_i].length-1   ] +=1
+                        
+                        
+                    }
+                    
+                    
+                    else if(   dev_obj.compTo[pMFL_0_i.forLoop_0_i] !== dev_obj.compAgn[pMFL_0_i.forLoop_0_i]   ){
+                        debugger
+                    }
+                    
+                    //or assert.equal
+                    /**/
                 },
                 args:dev_obj
             }
             ultraObject.forLoop(   pMFL_0_i   )
-            
-        
+            debugger
+            ultraObject.scope.minus(   {index:pMMisc_0_i}   )
         }
         
                 
@@ -2750,7 +2786,7 @@ function preFillForm(   dev_obj   ){
                             if(   ultraObject.misc[ultraObject.scope[pFFMisc_0_i]][pFFFL_1_i.forLoop_0_i] === 'className'   ){
                                 /*the spaces between are classNames I will apply partial match here */
                                 ultraObject.misc[ultraObject.scope[pFFMisc_0_i]].classes = ultraObject.iterify(   {iterify:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item[   ultraObject.misc[ultraObject.scope[pFFMisc_0_i]][pFFFL_1_i.forLoop_0_i]   ].split(' ')}   )
-                                ultraObject.misc[ultraObject.scope[pFFMisc_0_i]].classes.add(   {value:'Linkedin'}   )
+                                ultraObject.misc[ultraObject.scope[pFFMisc_0_i]].classes.add(   {value:'abbacus'}   )
                                 /**/
                                 /*to loop through classNames and find a partial match*/
                                 var pFFBOOL_2_I = {0:false}
@@ -2769,6 +2805,8 @@ function preFillForm(   dev_obj   ){
                                             type:'string',
                                             cCase:'toLowerCase'
                                         })
+                                        ultraObject.misc.minus(   {index:ultraObject.misc.length-1}   )
+                                        ultraObject.misc.abelast.minus(   {index:ultraObject.misc.abelast.length-1}   )
                                     },
                                     result:'a'
                                 })
