@@ -8,7 +8,7 @@
 // if node use exports or figure how to get external modules in here
 
 // an OOP way to do everything javascript, I meant to have this done in python with a superclass oh well
-// for meaningful use, every property purpose is easily availble to each other
+// for meaningful use, every property purpose is easily availble to each other and you can have several of them
 
 //if your find problems search PROBLEMS to see whats going on
 
@@ -20,14 +20,44 @@
 
 //uO is designed to recover from the unexecpted make sure all needed values have defaults the cover all possibilites the microservice may run into
 
+//for every single function call its arogumetns must be held in uO.args when the function dies or its args are not needed,
+//they are taken from their place in the args. they are each put into another itO with an index just in case of recusion
+    // when  an item from args is needed, it is put into a scope and added to a meanigunful property representation name in the uO,
+    //there will be a function implemented if the developer needs a copy or changes can reflect in the args
+    
+//var const and let in function must only represent the index of and item coming from uO.scope
+
+//to access items you must get it though the index in the scope
+// if a outer function needs a scope location from the inner function which started in the inner function use, .itO.abelast which is an itO in order to pull it out
+
+//use [   item   ], where item is a whole compact piece of code not an iteration or property
+//use  (   item   ) always unless there is nothing there or its multiline
+//function temp items should not be in the target object but  in the object the function uses to manipulate the target object. unless the fn does not use a temp object
+/*
+    ex
+    obj
+    fn increase(   dev_obj   ){
+        ...
+            var a = uO.(...)
+            a shoud go on dev_obj not in the actual object because oce the object is made the scaffolding should be thrown  away
+        ...
+    }
+*/
+// all functions should perform comparision one at the time this allows for more
+// the inside fn adds meaning the outside decides whether to take them out
+    
+
 //is {}[] allowed in ES5 ??
+//should items be accessed through the uO because mabye sometimes we cannot call it as a method
+    //should we stick to property access, since its easier fro everyone to have access
 // templates
 // FL_0_i for loop object in the purpose action
 // BOOL for boolean object
 // SA for a selectAll object
 // O stands for Object for this functionality like thisfn has thisfnO
 // itO stands for iterableObject
-// MB_0_i stands for memory bank used when its hard to contain needed data inside a nested function
+// MB_0_i stands for memory bank used when its hard to contain needed data inside a nested function. its also used as the brain of the API to access every related to its project purpose
+// q[int] repesentes the access spot for a cloned purpose object in an itO, used to figure out how to access theses
 // for the remiidify API
     // not sure if calls should be functions or methods which is easier for uO to survivce
 /*
@@ -40,6 +70,16 @@ var FL_0_i = {
     args:{}
 uO.forLoop(   FL_0_i   )
 }
+*/
+/*
+    var checkingAllValuesBOOL = {0:false}
+    checkingAllValuesBOOL = uO.severalOr({
+        compTo: 'match',
+        compAgn: {0:'do I Match',1:'does they match',2:'does it match',3:'match', length:4},
+        boolean:checkingAllValuesBOOL,
+        which:0
+    })
+    console.log(   checkingAllValuesBOOL   )
 */
  
 //
@@ -58,6 +98,7 @@ function (   dev_obj   ){
 /*
 items that should be placed in the uO
     finished products that are to be used by other API, they shold be stored in an iterableObject and used using iterableObject methods
+    all objects with a specific purpose should be stored in seperate indexes in an itO
     functions
     absolute primitive values like Infinity or XMLHTTPRequest
         
@@ -93,11 +134,17 @@ function uOReset(   dev_obj   ){
     pretty_do:pretty_do,
     
     allTags:iterableObject(), // represents serach range for the uO concerning elements
+    selectTags:iterableObject(), // represents a set of chosen items
     eCSearch:eCSearch,
+    
     isArray:isArray,
     isObject:isObject,
     isDOMElement:isDOMElement,
     isPrimitive:isPrimitive,
+    isInt:isInt,
+    isNodeList:isNodeList,
+    isitO:isitO,
+    isString:isString,
     
     elementFound:iterableObject(), // holds found elements needed by the uO
     removeCN:removeCN,
@@ -119,9 +166,14 @@ function uOReset(   dev_obj   ){
     iterableObject:iterableObject,
     iterify:iterify,
     MB_0_i:iterableObject(), // memory bank for functionality thats needs misc. in several places
-    
+    scope:iterableObject(),// makes it very easy for functions to access items made for a project purpose, once done it must be emptied
+    //if a scope starts in a function it must end in a function
+    // to access  uO.allTags[uO.scope[pFFATI_0_i]]
+    args:iterableObject(), // representing the dev_obj from the project purose
+
     sort:sort,
     swap:swap,
+    partialMatch:partialMatch,
     
     misc:iterableObject(), //holds finished products with which we cannot assign a name
     numberSystem:numberSystem
@@ -190,7 +242,7 @@ function addEventListener(   dev_obj   ){
         }
         
         
-        console.log(fn)
+        
         uO.DOM_child[0].addEventListener(   uO.eventName,fn   )
 } //  dev_obj.fn is used for 1st party dev to add their custom function to the listener dev_obj.xhttp is for xhr
 function xhttp(   dev_obj   ){
@@ -221,7 +273,7 @@ function open(   dev_obj   ){
     dev_obj.xhttp.open(   dev_obj.protocol,dev_obj.target,dev_obj.unk_bool   )
 } // gets in contact with the host
 function xhttpreadystatechange(){
-    console.log(    this.readyState)
+    console.log(    this   )
     var dev_obj = undefined
     
     if (    this.readyState == 4 && this.status == 200   ) {
@@ -283,24 +335,24 @@ function pretty_do(   dev_obj   ){
                                     this.notes_collection += "\n" + this.notes_entries[i][0] + Array(   this.max  - this.notes_entries[i][0].length + this.seperator ).join(" ") + this.s_key
                                     
                                     
-                                     	if(   typeof(   this.notes_entries[i][1]   ) == 'object'   ){
+                                        if(   typeof(   this.notes_entries[i][1]   ) == 'object'   ){
                                 
                                 
-                                     		this.notes_collection += JSON.stringify(   this.notes_entries[i][1],null,2   )
+                                            this.notes_collection += JSON.stringify(   this.notes_entries[i][1],null,2   )
                                 
                                 
-                                     	}
-                                     	
-                                     	
-                                     	else{
+                                        }
+                                        
+                                        
+                                        else{
                                 
                                 
-                                     		this.notes_collection += this.notes_entries[i][1]
+                                            this.notes_collection += this.notes_entries[i][1]
                                 
                                 
-                                     	}
-                                     	
-                                     	
+                                        }
+                                        
+                                        
                                 }
                                 return this.notes_collection
                             }
@@ -330,7 +382,7 @@ function isObject(   dev_obj   ){ // should combine all type query or keep seper
      if(   dev_obj !== undefined   ){
          
          
-        if(   !Array.isArray(dev_obj.type) && typeof(   dev_obj.type   ) === 'object'   ){
+        if(   !Array.isArray(dev_obj.type) && typeof(   dev_obj.type   ) === 'object' && dev_obj.type.isitO === undefined   ){
              //an array
              
             return true
@@ -374,6 +426,8 @@ function isPrimitive(   dev_obj   ){
             
             
             return true
+            
+            
         }
         
         
@@ -381,6 +435,105 @@ function isPrimitive(   dev_obj   ){
     
     
     return false
+}
+function isInt(   dev_obj   ){
+    
+    
+    if(   dev_obj !== undefined   ){
+        //hope IIFE are in ES5
+        
+        if(   Number.isInteger(dev_obj.type) || (function() {
+          return typeof dev_obj.type === 'number' &&
+            isFinite(dev_obj.type) &&
+            Math.floor(dev_obj.type) === dev_obj.type;
+        })()   ){
+            
+            
+            return 'true'
+            
+            
+        }
+        
+        
+        else{
+            
+            return 'false'
+            
+            }
+    
+    
+    }
+    
+    
+}
+function isNodeList(   dev_obj   ){
+
+
+    if(   dev_obj !== undefined   ){
+        
+        
+        if(   (   dev_obj.type.toString() || dev_obj.type.toLocaleString() || 'str'   ) === '[object NodeList]'   ){
+            // if a polyfill is needed use severalOr to get a string
+            
+            return true
+            
+            
+        }
+        
+        
+        else if(   (   dev_obj.type.toString() || dev_obj.type.toLocaleString() || 'str'   ) !== '[object NodeList]'   ){
+            
+            
+            return false
+            
+            
+        }
+        
+    }
+    
+    
+}
+function isitO(   dev_obj   ){
+    
+    
+    if(   dev_obj.type !== undefined   ){
+        
+        
+        if(   dev_obj.type.isitO !== undefined && dev_obj.type.isitO() === 'true'   ){
+            
+            
+            return true
+            
+            
+        }
+        
+        
+    }
+    
+    
+    return false
+}
+function isString(   dev_obj   ){
+    //should check for string object and string primitive
+    //. type item in questions
+    
+    if(   dev_obj !== undefined   ){
+        
+         
+        if(   typeof dev_obj.type === 'string'   ){
+            
+            
+            return true
+            
+            
+        }
+        
+        
+    }
+    
+    
+    return false
+        
 }
 function eCSearch(   dev_obj   ){
     // .list, desired items
@@ -391,62 +544,65 @@ function eCSearch(   dev_obj   ){
     // look through innerHTML, innerText, textContext
     // holds the found elements that meet the query in uO.elementFound
     
-    
-    var eCSearchLook
-    var eCSearchList
-    var eCSearchAllTags
-    var eCSearchSelectTags
+    var eCSearch_dev_obj = uO.args.add(   {value:uO.iterify(   {iterify:dev_obj}   )   }   )
     
     
-    if(   dev_obj !== undefined   ){
+    if(   dev_obj.sT === undefined   ){
         
         
-        eCSearchLook = uO.iterify(   {iterify:dev_obj.look}   )
-        eCSearchList = uO.iterify(   {iterify:dev_obj.list}   )
-
-
-    }
-    
-    
-    if(   uO.allTags.eCSST === undefined   ){
-        
-        
-        uO.allTags.eCSST = uO.allTags.add(   {value:uO.iterableObject()}   )
-        uO.allTags[uO.allTags.eCSST].eCSNS = uO.iterableObject()
+        var eCSSelectTags_0_i = uO.scope.add(   {value:uO.selectTags.add(   {value:uO.iterableObject()}   )}   )
+        uO.selectTags[uO.scope[eCSSelectTags_0_i]].eCSNS = uO.iterableObject()
+        uO.selectTags.abelast.add(   {value:uO.scope[eCSSelectTags_0_i]}   )
         
     }
     
     
+    else if(    uO.isInt(   {type:dev_obj.sT}   )   ){
+        
+        
+        var eCSSelectTags_0_i = dev_obj.sT
+        
+        
+    }
+    
+        
     console.group(   'items needed to search for elements based on keywords'   )
     uO.objInvloved({
-            0:uO.allTags[dev_obj.aTIndex],
-            1:eCSearchList,
-            2:uO.allTags[uO.allTags.eCSST]
+        0:uO.allTags[uO.scope[dev_obj.aT]],
+        1:uO.misc[uO.scope[dev_obj.list]],
+        2:uO.selectTags[uO.scope[eCSSelectTags_0_i]]
     })
     console.groupEnd()
-    eCSearchAllTags = uO.allTags[dev_obj.aTIndex]
     var eCSearchFL_0_i = {
         forLoop_0_i:0,
-        forLoopLength: eCSearchList.length,
+        forLoopLength: uO.misc[uO.scope[dev_obj.list]].length,
         fn:function(   dev_obj   ){
             var indexSelect = 0
             
             
-            if(   uO.allTags[uO.allTags.eCSST] !== undefined   ){
-                //keeps track of number map
+            if(   uO.selectTags[uO.scope[eCSSelectTags_0_i]] !== undefined   ){
                 
-                if(   uO.allTags[uO.allTags.eCSST].eCSNS !== undefined   ){
+                                
+                if(   uO.selectTags[uO.scope[eCSSelectTags_0_i]].eCSNS !== undefined   ){
                     
                     
-                    if(   uO.allTags[uO.allTags.eCSST].eCSNS[eCSearchFL_0_i.forLoop_0_i] !== undefined   ){
+                    if(   uO.selectTags[uO.scope[eCSSelectTags_0_i]].eCSNS[eCSearchFL_0_i.forLoop_0_i] !== undefined   ){
                     
-                        
-                        uO.numberSystem({
-                            digits:uO.allTags[uO.allTags.eCSST],
-                            operation:'add',
-                            amount: 26334554// smallest number I can add to fix the problem -240357 111100112
-                        })
-                        indexSelect = uO.allTags[uO.allTags.eCSST].eCSNS[eCSearchFL_0_i.forLoop_0_i][0]
+                    
+                        if(   dev_obj.same !== 'true'   ){
+                            //look at the next set of values
+                            
+                            if(   eCSearchFL_0_i.forLoop_0_i === 0   ){
+                                uO.numberSystem({
+                                    digits:uO.selectTags[uO.scope[eCSSelectTags_0_i]],
+                                    operation:'add',
+                                    amount: 1 //helps the function look at the next combination set
+                                })
+                            }
+                            
+                            
+                        }
+                        indexSelect = uO.selectTags[uO.scope[eCSSelectTags_0_i]].eCSNS[eCSearchFL_0_i.forLoop_0_i][0]
                         console.log('it tells me to start here', indexSelect)
                                    
                 
@@ -461,58 +617,50 @@ function eCSearch(   dev_obj   ){
             
             var eCSearchFL_1_i = {
                 forLoop_0_i:indexSelect,
-                forLoopLength:eCSearchAllTags.length,
+                forLoopLength:uO.allTags[uO.scope[dev_obj.aT]].length,
                 fn:function(   dev_obj   ){
                     var eCSearchFL_2_i = {
                         forLoop_0_i:0,
-                        forLoopLength:eCSearchLook.length,
+                        forLoopLength:uO.misc[uO.scope[dev_obj.look]].length,
                         fn:function(   dev_obj   ){
                             
                             
-                            if(   eCSearchAllTags[eCSearchFL_1_i.forLoop_0_i][eCSearchLook[eCSearchFL_2_i.forLoop_0_i][0]] !== undefined   ){
+                            if(   uO.allTags[uO.scope[dev_obj.aT]][eCSearchFL_1_i.forLoop_0_i][uO.misc[uO.scope[dev_obj.look]][eCSearchFL_2_i.forLoop_0_i][0]] !== undefined   ){
+                                //means if the comparison from the element property actually produces a string
+                                    
+                                if(   uO.allTags[uO.scope[dev_obj.aT]][eCSearchFL_1_i.forLoop_0_i][uO.misc[uO.scope[dev_obj.look]][eCSearchFL_2_i.forLoop_0_i][0]].indexOf(   uO.misc[uO.scope[dev_obj.list]][eCSearchFL_0_i.forLoop_0_i][0]   ) !== -1 || dev_obj.all  === 'true'  ){
+                                    //this must mean it found a match
+                                    
+                                
+                                    if(   uO.selectTags[uO.scope[eCSSelectTags_0_i]]['query'+eCSearchFL_0_i.forLoop_0_i] === undefined   ){
+                                        // the start value for the number system it means a NS is not available
+                                        
+                                        uO.selectTags[uO.scope[eCSSelectTags_0_i]].eCSNS.ready = 'false'
+                                        uO.selectTags[uO.scope[eCSSelectTags_0_i]]['query'+eCSearchFL_0_i.forLoop_0_i] = uO.selectTags[uO.scope[eCSSelectTags_0_i]].add(   {value:uO.iterableObject()}   )
+                                        var ecsNSI = uO.selectTags[uO.scope[eCSSelectTags_0_i]].eCSNS.add(   {value:uO.iterableObject()}   )
+                                        uO.selectTags[uO.scope[eCSSelectTags_0_i]].eCSNS[ecsNSI].add(   {value:eCSearchFL_1_i.forLoop_0_i}   )
+                                        uO.selectTags[uO.scope[eCSSelectTags_0_i]].eCSNS[ecsNSI].add(   {value:eCSearchFL_1_i.forLoop_0_i}   )
+                                        uO.selectTags[uO.scope[eCSSelectTags_0_i]].eCSNS[ecsNSI].add(   {value:eCSearchFL_1_i.forLoopLength+1}   )
+                                        
+                                        
+                                    }
                                     
                                     
-                                if(   eCSearchAllTags[eCSearchFL_1_i.forLoop_0_i][eCSearchLook[eCSearchFL_2_i.forLoop_0_i][0]].indexOf(   eCSearchList[eCSearchFL_0_i.forLoop_0_i][0]   ) !== -1   ){
+                                    uO.selectTags[uO.scope[eCSSelectTags_0_i]].eCSNS[eCSearchFL_0_i.forLoop_0_i][0] = eCSearchFL_1_i.forLoop_0_i
+                                    //helps change the number when the match is found so the NS doesnt take over
+                                    //if problems look here idk if it supposed to follow the nSM or not
+                                    uO.selectTags[uO.scope[eCSSelectTags_0_i]][uO.selectTags[uO.scope[eCSSelectTags_0_i]]['query'+eCSearchFL_0_i.forLoop_0_i]].item = uO.allTags[uO.scope[dev_obj.aT]][eCSearchFL_1_i.forLoop_0_i]
+                                    uO.selectTags[uO.scope[eCSSelectTags_0_i]][uO.selectTags[uO.scope[eCSSelectTags_0_i]]['query'+eCSearchFL_0_i.forLoop_0_i]].query = uO.allTags[uO.scope[dev_obj.aT]][eCSearchFL_1_i.forLoop_0_i][uO.misc[uO.scope[dev_obj.look]][eCSearchFL_2_i.forLoop_0_i][0]]
+                                    uO.selectTags[uO.scope[eCSSelectTags_0_i]][uO.selectTags[uO.scope[eCSSelectTags_0_i]]['query'+eCSearchFL_0_i.forLoop_0_i]].xMark = uO.misc[uO.scope[dev_obj.look]][eCSearchFL_2_i.forLoop_0_i][0]
+                                    uO.selectTags[uO.scope[eCSSelectTags_0_i]][uO.selectTags[uO.scope[eCSSelectTags_0_i]]['query'+eCSearchFL_0_i.forLoop_0_i]].keyword = uO.misc[uO.scope[dev_obj.list]][eCSearchFL_0_i.forLoop_0_i][0]
+                                    uO.selectTags[uO.scope[eCSSelectTags_0_i]][uO.selectTags[uO.scope[eCSSelectTags_0_i]]['query'+eCSearchFL_0_i.forLoop_0_i]].valuePhrase = uO.misc[uO.scope[dev_obj.list]][eCSearchFL_0_i.forLoop_0_i][1]
+                                    uO.selectTags[uO.scope[eCSSelectTags_0_i]][uO.selectTags[uO.scope[eCSSelectTags_0_i]]['query'+eCSearchFL_0_i.forLoop_0_i]].eCSIndex = eCSearchFL_1_i.forLoop_0_i
                                     
                                     
-                                    if(   uO.allTags[uO.allTags.eCSST]['query'+eCSearchFL_0_i.forLoop_0_i] === undefined   ){
-                                        // the start value for the number system
-                                        
-                                        uO.allTags[uO.allTags.eCSST]['query'+eCSearchFL_0_i.forLoop_0_i] = uO.allTags[uO.allTags.eCSST].add(   {value:uO.iterableObject()}   )
-                                        var ecsNSI = uO.allTags[uO.allTags.eCSST].eCSNS.add(   {value:uO.iterableObject()}   )
-                                        
-                                        
-                                        if(   eCSearchFL_0_i.forLoop_0_i === 0   ){
-                                            
-                                            
-                                            uO.allTags[uO.allTags.eCSST].eCSNS[ecsNSI].add(   {value:eCSearchFL_1_i.forLoop_0_i}   )
-                                            
-                                            
-                                        }
-                                        
-                                        
-                                        else if(   eCSearchFL_0_i.forLoop_0_i !== 0   ){
-                                            
-                                            
-                                            uO.allTags[uO.allTags.eCSST].eCSNS[ecsNSI].add(   {value:eCSearchFL_1_i.forLoop_0_i + 2}   )
-                                            
-                                            
-                                        }
-                                        
-                                        
-                                        uO.allTags[uO.allTags.eCSST].eCSNS[ecsNSI].add(   {value:eCSearchFL_1_i.forLoop_0_i}   )
-                                        uO.allTags[uO.allTags.eCSST].eCSNS[ecsNSI].add(   {value:eCSearchFL_1_i.forLoopLength}   )
-                                        
-                                        
-                                        }
+                                    if(   uO.selectTags[uO.scope[eCSSelectTags_0_i]].eCSNS.ready  !== 'false'   ){
+                                    }
                                     
                                     
-                                    uO.allTags[uO.allTags.eCSST][uO.allTags[uO.allTags.eCSST]['query'+eCSearchFL_0_i.forLoop_0_i]].item = eCSearchAllTags[eCSearchFL_1_i.forLoop_0_i]
-                                    uO.allTags[uO.allTags.eCSST][uO.allTags[uO.allTags.eCSST]['query'+eCSearchFL_0_i.forLoop_0_i]].query = eCSearchAllTags[eCSearchFL_1_i.forLoop_0_i][eCSearchLook[eCSearchFL_2_i.forLoop_0_i][0]]
-                                    uO.allTags[uO.allTags.eCSST][uO.allTags[uO.allTags.eCSST]['query'+eCSearchFL_0_i.forLoop_0_i]].xMark = eCSearchLook[eCSearchFL_2_i.forLoop_0_i][0]
-                                    uO.allTags[uO.allTags.eCSST][uO.allTags[uO.allTags.eCSST]['query'+eCSearchFL_0_i.forLoop_0_i]].keyword = eCSearchList[eCSearchFL_0_i.forLoop_0_i][0]
-                                    uO.allTags[uO.allTags.eCSST][uO.allTags[uO.allTags.eCSST]['query'+eCSearchFL_0_i.forLoop_0_i]].valuePhrase = eCSearchList[eCSearchFL_0_i.forLoop_0_i][1]
-                                    uO.allTags[uO.allTags.eCSST][uO.allTags[uO.allTags.eCSST]['query'+eCSearchFL_0_i.forLoop_0_i]].eCSIndex = eCSearchFL_1_i.forLoop_0_i  // very important to look at the next index
                                     return 'premature'
                                 
                                 
@@ -523,16 +671,16 @@ function eCSearch(   dev_obj   ){
                             
                             
                         },
-                        args:{},
+                        args:dev_obj,
                         bubble:'true'
                     }
                     return uO.forLoop(   eCSearchFL_2_i   )
                 },
-                args:{},
+                args:dev_obj,
             }
             return uO.forLoop(   eCSearchFL_1_i   )
         },
-        args:{},
+        args:dev_obj,
     }
     uO.forLoop(   eCSearchFL_0_i   )
     
@@ -540,27 +688,30 @@ function eCSearch(   dev_obj   ){
     if(   dev_obj.order === undefined   ){
         //this makes the instructions for the number map
         
-        if(   uO.allTags[uO.allTags.eCSST].eCSNS.nSM === undefined   ){
+        if(   uO.selectTags[uO.scope[eCSSelectTags_0_i]].eCSNS.nSM === undefined   ){
             
             
-            uO.allTags[uO.allTags.eCSST].eCSNS.nSM = uO.iterableObject()
+            uO.selectTags[uO.scope[eCSSelectTags_0_i]].eCSNS.nSM = uO.iterableObject()
             var eCSearchFL_3_i = {
                 forLoop_0_i:0,
-                forLoopLength:uO.allTags[uO.allTags.eCSST].eCSNS.length,
+                forLoopLength:uO.selectTags[uO.scope[eCSSelectTags_0_i]].eCSNS.length,
                 fn:function(   dev_obj   ){
-                    uO.allTags[uO.allTags.eCSST].eCSNS.nSM.add(   {value:eCSearchFL_3_i.forLoop_0_i}   )
+                    uO.selectTags[uO.scope[eCSSelectTags_0_i]].eCSNS.nSM.add(   {value:eCSearchFL_3_i.forLoop_0_i}   )
                 },
                 args:{}
             }
             uO.forLoop(   eCSearchFL_3_i   )
-            
+            uO.selectTags[uO.scope[eCSSelectTags_0_i]].eCSNS.ready = 'true'
             
         }
            
         
     }
-        
-        
+    uO.numberSystem({
+        digits:uO.selectTags[uO.scope[eCSSelectTags_0_i]],
+        operation:'print',
+    })
+    uO.scope.minus(   {index:eCSSelectTags_0_i}   )
     // find the first that matches the condition, and hold it when all four match exit, if the form doesn't like what I did each value must try everything in the allTapgs itO before telling the end user they cant figure out whats going on.grabs three and swaps one
     
     // so like
@@ -583,26 +734,36 @@ function eCSearch(   dev_obj   ){
     */
 }// seaches for elements with the queried filters and does things to them
 function numberSystem(   dev_obj   ){
-        // .digits the number system itself
+        // this
+        // .digits the object holding the NS and its map
         /*
-            // .nSM, determines how the number receive digits min is as 1 then 10 then 1000
-            
-                so forr
-                0:1
-                1:0
-                2:2
-                3::3
+            //.eCSNS a property in an object that contains the digits of the numbers as well the min max range of each digit
+                .nSM,
+                /*
+                    
+                    determines how the number receive digits min is as 1 then 10 then 1000
                 
-                                  0:{0:current,1:min,2:max}
-                the number system 1:{0:current,1:min,2:max}
-                                  2:{0:current,1:min,2:max}
-                                  3:{0:current,1:min,2:max}
-                                  
-                if the fn receives add 1 nS[1].current will increase by one
-                when ns[1].current hits the max then ns[0].current increases by one and
-                    ns[1].current returns to zero
+                    so forr
+                    0:1
+                    1:0
+                    2:2
+                    3::3
+                                .eCSNS:{
+                                      0:{0:current,1:min,2:max}
+                    the number system 1:{0:current,1:min,2:max}
+                                      2:{0:current,1:min,2:max}
+                                      3:{0:current,1:min,2:max}
+                                        nSM:{}
+                                }
+                    if the fn receives add 1 nS[1].current will increase by one
+                    when ns[1].current hits the max then ns[0].current increases by one and
+                        ns[1].current returns to zero
                 
-            
+                */
+                //.currentNumber
+                /*
+                    the current number for the NS
+                */
             // logic
             // once 0 hits max then 1   ... once 1 hits max then 2
             //.further_checks if the case causes a break in the number,
@@ -623,6 +784,7 @@ function numberSystem(   dev_obj   ){
             //when it hits the NS  0
             
         // when working on max ask these questions
+        /*
             //what  happens when i am at the current val max how do it increase the digits properly
                 //works properly
             // when the sum is greater than the max how do I allocate to increase the digits properly
@@ -640,12 +802,20 @@ function numberSystem(   dev_obj   ){
                 add, will be used for addition and subtract of decimal based integer values to the number system
                     it needs an .amount as an int
                 validate, make sure the resulting number obeys the NS laws
-                
+                decimal, returns the decimal version of the number, good if you need to perform comparison or you are trying to do computation with different numberSystem since js is based off the decimal system this works perfectly
+                    returns a int
+                multiply
+                    multiples the NS number according to the ns, the amount mustbe an int
+                divide
+                    divides the NS number according the NS, the decimal division reslt must be an int
+                print prints the current number as well as puts it in the currentNumber property of the eCSNS,this should change so that currentNumber can be evaluated at use but for now its not
             */
         // .amount
             /*
                 if the operation is add, then this is the amount to add, negative int to subtract
+                if the operation is compare, this is a iterable Object of all desired comparisons
             */
+         
         console.group(   'providing the mechanism for the number system'   )
         
         
@@ -678,7 +848,169 @@ function numberSystem(   dev_obj   ){
         }
         
         
-        if(   dev_obj.operation === 'add' ){
+        if(   dev_obj.operation === 'decimal'   ){
+                   
+                    
+            var decimalNS = dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[0]][0] -  dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[0]][1]
+            var rangeNS = dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[0]][2] - dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[0]][1]
+            var originalNS = dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[1]][0]
+            //first digit range that influences the 2nd digit
+            var numberSystemFL_2_i = {
+                forLoop_0_i:1,// because the first digit is already of base decimal unless we decide how the digits count for the NS
+                forLoopLength:dev_obj.digits.eCSNS.nSM.length,
+                fn:function(   dev_obj   ){
+                    
+                   
+                   if(   dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_2_i.forLoop_0_i]][0] !==  dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_2_i.forLoop_0_i]][1]  ){
+                    
+                    
+                        dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_2_i.forLoop_0_i]][0] -= 1
+                        decimalNS += rangeNS
+                        //effect adding the next digits worth for the decimal system
+                        numberSystemFL_2_i.forLoop_0_i -= 1
+                        // so we can get back to the min
+                       
+                    }
+                    
+                    
+                    else if(   dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_2_i.forLoop_0_i]][0] ===  dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_2_i.forLoop_0_i]][1] ){
+                        
+                        dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_2_i.forLoop_0_i]][0] = originalNS
+                        
+                        
+                        if(   numberSystemFL_2_i.forLoop_0_i+1 !==  numberSystemFL_2_i.forLoopLength){
+                            
+                            
+                            rangeNS *=  dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_2_i.forLoop_0_i-1]][2] - dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_2_i.forLoop_0_i-1]][1]
+                            originalNS = dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_2_i.forLoop_0_i+1]][0]
+                        
+                        
+                        }
+                        
+                    }
+                    
+                },
+                
+                args:{
+                        digits:dev_obj.digits,
+                        amount:dev_obj.amount
+                    }
+            }
+            uO.forLoop(   numberSystemFL_2_i   )
+            return decimalNS
+            
+        }
+        
+        
+        if(   dev_obj.operation === 'multiply'   ){
+                    
+                        
+            if(   dev_obj.amount < 0  ){
+                
+                
+                throw(' the NS does not undestand what to do the NS starts from 0 and to supply negative numbers requires future implemenation, also the amount must be an int' )
+                
+                
+            }
+            
+            
+            var decimalNS = uO.numberSystem({
+                digits:dev_obj.digits,
+                operation:'decimal',
+            })
+            uO.numberSystem({
+                digits:dev_obj.digits,
+                operation:'add',
+                amount:-decimalNS
+            })
+            // gets to  0 so we can do the multiplcation through the decimal system much easier
+            decimalNS *= dev_obj.amount
+
+            
+            if(   uO.isInt(   {type:decimalNS}   ) === 'false'   ){
+                
+                
+                throw(   'this will make the number invalid no-op'   )
+                
+                
+            }
+            
+            
+            else if(   uO.isInt(   {type:decimalNS}   ) === 'true' && dev_obj.amount !== 0  ){
+                //since the NS number is already 0 no need for noop
+                
+                uO.numberSystem({
+                    digits:dev_obj.digits,
+                    operation:'add',
+                    amount:decimalNS
+                })
+                
+                
+            }
+            
+                            
+        }
+        
+        
+        if(   dev_obj.operation === 'divide'   ){
+            
+                        
+            if(   dev_obj.amount === 1   ){
+                
+                
+                //no -op
+                                
+                                
+            }
+            
+            
+            if(   dev_obj.amount <= 0   ){
+                
+                
+                throw(' in the decimal system divide by zero cannot be expressed so its an error. if the amount was negative, the implemnetation to express it is not available yet' )
+                
+                           
+            }
+            
+            
+            var decimalNS = uO.numberSystem({
+                digits:dev_obj.digits,
+                operation:'decimal',
+            })
+            decimalNS -= (decimalNS/dev_obj.amount)
+            
+            
+            if(   uO.isInt(   {type:decimalNS}   ) === 'true'   ){
+                
+                
+                if(   dev_obj.amount > 1   ){
+                
+                
+                    uO.numberSystem({
+                        digits:dev_obj.digits,
+                        operation:'add',
+                        amount:-decimalNS
+                    })
+                                
+                                
+                }
+                
+                
+            }
+            
+            
+            else if(   uO.isInt(   {type:decimalNS}   ) === 'false'   ){
+                
+                
+                console.error('the result must be an int no-op')
+                
+                
+            }
+            
+        }
+        
+        
+        if(   dev_obj.operation === 'add'  ){
             //you might not supposed to be chaning the value of dev_obj.amount becuase wher it leaves here it calls its its original amount but this should work properly
             
                                     
@@ -880,20 +1212,33 @@ function numberSystem(   dev_obj   ){
         }
         
         
-        var NS_iter = []
-        var debugFL_0_i = {
-            forLoop_0_i:0,
-            forLoopLength:dev_obj.digits.eCSNS.nSM.length,
-            fn:function(   dev_obj   ){
-                NS_iter.push(   dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[debugFL_0_i.forLoop_0_i]][0]  )
-            },
-            args:{
-                    digits:dev_obj.digits
+        if(   dev_obj.operation === 'print'   ){
+            
+            
+            var NS_iter = []
+            var numberSystemFL_1_i = {
+                forLoop_0_i:0,
+                forLoopLength:dev_obj.digits.eCSNS.nSM.length,
+                fn:function(   dev_obj   ){
+                    NS_iter.push(   dev_obj.digits.eCSNS[dev_obj.digits.eCSNS.nSM[numberSystemFL_1_i.forLoop_0_i]][0]  )
+                },
+                args:{
+                        digits:dev_obj.digits
                 }
+            }
+            uO.forLoop(   numberSystemFL_1_i   )
+            console.log('current number',NS_iter)
+            dev_obj.digits.eCSNS.currentNumber =  NS_iter
+            return NS_iter
+            
+            
         }
-        uO.forLoop(   debugFL_0_i   )
-        console.log('current number',NS_iter)
         
+        
+        // dev_obj.digits.eCSNS.currentNumber = uO.numberSystem({
+        //     digits:dev_obj.digits,
+        //     operation:'print',
+        // })
         console.groupEnd()
     
 }//makes a customized number system for the needs of the eCSearch multiple testing required by prefill form
@@ -1268,12 +1613,15 @@ function objectLength(   dev_obj   ){ // finds object lenghts
 }
 function iterableObject(   dev_obj   ){
     //. value the actual item your are adding to the object
+    // .stop for the abelast
     
      var iterableObjectO = {
         length:0,
+        
         add:function(   dev_obj   ){// returns the index that it was added to an object
                 iterableObjectO[iterableObjectO.length] = dev_obj.value
                 iterableObjectO.length += 1
+                // iterableObjectO['q'+(iterableObjectO.length -1).toString()] = iterableObjectO.length -1
                 return iterableObjectO.length -1
             },// adds a value and retuns its place in the array
         minus:function(   dev_obj   ){
@@ -1283,7 +1631,8 @@ function iterableObject(   dev_obj   ){
             if(   dev_obj.index !== undefined   ){
                 
                 
-                delete iterableObjectO[iterableObjectO_BOOL.spot]
+                delete iterableObjectO[dev_obj.index]
+                // delete iterableObjectO['q'+dev_obj.index.toString()]
                 iterableObjectO.resetLength()// resets the length
                 var iterableObjectFL_0_i = {
                     forLoop_0_i:0,
@@ -1300,7 +1649,9 @@ function iterableObject(   dev_obj   ){
                             
                         }
                     },
-                    args:{}
+                    args:{
+                        index:dev_obj.index
+                        }
                 }
                 uO.forLoop(   iterableObjectFL_0_i   ) // realigns the iterable so the index are consecutive again
                 
@@ -1325,6 +1676,7 @@ function iterableObject(   dev_obj   ){
                     
                     var iterableObjectTDI = iterableObjectO_BOOL.spot // index to remove
                     delete iterableObjectO[iterableObjectTDI]
+                    // delete iterableObjectO['q'+iterableObjectTDI.toString()]
                     iterableObjectO.resetLength()
                     var iterableObjectFL_1_i = {
                         forLoop_0_i:0,
@@ -1381,8 +1733,134 @@ function iterableObject(   dev_obj   ){
                     },
                     result:'true'
             })
-        }
+        }, //if corrputed resets the lengths
+        isitO:function(   dev_obj   ){
+            return 'true'
+        }//confirms if its an itO, make it refuse to bind
      }
+     iterableObjectO.abelast = {
+        length:0,
+        
+        add:function(   dev_obj   ){// returns the index that it was added to an object
+                iterableObjectO.abelast[iterableObjectO.abelast.length] = dev_obj.value
+                iterableObjectO.abelast.length += 1
+                // iterableObjectO.abelast['q'+(iterableObjectO.abelast.length -1).toString()] = iterableObjectO.abelast.length -1
+                return iterableObjectO.abelast.length -1
+            },// adds a value and retuns its place in the array
+        minus:function(   dev_obj   ){
+            //.value value to remove
+            //.index remove and index
+            
+            if(   dev_obj.index !== undefined   ){
+                
+                
+                delete iterableObjectO.abelast[dev_obj.index]
+                // delete iterableObjectO.abelast['q'+dev_obj.index.toString()]
+                iterableObjectO.abelast.resetLength()// resets the length
+                var iterableObjectFL_0_i = {
+                    forLoop_0_i:0,
+                    forLoopLength:iterableObjectO.abelast.length,
+                    fn:function(   dev_obj   ){
+                        
+                        
+                        if(   iterableObjectTDI <= iterableObjectFL_0_i.forLoop_0_i && iterableObjectFL_0_i.forLoop_0_i !== iterableObjectO.abelast.length  ){ // at that point something must be missing
+                            
+                            
+                            iterableObjectO.abelast[iterableObjectFL_0_i.forLoop_0_i] =  iterableObjectO.abelast[iterableObjectFL_0_i.forLoop_0_i+1]
+                            delete iterableObjectO.abelast[iterableObjectFL_0_i.forLoop_0_i+1 - iterableObjectTDI]//problems look here usually wants a variable or primitive to properly delete
+                            
+                            
+                        }
+                    },
+                    args:{
+                        index:dev_obj.index
+                        }
+                }
+                uO.forLoop(   iterableObjectFL_0_i   ) // realigns the iterable so the index are consecutive again
+                
+                
+            }
+            
+            
+            if(   dev_obj.value !== undefined   ){
+                
+                
+                var iterableObjectO_abelast_BOOL = {0:false}
+                iterableObjectO_abelast_BOOL = uO.severalOr({
+                            compTo: dev_obj.value,
+                            compAgn: iterableObjectO.abelast,
+                            boolean:iterableObjectO_abelast_BOOL,
+                            which:0
+                })
+                
+                
+                if(   iterableObjectO_abelast_BOOL[0]   ){
+                    
+                    
+                    var iterableObjectTDI = iterableObjectO_abelast_BOOL.spot // index to remove
+                    delete iterableObjectO.abelast[iterableObjectTDI]
+                    // delete iterableObjectO.abelast['q'+iterableObjectTDI.toString()]
+                    iterableObjectO.abelast.resetLength()
+                    var iterableObjectFL_1_i = {
+                        forLoop_0_i:0,
+                        forLoopLength:iterableObjectO.abelast.length,
+                        fn:function(   dev_obj   ){
+                            
+                            
+                            if(   iterableObjectTDI <= iterableObjectFL_1_i.forLoop_0_i && iterableObjectFL_1_i.forLoop_0_i !== iterableObjectO.abelast.length  ){ // at that point something must be missing
+                                
+                                
+                                iterableObjectO.abelast[iterableObjectFL_1_i.forLoop_0_i] =  iterableObjectO.abelast[iterableObjectFL_1_i.forLoop_0_i+1]
+                                delete iterableObjectO.abelast[iterableObjectFL_1_i.forLoop_0_i+1 - iterableObjectTDI]//problems look here usually wants a variable or primitive to properly delete
+                                
+                                
+                            }
+                            
+                            
+                        },
+                        args:{}
+                    }
+                    uO.forLoop(   iterableObjectFL_1_i   ) // realigns the iterable so the index are consecutive again
+                    
+                    
+                    if(    dev_obj.correct === 'false'   ){
+                        
+                        
+                        //leave the index alone
+                        
+                        
+                    }
+
+                }
+                
+                
+            }
+            
+            
+        },// removes an item from an array if its there
+        resetLength:function(   dev_obj   ){
+            uO.objectLength({
+                    val:iterableObjectO.abelast,
+                    getLen:function(   dev_obj   ){
+                        
+                        
+                        if(   !isNaN(   Object.keys(   dev_obj.val   )[dev_obj.index]   )   ){
+                            
+                            
+                            return 'true'
+                            
+                            
+                        }
+                        
+                        
+                    },
+                    result:'true'
+            })
+        }, //if corrputed resets the lengths
+        isitO:function(   dev_obj   ){
+            return 'true'
+        }//confirms if its an itO, make it refuse to bind
+     }  // make a deep copy if outer function do not have access to scope from the inner functions, the inner function places the required info heree
      return iterableObjectO
 } //retuns or converts an object with which you can easily iterate but this is an array accroding to chrome 72
 function iterify(   dev_obj   ){
@@ -1393,8 +1871,8 @@ function iterify(   dev_obj   ){
         
         var iterableO = uO.iterableObject()
         
-                
-        if(   uO.isArray(   {type:dev_obj.iterify}   )   ){
+        
+        if(   uO.isArray(   {type:dev_obj.iterify}   ) || uO.isNodeList(   {type:dev_obj.iterify}   )   ){
             
             
             var iterableFL_0_i = {
@@ -1432,7 +1910,7 @@ function iterify(   dev_obj   ){
         
         
         else if(   uO.isPrimitive(   {type:dev_obj.iterify}   )   ){
-            //FIX ME this method does not exist yet
+            //for strings it neatly splits it into an itO
             
             var iterableFL_0_i = {
                 forLoop_0_i:0,
@@ -1472,14 +1950,15 @@ function subGroups(   dev_obj   ){
     // if on item map is longer than the other, the first contains the parent
     // if the items after are as long as the first, then the next item contains the parent for the next set
     //
-/*
-"0 item 0 item element " parent
-"1 item element "       children
-"2 item element "
-"1 item 0 item element " parent
-....
-*/
+        /*
+        "0 item 0 item element " parent
+        "1 item element "       children
+        "2 item element "
+        "1 item 0 item element " parent
+        ....
+        */
         //
+    var subGroups_dev_obj = uO.args.add(   {value:uO.iterify(   {iterify:dev_obj}   )   }   )
     
     if(   dev_obj !== undefined   ){
         
@@ -1525,7 +2004,6 @@ function subGroups(   dev_obj   ){
             //gets rid of bad results
             
             
-            
             console.group(   'complete'   )
                 uO.subGroupsO[subGroupsBOOL.spot].length = 0
                 var subGroupsFL_0_i = {
@@ -1551,14 +2029,13 @@ function subGroups(   dev_obj   ){
                     forLoop_0_i:0,
                     forLoopLength:Object.keys(   uO.subGroupsO[subGroupsBOOL.spot].ending   ).length,
                     fn:function(   dev_obj   ){
-                        console.log
                         subGroupsBOOL_1_i = uO.severalOr({
                             compTo: uO.subGroupsO[subGroupsBOOL.spot].ending[subGroupsFL_1_i.forLoop_0_i],
                             compAgn: uO.subGroupsO[subGroupsBOOL.spot],
                             boolean:subGroupsBOOL_1_i,
                             which:0,
                             how:function(   dev_obj   ){
-                                
+                            //this removes bad list that do not lead to an element
                                 
                                 if(   dev_obj.compAgnI !== undefined   ){
                                     
@@ -1678,7 +2155,7 @@ function subGroups(   dev_obj   ){
 }// returns ordering information about nested items
 function selectAll(   dev_obj   ){
         // this function also returns the group ordering if looked for nested items
-        //.target item to get all values from
+        //.target item to get all values from must be an itO or an object
         // .typeOnly, what specific values were looking for
     
         if(   dev_obj !== undefined   ){
@@ -1686,43 +2163,68 @@ function selectAll(   dev_obj   ){
             
                 var selectAllBOOL = {0:false}
                 selectAllBOOL = uO.severalOr({
-                            compTo: 'element',
-                            compAgn: dev_obj.typeOnly,
-                            boolean:selectAllBOOL,
-                            which:0
+                    compTo: 'element',
+                    compAgn: dev_obj.typeOnly,
+                    boolean:selectAllBOOL,
+                    which:0
                 })
-                if(   uO.isObject({type:dev_obj.target}) && selectAllBOOL[0]   ){
+                
+                
+                if(   uO.isObject(   {type:dev_obj.target}   ) || uO.isitO(   {type:dev_obj.target}   ) && selectAllBOOL[0]   ){
                     
                     
                     var selectReturn = {}
-                    var selectReturnMD = {length:0,str:'',ending:{0:'element'}}//selectReturnMetaData contains grouping information about the .target
+                    var selectReturnMD = {
+                        length:0,
+                        str:'',
+                        ending:dev_obj.typeOnly
+                    }
+                    //selectReturnMetaData contains grouping information about the .target
                     var selectAllFL_0_i = {
                         forLoop_0_i:0,
-                        forLoopLength:Object.keys(   dev_obj.target   ).length,
+                        forLoopLength:dev_obj.length,
                         fn:function(   dev_obj   ){
-                            console.log(   selectAllFL_0_i.forLoop_0_i,'walk in'   )
-                            console.log(   Object.keys(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]   )
+                            // console.log(   selectAllFL_0_i.forLoop_0_i,'walk in'   )
+                            // console.log(   Object.keys(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]   )
                             var selectCheckpoint = {}  // when it leave recurison it restore the values
-                            uO.subGroups({
-                                    map:selectReturnMD,
-                                    val:Object.keys(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i],
-                                })
                             
+                            
+                            try{
+                                if(   (   uO.isObject(   {type:Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]}   ) || uO.isitO(   {type:Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]}   )   ) || uO.isDOMElement(   {type:Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]}   )     ){
+                                    //I cannot add it if its a primitive not an object or an itO
+                                    //done like this because what if im looking for a string, this would evaluate to false and the subGroupMap would be improper
+                                    
+                                    uO.subGroups({
+                                        map:selectReturnMD,
+                                        val:Object.keys(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i],
+                                    })
+                                    
+                                    
+                                }
+                            }
+                            
+                            catch(e){debugger}
                             
                             if(   uO.isDOMElement(   {type:Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]}   )   ){
+                                
+                                
                                 selectReturn[Object.keys(   selectReturn   ).length] = Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]
                                 uO.subGroups({
-                                        map:selectReturnMD,
-                                        val:'element',
-                                        nextItem:'true',
-                                    })
+                                    map:selectReturnMD,
+                                    val:'element',
+                                    nextItem:'true',
+                                })
+                                // return 'premature'
+                                //this might leave some impt things behind
                                     
                                 
                             }
                             
                             
-                            else if(   uO.isObject(   {type:Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]}   )   ){
-                                console.group('recursion')
+                            else if(   uO.isObject(   {type:Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]}   ) || uO.isitO(   {type:Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]}   )    ){
+                                
+                                
+                                // console.group('recursion')
                                     selectCheckpoint.args = selectAllFL_0_i.args
                                     selectCheckpoint.forLoop_0_i =  selectAllFL_0_i.forLoop_0_i
                                     selectCheckpoint.forLoopLength = selectAllFL_0_i.forLoopLength
@@ -1732,11 +2234,13 @@ function selectAll(   dev_obj   ){
                                     selectAllFL_0_i.forLoop_0_i = 0
                                     selectAllFL_0_i.forLoopLength = Object.values(   Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]   ).length
                                     uO.forLoop(   selectAllFL_0_i   )
-                                console.groupEnd()
+                                // console.groupEnd()
                                 selectAllFL_0_i.args = selectCheckpoint.args
                                 selectAllFL_0_i.forLoop_0_i = selectCheckpoint.forLoop_0_i
                                 selectAllFL_0_i.forLoopLength = selectCheckpoint.forLoopLength
                                 selectCheckpoint = null
+                                
+                                
                             }
                             
                         },
@@ -1750,7 +2254,6 @@ function selectAll(   dev_obj   ){
                     console.group(   'grabbing the chosen elements from the object'   )
                         uO.objInvloved({
                                 0:selectReturn,
-                                1:uO.identifyEO,
                                 2:selectReturnMD
                             })
                     console.groupEnd()
@@ -1765,15 +2268,18 @@ function selectAll(   dev_obj   ){
         
 }
 function packIt(   dev_obj   ){
+    //for the the .fill and .write it expects them to be prefined in an iterable for .fill this must be found as a property in of the items in packItSA for .write this must be fount as a property in on of the items for dev_obj.order
     /*
-     .order what this fn is supposed to fill right now takes objects
-     .directions, what its filling it with
-        match use match map and match keys and fills values
-        gather use uO.selectAll to gather needed values to pack
-            element, return only elements from the order
-     .matchMap if .directions === match map keys and fill values
+         .order what this fn is supposed to fill right now takes objects or itO is needs to find out what it is
+         .directions, what its filling it with
+            match use match map and match keys and fills values
+            gather use uO.selectAll to gather needed values to pack
+                element, return only elements from the order
+         .matchMap if .directions === match map keys and fill values
+         .fill  where to place the items
+         .write what to place for each fill value
     */
-    
+    var packIt_dev_obj = uO.args.add(   {value:uO.iterify(   {iterify:dev_obj}   )   }   )
     
     if(   dev_obj !== undefined   ){
             
@@ -1785,25 +2291,27 @@ function packIt(   dev_obj   ){
                 
                                     
                 if(   dev_obj.directions[packItFL_0_i.forLoop_0_i] === 'match'   ){
-                    
                     console.group(   'an attempt to fill items'   )
                         uO.objInvloved({
                                 0:packItSA,
-                                1:uO.identifyEO,
-                                2:uO.elementFound,
-                                3:uO.subGroupsO
+                                1:dev_obj.order,
+                                2:uO.subGroupsO
                             })
                     console.groupEnd()
                     var packItFL_1_i = {
                         forLoop_0_i:0,
-                        forLoopLength:packItSA.subGroupsMap.length,
+                        forLoopLength:packItSA.subGroupsMap.MB_0_i.length,
                         fn:function(   dev_obj   ){
-                            console.log(   packItSA[packItFL_1_i.forLoop_0_i],packItSA.subGroupsMap.MB_0_i[packItFL_1_i.forLoop_0_i][0],uO.elementFound[packItSA.subGroupsMap.MB_0_i[packItFL_1_i.forLoop_0_i][0]   ].keyword   )
-                            
-                            packItSA[packItFL_1_i.forLoop_0_i].value = uO.elementFound[packItSA.subGroupsMap.MB_0_i[packItFL_1_i.forLoop_0_i][0]   ].valuePhrase
-                            
+                            packItSA[packItFL_1_i.forLoop_0_i][dev_obj.fill] = dev_obj.order[packItFL_1_i.forLoop_0_i][dev_obj.write]
+                            //properly writes to the item that should be filled
+                            // console.log(   dev_obj.order[packItFL_1_i.forLoop_0_i][dev_obj.write]   )
+                            // console.log(   packItSA[packItFL_1_i.forLoop_0_i].value   )
                         },
-                        args:{}
+                        args:{
+                            fill:dev_obj.fill,
+                            order:dev_obj.order,
+                            write:dev_obj.write
+                        }
                     }
                     uO.forLoop(   packItFL_1_i   )
                     
@@ -1813,11 +2321,31 @@ function packIt(   dev_obj   ){
                 
                 if(   dev_obj.directions[packItFL_0_i.forLoop_0_i] === 'gather element'   ){
                         
-                                        
-                    packItSA = uO.selectAll({
-                        target:dev_obj.order,
-                        typeOnly : {0:'element'}
-                    })
+                    
+                    if(    uO.isObject(   {type:dev_obj.order}   )   ){
+                        
+                        
+                        packItSA = uO.selectAll({
+                            target:dev_obj.order,
+                            typeOnly : {0:'element'},
+                            length:Object.keys(   dev_obj.order   ).length
+                        })
+                        
+                        
+                    }
+                    
+                    
+                    else if(   uO.isitO(   {type:dev_obj.order}   )     ){
+                    
+                        
+                        packItSA = uO.selectAll({
+                            target:dev_obj.order,
+                            typeOnly : {0:'element'},
+                            length:dev_obj.order.length
+                        })
+                        
+                        
+                    }
                     
                     
                 }
@@ -1825,7 +2353,9 @@ function packIt(   dev_obj   ){
             },
             args:{
                 directions:dev_obj.directions,
-                order:dev_obj.order
+                order:dev_obj.order,
+                fill:dev_obj.fill,
+                write:dev_obj.write
             }
         }
         uO.forLoop(   packItFL_0_i   )
@@ -1857,30 +2387,30 @@ function sort(   dev_obj   ){
                 
                 if(   dev_obj.algorithm  === 'bubble'   ){
                     
-                            	        
-        	        if(   dev_obj.compare(   {val:dev_obj.target,   index:sortFL_0_i.forLoop_0_i}   ) === dev_obj.result    ){
-        	            
-        	                sortFlagO[sortFlagO.bubble]  = 'false'
-        	                sortFL_0_i.itO.swapO = sortFL_0_i.itO.add(   {value:uO.iterableObject()}   )
-        	                sortFL_0_i.itO[sortFL_0_i.itO.swapO].add(   {value:dev_obj.target[sortFL_0_i.forLoop_0_i]}   )
-        	                sortFL_0_i.itO[sortFL_0_i.itO.swapO].add(   {value:dev_obj.target[sortFL_0_i.forLoop_0_i+1]}   )
-        	                sortO = uO.swap({
-        	                        swapO:sortFL_0_i.itO[sortFL_0_i.itO.swapO],
-        	                        instruct:sortFL_0_i.itO[sortFL_0_i.itO.instruct],
-        	                        action:'default'
-        	                    })
-        	                sortFL_0_i.itO[sortFL_0_i.itO.swapO].minus(   {value:dev_obj.target[sortFL_0_i.forLoop_0_i]}   )
-        	                sortFL_0_i.itO[sortFL_0_i.itO.swapO].minus(   {value:dev_obj.target[sortFL_0_i.forLoop_0_i+1]}   )
-        	                dev_obj.target[sortFL_0_i.forLoop_0_i] = sortO[0]
-        	                dev_obj.target[sortFL_0_i.forLoop_0_i+1] = sortO[1]
-        	                
-        	                
-        	            }
-        	        
-        	        
+                                        
+                    if(   dev_obj.compare(   {val:dev_obj.target,   index:sortFL_0_i.forLoop_0_i}   ) === dev_obj.result    ){
+                        
+                            sortFlagO[sortFlagO.bubble]  = 'false'
+                            sortFL_0_i.itO.swapO = sortFL_0_i.itO.add(   {value:uO.iterableObject()}   )
+                            sortFL_0_i.itO[sortFL_0_i.itO.swapO].add(   {value:dev_obj.target[sortFL_0_i.forLoop_0_i]}   )
+                            sortFL_0_i.itO[sortFL_0_i.itO.swapO].add(   {value:dev_obj.target[sortFL_0_i.forLoop_0_i+1]}   )
+                            sortO = uO.swap({
+                                    swapO:sortFL_0_i.itO[sortFL_0_i.itO.swapO],
+                                    instruct:sortFL_0_i.itO[sortFL_0_i.itO.instruct],
+                                    action:'default'
+                                })
+                            sortFL_0_i.itO[sortFL_0_i.itO.swapO].minus(   {value:dev_obj.target[sortFL_0_i.forLoop_0_i]}   )
+                            sortFL_0_i.itO[sortFL_0_i.itO.swapO].minus(   {value:dev_obj.target[sortFL_0_i.forLoop_0_i+1]}   )
+                            dev_obj.target[sortFL_0_i.forLoop_0_i] = sortO[0]
+                            dev_obj.target[sortFL_0_i.forLoop_0_i+1] = sortO[1]
+                            
+                            
+                        }
+                    
+                    
                 }
-        	    
-        	    
+                
+                
             }
             
             
@@ -1898,9 +2428,9 @@ function sort(   dev_obj   ){
     if(   dev_obj.algorithm  === 'bubble'   ){
         
             sortFlagO.bubble = sortFlagO.add(   {value:'false'}   )
-    	    sortFL_0_i.itO.instruct = sortFL_0_i.itO.add(   {value:uO.iterableObject()}   )
-    	    sortFL_0_i.itO[sortFL_0_i.itO.instruct].add(   {value:1}   )
-    	    sortFL_0_i.itO[sortFL_0_i.itO.instruct].add(   {value:0}   )
+            sortFL_0_i.itO.instruct = sortFL_0_i.itO.add(   {value:uO.iterableObject()}   )
+            sortFL_0_i.itO[sortFL_0_i.itO.instruct].add(   {value:1}   )
+            sortFL_0_i.itO[sortFL_0_i.itO.instruct].add(   {value:0}   )
             while(   sortFlagO[sortFlagO.bubble] !== 'true'){
             
                 sortFlagO[sortFlagO.bubble]  = 'true'
@@ -1956,87 +2486,621 @@ function swap(   dev_obj   ){
         
         
     }// when you need values swpped
-//templates
+//templates, can swap in infinite places
+function partialMatch(   dev_obj   ){
+    /*
+        this function expects strings but there can be others objects arrays
+        what will happen is that we will convert it to an itO and look at each property and ask about the range and the number of spaces
+        .compTo the value we want to see
+        .compAgn the value that the API can determine that its equal to compTo but its misspelt using this function
+        .range the length it has to get to equal the string
+            so if range is 7 and
+            compTo  = 'abbacus'
+            compAgn = 'abbaacus'
+            the function sees
+            abba  cus
+            7 in a row which is true
+            and same for reverse
+            but if compTo is shorter than the string its satisfies on the max
+            this is actually scary because
+            compTo :'linkedin'
+            compAgn :'linakedain'
+                might be wiedly I dont know how to handle this but then it would
+                require a version 2 implementation right away
+        .spaces max allowed spaces before it rejects
+            so if spaces is two and
+            compTo  = 'abbacus'
+            compAgn = 'abbaacusa'
+            the function would point out
+            a a
+            and accept and
+            also if we have
+            compTo  = 'Linkedin'
+            compAgn = 'Link'
+            spaces would be 1
+            vice versa
+        .gap max allowed items between spaces that account for range
+            say if we have .gap = 3 and
+            compTo  = 'abbacus'
+            compAgn = 'abbadabacus'
+            the gap is daba which is 4 greater than the allowed gap
+            so it would reject
+            and we would not have a partial match
+        .version
+            1  (default) use basic implementation
+            2 a future implementation which so that range spaces and gap can be granular to user input
+        .type
+            the type for comparison I plan to make this obsolete allowing the fn to do more
+            .cCase
+                when type is string, turns to desired cases such as upper lower camel, if not availble result is toLowerCase
+    */
+    
+    
+    
+    if(   dev_obj !== undefined   ){
+        
+        
+        var partialMatch_dev_obj = uO.args.add(   {value:uO.iterify(   {iterify:dev_obj}   )   }   )
+        
+        
+        if(   dev_obj.version === undefined   ){
+            
+            
+            dev_obj.version = 1
+            
+            
+        }
+        
+        
+        if(   dev_obj.version === 1 && dev_obj.type === 'string'  ){ // handles strings only allow it to do more with the same algorithm
+            
+                        
+            if(   dev_obj.cCase !== undefined  ){
+                //turns to case comparision of users desire
+                
+                dev_obj.compTo = dev_obj.compTo[dev_obj.cCase]()
+                dev_obj.compAgn = dev_obj.compAgn[dev_obj.cCase]()
+                
+                                
+            }
+            
+            
+            dev_obj.compTo = uO.iterify(    {iterify:dev_obj.compTo}   )
+            dev_obj.compAgn = uO.iterify(   {iterify:dev_obj.compAgn}   )
+            /*initealize items to track range space and gap */
+            pMMisc_0_i =  uO.scope.add(   {value:uO.misc.add(   {value:uO.iterableObject()}   )}   )
+            uO.misc.abelast.add(   {value:uO.scope[pMMisc_0_i]}   )
+            pMRange_0_i = uO.misc[   uO.scope[pMMisc_0_i]   ].add(   {value:uO.iterableObject()}   )
+            pMSpaces_0_i = uO.misc[   uO.scope[pMMisc_0_i]   ].add(   {value:uO.iterableObject()}  )
+            pMGap_0_i = uO.misc[   uO.scope[pMMisc_0_i]   ].add(   {value:uO.iterableObject()}   )
+            uO.misc[   uO.scope[pMMisc_0_i]   ][pMRange_0_i].add(   {value:0}   )
+            uO.misc[   uO.scope[pMMisc_0_i]   ][pMSpaces_0_i].add(   {value:0}   )
+            uO.misc[   uO.scope[pMMisc_0_i]   ][pMGap_0_i].add(   {value:0}   )
+            uO.misc[   uO.scope[pMMisc_0_i]   ].pause = 0 // a reminnded for the comparision to continue here for those misplet words with errors in the middle
+            uO.misc[   uO.scope[pMMisc_0_i]   ].satisfy = true // made a boolean for possible self 3rd party use , if the condition is broken it turns to false
+                        
+            /**/
+            var pMFL_0_i = { //find if the range for compAgn satisfies
+                forLoop_0_i:0,
+                forLoopLength: dev_obj.compTo.length < dev_obj.compAgn.length ? dev_obj.compTo.length  :  dev_obj.compAgn.length,
+                fn:function(   dev_obj   ){
+                    /*range service for itO[0]
+                        these contain the letters for each match
+                        space serivce for itO[1]
+                        gap service for itO[2]
+                        
+                        space is a single number
+                        while range and gap are its represent the length of each match and unnmatch string in the spaces
+                    */
+                    
+                    if(   dev_obj.compTo[   uO.misc[   uO.scope[pMMisc_0_i]   ].pause   ] === dev_obj.compAgn[pMFL_0_i.forLoop_0_i]   ){
+                        
+                        
+                        uO.misc[   uO.scope[pMMisc_0_i]   ].pause += 1 // so can pick up once the letters equal again
+                        
+                        
+                        if(   uO.misc[   uO.scope[pMMisc_0_i]   ][pMGap_0_i][   uO.misc[   uO.scope[pMMisc_0_i]   ][pMGap_0_i].length-1   ] !== 0   ){
+                            //this means there is a new range and there should be a possible gap accounted for
+                            
+                            uO.misc[   uO.scope[pMMisc_0_i]   ][pMGap_0_i].add(   {value:0}   )
+                            
+                            
+                        }
+                        
+                        
+                        uO.misc[   uO.scope[pMMisc_0_i]   ][pMRange_0_i][   uO.misc[   uO.scope[pMMisc_0_i]   ][pMRange_0_i].length-1   ] +=1
+                        
+                        
+                    }
+                    
+                    
+                    else if(   dev_obj.compTo[   uO.misc[   uO.scope[pMMisc_0_i]   ].pause   ] !== dev_obj.compAgn[pMFL_0_i.forLoop_0_i]   ){
+                        
+                        
+                        if(   uO.misc[   uO.scope[pMMisc_0_i]   ][pMRange_0_i][   uO.misc[   uO.scope[pMMisc_0_i]   ][pMRange_0_i].length-1   ] !== 0   ){
+                            //this means there is a new gap and there should be a possible range accounted for
+                            //this is a level 2 implementation however we will get here for now make sure the string has enough letters :)
+                            // uO.misc[   uO.scope[pMMisc_0_i]   ][pMRange_0_i].add(   {value:0}   )
+                            
+                            
+                        }
+                        
+                        
+                        if(   uO.misc[   uO.scope[pMMisc_0_i]   ][pMGap_0_i][   uO.misc[   uO.scope[pMMisc_0_i]   ][pMGap_0_i].length-1   ] <= dev_obj.gap   ){
+                            
+                            
+                            if(   uO.misc[   uO.scope[pMMisc_0_i]   ][pMGap_0_i][   uO.misc[   uO.scope[pMMisc_0_i]   ][pMGap_0_i].length-1   ] === 0   ){
+                                //we came across a new gap space = 1
+                                uO.misc[   uO.scope[pMMisc_0_i]   ][pMSpaces_0_i][   uO.misc[   uO.scope[pMMisc_0_i]   ][pMSpaces_0_i].length-1   ] += 1
+                                    
+                            }
+                                                    
+                            
+                            uO.misc[   uO.scope[pMMisc_0_i]   ][pMGap_0_i][   uO.misc[   uO.scope[pMMisc_0_i]   ][pMGap_0_i].length-1   ] +=1
+                            
+                            
+                            if(   uO.misc[   uO.scope[pMMisc_0_i]   ][pMGap_0_i][   uO.misc[   uO.scope[pMMisc_0_i]   ][pMGap_0_i].length-1   ]> dev_obj.gap   ){
+                                //error in gap
+                                uO.misc[   uO.scope[pMMisc_0_i]   ].satisfy = false
+                                throw('gap')
+                                return 'premature'
+                                
+                            }
+                            
+                            
+                        }
+                                            
+                        
+                        if(   uO.misc[   uO.scope[pMMisc_0_i]   ][pMSpaces_0_i][   uO.misc[   uO.scope[pMMisc_0_i]   ][pMSpaces_0_i].length-1   ]   > dev_obj.spaces   ){
+                            //error in spaces
+                            uO.misc[   uO.scope[pMMisc_0_i]   ].satisfy = false
+                            throw('space')
+                            return 'premature'
+                            
+                            
+                        }
+                        
+                        
+                    }
+                    
+                    //or assert.equal
+                    /**/
+                },
+                args:dev_obj
+            }
+            uO.forLoop(   pMFL_0_i   )
+            
+            
+            if(   uO.misc[   uO.scope[pMMisc_0_i]   ][pMRange_0_i][   uO.misc[   uO.scope[pMMisc_0_i]   ][pMRange_0_i].length-1   ] < dev_obj.range   ){
+                
+                
+                uO.misc[   uO.scope[pMMisc_0_i]   ].satisfy = false
+                
+                
+            }
+            
+            
+            uO.scope.minus(   {index:pMMisc_0_i}   )
+        }
+        
+                
+    }
+    
+    
+    
+}/*this helps the API when its expected to be a inconsitencies in searches that have the same meaning, the developer can adjust how many values they want from all the way to complete difference to one char difference  in order for the API to say hey, that just a mispelled word it s okay*/
 
 
 function preFillForm(   dev_obj   ){
     //findings
         //i find that form items are not dependent on the number of children, the form can have children than containing the input
-    preFillFormO = uO.iterableObject()
-    var preFillFormFL_0_i = {
-        forLoop_0_i:0,
-        forLoopLength:dev_obj.allTags.length,
-        fn:function(   dev_obj   ){
-            preFillFormO.add(   {value:dev_obj.allTags[preFillFormFL_0_i.forLoop_0_i]}   )
-        },
-        args:{allTags:dev_obj.allTags}
-    }
-    uO.forLoop(   preFillFormFL_0_i   )
-    dev_obj.allTags = uO.sort({
-            target: preFillFormO,
-            algorithm:'bubble',
-            compare:function(   dev_obj   ){
-                
-                
-                if(   dev_obj.val[dev_obj.index].childElementCount > dev_obj.val[dev_obj.index+ 1].childElementCount    ){
-                    
-                    
-                    return 'true'
-                    
-                    
-                }
-            },
-            result:'true'
+        //we are forced to make an outside variable just to access objects we must ask how to access these only using the uO
+        
+    var preFillForm_dev_obj = uO.args.add(   {value:uO.iterify(   {iterify:dev_obj}   )   }   ) // decided to replace or make room on addition
+    var pFFATI_0_i = uO.scope.add(   {value:uO.allTags.add(   {value:uO.iterify(   {iterify:dev_obj.allTags}   )}   )}   )
+    uO.sort({
+        target: uO.allTags[uO.scope[pFFATI_0_i]],
+        algorithm:'bubble',
+        compare:function(   dev_obj   ){
             
+            
+            
+            if(   dev_obj.val[dev_obj.index].childElementCount > dev_obj.val[dev_obj.index+ 1].childElementCount    ){
+                
+                
+                return 'true'
+                
+                
+            }
+            
+            
+        },
+        result:'true'
     })
-    uO.allTags.pFFATI = uO.allTags.add(   {value:preFillFormO}   ) //number were all tags is located in the uO
-    console.group(   'sorting items by least children'   )
+    console.group(   'making items accessible'   )
     uO.objInvloved({
-            // 0:preFillFormO,
-        })
-    console.groupEnd()
-    uO.eCSearch({
-        list:dev_obj.list,
-        look:dev_obj.look,
-        aTIndex: uO.allTags.pFFATI
+        0:uO.allTags,
+        1:uO.scope,
+        2:pFFATI_0_i,
+        3:uO.args
     })
+    console.groupEnd()
+    var pFFList_0_i = uO.scope.add(   {value:uO.misc.add(   {value:uO.iterify(   {iterify:dev_obj.list}   )}   )}   )
+    var pFFLook_0_i = uO.scope.add(   {value:uO.misc.add(   {value:uO.iterify(   {iterify:dev_obj.look}   )}   )}   )
     uO.eCSearch({
-        list:{
-                    'LinkedIn Profile':'https://www.linkedin.com/in/michael-odumosu-a58367b1',
-                    'Website':'https://ualbanyasist.github.io/',
-                    'How did you hear about this job?':'Linkedin',
-                    'Phone': '$80,000'},
-        look:{ 'innerHTML':null,'innerText':null,'textContent':null},
-        aTIndex: uO.allTags.pFFATI
+        list:pFFList_0_i,
+        look:pFFLook_0_i,
+        aT: pFFATI_0_i,
+        all:'true'
     })
     console.group(   'at this point the uO has meaningful values for all arguments from the init fn'   )
-    uO.objInvloved({
-            // 0:preFillFormO,
-        })
+    // uO.objInvloved({
+    //     0:uO.allTags[uO.allTags.eCSST],
+    // })
     console.groupEnd()
-    uO.removeOP({rules:'duplicates'})
-    throw('e') //left off here properly organized
-    uO.identifyE({
-                action:'preFill'
-            })
-    console.group('identified elements')
-    uO.objInvloved({
-            0:uO.elementFound,
-            1:uO.identifyEO,
-            2:uO.forLoop,
-            3:uO.objInvloved
-        })
-    console.groupEnd()
+    var pFFST_0_i =  uO.scope.add(   {value:uO.selectTags.abelast[0]}   )
+    uO.selectTags.abelast.minus(   {index:0}   )
     uO.packIt({
-        order:uO.identifyEO,
+        order:uO.selectTags[uO.scope[pFFST_0_i]],
         directions:{
                         0:'gather element',
                         1:'match',
-                        length:1
+                        length:2
                     },
-        matchMap:uO.elementFound
+        fill:'value',
+        write:'valuePhrase'
+        
     })
+    ///////////////////////////////////////////////////////////////////////////
+    console.group(   'answers'   )
+    var pFFMisc_0_i = uO.scope.add(   {value:uO.misc.add(   {value:uO.iterify(   {iterify:['tagName','className','hidden','id']}   )}   )}   );
+    var pFFMisc_1_i = uO.scope.add(   {value:uO.misc.add(   {value:uO.iterify(   {iterify:['input','select','textarea','option']}   )}   )}   );
+    var pFFFL_0_i = {
+        //these for spots, the amount that claims the element, the objects related properties the family and the string matching all help determine where this object belongs
+        //POINT VALUE the spot where we add points
+        forLoop_0_i:0,
+        forLoopLength:uO.selectTags[uO.scope[pFFST_0_i]].length,
+        fn:function(   dev_obj   ){
+            console.group(   'asking questions about the object'  )
+                /*
+                    what is the framework?
+                    turn all string into lowercase
+                */
+                uO.selectTags[uO.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].pointValue = 0 // used to deterime if valuePhrasre belongs in the elements value
+                console.log(  'what is the result', uO.selectTags[uO.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword  )
+                console.log(   uO.selectTags[uO.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.value,uO.misc[uO.scope[pFFList_0_i]][pFFFL_0_i.forLoop_0_i][1]   )
+                
+                
+                if(   uO.selectTags[uO.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.value.toLowerCase() !== uO.misc[uO.scope[pFFList_0_i]][pFFFL_0_i.forLoop_0_i][1].toLowerCase()   ){
+                
+                
+                    console.log(   'index',pFFFL_0_i.forLoop_0_i   )
+                    var pFFBOOL_0_i = {0:false}
+                    pFFBOOL_0_i = uO.severalOr({
+                        compTo: uO.selectTags[uO.scope[pFFST_0_i]].eCSNS.currentNumber[pFFFL_0_i.forLoop_0_i],
+                        compAgn: uO.selectTags[uO.scope[pFFST_0_i]].eCSNS.currentNumber,
+                        boolean:pFFBOOL_0_i,
+                        which:0,
+                        how:function(   dev_obj   ){
+                            
+                            
+                            if(   dev_obj.compTo === dev_obj.compAgnI   ){
+                                
+                                
+                                if(   uO.selectTags[uO.scope[pFFST_0_i]].suspects === undefined   ){
+                                //if we have suspects to determine who belongs in the elements value. this might need to be reset
+                                
+                                    uO.selectTags[uO.scope[pFFST_0_i]].suspects = uO.iterableObject()
+                                    uO.selectTags[uO.scope[pFFST_0_i]].suspects.add(   {value:dev_obj.index}   )
+                                    //see i wrote for the future here
+                                }
+                                
+                                
+                                else if(   uO.selectTags[uO.scope[pFFST_0_i]].suspects !== undefined   ){
+                                    
+                                
+                                    uO.selectTags[uO.scope[pFFST_0_i]].suspects.add(   {value:dev_obj.index}   )
+                                    
+                                    
+                                }
+
+
+                            }
+                            
+                            
+                            console.log(   dev_obj,pFFFL_0_i.forLoop_0_i   )
+                            
+                        },
+                        result:'a'
+                    })
+                    //this represents the digits of the NS,which are apparently the same that represents different items in the list however only one in this case should receive the element value here
+                    console.log(   'our suspects',uO.selectTags[uO.scope[pFFST_0_i]].suspects  )
+                    
+                    
+                }
+                
+                
+                console.group(  'what is the element'   )
+                    console.log(   'things I should know'   )
+                    var pFFFL_1_i = { //looking at the elements related properties
+                        forLoop_0_i:0,
+                        forLoopLength:uO.misc[uO.scope[pFFMisc_0_i]].length,
+                        fn:function(   dev_obj   ){
+                            console.log(   [   uO.misc[uO.scope[pFFMisc_0_i]][pFFFL_1_i.forLoop_0_i]   ]   )
+                            
+                            
+                            if(   uO.misc[uO.scope[pFFMisc_0_i]][pFFFL_1_i.forLoop_0_i] === 'tagName'   ){
+                            
+                                                                                            
+                                var pFFBOOL_1_i = {0:false}
+                                pFFBOOL_1_i = uO.severalOr({
+                                    compTo: uO.selectTags[uO.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item[   uO.misc[uO.scope[pFFMisc_0_i]][pFFFL_1_i.forLoop_0_i]   ].toLowerCase(),
+                                    compAgn:uO.misc[uO.scope[pFFMisc_1_i]],
+                                    boolean:pFFBOOL_1_i,
+                                    which:0
+                                })
+                                console.log(   pFFBOOL_1_i   )
+                                
+                                
+                                if(   pFFBOOL_1_i[0]   ){
+                                    //POINT VALUE
+                                    uO.selectTags[uO.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].pointValue += 1
+                                        
+                                }
+                                
+                                
+                            }
+                            
+                            
+                            if(   uO.misc[uO.scope[pFFMisc_0_i]][pFFFL_1_i.forLoop_0_i] === 'hidden'   ){
+                                
+                                
+                                if(   uO.selectTags[uO.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item[   uO.misc[uO.scope[pFFMisc_0_i]][pFFFL_1_i.forLoop_0_i]   ]   ){
+                                    
+                                    
+                                    uO.selectTags[uO.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].pointValue += 1
+                                    
+                                    
+                                }
+                                    
+                            }
+                            
+                            
+                            if(   uO.misc[uO.scope[pFFMisc_0_i]][pFFFL_1_i.forLoop_0_i] === 'className'   ){
+                                /*the spaces between are classNames I will apply partial match here */
+                                uO.misc[uO.scope[pFFMisc_0_i]].classes = uO.iterify(   {iterify:uO.selectTags[uO.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item[   uO.misc[uO.scope[pFFMisc_0_i]][pFFFL_1_i.forLoop_0_i]   ].split(' ')}   )
+                                uO.misc[uO.scope[pFFMisc_0_i]].classes.add(   {value:'linksedpoInasd'}   )
+                                /**/
+                                /*to loop through classNames and find a partial match*/
+                                var pFFBOOL_2_I = {0:false}
+                                pFFBOOL_2_I = uO.severalOr({
+                                    compTo: uO.selectTags[uO.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword,
+                                    compAgn: uO.misc[uO.scope[pFFMisc_0_i]].classes,
+                                    boolean:pFFBOOL_2_I,
+                                    which:0,
+                                    how:function(   dev_obj   ){
+                                        uO.partialMatch({
+                                            compTo:dev_obj.compTo,
+                                            compAgn:dev_obj.compAgnI,
+                                            range:8,
+                                            spaces:5,
+                                            gap:5,
+                                            type:'string',
+                                            cCase:'toLowerCase'
+                                        })
+                                        
+                                        debugger
+                                        if(   uO.misc[uO.misc.length-1].satisfy   ){
+                                            
+                                            
+                                            uO.misc.minus(   {index:uO.misc.length-1}   )
+                                            uO.misc.abelast.minus(   {index:uO.misc.abelast.length-1}   )
+                                            return 'a'
+                                            
+                                            
+                                        }
+                                        
+                                        
+                                        uO.misc.minus(   {index:uO.misc.length-1}   )
+                                        uO.misc.abelast.minus(   {index:uO.misc.abelast.length-1}   )
+                                    },
+                                    result:'a'
+                                })
+                                console.log(   pFFBOOL_2_I   )
+                                throw('e')
+                                /**/
+                                
+                            }
+                            
+                            console.log(   uO.selectTags[uO.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item[   uO.misc[uO.scope[pFFMisc_0_i]][pFFFL_1_i.forLoop_0_i]   ]   )
+                        },
+                        args:{}
+                    }
+                    uO.forLoop(   pFFFL_1_i   )
+                console.groupEnd()
+                throw('e')
+                /*
+                {
+                    1. is this an input
+                        <input>     -<html>
+                        <textarea>  -<head>
+                        <select>    -<title>
+                        <optgroup>  -<body>
+                        <option>    -<h1 -h6><p>
+                        <label>     -<br>
+                        <a>         -<hr>
+                        <link>      -<abbr>
+                        <div>       -<address>
+                                    -<b>
+                                    -<bdi>
+                                    -<bdo>
+                                    -<blockquote>
+                                    -<center>
+                                    -<cite>
+                                    -<code>
+                                    -<del>
+                                    -<dfn>
+                                    -<em>
+                                    -<font>
+                                    -<i>
+                                    -<ins>
+                                    -<kbd>
+                                    -<mark>
+                                    -<meter>
+                                    -<progress>
+                                   -<q>
+                                   -<rp>
+                                   -<rt>
+                                   -<ruby>
+                                   -<s>
+                                   -<samp>
+                                   -<small>
+                                   -<strike>
+                                   -<strong>
+                                   -<sub>
+                                   -<sup>
+                                   -<template>
+                                   -<time>
+                                   -<tt>
+                                   -<u>
+                                   -<var>
+                                   -var
+                                   -<wbr>
+                                   -<form>
+                                   -<fieldset>
+                                   -<legend>
+                                   -<datalist>
+                                   -<output>
+                                   -<frame>
+                                   -<frameset>
+                                   -<noframes>
+                                   -<iframe>
+                                   -<img>
+                                   -<map>
+                                   -<area>
+                                   -<canvas>
+                                   -<figcaption>
+                                   -<figure>
+                                   -<picture>
+                                   -<svg>
+                                   -<audio>
+                                   -<source>
+                                   -<track>
+                                   -<video>
+                                   -<nav>
+                                   -<ul>
+                                   -<ol>
+                                   -<li>
+                                   -<dir>
+                                   -<dl>
+                                   -<dt>
+                                   -<dd>
+                                   -<table>
+                                   -<caption>
+                                   -<th>
+                                   -<tr>
+                                   -<td>
+                                   -<thead>
+                                   -<tbody>
+                                   -<tfoot>
+                                   -<col>
+                                   -<colgroup>
+                                   -<style>
+                                   -<span>
+                                   -<header>
+                                   -<footer>
+                                   -<main>
+                                   -<section>
+                                   -<article>
+                                   -<aside>
+                                   -<details>
+                                   -<dialog>
+                                   -<summary>
+                                   -<data>
+                                   -<head>
+                                   -<meta>
+                                   -<base>
+                                   -<basefont>
+                                   -<script>
+                                   -<noscript>
+                                   -<applet>
+                                   -<embed>
+                                   -<object>
+                                   -<param>
+                }
+                        a. if yes ask more question   points:2
+                        b. if no ask more questions
+                    what property values does it have
+                        in hidden I want to see false for this case
+                        in tagName I want to see input, textarea, select,option
+                        in classList I want a partial match I will make a function just for this
+                        same with className
+                        id also related
+                    2.is it equal to what I have in list
+                        a.if no
+                        b. if yes ask more questions
+                
+                */
+                console.group(   'what is its parent '   )
+                    
+                /*
+                    3. is there a parent
+                        if yes 4. is the parent a div
+                            if yes ask more questions   points:2
+                                what does string values hold
+                            
+                            5. does it have  children?
+                                if yes its assumed they are related to the item in some manner points:3
+                                if no we cant assume that the siblings are related, but this doesn't matter we need more questions
+                            im interested in  offsetParent parentElement & parentnode
+                        if no ask more questions points:1
+                */
+                    console.log(   'who are its siblings'   )
+                    console.log(   uO.selectTags[uO.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.offsetParent.children   )
+                console.groupEnd()
+                console.group(   'who are its children'   )
+                /*
+                    any clues that perhaps the children might be the key value to fill
+                */
+                console.groupEnd()
+                console.log(   'is it found is its strings'   )
+                var pFFBOOL = {0:false}
+                pFFBOOL = uO.severalOr({
+                    compTo: uO.selectTags[uO.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword,
+                    compAgn: uO.misc[uO.scope[pFFLook_0_i]],
+                    boolean:pFFBOOL,
+                    which:0,
+                    how:function(   dev_obj   ){
+                        
+
+                        if(   uO.selectTags[uO.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item[dev_obj.compAgnI[0]].indexOf(   dev_obj.compTo   ) !== -1   ){
+                            
+                            
+                            return 'a'
+                            
+                            
+                        }
+                        
+                        
+                    },
+                    result:'a'
+                })
+                console.log(   pFFBOOL   )
+            console.groupEnd()
+            
+        },
+        args:{}
+    }
+    uO.forLoop(   pFFFL_0_i   )
+    console.groupEnd()
+    ///////////////////////////////////////////////////////////////////////////
+    throw('e')
 }
+
+function askQuestions(   dev_obj   ){
+    //throw the result in here later
+    }
+            
 
             preFillForm({
                 // allTags : [document.querySelectorAll("body *")[129],document.querySelectorAll("body *")[135],document.querySelectorAll("body *")[140],document.querySelectorAll("body *")[147]],
@@ -2045,7 +3109,9 @@ function preFillForm(   dev_obj   ){
                     'LinkedIn Profile':'https://www.linkedin.com/in/michael-odumosu-a58367b1',
                     'Website':'https://ualbanyasist.github.io/',
                     'How did you hear about this job?':'Linkedin',
-                    'Phone': '$80,000'},
+                    'Phone': '$80,000',
+                    'Cover Letter':'as'
+                    },
                 look:{ 'innerHTML':null,'innerText':null,'textContent':null}
             })
     
@@ -2082,7 +3148,7 @@ function b(   dev_obj   ){
 }
 
 
-function checkingAllValues(   dev_obj   ){
+function checkingAllValues(   dev_obj   ){ //
     var checkingAllValuesBOOL = {0:false}
     checkingAllValuesBOOL = uO.severalOr({
                 compTo: 'match',
