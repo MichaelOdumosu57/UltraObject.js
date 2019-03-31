@@ -2599,6 +2599,22 @@ function partialMatch(   dev_obj   ){
                         space is a single number
                         while range and gap are its represent the length of each match and unnmatch string in the spaces
                     */
+                    if(   pMFL_0_i.forLoop_0_i= pMFL_0_i.forLoopLength - 1 && pMFL_0_i.forLoopLength === dev_obj.compTo.length   ){
+                        // for cases when the gap is large but the compTo finsihes early and compAgn would satisfy but exits prematurely
+                        pMFL_0_i.forLoopLength =dev_obj.compAgn.length
+                        
+                        
+                    }
+                    
+                    
+                    if(   dev_obj.compTo[   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause   ] === undefined   ){
+                        //we have come to the end of the compTo string and its chance to get the job done is over, it should have gotten the
+                        
+                        return 'premature'//or true
+                        
+                        
+                    }
+                    
                     
                     if(   dev_obj.compTo[   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause   ] === dev_obj.compAgn[pMFL_0_i.forLoop_0_i]   ){
                         
