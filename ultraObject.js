@@ -2502,6 +2502,11 @@ function partialMatch(   dev_obj   ){
             7 in a row which is true
             and same for reverse
             but if compTo is shorter than the string its satisfies on the max
+            this is actually scary because
+            compTo :'linkedin'
+            compAgn :'linakedain'
+                might be wiedly I dont know how to handle this but then it would
+                require a version 2 implementation right away
         .spaces max allowed spaces before it rejects
             so if spaces is two and
             compTo  = 'abbacus'
@@ -2572,6 +2577,7 @@ function partialMatch(   dev_obj   ){
             ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMSpaces_0_i].add(   {value:0}   )
             ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i].add(   {value:0}   )
             ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause = 0 // a reminnded for the comparision to continue here for those misplet words with errors in the middle
+            ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].satisfy = true // made a boolean for possible self 3rd party use , if the condition is broken it turns to false
                         
             /**/
             var pMFL_0_i = { //find if the range for compAgn satisfies
@@ -2580,15 +2586,12 @@ function partialMatch(   dev_obj   ){
                 fn:function(   dev_obj   ){
                     /*range service for itO[0]
                         these contain the letters for each match
+                        space serivce for itO[1]
+                        gap service for itO[2]
+                        
+                        space is a single number
+                        while range and gap are its represent the length of each match and unnmatch string in the spaces
                     */
-                    if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMRange_0_i].length === 3   ){
-                        
-                        
-                        debugger
-                        
-                        
-                    }
-                    
                     
                     if(   dev_obj.compTo[   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause   ] === dev_obj.compAgn[pMFL_0_i.forLoop_0_i]   ){
                         
@@ -2616,8 +2619,8 @@ function partialMatch(   dev_obj   ){
                         
                         if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMRange_0_i][   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMRange_0_i].length-1   ] !== 0   ){
                             //this means there is a new gap and there should be a possible range accounted for
-                            
-                            ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMRange_0_i].add(   {value:0}   )
+                            //this is a level 2 implementation however we will get here for now make sure the string has enough letters :)
+                            // ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMRange_0_i].add(   {value:0}   )
                             
                             
                         }
@@ -2637,9 +2640,10 @@ function partialMatch(   dev_obj   ){
                             
                             
                             if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i][   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i].length-1   ]> dev_obj.gap   ){
-                                                            
-                                throw('this cant be a match')
-                                
+                                //error in gap
+                                ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].satisfy = false
+                                throw('gap')
+                                return 'premature'
                                 
                             }
                             
@@ -2648,8 +2652,10 @@ function partialMatch(   dev_obj   ){
                                             
                         
                         if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMSpaces_0_i][   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMSpaces_0_i].length-1   ]   > dev_obj.spaces   ){
-                        
-                            throw('error in spaces')
+                            //error in spaces
+                            ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].satisfy = false
+                            throw('space')
+                            return 'premature'
                             
                             
                         }
@@ -2663,6 +2669,17 @@ function partialMatch(   dev_obj   ){
                 args:dev_obj
             }
             ultraObject.forLoop(   pMFL_0_i   )
+            
+            
+            if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMRange_0_i][   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMRange_0_i].length-1   ] < dev_obj.range   ){
+                
+                
+                ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].satisfy = false
+                
+                
+            }
+            
+            
             ultraObject.scope.minus(   {index:pMMisc_0_i}   )
         }
         
@@ -2871,8 +2888,21 @@ function preFillForm(   dev_obj   ){
                                             type:'string',
                                             cCase:'toLowerCase'
                                         })
-                                        // ultraObject.misc.minus(   {index:ultraObject.misc.length-1}   )
-                                        // ultraObject.misc.abelast.minus(   {index:ultraObject.misc.abelast.length-1}   )
+                                        
+                                        debugger
+                                        if(   ultraObject.misc[ultraObject.misc.length-1].satisfy   ){
+                                            
+                                            
+                                            ultraObject.misc.minus(   {index:ultraObject.misc.length-1}   )
+                                            ultraObject.misc.abelast.minus(   {index:ultraObject.misc.abelast.length-1}   )
+                                            return 'a'
+                                            
+                                            
+                                        }
+                                        
+                                        
+                                        ultraObject.misc.minus(   {index:ultraObject.misc.length-1}   )
+                                        ultraObject.misc.abelast.minus(   {index:ultraObject.misc.abelast.length-1}   )
                                     },
                                     result:'a'
                                 })
