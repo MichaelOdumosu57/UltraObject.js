@@ -2581,7 +2581,15 @@ function partialMatch(   dev_obj   ){
                     /*range service for itO[0]
                         these contain the letters for each match
                     */
-                    debugger
+                    if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMRange_0_i].length === 3   ){
+                        
+                        
+                        debugger
+                        
+                        
+                    }
+                    
+                    
                     if(   dev_obj.compTo[   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause   ] === dev_obj.compAgn[pMFL_0_i.forLoop_0_i]   ){
                         
                         
@@ -2589,7 +2597,7 @@ function partialMatch(   dev_obj   ){
                         
                         
                         if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i][   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i].length-1   ] !== 0   ){
-                            //this means there is a new range and there should be a new gap accounted for
+                            //this means there is a new range and there should be a possible gap accounted for
                             
                             ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i].add(   {value:0}   )
                             
@@ -2604,6 +2612,15 @@ function partialMatch(   dev_obj   ){
                     
                     
                     else if(   dev_obj.compTo[   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause   ] !== dev_obj.compAgn[pMFL_0_i.forLoop_0_i]   ){
+                        
+                        
+                        if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMRange_0_i][   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMRange_0_i].length-1   ] !== 0   ){
+                            //this means there is a new gap and there should be a possible range accounted for
+                            
+                            ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMRange_0_i].add(   {value:0}   )
+                            
+                            
+                        }
                         
                         
                         if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i][   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i].length-1   ] <= dev_obj.gap   ){
@@ -2646,7 +2663,6 @@ function partialMatch(   dev_obj   ){
                 args:dev_obj
             }
             ultraObject.forLoop(   pMFL_0_i   )
-            debugger
             ultraObject.scope.minus(   {index:pMMisc_0_i}   )
         }
         
@@ -2836,7 +2852,7 @@ function preFillForm(   dev_obj   ){
                             if(   ultraObject.misc[ultraObject.scope[pFFMisc_0_i]][pFFFL_1_i.forLoop_0_i] === 'className'   ){
                                 /*the spaces between are classNames I will apply partial match here */
                                 ultraObject.misc[ultraObject.scope[pFFMisc_0_i]].classes = ultraObject.iterify(   {iterify:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item[   ultraObject.misc[ultraObject.scope[pFFMisc_0_i]][pFFFL_1_i.forLoop_0_i]   ].split(' ')}   )
-                                ultraObject.misc[ultraObject.scope[pFFMisc_0_i]].classes.add(   {value:'linkspoedInasd'}   )
+                                ultraObject.misc[ultraObject.scope[pFFMisc_0_i]].classes.add(   {value:'linksedpoInasd'}   )
                                 /**/
                                 /*to loop through classNames and find a partial match*/
                                 var pFFBOOL_2_I = {0:false}
@@ -2850,7 +2866,7 @@ function preFillForm(   dev_obj   ){
                                             compTo:dev_obj.compTo,
                                             compAgn:dev_obj.compAgnI,
                                             range:8,
-                                            spaces:1,
+                                            spaces:5,
                                             gap:5,
                                             type:'string',
                                             cCase:'toLowerCase'
