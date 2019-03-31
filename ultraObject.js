@@ -2491,6 +2491,13 @@ function partialMatch(   dev_obj   ){
     /*
         this function expects strings but there can be others objects arrays
         what will happen is that we will convert it to an itO and look at each property and ask about the range and the number of spaces
+        so if compAgn is to big
+            dasgjkfgnkasgpnksdfo word asidnogsindgj osapfoigjnsaoifgjasdgipkojagidknsknpgasd
+            this will be stopped by the gap
+        and if compAgn is to small
+            compAgn:lit
+            compTo:little
+        it will will be stopped by the range
         .compTo the value we want to see
         .compAgn the value that the API can determine that its equal to compTo but its misspelt using this function
         .range the length it has to get to equal the string
@@ -2642,7 +2649,6 @@ function partialMatch(   dev_obj   ){
                             if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i][   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i].length-1   ]> dev_obj.gap   ){
                                 //error in gap
                                 ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].satisfy = false
-                                throw('gap')
                                 return 'premature'
                                 
                             }
@@ -2654,7 +2660,6 @@ function partialMatch(   dev_obj   ){
                         if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMSpaces_0_i][   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMSpaces_0_i].length-1   ]   > dev_obj.spaces   ){
                             //error in spaces
                             ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].satisfy = false
-                            throw('space')
                             return 'premature'
                             
                             
