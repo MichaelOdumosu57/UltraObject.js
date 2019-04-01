@@ -148,8 +148,7 @@ function ultraObjectReset(   dev_obj   ){
     
     elementFound:iterableObject(), // holds found elements needed by the ultraObject
     removeCN:removeCN,
-    removeOP:removeOP,
-    identifyE:identifyE,
+    removeOP:removeOP,    
     identifyEO:{}, // object for all needed identified
     forLoop:forLoop,
     objInvloved:objInvloved,// to keep track of all items responbile for a purpose at a specific point
@@ -1481,106 +1480,6 @@ function severalOr(   dev_obj   ){
     
     
 }// if you have several OR comparisons for the same object use it here
-function identifyE(   dev_obj   ){
-    var identifyELength = Object.keys(   ultraObject.elementFound   ).length
-    var identifyEC = {} //identify element  Check checls for parents and children for the right node
-    for(   var identifyE_0_i = 0; identifyE_0_i !== identifyELength; identifyE_0_i++   ){
-        
-        
-        if(   dev_obj !== undefined   ){
-            
-           
-            if(   dev_obj.action === 'preFill'   ){
-                
-                
-                if(   ultraObject.elementFound[identifyE_0_i].item.tagName.toLowerCase() !== 'input'   ){// if there is more needed make a function im not writing these massive loops
-                
-                    identifyEC['0'] = ultraObject.elementFound[identifyE_0_i].item.querySelectorAll("*") //gr8 now we can grab all element children, make it check itself too or do you want to do this
-                    var identifyE_1_i = 0
-                    var iEFL_1_i ={
-                        forLoop_0_i: identifyE_1_i,
-                        forLoopLength:identifyEC['0'].length,
-                        fn:function(   dev_obj   ){
-                            
-                                                        
-                            if(   ultraObject.identifyEO[identifyE_0_i] === undefined   ){
-                                
-                                
-                                ultraObject.identifyEO[identifyE_0_i]  = {item : {}}
-                                
-                                                                    
-                            }
-                            
-                            
-                            ultraObject.identifyEO.boolVal = {0:false}
-                            ultraObject.identifyEO.boolVal =  ultraObject.severalOr({
-                                            compTo: identifyEC['0'][iEFL_1_i.forLoop_0_i].tagName.toLowerCase(),
-                                            compAgn: {0:'input',1:'a',length:2},
-                                            boolean:ultraObject.identifyEO.boolVal,
-                                            which:0
-                            })
-                                
-
-                            if(   ultraObject.identifyEO.boolVal[0]   ){ // if more have it come in as a parameter and make a function comparing every one
-                                 
-                                ultraObject.identifyEO.boolVal = {0:false}//remember to reset it
-                                ultraObject.identifyEO[identifyE_0_i].item[Object.keys(   ultraObject.identifyEO[identifyE_0_i].item   ).length] = {item:{}} // for all the identifyEC['0']descendants
-                                ultraObject.identifyEO[identifyE_0_i].item[Object.keys(   ultraObject.identifyEO[identifyE_0_i].item   ).length -1 ].item = identifyEC['0'][iEFL_1_i.forLoop_0_i]
-                                // actual placement of the descendants
-                            
-                            }
-                                                                                            
-                                                            
-                        },
-                        args:undefined
-                    }
-                    console.log(   identifyE_0_i   )
-                    ultraObject.forLoop(   iEFL_1_i   )
-                    // console.group('after first loop')
-                    // ultraObject.objInvloved({
-                    //         0:ultraObject.elementFound,
-                    //         1:ultraObject.identifyEO,
-                    //         2:identifyEC,
-                    //         3:ultraObject.forLoop,
-                    //         4:ultraObject.objInvloved
-                    //     })
-                    // console.groupEnd()
-                    var iEFL_2_i ={
-                        forLoop_0_i:0,
-                        forLoopLength:Object.keys(   ultraObject.identifyEO   ).length,
-                        fn:function(   dev_obj   ){/* when we have to deal with it
-                                    use a findSlbing key for .elementFound to instruct the function to search its siblings and the parent and its siblings */
-                                    },
-                        args:{}
-                    }
-                    console.group('fl')
-                    // ultraObject.forLoop(   iEFL_2_i   )
-                    console.groupEnd()
-                    // console.group('checking relatives')
-                    // ultraObject.objInvloved({
-                    //         0:ultraObject.elementFound,
-                    //         1:ultraObject.identifyEO,
-                    //         2:ultraObject.forLoop,
-                    //         3:ultraObject.objInvloved
-                    //     })
-                    // console.groupEnd()
-                    
-                    //at this point all related elements should be found
-
-                        
-                }
-                
-                
-            }
-            
-            
-        }
-        
-        
-    }
-    
-        
-} // identifies tags in elementFound and what is needed to do the next task so for it looks through descemdats not siblings
 function objectLength(   dev_obj   ){ // finds object lenghts
         //.val the object itself
         // .getLen function descrbing how to get the length
