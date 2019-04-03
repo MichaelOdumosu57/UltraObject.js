@@ -148,7 +148,7 @@ function ultraObjectReset(   dev_obj   ){
     
     elementFound:iterableObject(), // holds found elements needed by the ultraObject
     removeCN:removeCN,
-    removeOP:removeOP,    
+    removeOP:removeOP,
     identifyEO:{}, // object for all needed identified
     forLoop:forLoop,
     objInvloved:objInvloved,// to keep track of all items responbile for a purpose at a specific point
@@ -246,24 +246,32 @@ function addEventListener(   dev_obj   ){
 } //  dev_obj.fn is used for 1st party dev to add their custom function to the listener dev_obj.xhttp is for xhr
 function xhttp(   dev_obj   ){
         
-        if(   dev_obj === undefined   ){
+        
+        if(   typeof(   XMLHttpRequest   ) !== 'undefined'   ){
             
             
-            var xhttp_0_i = new XMLHttpRequest()
-            return xhttp_0_i
+            if(   dev_obj === undefined   ){
+                
+                
+                var xhttp_0_i = new XMLHttpRequest()
+                return xhttp_0_i
+                
+                
+            }
+            
+            
+            else if(   dev_obj !== undefined   ){
+                
+                
+                var xhttp_0_i = new XMLHttpRequest()
+                return xhttp_0_i
+                
+                
+            }
             
             
         }
         
-        
-        else if(   dev_obj !== undefined   ){
-            
-            
-            var xhttp_0_i = new XMLHttpRequest()
-            return xhttp_0_i
-            
-            
-        }
         
         
 } // creates an xhr obj
@@ -2432,6 +2440,23 @@ function partialMatch(   dev_obj   ){
             the gap is daba which is 4 greater than the allowed gap
             so it would reject
             and we would not have a partial match
+        .trailer
+            when compAgn has the match but its not in the begiinmond of compTo
+            say
+            compTo: Narco
+            compAgn:Marc0
+            trailer says how much it has to go up in Marco to get that arco match
+            or
+            compTo:raymond
+            compAgn:diamond
+            trailer needs 3 to get to that
+            so if
+            compTo:deNarco
+            compAgn:marco
+            trailer must be 2 to get there
+            however this would also include
+                marefco
+                so trailing must be left at one and more modifiable in v2
         .version
             1  (default) use basic implementation
             2 a future implementation which so that range spaces and gap can be granular to user input
@@ -2478,9 +2503,11 @@ function partialMatch(   dev_obj   ){
             pMRange_0_i = ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].add(   {value:ultraObject.iterableObject()}   )
             pMSpaces_0_i = ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].add(   {value:ultraObject.iterableObject()}  )
             pMGap_0_i = ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].add(   {value:ultraObject.iterableObject()}   )
+            pMTrailer_0_i = ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].add(   {value:ultraObject.iterableObject()}   )
             ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMRange_0_i].add(   {value:0}   )
             ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMSpaces_0_i].add(   {value:0}   )
             ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i].add(   {value:0}   )
+            ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMTrailer_0_i].add(   {value:1}   )
             ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause = 0 // a reminnded for the comparision to continue here for those misplet words with errors in the middle
             ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].satisfy = true // made a boolean for possible self 3rd party use , if the condition is broken it turns to false
                         
@@ -2497,27 +2524,29 @@ function partialMatch(   dev_obj   ){
                         space is a single number
                         while range and gap are its represent the length of each match and unnmatch string in the spaces
                     */
-                    if(   pMFL_0_i.forLoop_0_i= pMFL_0_i.forLoopLength - 1 && pMFL_0_i.forLoopLength === dev_obj.compTo.length   ){
-                        // for cases when the gap is large but the compTo finsihes early and compAgn would satisfy but exits prematurely
-                        pMFL_0_i.forLoopLength =dev_obj.compAgn.length
+                    // console.log(   pMFL_0_i.forLoopLength,pMFL_0_i.forLoop_0_i   )
+                    // if(   pMFL_0_i.forLoop_0_i= pMFL_0_i.forLoopLength - 1 && pMFL_0_i.forLoopLength === dev_obj.compTo.length   ){
+                    //     // for cases when the gap is large but the compTo finsihes early and compAgn would satisfy but exits prematurely
+                    //     pMFL_0_i.forLoopLength =dev_obj.compAgn.length
                         
                         
-                    }
+                    // }
                     
                     
-                    if(   dev_obj.compTo[   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause   ] === undefined   ){
-                        //we have come to the end of the compTo string and its chance to get the job done is over, it should have gotten the
+                    // if(   dev_obj.compTo[   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause   ] === undefined   ){
+                    //     //we have come to the end of the compTo string and its chance to get the job done is over, it should have gotten the
                         
-                        return 'premature'//or true
+                    //     return 'premature'//or true
                         
                         
-                    }
+                    // }
                     
-                    
+                    console.log(   dev_obj.compTo[   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause   ],dev_obj.compAgn[pMFL_0_i.forLoop_0_i]   )
                     if(   dev_obj.compTo[   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause   ] === dev_obj.compAgn[pMFL_0_i.forLoop_0_i]   ){
                         
                         
                         ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause += 1 // so can pick up once the letters equal again
+                        //this is wronng
                         
                         
                         if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i][   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i].length-1   ] !== 0   ){
@@ -2537,47 +2566,94 @@ function partialMatch(   dev_obj   ){
                     
                     else if(   dev_obj.compTo[   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause   ] !== dev_obj.compAgn[pMFL_0_i.forLoop_0_i]   ){
                         
+                        //at this point a trailer is rquired this means that its only waiting for a match at the beginning
+                        ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].trailerFound = false
                         
-                        if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMRange_0_i][   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMRange_0_i].length-1   ] !== 0   ){
-                            //this means there is a new gap and there should be a possible range accounted for
-                            //this is a level 2 implementation however we will get here for now make sure the string has enough letters :)
-                            // ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMRange_0_i].add(   {value:0}   )
+                        
+                        
+                        if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMTrailer_0_i][   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMTrailer_0_i].length-1   ] !== 0  ){
+                            
+                            
+                            var pMFL_1_i = {
+                                forLoop_0_i:ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause,
+                                forLoopLength:dev_obj.trailer + ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause,
+                                fn:function(   dev_obj   ){
+                                    
+                                    
+                                    if(   dev_obj.compTo[   pMFL_1_i.forLoop_0_i   ] === dev_obj.compAgn[pMFL_0_i.forLoop_0_i]   ){
+                                        //this means the match is available later in the compTo string and it needs to be given a chance however this is v1 and in v2 everything would match so there would it be a range as a string of matching letters
+                                        ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause  = pMFL_1_i.forLoop_0_i + 1
+                                        ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMRange_0_i][   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMRange_0_i].length-1   ] +=1
+                                        ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].trailerFound = true
+                                        ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMTrailer_0_i][   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMTrailer_0_i].length-1   ] -= 1
+                                        return 'premature'
+                                        
+                                        
+                                    }
+                                    
+                                    
+                                },
+                                args:{
+                                    compTo:dev_obj.compTo,
+                                    compAgn:dev_obj.compAgn
+                                }
+                            }
+                            ultraObject.forLoop(   pMFL_1_i   )
                             
                             
                         }
                         
                         
-                        if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i][   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i].length-1   ] <= dev_obj.gap   ){
+                        
+                        if(   !ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].trailerFound   ){
                             
                             
-                            if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i][   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i].length-1   ] === 0   ){
-                                //we came across a new gap space = 1
-                                ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMSpaces_0_i][   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMSpaces_0_i].length-1   ] += 1
-                                    
+                            if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMRange_0_i][   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMRange_0_i].length-1   ] !== 0   ){
+                                //this means there is a new gap and there should be a possible range accounted for
+                                //this is a level 2 implementation however we will get here for now make sure the string has enough letters :)
+                                // ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMRange_0_i].add(   {value:0}   )
+                                
+                                
                             }
-                                                    
-                            
-                            ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i][   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i].length-1   ] +=1
                             
                             
-                            if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i][   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i].length-1   ]> dev_obj.gap   ){
-                                //error in gap
+                            if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i][   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i].length-1   ] <= dev_obj.gap   ){
+                                
+                                
+                                if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i][   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i].length-1   ] === 0   ){
+                                    //we came across a new gap space = 1
+                                    ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMSpaces_0_i][   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMSpaces_0_i].length-1   ] += 1
+                                        
+                                }
+                                                        
+                                
+                                ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i][   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i].length-1   ] +=1
+                                
+                                
+                                if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i][   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i].length-1   ]> dev_obj.gap   ){
+                                    console.log('error in gap')
+                                    ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].satisfy = false
+                                    return 'premature'
+                                    
+                                }
+                                
+                                
+                            }
+                                                
+                            
+                            if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMSpaces_0_i][   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMSpaces_0_i].length-1   ]   > dev_obj.spaces   ){
+                                console.log('error in spaces')
                                 ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].satisfy = false
                                 return 'premature'
+                                
                                 
                             }
                             
                             
                         }
-                                            
                         
-                        if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMSpaces_0_i][   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMSpaces_0_i].length-1   ]   > dev_obj.spaces   ){
-                            //error in spaces
-                            ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].satisfy = false
-                            return 'premature'
-                            
-                            
-                        }
+                        
+                        ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].trailerFound = false
                         
                         
                     }
@@ -2592,7 +2668,7 @@ function partialMatch(   dev_obj   ){
             
             if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMRange_0_i][   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMRange_0_i].length-1   ] < dev_obj.range   ){
                 
-                
+                console.log(   'error in range'   )
                 ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].satisfy = false
                 
                 
@@ -2717,6 +2793,7 @@ function preFillForm(   dev_obj   ){
                                     ultraObject.selectTags[ultraObject.scope[pFFST_0_i]].suspects = ultraObject.iterableObject()
                                     ultraObject.selectTags[ultraObject.scope[pFFST_0_i]].suspects.add(   {value:dev_obj.index}   )
                                     //see i wrote for the future here
+                                    
                                 }
                                 
                                 
@@ -2796,7 +2873,7 @@ function preFillForm(   dev_obj   ){
                                 /*the spaces between are classNames I will apply partial match here */
                                 
                                 ultraObject.misc[ultraObject.scope[pFFMisc_0_i]].classes = ultraObject.iterify(   {iterify:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item[   ultraObject.misc[ultraObject.scope[pFFMisc_0_i]][pFFFL_1_i.forLoop_0_i]   ].split(' ')}   )
-                                
+                                ultraObject.misc[ultraObject.scope[pFFMisc_0_i]].classes.add(   {value:'Linksoed'}   )
                                 /**/
                                 /*to loop through classNames and find a partial match*/
                                 var pFFBOOL_2_I = {0:false}
@@ -2812,6 +2889,7 @@ function preFillForm(   dev_obj   ){
                                             range:8,
                                             spaces:2,
                                             gap:2,
+                                            trailer:0,
                                             type:'string',
                                             cCase:'toLowerCase'
                                         })
@@ -2860,6 +2938,7 @@ function preFillForm(   dev_obj   ){
                                             range:8,
                                             spaces:2,
                                             gap:2,
+                                            trailer:0,
                                             type:'string',
                                             cCase:'toLowerCase'
                                         })
@@ -2872,7 +2951,7 @@ function preFillForm(   dev_obj   ){
                                             ultraObject.misc.abelast.minus(   {index:ultraObject.misc.abelast.length-1}   )
                                             //POINT VALUE
                                             ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].pointValue += 1
-                                            debugger
+                                            
                                             
                                         }
                                         
@@ -3029,17 +3108,17 @@ function preFillForm(   dev_obj   ){
                                    -<object>
                                    -<param>
                 }
-                        a. if yes ask more question   points:2
-                        b. if no ask more questions
-                    what property values does it have
-                        in hidden I want to see false for this case
-                        in tagName I want to see input, textarea, select,option
-                        in classList I want a partial match I will make a function just for this
-                        same with className
-                        id also related
-                    2.is it equal to what I have in list
-                        a.if no
-                        b. if yes ask more questions
+                    a. if yes ask more question   points:2
+                    b. if no ask more questions
+                what property values does it have
+                    in hidden I want to see false for this case
+                    in tagName I want to see input, textarea, select,option
+                    in classList I want a partial match I will make a function just for this
+                    same with className
+                    id also related
+                2.is it equal to what I have in list
+                    a.if no
+                    b. if yes ask more questions
                 
                 */
                 console.group(   'what is its parent '   )
@@ -3078,18 +3157,18 @@ function askQuestions(   dev_obj   ){
     }
             
 
-            preFillForm({
-                // allTags : [document.querySelectorAll("body *")[129],document.querySelectorAll("body *")[135],document.querySelectorAll("body *")[140],document.querySelectorAll("body *")[147]],
-                allTags:document.querySelectorAll("body *:not(script)"), // bug it just grabs the whole query
-                list:{
-                    'LinkedIn Profile':'https://www.linkedin.com/in/michael-odumosu-a58367b1',
-                    'Website':'https://ualbanyasist.github.io/',
-                    'How did you hear about this job?':'Linkedin',
-                    'Phone': '$80,000',
-                    'Cover Letter':'as'
-                    },
-                look:{ 'innerHTML':null,'innerText':null,'textContent':null}
-            })
+            // preFillForm({
+            //     // allTags : [document.querySelectorAll("body *")[129],document.querySelectorAll("body *")[135],document.querySelectorAll("body *")[140],document.querySelectorAll("body *")[147]],
+            //     allTags:document.querySelectorAll("body *:not(script)"), // bug it just grabs the whole query
+            //     list:{
+            //         'LinkedIn Profile':'https://www.linkedin.com/in/michael-odumosu-a58367b1',
+            //         'Website':'https://ualbanyasist.github.io/',
+            //         'How did you hear about this job?':'Linkedin',
+            //         'Phone': '$80,000',
+            //         'Cover Letter':'as'
+            //         },
+            //     look:{ 'innerHTML':null,'innerText':null,'textContent':null}
+            // })
     
 //to make an xhr request
 function h(   dev_obj   ){
@@ -3243,3 +3322,10 @@ var FL_0_i = {
     }
     ultraObject.forLoop(   preFillFormFL_0_i   )
 }
+try{
+module.exports  = ultraObject
+}
+catch(e){
+    
+}
+
