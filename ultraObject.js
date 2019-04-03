@@ -2541,7 +2541,7 @@ function partialMatch(   dev_obj   ){
                         
                     // }
                     
-                    console.log(   dev_obj.compTo[   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause   ],dev_obj.compAgn[pMFL_0_i.forLoop_0_i]   )
+
                     if(   dev_obj.compTo[   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause   ] === dev_obj.compAgn[pMFL_0_i.forLoop_0_i]   ){
                         
                         
@@ -2565,14 +2565,13 @@ function partialMatch(   dev_obj   ){
                     
                     
                     else if(   dev_obj.compTo[   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause   ] !== dev_obj.compAgn[pMFL_0_i.forLoop_0_i]   ){
-                        
                         //at this point a trailer is rquired this means that its only waiting for a match at the beginning
                         ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].trailerFound = false
                         
                         
                         
                         if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMTrailer_0_i][   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMTrailer_0_i].length-1   ] !== 0  ){
-                            
+
                             
                             var pMFL_1_i = {
                                 forLoop_0_i:ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause,
@@ -3328,4 +3327,5 @@ module.exports  = ultraObject
 catch(e){
     
 }
+
 
