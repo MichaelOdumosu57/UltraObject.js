@@ -2541,7 +2541,7 @@ function partialMatch(   dev_obj   ){
                         
                     // }
                     
-
+                    
                     if(   dev_obj.compTo[   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause   ] === dev_obj.compAgn[pMFL_0_i.forLoop_0_i]   ){
                         
                         
@@ -2565,13 +2565,14 @@ function partialMatch(   dev_obj   ){
                     
                     
                     else if(   dev_obj.compTo[   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause   ] !== dev_obj.compAgn[pMFL_0_i.forLoop_0_i]   ){
+                        
                         //at this point a trailer is rquired this means that its only waiting for a match at the beginning
                         ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].trailerFound = false
                         
                         
                         
                         if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMTrailer_0_i][   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMTrailer_0_i].length-1   ] !== 0  ){
-
+                            
                             
                             var pMFL_1_i = {
                                 forLoop_0_i:ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause,
@@ -2759,17 +2760,13 @@ function preFillForm(   dev_obj   ){
                 /*
                     what is the framework?
                     turn all string into lowercase
-                    point system
-                    1 for the correct tag name
-                    1 for being shown on the webpage
-                    1 for each class name met by partialMatch
-                    1 for each ID name met by partialMatch
+
                 */
                 ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].pointValue = 0 // used to deterime if valuePhrasre belongs in the elements value
                 console.log(  'what is the result', ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword  )
                 console.log(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.value,ultraObject.misc[ultraObject.scope[pFFList_0_i]][pFFFL_0_i.forLoop_0_i][1]   )
                 
-                
+                /*suspects to see if different values were put in the same spot*/
                 if(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.value.toLowerCase() !== ultraObject.misc[ultraObject.scope[pFFList_0_i]][pFFFL_0_i.forLoop_0_i][1].toLowerCase()   ){
                 
                 
@@ -2818,7 +2815,16 @@ function preFillForm(   dev_obj   ){
                     
                     
                 }
-                
+                /**/
+                /*
+                    element
+                    point system
+                    1 for the correct tag name in pFFMisc_1_i
+                    1 for being shown on the webpage,hidden true
+                    1 for each class name met by partialMatch
+                    1 for each ID name met by partialMatch
+                    1 for matching string
+                */
                 
                 console.group(  'what is the element'   )
                     console.log(   'things I should know'   )
@@ -2950,7 +2956,7 @@ function preFillForm(   dev_obj   ){
                                             ultraObject.misc.abelast.minus(   {index:ultraObject.misc.abelast.length-1}   )
                                             //POINT VALUE
                                             ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].pointValue += 1
-                                            
+                                            debugger
                                             
                                         }
                                         
@@ -2994,9 +3000,19 @@ function preFillForm(   dev_obj   ){
                         },
                         result:'a'
                     })
-                    console.log(   pFFBOOL   )
+                    
+                    
+                    if(   pFFBOOL[0]   ){
+                        
+                        
+                        ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].pointValue += 1
+                        
+                        
+                    }
+                    
+                    console.log(   'element point value',ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].pointValue   )
                 console.groupEnd()
-                throw(   'e'   )
+                
                 
                 /*
                 {
@@ -3107,34 +3123,27 @@ function preFillForm(   dev_obj   ){
                                    -<object>
                                    -<param>
                 }
-                    a. if yes ask more question   points:2
-                    b. if no ask more questions
-                what property values does it have
-                    in hidden I want to see false for this case
-                    in tagName I want to see input, textarea, select,option
-                    in classList I want a partial match I will make a function just for this
-                    same with className
-                    id also related
-                2.is it equal to what I have in list
-                    a.if no
-                    b. if yes ask more questions
-                
+                */
+                /*
+                    to identiy the parent there is
+                        offsetParent,parentElement,parentNode
+                        
+                        The offsetParent property returns the closest element in the ancestors hierarchy that is positioned.
+                        The parentNode property simply returns the immediate parent element.
+                    point system for parent
+                    1 if it has a parent
+                    1 if the parent is a div or label
+                    1 for each className is met by partialMatch
+                    1 for each ID name met by partialMatch
                 */
                 console.group(   'what is its parent '   )
-                /*
-                    3. is there a parent
-                        if yes 4. is the parent a div or a label
-                            if yes ask more questions   points:2
-                                what does string values hold
-                            
-                            5. does it have  children?
-                                if yes its assumed they are related to the item in some manner points:3
-                                if no we cant assume that the siblings are related, but this doesn't matter we need more questions
-                            im interested in  offsetParent parentElement & parentnode
-                        if no ask more questions points:1
-                */
-                    console.log(   'who are its siblings'   )
+                    /*the parent we will look at*/
+                     var pFFST_1_i = ultraObject.scope.add(   {value:ultraObject.selectTags.add(   {value:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item}   )}   )
+                     console.log(   $(ultraObject.selectTags[ultraObject.scope[pFFST_1_i]])   )
+                    /**/
                 console.groupEnd()
+                throw(   'e'   )
+                console.log(   'who are its siblings'   )
                 console.group(   'who are its children'   )
                 /*
                     any clues that perhaps the children might be the key value to fill
@@ -3327,5 +3336,4 @@ module.exports  = ultraObject
 catch(e){
     
 }
-
 
