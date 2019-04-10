@@ -131,38 +131,37 @@
                             in the length of the for loop
                             .pause keeps track of new found items
                             .trailerFound means it found it in the list and should keep checking
+                            FIX ME IMPT!!!! extension needs to be made false
                         */
-                        // console.log(   pMFL_0_i.forLoopLength,pMFL_0_i.forLoop_0_i   )
-                        // if(   pMFL_0_i.forLoop_0_i= pMFL_0_i.forLoopLength - 1 && pMFL_0_i.forLoopLength === dev_obj.compTo.length   ){
-                        //     // for cases when the gap is large but the compTo finsihes early and compAgn would satisfy but exits prematurely
-                        //     pMFL_0_i.forLoopLength =dev_obj.compAgn.length
-                            
-                            
-                        // }
-                        
-                        
-                        // if(   dev_obj.compTo[   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause   ] === undefined   ){
-                        //     //we have come to the end of the compTo string and its chance to get the job done is over, it should have gotten the
-                            
-                        //     return 'premature'//or true
-                            
-                            
-                        // }
+
                         if(   pMFL_0_i.forLoop_0_i   === pMFL_0_i.forLoopLength-1   ){
                             //.pause shoud be  0
                             if(   dev_obj.trailer > pMFL_0_i.forLoopLength && !ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].trailerFound   ){
                                 pMFL_0_i.forLoopLength = dev_obj.trailer
                                 ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].extension = 'true';
+                                dev_obj.spaces += 1
                             }
                             // means it has not looked through the whole string to find that trailer
                         }
                         
-                        
+                        if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ]
+                            [pMRange_0_i][   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ]
+                            [pMRange_0_i].length-1   ] >= dev_obj.range 
+                            && ultraObject.misc[   
+                            ultraObject.scope[pMMisc_0_i]   ].extension === 'true'){
+                            //if bugs check here
+
+                            return 'premature'
+
+
+                        }
+
+
                         if(   dev_obj.compTo[   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause   ] === dev_obj.compAgn[pMFL_0_i.forLoop_0_i]   ){
                             
                             
                             ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause += 1 // so can pick up once the letters equal again
-                            //this is wronng
+                            
                             
                             
                             if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i][   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i].length-1   ] !== 0   ){
@@ -238,6 +237,7 @@
                                     
                                     if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i][   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i].length-1   ] === 0   ){
                                         //we came across a new gap space = 1
+
                                         ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMSpaces_0_i][   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMSpaces_0_i].length-1   ] += 1
 
                                             
@@ -273,7 +273,7 @@
                                 
                             }
                              
-                            // .extension needs to be made false at some point                            
+                            // .extension needs to be made false at some point check with spaces                           
                             ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].trailerFound = false
                             
                             
@@ -305,4 +305,4 @@
         
         
     }/*this helps the API when its expected to be a inconsitencies in searches that have the same meaning, the developer can adjust how many values they want from all the way to complete difference to one char difference  in order for the API to say hey, that just a mispelled word it s okay*/
-   
+    
