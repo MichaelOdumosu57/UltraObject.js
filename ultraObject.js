@@ -2530,6 +2530,11 @@
                             
                             space is a single number
                             while range and gap are its represent the length of each match and unnmatch string in the spaces
+                            .extension helps the API, by giving it more time to find the string if the shortest string is not availble 
+                            in the length of the for loop
+                            .pause keeps track of new found items
+                            .trailerFound means it found it in the list and should keep checking
+                            FIX ME IMPT!!!! extension needs to be made false
                         */
                         // console.log(   pMFL_0_i.forLoopLength,pMFL_0_i.forLoop_0_i   )
                         // if(   pMFL_0_i.forLoop_0_i= pMFL_0_i.forLoopLength - 1 && pMFL_0_i.forLoopLength === dev_obj.compTo.length   ){
@@ -2547,6 +2552,14 @@
                             
                             
                         // }
+                        if(   pMFL_0_i.forLoop_0_i   === pMFL_0_i.forLoopLength-1   ){
+                            //.pause shoud be  0
+                            if(   dev_obj.trailer > pMFL_0_i.forLoopLength && !ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].trailerFound   ){
+                                pMFL_0_i.forLoopLength = dev_obj.trailer
+                                ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].extension = 'true';
+                            }
+                            // means it has not looked through the whole string to find that trailer
+                        }
                         
                         
                         if(   dev_obj.compTo[   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause   ] === dev_obj.compAgn[pMFL_0_i.forLoop_0_i]   ){
@@ -2630,6 +2643,7 @@
                                     if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i][   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i].length-1   ] === 0   ){
                                         //we came across a new gap space = 1
                                         ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMSpaces_0_i][   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMSpaces_0_i].length-1   ] += 1
+
                                             
                                     }
                                                             
@@ -2639,7 +2653,9 @@
                                     
                                     if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i][   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i].length-1   ]> dev_obj.gap   ){
                                         console.log('error in gap')
-                                        ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].satisfy = false
+                                        if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].extension !== 'true'   ){
+                                            ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].satisfy = false
+                                        }
                                         return 'premature'
                                         
                                     }
@@ -2650,7 +2666,9 @@
                                 
                                 if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMSpaces_0_i][   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMSpaces_0_i].length-1   ]   > dev_obj.spaces   ){
                                     console.log('error in spaces')
-                                    ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].satisfy = false
+                                    if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].extension !== 'true'   ){
+                                        ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].satisfy = false
+                                    }
                                     return 'premature'
                                     
                                     
@@ -2658,8 +2676,8 @@
                                 
                                 
                             }
-                            
-                            
+                             
+                            // .extension needs to be made false at some point                            
                             ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].trailerFound = false
                             
                             
