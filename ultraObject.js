@@ -2520,11 +2520,13 @@
                 pMSpaces_0_i = ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].add(   {value:ultraObject.iterableObject()}  )
                 pMGap_0_i = ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].add(   {value:ultraObject.iterableObject()}   )
                 pMTrailer_0_i = ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].add(   {value:ultraObject.iterableObject()}   )
+                pMPause_0_i = ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].add(   {value:ultraObject.iterableObject()}   )
                 var pMRange_0_i_0_i = ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMRange_0_i].add(   {value:0}   )
-                ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMSpaces_0_i].add(   {value:0}   )
+                var pMSpaces_0_i_0_i = ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMSpaces_0_i].add(   {value:0}   )
                 ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i].add(   {value:0}   )
                 var pMTrailer_0_i_0_i = ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMTrailer_0_i].add(   {value:1}   )
                 var pMTrailer_0_i_1_i = ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMTrailer_0_i].add(   {value:0}   )
+                var pMPause_0_i_0_i = ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMPause_0_i].add(   {value:0}   )
                 ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause = 0 // a reminnded for the comparision to continue here for those misplet words with errors in the middle
                 ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].satisfy = true // made a boolean for possible self 3rd party use , if the condition is broken it turns to false
                             
@@ -2575,6 +2577,7 @@
                                 
                                 if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].trailerRange === 'true'   ){
                                 
+                                
                                     console.log('increase for the trailer too')
                                     ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMRange_0_i][pMRange_0_i_0_i] += 1;
                                     
@@ -2593,10 +2596,10 @@
                                     
                                     
                                 }
+                                               
                                                         
-                                
                                 ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMRange_0_i][pMRange_0_i_0_i] += 1;
-                                ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause += 1;
+                                ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMPause_0_i].addFromRange = 'true';
                                 ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].trailerRange = 'false';
                                 
                                 
@@ -2624,8 +2627,8 @@
                             console.log(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMRange_0_i]   )
                             console.log(   dev_obj.compTo[   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause ]   )
                             console.log(   dev_obj.compAgn[   pMFL_0_i.forLoop_0_i   ]   )
-                            
-                            
+
+                                                        
                             if(   ultraObject.misc
                                 [   ultraObject.scope[pMMisc_0_i]   ]
                                     [pMRange_0_i][pMRange_0_i_0_i] >= dev_obj.range   ){
@@ -2726,6 +2729,67 @@
                             }
                             
                                                         
+                        console.groupEnd()
+                        // }
+                        /*
+                            SPACES MODULE
+                                what is needed
+                                        dev_obj.spaces
+                                        ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMSpaces_0_i][pMSpaces_0_i_0_i]
+                                what is handled
+                                    when the comparisons do not match a space is made and is incremented by one
+                                    when spaces exceed what is given by the dev obj we have an error
+                                        
+                        */
+                        // {
+                        console.group(   'Spaces Module'   )
+                            
+                                                                                            
+                            if(   dev_obj.compTo
+                                    [   ultraObject.misc
+                                        [   ultraObject.scope[pMMisc_0_i]
+                                        ].pause
+                                    ] !== dev_obj.compAgn[   pMFL_0_i.forLoop_0_i   ]   ){
+                                
+                                
+                                console.log(   'need a space'   )
+                                
+                                
+                            }
+                            
+                                                                                                                
+                        console.groupEnd()
+                        // }
+                        /*
+                            PAUSE  MODULE
+                                what is needed
+                                    dev_obj.compTo[   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause
+                                what is handled
+                                    handles many things about the API concerning the pause an imporan component to
+                                    compTo
+                                properties
+                                    addFromRange, means that a match in the range was found add one to the pause
+                                        
+                        */
+                        // {
+                        console.group(   'Pause Module'   )
+                            
+                            
+                            if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMPause_0_i].addFromRange === 'true'   ){
+                                
+                                
+                                ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause += 1;
+                                ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMPause_0_i][pMPause_0_i_0_i] = ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause;
+                                ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMPause_0_i].addFromRange = 'false'
+                                
+                                
+                            }
+                            
+                            
+                            console.log(   'compTo set tracking'   )
+                            console.log(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMPause_0_i][pMPause_0_i_0_i]   )
+                            console.log(   'current API state'   )
+                            console.log(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMPause_0_i]   )
                         console.groupEnd()
                         // }
                     },
