@@ -2541,6 +2541,7 @@
                             trailer service for itO[3]
                                 each serice has a module that the letter goes through for processing
                                 order is important but needs to be made unnessary for optimal performace
+<<<<<<< HEAD
                             
                             VARIABLES
                             rangeFound , when the range is increased by one the trailer does not need to run anymore, leave this once set
@@ -2609,13 +2610,44 @@
                                 
                                 
                             }
+=======
+                        */
+                        /*
+                            CASE TABLE
+                            RANGE
+                            compTo   : fun
+                            compAgn  : fund
+                            range    : 2
+                            
+                            WORKS
+                            
+                            compTo   : afun
+                            compAgn  : fund
+                            range    : 2
+                            
+                            A TRAILER PROBLEM
                             
                             
+                            compTo : lin
+                            compAgn: cylinder
+                            range  : 3
+>>>>>>> c44912e66398f50bf5810b118239ea49334b0ea4
+                            
+                            WORKS
+                            
+<<<<<<< HEAD
                             console.log(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMRange_0_i]   )
                             console.log(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause === 0 ? dev_obj.compTo[   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause ]  : dev_obj.compTo[   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause -1]    )
                             console.log(   dev_obj.compAgn[   pMFL_0_i.forLoop_0_i   ]   )
+=======
+                            compTo : link
+                            compAgn: cylinder
+                            range  : 3
+>>>>>>> c44912e66398f50bf5810b118239ea49334b0ea4
                             
+                            WORKS
                             
+<<<<<<< HEAD
                             if(   ultraObject.misc
                                 [   ultraObject.scope[pMMisc_0_i]   ]
                                     [pMRange_0_i][pMRange_0_i_0_i] >= dev_obj.range   ){
@@ -2646,8 +2678,21 @@
                         */
                         // {
                         console.group(   'Trailer Module'   )
+=======
+                            compTo : lind
+                            compAgn: cylinder
+                            range  : 3
                             
+                            WORKS
                             
+                            compTo : lind
+                            compAgn: cylinder
+                            range  : 4
+>>>>>>> c44912e66398f50bf5810b118239ea49334b0ea4
+                            
+                            WORKS
+                            
+<<<<<<< HEAD
                             if(   (   ultraObject.isInt(   {type:dev_obj.trailer}   ) === 'true' && dev_obj.trailer !== 0 && ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMTrailer_0_i][pMTrailer_0_i_0_i] !== 0   ) && ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].rangeFound !== 'true'  ){
                                 /*
                                     for v1 the 3rd comannd stops the API for looking for
@@ -2683,13 +2728,83 @@
                                 console.log(   dev_obj.trailer   )
                                 console.log(   'how many times should I run this'   )
                                 console.log(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMTrailer_0_i][pMTrailer_0_i_0_i]   )
+=======
+                            
+                        */
+                        // ---------------------------------------------------------------------------------------------
+                        /*RANGE MODULE
+                            whats is needed
+                                            dev_obj.compTo[   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause   ]
+                                            dev_obj.compAgn[pMFL_0_i.forLoop_0_i]
+                            what is handled
+                                            if there is a match, it increases the range by one
+                                            FUTURE: if reset is involved this goes back to zero
+                        */
+                        debugger
+                        console.group(   'Range Module'   )
+
+                                                        
+                            if(   dev_obj.compTo
+                                    [   ultraObject.misc
+                                        [   ultraObject.scope[pMMisc_0_i]
+                                        ].pause
+                                    ] === dev_obj.compAgn[   pMFL_0_i.forLoop_0_i   ]   ){
+                                //the chars are equal incrase the range by one
+                                        
+                                console.log(   'increase the range by one'   )
+                                console.log(   'also increase pause by one'   )
+                                ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMRange_0_i][pMRange_0_i_0_i] += 1;
+                                ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause += 1;
+>>>>>>> c44912e66398f50bf5810b118239ea49334b0ea4
+                                
+                                
+                            }
+                            
+<<<<<<< HEAD
+                            
+                        console.groupEnd()
+                        // }
+=======
+                              
+                            if(   pMFL_0_i.forLoop_0_i ===  pMFL_0_i.forLoopLength -1   ){
+                                // this means that we have come to then end of serarch but this also means several things as well
+                                
+                                if(   ultraObject.misc
+                                    [   ultraObject.scope[pMMisc_0_i]   ]
+                                        [pMRange_0_i][pMRange_0_i_0_i] < dev_obj.range   ){
+                                    
+                                    
+                                    console.log(   'error in range'   )
+                                    ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].satisfy = false
+                                    
+                                    
+                                }
                                 
                                 
                             }
                             
                             
+                            console.log(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMRange_0_i]   )
+                            console.log(   dev_obj.compTo[   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause- 1   ]   )
+                            console.log(   dev_obj.compAgn[   pMFL_0_i.forLoop_0_i   ]   )
+                            
+                            
+                            if(   ultraObject.misc
+                                [   ultraObject.scope[pMMisc_0_i]   ]
+                                    [pMRange_0_i][pMRange_0_i_0_i] >= dev_obj.range   ){
+                                //if the range is greater than or equal to the range we have a match
+                                
+                                console.log(   'range has been satisfied'   )
+                                return 'premature'
+                                
+                                
+                            }
+                                                    
+                            
                         console.groupEnd()
-                        // }
+                        /**/
+                        
+>>>>>>> c44912e66398f50bf5810b118239ea49334b0ea4
                     },
                     args:dev_obj
                 }
