@@ -121,6 +121,7 @@
                 ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMSpaces_0_i].add(   {value:0}   )
                 ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i].add(   {value:0}   )
                 var pMTrailer_0_i_0_i = ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMTrailer_0_i].add(   {value:1}   )
+                var pMTrailer_0_i_1_i = ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMTrailer_0_i].add(   {value:0}   )
                 ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause = 0 // a reminnded for the comparision to continue here for those misplet words with errors in the middle
                 ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].satisfy = true // made a boolean for possible self 3rd party use , if the condition is broken it turns to false
                             
@@ -161,14 +162,23 @@
                         console.group(   'Range Module'   )
 
                                                         
-                            if(   dev_obj.compTo
+                            if(   (   dev_obj.compTo
                                     [   ultraObject.misc
                                         [   ultraObject.scope[pMMisc_0_i]
                                         ].pause
                                     ] === dev_obj.compAgn[   pMFL_0_i.forLoop_0_i   ] ||
-                                        ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].trailerRange  === 'true'   ){
-                                //the chars are equal incrase the range by one
-                                        
+                                        ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].trailerRange  === 'true'   ) &&  (   dev_obj.compAgn[   pMFL_0_i.forLoop_0_i   ] !== undefined   )   ){
+                                //the chars are equal incrase the range by one, also undefined and undefined can come at the end so watch
+                                
+                                if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].trailerRange === 'true'   ){
+                                
+                                    console.log('increase for the trailer too')
+                                    ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMRange_0_i][pMRange_0_i_0_i] += 1;
+                                    
+                                    
+                                }
+                                
+                                
                                 console.log(   'increase the range by one'   )
                                 console.log(   'also increase pause by one'   )
                                 
@@ -180,7 +190,7 @@
                                     
                                     
                                 }
-                                
+                                                        
                                 
                                 ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMRange_0_i][pMRange_0_i_0_i] += 1;
                                 ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause += 1;
@@ -209,7 +219,7 @@
                             
                             
                             console.log(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMRange_0_i]   )
-                            console.log(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause === 0 ? dev_obj.compTo[   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause ]  : dev_obj.compTo[   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause -1]    )
+                            console.log(   dev_obj.compTo[   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause ]   )
                             console.log(   dev_obj.compAgn[   pMFL_0_i.forLoop_0_i   ]   )
                             
                             
@@ -245,46 +255,74 @@
                         console.group(   'Trailer Module'   )
                             
                             
-                            if(   (   ultraObject.isInt(   {type:dev_obj.trailer}   ) === 'true' && dev_obj.trailer !== 0 && ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMTrailer_0_i][pMTrailer_0_i_0_i] !== 0   ) && ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].rangeFound !== 'true'  ){
-                                /*
-                                    for v1 the 3rd comannd stops the API for looking for
-                                    trailers as this is a v2 courtesy to help the API
-                                    find words in the middle of sentences
-                                */
-                                var pMFL_1_i = {
-                                    forLoop_0_i:ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause,
-                                    forLoopLength: ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause + dev_obj.trailer + 1,
-                                    fn:function(   dev_obj   ){
-                                        console.log(   [dev_obj.compTo[pMFL_1_i.forLoop_0_i],dev_obj.compAgn[pMFL_0_i.forLoop_0_i]]   )
-                                        
-                                        
-                                        if(   dev_obj.compTo[pMFL_1_i.forLoop_0_i] === dev_obj.compAgn[pMFL_0_i.forLoop_0_i]   ){
-                                        
-                                        
-                                            ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMTrailer_0_i][pMTrailer_0_i_0_i] -= 1
-                                            ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause = pMFL_1_i.forLoop_0_i + 1
-                                            //helping the range do its job
-                                            ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].trailerRange = 'true'
-                                            // where it should start to find the range
-                                            return 'premature'
-                                            
-                                            
-                                        }
+                            if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMTrailer_0_i][pMTrailer_0_i_1_i] < dev_obj.trailer   ){
+                                
                                     
+                                ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMTrailer_0_i][pMTrailer_0_i_1_i] += 1;
+                                if(   (   ultraObject.isInt(   {type:dev_obj.trailer}   ) === 'true' && dev_obj.trailer !== 0 && ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMTrailer_0_i][pMTrailer_0_i_0_i] !== 0   ) && ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].rangeFound !== 'true'  ){
+                                    /*
+                                        for v1 the 3rd comannd stops the API for looking for
+                                        trailers as this is a v2 courtesy to help the API
+                                        find words in the middle of sentences
+                                    */
+                                    var pMFL_1_i = {
+                                        forLoop_0_i:ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause,
+                                        forLoopLength: ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause + dev_obj.trailer + 1,
+                                        fn:function(   dev_obj   ){
+                                            console.log(   [dev_obj.compTo[pMFL_1_i.forLoop_0_i],dev_obj.compAgn[pMFL_0_i.forLoop_0_i]]   )
+                                            
+                                            
+                                            if(   dev_obj.compTo[pMFL_1_i.forLoop_0_i] === dev_obj.compAgn[pMFL_0_i.forLoop_0_i]   ){
+                                            
+                                            
+                                                console.log(   'match found in trailer'   )
+                                                ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMTrailer_0_i][pMTrailer_0_i_0_i] -= 1
+                                                ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause = pMFL_1_i.forLoop_0_i + 1
+                                                //helping the range do its job
+                                                ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].trailerRange = 'true'
+                                                // where it should start to find the range
+                                                return 'premature'
+                                                
+                                                
+                                            }
+                                            
+                                            
+                                            if(   dev_obj.compTo[pMFL_1_i.forLoop_0_i + 1] === undefined   ){
+                                                /*
+                                                    this means that the trailer is bigger than the compTo string and there is no more
+                                                    'looking up' to do in order to find the result the answer is not here
+                                                */
+                                                
+                                                return 'premature'
+                                                
+                                                
+                                            }
                                         
-                                    },
-                                    args:dev_obj
+                                            
+                                        },
+                                        args:dev_obj
+                                    }
+                                    ultraObject.forLoop(   pMFL_1_i   )
+                                    console.log(   'how far in compTo I must search'   )
+                                    console.log(   dev_obj.trailer - ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMTrailer_0_i][pMTrailer_0_i_1_i]   )
+                                    console.log(   'how many times should I run this'   )
+                                    console.log(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMTrailer_0_i][pMTrailer_0_i_0_i]   )
+                                    
+                                    
                                 }
-                                ultraObject.forLoop(   pMFL_1_i   )
-                                console.log(   'how far in compTo I must search'   )
-                                console.log(   dev_obj.trailer   )
-                                console.log(   'how many times should I run this'   )
-                                console.log(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMTrailer_0_i][pMTrailer_0_i_0_i]   )
+                            
+                            
+                            }
+                            /*
+                                this determines if the trailer Module runs, as the dev_obj.trailer
+                                set by the developer when it hits the trailer
+                            */
+                            else if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMTrailer_0_i][pMTrailer_0_i_1_i] >= dev_obj.trailer   ){
                                 
-                                
+                                    
                             }
                             
-                            
+                                                        
                         console.groupEnd()
                         // }
                     },
@@ -300,4 +338,3 @@
         
         
     }/*this helps the API when its expected to be a inconsitencies in searches that have the same meaning, the developer can adjust how many values they want from all the way to complete difference to one char difference  in order for the API to say hey, that just a mispelled word it s okay*/
-    
