@@ -59,9 +59,9 @@
     // MB_0_i stands for memory bank used when its hard to contain needed data inside a nested function. its also used as the brain of the API to access every related to its project purpose
     /* [function abbrevation][template] for a naming conveation of items in your API
         for nested function
-        [function abbrevation]_[[function abbrevation]...][template]  
-        when adding the args to ultraObject.args 
-        [function full]_[[function full]...]_dev_obj   
+        [function abbrevation]_[[function abbrevation]...][template]
+        when adding the args to ultraObject.args
+        [function full]_[[function full]...]_dev_obj
     */
     // for the remiidify API
         // not sure if calls should be functions or methods which is easier for ultraObject to survivce
@@ -319,57 +319,57 @@
     }// produces the entries for the pretty_print functionality
     function pretty_do(   dev_obj   ){
     
-                                    if(   dev_obj != undefined   ){
-                                        
-                                        
-                                        if(   dev_obj.notes_object != undefined   ){
+        if(   dev_obj != undefined   ){
+            
+            
+            if(   dev_obj.notes_object != undefined   ){
+
+
+                ultraObject.notes_object = dev_obj.notes_object
+                
+            }
         
         
-                                            ultraObject.notes_object = dev_obj.notes_object
-                                            
-                                        }
-                                    
-                                    
-                                    }
-                                    
-                                    
-                                    this.notes_entries_fn()
-    
-    
-                                    for(   var i= 0; i != this.notes_entries.length; i++   ){
-                                    
-                                    
-                                        if(   this.notes_entries[i][0].length > this.max   ){
-                                            this.max = this.notes_entries[i][0].length
-                                        }
-                                        
-                                    }
-                                    
-                                    for(   var i= 0; i != this.notes_entries.length; i++   ){
-                                        this.notes_collection += "\n" + this.notes_entries[i][0] + Array(   this.max  - this.notes_entries[i][0].length + this.seperator ).join(" ") + this.s_key
-                                        
-                                        
-                                            if(   typeof(   this.notes_entries[i][1]   ) == 'object'   ){
-                                    
-                                    
-                                                this.notes_collection += JSON.stringify(   this.notes_entries[i][1],null,2   )
-                                    
-                                    
-                                            }
-                                            
-                                            
-                                            else{
-                                    
-                                    
-                                                this.notes_collection += this.notes_entries[i][1]
-                                    
-                                    
-                                            }
-                                            
-                                            
-                                    }
-                                    return this.notes_collection
-                                }
+        }
+        
+        
+        this.notes_entries_fn()
+
+
+        for(   var i= 0; i != this.notes_entries.length; i++   ){
+        
+        
+            if(   this.notes_entries[i][0].length > this.max   ){
+                this.max = this.notes_entries[i][0].length
+            }
+            
+        }
+        
+        for(   var i= 0; i != this.notes_entries.length; i++   ){
+            this.notes_collection += "\n" + this.notes_entries[i][0] + Array(   this.max  - this.notes_entries[i][0].length + this.seperator ).join(" ") + this.s_key
+            
+            
+                if(   typeof(   this.notes_entries[i][1]   ) == 'object'   ){
+        
+        
+                    this.notes_collection += JSON.stringify(   this.notes_entries[i][1],null,2   )
+        
+        
+                }
+                
+                
+                else{
+        
+        
+                    this.notes_collection += this.notes_entries[i][1]
+        
+        
+                }
+                
+                
+        }
+        return this.notes_collection
+    }
     function isArray(   dev_obj   ){ // should combine all type query or keep seperate??
         //.type the item in question
         
@@ -2451,7 +2451,7 @@
                 when compAgn has the match but its not in the begiinmond of compTo
                 say
                 compTo: Narco
-                compAgn:Marc0
+                compAgn:Marco
                 trailer says how much it has to go up in Marco to get that arco match
                 or
                 compTo:raymond
@@ -2464,6 +2464,15 @@
                 however this would also include
                     marefco
                     so trailing must be left at one and more modifiable in v2
+            .reset
+                when a full range match is needed
+                so if you have
+                compTo dipper
+                compAgn:tappen dipper
+                if trailer is long enough it would pick up pp and it wouldnt work
+                this is a boolan in v1 itO in v2 and if true will turn
+                    range back to 0
+                    the extension to
             .version
                 1  (default) use basic implementation
                 2 a future implementation which so that range spaces and gap can be granular to user input
@@ -2501,7 +2510,7 @@
                                     
                 }
                 
-                
+                //{
                 dev_obj.compTo = ultraObject.iterify(    {iterify:dev_obj.compTo}   )
                 dev_obj.compAgn = ultraObject.iterify(   {iterify:dev_obj.compAgn}   )
                 /*initealize items to track range space and gap */
@@ -2511,194 +2520,180 @@
                 pMSpaces_0_i = ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].add(   {value:ultraObject.iterableObject()}  )
                 pMGap_0_i = ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].add(   {value:ultraObject.iterableObject()}   )
                 pMTrailer_0_i = ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].add(   {value:ultraObject.iterableObject()}   )
-                ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMRange_0_i].add(   {value:0}   )
+                var pMRange_0_i_0_i = ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMRange_0_i].add(   {value:0}   )
                 ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMSpaces_0_i].add(   {value:0}   )
                 ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i].add(   {value:0}   )
-                ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMTrailer_0_i].add(   {value:1}   )
+                var pMTrailer_0_i_0_i = ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMTrailer_0_i].add(   {value:1}   )
                 ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause = 0 // a reminnded for the comparision to continue here for those misplet words with errors in the middle
                 ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].satisfy = true // made a boolean for possible self 3rd party use , if the condition is broken it turns to false
                             
                 /**/
+                //}
                 var pMFL_0_i = { //find if the range for compAgn satisfies
                     forLoop_0_i:0,
-                    forLoopLength: dev_obj.compTo.length < dev_obj.compAgn.length ? dev_obj.compTo.length  :  dev_obj.compAgn.length,
+                    forLoopLength: dev_obj.compTo.length > dev_obj.compAgn.length ? dev_obj.compTo.length + 1 :  dev_obj.compAgn.length + 1 ,
                     fn:function(   dev_obj   ){
-                        /*range service for itO[0]
+                        /*
                             these contain the letters for each match
+                            range service for itO[0]
                             space serivce for itO[1]
                             gap service for itO[2]
+                            trailer service for itO[3]
+                                each serice has a module that the letter goes through for processing
+                                order is important but needs to be made unnessary for optimal performace
                             
-                            space is a single number
-                            while range and gap are its represent the length of each match and unnmatch string in the spaces
-                            .extension helps the API, by giving it more time to find the string if the shortest string is not availble 
-                            in the length of the for loop
-                            .pause keeps track of new found items
-                            .trailerFound means it found it in the list and should keep checking
-                            FIX ME IMPT!!!! extension needs to be made false
+                            VARIABLES
+                            rangeFound , when the range is increased by one the trailer does not need to run anymore, leave this once set
+                                            because in v1, the trailer module should only be used once
+                            trailerRange , when the trailer finds a match, this lets the range know to increase  the range by one
+                            pause,         where the API is up to in compTo, this increases only if matches
+                                            should all modules have access to this or a module just for this
+                            
                         */
+                        /*Refer to case table for google slides*/
+                        // ---------------------------------------------------------------------------------------------
+                        /*RANGE MODULE
+                            whats is needed
+                                            dev_obj.compTo[   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause   ]
+                                            dev_obj.compAgn[pMFL_0_i.forLoop_0_i]
+                            what is handled
+                                            if there is a match, it increases the range by one
+                                            FUTURE: if reset is involved this goes back to zero
+                        */
+                        //{
+                        console.group(   'Range Module'   )
 
-                        if(   pMFL_0_i.forLoop_0_i   === pMFL_0_i.forLoopLength-1   ){
-                            //.pause shoud be  0
-                            if(   dev_obj.trailer > pMFL_0_i.forLoopLength && !ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].trailerFound   ){
-                                pMFL_0_i.forLoopLength = dev_obj.trailer
-                                ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].extension = 'true';
-                                dev_obj.spaces += 1
+                                                        
+                            if(   dev_obj.compTo
+                                    [   ultraObject.misc
+                                        [   ultraObject.scope[pMMisc_0_i]
+                                        ].pause
+                                    ] === dev_obj.compAgn[   pMFL_0_i.forLoop_0_i   ] ||
+                                        ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].trailerRange  === 'true'   ){
+                                //the chars are equal incrase the range by one
+                                        
+                                console.log(   'increase the range by one'   )
+                                console.log(   'also increase pause by one'   )
+                                
+                                
+                                if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMRange_0_i][pMRange_0_i_0_i] === 0   ){
+                                
+                                
+                                    ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].rangeFound = 'true'
+                                    
+                                    
+                                }
+                                
+                                
+                                ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMRange_0_i][pMRange_0_i_0_i] += 1;
+                                ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause += 1;
+                                ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].trailerRange = 'false';
+                                
+                                
                             }
-                            // means it has not looked through the whole string to find that trailer
-                        }
-                        
-                        if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ]
-                            [pMRange_0_i][   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ]
-                            [pMRange_0_i].length-1   ] >= dev_obj.range 
-                            && ultraObject.misc[   
-                            ultraObject.scope[pMMisc_0_i]   ].extension === 'true'){
-                            //if bugs check here
-
-                            return 'premature'
-
-
-                        }
-
-
-                        if(   dev_obj.compTo[   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause   ] === dev_obj.compAgn[pMFL_0_i.forLoop_0_i]   ){
                             
-                            
-                            ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause += 1 // so can pick up once the letters equal again
-                            
-                            
-                            
-                            if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i][   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i].length-1   ] !== 0   ){
-                                //this means there is a new range and there should be a possible gap accounted for
+                              
+                            if(   pMFL_0_i.forLoop_0_i ===  pMFL_0_i.forLoopLength -1   ){
+                                // this means that we have come to then end of serarch but this also means several things as well
                                 
-                                ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i].add(   {value:0}   )
+                                if(   ultraObject.misc
+                                    [   ultraObject.scope[pMMisc_0_i]   ]
+                                        [pMRange_0_i][pMRange_0_i_0_i] < dev_obj.range   ){
+                                    
+                                    
+                                    console.log(   'error in range'   )
+                                    ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].satisfy = false
+                                    
+                                    
+                                }
                                 
                                 
                             }
                             
                             
-                            ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMRange_0_i][   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMRange_0_i].length-1   ] +=1
+                            console.log(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMRange_0_i]   )
+                            console.log(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause === 0 ? dev_obj.compTo[   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause ]  : dev_obj.compTo[   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause -1]    )
+                            console.log(   dev_obj.compAgn[   pMFL_0_i.forLoop_0_i   ]   )
                             
                             
-                        }
-                        
-                        
-                        else if(   dev_obj.compTo[   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause   ] !== dev_obj.compAgn[pMFL_0_i.forLoop_0_i]   ){
-                            
-                            //at this point a trailer is rquired this means that its only waiting for a match at the beginning
-                            ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].trailerFound = false
-                            
-                            
-                            
-                            if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMTrailer_0_i][   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMTrailer_0_i].length-1   ] !== 0  ){
+                            if(   ultraObject.misc
+                                [   ultraObject.scope[pMMisc_0_i]   ]
+                                    [pMRange_0_i][pMRange_0_i_0_i] >= dev_obj.range   ){
+                                //if the range is greater than or equal to the range we have a match
+                                
+                                console.log(   'range has been satisfied'   )
+                                return 'premature'
                                 
                                 
+                            }
+                                                    
+                            
+                        console.groupEnd()
+                        // }
+                        /*
+                            TRAILER MODULE
+                                what is needed
+                                        dev_obj.trailer
+                                        ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMTrailer_0_i][pMTrailer_0_i_0_i]
+                                what is handled
+                                    if range could not find a match check first if there is even a trailer
+                                        if there is use that as the length to continue checking for the match
+                                            if compTo is shorter, then the users implies its later in the string
+                                            if compTo is greater, check compTo till dev_obj.trailer
+                                        if we could not find a match at the end of the loop and 1 to the containing loop till the end of the dev_obj.trailer
+                                        also make a flag telling the range module to not to try and evaluate and return at this point
+                                        
+                        */
+                        // {
+                        console.group(   'Trailer Module'   )
+                            
+                            
+                            if(   (   ultraObject.isInt(   {type:dev_obj.trailer}   ) === 'true' && dev_obj.trailer !== 0 && ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMTrailer_0_i][pMTrailer_0_i_0_i] !== 0   ) && ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].rangeFound !== 'true'  ){
+                                /*
+                                    for v1 the 3rd comannd stops the API for looking for
+                                    trailers as this is a v2 courtesy to help the API
+                                    find words in the middle of sentences
+                                */
                                 var pMFL_1_i = {
                                     forLoop_0_i:ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause,
-                                    forLoopLength:dev_obj.trailer + ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause,
+                                    forLoopLength: ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause + dev_obj.trailer + 1,
                                     fn:function(   dev_obj   ){
+                                        console.log(   [dev_obj.compTo[pMFL_1_i.forLoop_0_i],dev_obj.compAgn[pMFL_0_i.forLoop_0_i]]   )
                                         
                                         
-                                        if(   dev_obj.compTo[   pMFL_1_i.forLoop_0_i   ] === dev_obj.compAgn[pMFL_0_i.forLoop_0_i]   ){
-                                            //this means the match is available later in the compTo string and it needs to be given a chance however this is v1 and in v2 everything would match so there would it be a range as a string of matching letters
-                                            ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause  = pMFL_1_i.forLoop_0_i + 1
-                                            ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMRange_0_i][   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMRange_0_i].length-1   ] +=1
-                                            ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].trailerFound = true
-                                            ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMTrailer_0_i][   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMTrailer_0_i].length-1   ] -= 1
+                                        if(   dev_obj.compTo[pMFL_1_i.forLoop_0_i] === dev_obj.compAgn[pMFL_0_i.forLoop_0_i]   ){
+                                        
+                                        
+                                            ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMTrailer_0_i][pMTrailer_0_i_0_i] -= 1
+                                            ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause = pMFL_1_i.forLoop_0_i + 1
+                                            //helping the range do its job
+                                            ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].trailerRange = 'true'
+                                            // where it should start to find the range
                                             return 'premature'
                                             
                                             
                                         }
-                                        
+                                    
                                         
                                     },
-                                    args:{
-                                        compTo:dev_obj.compTo,
-                                        compAgn:dev_obj.compAgn
-                                    }
+                                    args:dev_obj
                                 }
                                 ultraObject.forLoop(   pMFL_1_i   )
+                                console.log(   'how far in compTo I must search'   )
+                                console.log(   dev_obj.trailer   )
+                                console.log(   'how many times should I run this'   )
+                                console.log(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMTrailer_0_i][pMTrailer_0_i_0_i]   )
                                 
                                 
                             }
                             
                             
-                            
-                            if(   !ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].trailerFound   ){
-                                
-                                
-                                if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMRange_0_i][   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMRange_0_i].length-1   ] !== 0   ){
-                                    //this means there is a new gap and there should be a possible range accounted for
-                                    //this is a level 2 implementation however we will get here for now make sure the string has enough letters :)
-                                    // ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMRange_0_i].add(   {value:0}   )
-                                    
-                                    
-                                }
-                                
-                                
-                                if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i][   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i].length-1   ] <= dev_obj.gap   ){
-                                    
-                                    
-                                    if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i][   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i].length-1   ] === 0   ){
-                                        //we came across a new gap space = 1
-
-                                        ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMSpaces_0_i][   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMSpaces_0_i].length-1   ] += 1
-
-                                            
-                                    }
-                                                            
-                                    
-                                    ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i][   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i].length-1   ] +=1
-                                    
-                                    
-                                    if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i][   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i].length-1   ]> dev_obj.gap   ){
-                                        console.log('error in gap')
-                                        if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].extension !== 'true'   ){
-                                            ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].satisfy = false
-                                        }
-                                        return 'premature'
-                                        
-                                    }
-                                    
-                                    
-                                }
-                                                    
-                                
-                                if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMSpaces_0_i][   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMSpaces_0_i].length-1   ]   > dev_obj.spaces   ){
-                                    console.log('error in spaces')
-                                    if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].extension !== 'true'   ){
-                                        ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].satisfy = false
-                                    }
-                                    return 'premature'
-                                    
-                                    
-                                }
-                                
-                                
-                            }
-                             
-                            // .extension needs to be made false at some point check with spaces                           
-                            ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].trailerFound = false
-                            
-                            
-                        }
-                        
-                        //or assert.equal
-                        /**/
+                        console.groupEnd()
+                        // }
                     },
                     args:dev_obj
                 }
                 ultraObject.forLoop(   pMFL_0_i   )
-                
-                
-                if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMRange_0_i][   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMRange_0_i].length-1   ] < dev_obj.range   ){
-                    
-                    console.log(   'error in range'   )
-                    ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].satisfy = false
-                    
-                    
-                }
-                
-                
                 ultraObject.scope.minus(   {index:pMMisc_0_i}   )
             }
             
@@ -2720,12 +2715,12 @@
         dev_obj.stream.on('data',(chunk)=> {
             if(   dev_obj.stream.body === undefined  ){
                 dev_obj.stream.body = '';
-            } 
+            }
             dev_obj.stream.body += chunk
         })
         dev_obj.stream.on('end',function(){
             // rBMisc_0_i =  ultraObject.scope.add(   {value:ultraObject.misc.add(   {value:ultraObject.iterableObject()}   )}   )
-            // ultraObject.misc.abelast.add(   {value:ultraObject.scope[rBMisc_0_i]}   )            
+            // ultraObject.misc.abelast.add(   {value:ultraObject.scope[rBMisc_0_i]}   )
             dev_obj.fn(dev_obj)
             if(   dev_obj.keep === 'false'){
                 ultraObject.misc.minus({
@@ -2735,7 +2730,7 @@
                 })
                 ultraObject.misc.abelast.minus({
                     index:ultraObject.misc.abelast.length-1
-                })                
+                })
             }
             dev_obj.finish(dev_obj)
             //why use dev_obj when you know where it is LOL
