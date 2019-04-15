@@ -2555,7 +2555,8 @@
                         */
                         /*Refer to case table for google slides*/
                         // ---------------------------------------------------------------------------------------------
-                        /*RANGE MODULE
+                        // RANGE MODULE
+                        /*
                             whats is needed
                                             dev_obj.compTo[   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause   ]
                                             dev_obj.compAgn[pMFL_0_i.forLoop_0_i]
@@ -2591,7 +2592,8 @@
                                 
                                 if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMRange_0_i][pMRange_0_i_0_i] === 0   ){
                                 
-                                
+                                    
+                                    console.log(   'let the trailer know that is does not need to run'   )
                                     ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].rangeFound = 'true'
                                     
                                     
@@ -2614,8 +2616,9 @@
                                         [pMRange_0_i][pMRange_0_i_0_i] < dev_obj.range   ){
                                     
                                     
-                                    console.log(   'error in range'   )
+                                    console.error(   'error in range'   )
                                     ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].satisfy = false
+                                    return 'premature' //>
                                     
                                     
                                 }
@@ -2643,8 +2646,8 @@
                             
                         console.groupEnd()
                         // }
+                            // TRAILER MODULE
                         /*
-                            TRAILER MODULE
                                 what is needed
                                         dev_obj.trailer
                                         ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMTrailer_0_i][pMTrailer_0_i_0_i]
@@ -2665,6 +2668,8 @@
                                 
                                     
                                 ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMTrailer_0_i][pMTrailer_0_i_1_i] += 1;
+                                
+                                
                                 if(   (   ultraObject.isInt(   {type:dev_obj.trailer}   ) === 'true' && dev_obj.trailer !== 0 && ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMTrailer_0_i][pMTrailer_0_i_0_i] !== 0   ) && ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].rangeFound !== 'true'  ){
                                     /*
                                         for v1 the 3rd comannd stops the API for looking for
@@ -2680,11 +2685,12 @@
                                             
                                             if(   dev_obj.compTo[pMFL_1_i.forLoop_0_i] === dev_obj.compAgn[pMFL_0_i.forLoop_0_i]   ){
                                             
-                                            
+                                                
                                                 console.log(   'match found in trailer'   )
                                                 ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMTrailer_0_i][pMTrailer_0_i_0_i] -= 1
-                                                ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause = pMFL_1_i.forLoop_0_i + 1
-                                                //helping the range do its job
+                                                ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMPause_0_i].equateToTrailer = 'true'
+                                                ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMPause_0_i].pauseTrailerReplace = pMFL_1_i.forLoop_0_i + 1
+                                                //helping the pause module do its job
                                                 ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].trailerRange = 'true'
                                                 // where it should start to find the range
                                                 return 'premature'
@@ -2731,8 +2737,8 @@
                                                         
                         console.groupEnd()
                         // }
+                            // SPACES MODULE
                         /*
-                            SPACES MODULE
                                 what is needed
                                         dev_obj.spaces
                                         ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMSpaces_0_i][pMSpaces_0_i_0_i]
@@ -2750,14 +2756,44 @@
                                         [   ultraObject.scope[pMMisc_0_i]
                                         ].pause
                                     ] !== dev_obj.compAgn[   pMFL_0_i.forLoop_0_i   ]   ){
+                                // this means the prev was a match and the now isnt so the space has been made
                                 
                                 
-                                console.log(   'need a space'   )
+                                if(   dev_obj.compTo
+                                        [   ultraObject.misc
+                                            [   ultraObject.scope[pMMisc_0_i]
+                                            ].pause -1
+                                        ] === dev_obj.compAgn[   pMFL_0_i.forLoop_0_i  - 1]   ){
+                                            
+                                            
+                                    console.log(   'need a space'   )
+                                    ultraObject.objInvloved({
+                                        0:ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMSpaces_0_i],
+                                        1:dev_obj.compTo[   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]].pause] ,
+                                        2:dev_obj.compAgn[   pMFL_0_i.forLoop_0_i   ],
+                                        3:dev_obj.compTo[   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]].pause -1],
+                                        4:dev_obj.compAgn[   pMFL_0_i.forLoop_0_i  -1 ]
+                                    })
+                                    ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMSpaces_0_i][pMSpaces_0_i_0_i] += 1
+                                 
+                                                                                
+                                }
                                 
                                 
+                                if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMSpaces_0_i][pMSpaces_0_i_0_i] > dev_obj.spaces   ){
+                                    //if the spaces in the API is too great
+                                                                        
+                                    console.error(   'error in spaces'   )
+                                    ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].satisfy = false
+                                    return 'premature'
+                                    
+                                                                        
+                                }
+                                    
+                                                                
                             }
                             
-                                                                                                                
+                            
                         console.groupEnd()
                         // }
                         /*
@@ -2779,11 +2815,23 @@
                                 
                                 
                                 ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause += 1;
-                                ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMPause_0_i][pMPause_0_i_0_i] = ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause;
                                 ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMPause_0_i].addFromRange = 'false'
                                 
                                 
                             }
+                            
+                            
+                            if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMPause_0_i].equateToTrailer   === 'true'   ){
+                            
+                            
+                                ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause = ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMPause_0_i].pauseTrailerReplace
+                                ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMPause_0_i].equateToTrailer  = 'false'
+                                
+                            
+                            }
+                            
+                            
+                            ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMPause_0_i][pMPause_0_i_0_i] = ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause;
                             
                             
                             console.log(   'compTo set tracking'   )
