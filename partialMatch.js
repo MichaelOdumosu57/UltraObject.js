@@ -120,7 +120,7 @@
                 pMPause_0_i = ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].add(   {value:ultraObject.iterableObject()}   )
                 var pMRange_0_i_0_i = ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMRange_0_i].add(   {value:0}   )
                 var pMSpaces_0_i_0_i = ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMSpaces_0_i].add(   {value:0}   )
-                ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i].add(   {value:0}   )
+                // ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i].add(   {value:0}   )
                 var pMTrailer_0_i_0_i = ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMTrailer_0_i].add(   {value:1}   )
                 var pMTrailer_0_i_1_i = ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMTrailer_0_i].add(   {value:0}   )
                 var pMPause_0_i_0_i = ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMPause_0_i].add(   {value:0}   )
@@ -148,11 +148,11 @@
                             trailerRange , when the trailer finds a match, this lets the range know to increase  the range by one
                             pause,         where the API is up to in compTo, this increases only if matches
                                             should all modules have access to this or a module just for this
-                            
+                            spaceGap,      the space module tells the gap module to increment by one since the gap module
                         */
                         /*Refer to case table for google slides*/
                         // ---------------------------------------------------------------------------------------------
-                        // RANGE MODULE
+                            // RANGE MODULE
                         /*
                             whats is needed
                                             dev_obj.compTo[   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause   ]
@@ -340,7 +340,7 @@
                                         dev_obj.spaces
                                         ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMSpaces_0_i][pMSpaces_0_i_0_i]
                                 what is handled
-                                    when the comparisons do not match a space is made and is incremented by one
+                                    when the comparisons do not match at first a space is made and is incremented by one
                                     when spaces exceed what is given by the dev obj we have an error
                                         
                         */
@@ -364,6 +364,9 @@
                                             
                                             
                                     console.log(   'need a space'   )
+                                    console.log(   'tell the gap module we got a new space'   )
+                                    ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMSpaces_0_i][pMSpaces_0_i_0_i] += 1
+                                    ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].spaceGap = 'true';
                                     ultraObject.objInvloved({
                                         0:ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMSpaces_0_i],
                                         1:dev_obj.compTo[   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]].pause] ,
@@ -371,7 +374,6 @@
                                         3:dev_obj.compTo[   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]].pause -1],
                                         4:dev_obj.compAgn[   pMFL_0_i.forLoop_0_i  -1 ]
                                     })
-                                    ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMSpaces_0_i][pMSpaces_0_i_0_i] += 1
                                  
                                                                                 
                                 }
@@ -391,6 +393,68 @@
                             }
                             
                             
+                        console.groupEnd()
+                        // }
+                            // GAP MODULE
+                        /*
+                                what is needed
+                                        dev_obj.gap
+                                        ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i]
+                                what is handled
+                                    when the comparisons do not match a gap is also made and is incremented by one
+                                    when new gaps afer spaces exceed what is given by the dev obj we have an error
+                                    these are handled by itO, to determine the gap count for evey space
+                                        
+                        */
+                        // {
+                        console.group(   'Gap Module'   )
+                            
+                                                                                            
+                            if(   dev_obj.compTo
+                                    [   ultraObject.misc
+                                        [   ultraObject.scope[pMMisc_0_i]
+                                        ].pause
+                                    ] !== dev_obj.compAgn[   pMFL_0_i.forLoop_0_i   ]   ){
+                                // this means the prev was a match and a gap is increasing
+                                                                                                                                                    
+                                    console.log(   'gap is increasing'   )
+                                    
+                                    
+                                    if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].spaceGap === 'true'   ){
+                                        
+                                        
+                                        ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i].add(   {value:1}   )
+                                        // to properly account for the gap
+                                        ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].spaceGap = 'false'
+                                        
+                                        
+                                    }
+                                    
+                                    
+                                    else if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].spaceGap !== 'true'   ){
+                                        
+                                        
+                                        ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i][   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i].length -1    ]  +=1
+                                        
+                                        
+                                    }
+                                 
+                                                                                                                                                                                
+                                    if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i][   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i].length -1    ] > dev_obj.gap   ){
+                                        //if the spaces in the API is too great
+                                                                            
+                                        console.error(   'error in gap'   )
+                                        ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].satisfy = false
+                                        return 'premature'
+                                        
+                                                                            
+                                    }
+                                    
+                                                                
+                            }
+                            
+                            
+                            console.log(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i]   )
                         console.groupEnd()
                         // }
                         /*
