@@ -2620,8 +2620,8 @@
                                     
                                     console.error(   'error in range'   )
                                     uO.misc[   uO.scope[pMMisc_0_i]   ].satisfy = false
+                                    console.groupEnd()
                                     return 'premature' //>
-                                    
                                     
                                 }
                                 

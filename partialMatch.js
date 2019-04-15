@@ -169,20 +169,9 @@
                                     [   ultraObject.misc
                                         [   ultraObject.scope[pMMisc_0_i]
                                         ].pause
-                                    ] === dev_obj.compAgn[   pMFL_0_i.forLoop_0_i   ] ||
-                                        ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].trailerRange  === 'true'   ) &&  (   dev_obj.compAgn[   pMFL_0_i.forLoop_0_i   ] !== undefined   )   ){
+                                    ] === dev_obj.compAgn[   pMFL_0_i.forLoop_0_i   ]  ) &&  (   dev_obj.compAgn[   pMFL_0_i.forLoop_0_i   ] !== undefined   )   ){
                                 //the chars are equal incrase the range by one, also undefined and undefined can come at the end so watch
-                                
-                                if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].trailerRange === 'true'   ){
-                                
-                                
-                                    console.log('increase for the trailer too')
-                                    ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMRange_0_i][pMRange_0_i_0_i] += 1;
-                                    
-                                    
-                                }
-                                
-                                
+                                                                                            
                                 console.log(   'increase the range by one'   )
                                 console.log(   'also increase pause by one'   )
                                 
@@ -199,11 +188,20 @@
                                                         
                                 ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMRange_0_i][pMRange_0_i_0_i] += 1;
                                 ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMPause_0_i].addFromRange = 'true';
-                                ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].trailerRange = 'false';
                                 
                                 
                             }
                             
+                            
+                            if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].trailerRange === 'true'   ){
+                            
+                            
+                                console.log('increase for the trailer ')
+                                ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMRange_0_i][pMRange_0_i_0_i] += 1;
+                                ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].trailerRange = 'false';
+                                
+                                
+                            }
                               
                             if(   pMFL_0_i.forLoop_0_i ===  pMFL_0_i.forLoopLength -1   ){
                                 // this means that we have come to then end of serarch but this also means several things as well
@@ -215,6 +213,7 @@
                                     
                                     console.error(   'error in range'   )
                                     ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].satisfy = false
+                                    console.groupEnd()
                                     return 'premature' //>
                                     
                                     
@@ -265,7 +264,7 @@
                                 
                                     
                                 ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMTrailer_0_i][pMTrailer_0_i_1_i] += 1;
-                                
+                                //FIX ME memory leak
                                 
                                 if(   (   ultraObject.isInt(   {type:dev_obj.trailer}   ) === 'true' && dev_obj.trailer !== 0 && ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMTrailer_0_i][pMTrailer_0_i_0_i] !== 0   ) && ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].rangeFound !== 'true'  ){
                                     /*
@@ -514,4 +513,4 @@
         
         
     }/*this helps the API when its expected to be a inconsitencies in searches that have the same meaning, the developer can adjust how many values they want from all the way to complete difference to one char difference  in order for the API to say hey, that just a mispelled word it s okay*/
-    
+   

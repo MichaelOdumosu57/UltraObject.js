@@ -7,6 +7,8 @@
             }
     // if node use exports or figure how to get external modules in here
     
+    //when using ultraObject rmbr all your modules are mesed up replace ultraObject with ultraObjectt
+    
     // an OOP way to do everything javascript, I meant to have this done in python with a superclass oh well
     // for meaningful use, every property purpose is easily availble to each other and you can have several of them
     
@@ -18,14 +20,14 @@
     
     // if another API just needs a primitive, just provide it no need for an iterable Object
     
-    //uO is designed to recover from the unexecpted make sure all needed values have defaults the cover all possibilites the microservice may run into
+    //ultraObject is designed to recover from the unexecpted make sure all needed values have defaults the cover all possibilites the microservice may run into
     
     //for every single function call its arogumetns must be held in ultraObject.args when the function dies or its args are not needed,
     //they are taken from their place in the args. they are each put into another itO with an index just in case of recusion
         // when  an item from args is needed, it is put into a scope and added to a meanigunful property representation name in the ultraObject,
         //there will be a function implemented if the developer needs a copy or changes can reflect in the args
         
-    //var const and let in function must only represent the index of and item coming from uO.scope
+    //var const and let in function must only represent the index of and item coming from ultraObject.scope
     
     //to access items you must get it though the index in the scope
     // if a outer function needs a scope location from the inner function which started in the inner function use, .itO.abelast which is an itO in order to pull it out
@@ -38,7 +40,7 @@
         obj
         fn increase(   dev_obj   ){
             ...
-                var a = uO.(...)
+                var a = ultraObject.(...)
                 a shoud go on dev_obj not in the actual object because oce the object is made the scaffolding should be thrown  away
             ...
         }
@@ -2356,7 +2358,7 @@
         
         
         return dev_obj.target
-    }//you kneew uO would need this one
+    }//you kneew ultraObject would need this one
     function swap(   dev_obj   ){
         // .swapO the items that are desired to be swapped must be an iterableObject
         // .instruct expects two iterableObject why does it need the second it will provide one
@@ -2572,20 +2574,9 @@
                                     [   ultraObject.misc
                                         [   ultraObject.scope[pMMisc_0_i]
                                         ].pause
-                                    ] === dev_obj.compAgn[   pMFL_0_i.forLoop_0_i   ] ||
-                                        ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].trailerRange  === 'true'   ) &&  (   dev_obj.compAgn[   pMFL_0_i.forLoop_0_i   ] !== undefined   )   ){
+                                    ] === dev_obj.compAgn[   pMFL_0_i.forLoop_0_i   ]  ) &&  (   dev_obj.compAgn[   pMFL_0_i.forLoop_0_i   ] !== undefined   )   ){
                                 //the chars are equal incrase the range by one, also undefined and undefined can come at the end so watch
-                                
-                                if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].trailerRange === 'true'   ){
-                                
-                                
-                                    console.log('increase for the trailer too')
-                                    ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMRange_0_i][pMRange_0_i_0_i] += 1;
-                                    
-                                    
-                                }
-                                
-                                
+                                                                                            
                                 console.log(   'increase the range by one'   )
                                 console.log(   'also increase pause by one'   )
                                 
@@ -2602,11 +2593,20 @@
                                                         
                                 ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMRange_0_i][pMRange_0_i_0_i] += 1;
                                 ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMPause_0_i].addFromRange = 'true';
-                                ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].trailerRange = 'false';
                                 
                                 
                             }
                             
+                            
+                            if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].trailerRange === 'true'   ){
+                            
+                            
+                                console.log('increase for the trailer ')
+                                ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMRange_0_i][pMRange_0_i_0_i] += 1;
+                                ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].trailerRange = 'false';
+                                
+                                
+                            }
                               
                             if(   pMFL_0_i.forLoop_0_i ===  pMFL_0_i.forLoopLength -1   ){
                                 // this means that we have come to then end of serarch but this also means several things as well
@@ -2618,6 +2618,7 @@
                                     
                                     console.error(   'error in range'   )
                                     ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].satisfy = false
+                                    console.groupEnd()
                                     return 'premature' //>
                                     
                                     
@@ -2668,7 +2669,7 @@
                                 
                                     
                                 ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMTrailer_0_i][pMTrailer_0_i_1_i] += 1;
-                                
+                                //FIX ME memory leak
                                 
                                 if(   (   ultraObject.isInt(   {type:dev_obj.trailer}   ) === 'true' && dev_obj.trailer !== 0 && ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMTrailer_0_i][pMTrailer_0_i_0_i] !== 0   ) && ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].rangeFound !== 'true'  ){
                                     /*
@@ -2994,7 +2995,7 @@
             aT: pFFATI_0_i,
             all:'true'
         })
-        console.group(   'at this point the uO has meaningful values for all arguments from the init fn'   )
+        console.group(   'at this point the ultraObject has meaningful values for all arguments from the init fn'   )
         // ultraObject.objInvloved({
         //     0:ultraObject.allTags[ultraObject.allTags.eCSST],
         // })
@@ -3295,7 +3296,7 @@
                                         -<b>
                                         -<bdi>
                                         -<bdo>
-                                        -<blockquote>
+                                        -<blockqultraObjectte>
                                         -<center>
                                         -<cite>
                                         -<code>
