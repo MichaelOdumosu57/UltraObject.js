@@ -152,6 +152,74 @@
                         */
                         /*Refer to case table for google slides*/
                         // ---------------------------------------------------------------------------------------------
+                            // FULL MODULE
+                        /*
+                            whats is needed
+                                            dev_obj.reset
+                                            dev_obj.compAgn[pMFL_0_i.forLoop_0_i]
+                            what is handled
+                                            this is a v2 courtesy for times when the whole word is needed and not parts of the word
+                                            if the API does not get the complete match in the length of the range it tells all modules to reset
+                                            according until it finds that exact word match
+                                            
+                                            in v2 trailer gap and space in following indexes in their respecive itO would be set to 0, demanding
+                                            that the rest of the compTo string should be there
+                                            
+                                            watch this has a lot to tell the other modules if conditions are satisfied here
+                        */
+                        //{
+                            console.group(   'Full Module'   )
+                            
+                            
+                                if(   dev_obj.full === 'true'   ){
+                                    
+                                    
+                                    if(   (   dev_obj.compTo
+                                            [   ultraObject.misc
+                                                [   ultraObject.scope[pMMisc_0_i]
+                                                ].pause
+                                            ] === dev_obj.compAgn[   pMFL_0_i.forLoop_0_i   ]  ) &&  (   dev_obj.compAgn[   pMFL_0_i.forLoop_0_i   ] !== undefined   )   ){
+                                        //the chars are equal incrase the range by one up to the length of the range, also undefined and undefined can come at the end so watch
+                                        
+                                        /*
+                                            if everything is good
+                                            we dont run this we could actually try
+                                                to resolve things from here
+                                                tell the modules what to do and stop this predeterminded loop <- best choice
+                                                let the modules come to that forgone conclusion <- allows for order
+                                                
+                                            if everything is bad
+                                                tell the range module to go back to zero,
+                                                tell the trailer module to
+                                                    the range told the trailer modulde to stop
+                                                    tell trailer to change ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMTrailer_0_i][pMTrailer_0_i_0_i] back to one and but it doesnot reset how much the trailer
+                                                    covered itself becase trailer is an up to functionality
+                                                see what the gap and space module does, they should be lef untouched
+                                        */
+                                        var pMFL_2_i = {
+                                            forLoop_0_i:ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause,
+                                            forLoopLength:dev_obj.range,
+                                            fn:function(   dev_obj   ){
+                                                console.log(   dev_obj.compTo[pMFL_2_i.forLoop_0_i],dev_obj.compAgn[pMFL_0_i.forLoop_0_i + pMFL_2_i.forLoop_0_i]   )
+                                                //comparing the compTo to the spot in the compAgn
+                                            },
+                                            args:{
+                                                    compTo  : dev_obj.compTo,
+                                                    compAgn : dev_obj.compAgn
+                                            }
+                                        }
+                                        ultraObject.forLoop(   pMFL_2_i   )
+                                        throw('e')
+                                        
+                                        
+                                    }
+                                    
+                                    
+                                }
+                                 
+                                    
+                            console.groupEnd()
+                        //}
                             // RANGE MODULE
                         /*
                             whats is needed
@@ -242,7 +310,7 @@
                             
                         console.groupEnd()
                         // }
-                            // TRAILER MODULE
+                            // TRAILER MODULE (only look so far)
                         /*
                                 what is needed
                                         dev_obj.trailer
@@ -254,6 +322,17 @@
                                             if compTo is greater, check compTo till dev_obj.trailer
                                         if we could not find a match at the end of the loop and 1 to the containing loop till the end of the dev_obj.trailer
                                         also make a flag telling the range module to not to try and evaluate and return at this point
+                                explanation
+                                    for illo and asdfun semper fil twillo
+                                    there is not trailer and another parameter because
+                                    trailler  = 4
+                                    [someParam] = 7
+                                    it would end if the compTo is less than some param which has a length of trailer
+                                        to find the match later in the string you just have to increase trailer and this would also
+                                        terminate earliest
+                                    also if someParam was less than the trailer that would not workout because if the match is
+                                    later in the trailer and someParam only told it to look less in the compAgn, it would not be able to find it
+                                    or it would take longer to find it as it moves up in the itO so only is needed
                                         
                         */
                         // {
@@ -383,6 +462,7 @@
                                                                         
                                     console.error(   'error in spaces'   )
                                     ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].satisfy = false
+                                    console.groupEnd()
                                     return 'premature'
                                     
                                                                         
@@ -444,6 +524,7 @@
                                                                             
                                         console.error(   'error in gap'   )
                                         ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].satisfy = false
+                                        console.groupEnd()
                                         return 'premature'
                                         
                                                                             
@@ -513,4 +594,22 @@
         
         
     }/*this helps the API when its expected to be a inconsitencies in searches that have the same meaning, the developer can adjust how many values they want from all the way to complete difference to one char difference  in order for the API to say hey, that just a mispelled word it s okay*/
+    
    
+   
+   
+   /*templates
+   if looking for one word in a string this is the template
+   
+ultraObject.partialMatch({
+    compTo:
+    compAgn:,
+    range:compTo.length,
+    spaces:1,
+    gap:compAgn.length- compTo.length,
+    trailer:0,
+    type:'string',
+    full:'true'
+})
+
+   */
