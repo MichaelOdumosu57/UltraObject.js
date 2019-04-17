@@ -146,6 +146,10 @@
                             rangeFound , when the range is increased by one the trailer does not need to run anymore, leave this once set
                                             because in v1, the trailer module should only be used once
                             trailerRange , when the trailer finds a match, this lets the range know to increase  the range by one
+                            trailerGap   , when this happens there is a massive gap made, this is an itO with the trailer module
+                                            telling the Gap module to update accordingly
+                                    itsThis - the gap should replace the value with what the trailer gives
+                                    jobDone- the gap module did as requested
                             pause,         where the API is up to in compTo, this increases only if matches
                                             should all modules have access to this or a module just for this
                             spaceGap,      the space module tells the gap module to increment by one since the gap module
@@ -155,8 +159,15 @@
                                 regular - let the range module act as normal
                             fullSpace      this is the full module way of telling the space module that there is no new space and not to increment
                                 ignore - the space module will not increment
+                                regular - space module will perform normal operations
                             fullGap -       full module tells the gap module to continue to increment since the words are not equal as such
                                 fill  gap will continue to increment by one and try not to increase the itO in relation to the space module
+                            fullCheck - allows the full module to deactivate itself saving memory
+                                true activates its rules
+                                false deactivates its rulesd
+                            fullApply - if full module actually finds the compTo/range compAgn match
+                                true it has found the match do accordingly
+                                false it has not found the match do accordingly
                         */
                         /*Refer to case table for google slides*/
                         // not complete till trailer tells gap to update after it has found a match and pause contines from it
@@ -204,6 +215,7 @@
                                                     
                                                 see what the gap and space module does, they should be lef untouched
                                         */
+                                        ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fullOK = 'true'
                                         var pMFL_2_i = {
                                             forLoop_0_i:ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause,
                                             forLoopLength:dev_obj.range,
@@ -216,13 +228,15 @@
                                                     
                                                     console.group(   'up to this point the Full Module applies',pMFL_0_i.forLoop_0_i + pMFL_2_i.forLoop_0_i   )
                                                         ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fullLoopApply = pMFL_0_i.forLoop_0_i + pMFL_2_i.forLoop_0_i
+                                                        ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fullOK = 'false'
                                                         ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fullRange = 'ignore';
                                                         //tells the range module to not add one if finds matches in the rest of the range until point
                                                         ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fullSpace = 'ignore'
                                                         // tells the spaces module to not look for that now diff. -1 same until point
                                                         ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fullGap = 'fill'
                                                         // tells the gap module to go ahead and fill things
-                                                        // ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fillPause // if pause is needed to do anything here
+                                                        ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fullPause = 'holdoff' // full module depends on pause to do the right thing here the pause must be at the 0 of compTo to get that range compAgn - compTo match
+                                                        ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fullCheck = 'true'
                                                     console.groupEnd()
                                                     return 'premature'
                                                     
@@ -239,16 +253,31 @@
                                         ultraObject.forLoop(   pMFL_2_i   )
                                         // debugger
                                         // throw('e')
+                                        console.log(   'now that I am out of the loop what happened'   )
+                                        console.warn(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ]   )
+                                        if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fullOK === 'true'   ){
+                                            // we practially found the string do not run the full module again,
+                                            console.log('zab')
+                                            //LEFT off
+                                            //make sure full range knows what to do on when it finds the strings
+                                            // make sure trailer tells gap where to gap up to
+                                            //make sure full module is working properly and setup a trailer test to provide
+                                            // the trailer module with instructions as well
+                                        }
                                         
                                         
                                     }
                                     
                                     
-                                    if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fullLoopApply < pMFL_0_i.forLoop_0_i   ){
+                                    if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fullLoopApply < pMFL_0_i.forLoop_0_i && ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fullCheck === 'true'   ){
                                     
                                     
                                         console.log(   'it safe for the other modules to operate as normal Full Module removing restraints'   )
                                         ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fullRange = 'regular';
+                                        ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fullSpace = 'regular';
+                                        ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fullGap = 'regular';
+                                        ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fullPause = 'regular';
+                                        ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fullCheck = 'false'
                                         
                                         
                                     }
@@ -307,14 +336,13 @@
                                         this means that the full module found something wrong and is telling the range
                                         to not increment because the compTo and the proceeding substring do not match
                                     */
-                                    debugger
                                     ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMRange_0_i][pMRange_0_i_0_i] += 1;
                                     
                                     
                                 }
                                 
                                 
-                                ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMPause_0_i].addFromRange = 'true';
+                                ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMPause_0_i].pauseRange = 'true';
                                 
                                 
                             }
@@ -430,6 +458,7 @@
                                                 ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMPause_0_i].pauseTrailerReplace = pMFL_1_i.forLoop_0_i + 1
                                                 //helping the pause module do its job
                                                 ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].trailerRange = 'true'
+                                                ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].trailerGap = ultraObject.iterify(   {iterify:['itsThis',pMFL_0_i.forLoop_0_i]}   )
                                                 // where it should start to find the range
                                                 return 'premature'
                                                 
@@ -483,6 +512,7 @@
                                 what is handled
                                     when the comparisons do not match at first a space is made and is incremented by one
                                     when spaces exceed what is given by the dev obj we have an error
+                                FIX ME ; in cases when there API finds nothing there should be one big space and the gap should be the length of comp
                                         
                         */
                         // {
@@ -502,11 +532,27 @@
                                             [   ultraObject.scope[pMMisc_0_i]
                                             ].pause -1
                                         ] === dev_obj.compAgn[   pMFL_0_i.forLoop_0_i  - 1]   ){
-                                            
+                                        //so it doesnt not make empty spaces for missing chars
                                             
                                     console.log(   'need a space'   )
                                     console.log(   'tell the gap module we got a new space'   )
-                                    ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMSpaces_0_i][pMSpaces_0_i_0_i] += 1
+                                    console.log(   'the full module has something for the space module'   )
+                                    ultraObject.objInvloved({
+                                        0:ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fullSpace,
+                                        1:ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fullLoopApply,
+                                        2:pMFL_0_i.forLoop_0_i
+                                    })
+                                    
+                                    
+                                    if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fullSpace !== 'ignore'   ){
+                                        //the full module is telling the space module that the range has never increased and there is just one big space do not increment
+                                        
+                                        ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMSpaces_0_i][pMSpaces_0_i_0_i] += 1
+                                        
+                                        
+                                    }
+                                    
+                                    
                                     ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].spaceGap = 'true';
                                     ultraObject.objInvloved({
                                         0:ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMSpaces_0_i],
@@ -562,26 +608,43 @@
                                     console.log(   'gap is increasing'   )
                                     
                                     
-                                    if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].spaceGap === 'true'   ){
-                                        
+                                    if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].spaceGap === 'true'  && ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fullGap !== 'fill'  ){
+                                        //however full module intervenes here so there is one space not a new space and this should not work need the && to do this
                                         
                                         ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i].add(   {value:1}   )
                                         // to properly account for the gap
                                         ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].spaceGap = 'false'
-                                        
+
                                         
                                     }
-                                    
-                                    
-                                    else if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].spaceGap !== 'true'   ){
-                                        
+                                                
+                                                                        
+                                    else if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].spaceGap !== 'true'   || ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fullGap === 'fill'   ){
+                                        // spaceGap might equal true but an || is needed because the full module takes order
                                         
                                         ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i][   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i].length -1    ]  +=1
                                         
                                         
                                     }
-                                 
-                                                                                                                                                                                
+
+
+                                    if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].trailerGap !== undefined   ){
+                                        
+                                        
+                                        if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].trailerGap[0] === 'itsThis'   ){
+                                            //this means that the trailer has made a range and the gap needs to be updated
+                                            // but should this exist this puts limits on the user
+                                            console.log(   'gap updated from trailer'   )
+                                            ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i][   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i].length -1    ]  = ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].trailerGap[1]
+                                            ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].trailerGap[0] = 'jobDone'
+                                             
+                                                
+                                        }
+                                        
+                                        
+                                    }
+                                        
+                                                         
                                     if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i][   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i].length -1    ] > dev_obj.gap   ){
                                         //if the spaces in the API is too great
                                                                             
@@ -608,18 +671,26 @@
                                     handles many things about the API concerning the pause an imporan component to
                                     compTo
                                 properties
-                                    addFromRange, means that a match in the range was found add one to the pause
+                                    pauseRange, means that a match in the range was found add one to the pause
                                         
                         */
                         // {
                         console.group(   'Pause Module'   )
                             
                             
-                            if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMPause_0_i].addFromRange === 'true'   ){
+                            if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMPause_0_i].pauseRange === 'true'  ){
                                 
                                 
-                                ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause += 1;
-                                ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMPause_0_i].addFromRange = 'false'
+                                if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fullPause !== 'holdoff'   ){
+                                    // full module also wants to prevent the pause module from doing anything
+                                    
+                                    ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause += 1;
+                                    
+                                    
+                                }
+                                
+                                
+                                ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMPause_0_i].pauseRange = 'false'
                                 
                                 
                             }
