@@ -149,8 +149,17 @@
                             pause,         where the API is up to in compTo, this increases only if matches
                                             should all modules have access to this or a module just for this
                             spaceGap,      the space module tells the gap module to increment by one since the gap module
+                            fullLoopApply, the full module applies until a given point in  pMFL_0_i
+                            fullRange,      this is the full module way of telling the range module not to increase by one
+                                ignore -  the range module will not increment by one
+                                regular - let the range module act as normal
+                            fullSpace      this is the full module way of telling the space module that there is no new space and not to increment
+                                ignore - the space module will not increment
+                            fullGap -       full module tells the gap module to continue to increment since the words are not equal as such
+                                fill  gap will continue to increment by one and try not to increase the itO in relation to the space module
                         */
                         /*Refer to case table for google slides*/
+                        // not complete till trailer tells gap to update after it has found a match and pause contines from it
                         // ---------------------------------------------------------------------------------------------
                             // FULL MODULE
                         /*
@@ -189,11 +198,10 @@
                                                 let the modules come to that forgone conclusion <- allows for order
                                                 
                                             if everything is bad
-                                                tell the range module to go back to zero,
-                                                tell the trailer module to
-                                                    the range told the trailer modulde to stop
-                                                    tell trailer to change ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMTrailer_0_i][pMTrailer_0_i_0_i] back to one and but it doesnot reset how much the trailer
-                                                    covered itself becase trailer is an up to functionality
+                                                the range module does not have to do anything since it going to find the full rnage, this should be zero
+                                                so tell the range not to even increment
+                                                the trailer module should not have to do anything also
+                                                    
                                                 see what the gap and space module does, they should be lef untouched
                                         */
                                         var pMFL_2_i = {
@@ -202,6 +210,26 @@
                                             fn:function(   dev_obj   ){
                                                 console.log(   dev_obj.compTo[pMFL_2_i.forLoop_0_i],dev_obj.compAgn[pMFL_0_i.forLoop_0_i + pMFL_2_i.forLoop_0_i]   )
                                                 //comparing the compTo to the spot in the compAgn
+                                                
+                                                if(   dev_obj.compTo[pMFL_2_i.forLoop_0_i] !== dev_obj.compAgn[pMFL_0_i.forLoop_0_i + pMFL_2_i.forLoop_0_i]   ){
+                                                    // this means the full range compTo is not satsifed and the API needs to reset so tell it things
+                                                    
+                                                    console.group(   'up to this point the Full Module applies',pMFL_0_i.forLoop_0_i + pMFL_2_i.forLoop_0_i   )
+                                                        ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fullLoopApply = pMFL_0_i.forLoop_0_i + pMFL_2_i.forLoop_0_i
+                                                        ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fullRange = 'ignore';
+                                                        //tells the range module to not add one if finds matches in the rest of the range until point
+                                                        ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fullSpace = 'ignore'
+                                                        // tells the spaces module to not look for that now diff. -1 same until point
+                                                        ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fullGap = 'fill'
+                                                        // tells the gap module to go ahead and fill things
+                                                        // ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fillPause // if pause is needed to do anything here
+                                                    console.groupEnd()
+                                                    return 'premature'
+                                                    
+                                                    
+                                                }
+                                                
+                                                
                                             },
                                             args:{
                                                     compTo  : dev_obj.compTo,
@@ -209,7 +237,18 @@
                                             }
                                         }
                                         ultraObject.forLoop(   pMFL_2_i   )
-                                        throw('e')
+                                        // debugger
+                                        // throw('e')
+                                        
+                                        
+                                    }
+                                    
+                                    
+                                    if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fullLoopApply < pMFL_0_i.forLoop_0_i   ){
+                                    
+                                    
+                                        console.log(   'it safe for the other modules to operate as normal Full Module removing restraints'   )
+                                        ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fullRange = 'regular';
                                         
                                         
                                     }
@@ -231,8 +270,8 @@
                         */
                         //{
                         console.group(   'Range Module'   )
-
-                                                        
+                                
+                            
                             if(   (   dev_obj.compTo
                                     [   ultraObject.misc
                                         [   ultraObject.scope[pMMisc_0_i]
@@ -244,6 +283,7 @@
                                 console.log(   'also increase pause by one'   )
                                 
                                 
+                                
                                 if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMRange_0_i][pMRange_0_i_0_i] === 0   ){
                                 
                                     
@@ -253,8 +293,27 @@
                                     
                                 }
                                                
-                                                        
-                                ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMRange_0_i][pMRange_0_i_0_i] += 1;
+                                
+                                console.log(   'the full module is trying to tell me something'   )
+                                ultraObject.objInvloved({
+                                    0:pMFL_0_i.forLoop_0_i,
+                                    1:ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fullLoopApply,
+                                    2:ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fullRange
+                                })
+                                
+                                
+                                if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fullRange !== 'ignore'   ){
+                                    /*
+                                        this means that the full module found something wrong and is telling the range
+                                        to not increment because the compTo and the proceeding substring do not match
+                                    */
+                                    debugger
+                                    ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMRange_0_i][pMRange_0_i_0_i] += 1;
+                                    
+                                    
+                                }
+                                
+                                
                                 ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMPause_0_i].addFromRange = 'true';
                                 
                                 
@@ -270,6 +329,7 @@
                                 
                                 
                             }
+                             
                               
                             if(   pMFL_0_i.forLoop_0_i ===  pMFL_0_i.forLoopLength -1   ){
                                 // this means that we have come to then end of serarch but this also means several things as well
@@ -306,6 +366,9 @@
                                 
                                 
                             }
+                         
+                                
+                            
                                                     
                             
                         console.groupEnd()
@@ -595,21 +658,3 @@
         
     }/*this helps the API when its expected to be a inconsitencies in searches that have the same meaning, the developer can adjust how many values they want from all the way to complete difference to one char difference  in order for the API to say hey, that just a mispelled word it s okay*/
     
-   
-   
-   
-   /*templates
-   if looking for one word in a string this is the template
-   
-ultraObject.partialMatch({
-    compTo:
-    compAgn:,
-    range:compTo.length,
-    spaces:1,
-    gap:compAgn.length- compTo.length,
-    trailer:0,
-    type:'string',
-    full:'true'
-})
-
-   */
