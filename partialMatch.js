@@ -1,6 +1,7 @@
     function partialMatch(   dev_obj   ){
         /*
             this function expects strings but there can be others objects arrays
+                where objects are compared like this we call them eycems
             what will happen is that we will convert it to an itO and look at each property and ask about the range and the number of spaces
             so if compAgn is to big
                 dasgjkfgnkasgpnksdfo word asidnogsindgj osapfoigjnsaoifgjasdgipkojagidknsknpgasd
@@ -194,7 +195,16 @@
                                 if(   dev_obj.full === 'true'   ){
                                     
                                     
-                                    if(   (   dev_obj.compTo
+                                    if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fullOK === 'true'   ){
+                                                  
+                                                                                
+                                        // lets see what happens when we le the API run its
+                                        
+                                        
+                                    }
+                                    
+                                    
+                                    else if(   (   dev_obj.compTo
                                             [   ultraObject.misc
                                                 [   ultraObject.scope[pMMisc_0_i]
                                                 ].pause
@@ -255,14 +265,18 @@
                                         // throw('e')
                                         console.log(   'now that I am out of the loop what happened'   )
                                         console.warn(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ]   )
+                                        
+                                            
                                         if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fullOK === 'true'   ){
                                             // we practially found the string do not run the full module again,
-                                            console.log('zab')
-                                            //LEFT off
-                                            //make sure full range knows what to do on when it finds the strings
-                                            // make sure trailer tells gap where to gap up to
-                                            //make sure full module is working properly and setup a trailer test to provide
-                                            // the trailer module with instructions as well
+                                            console.log(   'I have found the matching eycem'   )
+                                            debugger
+                                            /*
+                                                LEFT off
+                                                make sure full range knows what to do on when it finds the strings
+                                                make sure full module is working properly and setup a trailer test to provide
+                                                the trailer module with instructions as well
+                                            */
                                         }
                                         
                                         
@@ -390,6 +404,7 @@
                                 //if the range is greater than or equal to the range we have a match
                                 
                                 console.log(   'range has been satisfied'   )
+                                console.groupEnd()
                                 return 'premature'
                                 
                                 

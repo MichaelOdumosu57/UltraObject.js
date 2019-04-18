@@ -7,7 +7,7 @@
             }
     // if node use exports or figure how to get external modules in here
     
-    //when using uO rmbr all your modules are mesed up replace uO with ultraObject
+    //when using uO rmbr all your modules are mesed up replace uO with uOt
     
     // an OOP way to do everything javascript, I meant to have this done in python with a superclass oh well
     // for meaningful use, every property purpose is easily availble to each other and you can have several of them
@@ -2406,6 +2406,7 @@
     function partialMatch(   dev_obj   ){
         /*
             this function expects strings but there can be others objects arrays
+                where objects are compared like this we call them eycems
             what will happen is that we will convert it to an itO and look at each property and ask about the range and the number of spaces
             so if compAgn is to big
                 dasgjkfgnkasgpnksdfo word asidnogsindgj osapfoigjnsaoifgjasdgipkojagidknsknpgasd
@@ -2551,12 +2552,161 @@
                             rangeFound , when the range is increased by one the trailer does not need to run anymore, leave this once set
                                             because in v1, the trailer module should only be used once
                             trailerRange , when the trailer finds a match, this lets the range know to increase  the range by one
+                            trailerGap   , when this happens there is a massive gap made, this is an itO with the trailer module
+                                            telling the Gap module to update accordingly
+                                    itsThis - the gap should replace the value with what the trailer gives
+                                    jobDone- the gap module did as requested
                             pause,         where the API is up to in compTo, this increases only if matches
                                             should all modules have access to this or a module just for this
                             spaceGap,      the space module tells the gap module to increment by one since the gap module
+                            fullLoopApply, the full module applies until a given point in  pMFL_0_i
+                            fullRange,      this is the full module way of telling the range module not to increase by one
+                                ignore -  the range module will not increment by one
+                                regular - let the range module act as normal
+                            fullSpace      this is the full module way of telling the space module that there is no new space and not to increment
+                                ignore - the space module will not increment
+                                regular - space module will perform normal operations
+                            fullGap -       full module tells the gap module to continue to increment since the words are not equal as such
+                                fill  gap will continue to increment by one and try not to increase the itO in relation to the space module
+                            fullCheck - allows the full module to deactivate itself saving memory
+                                true activates its rules
+                                false deactivates its rulesd
+                            fullApply - if full module actually finds the compTo/range compAgn match
+                                true it has found the match do accordingly
+                                false it has not found the match do accordingly
                         */
                         /*Refer to case table for google slides*/
+                        // not complete till trailer tells gap to update after it has found a match and pause contines from it
                         // ---------------------------------------------------------------------------------------------
+                            // FULL MODULE
+                        /*
+                            whats is needed
+                                            dev_obj.reset
+                                            dev_obj.compAgn[pMFL_0_i.forLoop_0_i]
+                            what is handled
+                                            this is a v2 courtesy for times when the whole word is needed and not parts of the word
+                                            if the API does not get the complete match in the length of the range it tells all modules to reset
+                                            according until it finds that exact word match
+                                            
+                                            in v2 trailer gap and space in following indexes in their respecive itO would be set to 0, demanding
+                                            that the rest of the compTo string should be there
+                                            
+                                            watch this has a lot to tell the other modules if conditions are satisfied here
+                        */
+                        //{
+                            console.group(   'Full Module'   )
+                            
+                            
+                                if(   dev_obj.full === 'true'   ){
+                                    
+                                    
+                                    if(   uO.misc[   uO.scope[pMMisc_0_i]   ].fullOK === 'true'   ){
+                                                  
+                                                                                
+                                        // lets see what happens when we le the API run its
+                                        
+                                        
+                                    }
+                                    
+                                    
+                                    else if(   (   dev_obj.compTo
+                                            [   uO.misc
+                                                [   uO.scope[pMMisc_0_i]
+                                                ].pause
+                                            ] === dev_obj.compAgn[   pMFL_0_i.forLoop_0_i   ]  ) &&  (   dev_obj.compAgn[   pMFL_0_i.forLoop_0_i   ] !== undefined   )   ){
+                                        //the chars are equal incrase the range by one up to the length of the range, also undefined and undefined can come at the end so watch
+                                        
+                                        /*
+                                            if everything is good
+                                            we dont run this we could actually try
+                                                to resolve things from here
+                                                tell the modules what to do and stop this predeterminded loop <- best choice
+                                                let the modules come to that forgone conclusion <- allows for order
+                                                
+                                            if everything is bad
+                                                the range module does not have to do anything since it going to find the full rnage, this should be zero
+                                                so tell the range not to even increment
+                                                the trailer module should not have to do anything also
+                                                    
+                                                see what the gap and space module does, they should be lef untouched
+                                        */
+                                        uO.misc[   uO.scope[pMMisc_0_i]   ].fullOK = 'true'
+                                        var pMFL_2_i = {
+                                            forLoop_0_i:uO.misc[   uO.scope[pMMisc_0_i]   ].pause,
+                                            forLoopLength:dev_obj.range,
+                                            fn:function(   dev_obj   ){
+                                                console.log(   dev_obj.compTo[pMFL_2_i.forLoop_0_i],dev_obj.compAgn[pMFL_0_i.forLoop_0_i + pMFL_2_i.forLoop_0_i]   )
+                                                //comparing the compTo to the spot in the compAgn
+                                                
+                                                if(   dev_obj.compTo[pMFL_2_i.forLoop_0_i] !== dev_obj.compAgn[pMFL_0_i.forLoop_0_i + pMFL_2_i.forLoop_0_i]   ){
+                                                    // this means the full range compTo is not satsifed and the API needs to reset so tell it things
+                                                    
+                                                    console.group(   'up to this point the Full Module applies',pMFL_0_i.forLoop_0_i + pMFL_2_i.forLoop_0_i   )
+                                                        uO.misc[   uO.scope[pMMisc_0_i]   ].fullLoopApply = pMFL_0_i.forLoop_0_i + pMFL_2_i.forLoop_0_i
+                                                        uO.misc[   uO.scope[pMMisc_0_i]   ].fullOK = 'false'
+                                                        uO.misc[   uO.scope[pMMisc_0_i]   ].fullRange = 'ignore';
+                                                        //tells the range module to not add one if finds matches in the rest of the range until point
+                                                        uO.misc[   uO.scope[pMMisc_0_i]   ].fullSpace = 'ignore'
+                                                        // tells the spaces module to not look for that now diff. -1 same until point
+                                                        uO.misc[   uO.scope[pMMisc_0_i]   ].fullGap = 'fill'
+                                                        // tells the gap module to go ahead and fill things
+                                                        uO.misc[   uO.scope[pMMisc_0_i]   ].fullPause = 'holdoff' // full module depends on pause to do the right thing here the pause must be at the 0 of compTo to get that range compAgn - compTo match
+                                                        uO.misc[   uO.scope[pMMisc_0_i]   ].fullCheck = 'true'
+                                                    console.groupEnd()
+                                                    return 'premature'
+                                                    
+                                                    
+                                                }
+                                                
+                                                
+                                            },
+                                            args:{
+                                                    compTo  : dev_obj.compTo,
+                                                    compAgn : dev_obj.compAgn
+                                            }
+                                        }
+                                        uO.forLoop(   pMFL_2_i   )
+                                        // debugger
+                                        // throw('e')
+                                        console.log(   'now that I am out of the loop what happened'   )
+                                        console.warn(   uO.misc[   uO.scope[pMMisc_0_i]   ]   )
+                                        
+                                            
+                                        if(   uO.misc[   uO.scope[pMMisc_0_i]   ].fullOK === 'true'   ){
+                                            // we practially found the string do not run the full module again,
+                                            console.log(   'I have found the matching eycem'   )
+                                            
+                                            /*
+                                                LEFT off
+                                                make sure full range knows what to do on when it finds the strings
+                                                make sure full module is working properly and setup a trailer test to provide
+                                                the trailer module with instructions as well
+                                            */
+                                        }
+                                        
+                                        
+                                    }
+                                    
+                                    
+                                    if(   uO.misc[   uO.scope[pMMisc_0_i]   ].fullLoopApply < pMFL_0_i.forLoop_0_i && uO.misc[   uO.scope[pMMisc_0_i]   ].fullCheck === 'true'   ){
+                                    
+                                    
+                                        console.log(   'it safe for the other modules to operate as normal Full Module removing restraints'   )
+                                        uO.misc[   uO.scope[pMMisc_0_i]   ].fullRange = 'regular';
+                                        uO.misc[   uO.scope[pMMisc_0_i]   ].fullSpace = 'regular';
+                                        uO.misc[   uO.scope[pMMisc_0_i]   ].fullGap = 'regular';
+                                        uO.misc[   uO.scope[pMMisc_0_i]   ].fullPause = 'regular';
+                                        uO.misc[   uO.scope[pMMisc_0_i]   ].fullCheck = 'false'
+                                        
+                                        
+                                    }
+                                    
+                                    
+                                }
+                                 
+                                    
+                            console.groupEnd()
+                        //}
                             // RANGE MODULE
                         /*
                             whats is needed
@@ -2568,28 +2718,18 @@
                         */
                         //{
                         console.group(   'Range Module'   )
-
-                                                        
+                                
+                            
                             if(   (   dev_obj.compTo
                                     [   uO.misc
                                         [   uO.scope[pMMisc_0_i]
                                         ].pause
-                                    ] === dev_obj.compAgn[   pMFL_0_i.forLoop_0_i   ] ||
-                                        uO.misc[   uO.scope[pMMisc_0_i]   ].trailerRange  === 'true'   ) &&  (   dev_obj.compAgn[   pMFL_0_i.forLoop_0_i   ] !== undefined   )   ){
+                                    ] === dev_obj.compAgn[   pMFL_0_i.forLoop_0_i   ]  ) &&  (   dev_obj.compAgn[   pMFL_0_i.forLoop_0_i   ] !== undefined   )   ){
                                 //the chars are equal incrase the range by one, also undefined and undefined can come at the end so watch
-                                
-                                if(   uO.misc[   uO.scope[pMMisc_0_i]   ].trailerRange === 'true'   ){
-                                
-                                
-                                    console.log('increase for the trailer too')
-                                    uO.misc[   uO.scope[pMMisc_0_i]   ][pMRange_0_i][pMRange_0_i_0_i] += 1;
-                                    
-                                    
-                                }
-                                
-                                
+                                                                                            
                                 console.log(   'increase the range by one'   )
                                 console.log(   'also increase pause by one'   )
+                                
                                 
                                 
                                 if(   uO.misc[   uO.scope[pMMisc_0_i]   ][pMRange_0_i][pMRange_0_i_0_i] === 0   ){
@@ -2601,14 +2741,42 @@
                                     
                                 }
                                                
-                                                        
-                                uO.misc[   uO.scope[pMMisc_0_i]   ][pMRange_0_i][pMRange_0_i_0_i] += 1;
-                                uO.misc[   uO.scope[pMMisc_0_i]   ][pMPause_0_i].addFromRange = 'true';
-                                uO.misc[   uO.scope[pMMisc_0_i]   ].trailerRange = 'false';
+                                
+                                console.log(   'the full module is trying to tell me something'   )
+                                uO.objInvloved({
+                                    0:pMFL_0_i.forLoop_0_i,
+                                    1:uO.misc[   uO.scope[pMMisc_0_i]   ].fullLoopApply,
+                                    2:uO.misc[   uO.scope[pMMisc_0_i]   ].fullRange
+                                })
+                                
+                                
+                                if(   uO.misc[   uO.scope[pMMisc_0_i]   ].fullRange !== 'ignore'   ){
+                                    /*
+                                        this means that the full module found something wrong and is telling the range
+                                        to not increment because the compTo and the proceeding substring do not match
+                                    */
+                                    uO.misc[   uO.scope[pMMisc_0_i]   ][pMRange_0_i][pMRange_0_i_0_i] += 1;
+                                    
+                                    
+                                }
+                                
+                                
+                                uO.misc[   uO.scope[pMMisc_0_i]   ][pMPause_0_i].pauseRange = 'true';
                                 
                                 
                             }
                             
+                            
+                            if(   uO.misc[   uO.scope[pMMisc_0_i]   ].trailerRange === 'true'   ){
+                            
+                            
+                                console.log('increase for the trailer ')
+                                uO.misc[   uO.scope[pMMisc_0_i]   ][pMRange_0_i][pMRange_0_i_0_i] += 1;
+                                uO.misc[   uO.scope[pMMisc_0_i]   ].trailerRange = 'false';
+                                
+                                
+                            }
+                             
                               
                             if(   pMFL_0_i.forLoop_0_i ===  pMFL_0_i.forLoopLength -1   ){
                                 // this means that we have come to then end of serarch but this also means several things as well
@@ -2622,6 +2790,7 @@
                                     uO.misc[   uO.scope[pMMisc_0_i]   ].satisfy = false
                                     console.groupEnd()
                                     return 'premature' //>
+                                    
                                     
                                 }
                                 
@@ -2640,15 +2809,19 @@
                                 //if the range is greater than or equal to the range we have a match
                                 
                                 console.log(   'range has been satisfied'   )
+                                console.groupEnd()
                                 return 'premature'
                                 
                                 
                             }
+                         
+                                
+                            
                                                     
                             
                         console.groupEnd()
                         // }
-                            // TRAILER MODULE
+                            // TRAILER MODULE (only look so far)
                         /*
                                 what is needed
                                         dev_obj.trailer
@@ -2660,6 +2833,17 @@
                                             if compTo is greater, check compTo till dev_obj.trailer
                                         if we could not find a match at the end of the loop and 1 to the containing loop till the end of the dev_obj.trailer
                                         also make a flag telling the range module to not to try and evaluate and return at this point
+                                explanation
+                                    for illo and asdfun semper fil twillo
+                                    there is not trailer and another parameter because
+                                    trailler  = 4
+                                    [someParam] = 7
+                                    it would end if the compTo is less than some param which has a length of trailer
+                                        to find the match later in the string you just have to increase trailer and this would also
+                                        terminate earliest
+                                    also if someParam was less than the trailer that would not workout because if the match is
+                                    later in the trailer and someParam only told it to look less in the compAgn, it would not be able to find it
+                                    or it would take longer to find it as it moves up in the itO so only is needed
                                         
                         */
                         // {
@@ -2670,7 +2854,7 @@
                                 
                                     
                                 uO.misc[   uO.scope[pMMisc_0_i]   ][pMTrailer_0_i][pMTrailer_0_i_1_i] += 1;
-                                
+                                //FIX ME memory leak
                                 
                                 if(   (   uO.isInt(   {type:dev_obj.trailer}   ) === 'true' && dev_obj.trailer !== 0 && uO.misc[   uO.scope[pMMisc_0_i]   ][pMTrailer_0_i][pMTrailer_0_i_0_i] !== 0   ) && uO.misc[   uO.scope[pMMisc_0_i]   ].rangeFound !== 'true'  ){
                                     /*
@@ -2694,6 +2878,7 @@
                                                 uO.misc[   uO.scope[pMMisc_0_i]   ][pMPause_0_i].pauseTrailerReplace = pMFL_1_i.forLoop_0_i + 1
                                                 //helping the pause module do its job
                                                 uO.misc[   uO.scope[pMMisc_0_i]   ].trailerRange = 'true'
+                                                uO.misc[   uO.scope[pMMisc_0_i]   ].trailerGap = uO.iterify(   {iterify:['itsThis',pMFL_0_i.forLoop_0_i]}   )
                                                 // where it should start to find the range
                                                 return 'premature'
                                                 
@@ -2747,6 +2932,7 @@
                                 what is handled
                                     when the comparisons do not match at first a space is made and is incremented by one
                                     when spaces exceed what is given by the dev obj we have an error
+                                FIX ME ; in cases when there API finds nothing there should be one big space and the gap should be the length of comp
                                         
                         */
                         // {
@@ -2766,11 +2952,27 @@
                                             [   uO.scope[pMMisc_0_i]
                                             ].pause -1
                                         ] === dev_obj.compAgn[   pMFL_0_i.forLoop_0_i  - 1]   ){
-                                            
+                                        //so it doesnt not make empty spaces for missing chars
                                             
                                     console.log(   'need a space'   )
                                     console.log(   'tell the gap module we got a new space'   )
-                                    uO.misc[   uO.scope[pMMisc_0_i]   ][pMSpaces_0_i][pMSpaces_0_i_0_i] += 1
+                                    console.log(   'the full module has something for the space module'   )
+                                    uO.objInvloved({
+                                        0:uO.misc[   uO.scope[pMMisc_0_i]   ].fullSpace,
+                                        1:uO.misc[   uO.scope[pMMisc_0_i]   ].fullLoopApply,
+                                        2:pMFL_0_i.forLoop_0_i
+                                    })
+                                    
+                                    
+                                    if(   uO.misc[   uO.scope[pMMisc_0_i]   ].fullSpace !== 'ignore'   ){
+                                        //the full module is telling the space module that the range has never increased and there is just one big space do not increment
+                                        
+                                        uO.misc[   uO.scope[pMMisc_0_i]   ][pMSpaces_0_i][pMSpaces_0_i_0_i] += 1
+                                        
+                                        
+                                    }
+                                    
+                                    
                                     uO.misc[   uO.scope[pMMisc_0_i]   ].spaceGap = 'true';
                                     uO.objInvloved({
                                         0:uO.misc[   uO.scope[pMMisc_0_i]   ][pMSpaces_0_i],
@@ -2789,6 +2991,7 @@
                                                                         
                                     console.error(   'error in spaces'   )
                                     uO.misc[   uO.scope[pMMisc_0_i]   ].satisfy = false
+                                    console.groupEnd()
                                     return 'premature'
                                     
                                                                         
@@ -2825,31 +3028,49 @@
                                     console.log(   'gap is increasing'   )
                                     
                                     
-                                    if(   uO.misc[   uO.scope[pMMisc_0_i]   ].spaceGap === 'true'   ){
-                                        
+                                    if(   uO.misc[   uO.scope[pMMisc_0_i]   ].spaceGap === 'true'  && uO.misc[   uO.scope[pMMisc_0_i]   ].fullGap !== 'fill'  ){
+                                        //however full module intervenes here so there is one space not a new space and this should not work need the && to do this
                                         
                                         uO.misc[   uO.scope[pMMisc_0_i]   ][pMGap_0_i].add(   {value:1}   )
                                         // to properly account for the gap
                                         uO.misc[   uO.scope[pMMisc_0_i]   ].spaceGap = 'false'
-                                        
+
                                         
                                     }
-                                    
-                                    
-                                    else if(   uO.misc[   uO.scope[pMMisc_0_i]   ].spaceGap !== 'true'   ){
-                                        
+                                                
+                                                                        
+                                    else if(   uO.misc[   uO.scope[pMMisc_0_i]   ].spaceGap !== 'true'   || uO.misc[   uO.scope[pMMisc_0_i]   ].fullGap === 'fill'   ){
+                                        // spaceGap might equal true but an || is needed because the full module takes order
                                         
                                         uO.misc[   uO.scope[pMMisc_0_i]   ][pMGap_0_i][   uO.misc[   uO.scope[pMMisc_0_i]   ][pMGap_0_i].length -1    ]  +=1
                                         
                                         
                                     }
-                                 
-                                                                                                                                                                                
+
+
+                                    if(   uO.misc[   uO.scope[pMMisc_0_i]   ].trailerGap !== undefined   ){
+                                        
+                                        
+                                        if(   uO.misc[   uO.scope[pMMisc_0_i]   ].trailerGap[0] === 'itsThis'   ){
+                                            //this means that the trailer has made a range and the gap needs to be updated
+                                            // but should this exist this puts limits on the user
+                                            console.log(   'gap updated from trailer'   )
+                                            uO.misc[   uO.scope[pMMisc_0_i]   ][pMGap_0_i][   uO.misc[   uO.scope[pMMisc_0_i]   ][pMGap_0_i].length -1    ]  = uO.misc[   uO.scope[pMMisc_0_i]   ].trailerGap[1]
+                                            uO.misc[   uO.scope[pMMisc_0_i]   ].trailerGap[0] = 'jobDone'
+                                             
+                                                
+                                        }
+                                        
+                                        
+                                    }
+                                        
+                                                         
                                     if(   uO.misc[   uO.scope[pMMisc_0_i]   ][pMGap_0_i][   uO.misc[   uO.scope[pMMisc_0_i]   ][pMGap_0_i].length -1    ] > dev_obj.gap   ){
                                         //if the spaces in the API is too great
                                                                             
                                         console.error(   'error in gap'   )
                                         uO.misc[   uO.scope[pMMisc_0_i]   ].satisfy = false
+                                        console.groupEnd()
                                         return 'premature'
                                         
                                                                             
@@ -2870,18 +3091,26 @@
                                     handles many things about the API concerning the pause an imporan component to
                                     compTo
                                 properties
-                                    addFromRange, means that a match in the range was found add one to the pause
+                                    pauseRange, means that a match in the range was found add one to the pause
                                         
                         */
                         // {
                         console.group(   'Pause Module'   )
                             
                             
-                            if(   uO.misc[   uO.scope[pMMisc_0_i]   ][pMPause_0_i].addFromRange === 'true'   ){
+                            if(   uO.misc[   uO.scope[pMMisc_0_i]   ][pMPause_0_i].pauseRange === 'true'  ){
                                 
                                 
-                                uO.misc[   uO.scope[pMMisc_0_i]   ].pause += 1;
-                                uO.misc[   uO.scope[pMMisc_0_i]   ][pMPause_0_i].addFromRange = 'false'
+                                if(   uO.misc[   uO.scope[pMMisc_0_i]   ].fullPause !== 'holdoff'   ){
+                                    // full module also wants to prevent the pause module from doing anything
+                                    
+                                    uO.misc[   uO.scope[pMMisc_0_i]   ].pause += 1;
+                                    
+                                    
+                                }
+                                
+                                
+                                uO.misc[   uO.scope[pMMisc_0_i]   ][pMPause_0_i].pauseRange = 'false'
                                 
                                 
                             }
@@ -3297,7 +3526,7 @@
                                         -<b>
                                         -<bdi>
                                         -<bdo>
-                                        -<blockquote>
+                                        -<blockquOte>
                                         -<center>
                                         -<cite>
                                         -<code>
