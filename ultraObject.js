@@ -117,7 +117,9 @@
         event_obj:undefined,              //wants an Event
         DOM_child:iterableObject(), // wants a DOM element
         addEventListener:addEventListener, //  dev_obj.fn is used for 1st party dev to add their custom function to the listener
-        passing_args: function(   dev_obj   ){console.log(arguments)}, // use this to see parameters from functions that have something to offer
+        passing_args: function(   dev_obj   ){
+            console.log(arguments)
+        }, // use this to see parameters from functions that have something to offer
         dispatchEvent: function(   dev_obj   ){ultraObject.DOM_child[0].dispatchEvent(   ultraObject.event_obj   )},    // sync fires
         xhttp:xhttp(),
         // xhr:ultraObject.xhttp //might not be able to use class figure this out might use a function for this
@@ -2558,11 +2560,21 @@
                                     jobDone- the gap module did as requested
                             pause,         where the API is up to in compTo, this increases only if matches
                                             should all modules have access to this or a module just for this
+                            trailerFull    this lets the Full module know that the trailer module has done something and to actt
+                                            accordingly
+                                        applied - trailer module lets the full module know it did tits thing
+                                        reveresed - full module did it s things
                             spaceGap,      the space module tells the gap module to increment by one since the gap module
                             fullLoopApply, the full module applies until a given point in  pMFL_0_i
                             fullRange,      this is the full module way of telling the range module not to increase by one
                                 ignore -  the range module will not increment by one
                                 regular - let the range module act as normal
+                            fullTrailerRange - deals with trailer range problems
+                                reset   -  this is to help the range module undo what the trailer module insisted and find that full range match
+                                regular -
+                            fullTrailerGap - fixing possible gaps caused by the trailer
+                                    merge - merge the invalid gaps made by the trailer
+                                    regular- operate as normal
                             fullSpace      this is the full module way of telling the space module that there is no new space and not to increment
                                 ignore - the space module will not increment
                                 regular - space module will perform normal operations
@@ -2592,8 +2604,14 @@
                                             that the rest of the compTo string should be there
                                             
                                             watch this has a lot to tell the other modules if conditions are satisfied here
+                            FULL module and trailer module paradigm
+                                if FULL finds something and fails, and trailer finds something FULL finds the substring after
+                                where trailer has started
+                                    if trailer finds the string t then the  FULL module finds the rest of the string, let it go ahead and finished not to defeat the purpose
+                                    if the trailer finds the string then a gap then FULL you must reset things but not the trailer to proper;y find that substring fill
                         */
                         //{
+                            console.log(   '%c -----------------------------', 'background-color:blue;'   )
                             console.group(   'Full Module'   )
                             
                             
@@ -2635,14 +2653,14 @@
                                             forLoop_0_i:ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause,
                                             forLoopLength:dev_obj.range,
                                             fn:function(   dev_obj   ){
-                                                console.log(   dev_obj.compTo[pMFL_2_i.forLoop_0_i],dev_obj.compAgn[pMFL_0_i.forLoop_0_i + pMFL_2_i.forLoop_0_i]   )
+                                                console.log(   dev_obj.compTo[pMFL_2_i.forLoop_0_i],dev_obj.compAgn[pMFL_0_i.forLoop_0_i + pMFL_2_i.forLoop_0_i - ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause   ]   )
                                                 //comparing the compTo to the spot in the compAgn
                                                 
-                                                if(   dev_obj.compTo[pMFL_2_i.forLoop_0_i] !== dev_obj.compAgn[pMFL_0_i.forLoop_0_i + pMFL_2_i.forLoop_0_i]   ){
+                                                if(   dev_obj.compTo[pMFL_2_i.forLoop_0_i] !== dev_obj.compAgn[pMFL_0_i.forLoop_0_i + pMFL_2_i.forLoop_0_i - ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause   ]   ){
                                                     // this means the full range compTo is not satsifed and the API needs to reset so tell it things
                                                     
-                                                    console.group(   'up to this point the Full Module applies',pMFL_0_i.forLoop_0_i + pMFL_2_i.forLoop_0_i   )
-                                                        ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fullLoopApply = pMFL_0_i.forLoop_0_i + pMFL_2_i.forLoop_0_i
+                                                    console.group(   'up to this point the Full Module applies',pMFL_0_i.forLoop_0_i + pMFL_2_i.forLoop_0_i - ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause   )
+                                                        ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fullLoopApply = pMFL_0_i.forLoop_0_i + pMFL_2_i.forLoop_0_i - ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause
                                                         ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fullOK = 'false'
                                                         ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fullRange = 'ignore';
                                                         //tells the range module to not add one if finds matches in the rest of the range until point
@@ -2652,6 +2670,22 @@
                                                         // tells the gap module to go ahead and fill things
                                                         ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fullPause = 'holdoff' // full module depends on pause to do the right thing here the pause must be at the 0 of compTo to get that range compAgn - compTo match
                                                         ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fullCheck = 'true'
+                                                        
+                                                        
+                                                        if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].trailerFull === 'applied'   ){
+                                                            
+                                                            
+                                                            console.log(   'this means I have to tell the API  to undo everything the trailer has done but I wont undo the purpose of the trailer module itself'   )
+                                                            ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fullTrailerRange = 'reset'
+                                                            ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fullTrailerGap = 'merge'
+                                                            
+                                                            
+                                                            ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].trailerFull = 'reveresed'
+                                                                
+                                                                                                        
+                                                        }
+                                                        
+                                                        
                                                     console.groupEnd()
                                                     return 'premature'
                                                     
@@ -2675,6 +2709,7 @@
                                         if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fullOK === 'true'   ){
                                             // we practially found the string do not run the full module again,
                                             console.log(   'I have found the matching eycem'   )
+                                            ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fullTrailerGap = 'regular'
                                             
                                             /*
                                                 LEFT off
@@ -2685,6 +2720,10 @@
                                         }
                                         
                                         
+                                        console.log(   'the trailer module has a message for me'   )
+                                        console.log(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].trailerFull   )
+                                        
+                                                                                                        
                                     }
                                     
                                     
@@ -2730,8 +2769,7 @@
                                 console.log(   'increase the range by one'   )
                                 console.log(   'also increase pause by one'   )
                                 
-                                
-                                
+                                                                
                                 if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMRange_0_i][pMRange_0_i_0_i] === 0   ){
                                 
                                     
@@ -2776,6 +2814,17 @@
                                 
                                 
                             }
+                            
+                            
+                            if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fullTrailerRange === 'reset'   ){
+                                //this means that the full failed after trailer passed and it needs to reset to find the full stirng
+                                
+                                console.log(   'trailer pass full failed resetting range to 0'   )
+                                ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMRange_0_i][pMRange_0_i_0_i] = 0
+                                ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fullTrailerRange = 'regular'
+                                
+                                
+                            }
                              
                               
                             if(   pMFL_0_i.forLoop_0_i ===  pMFL_0_i.forLoopLength -1   ){
@@ -2816,9 +2865,6 @@
                             }
                          
                                 
-                            
-                                                    
-                            
                         console.groupEnd()
                         // }
                             // TRAILER MODULE (only look so far)
@@ -2880,6 +2926,8 @@
                                                 ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].trailerRange = 'true'
                                                 ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].trailerGap = ultraObject.iterify(   {iterify:['itsThis',pMFL_0_i.forLoop_0_i]}   )
                                                 // where it should start to find the range
+                                                ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].trailerFull = 'applied'
+                                                // this lets the full module know that the trailer module told the API to something
                                                 return 'premature'
                                                 
                                                 
@@ -3080,6 +3128,15 @@
                             }
                             
                             
+                            else if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fullTrailerGap === 'merge'   ){
+                                
+                                
+                                ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i][   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i].length -1    ] += 1
+                                
+                                
+                            }
+                            
+                            
                             console.log(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i]   )
                         console.groupEnd()
                         // }
@@ -3092,6 +3149,8 @@
                                     compTo
                                 properties
                                     pauseRange, means that a match in the range was found add one to the pause
+                                    equateToTrailer, this means a match was found in the trailer and equae it there
+                                    pauseTrailerReplace, value to replace trailer with
                                         
                         */
                         // {
@@ -3118,7 +3177,8 @@
                             
                             if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMPause_0_i].equateToTrailer   === 'true'   ){
                             
-                            
+                                
+                                console.log(   'updatding from trailer'   )
                                 ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause = ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMPause_0_i].pauseTrailerReplace
                                 ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMPause_0_i].equateToTrailer  = 'false'
                                 
