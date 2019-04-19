@@ -2469,7 +2469,7 @@
                 however this would also include
                     marefco
                     so trailing must be left at one and more modifiable in v2
-            .reset
+            .full
                 when a full range match is needed
                 so if you have
                 compTo dipper
@@ -2562,9 +2562,15 @@
                                             should all modules have access to this or a module just for this
                             trailerFull    this lets the Full module know that the trailer module has done something and to actt
                                             accordingly
-                                        applied - trailer module lets the full module know it did tits thing
-                                        reveresed - full module did it s things
+                                           applied - trailer module lets the full module know it did tits thing
+                                           reveresed - full module did it s things
+                            trailerSpace   when the full module is on this is used to help the space module correct itself if the full             module has to intervee in the operations
+                                        watch - the trailer has been satsifed watch from this point
+                                        regular
+                                trailerSpaceCount - helps trailerSpace watch from the last known location
                             spaceGap,      the space module tells the gap module to increment by one since the gap module
+                            spaceFullTrailerGap
+                                        'fix' - fixes the situation created by that full trailer combo from fullTrailerGap combo
                             fullLoopApply, the full module applies until a given point in  pMFL_0_i
                             fullRange,      this is the full module way of telling the range module not to increase by one
                                 ignore -  the range module will not increment by one
@@ -2575,6 +2581,9 @@
                             fullTrailerGap - fixing possible gaps caused by the trailer
                                     merge - merge the invalid gaps made by the trailer
                                     regular- operate as normal
+                            fullTrailerSpace - lets the space module know from the full module to go ahead a
+                                        fix- resolves the inconsistency caused by the trailer module, what was a space is no longer a space
+                                        regular -
                             fullSpace      this is the full module way of telling the space module that there is no new space and not to increment
                                 ignore - the space module will not increment
                                 regular - space module will perform normal operations
@@ -2586,6 +2595,19 @@
                             fullApply - if full module actually finds the compTo/range compAgn match
                                 true it has found the match do accordingly
                                 false it has not found the match do accordingly
+                        */
+                        /*
+                            full trailer accomodation
+                            when the trailer is involved that means its not search for the full compTo string anymore, its search
+                            for part of it given by the trailer, this introduces many cases and is not recommended to use in v1 for
+                            uninintended consequences
+                            
+                            when trailer module passes and full module fails right after  and passes later it resets everything but starts at the pause
+                            index where trailer left off, there fore preserving the trailer purpose
+                            
+                            when trailer module passes and full module passes right after the range given by the trailer is automatically added to the range given by the full and it returns properly
+                            
+                            when trailer module passes and a gap occurs and full module fails then passes the API includes what the trailer has found and updates accodingly
                         */
                         /*Refer to case table for google slides*/
                         // not complete till trailer tells gap to update after it has found a match and pause contines from it
@@ -2621,7 +2643,7 @@
                                     if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fullOK === 'true'   ){
                                                   
                                                                                 
-                                        // lets see what happens when we le the API run its
+                                        // it prevents the module from testing the already satisfied condition
                                         
                                         
                                     }
@@ -2678,8 +2700,7 @@
                                                             console.log(   'this means I have to tell the API  to undo everything the trailer has done but I wont undo the purpose of the trailer module itself'   )
                                                             ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fullTrailerRange = 'reset'
                                                             ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fullTrailerGap = 'merge'
-                                                            
-                                                            
+                                                            ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fullTrailerSpace = 'fix'
                                                             ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].trailerFull = 'reveresed'
                                                                 
                                                                                                         
@@ -2708,15 +2729,11 @@
                                             
                                         if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fullOK === 'true'   ){
                                             // we practially found the string do not run the full module again,
+                                            
                                             console.log(   'I have found the matching eycem'   )
                                             ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fullTrailerGap = 'regular'
                                             
-                                            /*
-                                                LEFT off
-                                                make sure full range knows what to do on when it finds the strings
-                                                make sure full module is working properly and setup a trailer test to provide
-                                                the trailer module with instructions as well
-                                            */
+                                            
                                         }
                                         
                                         
@@ -2927,6 +2944,17 @@
                                                 ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].trailerGap = ultraObject.iterify(   {iterify:['itsThis',pMFL_0_i.forLoop_0_i]}   )
                                                 // where it should start to find the range
                                                 ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].trailerFull = 'applied'
+                                                
+                                                
+                                                if(   dev_obj.full === 'true'   ){
+                                                    //also have to deal with  the full module which is giving us a bunch of annoying orders
+                                                    
+                                                    ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].trailerSpace = 'watch'
+                                                    
+                                                    
+                                                }
+                                                
+                                                
                                                 // this lets the full module know that the trailer module told the API to something
                                                 return 'premature'
                                                 
@@ -3015,12 +3043,21 @@
                                     if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fullSpace !== 'ignore'   ){
                                         //the full module is telling the space module that the range has never increased and there is just one big space do not increment
                                         
+                                        if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].trailerSpace === 'watch'   ){
+                                            
+                                            
+                                            console.log(   'at this point trailer module is saying a space was added but Full might not approve of this operation and to mark this point in history'   )
+                                            ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].trailerSpaceCount = ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMSpaces_0_i][pMSpaces_0_i_0_i]
+                                            console.log(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].trailerSpaceCount   )
+                                            
+                                        }
+                                        
+                                        
                                         ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMSpaces_0_i][pMSpaces_0_i_0_i] += 1
                                         
-                                        
+                                                                                
                                     }
-                                    
-                                    
+                                                                                                                                                
                                     ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].spaceGap = 'true';
                                     ultraObject.objInvloved({
                                         0:ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMSpaces_0_i],
@@ -3046,6 +3083,18 @@
                                 }
                                     
                                                                 
+                            }
+                            
+                            
+                            else if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fullTrailerSpace === 'fix'   ){
+                                //the full module did not find the approprate match out of the trailer module and the space modules is just retruning to were it left off when the trailer module made it think there was a range in between because the trailer module satisfied but now there is not usually now one massive space.Once executed this should not run again
+                                // PROBLEM LOOK HERE if this runs while dev_obj.fill !== 'true' look here trailerSpaceCount is undefined
+                                    ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMSpaces_0_i][pMSpaces_0_i_0_i] = ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].trailerSpaceCount
+                                    ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fullTrailerSpace = 'regular'
+                                    ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].trailerSpace = 'regular'
+                                    ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].spaceFullTrailerGap = 'fix'
+                                
+                                
                             }
                             
                             
@@ -3131,7 +3180,25 @@
                             else if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fullTrailerGap === 'merge'   ){
                                 
                                 
-                                ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i][   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i].length -1    ] += 1
+                                if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].spaceFullTrailerGap === 'fix'){
+                                    //this will that full trailer combo problem the gap module fixes
+                                    console.log(   'that full trailer combo problem the gap module fixes'   )
+                                    ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i][   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i].length -2    ] +=                                     ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i][   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i].length -1    ] + 1
+                                        //for tht extra range
+                                    ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i].minus(   {index:ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i].length -1}   )
+                                    ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].spaceFullTrailerGap = 'regular'
+                                 
+                                        
+                                }
+                                
+                                
+                                else if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].spaceFullTrailerGap !== 'fix'){
+                                    
+                                    
+                                    ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i][   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i].length -1    ] += 1
+                                    
+                                    
+                                }
                                 
                                 
                             }
