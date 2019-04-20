@@ -117,7 +117,9 @@
         event_obj:undefined,              //wants an Event
         DOM_child:iterableObject(), // wants a DOM element
         addEventListener:addEventListener, //  dev_obj.fn is used for 1st party dev to add their custom function to the listener
-        passing_args: function(   dev_obj   ){console.log(arguments)}, // use this to see parameters from functions that have something to offer
+        passing_args: function(   dev_obj   ){
+            console.log(arguments)
+        }, // use this to see parameters from functions that have something to offer
         dispatchEvent: function(   dev_obj   ){uO.DOM_child[0].dispatchEvent(   uO.event_obj   )},    // sync fires
         xhttp:xhttp(),
         // xhr:uO.xhttp //might not be able to use class figure this out might use a function for this
@@ -2600,6 +2602,15 @@
                                 if(   dev_obj.full === 'true'   ){
                                     
                                     
+                                    if(   uO.isInt(   {type:dev_obj.trailer}   ) === 'true' && dev_obj.trailer !== 0   ){
+                                        
+                                        
+                                        throw(   'trailer and full module is only supported in v2'   )
+                                        
+                                                                                
+                                    }
+                                    
+                                    
                                     if(   uO.misc[   uO.scope[pMMisc_0_i]   ].fullOK === 'true'   ){
                                                   
                                                                                 
@@ -2675,7 +2686,7 @@
                                         if(   uO.misc[   uO.scope[pMMisc_0_i]   ].fullOK === 'true'   ){
                                             // we practially found the string do not run the full module again,
                                             console.log(   'I have found the matching eycem'   )
-                                            
+                                            debugger
                                             /*
                                                 LEFT off
                                                 make sure full range knows what to do on when it finds the strings
@@ -3148,6 +3159,7 @@
         
         
     }/*this helps the API when its expected to be a inconsitencies in searches that have the same meaning, the developer can adjust how many values they want from all the way to complete difference to one char difference  in order for the API to say hey, that just a mispelled word it s okay*/
+    
     function reqBody(   dev_obj   ){
         /*
             .stream readeable stream for data
