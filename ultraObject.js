@@ -2596,7 +2596,7 @@
                                             watch this has a lot to tell the other modules if conditions are satisfied here
                         */
                         //{
-                            console.group(   'Full Module'   )
+                            // console.group(   'Full Module'   )
                             
                             
                                 if(   dev_obj.full === 'true'   ){
@@ -2646,13 +2646,13 @@
                                             forLoop_0_i:ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause,
                                             forLoopLength:dev_obj.range,
                                             fn:function(   dev_obj   ){
-                                                console.log(   dev_obj.compTo[pMFL_2_i.forLoop_0_i],dev_obj.compAgn[pMFL_0_i.forLoop_0_i + pMFL_2_i.forLoop_0_i]   )
+                                                // console.log(   dev_obj.compTo[pMFL_2_i.forLoop_0_i],dev_obj.compAgn[pMFL_0_i.forLoop_0_i + pMFL_2_i.forLoop_0_i]   )
                                                 //comparing the compTo to the spot in the compAgn
                                                 
                                                 if(   dev_obj.compTo[pMFL_2_i.forLoop_0_i] !== dev_obj.compAgn[pMFL_0_i.forLoop_0_i + pMFL_2_i.forLoop_0_i]   ){
                                                     // this means the full range compTo is not satsifed and the API needs to reset so tell it things
                                                     
-                                                    console.group(   'up to this point the Full Module applies',pMFL_0_i.forLoop_0_i + pMFL_2_i.forLoop_0_i   )
+                                                    // console.group(   'up to this point the Full Module applies',pMFL_0_i.forLoop_0_i + pMFL_2_i.forLoop_0_i   )
                                                         ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fullLoopApply = pMFL_0_i.forLoop_0_i + pMFL_2_i.forLoop_0_i
                                                         ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fullOK = 'false'
                                                         ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fullRange = 'ignore';
@@ -2663,7 +2663,7 @@
                                                         // tells the gap module to go ahead and fill things
                                                         ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fullPause = 'holdoff' // full module depends on pause to do the right thing here the pause must be at the 0 of compTo to get that range compAgn - compTo match
                                                         ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fullCheck = 'true'
-                                                    console.groupEnd()
+                                                    // console.groupEnd()
                                                     return 'premature'
                                                     
                                                     
@@ -2679,20 +2679,13 @@
                                         ultraObject.forLoop(   pMFL_2_i   )
                                         // debugger
                                         // throw('e')
-                                        console.log(   'now that I am out of the loop what happened'   )
-                                        console.warn(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ]   )
+                                        // console.log(   'now that I am out of the loop what happened'   )
+                                        // console.warn(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ]   )
                                         
                                             
                                         if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fullOK === 'true'   ){
                                             // we practially found the string do not run the full module again,
-                                            console.log(   'I have found the matching eycem'   )
-                                            debugger
-                                            /*
-                                                LEFT off
-                                                make sure full range knows what to do on when it finds the strings
-                                                make sure full module is working properly and setup a trailer test to provide
-                                                the trailer module with instructions as well
-                                            */
+                                            // console.log(   'I have found the matching eycem'   )
                                         }
                                         
                                         
@@ -2702,7 +2695,7 @@
                                     if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fullLoopApply < pMFL_0_i.forLoop_0_i && ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fullCheck === 'true'   ){
                                     
                                     
-                                        console.log(   'it safe for the other modules to operate as normal Full Module removing restraints'   )
+                                        // console.log(   'it safe for the other modules to operate as normal Full Module removing restraints'   )
                                         ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fullRange = 'regular';
                                         ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fullSpace = 'regular';
                                         ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fullGap = 'regular';
@@ -2728,7 +2721,7 @@
                                             FUTURE: if reset is involved this goes back to zero
                         */
                         //{
-                        console.group(   'Range Module'   )
+                        // console.group(   'Range Module'   )
                                 
                             
                             if(   (   dev_obj.compTo
@@ -2738,27 +2731,27 @@
                                     ] === dev_obj.compAgn[   pMFL_0_i.forLoop_0_i   ]  ) &&  (   dev_obj.compAgn[   pMFL_0_i.forLoop_0_i   ] !== undefined   )   ){
                                 //the chars are equal incrase the range by one, also undefined and undefined can come at the end so watch
                                                                                             
-                                console.log(   'increase the range by one'   )
-                                console.log(   'also increase pause by one'   )
+                                // console.log(   'increase the range by one'   )
+                                // console.log(   'also increase pause by one'   )
                                 
                                 
                                 
                                 if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMRange_0_i][pMRange_0_i_0_i] === 0   ){
                                 
                                     
-                                    console.log(   'let the trailer know that is does not need to run'   )
+                                    // console.log(   'let the trailer know that is does not need to run'   )
                                     ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].rangeFound = 'true'
                                     
                                     
                                 }
                                                
                                 
-                                console.log(   'the full module is trying to tell me something'   )
-                                ultraObject.objInvloved({
-                                    0:pMFL_0_i.forLoop_0_i,
-                                    1:ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fullLoopApply,
-                                    2:ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fullRange
-                                })
+                                // console.log(   'the full module is trying to tell me something'   )
+                                // ultraObject.objInvloved({
+                                //     0:pMFL_0_i.forLoop_0_i,
+                                //     1:ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fullLoopApply,
+                                //     2:ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fullRange
+                                // })
                                 
                                 
                                 if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fullRange !== 'ignore'   ){
@@ -2781,7 +2774,7 @@
                             if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].trailerRange === 'true'   ){
                             
                             
-                                console.log('increase for the trailer ')
+                                // console.log('increase for the trailer ')
                                 ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMRange_0_i][pMRange_0_i_0_i] += 1;
                                 ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].trailerRange = 'false';
                                 
@@ -2797,7 +2790,7 @@
                                         [pMRange_0_i][pMRange_0_i_0_i] < dev_obj.range   ){
                                     
                                     
-                                    console.error(   'error in range'   )
+                                    // console.error(   'error in range'   )
                                     ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].satisfy = false
                                     console.groupEnd()
                                     return 'premature' //>
@@ -2809,9 +2802,9 @@
                             }
                             
                             
-                            console.log(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMRange_0_i]   )
-                            console.log(   dev_obj.compTo[   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause ]   )
-                            console.log(   dev_obj.compAgn[   pMFL_0_i.forLoop_0_i   ]   )
+                            // console.log(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMRange_0_i]   )
+                            // console.log(   dev_obj.compTo[   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause ]   )
+                            // console.log(   dev_obj.compAgn[   pMFL_0_i.forLoop_0_i   ]   )
 
                                                         
                             if(   ultraObject.misc
@@ -2819,7 +2812,7 @@
                                     [pMRange_0_i][pMRange_0_i_0_i] >= dev_obj.range   ){
                                 //if the range is greater than or equal to the range we have a match
                                 
-                                console.log(   'range has been satisfied'   )
+                                // console.log(   'range has been satisfied'   )
                                 console.groupEnd()
                                 return 'premature'
                                 
@@ -2858,7 +2851,7 @@
                                         
                         */
                         // {
-                        console.group(   'Trailer Module'   )
+                        // console.group(   'Trailer Module'   )
                             
                             
                             if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMTrailer_0_i][pMTrailer_0_i_1_i] < dev_obj.trailer   ){
@@ -2877,13 +2870,13 @@
                                         forLoop_0_i:ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause,
                                         forLoopLength: ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause + dev_obj.trailer + 1,
                                         fn:function(   dev_obj   ){
-                                            console.log(   [dev_obj.compTo[pMFL_1_i.forLoop_0_i],dev_obj.compAgn[pMFL_0_i.forLoop_0_i]]   )
+                                            // console.log(   [dev_obj.compTo[pMFL_1_i.forLoop_0_i],dev_obj.compAgn[pMFL_0_i.forLoop_0_i]]   )
                                             
                                             
                                             if(   dev_obj.compTo[pMFL_1_i.forLoop_0_i] === dev_obj.compAgn[pMFL_0_i.forLoop_0_i]   ){
                                             
                                                 
-                                                console.log(   'match found in trailer'   )
+                                                // console.log(   'match found in trailer'   )
                                                 ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMTrailer_0_i][pMTrailer_0_i_0_i] -= 1
                                                 ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMPause_0_i].equateToTrailer = 'true'
                                                 ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMPause_0_i].pauseTrailerReplace = pMFL_1_i.forLoop_0_i + 1
@@ -2913,10 +2906,10 @@
                                         args:dev_obj
                                     }
                                     ultraObject.forLoop(   pMFL_1_i   )
-                                    console.log(   'how far in compTo I must search'   )
-                                    console.log(   dev_obj.trailer - ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMTrailer_0_i][pMTrailer_0_i_1_i]   )
-                                    console.log(   'how many times should I run this'   )
-                                    console.log(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMTrailer_0_i][pMTrailer_0_i_0_i]   )
+                                    // console.log(   'how far in compTo I must search'   )
+                                    // console.log(   dev_obj.trailer - ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMTrailer_0_i][pMTrailer_0_i_1_i]   )
+                                    // console.log(   'how many times should I run this'   )
+                                    // console.log(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMTrailer_0_i][pMTrailer_0_i_0_i]   )
                                     
                                     
                                 }
@@ -2947,7 +2940,7 @@
                                         
                         */
                         // {
-                        console.group(   'Spaces Module'   )
+                        // console.group(   'Spaces Module'   )
                             
                                                                                             
                             if(   dev_obj.compTo
@@ -2965,14 +2958,14 @@
                                         ] === dev_obj.compAgn[   pMFL_0_i.forLoop_0_i  - 1]   ){
                                         //so it doesnt not make empty spaces for missing chars
                                             
-                                    console.log(   'need a space'   )
-                                    console.log(   'tell the gap module we got a new space'   )
-                                    console.log(   'the full module has something for the space module'   )
-                                    ultraObject.objInvloved({
-                                        0:ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fullSpace,
-                                        1:ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fullLoopApply,
-                                        2:pMFL_0_i.forLoop_0_i
-                                    })
+                                    // console.log(   'need a space'   )
+                                    // console.log(   'tell the gap module we got a new space'   )
+                                    // console.log(   'the full module has something for the space module'   )
+                                    // ultraObject.objInvloved({
+                                    //     0:ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fullSpace,
+                                    //     1:ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fullLoopApply,
+                                    //     2:pMFL_0_i.forLoop_0_i
+                                    // })
                                     
                                     
                                     if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fullSpace !== 'ignore'   ){
@@ -2985,13 +2978,13 @@
                                     
                                     
                                     ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].spaceGap = 'true';
-                                    ultraObject.objInvloved({
-                                        0:ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMSpaces_0_i],
-                                        1:dev_obj.compTo[   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]].pause] ,
-                                        2:dev_obj.compAgn[   pMFL_0_i.forLoop_0_i   ],
-                                        3:dev_obj.compTo[   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]].pause -1],
-                                        4:dev_obj.compAgn[   pMFL_0_i.forLoop_0_i  -1 ]
-                                    })
+                                    // ultraObject.objInvloved({
+                                    //     0:ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMSpaces_0_i],
+                                    //     1:dev_obj.compTo[   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]].pause] ,
+                                    //     2:dev_obj.compAgn[   pMFL_0_i.forLoop_0_i   ],
+                                    //     3:dev_obj.compTo[   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]].pause -1],
+                                    //     4:dev_obj.compAgn[   pMFL_0_i.forLoop_0_i  -1 ]
+                                    // })
                                  
                                                                                 
                                 }
@@ -3000,9 +2993,9 @@
                                 if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMSpaces_0_i][pMSpaces_0_i_0_i] > dev_obj.spaces   ){
                                     //if the spaces in the API is too great
                                                                         
-                                    console.error(   'error in spaces'   )
+                                    // console.error(   'error in spaces'   )
                                     ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].satisfy = false
-                                    console.groupEnd()
+                                    // console.groupEnd()
                                     return 'premature'
                                     
                                                                         
@@ -3012,7 +3005,7 @@
                             }
                             
                             
-                        console.groupEnd()
+                        // console.groupEnd()
                         // }
                             // GAP MODULE
                         /*
@@ -3026,7 +3019,7 @@
                                         
                         */
                         // {
-                        console.group(   'Gap Module'   )
+                        // console.group(   'Gap Module'   )
                             
                                                                                             
                             if(   dev_obj.compTo
@@ -3036,7 +3029,7 @@
                                     ] !== dev_obj.compAgn[   pMFL_0_i.forLoop_0_i   ]   ){
                                 // this means the prev was a match and a gap is increasing
                                                                                                                                                     
-                                    console.log(   'gap is increasing'   )
+                                    // console.log(   'gap is increasing'   )
                                     
                                     
                                     if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].spaceGap === 'true'  && ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].fullGap !== 'fill'  ){
@@ -3065,7 +3058,7 @@
                                         if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].trailerGap[0] === 'itsThis'   ){
                                             //this means that the trailer has made a range and the gap needs to be updated
                                             // but should this exist this puts limits on the user
-                                            console.log(   'gap updated from trailer'   )
+                                            // console.log(   'gap updated from trailer'   )
                                             ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i][   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i].length -1    ]  = ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].trailerGap[1]
                                             ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].trailerGap[0] = 'jobDone'
                                              
@@ -3079,9 +3072,9 @@
                                     if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i][   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i].length -1    ] > dev_obj.gap   ){
                                         //if the spaces in the API is too great
                                                                             
-                                        console.error(   'error in gap'   )
+                                        // console.error(   'error in gap'   )
                                         ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].satisfy = false
-                                        console.groupEnd()
+                                        // console.groupEnd()
                                         return 'premature'
                                         
                                                                             
@@ -3091,7 +3084,7 @@
                             }
                             
                             
-                            console.log(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i]   )
+                            // console.log(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMGap_0_i]   )
                         console.groupEnd()
                         // }
                         /*
@@ -3106,7 +3099,7 @@
                                         
                         */
                         // {
-                        console.group(   'Pause Module'   )
+                        // console.group(   'Pause Module'   )
                             
                             
                             if(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMPause_0_i].pauseRange === 'true'  ){
@@ -3140,11 +3133,11 @@
                             ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMPause_0_i][pMPause_0_i_0_i] = ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause;
                             
                             
-                            console.log(   'compTo set tracking'   )
-                            console.log(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMPause_0_i][pMPause_0_i_0_i]   )
-                            console.log(   'current API state'   )
-                            console.log(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMPause_0_i]   )
-                        console.groupEnd()
+                        //     console.log(   'compTo set tracking'   )
+                        //     console.log(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMPause_0_i][pMPause_0_i_0_i]   )
+                        //     console.log(   'current API state'   )
+                        //     console.log(   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ][pMPause_0_i]   )
+                        // console.groupEnd()
                         // }
                     },
                     args:dev_obj
@@ -3315,7 +3308,6 @@
                                 
                                 
                                 console.log(   dev_obj,pFFFL_0_i.forLoop_0_i   )
-                                
                             },
                             result:'a'
                         })
@@ -3663,13 +3655,87 @@
                                     
                                     ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].pointValue += 1
                                     
+                                    /* if the parent is a div or a label*/
+                                    // {
+                                        var pFFBOOL_4_I = {0:false}
+                                        pFFBOOL_4_I = ultraObject.severalOr({
+                                                compTo: ultraObject.selectTags[ultraObject.scope[pFFST_1_i]][   pFFFL_2_i.forLoop_0_i   ].tagName.toLowerCase(),
+                                                compAgn:ultraObject.iterify(   {iterify:['label','div']}   ),
+                                                boolean:pFFBOOL_4_I,
+                                                which:0
+                                        })
+                                        console.log(   pFFBOOL_4_I   )
+                                        
+                                        
+                                        if(   pFFBOOL_4_I[0] === true   ){
+                                            
+                                            
+                                            ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].pointValue += 1
+                                            
+                                            
+                                        }
+                                    // }
+                                    /**/
+                                    /* the parents className*/
+                                    // {
+                                       
+                                        
+                                        ultraObject.selectTags[ultraObject.scope[pFFST_1_i]].classes = ultraObject.iterify(   {iterify:ultraObject.selectTags[ultraObject.scope[pFFST_1_i]][   pFFFL_2_i.forLoop_0_i   ].className.split(' ')}   )
+                                        console.log(   ultraObject.selectTags[ultraObject.scope[pFFST_1_i]]   )
                                     
+                                        /**/
+                                        /*to loop through classNames and find a partial match*/
+                                        var pFFBOOL_5_I = {0:false}
+                                        pFFBOOL_5_I = ultraObject.severalOr({
+                                            compTo: ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword,
+                                            compAgn: ultraObject.selectTags[ultraObject.scope[pFFST_1_i]].classes ,
+                                            boolean:pFFBOOL_5_I,
+                                            which:0,
+                                            how:function(   dev_obj   ){
+                                                ultraObject.partialMatch({
+                                                    compTo:dev_obj.compTo,
+                                                    compAgn:dev_obj.compAgnI,
+                                                    range:8,
+                                                    spaces:2,
+                                                    gap:2,
+                                                    trailer:0,
+                                                    type:'string',
+                                                    cCase:'toLowerCase'
+                                                })
+                                                
+                                                
+                                                if(   ultraObject.misc[ultraObject.misc.length-1].satisfy   ){
+                                                    
+                                                    
+                                                    ultraObject.misc.minus(   {index:ultraObject.misc.length-1}   )
+                                                    ultraObject.misc.abelast.minus(   {index:ultraObject.misc.abelast.length-1}   )
+                                                    //POINT VALUE
+                                                    ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].pointValue += 1
+                                                    
+                                                    
+                                                }
+                                                
+                                                
+                                                ultraObject.misc.minus(   {index:ultraObject.misc.length-1}   )
+                                                ultraObject.misc.abelast.minus(   {index:ultraObject.misc.abelast.length-1}   )
+                                            },
+                                            result:'a'
+                                        })
+                                        console.log(   pFFBOOL_5_I   )
+                                        /**/
+                                        
+                                    
+                                    // }
+                                    /**/
+                                
+
                                 }
-                                 /**/
+                                /**/
                             },
                             args:{}
                         }
                         ultraObject.forLoop(   pFFFL_2_i   )
+                        ultraObject.selectTags.minus(   {index:pFFST_1_i}   )
                     console.groupEnd()
                     throw(   'e'   )
                     console.log(   'who are its siblings'   )
