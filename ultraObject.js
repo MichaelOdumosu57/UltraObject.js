@@ -55,6 +55,7 @@
     // templates
     // FL_0_i for loop object in the purpose action
     // BOOL for boolean object
+        // BOOL_0_i for more
     // SA for a selectAll object
     // O stands for Object for this functionality like thisfn has thisfnO
     // itO stands for iterableObject
@@ -182,6 +183,7 @@
         sort:sort,
         swap:swap,
         partialMatch:partialMatch,
+        interrogation:interrogation,
         
         misc:iterableObject(), //holds finished products with which we cannot assign a name
         numberSystem:numberSystem,
@@ -3202,7 +3204,7 @@
                 
                 
                 
-                if(   dev_obj.val[dev_obj.index].childElementCount > dev_obj.val[dev_obj.index+ 1].childElementCount    ){
+                if(   dev_obj.val[dev_obj.index].childElementCount < dev_obj.val[dev_obj.index+ 1].childElementCount    ){
                     
                     
                     return 'true'
@@ -3264,6 +3266,19 @@
                         turn all string into lowercase
     
                     */
+                    /* setting up needed objects for proof*/
+                        //parents
+                        // var pFFST_1_i = ultraObject.scope.add(   {value:ultraObject.selectTags.add(   {value:ultraObject.iterableObject()}   )}   )
+                        // ultraObject.selectTags[ultraObject.scope[pFFST_1_i]].add(   {value:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.offsetParent}   )
+                        // ultraObject.selectTags[ultraObject.scope[pFFST_1_i]].add(   {value:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.parentElement}   )
+                        // ultraObject.selectTags[ultraObject.scope[pFFST_1_i]].add(   {value:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.parentNode}   )
+                    /**/
+                    // ultraObject.interrogation({
+                    //     proof:[
+                    //             ['element',iterify:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item],
+                    //             ['parent',ultraObject.selectTags[ultraObject.scope[pFFST_1_i]]]
+                    //         ]
+                    // })
                     ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].pointValue = 0 // used to deterime if valuePhrasre belongs in the elements value
                     console.log(  'what is the result', ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword  )
                     console.log(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.value,ultraObject.misc[ultraObject.scope[pFFList_0_i]][pFFFL_0_i.forLoop_0_i][1]   )
@@ -3326,7 +3341,117 @@
                         1 for each ID name met by partialMatch
                         1 for matching string
                     */
-                    
+                    /*
+                    {
+                        1. is this an input
+                            <input>     -<html>
+                            <textarea>  -<head>
+                            <select>    -<title>
+                            <optgroup>  -<body>
+                            <option>    -<h1 -h6><p>
+                            <label>     -<br>
+                            <a>         -<hr>
+                            <link>      -<abbr>
+                            <div>       -<address>
+                                        -<b>
+                                        -<bdi>
+                                        -<bdo>
+                                        -<blockqultraObjectte>
+                                        -<center>
+                                        -<cite>
+                                        -<code>
+                                        -<del>
+                                        -<dfn>
+                                        -<em>
+                                        -<font>
+                                        -<i>
+                                        -<ins>
+                                        -<kbd>
+                                        -<mark>
+                                        -<meter>
+                                        -<progress>
+                                       -<q>
+                                       -<rp>
+                                       -<rt>
+                                       -<ruby>
+                                       -<s>
+                                       -<samp>
+                                       -<small>
+                                       -<strike>
+                                       -<strong>
+                                       -<sub>
+                                       -<sup>
+                                       -<template>
+                                       -<time>
+                                       -<tt>
+                                       -<u>
+                                       -<var>
+                                       -var
+                                       -<wbr>
+                                       -<form>
+                                       -<fieldset>
+                                       -<legend>
+                                       -<datalist>
+                                       -<output>
+                                       -<frame>
+                                       -<frameset>
+                                       -<noframes>
+                                       -<iframe>
+                                       -<img>
+                                       -<map>
+                                       -<area>
+                                       -<canvas>
+                                       -<figcaption>
+                                       -<figure>
+                                       -<picture>
+                                       -<svg>
+                                       -<audio>
+                                       -<source>
+                                       -<track>
+                                       -<video>
+                                       -<nav>
+                                       -<ul>
+                                       -<ol>
+                                       -<li>
+                                       -<dir>
+                                       -<dl>
+                                       -<dt>
+                                       -<dd>
+                                       -<table>
+                                       -<caption>
+                                       -<th>
+                                       -<tr>
+                                       -<td>
+                                       -<thead>
+                                       -<tbody>
+                                       -<tfoot>
+                                       -<col>
+                                       -<colgroup>
+                                       -<style>
+                                       -<span>
+                                       -<header>
+                                       -<footer>
+                                       -<main>
+                                       -<section>
+                                       -<article>
+                                       -<aside>
+                                       -<details>
+                                       -<dialog>
+                                       -<summary>
+                                       -<data>
+                                       -<head>
+                                       -<meta>
+                                       -<base>
+                                       -<basefont>
+                                       -<script>
+                                       -<noscript>
+                                       -<applet>
+                                       -<embed>
+                                       -<object>
+                                       -<param>
+                    }
+                    */
+                    // {
                     console.group(  'what is the element'   )
                         console.log(   'things I should know'   )
                         var pFFFL_1_i = { //looking at the elements related properties
@@ -3511,120 +3636,11 @@
                             
                         }
                         
+                        
                         console.log(   'element point value',ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].pointValue   )
                     console.groupEnd()
+                    // }
                     
-                    
-                    /*
-                    {
-                        1. is this an input
-                            <input>     -<html>
-                            <textarea>  -<head>
-                            <select>    -<title>
-                            <optgroup>  -<body>
-                            <option>    -<h1 -h6><p>
-                            <label>     -<br>
-                            <a>         -<hr>
-                            <link>      -<abbr>
-                            <div>       -<address>
-                                        -<b>
-                                        -<bdi>
-                                        -<bdo>
-                                        -<blockqultraObjectte>
-                                        -<center>
-                                        -<cite>
-                                        -<code>
-                                        -<del>
-                                        -<dfn>
-                                        -<em>
-                                        -<font>
-                                        -<i>
-                                        -<ins>
-                                        -<kbd>
-                                        -<mark>
-                                        -<meter>
-                                        -<progress>
-                                       -<q>
-                                       -<rp>
-                                       -<rt>
-                                       -<ruby>
-                                       -<s>
-                                       -<samp>
-                                       -<small>
-                                       -<strike>
-                                       -<strong>
-                                       -<sub>
-                                       -<sup>
-                                       -<template>
-                                       -<time>
-                                       -<tt>
-                                       -<u>
-                                       -<var>
-                                       -var
-                                       -<wbr>
-                                       -<form>
-                                       -<fieldset>
-                                       -<legend>
-                                       -<datalist>
-                                       -<output>
-                                       -<frame>
-                                       -<frameset>
-                                       -<noframes>
-                                       -<iframe>
-                                       -<img>
-                                       -<map>
-                                       -<area>
-                                       -<canvas>
-                                       -<figcaption>
-                                       -<figure>
-                                       -<picture>
-                                       -<svg>
-                                       -<audio>
-                                       -<source>
-                                       -<track>
-                                       -<video>
-                                       -<nav>
-                                       -<ul>
-                                       -<ol>
-                                       -<li>
-                                       -<dir>
-                                       -<dl>
-                                       -<dt>
-                                       -<dd>
-                                       -<table>
-                                       -<caption>
-                                       -<th>
-                                       -<tr>
-                                       -<td>
-                                       -<thead>
-                                       -<tbody>
-                                       -<tfoot>
-                                       -<col>
-                                       -<colgroup>
-                                       -<style>
-                                       -<span>
-                                       -<header>
-                                       -<footer>
-                                       -<main>
-                                       -<section>
-                                       -<article>
-                                       -<aside>
-                                       -<details>
-                                       -<dialog>
-                                       -<summary>
-                                       -<data>
-                                       -<head>
-                                       -<meta>
-                                       -<base>
-                                       -<basefont>
-                                       -<script>
-                                       -<noscript>
-                                       -<applet>
-                                       -<embed>
-                                       -<object>
-                                       -<param>
-                    }
-                    */
                     /*
                         to identiy the parent there is
                             offsetParent,parentElement,parentNode
@@ -3637,12 +3653,13 @@
                         1 for each className is met by partialMatch
                         1 for each ID name met by partialMatch
                     */
+                    // {
                     console.group(   'what is its parent '   )
                         /*the parent we will look at looking at all parent types*/
-                         var pFFST_1_i = ultraObject.scope.add(   {value:ultraObject.selectTags.add(   {value:ultraObject.iterableObject()}   )}   )
-                         ultraObject.selectTags[ultraObject.scope[pFFST_1_i]].add(   {value:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.offsetParent}   )
-                         ultraObject.selectTags[ultraObject.scope[pFFST_1_i]].add(   {value:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.parentElement}   )
-                         ultraObject.selectTags[ultraObject.scope[pFFST_1_i]].add(   {value:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.parentNode}   )
+                        var pFFST_1_i = ultraObject.scope.add(   {value:ultraObject.selectTags.add(   {value:ultraObject.iterableObject()}   )}   )
+                        ultraObject.selectTags[ultraObject.scope[pFFST_1_i]].add(   {value:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.offsetParent}   )
+                        ultraObject.selectTags[ultraObject.scope[pFFST_1_i]].add(   {value:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.parentElement}   )
+                        ultraObject.selectTags[ultraObject.scope[pFFST_1_i]].add(   {value:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.parentNode}   )
                          console.log(   ultraObject.selectTags[ultraObject.scope[pFFST_1_i]]   )
                         /**/
                         var pFFFL_2_i = {
@@ -3727,6 +3744,53 @@
                                     
                                     // }
                                     /**/
+                                    /* the parents ID and find a partial match*/
+                                    // {
+                                        ultraObject.selectTags[ultraObject.scope[pFFST_1_i]].ids = ultraObject.iterify(   {iterify:ultraObject.selectTags[ultraObject.scope[pFFST_1_i]][   pFFFL_2_i.forLoop_0_i   ].id.split(' ')}   )
+                                        console.log(   ultraObject.selectTags[ultraObject.scope[pFFST_1_i]]   )
+                                    
+                                        /**/
+                                        /*to loop through classNames and find a partial match*/
+                                        var pFFBOOL_6_I = {0:false}
+                                        pFFBOOL_6_I = ultraObject.severalOr({
+                                            compTo: ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword,
+                                            compAgn: ultraObject.selectTags[ultraObject.scope[pFFST_1_i]].classes ,
+                                            boolean:pFFBOOL_6_I,
+                                            which:0,
+                                            how:function(   dev_obj   ){
+                                                ultraObject.partialMatch({
+                                                    compTo:dev_obj.compTo,
+                                                    compAgn:dev_obj.compAgnI,
+                                                    range:8,
+                                                    spaces:2,
+                                                    gap:2,
+                                                    trailer:0,
+                                                    type:'string',
+                                                    cCase:'toLowerCase'
+                                                })
+                                                
+                                                
+                                                if(   ultraObject.misc[ultraObject.misc.length-1].satisfy   ){
+                                                    
+                                                    
+                                                    ultraObject.misc.minus(   {index:ultraObject.misc.length-1}   )
+                                                    ultraObject.misc.abelast.minus(   {index:ultraObject.misc.abelast.length-1}   )
+                                                    //POINT VALUE
+                                                    ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].pointValue += 1
+                                                    
+                                                    
+                                                }
+                                                
+                                                
+                                                ultraObject.misc.minus(   {index:ultraObject.misc.length-1}   )
+                                                ultraObject.misc.abelast.minus(   {index:ultraObject.misc.abelast.length-1}   )
+                                            },
+                                            result:'a'
+                                        })
+                                        console.log(   pFFBOOL_6_I   )
+                                        /**/
+                                        // }
+                                    /**/
                                 
 
                                 }
@@ -3735,14 +3799,138 @@
                             args:{}
                         }
                         ultraObject.forLoop(   pFFFL_2_i   )
-                        ultraObject.selectTags.minus(   {index:pFFST_1_i}   )
+                        ultraObject.selectTags.minus(   {index:ultraObject.scope[pFFST_1_i]}   )
+                        ultraObject.scope.minus(   {index:pFFST_1_i}   )
                     console.groupEnd()
-                    throw(   'e'   )
-                    console.log(   'who are its siblings'   )
-                    console.group(   'who are its children'   )
+                    // }
                     /*
-                        any clues that perhaps the children might be the key value to fill
+                        to identiy the siblings we use parentElement because we dont want any repetitive text nodes
+
+                        point system for siblings
+                        1 if any sibling is a label,buton ..., there could be many and we dont need that confusion
+                        1 based on how many siblngs (if there are too many it might indicate it a form instead of something u need to fill ,even though thats the case we cannot make decisions based on that )
+                    
                     */
+                    // {
+                    console.group(   'who are its siblings'   )
+                        /* we going to slap a  property on the element to help us indicate not to use it, */
+                            console.log(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.sameChild   )
+                            ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.sameChild = 'true'
+                            console.log(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.sameChild  )
+                        /**/
+                        var pFFFL_3_i = {
+                            forLoop_0_i:0,
+                            forLoopLength:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.parentElement.children.length,
+                            fn:function(   dev_obj   ){
+                                
+                                
+                                if(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.parentElement.children[pFFFL_3_i.forLoop_0_i].sameChild !== 'true'   ){
+                                    
+                                    
+                                    console.group(   'sibling'   )
+                                        var pFFBOOL_7_I = {0:false}
+                                        pFFBOOL_7_I = ultraObject.severalOr({
+                                                compTo: ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.parentElement.children[pFFFL_3_i.forLoop_0_i].tagName.toLowerCase(),
+                                                compAgn:ultraObject.iterify(   {iterify:['label','div','button']}   ),
+                                                boolean:pFFBOOL_7_I,
+                                                which:0
+                                        })
+                                        console.log(   pFFBOOL_7_I   )
+                                        
+                                        
+                                        if(   pFFBOOL_7_I[0] === true   ){
+                                            
+                                            
+                                            ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].pointValue += 1
+                                            return 'premature';
+                                            
+                                            
+                                        }
+                                        
+                                        
+                                    console.groupEnd()
+                                    
+                                    
+                                    
+                                }
+                                
+                                
+                            },
+                            args:{}
+                        }
+                        ultraObject.forLoop(   pFFFL_3_i   )
+                    console.groupEnd()
+                    // }
+                    console.group(   ' its children'   )
+                    /*
+                        clues indicating from the  chidlren indicatiing this indeed is the element to use
+                            
+                            point system for kids
+                            1 if any kid has a className met by partialMatch
+                            1 if any kid has an ID met by partialMatch
+                    */
+                    // {
+                    var pFFST_2_i = ultraObject.scope.add(   {value:ultraObject.selectTags.add(   {value:ultraObject.iterableObject()}   )}   )
+                        var pFFFL_4_i = {
+                            forLoop_0_i:0,
+                            forLoopLength:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.children.length,
+                            fn:function(   dev_obj   ){
+                                console.group(   'child'   )
+                                /* the child className and find a partial match*/
+                                // {
+                                    ultraObject.selectTags[ultraObject.scope[pFFST_2_i]].classes  =ultraObject.iterify(   {iterify:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.children[pFFFL_4_i.forLoop_0_i].className.split(' ')}   )
+                                        /**/
+                                        /*to loop through classNames and find a partial match*/
+                                            var pFFBOOL_8_I = {0:false}
+                                            pFFBOOL_8_I = ultraObject.severalOr({
+                                                compTo: ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword,
+                                                compAgn: ultraObject.selectTags[ultraObject.scope[pFFST_1_i]].classes ,
+                                                boolean:pFFBOOL_8_I,
+                                                which:0,
+                                                how:function(   dev_obj   ){
+                                                    ultraObject.partialMatch({
+                                                        compTo:dev_obj.compTo,
+                                                        compAgn:dev_obj.compAgnI,
+                                                        range:8,
+                                                        spaces:2,
+                                                        gap:2,
+                                                        trailer:0,
+                                                        type:'string',
+                                                        cCase:'toLowerCase'
+                                                    })
+                                                    
+                                                    
+                                                    if(   ultraObject.misc[ultraObject.misc.length-1].satisfy   ){
+                                                        
+                                                        
+                                                        ultraObject.misc.minus(   {index:ultraObject.misc.length-1}   )
+                                                        ultraObject.misc.abelast.minus(   {index:ultraObject.misc.abelast.length-1}   )
+                                                        //POINT VALUE
+                                                        ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].pointValue += 1
+                                                        
+                                                        
+                                                    }
+                                                    
+                                                    
+                                                    ultraObject.misc.minus(   {index:ultraObject.misc.length-1}   )
+                                                    ultraObject.misc.abelast.minus(   {index:ultraObject.misc.abelast.length-1}   )
+                                                },
+                                                result:'a'
+                                            })
+                                            console.log(   pFFBOOL_8_I   )
+                                        /**/
+                                        // }
+                                    debugger
+                                // }
+                                /**/
+                                console.groupEnd()
+                            },
+                            args:{}
+                        }
+                        ultraObject.forLoop(   pFFFL_4_i   )
+                    ultraObject.selectTags.minus(   {index:ultraObject.scope[pFFST_2_i]}   )
+                    ultraObject.scope.minus(   {index:pFFST_2_i}   )
+                    // }
                     console.groupEnd()
                 console.groupEnd()
                 
@@ -3752,12 +3940,44 @@
         ultraObject.forLoop(   pFFFL_0_i   )
         console.groupEnd()
         ///////////////////////////////////////////////////////////////////////////
-        throw('e')
     }
     
     function interrogation(   dev_obj   ){
         //throw the result in here later
-        }// used to perform advanced questions on results that can not be simply verified
+        /*
+            .proof - an itO giving meaningful pieces of what to look at
+                to determine if the element is the right element that represents first name I might want proof which is
+                    the element itself
+                    the parent
+                    the children
+                    the siblngs
+                these are the object I will look at
+                each index is held in an itO
+                    0. the name of the object
+                    1, the actual object
+            .facts
+                this is how I interrogate the objects
+                    className (partialMatch)
+                    id
+                    tagName
+                    hidden (true or false)
+                and you will specify this is an index in an itO corresponding to the the items in proof
+            .pointValue if interrogation at facts passes this is incremented by one
+            ultraObject.qC question Chart
+                this object helps to visualize the dev_obj, its mainly the dev_obj with some additional features
+        */
+        
+        
+        if(   dev_obj !== undefined   ){
+        
+        
+            console.log(   dev_obj.proof   )
+            
+            
+        }
+        
+        
+    }// used to perform advanced questions on results that can not be simply verified
                 
     
                 // preFillForm({
