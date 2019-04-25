@@ -1,3 +1,4 @@
+
             function wait(   ms   ){
                var start = new Date().getTime();
                var end = start;
@@ -75,7 +76,7 @@
         fn:function(   dev_obj   ){
            
         },
-        args:{}
+        args:dev_obj //{}
     ultraObject.forLoop(   FL_0_i   )
     }
     */
@@ -184,6 +185,7 @@
         swap:swap,
         partialMatch:partialMatch,
         interrogation:interrogation,
+        qC:iterableObject(),
         
         misc:iterableObject(), //holds finished products with which we cannot assign a name
         numberSystem:numberSystem,
@@ -3268,17 +3270,21 @@
                     */
                     /* setting up needed objects for proof*/
                         //parents
-                        // var pFFST_1_i = ultraObject.scope.add(   {value:ultraObject.selectTags.add(   {value:ultraObject.iterableObject()}   )}   )
-                        // ultraObject.selectTags[ultraObject.scope[pFFST_1_i]].add(   {value:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.offsetParent}   )
-                        // ultraObject.selectTags[ultraObject.scope[pFFST_1_i]].add(   {value:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.parentElement}   )
-                        // ultraObject.selectTags[ultraObject.scope[pFFST_1_i]].add(   {value:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.parentNode}   )
+                        var pFFST_1_i = ultraObject.scope.add(   {value:ultraObject.selectTags.add(   {value:ultraObject.iterableObject()}   )}   )
+                        ultraObject.selectTags[ultraObject.scope[pFFST_1_i]].add(   {value:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.offsetParent}   )
+                        ultraObject.selectTags[ultraObject.scope[pFFST_1_i]].add(   {value:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.parentElement}   )
+                        ultraObject.selectTags[ultraObject.scope[pFFST_1_i]].add(   {value:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.parentNode}   )
                     /**/
-                    // ultraObject.interrogation({
-                    //     proof:[
-                    //             ['element',iterify:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item],
-                    //             ['parent',ultraObject.selectTags[ultraObject.scope[pFFST_1_i]]]
-                    //         ]
-                    // })
+                    ultraObject.interrogation({
+                        proof:[
+                                ['element',ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item],
+                                ['parent',ultraObject.selectTags[ultraObject.scope[pFFST_1_i]]],
+                                ['siblings',ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.parentElement.children],
+                                ['children',ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.children]
+                            ],
+                        pointValue:'v1'
+                    })
+                    throw('e')
                     ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].pointValue = 0 // used to deterime if valuePhrasre belongs in the elements value
                     console.log(  'what is the result', ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword  )
                     console.log(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.value,ultraObject.misc[ultraObject.scope[pFFList_0_i]][pFFFL_0_i.forLoop_0_i][1]   )
@@ -3944,8 +3950,11 @@
     
     function interrogation(   dev_obj   ){
         //throw the result in here later
+        /* ablelasts
+            1 for qC
+        */
         /*
-            .proof - an itO giving meaningful pieces of what to look at
+            .proof - an array giving meaningful pieces of what to look at
                 to determine if the element is the right element that represents first name I might want proof which is
                     the element itself
                     the parent
@@ -3963,15 +3972,59 @@
                     hidden (true or false)
                 and you will specify this is an index in an itO corresponding to the the items in proof
             .pointValue if interrogation at facts passes this is incremented by one
+                v1, just use a simple counting mechanism
+                v2, use an itO for more complex counting system almost working like PAM in linux
+                if not a string or undefined it sets to use v1
             ultraObject.qC question Chart
-                this object helps to visualize the dev_obj, its mainly the dev_obj with some additional features
+                this object helps to visualize the dev_obj, its mainly the dev_obj with some additional
+                    .pointValue
+                    if dev_obj.pointValue = v1, make 0, if dev_obj.pointValue =v2 use an itO
         */
         
         
         if(   dev_obj !== undefined   ){
         
-        
-            console.log(   dev_obj.proof   )
+            /*adding the first qC along with an abelast*/
+            var iQC_0_i = ultraObject.scope.add(   {value:ultraObject.qC.add(   {value:ultraObject.iterableObject()}   )}   )
+            ultraObject.qC.abelast.add(   {value:ultraObject.scope[iQC_0_i]}   )
+            /**/
+            
+            /*setting the point value in the qC*/
+            if(   !ultraObject.isString(   {type:dev_obj.pointValue}   ) || dev_obj.pointValue === 'v1'   ){
+                
+                
+                ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].pointValue = 0
+                
+                
+            }
+            
+            
+            else if(   dev_obj.pointValue === 'v2'   ){
+                
+                
+                ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].pointValue = ultraObject.iterableObject()
+                
+                
+            }
+            /**/
+            
+            /*setting up proof in the qC*/
+            var iFL_0_i = {
+                forLoop_0_i:0,
+                forLoopLength:dev_obj.proof.length,
+                fn:function(   dev_obj   ){
+                    ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].add(   {value:ultraObject.iterify(   {iterify:dev_obj.proof[iFL_0_i.forLoop_0_i]}   )}   )
+                },
+                args:{
+                    proof:dev_obj.proof
+                    }
+            }
+            ultraObject.forLoop(   iFL_0_i   )
+            /**/
+            
+            /*debugging*/
+            console.log(   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ]   )
+            /**/
             
             
         }
