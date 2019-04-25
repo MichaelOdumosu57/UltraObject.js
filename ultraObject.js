@@ -3307,30 +3307,98 @@
                         facts:[
                                 ['element',
                                     {
-                                    'valuePhrase':function(){console.log('im running')},
-                                    'tagName':function(){},
-                                    'hidden':function(){},
-                                    'className':function(){},
-                                    'id':function(){}
+                                    'valuePhrase':function(   dev_obj   ){
+                                        /*interrogates to see if packIt actually put the right phrase in the right spot*/ //{
+                                        if(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.value.toLowerCase() === ultraObject.misc[ultraObject.scope[pFFList_0_i]][pFFFL_0_i.forLoop_0_i][1].toLowerCase()   ){
+                                            
+                                            
+                                            return  {
+                                                        noRun:'true'
+                                                    }
+                                            
+                                            
+                                        }
+                                        
+                                        
+                                    return  {
+                                                noRun:'false'
+                                            }
+                                        // } /**/
+                                    },
+                                    'suspect':function(   dev_obj   ){
+                                        /*suspects to see if different values were put in the same spot*/ //{
+                                        if(   dev_obj.noRun !== 'true'   ){
+                                            
+                                            
+                                            console.log(   'index',pFFFL_0_i.forLoop_0_i   )
+                                            var pFFBOOL_0_i = {0:false}
+                                            pFFBOOL_0_i = ultraObject.severalOr({
+                                                compTo: ultraObject.selectTags[ultraObject.scope[pFFST_0_i]].eCSNS.currentNumber[pFFFL_0_i.forLoop_0_i],
+                                                compAgn: ultraObject.selectTags[ultraObject.scope[pFFST_0_i]].eCSNS.currentNumber,
+                                                boolean:pFFBOOL_0_i,
+                                                which:0,
+                                                how:function(   dev_obj   ){
+                                                    
+                                                    
+                                                    if(   dev_obj.compTo === dev_obj.compAgnI   ){
+                                                        
+                                                        
+                                                        if(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]].suspects === undefined   ){
+                                                        //if we have suspects to determine who belongs in the elements value. this might need to be reset
+                                                        
+                                                            ultraObject.selectTags[ultraObject.scope[pFFST_0_i]].suspects = ultraObject.iterableObject()
+                                                            ultraObject.selectTags[ultraObject.scope[pFFST_0_i]].suspects.add(   {value:dev_obj.index}   )
+                                                            //see i wrote for the future here
+                                                            
+                                                        }
+                                                        
+                                                        
+                                                        else if(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]].suspects !== undefined   ){
+                                                            
+                                                        
+                                                            ultraObject.selectTags[ultraObject.scope[pFFST_0_i]].suspects.add(   {value:dev_obj.index}   )
+                                                            
+                                                            
+                                                        }
+                        
+                        
+                                                    }
+                                                    
+                                                    
+                                                    console.log(   dev_obj,pFFFL_0_i.forLoop_0_i   )
+                                                },
+                                                result:'a'
+                                            })
+                                            //this represents the digits of the NS,which are apparently the same that represents different items in the list however only one in this case should receive the element value here
+                                            console.log(   'our suspects',ultraObject.selectTags[ultraObject.scope[pFFST_0_i]].suspects  )
+                                            
+                                            
+                                        }
+                                        // } /**/
+                                    },
+                                    'tagName':function(   dev_obj   ){},
+                                    'hidden':function(   dev_obj   ){},
+                                    'className':function(   dev_obj   ){},
+                                    'id':function(   dev_obj   ){}
                                     }
                                 ],
                                 ['parents',
                                     {
-                                    'tagName':function(){},
-                                    'className':function(){},
-                                    'id':function(){},
-                                    'exist':function(){},
+                                    'tagName':function(   dev_obj   ){},
+                                    'className':function(   dev_obj   ){},
+                                    'id':function(   dev_obj   ){},
+                                    'exist':function(   dev_obj   ){},
                                     }
                                 ],
                                 ['siblings',
                                     {
-                                    'tagName':function(){}
+                                    'tagName':function(   dev_obj   ){}
                                     }
                                 ],
                                 ['children',
                                     {
-                                    'className':function(){},
-                                    'id':function(){},
+                                    'className':function(   dev_obj   ){},
+                                    'id':function(   dev_obj   ){},
                                     }
                                 ]
                             ],
@@ -3341,7 +3409,7 @@
                     console.log(  'what is the result', ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword  )
                     console.log(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.value,ultraObject.misc[ultraObject.scope[pFFList_0_i]][pFFFL_0_i.forLoop_0_i][1]   )
                     
-                    /*suspects to see if different values were put in the same spot*/
+                    /*suspects to see if different values were put in the same spot*/ //{
                     if(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.value.toLowerCase() !== ultraObject.misc[ultraObject.scope[pFFList_0_i]][pFFFL_0_i.forLoop_0_i][1].toLowerCase()   ){
                     
                     
@@ -3389,7 +3457,7 @@
                         
                         
                     }
-                    /**/
+                    // } /**/
                     /*
                         element
                         point system
@@ -4025,6 +4093,8 @@
                     hidden (true or false)
                 and you will specify this is an index in an itO corresponding to the the items in proof
                 the first index represents the proof object , the second index is an array containing the modules and specialized test, if module has a function, then its specialized otherwise, use deault function
+                    each function should return values that help other modules on what to do next
+                    
             .pointValue if interrogation at facts passes this is incremented by one
                 v1, just use a simple counting mechanism
                 v2, use an itO for more complex counting system almost working like PAM in linux
@@ -4032,7 +4102,17 @@
             ultraObject.qC question Chart
                 this object helps to visualize the dev_obj, its mainly the dev_obj with some additional
                     .pointValue
-                    if dev_obj.pointValue = v1, make 0, if dev_obj.pointValue =v2 use an itO
+                        if dev_obj.pointValue = v1, make 0, if dev_obj.pointValue =v2 use an itO
+                    .passOn
+                        helps the modules of the developer communicate with one another
+                    .proof an itO from dev_obj.proof
+                        0 the proof object name
+                        1. the proof object reference
+                    .facts
+                        the proof object name from facts is turned into a proerty name from the qC
+                        the proof object fact modules are places in ito
+                            0 module name
+                            1 module function or interrogation default
         */
         
         
@@ -4112,10 +4192,18 @@
                             /*actual use of each interrogaton function ot interrogate*/
                             if(   ultraObject.isFunction(   {type:ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][1]}   )   ){
                                 
-                                
-                                ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][1]()
+                                debugger
+                                ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn = ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][1](   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn   )
+                               
                             
                             
+                            }
+                            
+                            
+                            else if(   !ultraObject.isFunction(   {type:ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][1]}   )   ){
+                            
+                            
+                                    
                             }
                             /**/
                         },

@@ -5,7 +5,7 @@
 /*actual use of each interrogaton function ot interrogate*/
 // so if I have my own function use it or else use the interrgation module
 
-function interrogation(   dev_obj   ){
+ function interrogation(   dev_obj   ){
         //throw the result in here later
         /* ablelasts
             1 for qC
@@ -30,6 +30,8 @@ function interrogation(   dev_obj   ){
                     hidden (true or false)
                 and you will specify this is an index in an itO corresponding to the the items in proof
                 the first index represents the proof object , the second index is an array containing the modules and specialized test, if module has a function, then its specialized otherwise, use deault function
+                    each function should return values that help other modules on what to do next
+                    
             .pointValue if interrogation at facts passes this is incremented by one
                 v1, just use a simple counting mechanism
                 v2, use an itO for more complex counting system almost working like PAM in linux
@@ -37,7 +39,17 @@ function interrogation(   dev_obj   ){
             ultraObject.qC question Chart
                 this object helps to visualize the dev_obj, its mainly the dev_obj with some additional
                     .pointValue
-                    if dev_obj.pointValue = v1, make 0, if dev_obj.pointValue =v2 use an itO
+                        if dev_obj.pointValue = v1, make 0, if dev_obj.pointValue =v2 use an itO
+                    .passOn
+                        helps the modules of the developer communicate with one another
+                    .proof an itO from dev_obj.proof
+                        0 the proof object name
+                        1. the proof object reference
+                    .facts
+                        the proof object name from facts is turned into a proerty name from the qC
+                        the proof object fact modules are places in ito
+                            0 module name
+                            1 module function or interrogation default
         */
         
         
@@ -117,10 +129,18 @@ function interrogation(   dev_obj   ){
                             /*actual use of each interrogaton function ot interrogate*/
                             if(   ultraObject.isFunction(   {type:ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][1]}   )   ){
                                 
-                                
-                                ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][1]()
+                                debugger
+                                ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn = ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][1](   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn   )
+                               
                             
                             
+                            }
+                            
+                            
+                            else if(   !ultraObject.isFunction(   {type:ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][1]}   )   ){
+                            
+                            
+                                    
                             }
                             /**/
                         },
@@ -147,3 +167,4 @@ function interrogation(   dev_obj   ){
         
         
     }// used to perform advanced questions on results that can not be simply verified
+     
