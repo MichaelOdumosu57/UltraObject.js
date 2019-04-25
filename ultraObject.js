@@ -155,6 +155,7 @@
         isNodeList:isNodeList,
         isitO:isitO,
         isString:isString,
+        isFunction:isFunction,
         
         elementFound:iterableObject(), // holds found elements needed by the ultraObject
         removeCN:removeCN,
@@ -542,6 +543,28 @@
             
              
             if(   typeof dev_obj.type === 'string'   ){
+                
+                
+                return true
+                
+                
+            }
+            
+            
+        }
+        
+        
+        return false
+            
+    }
+    function isFunction(   dev_obj   ){
+        //should check for string object and string primitive
+        //. type item in questions
+        
+        if(   dev_obj !== undefined   ){
+            
+             
+            if(   typeof dev_obj.type === 'function'   ){
                 
                 
                 return true
@@ -3284,14 +3307,14 @@
                         facts:[
                                 ['element',
                                     {
-                                    'valuePhrase':function(){},
+                                    'valuePhrase':function(){console.log('im running')},
                                     'tagName':function(){},
                                     'hidden':function(){},
                                     'className':function(){},
                                     'id':function(){}
                                     }
                                 ],
-                                ['parent',
+                                ['parents',
                                     {
                                     'tagName':function(){},
                                     'className':function(){},
@@ -3306,7 +3329,8 @@
                                 ],
                                 ['children',
                                     {
-                                    'tagName':function(){}
+                                    'className':function(){},
+                                    'id':function(){},
                                     }
                                 ]
                             ],
@@ -4016,7 +4040,6 @@
         
             /*adding the first qC along with an abelast*/ //{
             var iQC_0_i = ultraObject.scope.add(   {value:ultraObject.qC.add(   {value:ultraObject.iterableObject()}   )}   )
-            ultraObject.qC.abelast.add(   {value:ultraObject.scope[iQC_0_i]}   )
             // }  /**/
             
             /*setting the point value in the qC*/ //{
@@ -4063,12 +4086,11 @@
             // } /**/
             
             /*setting up facts in the qC*/ //{
-            ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].facts = ultraObject.iterableObject()
             var iFL_1_i = {
                 forLoop_0_i:0,
                 forLoopLength:dev_obj.facts.length,
                 fn:function(   dev_obj   ){
-                    ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].facts.add(   {value:ultraObject.iterify(   {iterify:dev_obj.facts[iFL_1_i.forLoop_0_i]}   )}   )
+                    ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   dev_obj.facts[iFL_1_i.forLoop_0_i][0]   ] = ultraObject.iterify(   {iterify:dev_obj.facts[iFL_1_i.forLoop_0_i][1]}   )
                 },
                 args:{
                     facts:dev_obj.facts
@@ -4077,11 +4099,44 @@
             ultraObject.forLoop(   iFL_1_i   )
             // } /**/
             
-            
+            /*beginning interrogation*/ //{
+            var iFL_2_i = {
+                forLoop_0_i:0,
+                forLoopLength:dev_obj.proof.length,
+                fn:function(   dev_obj   ){
+                    /*looking at the interrogation facts for each proof object*/
+                    var iFL_3_i = {
+                        forLoop_0_i:0,
+                        forLoopLength:ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ].length,
+                        fn:function(   dev_obj   ){
+                            /*actual use of each interrogaton function ot interrogate*/
+                            if(   ultraObject.isFunction(   {type:ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][1]}   )   ){
+                                
+                                
+                                ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][1]()
+                            
+                            
+                            }
+                            /**/
+                        },
+                        args:{}
+                    }
+                    ultraObject.forLoop(   iFL_3_i   )
+                    /**/
+                },
+                args:{}
+            }
+            ultraObject.forLoop(   iFL_2_i   )
+            // } /**/
+                        
             /*debugging*/
             console.log(   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ]   )
             /**/
             
+            /*taking the qC out of the scope*/ //{
+            ultraObject.qC.abelast.add(   {value:ultraObject.scope[iQC_0_i]}   )
+            ultraObject.scope.minus(   {index:iQC_0_i}   )
+            // }  /**/
             
         }
         

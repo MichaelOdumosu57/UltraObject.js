@@ -2,6 +2,9 @@
 // helping the sibling module know not to look at the same element again
 // if this is the case use subGroups to help interrogation figure out where element is when its looking at the sibling to easily modify it
 
+/*actual use of each interrogaton function ot interrogate*/
+// so if I have my own function use it or else use the interrgation module
+
 function interrogation(   dev_obj   ){
         //throw the result in here later
         /* ablelasts
@@ -42,7 +45,6 @@ function interrogation(   dev_obj   ){
         
             /*adding the first qC along with an abelast*/ //{
             var iQC_0_i = ultraObject.scope.add(   {value:ultraObject.qC.add(   {value:ultraObject.iterableObject()}   )}   )
-            ultraObject.qC.abelast.add(   {value:ultraObject.scope[iQC_0_i]}   )
             // }  /**/
             
             /*setting the point value in the qC*/ //{
@@ -89,12 +91,11 @@ function interrogation(   dev_obj   ){
             // } /**/
             
             /*setting up facts in the qC*/ //{
-            ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].facts = ultraObject.iterableObject()
             var iFL_1_i = {
                 forLoop_0_i:0,
                 forLoopLength:dev_obj.facts.length,
                 fn:function(   dev_obj   ){
-                    ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].facts.add(   {value:ultraObject.iterify(   {iterify:dev_obj.facts[iFL_1_i.forLoop_0_i]}   )}   )
+                    ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   dev_obj.facts[iFL_1_i.forLoop_0_i][0]   ] = ultraObject.iterify(   {iterify:dev_obj.facts[iFL_1_i.forLoop_0_i][1]}   )
                 },
                 args:{
                     facts:dev_obj.facts
@@ -103,11 +104,44 @@ function interrogation(   dev_obj   ){
             ultraObject.forLoop(   iFL_1_i   )
             // } /**/
             
-            
+            /*beginning interrogation*/ //{
+            var iFL_2_i = {
+                forLoop_0_i:0,
+                forLoopLength:dev_obj.proof.length,
+                fn:function(   dev_obj   ){
+                    /*looking at the interrogation facts for each proof object*/
+                    var iFL_3_i = {
+                        forLoop_0_i:0,
+                        forLoopLength:ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ].length,
+                        fn:function(   dev_obj   ){
+                            /*actual use of each interrogaton function ot interrogate*/
+                            if(   ultraObject.isFunction(   {type:ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][1]}   )   ){
+                                
+                                
+                                ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][1]()
+                            
+                            
+                            }
+                            /**/
+                        },
+                        args:{}
+                    }
+                    ultraObject.forLoop(   iFL_3_i   )
+                    /**/
+                },
+                args:{}
+            }
+            ultraObject.forLoop(   iFL_2_i   )
+            // } /**/
+                        
             /*debugging*/
             console.log(   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ]   )
             /**/
             
+            /*taking the qC out of the scope*/ //{
+            ultraObject.qC.abelast.add(   {value:ultraObject.scope[iQC_0_i]}   )
+            ultraObject.scope.minus(   {index:iQC_0_i}   )
+            // }  /**/
             
         }
         
