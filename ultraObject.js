@@ -1,4 +1,3 @@
-
             function wait(   ms   ){
                var start = new Date().getTime();
                var end = start;
@@ -3278,9 +3277,38 @@
                     ultraObject.interrogation({
                         proof:[
                                 ['element',ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item],
-                                ['parent',ultraObject.selectTags[ultraObject.scope[pFFST_1_i]]],
+                                ['parents',ultraObject.selectTags[ultraObject.scope[pFFST_1_i]]],
                                 ['siblings',ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.parentElement.children],
                                 ['children',ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.children]
+                            ],
+                        facts:[
+                                ['element',
+                                    {
+                                    'valuePhrase':function(){},
+                                    'tagName':function(){},
+                                    'hidden':function(){},
+                                    'className':function(){},
+                                    'id':function(){}
+                                    }
+                                ],
+                                ['parent',
+                                    {
+                                    'tagName':function(){},
+                                    'className':function(){},
+                                    'id':function(){},
+                                    'exist':function(){},
+                                    }
+                                ],
+                                ['siblings',
+                                    {
+                                    'tagName':function(){}
+                                    }
+                                ],
+                                ['children',
+                                    {
+                                    'tagName':function(){}
+                                    }
+                                ]
                             ],
                         pointValue:'v1'
                     })
@@ -3964,13 +3992,15 @@
                 each index is held in an itO
                     0. the name of the object
                     1, the actual object
-            .facts
+            .facts an array
                 this is how I interrogate the objects
+                    valuePhrase
                     className (partialMatch)
                     id
                     tagName
                     hidden (true or false)
                 and you will specify this is an index in an itO corresponding to the the items in proof
+                the first index represents the proof object , the second index is an array containing the modules and specialized test, if module has a function, then its specialized otherwise, use deault function
             .pointValue if interrogation at facts passes this is incremented by one
                 v1, just use a simple counting mechanism
                 v2, use an itO for more complex counting system almost working like PAM in linux
@@ -3984,12 +4014,12 @@
         
         if(   dev_obj !== undefined   ){
         
-            /*adding the first qC along with an abelast*/
+            /*adding the first qC along with an abelast*/ //{
             var iQC_0_i = ultraObject.scope.add(   {value:ultraObject.qC.add(   {value:ultraObject.iterableObject()}   )}   )
             ultraObject.qC.abelast.add(   {value:ultraObject.scope[iQC_0_i]}   )
-            /**/
+            // }  /**/
             
-            /*setting the point value in the qC*/
+            /*setting the point value in the qC*/ //{
             if(   !ultraObject.isString(   {type:dev_obj.pointValue}   ) || dev_obj.pointValue === 'v1'   ){
                 
                 
@@ -4006,21 +4036,47 @@
                 
                 
             }
-            /**/
+            // } /**/
             
-            /*setting up proof in the qC*/
+            /*setting up proof in the qC*/ //{
+            ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof = ultraObject.iterableObject()
             var iFL_0_i = {
                 forLoop_0_i:0,
                 forLoopLength:dev_obj.proof.length,
                 fn:function(   dev_obj   ){
-                    ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].add(   {value:ultraObject.iterify(   {iterify:dev_obj.proof[iFL_0_i.forLoop_0_i]}   )}   )
+                    /*helping the sibling module know not to look at the same element again*/
+                    if(   dev_obj.proof[iFL_0_i.forLoop_0_i][0] === 'element'   ){
+                        
+                        
+                        dev_obj.proof[iFL_0_i.forLoop_0_i][1].sameChild = 'true'
+                        
+                        
+                    }
+                    /**/
+                    ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof.add(   {value:ultraObject.iterify(   {iterify:dev_obj.proof[iFL_0_i.forLoop_0_i]}   )}   )
                 },
                 args:{
                     proof:dev_obj.proof
-                    }
+                }
             }
             ultraObject.forLoop(   iFL_0_i   )
-            /**/
+            // } /**/
+            
+            /*setting up facts in the qC*/ //{
+            ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].facts = ultraObject.iterableObject()
+            var iFL_1_i = {
+                forLoop_0_i:0,
+                forLoopLength:dev_obj.facts.length,
+                fn:function(   dev_obj   ){
+                    ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].facts.add(   {value:ultraObject.iterify(   {iterify:dev_obj.facts[iFL_1_i.forLoop_0_i]}   )}   )
+                },
+                args:{
+                    facts:dev_obj.facts
+                }
+            }
+            ultraObject.forLoop(   iFL_1_i   )
+            // } /**/
+            
             
             /*debugging*/
             console.log(   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ]   )
