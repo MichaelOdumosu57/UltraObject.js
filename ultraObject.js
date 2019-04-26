@@ -1,3 +1,5 @@
+
+
             function wait(   ms   ){
                var start = new Date().getTime();
                var end = start;
@@ -3295,7 +3297,8 @@
                         ultraObject.selectTags[ultraObject.scope[pFFST_1_i]].add(   {value:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.offsetParent}   )
                         ultraObject.selectTags[ultraObject.scope[pFFST_1_i]].add(   {value:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.parentElement}   )
                         ultraObject.selectTags[ultraObject.scope[pFFST_1_i]].add(   {value:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.parentNode}   )
-                        //
+                        // accessing the qC objet
+                        ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]]
                     // } /**/
                     ultraObject.interrogation({
                         proof:[
@@ -3312,22 +3315,21 @@
                                         if(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.value.toLowerCase() === ultraObject.misc[ultraObject.scope[pFFList_0_i]][pFFFL_0_i.forLoop_0_i][1].toLowerCase()   ){
                                             
                                             
-                                            return  {
-                                                        noRun:'true'
-                                                    }
+                                            ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].noRun = 'true'
+                                            
+                                                    
                                             
                                             
                                         }
                                         
                                         
-                                        return  {
-                                                    noRun:'false'
-                                                }
+                                        ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].noRun = 'false'
+                                        
                                         // } /**/
                                     },
                                     'suspect':function(   dev_obj   ){
                                         /*suspects to see if different values were put in the same spot*/ //{
-                                        if(   dev_obj.noRun !== 'true'   ){
+                                        if(   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].noRun !== 'true'   ){
                                             
                                             
                                             console.log(   'index',pFFFL_0_i.forLoop_0_i   )
@@ -3339,9 +3341,9 @@
                                                 which:0,
                                                 how:function(   dev_obj   ){
                                                     
-                                                    debugger
-                                                    console.log(   ultraObject.qC[   ultraObject.qC.abelast[   ultraObject.qC.abelast.length -1   ]   ]  )
-                                                    throw('e')
+                                                    //this is how the developer will access the qC
+                                                    ultraObject.qC[   ultraObject.qC.abelast[   ultraObject.qC.abelast.length -1   ]   ]
+                                                    //
                                                     if(   dev_obj.compTo === dev_obj.compAgnI   ){
                                                         
                                                         
@@ -4109,7 +4111,9 @@
                     .pointValue
                         if dev_obj.pointValue = v1, make 0, if dev_obj.pointValue =v2 use an itO
                     .passOn
-                        helps the modules of the developer communicate with one another
+                        an itO helps the modules of the developer communicate with one another
+                        .proofObject
+                            an string representing the proof object the API is looking at
                     .proof an itO from dev_obj.proof
                         0 the proof object name
                         1. the proof object reference
@@ -4185,12 +4189,18 @@
             ultraObject.forLoop(   iFL_1_i   )
             // } /**/
             
+            /*providing important qC metadata for the developer*/ //{
+                ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn = ultraObject.iterableObject()
+            // } /**/
+            
             /*beginning interrogation*/ //{
             var iFL_2_i = {
                 forLoop_0_i:0,
                 forLoopLength:dev_obj.proof.length,
                 fn:function(   dev_obj   ){
                     /*looking at the interrogation facts for each proof object*/
+                    debugger
+                    ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject = ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][0][0]
                     var iFL_3_i = {
                         forLoop_0_i:0,
                         forLoopLength:ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ].length,
@@ -4200,7 +4210,7 @@
                             if(   ultraObject.isFunction(   {type:ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][1]}   )   ){
                                 
                                 
-                                ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn = ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][1](   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn   )
+                                ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][1](   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn   )
                                
                             
                             
