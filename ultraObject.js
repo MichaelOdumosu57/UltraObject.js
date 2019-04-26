@@ -3317,14 +3317,11 @@
                                             
                                             ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].noRun = 'true'
                                             
-                                                    
-                                            
-                                            
+                                                                                                                                            
                                         }
                                         
                                         
                                         ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].noRun = 'false'
-                                        
                                         // } /**/
                                     },
                                     'suspect':function(   dev_obj   ){
@@ -3341,7 +3338,7 @@
                                                 which:0,
                                                 how:function(   dev_obj   ){
                                                     
-                                                    debugger
+                                                    
                                                     if(   dev_obj.compTo === dev_obj.compAgnI   ){
                                                         
                                                         
@@ -3378,7 +3375,28 @@
                                         }
                                         // } /**/
                                     },
-                                    'tagName':function(   dev_obj   ){},
+                                    'tagName':function(   dev_obj   ){
+                                        console.log(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item[   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].passOn.factModule   ]   )
+                                        
+                                        var pFFBOOL_1_i = {0:false}
+                                        pFFBOOL_1_i = ultraObject.severalOr({
+                                            compTo: ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item[   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].passOn.factModule   ],
+                                            compAgn:ultraObject.misc[ultraObject.scope[pFFMisc_1_i]],
+                                            boolean:pFFBOOL_1_i,
+                                            which:0
+                                        })
+                                        console.log(   pFFBOOL_1_i   )
+                                        
+                                        
+                                        if(   pFFBOOL_1_i[0]   ){
+                                            
+                                            //POINT VALUE
+                                            ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].pointValue += 1
+                                         
+                                                
+                                        }
+                                        
+                                    },
                                     'hidden':function(   dev_obj   ){},
                                     'className':function(   dev_obj   ){},
                                     'id':function(   dev_obj   ){}
@@ -4200,15 +4218,17 @@
                 fn:function(   dev_obj   ){
                     /*looking at the interrogation facts for each proof object*/
                     
-                    /* grabbing the proofObject, the factModule*/ // {
+                    /* grabbing the proofObject*/ // {
                     ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject = ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]
-                    ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.factModule = ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][0][0]
                     // } /**/
                     var iFL_3_i = {
                         forLoop_0_i:0,
                         forLoopLength:ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ].length,
                         fn:function(   dev_obj   ){
                             /*actual use of each interrogaton function ot interrogate*/
+                            ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.factModule = ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][0]
+                            
+                            
                             // use developer given
                             if(   ultraObject.isFunction(   {type:ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][1]}   )   ){
                                 
