@@ -3288,15 +3288,15 @@
                     /*
                         what is the framework?
                         turn all string into lowercase
-    
                     */
-                    /* setting up needed objects for proof*/
+                    /* setting up needed objects for proof*/ //{
                         //parents
                         var pFFST_1_i = ultraObject.scope.add(   {value:ultraObject.selectTags.add(   {value:ultraObject.iterableObject()}   )}   )
                         ultraObject.selectTags[ultraObject.scope[pFFST_1_i]].add(   {value:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.offsetParent}   )
                         ultraObject.selectTags[ultraObject.scope[pFFST_1_i]].add(   {value:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.parentElement}   )
                         ultraObject.selectTags[ultraObject.scope[pFFST_1_i]].add(   {value:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.parentNode}   )
-                    /**/
+                        //
+                    // } /**/
                     ultraObject.interrogation({
                         proof:[
                                 ['element',ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item],
@@ -3320,9 +3320,9 @@
                                         }
                                         
                                         
-                                    return  {
-                                                noRun:'false'
-                                            }
+                                        return  {
+                                                    noRun:'false'
+                                                }
                                         // } /**/
                                     },
                                     'suspect':function(   dev_obj   ){
@@ -3339,7 +3339,9 @@
                                                 which:0,
                                                 how:function(   dev_obj   ){
                                                     
-                                                    
+                                                    debugger
+                                                    console.log(   ultraObject.qC[   ultraObject.qC.abelast[   ultraObject.qC.abelast.length -1   ]   ]  )
+                                                    throw('e')
                                                     if(   dev_obj.compTo === dev_obj.compAgnI   ){
                                                         
                                                         
@@ -3407,7 +3409,10 @@
                     throw('e')
                     ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].pointValue = 0 // used to deterime if valuePhrasre belongs in the elements value
                     console.log(  'what is the result', ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword  )
-                    console.log(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.value,ultraObject.misc[ultraObject.scope[pFFList_0_i]][pFFFL_0_i.forLoop_0_i][1]   )
+                    ultraObject.objInvolved({
+                        0:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.value,
+                        1:ultraObject.misc[ultraObject.scope[pFFList_0_i]][pFFFL_0_i.forLoop_0_i][1]
+                    })
                     
                     /*suspects to see if different values were put in the same spot*/ //{
                     if(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.value.toLowerCase() !== ultraObject.misc[ultraObject.scope[pFFList_0_i]][pFFFL_0_i.forLoop_0_i][1].toLowerCase()   ){
@@ -4120,6 +4125,7 @@
         
             /*adding the first qC along with an abelast*/ //{
             var iQC_0_i = ultraObject.scope.add(   {value:ultraObject.qC.add(   {value:ultraObject.iterableObject()}   )}   )
+            ultraObject.qC.abelast.add(   {value:ultraObject.scope[iQC_0_i]}   )
             // }  /**/
             
             /*setting the point value in the qC*/ //{
@@ -4190,16 +4196,17 @@
                         forLoopLength:ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ].length,
                         fn:function(   dev_obj   ){
                             /*actual use of each interrogaton function ot interrogate*/
+                            // use developer given
                             if(   ultraObject.isFunction(   {type:ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][1]}   )   ){
                                 
-                                debugger
+                                
                                 ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn = ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][1](   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn   )
                                
                             
                             
                             }
                             
-                            
+                            //use defaults instead
                             else if(   !ultraObject.isFunction(   {type:ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][1]}   )   ){
                             
                             
@@ -4222,7 +4229,6 @@
             /**/
             
             /*taking the qC out of the scope*/ //{
-            ultraObject.qC.abelast.add(   {value:ultraObject.scope[iQC_0_i]}   )
             ultraObject.scope.minus(   {index:iQC_0_i}   )
             // }  /**/
             
