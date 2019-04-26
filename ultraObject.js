@@ -3341,26 +3341,24 @@
                                                 which:0,
                                                 how:function(   dev_obj   ){
                                                     
-                                                    //this is how the developer will access the qC
-                                                    ultraObject.qC[   ultraObject.qC.abelast[   ultraObject.qC.abelast.length -1   ]   ]
-                                                    //
+                                                    debugger
                                                     if(   dev_obj.compTo === dev_obj.compAgnI   ){
                                                         
                                                         
-                                                        if(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]].suspects === undefined   ){
+                                                        if(   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]][   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].passOn.proofObject   ].suspects === undefined   ){
                                                         //if we have suspects to determine who belongs in the elements value. this might need to be reset
                                                         
-                                                            ultraObject.selectTags[ultraObject.scope[pFFST_0_i]].suspects = ultraObject.iterableObject()
-                                                            ultraObject.selectTags[ultraObject.scope[pFFST_0_i]].suspects.add(   {value:dev_obj.index}   )
+                                                            ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]][   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].passOn.proofObject   ].suspects = ultraObject.iterableObject()
+                                                            ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]][   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].passOn.proofObject   ].suspects.add(   {value:dev_obj.index}   )
                                                             //see i wrote for the future here
                                                             
                                                         }
                                                         
                                                         
-                                                        else if(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]].suspects !== undefined   ){
+                                                        else if(   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]][   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].passOn.proofObject   ].suspects !== undefined   ){
                                                             
                                                         
-                                                            ultraObject.selectTags[ultraObject.scope[pFFST_0_i]].suspects.add(   {value:dev_obj.index}   )
+                                                            ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]][   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].passOn.proofObject   ].suspects.add(   {value:dev_obj.index}   )
                                                             
                                                             
                                                         }
@@ -3374,7 +3372,7 @@
                                                 result:'a'
                                             })
                                             //this represents the digits of the NS,which are apparently the same that represents different items in the list however only one in this case should receive the element value here
-                                            console.log(   'our suspects',ultraObject.selectTags[ultraObject.scope[pFFST_0_i]].suspects  )
+                                            console.log(   'our suspects',ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]][   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].passOn.proofObject   ].suspects  )
                                             
                                             
                                         }
@@ -4114,6 +4112,8 @@
                         an itO helps the modules of the developer communicate with one another
                         .proofObject
                             an string representing the proof object the API is looking at
+                        .factModule
+                            a sring representing the module used to evalute the proof object
                     .proof an itO from dev_obj.proof
                         0 the proof object name
                         1. the proof object reference
@@ -4199,8 +4199,11 @@
                 forLoopLength:dev_obj.proof.length,
                 fn:function(   dev_obj   ){
                     /*looking at the interrogation facts for each proof object*/
-                    debugger
-                    ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject = ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][0][0]
+                    
+                    /* grabbing the proofObject, the factModule*/ // {
+                    ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject = ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]
+                    ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.factModule = ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][0][0]
+                    // } /**/
                     var iFL_3_i = {
                         forLoop_0_i:0,
                         forLoopLength:ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ].length,
