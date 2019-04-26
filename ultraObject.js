@@ -1,5 +1,3 @@
-
-
             function wait(   ms   ){
                var start = new Date().getTime();
                var end = start;
@@ -3342,20 +3340,20 @@
                                                     if(   dev_obj.compTo === dev_obj.compAgnI   ){
                                                         
                                                         
-                                                        if(   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]][   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].passOn.proofObject   ].suspects === undefined   ){
+                                                        if(   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]][   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].passOn.proofObject[0]   ].suspects === undefined   ){
                                                         //if we have suspects to determine who belongs in the elements value. this might need to be reset
                                                         
-                                                            ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]][   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].passOn.proofObject   ].suspects = ultraObject.iterableObject()
-                                                            ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]][   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].passOn.proofObject   ].suspects.add(   {value:dev_obj.index}   )
+                                                            ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]][   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].passOn.proofObject[0]   ].suspects = ultraObject.iterableObject()
+                                                            ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]][   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].passOn.proofObject[0]   ].suspects.add(   {value:dev_obj.index}   )
                                                             //see i wrote for the future here
                                                             
                                                         }
                                                         
                                                         
-                                                        else if(   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]][   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].passOn.proofObject   ].suspects !== undefined   ){
+                                                        else if(   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]][   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].passOn.proofObject[0]   ].suspects !== undefined   ){
                                                             
                                                         
-                                                            ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]][   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].passOn.proofObject   ].suspects.add(   {value:dev_obj.index}   )
+                                                            ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]][   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].passOn.proofObject[0]   ].suspects.add(   {value:dev_obj.index}   )
                                                             
                                                             
                                                         }
@@ -3369,15 +3367,15 @@
                                                 result:'a'
                                             })
                                             //this represents the digits of the NS,which are apparently the same that represents different items in the list however only one in this case should receive the element value here
-                                            console.log(   'our suspects',ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]][   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].passOn.proofObject   ].suspects  )
+                                            console.log(   'our suspects',ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]][   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].passOn.proofObject[0]   ].suspects  )
                                             
                                             
                                         }
                                         // } /**/
                                     },
                                     'tagName':function(   dev_obj   ){
+                                        console.log(   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].passOn.proofObject   )
                                         console.log(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item[   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].passOn.factModule   ]   )
-                                        
                                         var pFFBOOL_1_i = {0:false}
                                         pFFBOOL_1_i = ultraObject.severalOr({
                                             compTo: ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item[   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].passOn.factModule   ],
@@ -4129,7 +4127,7 @@
                     .passOn
                         an itO helps the modules of the developer communicate with one another
                         .proofObject
-                            an string representing the proof object the API is looking at
+                            an itO representing the proof object the API is looking at
                         .factModule
                             a sring representing the module used to evalute the proof object
                     .proof an itO from dev_obj.proof
@@ -4219,7 +4217,7 @@
                     /*looking at the interrogation facts for each proof object*/
                     
                     /* grabbing the proofObject*/ // {
-                    ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject = ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]
+                    ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject = ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i]
                     // } /**/
                     var iFL_3_i = {
                         forLoop_0_i:0,

@@ -5,7 +5,7 @@
 /*actual use of each interrogaton function ot interrogate*/
 // so if I have my own function use it or else use the interrgation module
 
- function interrogation(   dev_obj   ){
+    function interrogation(   dev_obj   ){
         //throw the result in here later
         /* ablelasts
             1 for qC
@@ -41,7 +41,11 @@
                     .pointValue
                         if dev_obj.pointValue = v1, make 0, if dev_obj.pointValue =v2 use an itO
                     .passOn
-                        helps the modules of the developer communicate with one another
+                        an itO helps the modules of the developer communicate with one another
+                        .proofObject
+                            an itO representing the proof object the API is looking at
+                        .factModule
+                            a sring representing the module used to evalute the proof object
                     .proof an itO from dev_obj.proof
                         0 the proof object name
                         1. the proof object reference
@@ -57,6 +61,7 @@
         
             /*adding the first qC along with an abelast*/ //{
             var iQC_0_i = ultraObject.scope.add(   {value:ultraObject.qC.add(   {value:ultraObject.iterableObject()}   )}   )
+            ultraObject.qC.abelast.add(   {value:ultraObject.scope[iQC_0_i]}   )
             // }  /**/
             
             /*setting the point value in the qC*/ //{
@@ -116,27 +121,39 @@
             ultraObject.forLoop(   iFL_1_i   )
             // } /**/
             
+            /*providing important qC metadata for the developer*/ //{
+                ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn = ultraObject.iterableObject()
+            // } /**/
+            
             /*beginning interrogation*/ //{
             var iFL_2_i = {
                 forLoop_0_i:0,
                 forLoopLength:dev_obj.proof.length,
                 fn:function(   dev_obj   ){
                     /*looking at the interrogation facts for each proof object*/
+                    
+                    /* grabbing the proofObject*/ // {
+                    ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject = ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i]
+                    // } /**/
                     var iFL_3_i = {
                         forLoop_0_i:0,
                         forLoopLength:ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ].length,
                         fn:function(   dev_obj   ){
                             /*actual use of each interrogaton function ot interrogate*/
+                            ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.factModule = ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][0]
+                            
+                            
+                            // use developer given
                             if(   ultraObject.isFunction(   {type:ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][1]}   )   ){
                                 
-                                debugger
-                                ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn = ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][1](   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn   )
+                                
+                                ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][1](   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn   )
                                
                             
                             
                             }
                             
-                            
+                            //use defaults instead
                             else if(   !ultraObject.isFunction(   {type:ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][1]}   )   ){
                             
                             
@@ -159,7 +176,6 @@
             /**/
             
             /*taking the qC out of the scope*/ //{
-            ultraObject.qC.abelast.add(   {value:ultraObject.scope[iQC_0_i]}   )
             ultraObject.scope.minus(   {index:iQC_0_i}   )
             // }  /**/
             
