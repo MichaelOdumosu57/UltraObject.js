@@ -36,6 +36,11 @@ the developer must follow the appropriate instructions when it comes to using th
     in certain cases we might get an element of a set of elements, if we have a set of elements the needed keyword is in its index
 */
 
+/*
+    needed for partialMatch className module
+    the developer must provide the partialMatch objet
+*/
+
     function interrogation(   dev_obj   ){
         //throw the result in here later
         /* ablelasts

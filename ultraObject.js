@@ -1,4 +1,4 @@
-update interrogation, finished the hidden module to se if an item is hidden
+
 
             function wait(   ms   ){
                var start = new Date().getTime();
@@ -3291,6 +3291,7 @@ update interrogation, finished the hidden module to se if an item is hidden
                         what is the framework?
                         turn all string into lowercase
                     */
+                    
                     /* setting up needed objects for proof*/ //{
                         //parents
                         var pFFST_1_i = ultraObject.scope.add(   {value:ultraObject.selectTags.add(   {value:ultraObject.iterableObject()}   )}   )
@@ -3300,6 +3301,7 @@ update interrogation, finished the hidden module to se if an item is hidden
                         // accessing the qC objet
                         ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]]
                     // } /**/
+                    
                     ultraObject.interrogation({
                         proof:[
                                 ['element',ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item],
@@ -3381,7 +3383,22 @@ update interrogation, finished the hidden module to se if an item is hidden
                                                     }
                                                 },
                                     'hidden':{},
-                                    'className':function(   dev_obj   ){},
+                                    'className':{
+                                                    ultraObject:{
+                                                        keyword:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword,
+                                                        //FIX ME a better way to make meaninguful
+                                                        pM_0_i:ultraObject.iterify({
+                                                            iterify:{
+                                                                range:20,
+                                                                spaces:2,
+                                                                gap:2,
+                                                                trailer:20,
+                                                                type:'string',
+                                                                cCase:'toLowerCase'
+                                                            }
+                                                        })
+                                                    }
+                                                },
                                     'id':function(   dev_obj   ){}
                                     }
                                 ],
@@ -3633,11 +3650,12 @@ update interrogation, finished the hidden module to se if an item is hidden
                                 
                                 
                                 if(   ultraObject.misc[ultraObject.scope[pFFMisc_0_i]][pFFFL_1_i.forLoop_0_i] === 'className'   ){
-                                    /*the spaces between are classNames I will apply partial match here */
                                     
+                                    /*the spaces between are classNames I will apply partial match here */
                                     ultraObject.misc[ultraObject.scope[pFFMisc_0_i]].classes = ultraObject.iterify(   {iterify:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item[   ultraObject.misc[ultraObject.scope[pFFMisc_0_i]][pFFFL_1_i.forLoop_0_i]   ].split(' ')}   )
                                     ultraObject.misc[ultraObject.scope[pFFMisc_0_i]].classes.add(   {value:'Linksoed'}   )
                                     /**/
+                                    
                                     /*to loop through classNames and find a partial match*/
                                     var pFFBOOL_2_I = {0:false}
                                     pFFBOOL_2_I = ultraObject.severalOr({
@@ -4208,6 +4226,7 @@ update interrogation, finished the hidden module to se if an item is hidden
                         forLoop_0_i:0,
                         forLoopLength:ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ].length,
                         fn:function(   dev_obj   ){
+                            
                             /*actual use of each interrogaton function ot interrogate*/
                             ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.factModule = ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][0]
                             
@@ -4262,7 +4281,7 @@ update interrogation, finished the hidden module to se if an item is hidden
                                 // } /**/
                                 
                                 /* hidden module */ // {
-                                if(   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][0] === 'hidden'   ){
+                                else if(   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][0] === 'hidden'   ){
                                     
                                     /* if the element is not hidden add one to the pointValue */ // {
                                     if(   !ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[1][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][0]   ]   ){
@@ -4274,6 +4293,69 @@ update interrogation, finished the hidden module to se if an item is hidden
                                     }
                                     // } /**/
                                     
+                                }
+                                // } /**/
+                                
+                                /* className module */ // {
+                                else if(   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][0] === 'className'   ){
+                                    
+                                    /* pulling classes from the DOM element */ // {
+                                    ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0]   ].classes =  ultraObject.iterify({
+                                            iterify:ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[1][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][0]   ].split(' ')
+                                        })
+                                    // } /**/
+                                    
+                                    /* keyword to compare against className */ // {
+                                    console.log(   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][1].ultraObject.keyword   )
+                                    // } /**/
+                                    
+                                    var iBOOL_0_i = {0:false}
+                                    iBOOL_0_i = ultraObject.severalOr({
+                                        compTo: ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][1].ultraObject.keyword,
+                                        compAgn: ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0]   ].classes,
+                                        boolean:iBOOL_0_i,
+                                        which:0,
+                                        how:function(   dev_obj   ){
+                                            
+                                            /* needed for partialMatch className module */ // {
+                                            ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0]   ].iPM_0_i = {
+                                                    compTo:dev_obj.compTo,
+                                                    compAgn: dev_obj.compAgnI
+                                            }
+                                            
+                                            /* grabbing developer args for partialMatch */ // {
+                                            var iFL_4_i = {
+                                                forLoop_0_i:0,
+                                                forLoopLength: ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][1].ultraObject.pM_0_i.length,
+                                                fn:function(   dev_obj   ){
+                                                    ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0]   ].iPM_0_i[   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][1].ultraObject.pM_0_i[iFL_4_i.forLoop_0_i][0]   ] = ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][1].ultraObject.pM_0_i[iFL_4_i.forLoop_0_i][1]
+                                                },
+                                                args:{}
+                                            }
+                                            ultraObject.forLoop(   iFL_4_i   )
+                                            // } /**/
+                                            
+                                            ultraObject.partialMatch(   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0]   ].iPM_0_i   )
+                                            // } /**/
+                                                                                        
+                                            if(   ultraObject.misc[ultraObject.misc.length-1].satisfy   ){
+                                                
+                                                
+                                                ultraObject.misc.minus(   {index:ultraObject.misc.length-1}   )
+                                                ultraObject.misc.abelast.minus(   {index:ultraObject.misc.abelast.length-1}   )
+                                                ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].pointValue  += 1
+                                                
+                                                
+                                            }
+                                            
+                                            
+                                            ultraObject.misc.minus(   {index:ultraObject.misc.length-1}   )
+                                            ultraObject.misc.abelast.minus(   {index:ultraObject.misc.abelast.length-1}   )
+                                        },
+                                        result:'a'
+                                    })
+                                    console.log(   iBOOL_0_i   )
+                                                                        
                                 }
                                 // } /**/
                                 
@@ -4290,9 +4372,9 @@ update interrogation, finished the hidden module to se if an item is hidden
             ultraObject.forLoop(   iFL_2_i   )
             // } /**/
                         
-            /*debugging*/
-            console.log(   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ]   )
-            /**/
+            /*debugging*/ // {
+            // console.log(   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ]   )
+            // } /**/
             
             /*taking the qC out of the scope*/ //{
             ultraObject.scope.minus(   {index:iQC_0_i}   )
