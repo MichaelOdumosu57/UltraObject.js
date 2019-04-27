@@ -1,5 +1,3 @@
-
-
             function wait(   ms   ){
                var start = new Date().getTime();
                var end = start;
@@ -3399,7 +3397,22 @@
                                                         })
                                                     }
                                                 },
-                                    'id':function(   dev_obj   ){}
+                                    'id':{
+                                                    ultraObject:{
+                                                        keyword:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword,
+                                                        //FIX ME a better way to make meaninguful
+                                                        pM_0_i:ultraObject.iterify({
+                                                            iterify:{
+                                                                range:20,
+                                                                spaces:2,
+                                                                gap:2,
+                                                                trailer:20,
+                                                                type:'string',
+                                                                cCase:'toLowerCase'
+                                                            }
+                                                        })
+                                                    }
+                                                }
                                     }
                                 ],
                                 ['parents',
@@ -4236,8 +4249,7 @@
                                 
                                 ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][1](   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn   )
                                
-                            
-                            
+                                                        
                             }
                             /**/
                             
@@ -4355,6 +4367,69 @@
                                         result:'a'
                                     })
                                     console.log(   iBOOL_0_i   )
+                                                                        
+                                }
+                                // } /**/
+                                
+                                /* id module */ // {
+                                else if(   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][0] === 'id'   ){
+                                                                        
+                                    /* pulling  id from the DOM element */ // {
+                                    ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0]   ].ids =  ultraObject.iterify({
+                                            iterify:ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[1][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][0]   ].split(' ')
+                                        })
+                                    // } /**/
+                                    
+                                    /* keyword to compare against  id*/ // {
+                                    console.log(   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][1].ultraObject.keyword   )
+                                    // } /**/
+                                    
+                                    var iBOOL_1_i = {0:false}
+                                    iBOOL_1_i = ultraObject.severalOr({
+                                        compTo: ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][1].ultraObject.keyword,
+                                        compAgn: ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0]   ].ids,
+                                        boolean:iBOOL_1_i,
+                                        which:0,
+                                        how:function(   dev_obj   ){
+                                            
+                                            /* needed for partialMatch className module */ // {
+                                            ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0]   ].iPM_0_i = {
+                                                    compTo:dev_obj.compTo,
+                                                    compAgn: dev_obj.compAgnI
+                                            }
+                                            
+                                            /* grabbing developer args for partialMatch */ // {
+                                            var iFL_5_i = {
+                                                forLoop_0_i:0,
+                                                forLoopLength: ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][1].ultraObject.pM_0_i.length,
+                                                fn:function(   dev_obj   ){
+                                                    ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0]   ].iPM_0_i[   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][1].ultraObject.pM_0_i[iFL_5_i.forLoop_0_i][0]   ] = ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][1].ultraObject.pM_0_i[iFL_5_i.forLoop_0_i][1]
+                                                },
+                                                args:{}
+                                            }
+                                            ultraObject.forLoop(   iFL_5_i   )
+                                            // } /**/
+                                            
+                                            ultraObject.partialMatch(   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0]   ].iPM_0_i   )
+                                            // } /**/
+                                                                                        
+                                            if(   ultraObject.misc[ultraObject.misc.length-1].satisfy   ){
+                                                
+                                                
+                                                ultraObject.misc.minus(   {index:ultraObject.misc.length-1}   )
+                                                ultraObject.misc.abelast.minus(   {index:ultraObject.misc.abelast.length-1}   )
+                                                ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].pointValue  += 1
+                                                
+                                                
+                                            }
+                                            
+                                            
+                                            ultraObject.misc.minus(   {index:ultraObject.misc.length-1}   )
+                                            ultraObject.misc.abelast.minus(   {index:ultraObject.misc.abelast.length-1}   )
+                                        },
+                                        result:'a'
+                                    })
+                                    console.log(   iBOOL_1_i   )
                                                                         
                                 }
                                 // } /**/
