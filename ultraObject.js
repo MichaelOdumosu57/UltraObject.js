@@ -1,4 +1,4 @@
-
+update interrogation, finished the hidden module to se if an item is hidden
 
             function wait(   ms   ){
                var start = new Date().getTime();
@@ -3379,29 +3379,8 @@
                                                     ultraObject:{
                                                            tagOptions:pFFMisc_1_i
                                                     }
-                                                } /*function(   dev_obj   ){
-                                        console.log(   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].passOn.proofObject[1]   )
-                                        console.log(   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].passOn.proofObject[1][   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].passOn.factModule   ]   )
-                                        var pFFBOOL_1_i = {0:false}
-                                        pFFBOOL_1_i = ultraObject.severalOr({
-                                            compTo: ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].passOn.proofObject[1][   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].passOn.factModule   ].toLowerCase(),
-                                            compAgn:ultraObject.misc[ultraObject.scope[pFFMisc_1_i]],
-                                            boolean:pFFBOOL_1_i,
-                                            which:0
-                                        })
-                                        console.log(   pFFBOOL_1_i   )
-                                        
-                                        
-                                        if(   pFFBOOL_1_i[0]   ){
-                                            
-                                            //POINT VALUE
-                                            ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].pointValue += 1
-                                         
-                                                
-                                        }
-                                        
-                                    }*/,
-                                    'hidden':function(   dev_obj   ){},
+                                                },
+                                    'hidden':{},
                                     'className':function(   dev_obj   ){},
                                     'id':function(   dev_obj   ){}
                                     }
@@ -4261,7 +4240,39 @@
                                                                         
                                     // } /**/
                                     
+                                    /* default tagName module evalution */ // {
+                                    var iBOOL_0_i = {0:false}
+                                    iBOOL_0_i = ultraObject.severalOr({
+                                        compTo: ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[1][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][0]   ].toLowerCase(),
+                                        compAgn:ultraObject.misc[   ultraObject.scope[iMisc_0_i]   ],
+                                        boolean:iBOOL_0_i,
+                                        which:0
+                                    })
+                                                                        
                                     
+                                    if(   iBOOL_0_i[0]   ){
+                                        
+                                        
+                                        ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].pointValue += 1
+                                     
+                                            
+                                    }
+                                    // } /**/
+                                }
+                                // } /**/
+                                
+                                /* hidden module */ // {
+                                if(   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][0] === 'hidden'   ){
+                                    
+                                    /* if the element is not hidden add one to the pointValue */ // {
+                                    if(   !ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[1][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][0]   ]   ){
+                                        
+                                        
+                                        ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].pointValue += 1
+                                        
+                                        
+                                    }
+                                    // } /**/
                                     
                                 }
                                 // } /**/
