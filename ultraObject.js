@@ -1,3 +1,5 @@
+
+
             function wait(   ms   ){
                var start = new Date().getTime();
                var end = start;
@@ -3373,12 +3375,16 @@
                                         }
                                         // } /**/
                                     },
-                                    'tagName':function(   dev_obj   ){
-                                        console.log(   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].passOn.proofObject   )
-                                        console.log(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item[   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].passOn.factModule   ]   )
+                                    'tagName':  {
+                                                    ultraObject:{
+                                                           tagOptions:pFFMisc_1_i
+                                                    }
+                                                } /*function(   dev_obj   ){
+                                        console.log(   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].passOn.proofObject[1]   )
+                                        console.log(   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].passOn.proofObject[1][   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].passOn.factModule   ]   )
                                         var pFFBOOL_1_i = {0:false}
                                         pFFBOOL_1_i = ultraObject.severalOr({
-                                            compTo: ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item[   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].passOn.factModule   ],
+                                            compTo: ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].passOn.proofObject[1][   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].passOn.factModule   ].toLowerCase(),
                                             compAgn:ultraObject.misc[ultraObject.scope[pFFMisc_1_i]],
                                             boolean:pFFBOOL_1_i,
                                             which:0
@@ -3394,7 +3400,7 @@
                                                 
                                         }
                                         
-                                    },
+                                    }*/,
                                     'hidden':function(   dev_obj   ){},
                                     'className':function(   dev_obj   ){},
                                     'id':function(   dev_obj   ){}
@@ -4226,8 +4232,7 @@
                             /*actual use of each interrogaton function ot interrogate*/
                             ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.factModule = ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][0]
                             
-                            
-                            // use developer given
+                            /*use developer given*/
                             if(   ultraObject.isFunction(   {type:ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][1]}   )   ){
                                 
                                 
@@ -4236,14 +4241,33 @@
                             
                             
                             }
-                            
-                            //use defaults instead
-                            else if(   !ultraObject.isFunction(   {type:ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][1]}   )   ){
-                            
-                            
-                                    
-                            }
                             /**/
+                            
+                            /*use defaults instead */ //{
+                            else if(   !ultraObject.isFunction(   {type:ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][1]}   )   ){
+                                
+                                /* tagName module */ // {
+                                if(   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][0] === 'tagName'   ){
+                                
+                                    /* accessing desired tagNames given by developer */ // {
+                                    iMisc_0_i =  ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][1].ultraObject.tagOptions
+                                    
+                                    /* the element and the desired tags needed by the tagName module */ // {
+                                    ultraObject.objInvloved({
+                                        0:ultraObject.misc[   ultraObject.scope[iMisc_0_i]   ],
+                                        1:ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[1]
+                                    })
+                                    // } /**/
+                                                                        
+                                    // } /**/
+                                    
+                                    
+                                    
+                                }
+                                // } /**/
+                                
+                            }
+                            // } /**/
                         },
                         args:{}
                     }

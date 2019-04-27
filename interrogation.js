@@ -5,6 +5,37 @@
 /*actual use of each interrogaton function ot interrogate*/
 // so if I have my own function use it or else use the interrgation module
 
+
+/* use defaults instead
+    when the developer needs to send information to the default module the developer needs to send an object like this
+{
+    ultraObejct:{
+           [meaningful]:[its indexes according to the scope ]
+    }
+}
+
+the developer must follow the appropriate instructions when it comes to using the module defaults, however itO's are not used here
+    to give the developer freedom and make it easier to modify the arguments here a dev_obj
+*/
+
+
+/*tagName module
+    its looking for an object dev_obj call this dev obj immedieatley according to converntion
+    tagOptions
+    
+*/
+
+/*
+    default tagName module evalution
+    compTo represents the tagName of the element in question to lowercase
+    compAgn represents the developer deesired arguments to compare the tagName against
+*/
+
+/*
+    determing whether we are dealing with a element or a set of elements
+    in certain cases we might get an element of a set of elements, if we have a set of elements the needed keyword is in its index
+*/
+
     function interrogation(   dev_obj   ){
         //throw the result in here later
         /* ablelasts
@@ -142,8 +173,7 @@
                             /*actual use of each interrogaton function ot interrogate*/
                             ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.factModule = ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][0]
                             
-                            
-                            // use developer given
+                            /*use developer given*/
                             if(   ultraObject.isFunction(   {type:ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][1]}   )   ){
                                 
                                 
@@ -152,14 +182,49 @@
                             
                             
                             }
-                            
-                            //use defaults instead
-                            else if(   !ultraObject.isFunction(   {type:ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][1]}   )   ){
-                            
-                            
-                                    
-                            }
                             /**/
+                            
+                            /*use defaults instead */ //{
+                            else if(   !ultraObject.isFunction(   {type:ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][1]}   )   ){
+                                
+                                /* tagName module */ // {
+                                if(   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][0] === 'tagName'   ){
+                                
+                                    /* accessing desired tagNames given by developer */ // {
+                                    iMisc_0_i =  ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][1].ultraObject.tagOptions
+                                    
+                                    /* the element and the desired tags needed by the tagName module */ // {
+                                    ultraObject.objInvloved({
+                                        0:ultraObject.misc[   ultraObject.scope[iMisc_0_i]   ],
+                                        1:ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[1]
+                                    })
+                                    // } /**/
+                                                                        
+                                    // } /**/
+                                    
+                                    /* default tagName module evalution */ // {
+                                    var iBOOL_0_i = {0:false}
+                                    iBOOL_0_i = ultraObject.severalOr({
+                                        compTo: ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[1][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][0]   ].toLowerCase(),
+                                        compAgn:ultraObject.misc[   ultraObject.scope[iMisc_0_i]   ],
+                                        boolean:iBOOL_0_i,
+                                        which:0
+                                    })
+                                                                        
+                                    
+                                    if(   iBOOL_0_i[0]   ){
+                                        
+                                        //POINT VALUE
+                                        ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].pointValue += 1
+                                     
+                                            
+                                    }
+                                    // } /**/
+                                }
+                                // } /**/
+                                
+                            }
+                            // } /**/
                         },
                         args:{}
                     }
@@ -183,4 +248,4 @@
         
         
     }// used to perform advanced questions on results that can not be simply verified
-     
+      
