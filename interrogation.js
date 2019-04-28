@@ -41,6 +41,10 @@ the developer must follow the appropriate instructions when it comes to using th
     the developer must provide the partialMatch objet
 */
 
+/*
+    accessing desired tagNames given by developer
+    this comes in as an itO from the developer side
+*/
     function interrogation(   dev_obj   ){
         //throw the result in here later
         /* ablelasts

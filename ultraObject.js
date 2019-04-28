@@ -7,7 +7,7 @@
             }
     // if node use exports or figure how to get external modules in here
     
-    //when using ultraObject rmbr all your modules are mesed up replace ultraObject with ultraObjectt
+    //when using ultraObject rmbr all your modules are mesed up replace ultraObject with uO
     
     // an OOP way to do everything javascript, I meant to have this done in python with a superclass oh well
     // for meaningful use, every property purpose is easily availble to each other and you can have several of them
@@ -48,6 +48,12 @@
     // all functions should perform comparision one at the time this allows for more
     // the inside fn adds meaning the outside decides whether to take them out
         
+    // if a function has flow like partialMatch all uO.itO should be added to the scope and taken out of the scope upon completion
+        //it should be made known to the developer how to access them in the abelast
+        
+    // send in the target to a function rather than how to access the target when you are not sure you need to access it from somewhere else, because I may have to access it from anywhere. When you bring them in, place them as a property of antoher uO.itO, or an another associated object
+    
+    // if a function is to be used on the same uO.itO again such as numberSystem, the developer must tell the function where the specifi uO.itO is as it expect to work with only one type of itO
     
     //is {}[] allowed in ES5 ??
     //should items be accessed through the ultraObject because mabye sometimes we cannot call it as a method
@@ -3377,7 +3383,7 @@
                                     },
                                     'tagName':  {
                                                     ultraObject:{
-                                                           tagOptions:pFFMisc_1_i
+                                                           tagOptions:ultraObject.misc[   ultraObject.scope[pFFMisc_1_i]]
                                                     }
                                                 },
                                     'hidden':{},
@@ -3403,10 +3409,10 @@
                                                         //FIX ME a better way to make meaninguful
                                                         pM_0_i:ultraObject.iterify({
                                                             iterify:{
-                                                                range:20,
-                                                                spaces:2,
-                                                                gap:2,
-                                                                trailer:20,
+                                                                range:30,
+                                                                spaces:3,
+                                                                gap:3,
+                                                                trailer:30,
                                                                 type:'string',
                                                                 cCase:'toLowerCase'
                                                             }
@@ -3417,7 +3423,11 @@
                                 ],
                                 ['parents',
                                     {
-                                    'tagName':function(   dev_obj   ){},
+                                    'tagName':{
+                                                    ultraObject:{
+                                                           tagOptions:ultraObject.iterify(   {iterify:['label','div']}   )
+                                                    }
+                                                },
                                     'className':function(   dev_obj   ){},
                                     'id':function(   dev_obj   ){},
                                     'exist':function(   dev_obj   ){},
@@ -4234,7 +4244,9 @@
                     
                     /* grabbing the proofObject*/ // {
                     ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject = ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i]
+                
                     // } /**/
+                    
                     var iFL_3_i = {
                         forLoop_0_i:0,
                         forLoopLength:ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ].length,
@@ -4260,13 +4272,14 @@
                                 if(   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][0] === 'tagName'   ){
                                 
                                     /* accessing desired tagNames given by developer */ // {
-                                    iMisc_0_i =  ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][1].ultraObject.tagOptions
+                                    ultraObject.qC[   0   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0]   ].tagCompAgn =  ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][1].ultraObject.tagOptions
                                     
                                     /* the element and the desired tags needed by the tagName module */ // {
                                     ultraObject.objInvloved({
                                         0:ultraObject.misc[   ultraObject.scope[iMisc_0_i]   ],
                                         1:ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[1]
                                     })
+                                    debugger
                                     // } /**/
                                                                         
                                     // } /**/
@@ -4275,7 +4288,7 @@
                                     var iBOOL_0_i = {0:false}
                                     iBOOL_0_i = ultraObject.severalOr({
                                         compTo: ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[1][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][0]   ].toLowerCase(),
-                                        compAgn:ultraObject.misc[   ultraObject.scope[iMisc_0_i]   ],
+                                        compAgn:ultraObject.qC[   0   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0]   ].tagCompAgn,
                                         boolean:iBOOL_0_i,
                                         which:0
                                     })
