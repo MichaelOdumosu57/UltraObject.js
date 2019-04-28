@@ -28,6 +28,8 @@ the developer must follow the appropriate instructions when it comes to using th
 /*
     default tagName module evalution
     compTo represents the tagName of the element in question to lowercase
+        this has to be turned to a loop if we are dealing with parents and there is more than one element
+        if its undefined its most likely an element
     compAgn represents the developer deesired arguments to compare the tagName against
 */
 
@@ -175,6 +177,7 @@ the developer must follow the appropriate instructions when it comes to using th
                     /* grabbing the proofObject*/ // {
                     ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject = ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i]
                     // } /**/
+                    
                     var iFL_3_i = {
                         forLoop_0_i:0,
                         forLoopLength:ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ].length,
@@ -200,11 +203,11 @@ the developer must follow the appropriate instructions when it comes to using th
                                 if(   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][0] === 'tagName'   ){
                                 
                                     /* accessing desired tagNames given by developer */ // {
-                                    iMisc_0_i =  ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][1].ultraObject.tagOptions
+                                    ultraObject.qC[   0   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0]   ].tagCompAgn =  ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][1].ultraObject.tagOptions
                                     
                                     /* the element and the desired tags needed by the tagName module */ // {
                                     ultraObject.objInvloved({
-                                        0:ultraObject.misc[   ultraObject.scope[iMisc_0_i]   ],
+                                        0:ultraObject.qC[   0   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0]   ].tagCompAgn ,
                                         1:ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[1]
                                     })
                                     // } /**/
@@ -212,22 +215,62 @@ the developer must follow the appropriate instructions when it comes to using th
                                     // } /**/
                                     
                                     /* default tagName module evalution */ // {
-                                    var iBOOL_0_i = {0:false}
-                                    iBOOL_0_i = ultraObject.severalOr({
-                                        compTo: ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[1][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][0]   ].toLowerCase(),
-                                        compAgn:ultraObject.misc[   ultraObject.scope[iMisc_0_i]   ],
-                                        boolean:iBOOL_0_i,
-                                        which:0
-                                    })
-                                                                        
+                                    if(   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[1].length === undefined   ){
                                     
-                                    if(   iBOOL_0_i[0]   ){
+                                    
+                                        var iBOOL_0_i = {0:false}
+                                        iBOOL_0_i = ultraObject.severalOr({
+                                            compTo: ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[1][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][0]   ].toLowerCase(),
+                                            compAgn:ultraObject.qC[   0   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0]   ].tagCompAgn,
+                                            boolean:iBOOL_0_i,
+                                            which:0
+                                        })
                                         
                                         
-                                        ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].pointValue += 1
-                                     
+                                        if(   iBOOL_0_i[0]   ){
+                                            
+                                            
+                                            ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].pointValue += 1
+                                         
+                                                
+                                        }
+                                           
                                             
                                     }
+                                    
+                                    
+                                    else if(   ultraObject.isitO(   {type:ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[1]}   )   ){
+                                        debugger
+                                                                                
+                                        var iFL_6_i = {
+                                            forLoop_0_i:0,
+                                            forLoopLength:ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[1].length,
+                                            fn:function(   dev_obj   ){
+                                                var iBOOL_1_i = {0:false}
+                                                iBOOL_1_i = ultraObject.severalOr({
+                                                    compTo: ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[1][   iFL_6_i.forLoop_0_i   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][0]   ].toLowerCase(),
+                                                    compAgn:ultraObject.qC[   0   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0]   ].tagCompAgn,
+                                                    boolean:iBOOL_1_i,
+                                                    which:0
+                                                })
+                                                
+                                                
+                                                if(   iBOOL_1_i[1]   ){
+                                                    
+                                                    
+                                                    ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].pointValue += 1
+                                                 
+                                                        
+                                                }
+                                                
+                                                
+                                            },
+                                            args:dev_obj
+                                        }
+                                        ultraObject.forLoop(   iFL_6_i   )
+                                    }
+                                                                        
+                                    
                                     // } /**/
                                 }
                                 // } /**/
@@ -399,4 +442,4 @@ the developer must follow the appropriate instructions when it comes to using th
         
         
     }// used to perform advanced questions on results that can not be simply verified
-          
+      
