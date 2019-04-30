@@ -33,6 +33,7 @@
     // if a outer function needs a scope location from the inner function which started in the inner function use, .itO.abelast which is an itO in order to pull it out
     
     //use [   item   ], where item is a whole compact piece of code not an iteration or property
+        // the space used between the brakets indicats if it take that braket group  and place in the consle it returns something meaningful to the function environment and  a standalone value
     //use  (   item   ) always unless there is nothing there or its multiline
     //function temp items should not be in the target object but  in the object the function uses to manipulate the target object. unless the fn does not use a temp object
     /*
@@ -54,6 +55,10 @@
     // send in the target to a function rather than how to access the target when you are not sure you need to access it from somewhere else, because I may have to access it from anywhere. When you bring them in, place them as a property of antoher uO.itO, or an another associated object
     
     // if a function is to be used on the same uO.itO again such as numberSystem, the developer must tell the function where the specifi uO.itO is as it expect to work with only one type of itO
+    
+    // pass the item the function needs to a function, becuase what if the item path changes, this does not apply for specific functions looking for the specific itO respective such as numberSystem, code based on meaning not module
+    
+    // also  function should specify what they are receiving until you come up with a function that converts any type into the type you want which will look like a massive data table, but consider which times are approppriate
     
     //is {}[] allowed in ES5 ??
     //should items be accessed through the ultraObject because mabye sometimes we cannot call it as a method
@@ -443,6 +448,10 @@
          
          
          return false
+    }
+    function isDOMCollection(   dev_obj   ){
+        //.type the item in question
+        // possible choices are HTMLCollection and more how would I go about this obviously I should make this sepearte but how
     }
     function isPrimitive(   dev_obj   ){
     
@@ -3420,7 +3429,6 @@
                                                         care:ultraObject.iterify(   {iterify:['yes','no','no']})
                                                     }
                                                 },
-                                    'exist':{},
                                     }
                                 ],
                                 ['parents',
@@ -4287,6 +4295,7 @@
                     // } /**/
                     
                     console.group(   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0] +' proofObject'   )
+                    debugger
                     var iFL_3_i = {
                         forLoop_0_i:0,
                         forLoopLength:ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ].length,
@@ -4804,7 +4813,25 @@
                         },
                         args:{}
                     }
-                    ultraObject.forLoop(   iFL_3_i   )
+                    
+                    if(   ultraObject.isDOMElement(   {type:ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[1]}   ) || ultraObject.isitO(   {type:ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[1]}   )   ){
+                        
+                        
+                        ultraObject.forLoop(   iFL_3_i   )
+                    
+                    
+                    }
+                    
+                    
+                    else if(   !ultraObject.isDOMElement(   {type:ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[1]}   ) && !ultraObject.isitO(   {type:ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[1]}   )   ){
+                        
+                        console.log(   'interrogation needs the element itself or the set in an itO skipped'   )
+                        
+                        
+                        
+                    }
+                    
+                    
                     console.groupEnd()
                     /**/
                 },

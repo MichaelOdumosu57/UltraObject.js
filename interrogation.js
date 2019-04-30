@@ -184,6 +184,7 @@ the developer must follow the appropriate instructions when it comes to using th
                     // } /**/
                     
                     console.group(   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0] +' proofObject'   )
+                    debugger
                     var iFL_3_i = {
                         forLoop_0_i:0,
                         forLoopLength:ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ].length,
@@ -701,7 +702,25 @@ the developer must follow the appropriate instructions when it comes to using th
                         },
                         args:{}
                     }
-                    ultraObject.forLoop(   iFL_3_i   )
+                    
+                    if(   ultraObject.isDOMElement(   {type:ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[1]}   ) || ultraObject.isitO(   {type:ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[1]}   )   ){
+                        
+                        
+                        ultraObject.forLoop(   iFL_3_i   )
+                    
+                    
+                    }
+                    
+                    
+                    else if(   !ultraObject.isDOMElement(   {type:ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[1]}   ) && !ultraObject.isitO(   {type:ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[1]}   )   ){
+                        
+                        console.log(   'interrogation needs the element itself or the set in an itO skipped'   )
+                        
+                        
+                        
+                    }
+                    
+                    
                     console.groupEnd()
                     /**/
                 },
