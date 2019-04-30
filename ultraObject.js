@@ -1,4 +1,3 @@
-
             function wait(   ms   ){
                var start = new Date().getTime();
                var end = start;
@@ -3420,11 +3419,13 @@
                                                         }),
                                                         care:ultraObject.iterify(   {iterify:['yes','no','no']})
                                                     }
-                                                }
+                                                },
+                                    'exist':{},
                                     }
                                 ],
                                 ['parents',
                                     {
+                                    'exist':{},
                                     'tagName':{
                                                     ultraObject:{
                                                            tagOptions:ultraObject.iterify(   {iterify:['label','div']}   ),
@@ -3465,7 +3466,6 @@
                                                         // care:ultraObject.iterify(   {iterify:['yes','yes','no']}   )
                                                     }
                                         },
-                                    'exist':function(   dev_obj   ){},
                                     }
                                 ],
                                 ['siblings',
@@ -4745,6 +4745,56 @@
                                     }
                                     
                                     
+                                    console.groupEnd()
+                                }
+                                // } /**/
+                                
+                                /* exist module */ // {
+                                else if(   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][0] === 'exist'   ){
+                                    console.group(   'exist'   )
+                                    
+                                    /* if the element exists add one to the point value */ // {
+                                    if(   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[1].length === undefined   ){
+                                    
+                                    
+                                        if(   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[1] !== undefined   ){
+                                            
+                                        
+                                            ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].pointValue += 1
+                                            
+                                            
+                                        }
+                                        
+                                        
+                                    }
+                                    
+                                    
+                                    else if(    ultraObject.isitO(   {type:ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[1]}   )   ){
+                                        
+                                        
+                                        var iFL_9_i = {
+                                            forLoop_0_i:0,
+                                            forLoopLength:ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[1].length,
+                                            fn:function(   dev_obj   ){
+                                                
+                                                
+                                                if(   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[1][   iFL_9_i.forLoop_0_i] !== undefined    ){
+                                                    
+                                                    
+                                                    ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].pointValue += 1
+                                                    
+                                                    
+                                                }
+                                                
+                                                
+                                            },
+                                            args:dev_obj //{}
+                                        }
+                                        ultraObject.forLoop(   iFL_9_i   )
+                                    
+                                    
+                                    }
+                                    // } /**/
                                     console.groupEnd()
                                 }
                                 // } /**/
