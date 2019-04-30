@@ -3428,7 +3428,23 @@
                                                            tagOptions:ultraObject.iterify(   {iterify:['label','div']}   )
                                                     }
                                                 },
-                                    'className':function(   dev_obj   ){},
+                                    'className':{
+                                                    ultraObject:{
+                                                        keyword:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword,
+                                                        //FIX ME a better way to make meaninguful
+                                                        pM_0_i:ultraObject.iterify({
+                                                            iterify:{
+                                                                range:20,
+                                                                spaces:2,
+                                                                gap:2,
+                                                                trailer:20,
+                                                                type:'string',
+                                                                cCase:'toLowerCase'
+                                                            }
+                                                        }),
+                                                        care:ultraObject.iterify(   {iterify:['yes','yes','yes']})
+                                                    }
+                                                },
                                     'id':function(   dev_obj   ){},
                                     'exist':function(   dev_obj   ){},
                                     }
@@ -3871,7 +3887,7 @@
                                        
                                         
                                         ultraObject.selectTags[ultraObject.scope[pFFST_1_i]].classes = ultraObject.iterify(   {iterify:ultraObject.selectTags[ultraObject.scope[pFFST_1_i]][   pFFFL_2_i.forLoop_0_i   ].className.split(' ')}   )
-                                        console.log(   ultraObject.selectTags[ultraObject.scope[pFFST_1_i]]   )
+                                        console.log(   ultraObject.selectTags[ultraObject.scope[pFFST_1_i]][   pFFFL_2_i.forLoop_0_i   ]      )
                                     
                                         /**/
                                         /*to loop through classNames and find a partial match*/
@@ -4362,63 +4378,134 @@
                                 /* className module */ // {
                                 else if(   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][0] === 'className'   ){
                                     
-                                    /* pulling classes from the DOM element */ // {
-                                    ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0]   ].classes =  ultraObject.iterify({
-                                            iterify:ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[1][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][0]   ].split(' ')
-                                        })
-                                    // } /**/
-                                    
                                     /* keyword to compare against className */ // {
                                     console.log(   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][1].ultraObject.keyword   )
                                     // } /**/
                                     
-                                    var iBOOL_0_i = {0:false}
-                                    iBOOL_0_i = ultraObject.severalOr({
-                                        compTo: ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][1].ultraObject.keyword,
-                                        compAgn: ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0]   ].classes,
-                                        boolean:iBOOL_0_i,
-                                        which:0,
-                                        how:function(   dev_obj   ){
-                                            
-                                            /* needed for partialMatch className module */ // {
-                                            ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0]   ].iPM_0_i = {
-                                                    compTo:dev_obj.compTo,
-                                                    compAgn: dev_obj.compAgnI
-                                            }
-                                            
-                                            /* grabbing developer args for partialMatch */ // {
-                                            var iFL_4_i = {
-                                                forLoop_0_i:0,
-                                                forLoopLength: ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][1].ultraObject.pM_0_i.length,
-                                                fn:function(   dev_obj   ){
-                                                    ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0]   ].iPM_0_i[   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][1].ultraObject.pM_0_i[iFL_4_i.forLoop_0_i][0]   ] = ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][1].ultraObject.pM_0_i[iFL_4_i.forLoop_0_i][1]
-                                                },
-                                                args:{}
-                                            }
-                                            ultraObject.forLoop(   iFL_4_i   )
-                                            // } /**/
-                                            
-                                            ultraObject.partialMatch(   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0]   ].iPM_0_i   )
-                                            // } /**/
-                                                                                        
-                                            if(   ultraObject.misc[ultraObject.misc.length-1].satisfy   ){
+                                    /* pulling classes from the DOM element */ // {
+                                    if(   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[1].length === undefined   ){
+                                        
+                                        /* if there is only one element */ // {
+                                        ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[ultraObject.scope[iQC_0_i]].passOn.proofObject[0]   ].classes =  ultraObject.iterify({
+                                                iterify:ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[1][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][0]   ].split(' ')
+                                            })
+                                        
+                                        var iBOOL_0_i = {0:false}
+                                        iBOOL_0_i = ultraObject.severalOr({
+                                            compTo: ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][1].ultraObject.keyword,
+                                            compAgn: ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0]   ].classes,
+                                            boolean:iBOOL_0_i,
+                                            which:0,
+                                            how:function(   dev_obj   ){
+                                                
+                                                /* needed for partialMatch className module */ // {
+                                                ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0]   ].iPM_0_i = {
+                                                        compTo:dev_obj.compTo,
+                                                        compAgn: dev_obj.compAgnI
+                                                }
+                                                
+                                                /* grabbing developer args for partialMatch */ // {
+                                                var iFL_4_i = {
+                                                    forLoop_0_i:0,
+                                                    forLoopLength: ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][1].ultraObject.pM_0_i.length,
+                                                    fn:function(   dev_obj   ){
+                                                        ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0]   ].iPM_0_i[   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][1].ultraObject.pM_0_i[iFL_4_i.forLoop_0_i][0]   ] = ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][1].ultraObject.pM_0_i[iFL_4_i.forLoop_0_i][1]
+                                                    },
+                                                    args:{}
+                                                }
+                                                ultraObject.forLoop(   iFL_4_i   )
+                                                // } /**/
+                                                
+                                                ultraObject.partialMatch(   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0]   ].iPM_0_i   )
+                                                // } /**/
+                                                                                            
+                                                if(   ultraObject.misc[ultraObject.misc.length-1].satisfy   ){
+                                                    
+                                                    
+                                                    ultraObject.misc.minus(   {index:ultraObject.misc.length-1}   )
+                                                    ultraObject.misc.abelast.minus(   {index:ultraObject.misc.abelast.length-1}   )
+                                                    ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].pointValue  += 1
+                                                    
+                                                    
+                                                }
                                                 
                                                 
                                                 ultraObject.misc.minus(   {index:ultraObject.misc.length-1}   )
                                                 ultraObject.misc.abelast.minus(   {index:ultraObject.misc.abelast.length-1}   )
-                                                ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].pointValue  += 1
-                                                
-                                                
-                                            }
-                                            
-                                            
-                                            ultraObject.misc.minus(   {index:ultraObject.misc.length-1}   )
-                                            ultraObject.misc.abelast.minus(   {index:ultraObject.misc.abelast.length-1}   )
-                                        },
-                                        result:'a'
-                                    })
-                                    console.log(   iBOOL_0_i   )
-                                                                        
+                                            },
+                                            result:'a'
+                                        })
+                                        console.log(   iBOOL_0_i   )
+                                        // } /**/
+                                        
+                                    }
+                                    
+                                    
+                                    else if(   ultraObject.isitO(   {type:ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[1]}   )   ){
+                                        
+                                        /* looking at specific different parents */ // {
+                                        console.log(   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][1].ultraObject.care   )
+                                        var iFL_5_i = {
+                                            forLoop_0_i:0,
+                                            forLoopLength:ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[1].length,
+                                            fn:function(   dev_obj   ){
+                                                ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[ultraObject.scope[iQC_0_i]].passOn.proofObject[0]   ].classes =  ultraObject.iterify({
+                                                        iterify:ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[1][   iFL_5_i.forLoop_0_i   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][0]   ].split(' ')
+                                                    })
+                                                var iBOOL_1_i = {0:false}
+                                                iBOOL_1_i = ultraObject.severalOr({
+                                                    compTo: ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][1].ultraObject.keyword,
+                                                    compAgn: ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0]   ].classes,
+                                                    boolean:iBOOL_1_i,
+                                                    which:0,
+                                                    how:function(   dev_obj   ){
+                                                        
+                                                        /* needed for partialMatch className module */ // {
+                                                        ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0]   ].iPM_0_i = {
+                                                                compTo:dev_obj.compTo,
+                                                                compAgn: dev_obj.compAgnI
+                                                        }
+                                                        
+                                                        /* grabbing developer args for partialMatch */ // {
+                                                        var iFL_6_i = {
+                                                            forLoop_0_i:0,
+                                                            forLoopLength: ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][1].ultraObject.pM_0_i.length,
+                                                            fn:function(   dev_obj   ){
+                                                                ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0]   ].iPM_0_i[   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][1].ultraObject.pM_0_i[iFL_6_i.forLoop_0_i][0]   ] = ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][1].ultraObject.pM_0_i[iFL_6_i.forLoop_0_i][1]
+                                                            },
+                                                            args:{}
+                                                        }
+                                                        ultraObject.forLoop(   iFL_6_i   )
+                                                        // } /**/
+                                                        
+                                                        ultraObject.partialMatch(   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0]   ].iPM_0_i   )
+                                                        // } /**/
+                                                                                                    
+                                                        if(   ultraObject.misc[ultraObject.misc.length-1].satisfy   ){
+                                                            
+                                                            
+                                                            ultraObject.misc.minus(   {index:ultraObject.misc.length-1}   )
+                                                            ultraObject.misc.abelast.minus(   {index:ultraObject.misc.abelast.length-1}   )
+                                                            ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].pointValue  += 1
+                                                            
+                                                            
+                                                        }
+                                                        
+                                                        
+                                                        ultraObject.misc.minus(   {index:ultraObject.misc.length-1}   )
+                                                        ultraObject.misc.abelast.minus(   {index:ultraObject.misc.abelast.length-1}   )
+                                                    },
+                                                    result:'a'
+                                                })
+                                                console.log(   iBOOL_1_i   )
+                                            },
+                                            args:dev_obj //{}
+                                        }
+                                        ultraObject.forLoop(   iFL_5_i   )
+                                        // } /**/
+                                                                            
+                                    }
+                                    // } /**/
                                 }
                                 // } /**/
                                 
