@@ -3309,6 +3309,8 @@
                     */
                     
                     /* setting up needed objects for proof*/ //{
+                        //element
+                        ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.sameChild = 'true'
                         //parents
                         var pFFST_1_i = ultraObject.scope.add(   {value:ultraObject.selectTags.add(   {value:ultraObject.iterableObject()}   )}   )
                         ultraObject.selectTags[ultraObject.scope[pFFST_1_i]].add(   {value:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.offsetParent}   )
@@ -3320,11 +3322,22 @@
                             forLoop_0_i:0,
                             forLoopLength:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.parentElement.children.length,
                             fn:function(   dev_obj   ){
-                                ultraObject.selectTags[ultraObject.scope[pFFST_2_i]].add(   {value:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.parentElement.children[   pFFFL_4_i.forLoop_0_i   ]}   )
+                                
+                                
+                                if(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.parentElement.children[   pFFFL_4_i.forLoop_0_i   ].sameChild !== 'true'   ){
+                                    
+                                    
+                                    ultraObject.selectTags[ultraObject.scope[pFFST_2_i]].add(   {value:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.parentElement.children[   pFFFL_4_i.forLoop_0_i   ]}   )
+                                
+                                
+                                }
+                                
+                                
                             },
                             args:dev_obj //{}
                         }
                         ultraObject.forLoop(   pFFFL_4_i   )
+                        delete ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.sameChild
                         //children retuns HTMLCollection
                         var pFFST_3_i = ultraObject.scope.add(   {value:ultraObject.selectTags.add(   {value:ultraObject.iterableObject()}   )}   )
                         var pFFFL_5_i = {
@@ -3667,13 +3680,13 @@
                 forLoopLength:dev_obj.proof.length,
                 fn:function(   dev_obj   ){
                     /*helping the sibling module know not to look at the same element again*/
-                    if(   dev_obj.proof[iFL_0_i.forLoop_0_i][0] === 'element'   ){
+                    // if(   dev_obj.proof[iFL_0_i.forLoop_0_i][0] === 'element'   ){
                         
                         
-                        dev_obj.proof[iFL_0_i.forLoop_0_i][1].sameChild = 'true'
+                    //     dev_obj.proof[iFL_0_i.forLoop_0_i][1].sameChild = 'true'
+                    //     // but we will leave this to the developer to pop it out
                         
-                        
-                    }
+                    // }
                     /**/
                     ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof.add(   {value:ultraObject.iterify(   {iterify:dev_obj.proof[iFL_0_i.forLoop_0_i]}   )}   )
                 },
@@ -3712,6 +3725,7 @@
                     /* grabbing the proofObject*/ // {
                     ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject = ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i]
                     // } /**/
+                    
                     
                     console.group(   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0] +' proofObject'   )
                     var iFL_3_i = {

@@ -1,6 +1,6 @@
 // FIX ME
 // helping the sibling module know not to look at the same element again
-// if this is the case use subGroups to help interrogation figure out where element is when its looking at the sibling to easily modify it
+// we will let the developer deide if the object should be part of the siblings
 
 /*actual use of each interrogaton function ot interrogate*/
 // so if I have my own function use it or else use the interrgation module
@@ -137,13 +137,13 @@ the developer must follow the appropriate instructions when it comes to using th
                 forLoopLength:dev_obj.proof.length,
                 fn:function(   dev_obj   ){
                     /*helping the sibling module know not to look at the same element again*/
-                    if(   dev_obj.proof[iFL_0_i.forLoop_0_i][0] === 'element'   ){
+                    // if(   dev_obj.proof[iFL_0_i.forLoop_0_i][0] === 'element'   ){
                         
                         
-                        dev_obj.proof[iFL_0_i.forLoop_0_i][1].sameChild = 'true'
+                    //     dev_obj.proof[iFL_0_i.forLoop_0_i][1].sameChild = 'true'
+                    //     // but we will leave this to the developer to pop it out
                         
-                        
-                    }
+                    // }
                     /**/
                     ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof.add(   {value:ultraObject.iterify(   {iterify:dev_obj.proof[iFL_0_i.forLoop_0_i]}   )}   )
                 },
@@ -183,8 +183,8 @@ the developer must follow the appropriate instructions when it comes to using th
                     ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject = ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i]
                     // } /**/
                     
+                    
                     console.group(   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0] +' proofObject'   )
-                    debugger
                     var iFL_3_i = {
                         forLoop_0_i:0,
                         forLoopLength:ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ].length,
@@ -741,4 +741,4 @@ the developer must follow the appropriate instructions when it comes to using th
         
         
     }// used to perform advanced questions on results that can not be simply verified
-     
+      
