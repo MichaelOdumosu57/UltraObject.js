@@ -1,10 +1,23 @@
 function selectAll(   dev_obj   ){
-        // this function also returns the group ordering if looked for nested items
-        //.target item to get all values from must be an itO or an object
-        // .typeOnly, what specific values were looking for
-    
-        if(   dev_obj !== undefined   ){
+            /*
+                abelast : 1 for misc
+            */
+            // this function also returns the group ordering if looked for nested items
+            //.target item to get all values from must be an itO or an object
+            // .typeOnly, what specific values were looking for
             
+            
+            debugger
+            if(   dev_obj !== undefined   ){
+                
+                
+                var selectAll_dev_obj = ultraObject.args.add(   {value:ultraObject.iterify(   {iterify:dev_obj}   )   }   )
+                ultraObject.args.abelast.add(   {value:selectAll_dev_obj}   )
+                
+                /*adding the first misc holds the function that test for the data type endpoint*/ //{
+                var selectAllMisc_0_i = ultraObject.scope.add(   {value:ultraObject.misc.add(   {value:ultraObject.iterableObject()}   )}   )
+                ultraObject.misc.abelast.add(   {value:ultraObject.scope[selectAllMisc_0_i]}   )
+                // }  /**/
             
                 var selectAllBOOL = {0:false}
                 selectAllBOOL = ultraObject.severalOr({
@@ -48,7 +61,8 @@ function selectAll(   dev_obj   ){
                                 }
                             }
                             
-                            catch(e){debugger}
+                            catch(e){}
+                            
                             
                             if(   ultraObject.isDOMElement(   {type:Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]}   )   ){
                                 
@@ -106,9 +120,12 @@ function selectAll(   dev_obj   ){
                     return selectReturn
                     
                 }
+                
+                /*taking the misc that holds the function out the scope*/ //{
+                ultraObject.scope.minus(   {index:selectAllMisc_0_i}   )
+                // }  /**/
+                
+            }
             
             
-        }
-        
-        
-}
+    }
