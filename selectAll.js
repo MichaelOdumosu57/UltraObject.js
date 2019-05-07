@@ -1,13 +1,15 @@
 function selectAll(   dev_obj   ){
             /*
                 abelast : 1 for misc
+                            1 for fG
             */
             // this function also returns the group ordering if looked for nested items
             //.target item to get all values from must be an itO or an object
             // .typeOnly, what specific values were looking for
             
             
-            debugger
+            
+            //LEFT OFF,have to take data type from endpoints at itO and make the test functions in place of isDOMElement
             if(   dev_obj !== undefined   ){
                 
                 
@@ -19,6 +21,69 @@ function selectAll(   dev_obj   ){
                 ultraObject.misc.abelast.add(   {value:ultraObject.scope[selectAllMisc_0_i]}   )
                 // }  /**/
             
+                /*setting the booleans for the datatype*/ //{
+                ultraObject.misc[   ultraObject.scope[selectAllMisc_0_i]   ].add({
+                    value:function(   dev_obj   ){
+                        var selectAllFL_1_i = {
+                            forLoop_0_i:0,
+                            forLoopLength:dev_obj.typeOnly.length,
+                            fn:function(   dev_obj   ){
+                                
+                                
+                                if(   dev_obj.typeOnly[   selectAllFL_1_i.forLoop_0_i   ] === 'array'    ){
+                                    //add isArray
+                                }
+                                
+                                
+                                if(   dev_obj.typeOnly[   selectAllFL_1_i.forLoop_0_i   ] === 'element'    ){
+                                    //add isArray
+                                }
+                                
+                                
+                                if(   dev_obj.typeOnly[   selectAllFL_1_i.forLoop_0_i   ] === 'function'    ){
+                                    //add isArray
+                                }
+                                
+                                
+                                if(   dev_obj.typeOnly[   selectAllFL_1_i.forLoop_0_i   ] === 'int'    ){
+                                    //add isArray
+                                }
+                                
+                                
+                                if(   dev_obj.typeOnly[   selectAllFL_1_i.forLoop_0_i   ] === 'nodelist'    ){
+                                    //add isArray
+                                }
+                                
+                                
+                                if(   dev_obj.typeOnly[   selectAllFL_1_i.forLoop_0_i   ] === 'object'    ){
+                                    //add isArray
+                                }
+                                
+                                
+                                if(   dev_obj.typeOnly[   selectAllFL_1_i.forLoop_0_i   ] === 'primitive'    ){
+                                    //add isArray
+                                }
+                                
+                                
+                                if(   dev_obj.typeOnly[   selectAllFL_1_i.forLoop_0_i   ] === 'string'    ){
+                                    //add isArray
+                                }
+                                
+                                
+                                if(   dev_obj.typeOnly[   selectAllFL_1_i.forLoop_0_i   ] === 'itO'    ){
+                                    //add isArray
+                                }
+                                
+                            },
+                            args:dev_obj //{}
+                        }
+                        ultraObject.forLoop(   selectAllFL_1_i   )
+                    }
+                })
+                ultraObject.misc[   ultraObject.scope[selectAllMisc_0_i]   ][0](   {typeOnly:dev_obj.typeOnly}   )
+                debugger
+                // }  /**/
+                
                 var selectAllBOOL = {0:false}
                 selectAllBOOL = ultraObject.severalOr({
                     compTo: 'element',
