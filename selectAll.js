@@ -42,6 +42,10 @@ function selectAll(   dev_obj   ){
                             forLoopLength:dev_obj.typeOnly.length,
                             fn:function(   dev_obj   ){
                                 
+                                /* how subGroups should complete a group */ //{
+                                ultraObject.fG[   ultraObject.scope[selectAllFG_0_i]   ].endpoint = dev_obj.typeOnly[   selectAllFL_1_i.forLoop_0_i   ]
+                                // }  /**/
+                                
                                 /* this checks for the desired data type from the developer */ //{
                                 if(   dev_obj.typeOnly[   selectAllFL_1_i.forLoop_0_i   ] === 'array'    ){
                                     
@@ -65,6 +69,7 @@ function selectAll(   dev_obj   ){
                                     ultraObject.fG[   ultraObject.scope[selectAllFG_0_i]   ].add({
                                         value:function(   dev_obj   ){
                                             if(   ultraObject.isDOMElement(   {type:dev_obj.type}   )   ){
+                                                debugger
                                                 return 'true'
                                                 }
                                         }
@@ -179,25 +184,45 @@ function selectAll(   dev_obj   ){
                                 }
                                 
                             },
-                            args:dev_obj //{}
+                            args:dev_obj,
+                            bubble:'true'
                         }
                         ultraObject.forLoop(   selectAllFL_1_i   )
                     }
                 })
                 ultraObject.misc[   ultraObject.scope[selectAllMisc_0_i]   ][0](   {typeOnly:dev_obj.typeOnly}   )
-                debugger
+            
+                /*actual function used to determine data type endpoint*/ //{
+                ultraObject.fG[   ultraObject.scope[selectAllFG_0_i]   ].call = function(   dev_obj   ){
+                    var selectAllFL_2_i = {
+                        forLoop_0_i:0,
+                        forLoopLength: ultraObject.fG[   ultraObject.scope[selectAllFG_0_i]   ].length,
+                        fn:function(   dev_obj   ){
+                            
+                            /*if it has found a data type endpoint bubble up */ //{
+                            if(   ultraObject.fG[   ultraObject.scope[selectAllFG_0_i]   ][   selectAllFL_2_i.forLoop_0_i   ](   dev_obj   ) === 'true'   ){
+                                
+                                
+                                return 'true'
+                                
+                                
+                            }
+                            // }  /**/
+                            
+                            
+                        },
+                        args:dev_obj,
+                        bubble:'true'
+                    }
+                    return ultraObject.forLoop(   selectAllFL_2_i   )
+                }
                 // }  /**/
                 
-                var selectAllBOOL = {0:false}
-                selectAllBOOL = ultraObject.severalOr({
-                    compTo: 'element',
-                    compAgn: dev_obj.typeOnly,
-                    boolean:selectAllBOOL,
-                    which:0
-                })
+                // }  /**/
+
+
                 
-                
-                if(   ultraObject.isObject(   {type:dev_obj.target}   ) || ultraObject.isitO(   {type:dev_obj.target}   ) && selectAllBOOL[0]   ){
+                if(   ultraObject.isObject(   {type:dev_obj.target}   ) || ultraObject.isitO(   {type:dev_obj.target}   )   ){
                     
                     
                     var selectReturn = {}
@@ -217,7 +242,7 @@ function selectAll(   dev_obj   ){
                             
                             
                             try{
-                                if(   (   ultraObject.isObject(   {type:Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]}   ) || ultraObject.isitO(   {type:Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]}   )   ) || ultraObject.isDOMElement(   {type:Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]}   )     ){
+                                if(   (   ultraObject.isObject(   {type:Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]}   ) || ultraObject.isitO(   {type:Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]}   )   ) || ultraObject.fG[   ultraObject.scope[selectAllFG_0_i]   ].call(   {type:Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]}   ) === 'true'     ){
                                     //I cannot add it if its a primitive not an object or an itO
                                     //done like this because what if im looking for a string, this would evaluate to false and the subGroupMap would be improper
                                     
@@ -233,13 +258,13 @@ function selectAll(   dev_obj   ){
                             catch(e){}
                             
                             
-                            if(   ultraObject.isDOMElement(   {type:Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]}   )   ){
+                            if(   ultraObject.fG[   ultraObject.scope[selectAllFG_0_i]   ].call(   {type:Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]}   ) === 'true'   ){
                                 
                                 
                                 selectReturn[Object.keys(   selectReturn   ).length] = Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]
                                 ultraObject.subGroups({
                                     map:selectReturnMD,
-                                    val:'element',
+                                    val:ultraObject.fG[   ultraObject.scope[selectAllFG_0_i]   ].endpoint,
                                     nextItem:'true',
                                 })
                                 // return 'premature'
