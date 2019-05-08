@@ -1,5 +1,4 @@
-// FIX ME
-// helping the sibling module know not to look at the same element again
+
 // we will let the developer deide if the object should be part of the siblings
 
 /*actual use of each interrogaton function ot interrogate*/

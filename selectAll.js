@@ -1,3 +1,10 @@
+// an endpoint here means what the selectAll is lookng for in the object
+
+/*
+    setting up functon group
+        this is so selectAll can include a varity of data type endpoints from the developer
+*/
+
 function selectAll(   dev_obj   ){
             /*
                 abelast : 1 for misc
@@ -22,6 +29,12 @@ function selectAll(   dev_obj   ){
                 // }  /**/
             
                 /*setting the booleans for the datatype*/ //{
+                
+                /*setting up functon group*/ //{
+                var selectAllFG_0_i = ultraObject.scope.add(   {value:ultraObject.fG.add(   {value:ultraObject.iterableObject()}   )}   )
+                ultraObject.fG.abelast.add(   {value:ultraObject.scope[selectAllFG_0_i]}   )
+                // }  /**/
+                
                 ultraObject.misc[   ultraObject.scope[selectAllMisc_0_i]   ].add({
                     value:function(   dev_obj   ){
                         var selectAllFL_1_i = {
@@ -29,49 +42,140 @@ function selectAll(   dev_obj   ){
                             forLoopLength:dev_obj.typeOnly.length,
                             fn:function(   dev_obj   ){
                                 
-                                
+                                /* this checks for the desired data type from the developer */ //{
                                 if(   dev_obj.typeOnly[   selectAllFL_1_i.forLoop_0_i   ] === 'array'    ){
-                                    //add isArray
+                                    
+                                    /* this allows selectAll to test against data type endpoints same for each if statement*/ //{
+                                    ultraObject.fG[   ultraObject.scope[selectAllFG_0_i]   ].add({
+                                        value:function(   dev_obj   ){
+                                            if(   ultraObject.isArray(   {type:dev_obj.type}   )   ){
+                                                return 'true'
+                                                }
+                                        }
+                                    })
+                                    // }  /**/
+                                    
                                 }
+                                // }  /**/
                                 
                                 
                                 if(   dev_obj.typeOnly[   selectAllFL_1_i.forLoop_0_i   ] === 'element'    ){
-                                    //add isArray
+                                    
+                                    
+                                    ultraObject.fG[   ultraObject.scope[selectAllFG_0_i]   ].add({
+                                        value:function(   dev_obj   ){
+                                            if(   ultraObject.isDOMElement(   {type:dev_obj.type}   )   ){
+                                                return 'true'
+                                                }
+                                        }
+                                    })
+                                    
+                                    
                                 }
                                 
                                 
                                 if(   dev_obj.typeOnly[   selectAllFL_1_i.forLoop_0_i   ] === 'function'    ){
-                                    //add isArray
+
+
+                                    ultraObject.fG[   ultraObject.scope[selectAllFG_0_i]   ].add({
+                                        value:function(   dev_obj   ){
+                                            if(   ultraObject.isFunction(   {type:dev_obj.type}   )   ){
+                                                return 'true'
+                                                }
+                                        }
+                                    })
+                                    
+                                    
                                 }
                                 
                                 
-                                if(   dev_obj.typeOnly[   selectAllFL_1_i.forLoop_0_i   ] === 'int'    ){
-                                    //add isArray
+                                if(   dev_obj.typeOnly[   selectAllFL_1_i.forLoop_0_i   ] === 'int'   ){
+
+
+                                    ultraObject.fG[   ultraObject.scope[selectAllFG_0_i]   ].add({
+                                        value:function(   dev_obj   ){
+                                            if(   ultraObject.isInt(   {type:dev_obj.type}   )   ){
+                                                return 'true'
+                                                }
+                                        }
+                                    })
+                                    
+                                    
                                 }
                                 
                                 
                                 if(   dev_obj.typeOnly[   selectAllFL_1_i.forLoop_0_i   ] === 'nodelist'    ){
-                                    //add isArray
+
+
+                                    ultraObject.fG[   ultraObject.scope[selectAllFG_0_i]   ].add({
+                                        value:function(   dev_obj   ){
+                                            if(   ultraObject.isNodeList(   {type:dev_obj.type}   )   ){
+                                                return 'true'
+                                                }
+                                        }
+                                    })
+                                    
+                                    
                                 }
                                 
                                 
                                 if(   dev_obj.typeOnly[   selectAllFL_1_i.forLoop_0_i   ] === 'object'    ){
-                                    //add isArray
+
+
+                                    ultraObject.fG[   ultraObject.scope[selectAllFG_0_i]   ].add({
+                                        value:function(   dev_obj   ){
+                                            if(   ultraObject.isObject(   {type:dev_obj.type}   )   ){
+                                                return 'true'
+                                                }
+                                        }
+                                    })
+                                    
+                                    
                                 }
                                 
                                 
                                 if(   dev_obj.typeOnly[   selectAllFL_1_i.forLoop_0_i   ] === 'primitive'    ){
-                                    //add isArray
+
+
+                                    ultraObject.fG[   ultraObject.scope[selectAllFG_0_i]   ].add({
+                                        value:function(   dev_obj   ){
+                                            if(   ultraObject.isPrimitive(   {type:dev_obj.type}   )   ){
+                                                return 'true'
+                                                }
+                                        }
+                                    })
+                                    
+                                    
                                 }
                                 
                                 
                                 if(   dev_obj.typeOnly[   selectAllFL_1_i.forLoop_0_i   ] === 'string'    ){
-                                    //add isArray
+
+
+                                    ultraObject.fG[   ultraObject.scope[selectAllFG_0_i]   ].add({
+                                        value:function(   dev_obj   ){
+                                            if(   ultraObject.isString(   {type:dev_obj.type}   )   ){
+                                                return 'true'
+                                                }
+                                        }
+                                    })
+                                    
+                                    
                                 }
                                 
                                 
                                 if(   dev_obj.typeOnly[   selectAllFL_1_i.forLoop_0_i   ] === 'itO'    ){
-                                    //add isArray
+
+
+                                    ultraObject.fG[   ultraObject.scope[selectAllFG_0_i]   ].add({
+                                        value:function(   dev_obj   ){
+                                            if(   ultraObject.isitO(   {type:dev_obj.type}   )   ){
+                                                return 'true'
+                                                }
+                                        }
+                                    })
+                                    
+                                    
                                 }
                                 
                             },
