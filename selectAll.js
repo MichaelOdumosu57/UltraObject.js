@@ -5,6 +5,16 @@
         this is so selectAll can include a varity of data type endpoints from the developer
 */
 
+
+ /*
+    actual function used to determine data type endpoint
+        I refer to this as call i will change it to calls to avoid future problems
+*/
+
+/*
+     we have come to the desired target and the end of our search use subGroups to move on
+        so I dont even need subGroups its just an additional tool if i want to figure out how I got to those paths
+*/
 function selectAll(   dev_obj   ){
             /*
                 abelast : 1 for misc
@@ -15,8 +25,7 @@ function selectAll(   dev_obj   ){
             // .typeOnly, what specific values were looking for
             
             
-            
-            //LEFT OFF,have to take data type from endpoints at itO and make the test functions in place of isDOMElement
+                        
             if(   dev_obj !== undefined   ){
                 
                 
@@ -69,7 +78,7 @@ function selectAll(   dev_obj   ){
                                     ultraObject.fG[   ultraObject.scope[selectAllFG_0_i]   ].add({
                                         value:function(   dev_obj   ){
                                             if(   ultraObject.isDOMElement(   {type:dev_obj.type}   )   ){
-                                                debugger
+                                                
                                                 return 'true'
                                                 }
                                         }
@@ -193,7 +202,7 @@ function selectAll(   dev_obj   ){
                 ultraObject.misc[   ultraObject.scope[selectAllMisc_0_i]   ][0](   {typeOnly:dev_obj.typeOnly}   )
             
                 /*actual function used to determine data type endpoint*/ //{
-                ultraObject.fG[   ultraObject.scope[selectAllFG_0_i]   ].call = function(   dev_obj   ){
+                ultraObject.fG[   ultraObject.scope[selectAllFG_0_i]   ].calls = function(   dev_obj   ){
                     var selectAllFL_2_i = {
                         forLoop_0_i:0,
                         forLoopLength: ultraObject.fG[   ultraObject.scope[selectAllFG_0_i]   ].length,
@@ -239,10 +248,11 @@ function selectAll(   dev_obj   ){
                             // console.log(   selectAllFL_0_i.forLoop_0_i,'walk in'   )
                             // console.log(   Object.keys(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]   )
                             var selectCheckpoint = {}  // when it leave recurison it restore the values
-                            
-                            
+                                                        
                             try{
-                                if(   (   ultraObject.isObject(   {type:Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]}   ) || ultraObject.isitO(   {type:Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]}   )   ) || ultraObject.fG[   ultraObject.scope[selectAllFG_0_i]   ].call(   {type:Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]}   ) === 'true'     ){
+                                
+                                /*if we have an itO an Object or the data type endpoint, record its key traversing the structure*/ //{
+                                if(   (   ultraObject.isObject(   {type:Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]}   ) || ultraObject.isitO(   {type:Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]}   ) || ultraObject.fG[   ultraObject.scope[selectAllFG_0_i]   ].calls(   {type:Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]}   ) === 'true'    ) && !ultraObject.isAbelast(   {type:Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]}   )   ){
                                     //I cannot add it if its a primitive not an object or an itO
                                     //done like this because what if im looking for a string, this would evaluate to false and the subGroupMap would be improper
                                     
@@ -253,14 +263,16 @@ function selectAll(   dev_obj   ){
                                     
                                     
                                 }
+                                // }  /**/
+                                
                             }
                             
                             catch(e){}
                             
                             
-                            if(   ultraObject.fG[   ultraObject.scope[selectAllFG_0_i]   ].call(   {type:Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]}   ) === 'true'   ){
+                            if(   ultraObject.fG[   ultraObject.scope[selectAllFG_0_i]   ].calls(   {type:Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]}   ) === 'true'   ){
                                 
-                                
+                                debugger
                                 selectReturn[Object.keys(   selectReturn   ).length] = Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]
                                 ultraObject.subGroups({
                                     map:selectReturnMD,
@@ -274,7 +286,7 @@ function selectAll(   dev_obj   ){
                             }
                             
                             
-                            else if(   ultraObject.isObject(   {type:Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]}   ) || ultraObject.isitO(   {type:Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]}   )    ){
+                            else if(   (   ultraObject.isObject(   {type:Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]}   ) || ultraObject.isitO(   {type:Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]}   )   ) && !ultraObject.isAbelast(   {type:Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]}   )   ){
                                 
                                 
                                 // console.group('recursion')
@@ -307,19 +319,4 @@ function selectAll(   dev_obj   ){
                     console.group(   'grabbing the chosen elements from the object'   )
                         ultraObject.objInvloved({
                                 0:selectReturn,
-                                2:selectReturnMD
-                            })
-                    console.groupEnd()
-                    selectReturn.subGroupsMap = selectReturnMD
-                    return selectReturn
-                    
-                }
-                
-                /*taking the misc that holds the function out the scope*/ //{
-                ultraObject.scope.minus(   {index:selectAllMisc_0_i}   )
-                // }  /**/
-                
-            }
-            
-            
-    }
+                 

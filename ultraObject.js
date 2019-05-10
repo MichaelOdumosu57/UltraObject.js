@@ -158,6 +158,7 @@
         selectTags:iterableObject(), // represents a set of chosen items
         eCSearch:eCSearch,
         
+        isAbelast:isAbelast,
         isArray:isArray,
         isObject:isObject,
         isDOMElement:isDOMElement,
@@ -538,6 +539,26 @@
             
             
             if(   dev_obj.type.isitO !== undefined && dev_obj.type.isitO() === 'true'   ){
+                
+                
+                return true
+                
+                
+            }
+            
+            
+        }
+        
+        
+        return false
+    }
+    function isAbelast(   dev_obj   ){
+        
+        
+        if(   dev_obj.type !== undefined   ){
+            
+            
+            if(   dev_obj.type.isAbelast !== undefined && dev_obj.type.isAbelast() === 'true'   ){
                 
                 
                 return true
@@ -1817,7 +1838,7 @@
                         result:'true'
                 })
             }, //if corrputed resets the lengths
-            isitO:function(   dev_obj   ){
+            isAbelast:function(   dev_obj   ){
                 return 'true'
             }//confirms if its an itO, make it refuse to bind
          }  // make a deep copy if outer function do not have access to scope from the inner functions, the inner function places the required info heree
@@ -2005,7 +2026,19 @@
         
             
     } //fills anything as you tell it, use pack to avoid missspelling
-    function selectAll(   dev_obj   ){
+    // an endpoint here means what the selectAll is lookng for in the object
+
+/*
+    setting up functon group
+        this is so selectAll can include a varity of data type endpoints from the developer
+*/
+
+
+ /*
+    actual function used to determine data type endpoint
+        I refer to this as call i will change it to calls to avoid future problems
+*/
+function selectAll(   dev_obj   ){
             /*
                 abelast : 1 for misc
                             1 for fG
@@ -2015,8 +2048,7 @@
             // .typeOnly, what specific values were looking for
             
             
-            
-            //LEFT OFF,have to take data type from endpoints at itO and make the test functions in place of isDOMElement
+                        
             if(   dev_obj !== undefined   ){
                 
                 
@@ -2069,7 +2101,7 @@
                                     ultraObject.fG[   ultraObject.scope[selectAllFG_0_i]   ].add({
                                         value:function(   dev_obj   ){
                                             if(   ultraObject.isDOMElement(   {type:dev_obj.type}   )   ){
-                                                debugger
+                                                
                                                 return 'true'
                                                 }
                                         }
@@ -2193,7 +2225,7 @@
                 ultraObject.misc[   ultraObject.scope[selectAllMisc_0_i]   ][0](   {typeOnly:dev_obj.typeOnly}   )
             
                 /*actual function used to determine data type endpoint*/ //{
-                ultraObject.fG[   ultraObject.scope[selectAllFG_0_i]   ].call = function(   dev_obj   ){
+                ultraObject.fG[   ultraObject.scope[selectAllFG_0_i]   ].calls = function(   dev_obj   ){
                     var selectAllFL_2_i = {
                         forLoop_0_i:0,
                         forLoopLength: ultraObject.fG[   ultraObject.scope[selectAllFG_0_i]   ].length,
@@ -2239,10 +2271,11 @@
                             // console.log(   selectAllFL_0_i.forLoop_0_i,'walk in'   )
                             // console.log(   Object.keys(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]   )
                             var selectCheckpoint = {}  // when it leave recurison it restore the values
-                            
-                            
+                                                        
                             try{
-                                if(   (   ultraObject.isObject(   {type:Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]}   ) || ultraObject.isitO(   {type:Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]}   )   ) || ultraObject.fG[   ultraObject.scope[selectAllFG_0_i]   ].call(   {type:Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]}   ) === 'true'     ){
+                                
+                                /*if we have an itO an Object or the data type endpoint, record its key traversing the structure*/ //{
+                                if(   (   ultraObject.isObject(   {type:Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]}   ) || ultraObject.isitO(   {type:Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]}   ) || ultraObject.fG[   ultraObject.scope[selectAllFG_0_i]   ].calls(   {type:Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]}   ) === 'true'    ) && !ultraObject.isAbelast(   {type:Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]}   )   ){
                                     //I cannot add it if its a primitive not an object or an itO
                                     //done like this because what if im looking for a string, this would evaluate to false and the subGroupMap would be improper
                                     
@@ -2253,14 +2286,17 @@
                                     
                                     
                                 }
+                                // }  /**/
+                                
                             }
                             
                             catch(e){}
                             
                             
-                            if(   ultraObject.fG[   ultraObject.scope[selectAllFG_0_i]   ].call(   {type:Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]}   ) === 'true'   ){
+                            if(   ultraObject.fG[   ultraObject.scope[selectAllFG_0_i]   ].calls(   {type:Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]}   ) === 'true'   ){
                                 
-                                
+                                /* we have come to the desired target and the end of our search use subGroups to move on */ //{
+                                debugger
                                 selectReturn[Object.keys(   selectReturn   ).length] = Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]
                                 ultraObject.subGroups({
                                     map:selectReturnMD,
@@ -2269,12 +2305,13 @@
                                 })
                                 // return 'premature'
                                 //this might leave some impt things behind
+                                // }  /**/
                                     
                                 
                             }
                             
                             
-                            else if(   ultraObject.isObject(   {type:Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]}   ) || ultraObject.isitO(   {type:Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]}   )    ){
+                            else if(   (   ultraObject.isObject(   {type:Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]}   ) || ultraObject.isitO(   {type:Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]}   )   ) && !ultraObject.isAbelast(   {type:Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]}   )   ){
                                 
                                 
                                 // console.group('recursion')
@@ -2307,7 +2344,7 @@
                     console.group(   'grabbing the chosen elements from the object'   )
                         ultraObject.objInvloved({
                                 0:selectReturn,
-                                2:selectReturnMD
+                                1:selectReturnMD
                             })
                     console.groupEnd()
                     selectReturn.subGroupsMap = selectReturnMD
@@ -2359,7 +2396,7 @@
             
             if(   dev_obj.map.MB_0_i === undefined   ){
                 
-                
+                //LEFT OFF figure out why abelast still has that itO test fn
                 dev_obj.map.MB_0_i = ultraObject.iterableObject()
                 dev_obj.map.MB_0_i.globalMB = ultraObject.MB_0_i.add(   {value:dev_obj.map.MB_0_i}   ) //if problem get the answer for a variable and assign it back
                 dev_obj.map.MB_0_i.seperator = ' ' // how fn makes a path to a child element
@@ -2505,20 +2542,24 @@
                 
                 if(   dev_obj.nextItem === 'true'   ){
     
-    
+                    
                     dev_obj.map.MB_0_i.lastAddedIndex = dev_obj.map.MB_0_i.add(   {value:ultraObject.subGroupsO[subGroupsBOOL.spot][ultraObject.subGroupsO[subGroupsBOOL.spot].length].split(   subGroupsSeperator   )}   )
                     
                     
+                    /* we are still loooking at children  no parents yet*/ //{
                     if(   dev_obj.map.MB_0_i.groupHeadLength <=  dev_obj.map.MB_0_i[dev_obj.map.MB_0_i.lastAddedIndex].length   ){
+                        
                         
                         dev_obj.map.MB_0_i.groupHead = dev_obj.map.MB_0_i.lastAddedIndex
                         dev_obj.map.MB_0_i.groupHeadLength = dev_obj.map.MB_0_i[dev_obj.map.MB_0_i.lastAddedIndex].length
                         
                         
                     }
+                    // }  /**/
                     
-                    
+                    /* we are looking at the next parent*/ //{
                     else if(   dev_obj.map.MB_0_i.groupHeadLength >  dev_obj.map.MB_0_i[dev_obj.map.MB_0_i.lastAddedIndex].length   ){
+                        
                         
                         dev_obj.map.MB_0_i[dev_obj.map.MB_0_i.lastAddedIndex].unshift.apply(   dev_obj.map.MB_0_i[dev_obj.map.MB_0_i.lastAddedIndex],dev_obj.map.MB_0_i[dev_obj.map.MB_0_i.groupHead].slice(   0,dev_obj.map.MB_0_i.groupHeadLength -  dev_obj.map.MB_0_i[dev_obj.map.MB_0_i.lastAddedIndex].length   )   )
                        // takes the path of coming from sub children and makes it of parents
@@ -2526,6 +2567,9 @@
                         ultraObject.subGroupsO[subGroupsBOOL.spot][ultraObject.subGroupsO[subGroupsBOOL.spot].length] =  dev_obj.map.MB_0_i[dev_obj.map.MB_0_i.lastAddedIndex].join(   subGroupsSeperator   )
                         
                     }
+                    // }  /**/
+                    
+                    
                     ultraObject.subGroupsO[subGroupsBOOL.spot].length += 1
                     ultraObject.subGroupsO[subGroupsBOOL.spot][ultraObject.subGroupsO[subGroupsBOOL.spot].length] = ''
                     
