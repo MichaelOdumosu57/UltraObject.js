@@ -113,6 +113,10 @@
         
     }
     */
+    /*
+         /*[meaning block descritpion]*/ //{
+         // }  /**/
+    //
     // __poss stands for possiblity
     /*
     items that should be placed in the ultraObject
@@ -438,7 +442,7 @@
              
             
             if(   ultraObject.isObject({type:dev_obj.type}) && dev_obj.type.ownerDocument !== undefined   ){
-                 //an array
+                
                 
                 return true
                 
@@ -617,6 +621,12 @@
             
     }
     function eCSearch(   dev_obj   ){
+        /*
+            abelasts
+            1 for select tags
+        
+        */
+        
         // .list, desired items
         // .look spot where to look and assert for list, if an object the items should be keys
         // .same  indicator to look at the same set of values
@@ -625,19 +635,23 @@
         // look through innerHTML, innerText, textContext
         // holds the found elements that meet the query in ultraObject.elementFound
         
+        
+        /*[addding the dev_obj  to ultraObject.args ]*/ //{
         var eCSearch_dev_obj = ultraObject.args.add(   {value:ultraObject.iterify(   {iterify:dev_obj}   )   }   )
+        // }  /**/
         
         
         if(   dev_obj.sT === undefined   ){
             
-            
+            /*[the object handling everything with the choosing tags in addition the numberSystem ]*/ //{
             var eCSSelectTags_0_i = ultraObject.scope.add(   {value:ultraObject.selectTags.add(   {value:ultraObject.iterableObject()}   )}   )
             ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].eCSNS = ultraObject.iterableObject()
             ultraObject.selectTags.abelast.add(   {value:ultraObject.scope[eCSSelectTags_0_i]}   )
+            // }  /**/
             
         }
         
-        
+        /*[if the developer already had the function make the selectTags]*/ //{
         else if(    ultraObject.isInt(   {type:dev_obj.sT}   )   ){
             
             
@@ -645,7 +659,7 @@
             
             
         }
-        
+        // }  /**/
             
         console.group(   'items needed to search for elements based on keywords'   )
         ultraObject.objInvloved({
@@ -654,11 +668,14 @@
             2:ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]]
         })
         console.groupEnd()
+        /* look at each requirement preFillForm must fill in the document by the end user*/ //{
         var eCSearchFL_0_i = {
             forLoop_0_i:0,
             forLoopLength: ultraObject.misc[ultraObject.scope[dev_obj.list]].length,
             fn:function(   dev_obj   ){
+                /*it should start with the first element if none is given*/ //{
                 var indexSelect = 0
+                // }  /**/
                 
                 
                 if(   ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]] !== undefined   ){
@@ -683,8 +700,11 @@
                                 
                                 
                             }
+                            
+                            /* what element in the document preFillForm will consider for the respecitve list item*/ //{
                             indexSelect = ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].eCSNS[eCSearchFL_0_i.forLoop_0_i][0]
-                            console.log('it tells me to start here', indexSelect)
+                            console.log('it tells me to start here', ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].eCSNS[eCSearchFL_0_i.forLoop_0_i][0])
+                            // }  /**/
                                        
                     
                         }
@@ -695,7 +715,7 @@
                         
                 }
                 
-                
+                /* where every tag is looked at in relation to the respective list*/ //{
                 var eCSearchFL_1_i = {
                     forLoop_0_i:indexSelect,
                     forLoopLength:ultraObject.allTags[ultraObject.scope[dev_obj.aT]].length,
@@ -760,10 +780,12 @@
                     args:dev_obj,
                 }
                 return ultraObject.forLoop(   eCSearchFL_1_i   )
+                // }  /**/
             },
             args:dev_obj,
         }
         ultraObject.forLoop(   eCSearchFL_0_i   )
+        // }  /**/
         
         
         if(   dev_obj.order === undefined   ){
@@ -2038,7 +2060,7 @@
     actual function used to determine data type endpoint
         I refer to this as call i will change it to calls to avoid future problems
 */
-function selectAll(   dev_obj   ){
+    function selectAll(   dev_obj   ){
             /*
                 abelast : 1 for misc
                             1 for fG
@@ -2650,8 +2672,7 @@ function selectAll(   dev_obj   ){
         
         if(   dev_obj !== undefined   ){
         
-            /*adding the first qC along with an
-            abelast*/ //{
+            /*adding the first qC along with an abelast*/ //{
             var iQC_0_i = ultraObject.scope.add(   {value:ultraObject.qC.add(   {value:ultraObject.iterableObject()}   )}   )
             ultraObject.qC.abelast.add(   {value:ultraObject.scope[iQC_0_i]}   )
             // }  /**/

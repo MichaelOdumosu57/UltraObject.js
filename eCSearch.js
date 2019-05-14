@@ -1,3 +1,21 @@
+/*
+    the object handling everything with the choosing tags in addition the numberSystem
+        this is responsible for setting up the numberSystem as well as the select tag object itself
+*/
+
+/*
+    look at each requirement preFillForm must fill in the document by the end user
+    matches with the element desired of the end user
+*/
+
+/*
+    it should start with the first element if none is given
+    this means the selectTag object created by selectTags has not been made
+*/
+
+/*
+    where every tag is looked at in relation to the respective list
+*/
 function eCSearch(   dev_obj   ){
     // .list, desired items
     // .look spot where to look and assert for list, if an object the items should be keys
