@@ -679,19 +679,18 @@
                 var indexSelect = 0
                 // }  /**/
                 
-                
+                /* if I want to go ahead anad actually add one to our numberSystem*/ //{
                 if(   ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]] !== undefined   ){
                     
-                                    
+                    /* this means i made or in the process of making the nS*/ //{
                     if(   ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].eCSNS !== undefined   ){
                         
-                        
+                        /* this means that I have made that specific digit*/ //{
                         if(   ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].eCSNS[eCSearchFL_0_i.forLoop_0_i] !== undefined   ){
                         
                         
                             if(   dev_obj.same !== 'true'   ){
                                 //look at the next set of values
-                                
                                 if(   eCSearchFL_0_i.forLoop_0_i === 0   ){
                                     ultraObject.numberSystem({
                                         digits:ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]],
@@ -710,13 +709,14 @@
                                        
                     
                         }
-                        
+                        // }  /**/
                         
                     }
-                   
+                    // }  /**/
                         
                 }
-                debugger
+                // }  /**/
+                
                 /* where every tag is looked at in relation to the respective list*/ //{
                 var eCSearchFL_1_i = {
                     forLoop_0_i:indexSelect,
@@ -736,12 +736,14 @@
                                         //this must mean it found a match amoung title of user input and something in the string of the property of the element or were looking at every value and using advanced techniques to invesitage our answers
                                         
                                         
-                                        if(   ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]]['query'+eCSearchFL_0_i.forLoop_0_i] === undefined   ){
+                                        if(   ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].abelast[eCSearchFL_0_i.forLoop_0_i] === undefined   ){
                                             // the start value for the number system it means a NS is not available
-                                            
+                                            ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]][   ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].abelast[eCSearchFL_0_i.forLoop_0_i]   ]
                                             /*creating the digits and metadata for the numberSystem*/ //{
                                             ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].eCSNS.ready = 'false'
-                                            ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]]['query'+eCSearchFL_0_i.forLoop_0_i] = ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].add(   {value:ultraObject.iterableObject()}   )
+                                            // ultraObject.selectTags[   ultraObject.scope[eCSSelectTags_0_i]   ]['query'+eCSearchFL_0_i.forLoop_0_i] = ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].add(   {value:ultraObject.iterableObject()}   )
+                                            // ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].minus(   {index:ultraObject.selectTags[   ultraObject.scope[eCSSelectTags_0_i]   ]['query'+eCSearchFL_0_i.forLoop_0_i]}   )
+                                            ultraObject.selectTags[   ultraObject.scope[eCSSelectTags_0_i]   ].abelast.add(   {value:ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].add(   {value:ultraObject.iterableObject()}   )   }   )
                                             var ecsNSI = ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].eCSNS.add(   {value:ultraObject.iterableObject()}   )
                                             ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].eCSNS[ecsNSI].add(   {value:eCSearchFL_1_i.forLoop_0_i}   )
                                             ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].eCSNS[ecsNSI].add(   {value:eCSearchFL_1_i.forLoop_0_i}   )
@@ -755,12 +757,12 @@
                                         ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].eCSNS[eCSearchFL_0_i.forLoop_0_i][0] = eCSearchFL_1_i.forLoop_0_i
                                         //helps change the number when the match is found so the NS doesnt take over
                                         //if problems look here idk if it supposed to follow the nSM or not
-                                        ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]][ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]]['query'+eCSearchFL_0_i.forLoop_0_i]].item = ultraObject.allTags[ultraObject.scope[dev_obj.aT]][eCSearchFL_1_i.forLoop_0_i]
-                                        ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]][ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]]['query'+eCSearchFL_0_i.forLoop_0_i]].query = ultraObject.allTags[ultraObject.scope[dev_obj.aT]][eCSearchFL_1_i.forLoop_0_i][ultraObject.misc[ultraObject.scope[dev_obj.look]][eCSearchFL_2_i.forLoop_0_i][0]]
-                                        ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]][ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]]['query'+eCSearchFL_0_i.forLoop_0_i]].xMark = ultraObject.misc[ultraObject.scope[dev_obj.look]][eCSearchFL_2_i.forLoop_0_i][0]
-                                        ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]][ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]]['query'+eCSearchFL_0_i.forLoop_0_i]].keyword = ultraObject.misc[ultraObject.scope[dev_obj.list]][eCSearchFL_0_i.forLoop_0_i][0]
-                                        ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]][ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]]['query'+eCSearchFL_0_i.forLoop_0_i]].valuePhrase = ultraObject.misc[ultraObject.scope[dev_obj.list]][eCSearchFL_0_i.forLoop_0_i][1]
-                                        ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]][ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]]['query'+eCSearchFL_0_i.forLoop_0_i]].eCSIndex = eCSearchFL_1_i.forLoop_0_i
+                                        ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]][    ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].abelast[eCSearchFL_0_i.forLoop_0_i]   ].item = ultraObject.allTags[ultraObject.scope[dev_obj.aT]][eCSearchFL_1_i.forLoop_0_i]
+                                        ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]][    ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].abelast[eCSearchFL_0_i.forLoop_0_i]   ].query = ultraObject.allTags[ultraObject.scope[dev_obj.aT]][eCSearchFL_1_i.forLoop_0_i][ultraObject.misc[ultraObject.scope[dev_obj.look]][eCSearchFL_2_i.forLoop_0_i][0]]
+                                        ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]][    ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].abelast[eCSearchFL_0_i.forLoop_0_i]   ].xMark = ultraObject.misc[ultraObject.scope[dev_obj.look]][eCSearchFL_2_i.forLoop_0_i][0]
+                                        ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]][    ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].abelast[eCSearchFL_0_i.forLoop_0_i]   ].keyword = ultraObject.misc[ultraObject.scope[dev_obj.list]][eCSearchFL_0_i.forLoop_0_i][0]
+                                        ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]][    ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].abelast[eCSearchFL_0_i.forLoop_0_i]   ].valuePhrase = ultraObject.misc[ultraObject.scope[dev_obj.list]][eCSearchFL_0_i.forLoop_0_i][1]
+                                        ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]][    ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].abelast[eCSearchFL_0_i.forLoop_0_i]   ].eCSIndex = eCSearchFL_1_i.forLoop_0_i
                                         // }  /**/
                                         
                                         if(   ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].eCSNS.ready  !== 'false'   ){
@@ -820,6 +822,7 @@
             digits:ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]],
             operation:'print',
         })
+        debugger
         ultraObject.scope.minus(   {index:eCSSelectTags_0_i}   )
         // find the first that matches the condition, and hold it when all four match exit, if the form doesn't like what I did each value must try everything in the allTapgs itO before telling the end user they cant figure out whats going on.grabs three and swaps one
         
@@ -1637,12 +1640,10 @@
             minus:function(   dev_obj   ){
                 //.value value to remove
                 //.index remove and index
-                
                 if(   dev_obj.index !== undefined   ){
                     
                     
                     delete iterableObjectO[dev_obj.index]
-                    // delete iterableObjectO['q'+dev_obj.index.toString()]
                     iterableObjectO.resetLength()// resets the length
                     var iterableObjectFL_0_i = {
                         forLoop_0_i:0,
@@ -1650,14 +1651,16 @@
                         fn:function(   dev_obj   ){
                             
                             
-                            if(   iterableObjectTDI <= iterableObjectFL_0_i.forLoop_0_i && iterableObjectFL_0_i.forLoop_0_i !== iterableObjectO.length  ){ // at that point something must be missing
+                            if(   dev_obj.index <= iterableObjectFL_0_i.forLoop_0_i && iterableObjectFL_0_i.forLoop_0_i !== iterableObjectO.length   ){ // at that point something must be missing
                                 
                                 
                                 iterableObjectO[iterableObjectFL_0_i.forLoop_0_i] =  iterableObjectO[iterableObjectFL_0_i.forLoop_0_i+1]
-                                delete iterableObjectO[iterableObjectFL_0_i.forLoop_0_i+1 - iterableObjectTDI]//problems look here usually wants a variable or primitive to properly delete
+                                delete iterableObjectO[iterableObjectFL_0_i.forLoop_0_i+1]//problems look here usually wants a variable or primitive to properly delete
                                 
                                 
                             }
+                            
+                            
                         },
                         args:{
                             index:dev_obj.index
@@ -1773,11 +1776,11 @@
                         fn:function(   dev_obj   ){
                             
                             
-                            if(   iterableObjectTDI <= iterableObjectFL_0_i.forLoop_0_i && iterableObjectFL_0_i.forLoop_0_i !== iterableObjectO.abelast.length  ){ // at that point something must be missing
+                            if(   dev_obj.index <= iterableObjectFL_0_i.forLoop_0_i && iterableObjectFL_0_i.forLoop_0_i !== iterableObjectO.abelast.length  ){ // at that point something must be missing
                                 
                                 
                                 iterableObjectO.abelast[iterableObjectFL_0_i.forLoop_0_i] =  iterableObjectO.abelast[iterableObjectFL_0_i.forLoop_0_i+1]
-                                delete iterableObjectO.abelast[iterableObjectFL_0_i.forLoop_0_i+1 - iterableObjectTDI]//problems look here usually wants a variable or primitive to properly delete
+                                delete iterableObjectO.abelast[iterableObjectFL_0_i.forLoop_0_i+1]//problems look here usually wants a variable or primitive to properly delete
                                 
                                 
                             }
@@ -1980,7 +1983,6 @@
                                     2:ultraObject.subGroupsO
                                 })
                         console.groupEnd()
-                        debugger
                         var packItFL_1_i = {
                             forLoop_0_i:0,
                             forLoopLength:packItSA.subGroupsMap.MB_0_i.length,
@@ -2324,7 +2326,6 @@
                             if(   ultraObject.fG[   ultraObject.scope[selectAllFG_0_i]   ].calls(   {type:Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]}   ) === 'true'   ){
                                 
                                 /* we have come to the desired target and the end of our search use subGroups to move on */ //{
-                                debugger
                                 selectReturn[Object.keys(   selectReturn   ).length] = Object.values(   dev_obj.target   )[selectAllFL_0_i.forLoop_0_i]
                                 ultraObject.subGroups({
                                     map:selectReturnMD,
