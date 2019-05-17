@@ -1,4 +1,4 @@
-
+update numberSystem, using severalOr to perform checks on to make sure we have the correct parameter types
 
             function wait(   ms   ){
                var start = new Date().getTime();
@@ -2131,7 +2131,30 @@
                     2 for the max amount the digit can be
                     
                     this can be added all at once, or modified through out the application
+                    
+            .nSM, which digit comes first
+            //
+                
+                determines how the number receive digits min is as 1 then 10 then 1000
+            
+                so forr
+                0:1
+                1:0
+                2:2
+                3::3
+                            .eCSNS:{
+                                  0:{0:current,1:min,2:max}
+                the number system 1:{0:current,1:min,2:max}
+                                  2:{0:current,1:min,2:max}
+                                  3:{0:current,1:min,2:max}
+                                    nSM:{}
+                            }
+                if the fn receives add 1 nS[1].current will increase by one
+                when ns[1].current hits the max then ns[0].current increases by one and
+                    ns[1].current returns to zero
+            //
         */
+        
         
         /*adding the dev_obj to args*/ //{
         var numberSystem_dev_obj = ultraObject.args.add(   {value:ultraObject.iterify(   {iterify:dev_obj}   )   }   )
@@ -2152,25 +2175,48 @@
                 if(   dev_obj.operation === 'create'   ){
                     
                     /*adding of a new NS to the ultraobject*/ //{
-                    var numberSystemNS_0_i = ultraObject.scope.add(   {value:ultraObject.nS.add(   {value:ultraObject.iterableObject()}   )}   )
-                    ultraObject.nS.abelast.add(   {value:ultraObject.scope[numberSystemNS_0_i]}   )
+                    var nSNS_0_i = ultraObject.scope.add(   {value:ultraObject.nS.add(   {value:ultraObject.iterableObject()}   )}   )
+                    ultraObject.nS.abelast.add(   {value:ultraObject.scope[nSNS_0_i]}   )
                     // }  /**/
                     
                     /*applying digits to the NS*/ //{
                     // note later, if it doesnt get what it wants it should through an error
                     // NS  are very impt to an operation
-                    if(    ultraObject.isitO(   {type:dev_obj.digits }   )   ){
-                        
-                        
-                        console.log(   ultraObject.nS[   ultraObject.scope[numberSystemNS_0_i]   ]   )
-                        
-                        
+                    
+                    /*adding an ito to misc to check my  parameters*/ //{
+                    var nSMisc_0_i = ultraObject.scope.add({
+                        value:ultraObject.misc.add({value:ultraObject.iterify({
+                                    iterify:[
+                                        ultraObject.iterify({ iterify:['nSM','itO',dev_obj.nSM]}),
+                                        ultraObject.iterify({ iterify:['digits','itO',dev_obj.digits]})
+                                    ]
+                                })}
+                        )})
+                    // }  /**/
+                    
+                    var nSBOOL = {0:false}
+                    nSBOOL = ultraObject.severalOr({
+                        compTo: 'match',
+                        compAgn: ultraObject.misc[   ultraObject.scope[nSMisc_0_i]   ],
+                        boolean:nSBOOL,
+                        how:function(   dev_obj   ){
+                            console.log(   dev_obj   )
+                            if(   !ultraObject.isitO(   {type:dev_obj.compAgnI[2]}   )   ){
+                                return 'a'
+                            }
+                        },
+                        result:'a',
+                        which:0
+                    })
+                    
+                    /*means a paramater type is not what the function wanted*/ //{
+                    if(   nSBOOL[0]   ){
+                        throw('dev_obj.' + ultraObject.misc[   ultraObject.scope[nSMisc_0_i]   ][   nSBOOL.spot   ][0] +' is not a ' +  ultraObject.misc[   ultraObject.scope[nSMisc_0_i]   ][   nSBOOL.spot   ][1] + 'check parameters types and try again')
                     }
+                    // }  /**/
                     
                     
-                    if(   !ultraObject.isitO(   {type:dev_obj.digits}   )   ){
-                        throw(   'dev_obj.digits  must be an itO'   )
-                    }
+
                     // }  /**/
                     
                 }
