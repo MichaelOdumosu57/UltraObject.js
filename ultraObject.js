@@ -1,4 +1,4 @@
-update numberSystem, using severalOr to perform checks on to make sure we have the correct parameter types
+
 
             function wait(   ms   ){
                var start = new Date().getTime();
@@ -2115,6 +2115,7 @@ update numberSystem, using severalOr to perform checks on to make sure we have t
     function numberSystem(   dev_obj   ){
         /* ablelasts
             1 for nS
+            1 for misc
         */
         /*
             .nS: if this is undefined the function sets aside a new numberSystem, if not it loads the one given according to the scope
@@ -2154,7 +2155,10 @@ update numberSystem, using severalOr to perform checks on to make sure we have t
                     ns[1].current returns to zero
             //
         */
-        
+        /*
+            looping through  nSM to recreate the string!
+            key:digits in ordered index: ultraObject.nS[   ultraObject.scope[nSNS_0_i]].digits[   ultraObject.nS[   ultraObject.scope[nSNS_0_i]   ].nSM[   nSFL_0_i.forLoop_0_i   ]   ]
+        */
         
         /*adding the dev_obj to args*/ //{
         var numberSystem_dev_obj = ultraObject.args.add(   {value:ultraObject.iterify(   {iterify:dev_obj}   )   }   )
@@ -2200,7 +2204,7 @@ update numberSystem, using severalOr to perform checks on to make sure we have t
                         compAgn: ultraObject.misc[   ultraObject.scope[nSMisc_0_i]   ],
                         boolean:nSBOOL,
                         how:function(   dev_obj   ){
-                            console.log(   dev_obj   )
+                            
                             if(   !ultraObject.isitO(   {type:dev_obj.compAgnI[2]}   )   ){
                                 return 'a'
                             }
@@ -2211,10 +2215,46 @@ update numberSystem, using severalOr to perform checks on to make sure we have t
                     
                     /*means a paramater type is not what the function wanted*/ //{
                     if(   nSBOOL[0]   ){
-                        throw('dev_obj.' + ultraObject.misc[   ultraObject.scope[nSMisc_0_i]   ][   nSBOOL.spot   ][0] +' is not a ' +  ultraObject.misc[   ultraObject.scope[nSMisc_0_i]   ][   nSBOOL.spot   ][1] + 'check parameters types and try again')
+                        throw(   'dev_obj.' + ultraObject.misc[   ultraObject.scope[nSMisc_0_i]   ][   nSBOOL.spot   ][0] +' is not a ' +  ultraObject.misc[   ultraObject.scope[nSMisc_0_i]   ][   nSBOOL.spot   ][1] + ' check parameters types and try again '   )
                     }
                     // }  /**/
-                    
+                
+                    /*lets go create this nS!*/ //{
+                    else if(   !nSBOOL[0]   ){
+                        
+                        /* restructing the dev obj in the target nS*/ //{
+                        ultraObject.nS[   ultraObject.scope[nSNS_0_i]].nSM = dev_obj.nSM
+                        ultraObject.nS[   ultraObject.scope[nSNS_0_i]].digits = dev_obj.digits
+                        // }  /**/
+                        
+                        /*looping through  nSM to recreate the string!*/ //{
+                        var nSFL_0_i = {
+                            forLoop_0_i:0,
+                            forLoopLength:ultraObject.nS[   ultraObject.scope[nSNS_0_i]].nSM.length,
+                            fn:function(   dev_obj   ){
+                                
+                                /* this means a digit is not there it should be undefined put a value in that place*/ //{
+                                if(   !ultraObject.isitO(   {type:ultraObject.nS[   ultraObject.scope[nSNS_0_i]][   nSFL_0_i.forLoop_0_i   ]}   )   ){
+                                    
+                                    
+                                    ultraObject.nS[   ultraObject.scope[nSNS_0_i]].add({
+                                            value:(   ultraObject.nS[   ultraObject.scope[nSNS_0_i]].digits[   ultraObject.nS[   ultraObject.scope[nSNS_0_i]   ].nSM[   nSFL_0_i.forLoop_0_i   ]   ]   )
+                                    })
+                                    
+                                    
+                                }
+                                // }  /**/
+                                
+
+                              
+                            },
+                            args:dev_obj //{}
+                        }
+                        ultraObject.forLoop(   nSFL_0_i   )
+                        // }  /**/
+                         
+                    }
+                    // }  /**/
                     
 
                     // }  /**/
