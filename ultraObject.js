@@ -2120,7 +2120,17 @@
             .nS: if this is undefined the function sets aside a new numberSystem, if not it loads the one given according to the scope
             the indexes represents the digits
             .operation:
-                create - adds, modifes or removes digits from the numberSysten
+                create - adds, modifes or removes digits from the numberSyste,
+                    for every digit, we need the actual, the minx and the max
+                    0 for actual, 1 for min 2 for max
+                    requires a .digits or just leaves it alone
+            .digits
+                    an itO containing itO's that represent each digit of the nS
+                    0 for the current digit
+                    1 for the min amount the digit can be
+                    2 for the max amount the digit can be
+                    
+                    this can be added all at once, or modified through out the application
         */
         
         /*adding the dev_obj to args*/ //{
@@ -2144,6 +2154,23 @@
                     /*adding of a new NS to the ultraobject*/ //{
                     var numberSystemNS_0_i = ultraObject.scope.add(   {value:ultraObject.nS.add(   {value:ultraObject.iterableObject()}   )}   )
                     ultraObject.nS.abelast.add(   {value:ultraObject.scope[numberSystemNS_0_i]}   )
+                    // }  /**/
+                    
+                    /*applying digits to the NS*/ //{
+                    // note later, if it doesnt get what it wants it should through an error
+                    // NS  are very impt to an operation
+                    if(    ultraObject.isitO(   {type:dev_obj.digits }   )   ){
+                        
+                        
+                        console.log(   ultraObject.nS[   ultraObject.scope[numberSystemNS_0_i]   ]   )
+                        
+                        
+                    }
+                    
+                    
+                    if(   !ultraObject.isitO(   {type:dev_obj.digits}   )   ){
+                        throw(   'dev_obj.digits  must be an itO'   )
+                    }
                     // }  /**/
                     
                 }
