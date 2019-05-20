@@ -1,4 +1,14 @@
 /*
+    key
+    ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM - used to help the API generate a new nSM to be verified
+*
+
+/*
+    first things first the nSM should be looked at than changes are made in the digits, if the nSM is not given, the orginal is used to make any changes in digits
+    
+    its important to note that once the nS is made, the order you see is not the order to apply the nSM, it was already ordered according to the nSM. to see the original order look at digits
+
+/*
     this code blocks adds subtracts or modifies the numberSystem digits
     //if it sees nSM or digits, it should modify the digit order according to their indexes,
 */
@@ -18,6 +28,60 @@
 /*
     misc -self -scope
     //deleting the misc that checks my parameter
+*/
+
+/*
+    this code blocks adds subtracts or modifies the existing digits
+    when nSM and the digits are  given it modifies the existing resource
+    so if nSM
+    
+    "{
+      "0": 2,
+      "1": 0,
+      "2": 1,
+      "length": 3,
+      "abelast": {
+        "length": 0
+      }
+    }"
+    
+    and we get
+    
+    "{
+      "0": 2,
+      "length": 1,
+      "abelast": {
+        "length": 0
+      }
+    }"
+    
+    
+    this is invalid because we have a system here, the developer cant do whatever and cant think the api has an ai and know what is meant explicitly provide a new one
+    
+    however for big numberSystems this could be a memory leak. so provide an itO iterified from an object
+    
+    iterify:
+    "{
+      "0": 0
+      "1": 1
+      '2': 2
+    }"
+    
+    rules of the object,
+    everything has to swap, well make holding spot in nSM, and if we find a problem we throw an error, thats really it
+    
+*/
+
+/*
+    asking first how many digits are there
+    we ask according to the digits because this is how first the nS is made
+    this has to be .limit, so we dont order out digits that are not there
+*/
+
+/*
+    remaking the nSM
+    in remaking the nSM, we rely on the digits length, as iteraton as replace the nSM
+    use ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM - key
 */
 function numberSystem(   dev_obj   ){
             /* ablelasts
@@ -79,10 +143,41 @@ function numberSystem(   dev_obj   ){
                     
                     var nSNS_1_i = dev_obj.nS
                     
-                    /*this code blocks adds subtracts or modifies the numberSystem digits*/ //{
-
+                    /*this code blocks adds subtracts or modifies the existing digits*/ //{
                     if(   dev_obj.operation === 'create'   ){
                         ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ]
+                        
+                        /*if the developer wants the nS to be reordered*/ //{
+                        if(   ultraObject.isitO(   {type:dev_obj.nSM}   )   ){
+                            
+                            ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.replacer = dev_obj.nSM
+                            
+                            /* setting some presets to test when the nSM is remade */ //{
+                            
+                                /*asking first how many digits are there*/ //{
+                                console.log(   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].digits.length   )
+                                ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.limit = ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].digits.length
+                                // }  /**/
+                            
+                            // }  /**/
+                            
+                            /*remaking the nSM*/ //{
+                            ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM = ultraObject.iterableObject()
+                            var nSFL_1_i = {
+                                forLoop_0_i:0,
+                                forLoopLength:ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.limit,
+                                fn:function(   dev_obj   ){
+                                    ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM.add(   {value:ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.replacer[   nSFL_1_i.forLoop_0_i   ]}   )
+                                },
+                                args:dev_obj
+                            }
+                            ultraObject.forLoop(   nSFL_1_i   )
+                            console.log(   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM   )
+                            // }  /**/
+                            
+                        }
+                        // }  /**/
+                        
                     }
                     // }  /**/
                     
@@ -185,4 +280,4 @@ function numberSystem(   dev_obj   ){
             }
             
             
-        }//makes a customized number system for the needs of the eCSearch multiple testing required by prefill form
+        }

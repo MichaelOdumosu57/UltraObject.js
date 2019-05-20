@@ -1,5 +1,3 @@
-
-
                 function wait(   ms   ){
                    var start = new Date().getTime();
                    var end = start;
@@ -2158,6 +2156,7 @@
             /*
                 looping through  nSM to recreate the string!
                 key:digits in ordered index: ultraObject.nS[   ultraObject.scope[nSNS_0_i]].digits[   ultraObject.nS[   ultraObject.scope[nSNS_0_i]   ].nSM[   nSFL_0_i.forLoop_0_i   ]   ]
+                key:the dev given nS:ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ]
             */
             
             /*adding the dev_obj to args*/ //{
@@ -2170,9 +2169,41 @@
                 if(   ultraObject.isInt(   {type:dev_obj.nS}   ) === 'true'  ){
                     
                     var nSNS_1_i = dev_obj.nS
-                    console.log(   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ]   )
-                    /*this code blocks adds subtracts or modifies the numberSystem digits*/ //{
+                    
+                    /*this code blocks adds subtracts or modifies the existing digits*/ //{
                     if(   dev_obj.operation === 'create'   ){
+                        ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ]
+                        
+                        /*if the developer wants the nS to be reordered*/ //{
+                        if(   ultraObject.isitO(   {type:dev_obj.nSM}   )   ){
+                            
+                            ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.replacer = dev_obj.nSM
+                            
+                            /* setting some presets to test when the nSM is remade */ //{
+                            
+                                /*asking first how many digits are there*/ //{
+                                console.log(   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].digits.length   )
+                                ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.limit = ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].digits.length
+                                // }  /**/
+                            
+                            // }  /**/
+                            
+                            /*remaking the nSM*/ //{
+                            ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM = ultraObject.iterableObject()
+                            var nSFL_1_i = {
+                                forLoop_0_i:0,
+                                forLoopLength:ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.limit,
+                                fn:function(   dev_obj   ){
+                                    ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM.add(   {value:ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.replacer[   nSFL_1_i.forLoop_0_i   ]}   )
+                                },
+                                args:dev_obj
+                            }
+                            ultraObject.forLoop(   nSFL_1_i   )
+                            console.log(   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM   )
+                            // }  /**/
+                            
+                        }
+                        // }  /**/
                         
                     }
                     // }  /**/
@@ -2192,8 +2223,6 @@
                         // }  /**/
                         
                         /*applying digits to the NS*/ //{
-                            // note later, if it doesnt get what it wants it should through an error
-                            // NS  are very impt to an operation
                         
                             /*adding an ito to misc to check my  parameters*/ //{
                             var nSMisc_0_i = ultraObject.scope.add({
@@ -2242,8 +2271,6 @@
                                     fn:function(   dev_obj   ){
                                         
                                         /* adding the digits according to the nSM*/ //{
-                                        // we need to properly check against this that the intergrity of the nS is not compromised
-                                        // to create digits gaps just as easily place undefined in the nSM, and have you API redefine it later
                                         ultraObject.nS[   ultraObject.scope[nSNS_0_i]].add({
                                                 value:(   ultraObject.nS[   ultraObject.scope[nSNS_0_i]].digits[   ultraObject.nS[   ultraObject.scope[nSNS_0_i]   ].nSM[   nSFL_0_i.forLoop_0_i   ]   ]   )
                                         })
@@ -2261,7 +2288,6 @@
                             // }  /**/
                         
                             /*misc -self -scope*/ //{
-                                //deleting the misc that checks my parameter
                             ultraObject.misc.minus(   {index:ultraObject.scope[nSMisc_0_i]}   )
                             ultraObject.scope.minus(   {index:nSMisc_0_i}   )
                             // }  /**/
@@ -4927,4 +4953,7 @@
         catch(e){
             
         }
-        
+
+(function(){
+    return 'it works!!! you did it no matter what i believe in you'
+    })
