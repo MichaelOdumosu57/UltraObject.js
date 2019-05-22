@@ -1,6 +1,9 @@
 /*
     key
-    ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM - used to help the API generate a new nSM to be verified
+    ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM - used to help the API generate a new nSM to be verified an itO of the new itO
+    ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.limitStart - contuer to test against the nSM an itO conuter each index an iteration to the length of the itO
+    ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.limitStart[   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM[   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.limitStart[   nSFL_3_i.forLoop_0_i][0]   ]   ]  -  index to check against nSM
+    
 *
 
 /*
@@ -82,6 +85,12 @@
     remaking the nSM
     in remaking the nSM, we rely on the digits length, as iteraton as replace the nSM
     use ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM - key
+*/
+
+/*
+    we want to see if the newnSM at the index contains an item in limitStart
+    // see if we can also lessen the length when we take out an index so we dont get undefined as we loop through the limit start itO
+    // key - ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.limitStart[   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM[   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.limitStart[   nSFL_3_i.forLoop_0_i][0]   ]   ]
 */
 function numberSystem(   dev_obj   ){
             /* ablelasts
