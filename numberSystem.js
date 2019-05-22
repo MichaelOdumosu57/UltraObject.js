@@ -182,6 +182,52 @@ function numberSystem(   dev_obj   ){
                             }
                             ultraObject.forLoop(   nSFL_1_i   )
                             console.log(   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM   )
+                            
+                                /*testing if the nSM is valid*/ //{
+                                ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.limitStart  = ultraObject.iterableObject()
+                                
+                                    /*grabbing all expected indexes from the length of the NS*/ //{
+                                    var nSFL_2_i  = {
+                                        forLoop_0_i:0,
+                                        forLoopLength:ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.limit,
+                                        fn:function(   dev_obj   ){
+                                            ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.limitStart.add(   {value:ultraObject.iterify(   {iterify:[nSFL_2_i.forLoop_0_i,-1]}   )   }   )
+                                        },
+                                        args:dev_obj
+                                    }
+                                    ultraObject.forLoop(   nSFL_2_i    )
+                                    // }  /**/
+                                    
+                                    /*testing to see if all indexes are represented in the newnSM*/ //{
+                                    var nSFL_3_i   = {
+                                        forLoop_0_i:0,
+                                        forLoopLength:ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.limit,
+                                        fn:function(   dev_obj   ){
+                                            console.log(   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM[   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.limitStart[   nSFL_3_i.forLoop_0_i][0]   ]   )
+                                            console.log(   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.limitStart[   nSFL_3_i.forLoop_0_i   ][0]   )
+                                            
+                                                /*we want to see if the newnSM at the index contains an item in limitStart*/ //{
+                                                if(   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.limitStart[   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM[   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.limitStart[   nSFL_3_i.forLoop_0_i][0]   ]   ] !== undefined   ){
+                                                    
+                                                    debugger
+                                                    console.log(   'its there ill note it in limitStart'   )
+                                                    ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.limitStart[   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM[   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.limitStart[   nSFL_3_i.forLoop_0_i][0]   ]   ][1] = -2
+                                                    console.log(   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.limitStart   )
+                                                    
+                                                    
+                                                }
+                                                // }  /**/
+                                                
+                                            console.log('----')
+                                        },
+                                        args:dev_obj
+                                    }
+                                    ultraObject.forLoop(   nSFL_3_i     )
+                                    // }  /**/
+                                    
+                                // }  /**/
+                                
+                            
                             // }  /**/
                             
                         }
