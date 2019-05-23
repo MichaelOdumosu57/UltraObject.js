@@ -1,3 +1,5 @@
+
+
                 function wait(   ms   ){
                    var start = new Date().getTime();
                    var end = start;
@@ -2168,14 +2170,16 @@
                 /*we have a numberSystem to work with*/ //{
                 if(   ultraObject.isInt(   {type:dev_obj.nS}   ) === 'true'  ){
                     
-                    var nSNS_1_i = dev_obj.nS
+                    /*NS +scope */ //{
+                    var nSNS_1_i = ultraObject.scope.add(   {value:dev_obj.nS}   )
+                    // }  /**/
                     
                     /*this code blocks adds subtracts or modifies the existing digits*/ //{
                     if(   dev_obj.operation === 'create'   ){
-                        ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ]
                         
                         /*if the developer wants the nS to be reordered*/ //{
                         if(   ultraObject.isitO(   {type:dev_obj.nSM}   )   ){
+                            
                             
                             ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.replacer = dev_obj.nSM
                             
@@ -2243,6 +2247,47 @@
                                     ultraObject.forLoop(   nSFL_3_i     )
                                     // }  /**/
                                     
+                                    /*checking limit start to see if nSM is valid*/ //{
+                                    var nSFL_4_i   = {
+                                        forLoop_0_i:0,
+                                        forLoopLength:ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.limitStart,
+                                        fn:function(   dev_obj   ){
+                                            console.log(   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM[   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.limitStart[   nSFL_4_i.forLoop_0_i][0]   ]   )
+                                            console.log(   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.limitStart[   nSFL_4_i.forLoop_0_i   ][0]   )
+                                            
+                                                /*we want to see if the newnSM at the index contains an item in limitStart*/ //{
+                                                if(   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.limitStart[   [   nSFL_4_i.forLoop_0_i]   ][1] === -1    ){
+                                                    
+                                                    
+                                                    console.log(   'this  is invalid'   )
+                                                    ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM.valid = 'false'
+                                                    return 'premature'
+                                                    
+                                                }
+                                                // }  /**/
+                                                
+                                            console.log('----')
+                                        },
+                                        args:dev_obj
+                                    }
+                                    ultraObject.forLoop(   nSFL_4_i     )
+                                    
+                                    
+                                    if(   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM.valid === 'false'   ){
+                                        
+                                        
+                                        console.log(   'bad nSM reset please'   )
+                                        delete ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.limitStart
+                                        delete ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.limit
+                                        delete ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM
+                                        delete ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.replacer
+                                        
+                                    }
+                                    
+                                    
+                                    // }  /**/
+                                    
+                                    
                                 // }  /**/
                                 
                             
@@ -2252,6 +2297,10 @@
                         // }  /**/
                         
                     }
+                    // }  /**/
+                    
+                    /*NS -scope */ //{
+                    ultraObject.scope.minus(   {index:nSNS_1_i}   )
                     // }  /**/
                     
                 }
@@ -2341,7 +2390,7 @@
                         // }  /**/
                         
                         /*NS -scope */ //{
-                        ultraObject.scope.minus(   {index:nSMisc_0_i}   )
+                        ultraObject.scope.minus(   {index:nSNS_0_i}   )
                         // }  /**/
                         
                     }
@@ -4447,14 +4496,12 @@
                 dev_obj.stream.body += chunk
             })
             dev_obj.stream.on('end',function(){
-                // rBMisc_0_i =  ultraObject.scope.add(   {value:ultraObject.misc.add(   {value:ultraObject.iterableObject()}   )}   )
-                // ultraObject.misc.abelast.add(   {value:ultraObject.scope[rBMisc_0_i]}   )
+                rBMisc_0_i =  ultraObject.scope.add(   {value:ultraObject.misc.add(   {value:ultraObject.iterableObject()}   )}   )
+                ultraObject.misc.abelast.add(   {value:ultraObject.scope[rBMisc_0_i]}   )
                 dev_obj.fn(dev_obj)
                 if(   dev_obj.keep === 'false'){
                     ultraObject.misc.minus({
-                        index:ultraObject.misc.abelast[
-                            ultraObject.misc.abelast.length-1
-                        ]
+                        index:ultraObject.scope[   rBMisc_0_i   ]
                     })
                     ultraObject.misc.abelast.minus({
                         index:ultraObject.misc.abelast.length-1
@@ -4462,7 +4509,7 @@
                 }
                 dev_obj.finish(dev_obj)
                 //why use dev_obj when you know where it is LOL
-                // ultraObject.scope.minus(   {index:rBMisc_0_i}   )
+                ultraObject.scope.minus(   {index:rBMisc_0_i}   )
             })
         }// make body data collection easy
             

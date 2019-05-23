@@ -150,14 +150,16 @@ function numberSystem(   dev_obj   ){
                 /*we have a numberSystem to work with*/ //{
                 if(   ultraObject.isInt(   {type:dev_obj.nS}   ) === 'true'  ){
                     
-                    var nSNS_1_i = dev_obj.nS
+                    /*NS +scope */ //{
+                    var nSNS_1_i = ultraObject.scope.add(   {value:dev_obj.nS}   )
+                    // }  /**/
                     
                     /*this code blocks adds subtracts or modifies the existing digits*/ //{
                     if(   dev_obj.operation === 'create'   ){
-                        ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ]
                         
                         /*if the developer wants the nS to be reordered*/ //{
                         if(   ultraObject.isitO(   {type:dev_obj.nSM}   )   ){
+                            
                             
                             ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.replacer = dev_obj.nSM
                             
@@ -225,6 +227,47 @@ function numberSystem(   dev_obj   ){
                                     ultraObject.forLoop(   nSFL_3_i     )
                                     // }  /**/
                                     
+                                    /*checking limit start to see if nSM is valid*/ //{
+                                    var nSFL_4_i   = {
+                                        forLoop_0_i:0,
+                                        forLoopLength:ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.limitStart,
+                                        fn:function(   dev_obj   ){
+                                            console.log(   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM[   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.limitStart[   nSFL_4_i.forLoop_0_i][0]   ]   )
+                                            console.log(   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.limitStart[   nSFL_4_i.forLoop_0_i   ][0]   )
+                                            
+                                                /*we want to see if the newnSM at the index contains an item in limitStart*/ //{
+                                                if(   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.limitStart[   [   nSFL_4_i.forLoop_0_i]   ][1] === -1    ){
+                                                    
+                                                    
+                                                    console.log(   'this  is invalid'   )
+                                                    ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM.valid = 'false'
+                                                    return 'premature'
+                                                    
+                                                }
+                                                // }  /**/
+                                                
+                                            console.log('----')
+                                        },
+                                        args:dev_obj
+                                    }
+                                    ultraObject.forLoop(   nSFL_4_i     )
+                                    
+                                    
+                                    if(   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM.valid === 'false'   ){
+                                        
+                                        
+                                        console.log(   'bad nSM reset please'   )
+                                        delete ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.limitStart
+                                        delete ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.limit
+                                        delete ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM
+                                        delete ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.replacer
+                                        
+                                    }
+                                    
+                                    
+                                    // }  /**/
+                                    
+                                    
                                 // }  /**/
                                 
                             
@@ -234,6 +277,10 @@ function numberSystem(   dev_obj   ){
                         // }  /**/
                         
                     }
+                    // }  /**/
+                    
+                    /*NS -scope */ //{
+                    ultraObject.scope.minus(   {index:nSNS_1_i}   )
                     // }  /**/
                     
                 }
@@ -323,7 +370,7 @@ function numberSystem(   dev_obj   ){
                         // }  /**/
                         
                         /*NS -scope */ //{
-                        ultraObject.scope.minus(   {index:nSMisc_0_i}   )
+                        ultraObject.scope.minus(   {index:nSNS_0_i}   )
                         // }  /**/
                         
                     }
