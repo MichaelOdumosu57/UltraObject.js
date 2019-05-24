@@ -114,7 +114,6 @@
     key ultraObject.nS[   ultraObject.scope[nSNS_0_i]   ].currentNumber
 */
 function numberSystem(   dev_obj   ){
-    
             /* ablelasts
                 1 for nS
                 1 for misc
@@ -182,7 +181,7 @@ function numberSystem(   dev_obj   ){
                         /*if the developer wants the nS to be reordered*/ //{
                         if(   ultraObject.isitO(   {type:dev_obj.nSM}   )   ){
                             
-                            /* node mode choice thread performance */ //{
+                            /* node mode choice thread validation */ //{
                                 ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM = dev_obj.nSM
                                 var nSFL_1_i = {
                                     forLoop_0_i:0,
@@ -331,8 +330,29 @@ function numberSystem(   dev_obj   ){
                         // }  /**/
                         
                         /*if the developer wants the digits to be changed*/ //{
-                        if(   ultraObject.isitO(   {type:dev_obj.digits}   )   ){
+                        if(   dev_obj.digits !== undefined   ){
                             
+                            
+                            ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].digits.newDigits = Object.entries(   dev_obj.digits   )
+                            var nSFL_5_i  = {
+                                forLoop_0_i:0,
+                                forLoopLength:ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].digits.newDigits.length,
+                                fn:function(   dev_obj   ){
+                                    
+                                    
+                                    if(   ultraObject.isInt(   {type:ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].digits.newDigits[   nSFL_5_i.forLoop_0_i   ][0]}   )   ){
+                                        
+                                        
+                                        ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ][   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].digits.newDigits[   nSFL_5_i.forLoop_0_i   ][0]  ] = ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].digits.newDigits[   nSFL_5_i.forLoop_0_i   ][1]
+                                        
+                                        
+                                    }
+                                    
+                                    
+                                },
+                                args:dev_obj
+                            }
+                            ultraObject.forLoop(   nSFL_5_i    )
                             
                             
                         }
@@ -430,6 +450,19 @@ function numberSystem(   dev_obj   ){
                             ultraObject.scope.minus(   {index:nSMisc_0_i}   )
                             // }  /**/
     
+                        // }  /**/
+                        
+                        /*adding of current number to nS object*/ //{
+                        ultraObject.nS[   ultraObject.scope[nSNS_0_i]   ].currentNumber = []
+                        var nSFL_6_i = {
+                            forLoop_0_i:0,
+                            forLoopLength:ultraObject.nS[   ultraObject.scope[nSNS_0_i]   ].length,
+                            fn:function(   dev_obj   ){
+                                ultraObject.nS[   ultraObject.scope[nSNS_0_i]   ].currentNumber.push(   ultraObject.nS[   ultraObject.scope[nSNS_0_i]   ][   nSFL_6_i.forLoop_0_i   ][0])
+                            },
+                            args:dev_obj //{}
+                        }
+                        ultraObject.forLoop(   nSFL_6_i   )
                         // }  /**/
                         
                         /*NS -scope */ //{
