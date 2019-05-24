@@ -1,3 +1,4 @@
+update numberSystem when digits get modified in the actual they are respectively reflected in the .digits
 
                 function wait(   ms   ){
                    var start = new Date().getTime();
@@ -2185,7 +2186,7 @@
                         /*if the developer wants the nS to be reordered*/ //{
                         if(   ultraObject.isitO(   {type:dev_obj.nSM}   )   ){
                             
-                            /* node mode choice thread validation */ //{
+                            /* node mode choice thread performance */ //{
                                 ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM = dev_obj.nSM
                                 var nSFL_1_i = {
                                     forLoop_0_i:0,
@@ -2207,7 +2208,6 @@
                                             
                                             
                                             ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM[   nSFL_1_i.forLoop_0_i   ] = ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM[   nSFL_1_i.forLoop_0_i   ]
-                                            debugger
                                             ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ][   nSFL_1_i.forLoop_0_i   ] =  ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].digits[   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM[   nSFL_1_i.forLoop_0_i   ]   ]
                                             
                                             
@@ -2318,4 +2318,4 @@
                                 //         if(   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM.valid === 'false'   ){
                                             
                                             
-                                //             console.log(   'bad nSM reset please
+                             
