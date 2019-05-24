@@ -92,6 +92,12 @@
     // see if we can also lessen the length when we take out an index so we dont get undefined as we loop through the limit start itO
     // key - ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.limitStart[   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM[   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.limitStart[   nSFL_3_i.forLoop_0_i][0]   ]   ]
 */
+
+
+/*
+    if the developer wants the digits to be reordered
+    if the developer does not want to get hit with the nSM restriction, to remove a digit from the nS, simply ultraObject minus on it, so you ultraObject should be about performance not vaildation because when there is validations performance is compromised instead one module should be dedicated to validation
+*/
 function numberSystem(   dev_obj   ){
             /* ablelasts
                 1 for nS
@@ -160,121 +166,160 @@ function numberSystem(   dev_obj   ){
                         /*if the developer wants the nS to be reordered*/ //{
                         if(   ultraObject.isitO(   {type:dev_obj.nSM}   )   ){
                             
-                            
-                            ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.replacer = dev_obj.nSM
-                            
-                            /* setting some presets to test when the nSM is remade */ //{
-                            
-                                /*asking first how many digits are there*/ //{
-                                console.log(   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].digits.length   )
-                                ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.limit = ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].digits.length
-                                // }  /**/
-                            
+                            /* node mode choice thread validation */ //{
+                                ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM = dev_obj.nSM
+                                var nSFL_1_i = {
+                                    forLoop_0_i:0,
+                                    forLoopLength:ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM.length,
+                                    fn:function(   dev_obj   ){
+                                        debugger
+                                        /*means that the end of the current nSM*/ //{
+                                        if(   nSFL_1_i.forLoop_0_i >= ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.length ){
+                                        
+                                        
+                                            ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.add(   {value:ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM[   nSFL_1_i.forLoop_0_i   ]}   )
+                                            
+                                            
+                                        }
+                                        // }  /**/
+                                        
+                                        /*means newnSM can replace an available value in the current nSM*/ //{
+                                        else if(   nSFL_1_i.forLoop_0_i < ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.length   ){
+                                            
+                                            
+                                            ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM[   nSFL_1_i.forLoop_0_i   ] = ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM[   nSFL_1_i.forLoop_0_i   ]
+                                            
+                                            
+                                        }
+                                        // }  /**/
+                                        
+                                    },
+                                    args:dev_obj
+                                }
+                                ultraObject.forLoop(   nSFL_1_i   )
                             // }  /**/
                             
-                            /*remaking the nSM*/ //{
-                            ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM = ultraObject.iterableObject()
-                            var nSFL_1_i = {
-                                forLoop_0_i:0,
-                                forLoopLength:ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.limit,
-                                fn:function(   dev_obj   ){
-                                    ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM.add(   {value:ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.replacer[   nSFL_1_i.forLoop_0_i   ]}   )
-                                },
-                                args:dev_obj
-                            }
-                            ultraObject.forLoop(   nSFL_1_i   )
-                            console.log(   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM   )
+                            /* node mode choice thread validation */ //{
                             
-                                /*testing if the nSM is valid*/ //{
-                                ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.limitStart  = ultraObject.iterableObject()
+                                // ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.replacer = dev_obj.nSM
                                 
-                                    /*grabbing all expected indexes from the length of the NS*/ //{
-                                    var nSFL_2_i  = {
-                                        forLoop_0_i:0,
-                                        forLoopLength:ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.limit,
-                                        fn:function(   dev_obj   ){
-                                            ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.limitStart.add(   {value:ultraObject.iterify(   {iterify:[nSFL_2_i.forLoop_0_i,-1]}   )   }   )
-                                        },
-                                        args:dev_obj
-                                    }
-                                    ultraObject.forLoop(   nSFL_2_i    )
-                                    // }  /**/
-                                    
-                                    /*testing to see if all indexes are represented in the newnSM*/ //{
-                                    var nSFL_3_i   = {
-                                        forLoop_0_i:0,
-                                        forLoopLength:ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.limit,
-                                        fn:function(   dev_obj   ){
-                                            console.log(   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM[   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.limitStart[   nSFL_3_i.forLoop_0_i][0]   ]   )
-                                            console.log(   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.limitStart[   nSFL_3_i.forLoop_0_i   ][0]   )
-                                            
-                                                /*we want to see if the newnSM at the index contains an item in limitStart*/ //{
-                                                if(   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.limitStart[   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM[   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.limitStart[   nSFL_3_i.forLoop_0_i][0]   ]   ] !== undefined   ){
-                                                    
-                                                    debugger
-                                                    console.log(   'its there ill note it in limitStart'   )
-                                                    ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.limitStart[   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM[   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.limitStart[   nSFL_3_i.forLoop_0_i][0]   ]   ][1] = -2
-                                                    console.log(   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.limitStart   )
-                                                    
-                                                    
-                                                }
-                                                // }  /**/
-                                                
-                                            console.log('----')
-                                        },
-                                        args:dev_obj
-                                    }
-                                    ultraObject.forLoop(   nSFL_3_i     )
-                                    // }  /**/
-                                    
-                                    /*checking limit start to see if nSM is valid*/ //{
-                                    var nSFL_4_i   = {
-                                        forLoop_0_i:0,
-                                        forLoopLength:ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.limitStart,
-                                        fn:function(   dev_obj   ){
-                                            console.log(   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM[   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.limitStart[   nSFL_4_i.forLoop_0_i][0]   ]   )
-                                            console.log(   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.limitStart[   nSFL_4_i.forLoop_0_i   ][0]   )
-                                            
-                                                /*we want to see if the newnSM at the index contains an item in limitStart*/ //{
-                                                if(   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.limitStart[   [   nSFL_4_i.forLoop_0_i]   ][1] === -1    ){
-                                                    
-                                                    
-                                                    console.log(   'this  is invalid'   )
-                                                    ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM.valid = 'false'
-                                                    return 'premature'
-                                                    
-                                                }
-                                                // }  /**/
-                                                
-                                            console.log('----')
-                                        },
-                                        args:dev_obj
-                                    }
-                                    ultraObject.forLoop(   nSFL_4_i     )
-                                    
-                                    
-                                    if(   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM.valid === 'false'   ){
-                                        
-                                        
-                                        console.log(   'bad nSM reset please'   )
-                                        delete ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.limitStart
-                                        delete ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.limit
-                                        delete ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM
-                                        delete ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.replacer
-                                        
-                                    }
-                                    
-                                    
-                                    // }  /**/
-                                    
-                                    
-                                // }  /**/
+                                // /* setting some presets to test when the nSM is remade */ //{
                                 
-                            
+                                //     /*asking first how many digits are there*/ //{
+                                //     console.log(   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].digits.length   )
+                                //     ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.limit = ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].digits.length
+                                //     // }  /**/
+                                
+                                // // }  /**/
+                                
+                                // /*remaking the nSM*/ //{
+                                // ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM = ultraObject.iterableObject()
+                                // var nSFL_1_i = {
+                                //     forLoop_0_i:0,
+                                //     forLoopLength:ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.limit,
+                                //     fn:function(   dev_obj   ){
+                                //         ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM.add(   {value:ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.replacer[   nSFL_1_i.forLoop_0_i   ]}   )
+                                //     },
+                                //     args:dev_obj
+                                // }
+                                // ultraObject.forLoop(   nSFL_1_i   )
+                                // console.log(   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM   )
+                                
+                                //     /*testing if the nSM is valid*/ //{
+                                //     ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.limitStart  = ultraObject.iterableObject()
+                                    
+                                //         /*grabbing all expected indexes from the length of the NS*/ //{
+                                //         var nSFL_2_i  = {
+                                //             forLoop_0_i:0,
+                                //             forLoopLength:ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.limit,
+                                //             fn:function(   dev_obj   ){
+                                //                 ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.limitStart.add(   {value:ultraObject.iterify(   {iterify:[nSFL_2_i.forLoop_0_i,-1]}   )   }   )
+                                //             },
+                                //             args:dev_obj
+                                //         }
+                                //         ultraObject.forLoop(   nSFL_2_i    )
+                                //         // }  /**/
+                                        
+                                //         /*testing to see if all indexes are represented in the newnSM*/ //{
+                                //         var nSFL_3_i   = {
+                                //             forLoop_0_i:0,
+                                //             forLoopLength:ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.limit,
+                                //             fn:function(   dev_obj   ){
+                                //                 console.log(   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM[   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.limitStart[   nSFL_3_i.forLoop_0_i][0]   ]   )
+                                //                 console.log(   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.limitStart[   nSFL_3_i.forLoop_0_i   ][0]   )
+                                                
+                                //                     /*we want to see if the newnSM at the index contains an item in limitStart*/ //{
+                                //                     if(   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.limitStart[   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM[   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.limitStart[   nSFL_3_i.forLoop_0_i][0]   ]   ] !== undefined   ){
+                                                        
+                                //                         debugger
+                                //                         console.log(   'its there ill note it in limitStart'   )
+                                //                         ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.limitStart[   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM[   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.limitStart[   nSFL_3_i.forLoop_0_i][0]   ]   ][1] = -2
+                                //                         console.log(   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.limitStart   )
+                                                        
+                                                        
+                                //                     }
+                                //                     // }  /**/
+                                                    
+                                //                 console.log('----')
+                                //             },
+                                //             args:dev_obj
+                                //         }
+                                //         ultraObject.forLoop(   nSFL_3_i     )
+                                //         // }  /**/
+                                        
+                                //         /*checking limit start to see if nSM is valid*/ //{
+                                //         var nSFL_4_i   = {
+                                //             forLoop_0_i:0,
+                                //             forLoopLength:ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.limitStart,
+                                //             fn:function(   dev_obj   ){
+                                //                 console.log(   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM[   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.limitStart[   nSFL_4_i.forLoop_0_i][0]   ]   )
+                                //                 console.log(   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.limitStart[   nSFL_4_i.forLoop_0_i   ][0]   )
+                                                
+                                //                     /*we want to see if the newnSM at the index contains an item in limitStart*/ //{
+                                //                     if(   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.limitStart[   [   nSFL_4_i.forLoop_0_i]   ][1] === -1    ){
+                                                        
+                                                        
+                                //                         console.log(   'this  is invalid'   )
+                                //                         ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM.valid = 'false'
+                                //                         return 'premature'
+                                                        
+                                //                     }
+                                //                     // }  /**/
+                                                    
+                                //                 console.log('----')
+                                //             },
+                                //             args:dev_obj
+                                //         }
+                                //         ultraObject.forLoop(   nSFL_4_i     )
+                                        
+                                        
+                                //         if(   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM.valid === 'false'   ){
+                                            
+                                            
+                                //             console.log(   'bad nSM reset please'   )
+                                //             delete ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.limitStart
+                                //             delete ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.limit
+                                //             delete ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM
+                                //             delete ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.replacer
+                                            
+                                //         }
+                                //         // }  /**/
+                                                                            
+                                //     // }  /**/
+                                    
+                                
+                                // // }  /**/
                             // }  /**/
                             
                         }
                         // }  /**/
+                        
+                        /*if the developer wants the digits to be changed*/ //{
+                        if(   ultraObject.isitO(   {type:dev_obj.digits}   )   ){
+                            
+                        }
+                        // }  /**/
+                        
                         
                     }
                     // }  /**/
