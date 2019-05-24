@@ -3,7 +3,9 @@
     ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM - used to help the API generate a new nSM to be verified an itO of the new itO
     ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.limitStart - contuer to test against the nSM an itO conuter each index an iteration to the length of the itO
     ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.limitStart[   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM[   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.limitStart[   nSFL_3_i.forLoop_0_i][0]   ]   ]  -  index to check against nSM
-    
+ ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].digits.newDigits - when dev wants to modify the current digits in the nS
+ ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].digits.newDigits[   nSFL_5_i.forLoop_0_i   ][0] - the digit as Object.entries when the digits are to be modified
+ ultraObject.nS[   ultraObject.scope[nSNS_0_i]   ].currentNumber = an array so devs can see it better in the debugger console
 *
 
 /*
@@ -98,7 +100,21 @@
     if the developer wants the digits to be reordered
     if the developer does not want to get hit with the nSM restriction, to remove a digit from the nS, simply ultraObject minus on it, so you ultraObject should be about performance not vaildation because when there is validations performance is compromised instead one module should be dedicated to validation
 */
+
+/*
+    if the developer wants the digits to be changed
+    we kinda dont need an itO we can also use an object with numbers as keys
+    key  ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].digits.newDigits
+    if this is changed you want to take a look at the digits and the actual nS because they will be changed as well, the digits however according to the nSM
+    key ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].digits.newDigits[   nSFL_5_i.forLoop_0_i   ][0]
+*/
+
+/*
+    adding of current number to nS object
+    key ultraObject.nS[   ultraObject.scope[nSNS_0_i]   ].currentNumber
+*/
 function numberSystem(   dev_obj   ){
+    
             /* ablelasts
                 1 for nS
                 1 for misc
@@ -166,13 +182,13 @@ function numberSystem(   dev_obj   ){
                         /*if the developer wants the nS to be reordered*/ //{
                         if(   ultraObject.isitO(   {type:dev_obj.nSM}   )   ){
                             
-                            /* node mode choice thread validation */ //{
+                            /* node mode choice thread performance */ //{
                                 ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM = dev_obj.nSM
                                 var nSFL_1_i = {
                                     forLoop_0_i:0,
                                     forLoopLength:ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM.length,
                                     fn:function(   dev_obj   ){
-                                        debugger
+                                        
                                         /*means that the end of the current nSM*/ //{
                                         if(   nSFL_1_i.forLoop_0_i >= ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.length ){
                                         
@@ -316,6 +332,8 @@ function numberSystem(   dev_obj   ){
                         
                         /*if the developer wants the digits to be changed*/ //{
                         if(   ultraObject.isitO(   {type:dev_obj.digits}   )   ){
+                            
+                            
                             
                         }
                         // }  /**/

@@ -1,3 +1,4 @@
+
                 function wait(   ms   ){
                    var start = new Date().getTime();
                    var end = start;
@@ -2332,7 +2333,30 @@
                         // }  /**/
                         
                         /*if the developer wants the digits to be changed*/ //{
-                        if(   ultraObject.isitO(   {type:dev_obj.digits}   )   ){
+                        if(   dev_obj.digits !== undefined   ){
+                            
+                            
+                            ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].digits.newDigits = Object.entries(   dev_obj.digits   )
+                            var nSFL_5_i  = {
+                                forLoop_0_i:0,
+                                forLoopLength:ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].digits.newDigits.length,
+                                fn:function(   dev_obj   ){
+                                    
+                                    
+                                    if(   ultraObject.isInt(   {type:ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].digits.newDigits[   nSFL_5_i.forLoop_0_i   ][0]}   )   ){
+                                        
+                                        
+                                        ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ][   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].digits.newDigits[   nSFL_5_i.forLoop_0_i   ][0]  ] = ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].digits.newDigits[   nSFL_5_i.forLoop_0_i   ][1]
+                                        
+                                        
+                                    }
+                                    
+                                    
+                                },
+                                args:dev_obj
+                            }
+                            ultraObject.forLoop(   nSFL_5_i    )
+                            
                             
                         }
                         // }  /**/
