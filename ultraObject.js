@@ -1,4 +1,5 @@
 
+
                 function wait(   ms   ){
                    var start = new Date().getTime();
                    var end = start;
@@ -2568,7 +2569,7 @@
                 
                 /* convert the number to a decimal */ //{
                 // this will also be used for math operations
-                // the largest digit is at 0 the smallest is at length - 1, sometimes we need to know what the largest digit is i hope i made the right choice future
+                // the smallest digit is at 0 the largest is at length - 1, sometimes we need to know what the largest digit is i hope i made the right choice future
                 if(   dev_obj.operation === 'decimal'   ){
                     
                     /*NS +scope */ //{
@@ -2599,7 +2600,7 @@
                                 //2 actual update
                                 ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.currentNumber += (   ultraObject.nS[   [   ultraObject.scope[nSNS_2_i]   ]   ][   (-nSFL_7_i.forLoop_0_i)-1   ][0] - ultraObject.nS[   [   ultraObject.scope[nSNS_2_i]   ]   ][   (-nSFL_7_i.forLoop_0_i)-1   ][1]   ) * (    ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.range   )
                                 //3
-                                ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.range *= ultraObject.nS[   [   ultraObject.scope[nSNS_2_i]   ]   ][   (-nSFL_7_i.forLoop_0_i)-1   ][2]  - ultraObject.nS[   [   ultraObject.scope[nSNS_2_i]   ]   ][   (-nSFL_7_i.forLoop_0_i)-1   ][1]
+                                ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.range *=( ultraObject.nS[   [   ultraObject.scope[nSNS_2_i]   ]   ][   (-nSFL_7_i.forLoop_0_i)-1   ][2]  - ultraObject.nS[   [   ultraObject.scope[nSNS_2_i]   ]   ][   (-nSFL_7_i.forLoop_0_i)-1   ][1]   )
                             },
                             args:dev_obj //{}
                         }
@@ -2662,7 +2663,7 @@
                                     if(   ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.currentNumber >= ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.range     ){
                                         
                                         
-                                        ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ][   nSFL_8_i.forLoop_0_i   ][0] = Math.floor(   ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.currentNumber/ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.range   )
+                                        ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ][   nSFL_8_i.forLoop_0_i   ][0] += Math.floor(   ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.currentNumber/ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.range   )
                                         ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.currentNumber -= (ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.range  * Math.floor(   ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.currentNumber/ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.range   )   )
                                         
                                         
@@ -2674,12 +2675,11 @@
                                 args:dev_obj //{}
                             }
                             ultraObject.forLoop(   nSFL_8_i   )
-                            
+                            ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.range = 1
                             
                         }
                         // }  /**/
                             
-
                     }
                     // }  /**/
                     
@@ -2689,6 +2689,7 @@
                 
                 /* update the currentNumber*/ //{
                 if(   dev_obj.operation === 'update'   ){
+                    
                     
                     var nSNS_3_i = dev_obj.nS
                     ultraObject.nS[   ultraObject.scope[nSNS_3_i]   ].currentNumber = []
