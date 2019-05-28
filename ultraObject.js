@@ -1471,9 +1471,29 @@
                     length:0,
                     
                     add:function(   dev_obj   ){// returns the index that it was added to an object
-                            iterableObjectO[iterableObjectO.length] = dev_obj.value
-                            iterableObjectO.length += 1
-                            return iterableObjectO.length -1
+                            
+                            
+                            if(   dev_obj.index !== undefined   ){
+                                
+                                
+                                iterableObjectO[dev_obj.index] = dev_obj.value
+                                iterableObjectO.length += 1
+                                return dev_obj.index
+                                
+                                
+                            }
+                            
+                            
+                            else if(   dev_obj.index === undefined   ){
+                                
+                                
+                                iterableObjectO[iterableObjectO.length] = dev_obj.value
+                                iterableObjectO.length += 1
+                                return iterableObjectO.length -1
+                                
+                                
+                            }
+                            
                         },// adds a value and retuns its place in the array
                     minus:function(   dev_obj   ){
                         //.value value to remove
@@ -1527,7 +1547,6 @@
                                 
                                 var iterableObjectTDI = iterableObjectO_BOOL.spot // index to remove
                                 delete iterableObjectO[iterableObjectTDI]
-                                // delete iterableObjectO['q'+iterableObjectTDI.toString()]
                                 iterableObjectO.resetLength()
                                 var iterableObjectFL_1_i = {
                                     forLoop_0_i:0,
@@ -1593,10 +1612,31 @@
                     length:0,
                     
                     add:function(   dev_obj   ){// returns the index that it was added to an object
-                            iterableObjectO.abelast[iterableObjectO.abelast.length] = dev_obj.value
-                            iterableObjectO.abelast.length += 1
-                            // iterableObjectO.abelast['q'+(iterableObjectO.abelast.length -1).toString()] = iterableObjectO.abelast.length -1
-                            return iterableObjectO.abelast.length -1
+                    
+                    
+                            if(   dev_obj.index !== undefined   ){
+                                
+                                
+                                iterableObjectO.abelast[dev_obj.index] = dev_obj.value
+                                iterableObjectO.abelast.length += 1
+                                return dev_obj.index
+                                
+                                
+                            }
+                            
+                            
+                            else if(   dev_obj.index === undefined   ){
+                                
+                                
+                                iterableObjectO.abelast[iterableObjectO.abelast.length] = dev_obj.value
+                                iterableObjectO.abelast.length += 1
+                                // iterableObjectO.abelast['q'+(iterableObjectO.abelast.length -1).toString()] = iterableObjectO.abelast.length -1
+                                return iterableObjectO.abelast.length -1
+                                
+                            
+                            }
+                            
+                            
                         },// adds a value and retuns its place in the array
                     minus:function(   dev_obj   ){
                         //.value value to remove
@@ -2770,8 +2810,6 @@
                             ultraObject.nS.abelast.add(   {value:ultraObject.scope[nSNS_0_i]}   )
                             // }  /**/
                             
-                            
-                        
                             /*lets go create this nS!*/ //{
                                 
                                 /* restructing the dev obj in the target nS*/ //{
@@ -2781,7 +2819,6 @@
                                 
                                 /*looping through  nSM to recreate the string!*/ //{
                                 
-                                    
                                     /*an important check to make sure the nSM is availble!*/ //{
                                     ultraObject.propertyUndefined({
                                             target:ultraObject.nS[   ultraObject.scope[nSNS_0_i]],
@@ -2790,7 +2827,7 @@
                                     })
                                     // }  /**/
                                     
-                                    var nSobjI_0_i = ultraObject.scope.add(   {value:ultraObject.objIO.abelast[   ultraObject.objIO.abelast.length-1]}   )
+                                    var nSobjI_0_i = ultraObject.scope.add(   {value:ultraObject.objIO.abelast[   ultraObject.objIO.abelast.length-1   ]}   )
                                     
                                         
                                     if(   !ultraObject.isPrimitive(   {type:ultraObject.objIO[   ultraObject.scope[nSobjI_0_i]   ].result}   )   ){
@@ -2826,36 +2863,38 @@
                                         
                                         
                                         var nSFL_11_i = {
-                                                forLoop_0_i:0,
-                                                forLoopLength:ultraObject.nS[   ultraObject.scope[nSNS_0_i]].nSM.length,
-                                                fn:function(   dev_obj   ){
+                                            forLoop_0_i:0,
+                                            forLoopLength:ultraObject.nS[   ultraObject.scope[nSNS_0_i]].nSM.length,
+                                            fn:function(   dev_obj   ){
+                                                
+                                                /* adding the digits according to the nSM*/ //{
+                                                if(   ultraObject.isArray(   {type:ultraObject.nS[   ultraObject.scope[nSNS_0_i]].digits[   ultraObject.nS[   ultraObject.scope[nSNS_0_i]   ].nSM[   nSFL_11_i.forLoop_0_i   ]   ][1]}   )   ){
                                                     
-                                                    /* adding the digits according to the nSM*/ //{
-                                                    if(   ultraObject.isArray(   {type:ultraObject.nS[   ultraObject.scope[nSNS_0_i]].digits[   ultraObject.nS[   ultraObject.scope[nSNS_0_i]   ].nSM[   nSFL_11_i.forLoop_0_i   ]   ][1]}   )   ){
-                                                        
-                                                        
-                                                        ultraObject.nS[   ultraObject.scope[nSNS_0_i]].add({
-                                                            value:ultraObject.iterify({
-                                                                iterify:ultraObject.nS[   ultraObject.scope[nSNS_0_i]].digits[   ultraObject.nS[   ultraObject.scope[nSNS_0_i]   ].nSM[   nSFL_11_i.forLoop_0_i   ]   ][1]
-                                                                })
+                                                    
+                                                    ultraObject.nS[   ultraObject.scope[nSNS_0_i]].add({
+                                                        value:ultraObject.iterify({
+                                                            iterify:ultraObject.nS[   ultraObject.scope[nSNS_0_i]].digits[   ultraObject.nS[   ultraObject.scope[nSNS_0_i]   ].nSM[   nSFL_11_i.forLoop_0_i   ]   ][1]
+                                                            })
                                                     })
+                                                
+                                                
+                                                }
+                                                
+                                                
+                                                else if(   true || ultraObject.isitO(   {type:ultraObject.nS[   ultraObject.scope[nSNS_0_i]].digits[   ultraObject.nS[   ultraObject.scope[nSNS_0_i]   ].nSM[   nSFL_11_i.forLoop_0_i   ]   ][1]}   )   ){
                                                     
                                                     
-                                                    }
-                                                    
-                                                    
-                                                    else if(   true || ultraObject.isitO(   {type:ultraObject.nS[   ultraObject.scope[nSNS_0_i]].digits[   ultraObject.nS[   ultraObject.scope[nSNS_0_i]   ].nSM[   nSFL_11_i.forLoop_0_i   ]   ][1]}   )   ){
-                                                        
-                                                        
-                                                        ultraObject.nS[   ultraObject.scope[nSNS_0_i]].add({value:ultraObject.nS[   ultraObject.scope[nSNS_0_i]].digits[   ultraObject.nS[   ultraObject.scope[nSNS_0_i]   ].nSM[   nSFL_11_i.forLoop_0_i   ]   ][1]})
-                                                    
-                                                    
-                                                    }
-                                                    // }  /**/
-                                                                                                
-                                                },
-                                                args:dev_obj //{}
-                                            }
+                                                    ultraObject.nS[   ultraObject.scope[nSNS_0_i]].add({
+                                                        value:ultraObject.nS[   ultraObject.scope[nSNS_0_i]].digits[   ultraObject.nS[   ultraObject.scope[nSNS_0_i]   ].nSM[   nSFL_11_i.forLoop_0_i   ]   ][1]
+                                                    })
+                                                
+                                                
+                                                }
+                                                // }  /**/
+                                                                                            
+                                            },
+                                            args:dev_obj //{}
+                                        }
                                         ultraObject.forLoop(   nSFL_11_i   )
                                         
                                         
