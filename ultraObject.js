@@ -189,13 +189,13 @@
             identifyEO:{}, // object for all needed identified
             forLoop:forLoop,
             objInvloved:objInvloved,// to keep track of all items responbile for a purpose at a specific point
-            objIO:{}, // OBKECT FOR VobjInvloved
-            objIFL_0_i:{},
+            objIO:iterableObject(), // OBKECT FOR  objInvloved propertyUndefined, whend dealing stricly with object specs
+            // objIFL_0_i:{},
             severalOr:severalOr,
             packIt:packIt,
             selectAll:selectAll,
             
-            
+            propertyUndefined:propertyUndefined,
             subGroups:subGroups,
             subGroupsO:{},
             objectLength:objectLength,
@@ -224,19 +224,44 @@
         }
         var ultraObject = ultraObjectReset()
         function objInvloved(   dev_obj   ){
+            /* ablelasts
+                1 for objIO
+            */
             // console.log a list of the dev_obj  values to be outputted to the console to help the dev know how is items are in the middle of an API
-            
-                ultraObject.objIO = dev_obj
-                var objInvloved_0_i = 0
-                ultraObject.objIFL_0_i={
-                    forLoop_0_i: objInvloved_0_i,
-                    forLoopLength:Object.entries(   dev_obj   ).length,
-                    fn:function(      ){
-                        console.log(   ultraObject.objIO[ultraObject.objIFL_0_i.forLoop_0_i]   )
-                        },
+
+                /*adding the dev_obj to args*/ //{
+                var objInvloved_dev_obj = ultraObject.args.add(   {value:ultraObject.iterify(   {iterify:dev_obj}   )   }   )
+                // }  /**/
+                
+                /*objIO +scope +self +abelast */ //{
+                var oIobjI_0_i = ultraObject.scope.add(   {value:ultraObject.objIO.add(   {value:dev_obj}   )}   )
+                ultraObject.objIO.abelast.add(   {value:ultraObject.scope[oIobjI_0_i]}   )
+                // }  /**/
+                
+                
+                if(   ultraObject.isInt({type:ultraObject.objIO[   ultraObject.scope[oIobjI_0_i]   ].length}) === 'false'  ){
+                    
+                    
+                    throw('fix me at my invocation')
+                    
+                    
+                }
+                
+                
+                var objIFL_0_i={
+                    forLoop_0_i: 0,
+                    forLoopLength:ultraObject.objIO[   ultraObject.scope[oIobjI_0_i]   ].length,
+                    fn:function(   dev_obj   ){
+                        console.log(   ultraObject.objIO[   ultraObject.scope[oIobjI_0_i]   ][   objIFL_0_i.forLoop_0_i   ]   )
+                    },
                     args:undefined
                 }
-                forLoop(   ultraObject.objIFL_0_i   )
+                ultraObject.forLoop(   objIFL_0_i   )
+                
+                /*objIO -scope   */ //{
+                ultraObject.scope.minus(   {index:oIobjI_0_i}   )
+                // }  /**/
+                
         }
         function addEventListener(   dev_obj   ){
                 var fn;
@@ -700,6 +725,7 @@
                             
                                 if(   dev_obj.same !== 'true'   ){
                                     //look at the next set of values
+                                    
                                     if(   eCSearchFL_0_i.forLoop_0_i === 0   ){
                                         ultraObject.numberSystem({
                                             digits:ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]],
@@ -1158,6 +1184,103 @@
                 ultraObject.forLoop(   objectLengthFL_0_i   )
             
         }
+        function propertyUndefined(   dev_obj   ){
+            /* ablelasts
+                1 for objIo
+            */
+            /*
+                expected - an itO listing of the property pat to the target property
+                target the target object
+            */
+            
+            /*adding the dev_obj to args*/ //{
+            var propertyUndefined_dev_obj = ultraObject.args.add(   {value:ultraObject.iterify(   {iterify:dev_obj}   )   }   )
+            // }  /**/
+            
+            /*objIO +scope +self +abelast */ //{
+            var pUobjI_0_i = ultraObject.scope.add(   {value:ultraObject.objIO.add(   {value:ultraObject.iterableObject()}   )}   )
+            ultraObject.objIO.abelast.add(   {value:ultraObject.scope[pUobjI_0_i]}   )
+            // }  /**/
+            
+            /*setting up the itO */ //{
+            ultraObject.objIO[   ultraObject.scope[pUobjI_0_i]   ].expected = dev_obj.expected
+            ultraObject.objIO[   ultraObject.scope[pUobjI_0_i]   ].target = dev_obj.target
+            // }  /**/
+            
+            /*getting to the target property */ //{
+            // the target property is inferred to be the last string in dev_obj.expected
+            // two ways of doing it
+                //use function and recurse to the last index and return the propertyies off the result as you index from the beginning
+                //hold the subproperties in indexes in the itO (memory heavy)
+            
+                /* node mode choice thread subpropertyHold */ //{
+                var pUFL_0_i = {
+                    forLoop_0_i:0,
+                    forLoopLength:ultraObject.objIO[   ultraObject.scope[pUobjI_0_i]   ].expected.length,
+                    fn:function(   dev_obj   ){
+                        
+                        if(   pUFL_0_i.forLoop_0_i === 0   ){
+                            
+                            
+                            ultraObject.objIO[   ultraObject.scope[pUobjI_0_i]   ].add(   {value:ultraObject.objIO[   ultraObject.scope[pUobjI_0_i]   ].target[   ultraObject.objIO[   ultraObject.scope[pUobjI_0_i]   ].expected[   pUFL_0_i.forLoop_0_i   ]   ]}   )
+                            
+                            
+                        }
+                        
+                        
+                        else if(   pUFL_0_i.forLoop_0_i !== 0   ){
+                            
+                            
+                            ultraObject.objIO[   ultraObject.scope[pUobjI_0_i]   ].add(   {value:ultraObject.objIO[   ultraObject.scope[pUobjI_0_i]   ][   pUFL_0_i.forLoop_0_i -1   ][   ultraObject.objIO[   ultraObject.scope[pUobjI_0_i]   ].expected[   pUFL_0_i.forLoop_0_i   ]   ]}   )
+                            
+                            
+                        }
+                        
+                        
+                    },
+                    args:{} //{}
+                }
+                // ultraObject.forLoop(   pUFL_0_i    )
+                // }  /**/
+                
+                /* node mode choice thread subpropertyRecursion */ //{
+                ultraObject.objIO.access = function(   dev_obj   ){
+                        
+                        
+                    if(   dev_obj.access_0_i === ultraObject.objIO[   ultraObject.scope[pUobjI_0_i]   ].expected.length -1  ){
+                        
+                        debugger
+                        return ultraObject.objIO[   ultraObject.scope[pUobjI_0_i]   ].target[   ultraObject.objIO[   ultraObject.scope[pUobjI_0_i]   ].expected[   dev_obj.result_0_i - 1   ]   ]
+    
+                    }
+                    
+                    
+                    else if(   dev_obj.access_0_i !== ultraObject.objIO[   ultraObject.scope[pUobjI_0_i]   ].expected.length -1    ){
+                        
+                        debugger
+                        dev_obj.access_0_i += 1
+                        dev_obj.result_0_i -= 1
+                        return ultraObject.objIO.access({
+                            access_0_i:dev_obj.access_0_i,
+                            result_0_i:dev_obj.result_0_i
+                        })[   ultraObject.objIO[   ultraObject.scope[pUobjI_0_i]   ].expected[   dev_obj.result_0_i   ]   ]
+                        
+    
+                    }
+                        
+                        
+                }
+                console.log(   ultraObject.objIO.access({
+                    access_0_i:0,
+                    result_0_i:ultraObject.objIO[   ultraObject.scope[pUobjI_0_i]   ].expected.length
+                })   )
+                // }  /**/
+                
+            // }  /**/
+            
+            
+            
+        }// in js when a function finds a property undefined when the developer expects something to be there along the bubble to the target inner property it can break the API, instead of write repeated if statements use this function to validate if the target property is availble in the data type
         function iterableObject(   dev_obj   ){
             //. value the actual item your are adding to the object
             // .stop for the abelast
