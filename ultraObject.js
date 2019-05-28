@@ -1,4 +1,5 @@
 
+
     
                     function wait(   ms   ){
                        var start = new Date().getTime();
@@ -660,6 +661,7 @@
                 /*
                     abelasts
                     1 for select tags
+                    1 for nS
                 
                 */
                 
@@ -667,6 +669,8 @@
                 // .look spot where to look and assert for list, if an object the items should be keys
                 // .same  indicator to look at the same set of values
                 // .order iterableObject on how to create the numbersystem
+                // .sT if in use the index to access selectTags from the self
+                // .nS if in use the index to access numberSystem from the self
                 // make eCSST an iterableObject
                 // look through innerHTML, innerText, textContext
                 // holds the found elements that meet the query in ultraObject.elementFound
@@ -676,12 +680,11 @@
                 var eCSearch_dev_obj = ultraObject.args.add(   {value:ultraObject.iterify(   {iterify:dev_obj}   )   }   )
                 // }  /**/
                 
-                
                 if(   dev_obj.sT === undefined   ){
+                    
                     
                     /*[the object handling everything with the choosing tags in addition the numberSystem ]*/ //{
                     var eCSSelectTags_0_i = ultraObject.scope.add(   {value:ultraObject.selectTags.add(   {value:ultraObject.iterableObject()}   )}   )
-                    ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]] = ultraObject.iterableObject()
                     ultraObject.selectTags.abelast.add(   {value:ultraObject.scope[eCSSelectTags_0_i]}   )
                     // }  /**/
                     
@@ -691,7 +694,33 @@
                 else if(    ultraObject.isInt(   {type:dev_obj.sT}   )   ){
                     
                     
-                    var eCSSelectTags_0_i = dev_obj.sT
+                    var eCSSelectTags_0_i = ultraObject.scope.add(   {value:dev_obj.sT}   )
+                    
+                    
+                }
+                // }  /**/
+                
+                /*using the correct numberSystem*/ //{
+                if(   dev_obj.nS !== undefined   ){
+                    
+                    
+                    ultraObject.numberSystem({
+                        operation:'create',
+                        digits:ultraObject.iterify({
+                                iterify:[
+                                    ultraObject.iterify({
+                                        iterify:[0,0,99]
+                                    }),
+                                    ultraObject.iterify({
+                                        iterify:[0,-13,92]
+                                    }),
+                                    ultraObject.iterify({
+                                        iterify:[0,5,71]
+                                    })
+                                ]
+                            }),
+                        nSM:ultraObject.iterify({iterify:[0,1,2]})
+                    })
                     
                     
                 }
@@ -713,7 +742,6 @@
                 // }  /**/
                 
                 console.groupEnd()
-                debugger
                 /* look at each requirement preFillForm must fill in the document by the end user*/ //{
                 var eCSearchFL_0_i = {
                     forLoop_0_i:0,
@@ -771,6 +799,7 @@
                             forLoop_0_i:indexSelect,
                             forLoopLength:ultraObject.allTags[ultraObject.scope[dev_obj.aT]].length,
                             fn:function(   dev_obj   ){
+                                
                                 /* possible places to look to fill in the element to satisfy end users query*/ //{
                                 var eCSearchFL_2_i = {
                                     forLoop_0_i:0,
@@ -784,14 +813,22 @@
                                             if(   ultraObject.allTags[   ultraObject.scope[dev_obj.aT]   ][eCSearchFL_1_i.forLoop_0_i][   ultraObject.misc[ultraObject.scope[dev_obj.look]   ][eCSearchFL_2_i.forLoop_0_i][0]   ].indexOf(   ultraObject.misc[   ultraObject.scope[dev_obj.list]   ][eCSearchFL_0_i.forLoop_0_i][0]   ) !== -1 || dev_obj.all  === 'true'  ){
                                                 //this must mean it found a match amoung title of user input and something in the string of the property of the element or were looking at every value and using advanced techniques to invesitage our answers
                                                 
+                                                /*numberSystem declaration*/ //{
+                                                if(   true   ){
+                                                    
+                                                   
+                                                   ultraObject.numberSystem({
+                                                        operation:'create'
+                                                    })
+                                                    
+                                                    
+                                                }
+                                                // }  /**/
                                                 
                                                 if(   ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].abelast[eCSearchFL_0_i.forLoop_0_i] === undefined   ){
                                                     // the start value for the number system it means a NS is not available
                                                     ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]][   ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].abelast[eCSearchFL_0_i.forLoop_0_i]   ]
                                                     /*creating the digits and metadata for the numberSystem*/ //{
-                                                    ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].eCSNS.ready = 'false'
-                                                    // ultraObject.selectTags[   ultraObject.scope[eCSSelectTags_0_i]   ]['query'+eCSearchFL_0_i.forLoop_0_i] = ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].add(   {value:ultraObject.iterableObject()}   )
-                                                    // ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].minus(   {index:ultraObject.selectTags[   ultraObject.scope[eCSSelectTags_0_i]   ]['query'+eCSearchFL_0_i.forLoop_0_i]}   )
                                                     ultraObject.selectTags[   ultraObject.scope[eCSSelectTags_0_i]   ].abelast.add(   {value:ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].add(   {value:ultraObject.iterableObject()}   )   }   )
                                                     var ecsNSI = ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].eCSNS.add(   {value:ultraObject.iterableObject()}   )
                                                     ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].eCSNS[ecsNSI].add(   {value:eCSearchFL_1_i.forLoop_0_i}   )
@@ -814,8 +851,6 @@
                                                 ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]][    ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].abelast[eCSearchFL_0_i.forLoop_0_i]   ].eCSIndex = eCSearchFL_1_i.forLoop_0_i
                                                 // }  /**/
                                                 
-                                                if(   ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].eCSNS.ready  !== 'false'   ){
-                                                }
                                                 
                                                 
                                                 return 'premature'
@@ -1270,9 +1305,9 @@
                             
                         if(   dev_obj.access_0_i === ultraObject.objIO[   ultraObject.scope[pUobjI_0_i]   ].expected.length -1  ){
                             
-                            debugger
-                            return ultraObject.objIO[   ultraObject.scope[pUobjI_0_i]   ].target[   ultraObject.objIO[   ultraObject.scope[pUobjI_0_i]   ].expected[   dev_obj.result_0_i - 1   ]   ]
-        
+                            
+                            return ultraObject.objIO[   ultraObject.scope[pUobjI_0_i]   ].target[   ultraObject.objIO[   ultraObject.scope[pUobjI_0_i]   ].expected[   dev_obj.result_0_i - 1   ]   ]  === undefined ? dev_obj.noVal : ultraObject.objIO[   ultraObject.scope[pUobjI_0_i]   ].target[   ultraObject.objIO[   ultraObject.scope[pUobjI_0_i]   ].expected[   dev_obj.result_0_i - 1   ]   ]
+         
                         }
                         
                         
@@ -2615,84 +2650,62 @@
                             ultraObject.nS.abelast.add(   {value:ultraObject.scope[nSNS_0_i]}   )
                             // }  /**/
                             
-                            /*applying digits to the NS*/ //{
                             
-                                /*adding an ito to misc to check my  parameters*/ //{
-                                var nSMisc_0_i = ultraObject.scope.add({
-                                    value:ultraObject.misc.add({value:ultraObject.iterify({
-                                                iterify:[
-                                                    ultraObject.iterify({ iterify:['nSM','itO',dev_obj.nSM]}),
-                                                    ultraObject.iterify({ iterify:['digits','itO',dev_obj.digits]})
-                                                ]
-                                        })}
-                                )})
-                                // }  /**/
-                            
-                                var nSBOOL = {0:false}
-                                nSBOOL = ultraObject.severalOr({
-                                    compTo: 'match',
-                                    compAgn: ultraObject.misc[   ultraObject.scope[nSMisc_0_i]   ],
-                                    boolean:nSBOOL,
-                                    how:function(   dev_obj   ){
-                                        
-                                        
-                                        if(   !ultraObject.isitO(   {type:dev_obj.compAgnI[2]}   )   ){
-                                            
-                                            
-                                            return 'a'
-                                            
-                                            
-                                        }
-                                        
-                                        
-                                    },
-                                    result:'a',
-                                    which:0
-                                })
-                            
-                                /*means a paramater type is not what the function wanted*/ //{
-                                if(   nSBOOL[0]   ){
-                                    throw(   'dev_obj.' + ultraObject.misc[   ultraObject.scope[nSMisc_0_i]   ][   nSBOOL.spot   ][0] +' is not a ' +  ultraObject.misc[   ultraObject.scope[nSMisc_0_i]   ][   nSBOOL.spot   ][1] + ' check parameters types and try again '   )
-                                }
-                                // }  /**/
                         
-                                /*lets go create this nS!*/ //{
-                                else if(   !nSBOOL[0]   ){
+                            /*lets go create this nS!*/ //{
+                                
+                                /* restructing the dev obj in the target nS*/ //{
+                                ultraObject.nS[   ultraObject.scope[nSNS_0_i]].nSM = dev_obj.nSM
+                                ultraObject.nS[   ultraObject.scope[nSNS_0_i]].digits = dev_obj.digits
+                                // }  /**/
+                                
+                                /*looping through  nSM to recreate the string!*/ //{
+                                
                                     
-                                    /* restructing the dev obj in the target nS*/ //{
-                                    ultraObject.nS[   ultraObject.scope[nSNS_0_i]].nSM = dev_obj.nSM
-                                    ultraObject.nS[   ultraObject.scope[nSNS_0_i]].digits = dev_obj.digits
+                                    /*an important check to make sure the nSM is availble!*/ //{
+                                    ultraObject.propertyUndefined({
+                                            target:ultraObject.nS[   ultraObject.scope[nSNS_0_i]],
+                                            expected:ultraObject.iterify({iterify:["nSM","length"]}),
+                                            noVal:{'a':'b'}
+                                    })
                                     // }  /**/
                                     
-                                    /*looping through  nSM to recreate the string!*/ //{
-                                    var nSFL_0_i = {
-                                        forLoop_0_i:0,
-                                        forLoopLength:ultraObject.nS[   ultraObject.scope[nSNS_0_i]].nSM.length,
-                                        fn:function(   dev_obj   ){
-                                            
-                                            /* adding the digits according to the nSM*/ //{
-                                            ultraObject.nS[   ultraObject.scope[nSNS_0_i]].add({
-                                                    value:(   ultraObject.nS[   ultraObject.scope[nSNS_0_i]].digits[   ultraObject.nS[   ultraObject.scope[nSNS_0_i]   ].nSM[   nSFL_0_i.forLoop_0_i   ]   ]   )
-                                            })
-                                            // }  /**/
-                                            
-            
-                                          
-                                        },
-                                        args:dev_obj //{}
+                                    var nSobjI_0_i = ultraObject.scope.add(   {value:ultraObject.objIO.abelast[   ultraObject.objIO.abelast.length-1]}   )
+                                    
+                                    
+                                    if(   ultraObject.objIO[   ultraObject.scope[nSobjI_0_i]   ].result['a'] !== 'b'   ){
+                                        
+                                        
+                                        var nSFL_0_i = {
+                                            forLoop_0_i:0,
+                                            forLoopLength:ultraObject.nS[   ultraObject.scope[nSNS_0_i]].nSM.length,
+                                            fn:function(   dev_obj   ){
+                                                
+                                                /* adding the digits according to the nSM*/ //{
+                                                ultraObject.nS[   ultraObject.scope[nSNS_0_i]].add({
+                                                        value:(   ultraObject.nS[   ultraObject.scope[nSNS_0_i]].digits[   ultraObject.nS[   ultraObject.scope[nSNS_0_i]   ].nSM[   nSFL_0_i.forLoop_0_i   ]   ]   )
+                                                })
+                                                // }  /**/
+                                                                                            
+                                            },
+                                            args:dev_obj //{}
+                                        }
+                                        ultraObject.forLoop(   nSFL_0_i   )
+                                        
+                                        
                                     }
-                                    ultraObject.forLoop(   nSFL_0_i   )
+                                    
+                                    /*objIO -scope -self -abelast */ //{
+                                        debugger
+                                        ultraObject.objIO.minus(   {index:ultraObject.scope[nSobjI_0_i]}   )
+                                        ultraObject.objIO.abelast.minus(   {index:ultraObject.objIO.abelast.length -1}   )
+                                        ultraObject.scope.minus(   {index:nSobjI_0_i}   )
                                     // }  /**/
-                                     
-                                }
+                                    
                                 // }  /**/
-                            
-                                /*misc -self -scope*/ //{
-                                ultraObject.misc.minus(   {index:ultraObject.scope[nSMisc_0_i]}   )
-                                ultraObject.scope.minus(   {index:nSMisc_0_i}   )
-                                // }  /**/
-        
+                                 
                             // }  /**/
+
                             
                             /*adding of current number to nS object*/ //{
                             ultraObject.nS[   ultraObject.scope[nSNS_0_i]   ].currentNumber = []

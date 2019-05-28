@@ -348,6 +348,7 @@ function numberSystem(   dev_obj   ){
                                 
                                 
                                 ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].digits.newDigits = Object.entries(   dev_obj.digits   )
+                                
                                 var nSFL_6_i  = {
                                     forLoop_0_i:0,
                                     forLoopLength:ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].digits.newDigits.length,
