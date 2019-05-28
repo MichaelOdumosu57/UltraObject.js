@@ -1,4 +1,5 @@
-update eCSearch, starting to use the flexible numberSystem object to generate the numberSystem for the function, first digit sucessful
+
+
     
                     function wait(   ms   ){
                        var start = new Date().getTime();
@@ -813,6 +814,7 @@ update eCSearch, starting to use the flexible numberSystem object to generate th
                                                 //this must mean it found a match amoung title of user input and something in the string of the property of the element or were looking at every value and using advanced techniques to invesitage our answers
                                                 
                                                 /*numberSystem access or creation*/ //{
+                                                // key ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].createdNS, that helps the function know if the related NS is avalible
                                                 if(   ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].createdNS !== 'true'   ){
                                                     
                                                    
@@ -821,6 +823,15 @@ update eCSearch, starting to use the flexible numberSystem object to generate th
                                                     })
                                                     var eCSNS_0_i = ultraObject.scope.add(   {value:ultraObject.nS.abelast[ultraObject.nS.abelast.length-1]}   )
                                                     ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].createdNS = 'true'
+                                                    
+                                                    
+                                                }
+                                                
+                                                
+                                                else if(   ultraObject.isInt({type:dev_obj.nS}) === 'true'   ){
+                                                    
+                                                    
+                                                    var eCSNS_0_i = ultraObject.scope.add(   {value:dev_obj.nS}   )
                                                     
                                                     
                                                 }
@@ -839,20 +850,30 @@ update eCSearch, starting to use the flexible numberSystem object to generate th
                                                         })
                                                     })
                                                     // }  /**/
-                                                    debugger
                                                                                                         
                                                 }
                                                 
+                                                
+                                                if(   ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]   ][   eCSearchFL_0_i.forLoop_0_i    ] === undefined   ){
+                                                    
+                                                    /*creating the ideal select tag for this function*/ //{
+                                                    ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]   ].add({
+                                                        value:ultraObject.iterableObject()
+                                                    })
+                                                    // }  /**/
+                                                }
+                                                
                                                 /*adjusting this digits itO to that of the numberSystem */ //{
-                                                ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].eCSNS[eCSearchFL_0_i.forLoop_0_i][0] = eCSearchFL_1_i.forLoop_0_i
+                                                ultraObject.nS[   ultraObject.scope[eCSNS_0_i]   ][0] = eCSearchFL_1_i.forLoop_0_i
                                                 //helps change the number when the match is found so the NS doesnt take over
                                                 //if problems look here idk if it supposed to follow the nSM or not
-                                                ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]][    ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].abelast[eCSearchFL_0_i.forLoop_0_i]   ].item = ultraObject.allTags[ultraObject.scope[dev_obj.aT]][eCSearchFL_1_i.forLoop_0_i]
-                                                ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]][    ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].abelast[eCSearchFL_0_i.forLoop_0_i]   ].query = ultraObject.allTags[ultraObject.scope[dev_obj.aT]][eCSearchFL_1_i.forLoop_0_i][ultraObject.misc[ultraObject.scope[dev_obj.look]][eCSearchFL_2_i.forLoop_0_i][0]]
-                                                ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]][    ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].abelast[eCSearchFL_0_i.forLoop_0_i]   ].xMark = ultraObject.misc[ultraObject.scope[dev_obj.look]][eCSearchFL_2_i.forLoop_0_i][0]
-                                                ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]][    ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].abelast[eCSearchFL_0_i.forLoop_0_i]   ].keyword = ultraObject.misc[ultraObject.scope[dev_obj.list]][eCSearchFL_0_i.forLoop_0_i][0]
-                                                ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]][    ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].abelast[eCSearchFL_0_i.forLoop_0_i]   ].valuePhrase = ultraObject.misc[ultraObject.scope[dev_obj.list]][eCSearchFL_0_i.forLoop_0_i][1]
-                                                ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]][    ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].abelast[eCSearchFL_0_i.forLoop_0_i]   ].eCSIndex = eCSearchFL_1_i.forLoop_0_i
+                                                ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]][   eCSearchFL_0_i.forLoop_0_i   ].item = ultraObject.allTags[ultraObject.scope[dev_obj.aT]][   eCSearchFL_1_i.forLoop_0_i   ]
+                                                ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]][   eCSearchFL_0_i.forLoop_0_i   ].query = ultraObject.allTags[ultraObject.scope[dev_obj.aT]][   eCSearchFL_1_i.forLoop_0_i   ][ultraObject.misc[ultraObject.scope[dev_obj.look]][eCSearchFL_2_i.forLoop_0_i][0]]
+                                                ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]][eCSearchFL_0_i.forLoop_0_i].xMark = ultraObject.misc[ultraObject.scope[dev_obj.look]][eCSearchFL_2_i.forLoop_0_i][0]
+                                                ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]][eCSearchFL_0_i.forLoop_0_i].keyword = ultraObject.misc[ultraObject.scope[dev_obj.list]][eCSearchFL_0_i.forLoop_0_i][0]
+                                                ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]][eCSearchFL_0_i.forLoop_0_i].valuePhrase = ultraObject.misc[ultraObject.scope[dev_obj.list]][eCSearchFL_0_i.forLoop_0_i][1]
+                                                ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]][eCSearchFL_0_i.forLoop_0_i].eCSIndex = eCSearchFL_1_i.forLoop_0_i
+                                                debugger
                                                 // }  /**/
                                                 
                                                 
