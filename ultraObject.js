@@ -1,5 +1,5 @@
 
-
+        
     
                     function wait(   ms   ){
                        var start = new Date().getTime();
@@ -813,14 +813,15 @@
                                             if(   ultraObject.allTags[   ultraObject.scope[dev_obj.aT]   ][eCSearchFL_1_i.forLoop_0_i][   ultraObject.misc[ultraObject.scope[dev_obj.look]   ][eCSearchFL_2_i.forLoop_0_i][0]   ].indexOf(   ultraObject.misc[   ultraObject.scope[dev_obj.list]   ][eCSearchFL_0_i.forLoop_0_i][0]   ) !== -1 || dev_obj.all  === 'true'  ){
                                                 //this must mean it found a match amoung title of user input and something in the string of the property of the element or were looking at every value and using advanced techniques to invesitage our answers
                                                 
-                                                /*numberSystem declaration*/ //{
+                                                /*numberSystem access or creation*/ //{
                                                 if(   true   ){
                                                     
                                                    
                                                    ultraObject.numberSystem({
                                                         operation:'create'
                                                     })
-                                                    
+                                                    var eCSNS_0_i = ultraObject.scope.add(   {value:ultraObject.nS.abelast[ultraObject.nS.abelast.length-1]}   )
+                                                    debugger
                                                     
                                                 }
                                                 // }  /**/
@@ -1300,6 +1301,7 @@
                     // }  /**/
                     
                     /* node mode choice thread subpropertyRecursion */ //{
+                    // at .result we can try to pull out the result but object comparison is a tough cookie what does es5 have to say about it
                     ultraObject.objIO.access = function(   dev_obj   ){
                             
                             
@@ -2672,31 +2674,60 @@
                                     
                                     var nSobjI_0_i = ultraObject.scope.add(   {value:ultraObject.objIO.abelast[   ultraObject.objIO.abelast.length-1]}   )
                                     
-                                    
-                                    if(   ultraObject.objIO[   ultraObject.scope[nSobjI_0_i]   ].result['a'] !== 'b'   ){
+                                        
+                                    if(   !ultraObject.isPrimitive(   {type:ultraObject.objIO[   ultraObject.scope[nSobjI_0_i]   ].result}   )   ){
                                         
                                         
-                                        var nSFL_0_i = {
-                                            forLoop_0_i:0,
-                                            forLoopLength:ultraObject.nS[   ultraObject.scope[nSNS_0_i]].nSM.length,
-                                            fn:function(   dev_obj   ){
-                                                
-                                                /* adding the digits according to the nSM*/ //{
-                                                ultraObject.nS[   ultraObject.scope[nSNS_0_i]].add({
-                                                        value:(   ultraObject.nS[   ultraObject.scope[nSNS_0_i]].digits[   ultraObject.nS[   ultraObject.scope[nSNS_0_i]   ].nSM[   nSFL_0_i.forLoop_0_i   ]   ]   )
-                                                })
-                                                // }  /**/
-                                                                                            
-                                            },
-                                            args:dev_obj //{}
+                                        if(   ultraObject.objIO[   ultraObject.scope[nSobjI_0_i]   ].result['a'] !== 'b'   ){
+                                            
+                                            
+                                            var nSFL_0_i = {
+                                                forLoop_0_i:0,
+                                                forLoopLength:ultraObject.nS[   ultraObject.scope[nSNS_0_i]].nSM.length,
+                                                fn:function(   dev_obj   ){
+                                                    
+                                                    /* adding the digits according to the nSM*/ //{
+                                                    ultraObject.nS[   ultraObject.scope[nSNS_0_i]].add({
+                                                            value:(   ultraObject.nS[   ultraObject.scope[nSNS_0_i]].digits[   ultraObject.nS[   ultraObject.scope[nSNS_0_i]   ].nSM[   nSFL_0_i.forLoop_0_i   ]   ]   )
+                                                    })
+                                                    // }  /**/
+                                                                                                
+                                                },
+                                                args:dev_obj //{}
+                                            }
+                                            ultraObject.forLoop(   nSFL_0_i   )
+                                            
+                                            
                                         }
-                                        ultraObject.forLoop(   nSFL_0_i   )
+                                    
+                                    
+                                    }
+                                    
+                                    
+                                    else if(   ultraObject.isPrimitive(   {type:ultraObject.objIO[   ultraObject.scope[nSobjI_0_i]   ].result}   )   ){
+                                        
+                                        
+                                        var nSFL_11_i = {
+                                                forLoop_0_i:0,
+                                                forLoopLength:ultraObject.nS[   ultraObject.scope[nSNS_0_i]].nSM.length,
+                                                fn:function(   dev_obj   ){
+                                                    
+                                                    /* adding the digits according to the nSM*/ //{
+                                                    ultraObject.nS[   ultraObject.scope[nSNS_0_i]].add({
+                                                            value:(   ultraObject.nS[   ultraObject.scope[nSNS_0_i]].digits[   ultraObject.nS[   ultraObject.scope[nSNS_0_i]   ].nSM[   nSFL_11_i.forLoop_0_i   ]   ]   )
+                                                    })
+                                                    // }  /**/
+                                                                                                
+                                                },
+                                                args:dev_obj //{}
+                                            }
+                                        ultraObject.forLoop(   nSFL_11_i   )
                                         
                                         
                                     }
                                     
+                                                                        
                                     /*objIO -scope -self -abelast */ //{
-                                        debugger
                                         ultraObject.objIO.minus(   {index:ultraObject.scope[nSobjI_0_i]}   )
                                         ultraObject.objIO.abelast.minus(   {index:ultraObject.objIO.abelast.length -1}   )
                                         ultraObject.scope.minus(   {index:nSobjI_0_i}   )

@@ -450,31 +450,60 @@ function numberSystem(   dev_obj   ){
                                     
                                     var nSobjI_0_i = ultraObject.scope.add(   {value:ultraObject.objIO.abelast[   ultraObject.objIO.abelast.length-1]}   )
                                     
-                                    
-                                    if(   ultraObject.objIO[   ultraObject.scope[nSobjI_0_i]   ].result['a'] !== 'b'   ){
+                                        
+                                    if(   !ultraObject.isPrimitive(   {type:ultraObject.objIO[   ultraObject.scope[nSobjI_0_i]   ].result}   )   ){
                                         
                                         
-                                        var nSFL_0_i = {
-                                            forLoop_0_i:0,
-                                            forLoopLength:ultraObject.nS[   ultraObject.scope[nSNS_0_i]].nSM.length,
-                                            fn:function(   dev_obj   ){
-                                                
-                                                /* adding the digits according to the nSM*/ //{
-                                                ultraObject.nS[   ultraObject.scope[nSNS_0_i]].add({
-                                                        value:(   ultraObject.nS[   ultraObject.scope[nSNS_0_i]].digits[   ultraObject.nS[   ultraObject.scope[nSNS_0_i]   ].nSM[   nSFL_0_i.forLoop_0_i   ]   ]   )
-                                                })
-                                                // }  /**/
-                                                                                            
-                                            },
-                                            args:dev_obj //{}
+                                        if(   ultraObject.objIO[   ultraObject.scope[nSobjI_0_i]   ].result['a'] !== 'b'   ){
+                                            
+                                            
+                                            var nSFL_0_i = {
+                                                forLoop_0_i:0,
+                                                forLoopLength:ultraObject.nS[   ultraObject.scope[nSNS_0_i]].nSM.length,
+                                                fn:function(   dev_obj   ){
+                                                    
+                                                    /* adding the digits according to the nSM*/ //{
+                                                    ultraObject.nS[   ultraObject.scope[nSNS_0_i]].add({
+                                                            value:(   ultraObject.nS[   ultraObject.scope[nSNS_0_i]].digits[   ultraObject.nS[   ultraObject.scope[nSNS_0_i]   ].nSM[   nSFL_0_i.forLoop_0_i   ]   ]   )
+                                                    })
+                                                    // }  /**/
+                                                                                                
+                                                },
+                                                args:dev_obj //{}
+                                            }
+                                            ultraObject.forLoop(   nSFL_0_i   )
+                                            
+                                            
                                         }
-                                        ultraObject.forLoop(   nSFL_0_i   )
+                                    
+                                    
+                                    }
+                                    
+                                    
+                                    else if(   ultraObject.isPrimitive(   {type:ultraObject.objIO[   ultraObject.scope[nSobjI_0_i]   ].result}   )   ){
+                                        
+                                        
+                                        var nSFL_11_i = {
+                                                forLoop_0_i:0,
+                                                forLoopLength:ultraObject.nS[   ultraObject.scope[nSNS_0_i]].nSM.length,
+                                                fn:function(   dev_obj   ){
+                                                    
+                                                    /* adding the digits according to the nSM*/ //{
+                                                    ultraObject.nS[   ultraObject.scope[nSNS_0_i]].add({
+                                                            value:(   ultraObject.nS[   ultraObject.scope[nSNS_0_i]].digits[   ultraObject.nS[   ultraObject.scope[nSNS_0_i]   ].nSM[   nSFL_11_i.forLoop_0_i   ]   ]   )
+                                                    })
+                                                    // }  /**/
+                                                                                                
+                                                },
+                                                args:dev_obj //{}
+                                            }
+                                        ultraObject.forLoop(   nSFL_11_i   )
                                         
                                         
                                     }
                                     
+                                                                        
                                     /*objIO -scope -self -abelast */ //{
-                                        debugger
                                         ultraObject.objIO.minus(   {index:ultraObject.scope[nSobjI_0_i]}   )
                                         ultraObject.objIO.abelast.minus(   {index:ultraObject.objIO.abelast.length -1}   )
                                         ultraObject.scope.minus(   {index:nSobjI_0_i}   )
