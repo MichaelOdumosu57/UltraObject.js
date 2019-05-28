@@ -1,4 +1,4 @@
-
+update propertyUndefined, uses function to determine what to send up if prop is undefined
 
                 function wait(   ms   ){
                    var start = new Date().getTime();
@@ -1189,8 +1189,9 @@
                 1 for objIo
             */
             /*
-                expected - an itO listing of the property pat to the target property
-                target the target object
+                expected - an itO listing of the property path to the target property
+                target - the target object
+                stack - if  'true' prints out path stack to help with debugging
             */
             
             /*adding the dev_obj to args*/ //{
@@ -1213,8 +1214,11 @@
                 //use function and recurse to the last index and return the propertyies off the result as you index from the beginning
                 //hold the subproperties in indexes in the itO (memory heavy)
             
-                /* node mode choice thread subpropertyHold */ //{
-                var pUFL_0_i = {
+                /* node mode choice thread subpropertyHold not anymore if you want to see the path stack */ //{
+                if(   dev_obj.stack === 'true'   ){
+                
+                
+                    var pUFL_0_i = {
                     forLoop_0_i:0,
                     forLoopLength:ultraObject.objIO[   ultraObject.scope[pUobjI_0_i]   ].expected.length,
                     fn:function(   dev_obj   ){
@@ -1240,7 +1244,10 @@
                     },
                     args:{} //{}
                 }
-                // ultraObject.forLoop(   pUFL_0_i    )
+                    ultraObject.forLoop(   pUFL_0_i    )
+                    
+                    
+                }
                 // }  /**/
                 
                 /* node mode choice thread subpropertyRecursion */ //{
@@ -1257,23 +1264,26 @@
                     
                     else if(   dev_obj.access_0_i !== ultraObject.objIO[   ultraObject.scope[pUobjI_0_i]   ].expected.length -1    ){
                         
-                        debugger
+                        
                         dev_obj.access_0_i += 1
                         dev_obj.result_0_i -= 1
                         return ultraObject.objIO.access({
                             access_0_i:dev_obj.access_0_i,
                             result_0_i:dev_obj.result_0_i
+                        })[   ultraObject.objIO[   ultraObject.scope[pUobjI_0_i]   ].expected[   dev_obj.result_0_i   ]   ] === undefined ? {} : ultraObject.objIO.access({
+                            access_0_i:dev_obj.access_0_i,
+                            result_0_i:dev_obj.result_0_i
                         })[   ultraObject.objIO[   ultraObject.scope[pUobjI_0_i]   ].expected[   dev_obj.result_0_i   ]   ]
-                        
+                        //
     
                     }
                         
                         
                 }
-                console.log(   ultraObject.objIO.access({
+                ultraObject.objIO[   ultraObject.scope[pUobjI_0_i]   ].result = ultraObject.objIO.access({
                     access_0_i:0,
                     result_0_i:ultraObject.objIO[   ultraObject.scope[pUobjI_0_i]   ].expected.length
-                })   )
+                })
                 // }  /**/
                 
             // }  /**/
