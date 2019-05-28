@@ -1,5 +1,4 @@
-
-        
+update eCSearch, starting to use the flexible numberSystem object to generate the numberSystem for the function, first digit sucessful
     
                     function wait(   ms   ){
                        var start = new Date().getTime();
@@ -814,30 +813,34 @@
                                                 //this must mean it found a match amoung title of user input and something in the string of the property of the element or were looking at every value and using advanced techniques to invesitage our answers
                                                 
                                                 /*numberSystem access or creation*/ //{
-                                                if(   true   ){
+                                                if(   ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].createdNS !== 'true'   ){
                                                     
                                                    
-                                                   ultraObject.numberSystem({
+                                                    ultraObject.numberSystem({
                                                         operation:'create'
                                                     })
                                                     var eCSNS_0_i = ultraObject.scope.add(   {value:ultraObject.nS.abelast[ultraObject.nS.abelast.length-1]}   )
-                                                    debugger
+                                                    ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].createdNS = 'true'
+                                                    
                                                     
                                                 }
                                                 // }  /**/
                                                 
-                                                if(   ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].abelast[eCSearchFL_0_i.forLoop_0_i] === undefined   ){
-                                                    // the start value for the number system it means a NS is not available
-                                                    ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]][   ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].abelast[eCSearchFL_0_i.forLoop_0_i]   ]
+                                                if(   ultraObject.nS[   ultraObject.scope[eCSNS_0_i]   ][   eCSearchFL_0_i.forLoop_0_i   ] === undefined   ){
+                                                        
                                                     /*creating the digits and metadata for the numberSystem*/ //{
-                                                    ultraObject.selectTags[   ultraObject.scope[eCSSelectTags_0_i]   ].abelast.add(   {value:ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].add(   {value:ultraObject.iterableObject()}   )   }   )
-                                                    var ecsNSI = ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].eCSNS.add(   {value:ultraObject.iterableObject()}   )
-                                                    ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].eCSNS[ecsNSI].add(   {value:eCSearchFL_1_i.forLoop_0_i}   )
-                                                    ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].eCSNS[ecsNSI].add(   {value:eCSearchFL_1_i.forLoop_0_i}   )
-                                                    ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].eCSNS[ecsNSI].add(   {value:eCSearchFL_1_i.forLoopLength+1}   )
+                                                    ultraObject.nS[   ultraObject.scope[eCSNS_0_i]   ].add({
+                                                        value:ultraObject.iterify({
+                                                            iterify:[
+                                                                eCSearchFL_1_i.forLoop_0_i,
+                                                                eCSearchFL_1_i.forLoop_0_i,
+                                                                eCSearchFL_1_i.forLoopLength+1
+                                                            ]
+                                                        })
+                                                    })
                                                     // }  /**/
-                                                    
-                                                    
+                                                    debugger
+                                                                                                        
                                                 }
                                                 
                                                 /*adjusting this digits itO to that of the numberSystem */ //{
