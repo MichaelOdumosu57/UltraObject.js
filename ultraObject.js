@@ -1,3 +1,4 @@
+
                 function wait(   ms   ){
                    var start = new Date().getTime();
                    var end = start;
@@ -955,10 +956,8 @@
             var forLoopbreak = false
             if(   dev_obj !== undefined   ){
         
-                if(   dev_obj.custom !== 'true'   ){
-                    
-                    
-                    for(   dev_obj.forLoop_0_i; dev_obj.forLoop_0_i !== dev_obj.forLoopLength; dev_obj.forLoop_0_i++   ){ // change this to be a fuctiont that allow the dev to do anything here
+                
+                for(   dev_obj.forLoop_0_i; dev_obj.forLoop_0_i !== dev_obj.forLoopLength; dev_obj.forLoop_0_i++   ){ // change this to be a fuctiont that allow the dev to do anything here
                         // console.log(   dev_obj.forLoop_0_i   )
                         forLoopbreak = dev_obj.fn(   dev_obj.args   )// find a better way to do this
                         
@@ -975,47 +974,16 @@
                             }
                             break;
                             
-
-                        }
-                        
-                        
-                    }
-                    dev_obj.forLoop_0_i = 0
-                    
-                    
-                }
+                            
         
-                
-                else if(   dev_obj.custom === 'true'   ){
-                    
-                    
-                    for(   dev_obj.forLoop_0_i; dev_obj.forLoopLength_fn(); dev_obj.forLoop_0_i_fn()   ){ // change this to be a fuctiont that allow the dev to do anything here
-                        // console.log(   dev_obj.forLoop_0_i   )
-                        forLoopbreak = dev_obj.fn(   dev_obj.args   )// find a better way to do this
-                        
-                                        
-                        if(   forLoopbreak === 'true' || forLoopbreak === 'premature'  ){
-                            // premature  provided when you dont want to bubble up the value just break
-                            
-                            if(   dev_obj.bubble === 'true'   ){
-                                
-                                
-                                return forLoopbreak
-                                
-                                
-                            }
-                            break;
                             
                             
                         }
                         
                         
-                    }
-                    dev_obj.forLoop_0_i = 0
-                    
-                    
                 }
-                
+                dev_obj.forLoop_0_i = 0
+        
                 
             }
         }
@@ -2161,10 +2129,6 @@
                         for every digit, we need the actual, the minx and the max
                         0 for actual, 1 for min 2 for max
                         requires a .digits or just leaves it alone
-                    decimal - turns the numberSystem number to a decimal for mathematical conversion and external-API readable format
-                        .conversion - whether to convert to decimal or the custom numberSystem
-                            to = convert to decimal
-                            from = convert from decimal to nsm
                 .digits
                         an itO containing itO's that represent each digit of the nS
                         0 for the current digit
@@ -2207,8 +2171,7 @@
             
             if(   dev_obj !== undefined   ){
                 
-                
-               
+                var nSNS_2_i;
                 /*we have a numberSystem to work with*/ //{
                 if(   ultraObject.isInt(   {type:dev_obj.nS}   ) === 'true'  ){
                     
@@ -2222,7 +2185,7 @@
                         /*if the developer wants the nS to be reordered*/ //{
                         if(   ultraObject.isitO(   {type:dev_obj.nSM}   )   ){
                             
-                            /* node mode choice thread performance */ //{
+                            /* node mode choice thread validation */ //{
                                 ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM = dev_obj.nSM
                                 var nSFL_1_i = {
                                     forLoop_0_i:0,
@@ -2244,6 +2207,7 @@
                                             
                                             
                                             ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM[   nSFL_1_i.forLoop_0_i   ] = ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM[   nSFL_1_i.forLoop_0_i   ]
+                                            debugger
                                             ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ][   nSFL_1_i.forLoop_0_i   ] =  ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].digits[   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM[   nSFL_1_i.forLoop_0_i   ]   ]
                                             
                                             
@@ -2373,32 +2337,11 @@
                         // }  /**/
                         
                         /*if the developer wants the digits to be changed*/ //{
-                        // the actual digits get modified according to given and the original .digits get modified according their respecitve digits in the actual digits
-                        // key ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM[   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].digits.newDigits[   nSFL_5_i.forLoop_0_i   ][0], used to access the orginal digit in the numberSystem to change the digits accordingly
+                        // the actual digits get modified and the original .digits get
                         if(   dev_obj.digits !== undefined   ){
                             
                             
                             ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].digits.newDigits = Object.entries(   dev_obj.digits   )
-                            
-                            var nSFL_6_i  = {
-                                forLoop_0_i:0,
-                                forLoopLength:ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].digits.newDigits.length,
-                                fn:function(   dev_obj   ){
-                                    
-                                    
-                                    if(   ultraObject.isInt(   {type:ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].digits.newDigits[   nSFL_6_i.forLoop_0_i   ][0]}   )   ){
-                                        
-                                        
-                                        ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].digits[   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM[   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].digits.newDigits[   nSFL_6_i.forLoop_0_i   ][0]   ]   ] = ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].digits.newDigits[   nSFL_6_i.forLoop_0_i   ][1]
-                                        
-                                        
-                                    }
-                                    
-                                    
-                                },
-                                args:dev_obj
-                            }
-                            ultraObject.forLoop(   nSFL_6_i    )
                             var nSFL_5_i  = {
                                 forLoop_0_i:0,
                                 forLoopLength:ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].digits.newDigits.length,
@@ -2448,7 +2391,7 @@
                 }
                 // }  /**/
                 
-                /*make a new numberSystem if the calling function doesnt have it*/ //{
+                /*make a new numberSystem if the calling function doesnt have ine*/ //{
                 else if(   dev_obj.nS === undefined   ){
                     
                     /*this code blocks adds subtracts or modifies the numberSystem digits*/ //{
@@ -2479,16 +2422,9 @@
                                 boolean:nSBOOL,
                                 how:function(   dev_obj   ){
                                     
-                                    
                                     if(   !ultraObject.isitO(   {type:dev_obj.compAgnI[2]}   )   ){
-                                        
-                                        
                                         return 'a'
-                                        
-                                        
                                     }
-                                    
-                                    
                                 },
                                 result:'a',
                                 which:0
@@ -2561,67 +2497,11 @@
                 }
                 // }  /**/
                 
-                /* convert the number to a decimal */ //{
-                // this will also be used for math operations
-                // the largest digit is at 0 the smallest is at length - 1, sometimes we need to know what the largest digit is i hope i made the right choice future
-                if(   dev_obj.operation === 'decimal'   ){
-                    
-                    /*NS +scope */ //{
-                    var nSNS_2_i = ultraObject.scope.add(   {value:dev_obj.nS}   )
-                    // }  /**/
-                    
-                    /*converting them number to decimal */ //{
-                    // PROBLEM you need to update forLoop to do more
-                    // a lot of interesting things are happening first, i have access to the nS as well as a seperate workspace for grunt work i dont even need to iterate,
-                    // the formula to produce the decimal is for each digit subtract the act by the min and multiply the range by 1, then increase the range of the range of the same digit step 1 is not needed get around this
-                    // the actual goes to the max in this implementation
-                    // if you really know what your doing you can do this
-                            // digits:ultraObject.iterify({
-                            //         iterify:[
-                            //             ultraObject.iterify({
-                            //                 iterify:[150,0,10]
-                            //             }),
-                            //             ultraObject.iterify({
-                            //                 iterify:[0,0,10]
-                            //             }),
-                            //             ultraObject.iterify({
-                            //                 iterify:[0,0,10]
-                            //             }),
-                            //         ]
-                            //     }),
-                            //   nSM:ultraObject.iterify({iterify:[0,1,2]})
-                    if(   dev_obj.conversion === 'to'   ){
-                        
-                        
-                        ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal = ultraObject.iterableObject()
-                        ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.currentNumber = 0
-                        ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.range = 1
-                        var nSFL_7_i = {
-                            forLoop_0_i:-ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].length,
-                            forLoopLength:0,
-                            fn:function(   dev_obj   ){
-                                //1
-                                // ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.add(   {value:ultraObject.nS[   [   ultraObject.scope[nSNS_2_i]   ]   ][   (-nSFL_7_i.forLoop_0_i)-1   ]}   )
-                                //2 actual update
-                                ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.currentNumber += (   ultraObject.nS[   [   ultraObject.scope[nSNS_2_i]   ]   ][   (-nSFL_7_i.forLoop_0_i)-1   ][0] - ultraObject.nS[   [   ultraObject.scope[nSNS_2_i]   ]   ][   (-nSFL_7_i.forLoop_0_i)-1   ][1]   ) * (    ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.range   )
-                                //3
-                                ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.range *= ultraObject.nS[   [   ultraObject.scope[nSNS_2_i]   ]   ][   (-nSFL_7_i.forLoop_0_i)-1   ][2]  - ultraObject.nS[   [   ultraObject.scope[nSNS_2_i]   ]   ][   (-nSFL_7_i.forLoop_0_i)-1   ][1]
-                            },
-                            args:dev_obj //{}
-                        }
-                        ultraObject.forLoop(   nSFL_7_i   )
-                        ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.range = 1
-                        
-                    }
-                    // }  /**/
-                    
-                    
-                    else if(   dev_obj.conversion === 'from'   ){}
-                    
-                    
-                }
-                // } /**/
+
                 
+                /*NS -scope */ //{
+                ultraObject.scope.minus(   {index:nSNS_2_i}   )
+                // }  /**/
             }
             
             
