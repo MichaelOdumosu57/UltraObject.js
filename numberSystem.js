@@ -419,7 +419,7 @@ function numberSystem(   dev_obj   ){
                     
                     /*make a new numberSystem if the calling function doesnt have it*/ //{
                     else if(   dev_obj.nS === undefined   ){
-                        
+
                         /*this code blocks adds subtracts or modifies the numberSystem digits*/ //{
                         if(   dev_obj.operation === 'create'   ){
                             
@@ -489,9 +489,26 @@ function numberSystem(   dev_obj   ){
                                                 fn:function(   dev_obj   ){
                                                     
                                                     /* adding the digits according to the nSM*/ //{
-                                                    ultraObject.nS[   ultraObject.scope[nSNS_0_i]].add({
-                                                            value:(   ultraObject.nS[   ultraObject.scope[nSNS_0_i]].digits[   ultraObject.nS[   ultraObject.scope[nSNS_0_i]   ].nSM[   nSFL_11_i.forLoop_0_i   ]   ]   )
+                                                    if(   ultraObject.isArray(   {type:ultraObject.nS[   ultraObject.scope[nSNS_0_i]].digits[   ultraObject.nS[   ultraObject.scope[nSNS_0_i]   ].nSM[   nSFL_11_i.forLoop_0_i   ]   ][1]}   )   ){
+                                                        
+                                                        
+                                                        ultraObject.nS[   ultraObject.scope[nSNS_0_i]].add({
+                                                            value:ultraObject.iterify({
+                                                                iterify:ultraObject.nS[   ultraObject.scope[nSNS_0_i]].digits[   ultraObject.nS[   ultraObject.scope[nSNS_0_i]   ].nSM[   nSFL_11_i.forLoop_0_i   ]   ][1]
+                                                                })
                                                     })
+                                                    
+                                                    
+                                                    }
+                                                    
+                                                    
+                                                    else if(   true || ultraObject.isitO(   {type:ultraObject.nS[   ultraObject.scope[nSNS_0_i]].digits[   ultraObject.nS[   ultraObject.scope[nSNS_0_i]   ].nSM[   nSFL_11_i.forLoop_0_i   ]   ][1]}   )   ){
+                                                        
+                                                        
+                                                        ultraObject.nS[   ultraObject.scope[nSNS_0_i]].add({value:ultraObject.nS[   ultraObject.scope[nSNS_0_i]].digits[   ultraObject.nS[   ultraObject.scope[nSNS_0_i]   ].nSM[   nSFL_11_i.forLoop_0_i   ]   ][1]})
+                                                    
+                                                    
+                                                    }
                                                     // }  /**/
                                                                                                 
                                                 },
@@ -680,4 +697,4 @@ function numberSystem(   dev_obj   ){
                 }
                 
                 
-            }
+            }//makes a customized number system for the needs of the eCSearch multiple testing required by prefill form
