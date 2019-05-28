@@ -2169,6 +2169,8 @@
                         .currentNumber when convert from decimal to a NS
                         .prevent -
                                 'false' - do not update the nS's number
+                    update-
+                        updae the .currentNumber after opperations
                 .digits
                         an itO containing itO's that represent each digit of the nS
                         0 for the current digit
@@ -2641,36 +2643,68 @@
                                 forLoop_0_i: 0,
                                 forLoopLength:ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].length,
                                 fn:function(   dev_obj   ){
-                                    ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ][   nSFL_8_i.forLoop_0_i   ][0] = 0
+                                    ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ][   nSFL_8_i.forLoop_0_i   ][0] = ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ][   nSFL_8_i.forLoop_0_i   ][1]
                                     var nSFL_9_i = {
-                                        forLoop_0_i: (-ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].length +1) + nSFL_8_i.forLoop_0_i,
-                                        forLoopLength:0,
+                                        forLoop_0_i: -(ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].length - 1 ),
+                                        forLoopLength:0-nSFL_8_i.forLoop_0_i,
                                         fn:function(   dev_obj   ){
                                             ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.range *= ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ][   -nSFL_9_i.forLoop_0_i   ][2] - ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ][   -nSFL_9_i.forLoop_0_i   ][1]
-                                            
                                         },
                                         args:dev_obj //{}
                                     }
                                     ultraObject.forLoop(   nSFL_9_i   )
-                                    console.log(   ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.range    )
+                                    
+                                    /*at this point we have the range to work with now computing the actual digit*/ //{
+                                    // the range determines if the number should be subtracted and moved into the current digit
+                                    //if the currentDigit is less than the range move on to the next digit
+                                    // I hope parseInt is a ES5 solution and it always Math.floor
+                                    console.log(   ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.range,'what it takes to get to the next digit'   )
+                                    if(   ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.currentNumber >= ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.range     ){
+                                        
+                                        
+                                        ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ][   nSFL_8_i.forLoop_0_i   ][0] = Math.floor(   ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.currentNumber/ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.range   )
+                                        ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.currentNumber -= (ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.range  * Math.floor(   ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.currentNumber/ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.range   )   )
+                                        
+                                        
+                                    }
                                     ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.range = 1
+                                    // }  /**/
+                                    
                                 },
                                 args:dev_obj //{}
                             }
                             ultraObject.forLoop(   nSFL_8_i   )
+                            
+                            
                         }
                         // }  /**/
                             
-                            
-                        
-                
-                        
+
                     }
                     // }  /**/
                     
                     
                 }
                 // } /**/
+                
+                /* update the currentNumber*/ //{
+                if(   dev_obj.operation === 'update'   ){
+                    
+                    var nSNS_3_i = dev_obj.nS
+                    ultraObject.nS[   ultraObject.scope[nSNS_3_i]   ].currentNumber = []
+                    var nSFL_10_i = {
+                        forLoop_0_i:0,
+                        forLoopLength:ultraObject.nS[   ultraObject.scope[nSNS_3_i]   ].length,
+                        fn:function(   dev_obj   ){
+                            ultraObject.nS[   ultraObject.scope[nSNS_3_i]   ].currentNumber.push(   ultraObject.nS[   ultraObject.scope[nSNS_3_i]   ][   nSFL_10_i.forLoop_0_i   ][0])
+                        },
+                        args:dev_obj //{}
+                    }
+                    ultraObject.forLoop(   nSFL_10_i   )
+                    
+                    
+                }
+                // }  /**/
                 
             }
             
