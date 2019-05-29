@@ -2849,6 +2849,17 @@
                                     forLoop_0_i:0,
                                     forLoopLength:dev_obj.digits.length,
                                     fn:function(   dev_obj   ){
+                                        
+                                        debugger
+                                        if(   ultraObject.isArray(   {type:dev_obj.digits[   nSFL_13_i.forLoop_0_i   ][1]}   )   ){
+                                            
+                                            
+                                            dev_obj.digits[   nSFL_13_i.forLoop_0_i   ][1] = ultraObject.iterify(   {iterify:dev_obj.digits[   nSFL_13_i.forLoop_0_i   ][1]}   )
+                                            
+                                                                                        
+                                        }
+                                        
+                                        
                                         ultraObject.nS[   ultraObject.scope[nSNS_0_i]   ].digits.add({
                                             value:dev_obj.digits[   nSFL_13_i.forLoop_0_i   ][1],
                                             index:dev_obj.digits[   nSFL_13_i.forLoop_0_i   ][0]
@@ -2857,7 +2868,6 @@
                                     args:dev_obj //{}
                                 }
                                 ultraObject.forLoop(   nSFL_13_i  )
-                                ultraObject.nS[   ultraObject.scope[nSNS_0_i]].digits
                                 // }  /**/
                                 
                                 /*looping through  nSM to recreate the string!*/ //{
@@ -2885,28 +2895,9 @@
                                                 fn:function(   dev_obj   ){
                                                     
                                                 /* adding the digits according to the nSM*/ //{
-                                                if(   ultraObject.isArray(   {type:ultraObject.nS[   ultraObject.scope[nSNS_0_i]].digits[   ultraObject.nS[   ultraObject.scope[nSNS_0_i]   ].nSM[   nSFL_0_i.forLoop_0_i   ]   ][1]}   )   ){
-                                                    
-                                                    
-                                                    ultraObject.nS[   ultraObject.scope[nSNS_0_i]].add({
-                                                        value:ultraObject.iterify({
-                                                            iterify:ultraObject.nS[   ultraObject.scope[nSNS_0_i]].digits[   ultraObject.nS[   ultraObject.scope[nSNS_0_i]   ].nSM[   nSFL_0_i.forLoop_0_i   ]   ][1]
-                                                            })
-                                                    })
-                                                
-                                                
-                                                }
-                                                
-                                                
-                                                else if(   true || ultraObject.isitO(   {type:ultraObject.nS[   ultraObject.scope[nSNS_0_i]].digits[   ultraObject.nS[   ultraObject.scope[nSNS_0_i]   ].nSM[   nSFL_0_i.forLoop_0_i   ]   ][1]}   )   ){
-                                                    
-                                                    
-                                                    ultraObject.nS[   ultraObject.scope[nSNS_0_i]].add({
-                                                        value:ultraObject.nS[   ultraObject.scope[nSNS_0_i]].digits[   ultraObject.nS[   ultraObject.scope[nSNS_0_i]   ].nSM[   nSFL_0_i.forLoop_0_i   ]   ][1]
-                                                    })
-                                                
-                                                
-                                                }
+                                                ultraObject.nS[   ultraObject.scope[nSNS_0_i]].add({
+                                                    value:ultraObject.nS[   ultraObject.scope[nSNS_0_i]].digits[   ultraObject.nS[   ultraObject.scope[nSNS_0_i]   ].nSM[   nSFL_0_i.forLoop_0_i   ]   ]
+                                                })
                                                 // }  /**/
                                                                                                 
                                                 },
@@ -2923,34 +2914,16 @@
                                     
                                     else if(   ultraObject.isPrimitive(   {type:ultraObject.objIO[   ultraObject.scope[nSobjI_0_i]   ].result}   )   ){
                                         
+                                        debugger
                                         var nSFL_11_i = {
                                             forLoop_0_i:0,
                                             forLoopLength:ultraObject.nS[   ultraObject.scope[nSNS_0_i]].nSM.length,
                                             fn:function(   dev_obj   ){
                                                 
                                                 /* adding the digits according to the nSM*/ //{
-                                                if(   ultraObject.isArray(   {type:ultraObject.nS[   ultraObject.scope[nSNS_0_i]].digits[   ultraObject.nS[   ultraObject.scope[nSNS_0_i]   ].nSM[   nSFL_11_i.forLoop_0_i   ]   ][1]}   )   ){
-                                                    
-                                                    
-                                                    ultraObject.nS[   ultraObject.scope[nSNS_0_i]].add({
-                                                        value:ultraObject.iterify({
-                                                            iterify:ultraObject.nS[   ultraObject.scope[nSNS_0_i]].digits[   ultraObject.nS[   ultraObject.scope[nSNS_0_i]   ].nSM[   nSFL_11_i.forLoop_0_i   ]   ][1]
-                                                            })
-                                                    })
-                                                
-                                                
-                                                }
-                                                
-                                                
-                                                else if(   true || ultraObject.isitO(   {type:ultraObject.nS[   ultraObject.scope[nSNS_0_i]].digits[   ultraObject.nS[   ultraObject.scope[nSNS_0_i]   ].nSM[   nSFL_11_i.forLoop_0_i   ]   ][1]}   )   ){
-                                                    
-                                                    
-                                                    ultraObject.nS[   ultraObject.scope[nSNS_0_i]].add({
-                                                        value:ultraObject.nS[   ultraObject.scope[nSNS_0_i]].digits[   ultraObject.nS[   ultraObject.scope[nSNS_0_i]   ].nSM[   nSFL_11_i.forLoop_0_i   ]   ][1]
-                                                    })
-                                                
-                                                
-                                                }
+                                                ultraObject.nS[   ultraObject.scope[nSNS_0_i]].add({
+                                                    value:ultraObject.nS[   ultraObject.scope[nSNS_0_i]].digits[   ultraObject.nS[   ultraObject.scope[nSNS_0_i]   ].nSM[   nSFL_11_i.forLoop_0_i   ]   ]
+                                                })
                                                 // }  /**/
                                                                                             
                                             },
