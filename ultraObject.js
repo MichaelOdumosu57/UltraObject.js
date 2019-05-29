@@ -2596,7 +2596,7 @@
                             /*if the developer wants the nS to be reordered*/ //{
                             if(   ultraObject.isitO(   {type:dev_obj.nSM}   )   ){
                                 
-                                /* node mode choice thread performance */ //{
+                                /*node mode choice thread performance */ //{
                                     ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM = dev_obj.nSM
                                     ultraObject.sort({
                                         target: ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM,
@@ -2772,53 +2772,52 @@
                             // }  /**/
                             
                             /*if the developer wants the digits to be changed*/ //{
-                            // the actual digits get modified according to given and the original .digits get modified according their respecitve digits in the actual digits
+                            // the actual nS gets modified according to given and the original .digits get modified according their respecitve digits in the actual digits
                             // key ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM[   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].digits.newDigits[   nSFL_5_i.forLoop_0_i   ][0], used to access the orginal digit in the numberSystem to change the digits accordingly
                             if(   dev_obj.digits !== undefined   ){
+
+                                                                
                                 
-                                
-                                ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].digits.newDigits = Object.entries(   dev_obj.digits   )
-                                
-                                var nSFL_6_i  = {
+                                /* recreating the digits object from dev_obj*/ //{
+                                var nSFL_13_i = {
                                     forLoop_0_i:0,
-                                    forLoopLength:ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].digits.newDigits.length,
+                                    forLoopLength:dev_obj.digits.length,
                                     fn:function(   dev_obj   ){
                                         
                                         
-                                        if(   ultraObject.isInt(   {type:ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].digits.newDigits[   nSFL_6_i.forLoop_0_i   ][0]}   )   ){
+                                        if(   ultraObject.isArray({type:dev_obj.digits[   nSFL_13_i.forLoop_0_i   ][1]})   ){
                                             
                                             
-                                            ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].digits[   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM[   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].digits.newDigits[   nSFL_6_i.forLoop_0_i   ][0]   ]   ] = ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].digits.newDigits[   nSFL_6_i.forLoop_0_i   ][1]
+                                            dev_obj.digits[   nSFL_13_i.forLoop_0_i   ][1] = ultraObject.iterify({
+                                                iterify:dev_obj.digits[   nSFL_13_i.forLoop_0_i   ][1]
+                                            })
                                             
                                             
                                         }
                                         
                                         
+                                        ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].add({
+                                            value:dev_obj.digits[   nSFL_13_i.forLoop_0_i   ][1],
+                                            index:dev_obj.digits[   nSFL_13_i.forLoop_0_i   ][0]
+                                        })
+                                    },
+                                    args:dev_obj //{}
+                                }
+                                delete ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].digits.newDigits
+                                ultraObject.forLoop(   nSFL_13_i   )
+                                var nSFL_6_i  = {
+                                    forLoop_0_i:0,
+                                    forLoopLength:ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.length,
+                                    fn:function(   dev_obj   ){
+                                        ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].digits.add({
+                                            value:ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ][   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM[   nSFL_6_i.forLoop_0_i   ][0]   ],
+                                            index:ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM[   nSFL_6_i.forLoop_0_i   ][1]
+                                        })
                                     },
                                     args:dev_obj
                                 }
                                 ultraObject.forLoop(   nSFL_6_i    )
-                                var nSFL_5_i  = {
-                                    forLoop_0_i:0,
-                                    forLoopLength:ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].digits.newDigits.length,
-                                    fn:function(   dev_obj   ){
-                                        
-                                        
-                                        if(   ultraObject.isInt(   {type:ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].digits.newDigits[   nSFL_5_i.forLoop_0_i   ][0]}   )   ){
-                                            
-                                            
-                                            ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ][   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].digits.newDigits[   nSFL_5_i.forLoop_0_i   ][0]  ] = ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].digits.newDigits[   nSFL_5_i.forLoop_0_i   ][1]
-                                            
-                                            
-                                        }
-                                        
-                                        
-                                    },
-                                    args:dev_obj
-                                }
-                                ultraObject.forLoop(   nSFL_5_i    )
-                                delete ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].digits.newDigits
-                                
+                                // }  /**/
                                 
                             }
                             // }  /**/
@@ -2830,9 +2829,9 @@
                         ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].currentNumber = []
                         var nSFL_6_i = {
                             forLoop_0_i:0,
-                            forLoopLength:ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].length,
+                            forLoopLength:ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.length,
                             fn:function(   dev_obj   ){
-                                ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].currentNumber.push(   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ][   nSFL_6_i.forLoop_0_i   ][0])
+                                ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].currentNumber.push(   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ][   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM[   nSFL_6_i.forLoop_0_i   ][0]   ][0])
                             },
                             args:dev_obj //{}
                         }
