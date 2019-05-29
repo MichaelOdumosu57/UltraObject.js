@@ -11,8 +11,16 @@ function iterableObject(   dev_obj   ){
                             if(   dev_obj.index !== undefined   ){
                                 
                                 
+                                if(   iterableObjectO[dev_obj.index] === undefined   ){
+                                
+                                
+                                    iterableObjectO.length += 1
+                                
+                                
+                                }
+                                
+                                
                                 iterableObjectO[dev_obj.index] = dev_obj.value
-                                iterableObjectO.length += 1
                                 return dev_obj.index
                                 
                                 
@@ -152,8 +160,15 @@ function iterableObject(   dev_obj   ){
                             if(   dev_obj.index !== undefined   ){
                                 
                                 
+                                if(   iterableObjectO.abelast[dev_obj.index] === undefined   ){
+                                
+                                
+                                    iterableObjectO.abelast.length += 1
+                                
+                                
+                                }
+                                                                
                                 iterableObjectO.abelast[dev_obj.index] = dev_obj.value
-                                iterableObjectO.abelast.length += 1
                                 return dev_obj.index
                                 
                                 
@@ -197,6 +212,8 @@ function iterableObject(   dev_obj   ){
                                         
                                         
                                     }
+                                    
+                                    
                                 },
                                 args:{
                                     index:dev_obj.index

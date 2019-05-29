@@ -1476,8 +1476,16 @@
                             if(   dev_obj.index !== undefined   ){
                                 
                                 
+                                if(   iterableObjectO[dev_obj.index] === undefined   ){
+                                
+                                
+                                    iterableObjectO.length += 1
+                                
+                                
+                                }
+                                
+                                
                                 iterableObjectO[dev_obj.index] = dev_obj.value
-                                iterableObjectO.length += 1
                                 return dev_obj.index
                                 
                                 
@@ -1617,8 +1625,15 @@
                             if(   dev_obj.index !== undefined   ){
                                 
                                 
+                                if(   iterableObjectO.abelast[dev_obj.index] === undefined   ){
+                                
+                                
+                                    iterableObjectO.abelast.length += 1
+                                
+                                
+                                }
+                                                                
                                 iterableObjectO.abelast[dev_obj.index] = dev_obj.value
-                                iterableObjectO.abelast.length += 1
                                 return dev_obj.index
                                 
                                 
@@ -1662,6 +1677,8 @@
                                         
                                         
                                     }
+                                    
+                                    
                                 },
                                 args:{
                                     index:dev_obj.index
@@ -2815,7 +2832,8 @@
                                 /* restructing the dev obj in the target nS*/ //{
                                 // we just going to use the dev_obj becuase i got no where to put it
                                 ultraObject.nS[   ultraObject.scope[nSNS_0_i]   ].nSM = ultraObject.iterableObject()
-                                var nSFL_12_i= {
+                                ultraObject.nS[   ultraObject.scope[nSNS_0_i]].digits = ultraObject.iterableObject()
+                                var nSFL_12_i = {
                                     forLoop_0_i:0,
                                     forLoopLength:dev_obj.nSM.length,
                                     fn:function(   dev_obj   ){
@@ -2827,9 +2845,19 @@
                                     args:dev_obj //{}
                                 }
                                 ultraObject.forLoop(   nSFL_12_i  )
-                                
-                                
-                                ultraObject.nS[   ultraObject.scope[nSNS_0_i]].digits = dev_obj.digits
+                                var nSFL_13_i = {
+                                    forLoop_0_i:0,
+                                    forLoopLength:dev_obj.digits.length,
+                                    fn:function(   dev_obj   ){
+                                        ultraObject.nS[   ultraObject.scope[nSNS_0_i]   ].digits.add({
+                                            value:dev_obj.digits[   nSFL_13_i.forLoop_0_i   ][1],
+                                            index:dev_obj.digits[   nSFL_13_i.forLoop_0_i   ][0]
+                                        })
+                                    },
+                                    args:dev_obj //{}
+                                }
+                                ultraObject.forLoop(   nSFL_13_i  )
+                                ultraObject.nS[   ultraObject.scope[nSNS_0_i]].digits
                                 // }  /**/
                                 
                                 /*looping through  nSM to recreate the string!*/ //{
