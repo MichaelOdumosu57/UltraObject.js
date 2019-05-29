@@ -199,17 +199,39 @@ function numberSystem(   dev_obj   ){
                                 
                                 /* node mode choice thread performance */ //{
                                     ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM = dev_obj.nSM
+                                    ultraObject.sort({
+                                        target: ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM,
+                                        algorithm:'bubble',
+                                        compare:function(   dev_obj   ){
+                                            
+                                                
+                                            if(   dev_obj.val[dev_obj.index][0] > dev_obj.val[dev_obj.index+ 1][0]   ){
+                                                
+                                                
+                                                return 'true'
+                                                
+                                                
+                                            }
+                                                
+                                            
+                                        },
+                                        result:'true'
+                                    })
                                     var nSFL_1_i = {
                                         forLoop_0_i:0,
                                         forLoopLength:ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM.length,
                                         fn:function(   dev_obj   ){
                                             
                                             /*means that the end of the current nSM*/ //{
-                                            // the developer wanted to increase the nS
+                                            // the developer wanted to increase the nS so we must increase it and modify the nS
                                             if(   nSFL_1_i.forLoop_0_i >= ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.length ){
                                             
                                                 
                                                 ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.add(   {value:ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM[   nSFL_1_i.forLoop_0_i   ]}   )
+                                                ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].add({
+                                                    value:ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].digits[   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM[   nSFL_1_i.forLoop_0_i   ][1]   ],
+                                                    index:ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM[   nSFL_1_i.forLoop_0_i   ][0]
+                                                })
                                                 
                                                 
                                             }
@@ -401,8 +423,7 @@ function numberSystem(   dev_obj   ){
                                 
                             }
                             // }  /**/
-                            
-                            
+                                                        
                         }
                         // }  /**/
                         
