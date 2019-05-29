@@ -2604,9 +2604,10 @@
                                         fn:function(   dev_obj   ){
                                             
                                             /*means that the end of the current nSM*/ //{
+                                            // the developer wanted to increase the nS
                                             if(   nSFL_1_i.forLoop_0_i >= ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.length ){
                                             
-                                            
+                                                
                                                 ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.add(   {value:ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM[   nSFL_1_i.forLoop_0_i   ]}   )
                                                 
                                                 
@@ -2614,11 +2615,13 @@
                                             // }  /**/
                                             
                                             /*means newnSM can replace an available value in the current nSM*/ //{
+                                            // im dynmaically recreating the nS here
                                             else if(   nSFL_1_i.forLoop_0_i < ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.length   ){
                                                 
                                                 
                                                 ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM[   nSFL_1_i.forLoop_0_i   ] = ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM[   nSFL_1_i.forLoop_0_i   ]
-                                                ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ][   nSFL_1_i.forLoop_0_i   ] =  ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].digits[   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM[   nSFL_1_i.forLoop_0_i   ]   ]
+                                                ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ][   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM[   nSFL_1_i.forLoop_0_i   ][0]   ] =  ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].digits[   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM[   nSFL_1_i.forLoop_0_i   ][1]   ]
+                                                
                                                 
                                                 
                                             }
@@ -2840,7 +2843,7 @@
                                 
                                     /* I need to sort the nSM by nS access index first to make it easier for it to use for the rest of the API*/ //{
                                     ultraObject.sort({
-                                        target: ultraObject.nS[   ultraObject.scope[nSNS_0_i]   ].nSM ,
+                                        target: ultraObject.nS[   ultraObject.scope[nSNS_0_i]   ].nSM,
                                         algorithm:'bubble',
                                         compare:function(   dev_obj   ){
                                             
