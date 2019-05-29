@@ -2552,16 +2552,22 @@
                         1:0
                         2:2
                         3::3
-                                    .eCSNS:{
-                                          0:{0:current,1:min,2:max}
-                        the number system 1:{0:current,1:min,2:max}
-                                          2:{0:current,1:min,2:max}
-                                          3:{0:current,1:min,2:max}
-                                            nSM:{}
-                                    }
-                        if the fn receives add 1 nS[1].current will increase by one
-                        when ns[1].current hits the max then ns[0].current increases by one and
-                            ns[1].current returns to zero
+                        
+                        but this is the data object the fn wants from this dev_obj.property
+                        ultraObject.iterify({
+                                    iterify:[
+                                        ultraObject.iterify({
+                                            iterify:[0,2]
+                                        }),
+                                        ultraObject.iterify({
+                                            iterify:[1,0]
+                                        }),
+                                        ultraObject.iterify({
+                                            iterify:[2,1]
+                                        })
+                                    ]
+                                })
+                        where the first index specifes where the nSM digit should go in the nSM and the sencond index specifies which digit from the .digits
                     //
                 */
                 /*
@@ -2830,44 +2836,53 @@
                             /*lets go create this nS!*/ //{
                                 
                                 /* restructing the dev obj in the target nS*/ //{
-                                // we just going to use the dev_obj becuase i got no where to put it
-                                ultraObject.nS[   ultraObject.scope[nSNS_0_i]   ].nSM = ultraObject.iterableObject()
+                                ultraObject.nS[   ultraObject.scope[nSNS_0_i]   ].nSM = dev_obj.nSM
+                                
+                                    /* I need to sort the nSM by nS access index first to make it easier for it to use for the rest of the API*/ //{
+                                    ultraObject.sort({
+                                        target: ultraObject.nS[   ultraObject.scope[nSNS_0_i]   ].nSM ,
+                                        algorithm:'bubble',
+                                        compare:function(   dev_obj   ){
+                                            
+                                                
+                                            if(   dev_obj.val[dev_obj.index][0] > dev_obj.val[dev_obj.index+ 1][0]   ){
+                                                
+                                                
+                                                return 'true'
+                                                
+                                                
+                                            }
+                                                
+                                            
+                                        },
+                                        result:'true'
+                                    })
+                                    // }  /**/
+                                    
                                 ultraObject.nS[   ultraObject.scope[nSNS_0_i]].digits = ultraObject.iterableObject()
                                 var nSFL_12_i = {
-                                    forLoop_0_i:0,
-                                    forLoopLength:dev_obj.nSM.length,
-                                    fn:function(   dev_obj   ){
-                                        ultraObject.nS[   ultraObject.scope[nSNS_0_i]   ].nSM.add({
-                                            value:dev_obj.nSM[   nSFL_12_i.forLoop_0_i   ][1],
-                                            index:dev_obj.nSM[   nSFL_12_i.forLoop_0_i   ][0]
-                                        })
-                                    },
-                                    args:dev_obj //{}
-                                }
-                                ultraObject.forLoop(   nSFL_12_i  )
-                                var nSFL_13_i = {
                                     forLoop_0_i:0,
                                     forLoopLength:dev_obj.digits.length,
                                     fn:function(   dev_obj   ){
                                         
-                                        debugger
-                                        if(   ultraObject.isArray(   {type:dev_obj.digits[   nSFL_13_i.forLoop_0_i   ][1]}   )   ){
+                                        
+                                        if(   ultraObject.isArray(   {type:dev_obj.digits[   nSFL_12_i.forLoop_0_i   ][1]}   )   ){
                                             
                                             
-                                            dev_obj.digits[   nSFL_13_i.forLoop_0_i   ][1] = ultraObject.iterify(   {iterify:dev_obj.digits[   nSFL_13_i.forLoop_0_i   ][1]}   )
+                                            dev_obj.digits[   nSFL_12_i.forLoop_0_i   ][1] = ultraObject.iterify(   {iterify:dev_obj.digits[   nSFL_12_i.forLoop_0_i   ][1]}   )
                                             
                                                                                         
                                         }
                                         
                                         
                                         ultraObject.nS[   ultraObject.scope[nSNS_0_i]   ].digits.add({
-                                            value:dev_obj.digits[   nSFL_13_i.forLoop_0_i   ][1],
-                                            index:dev_obj.digits[   nSFL_13_i.forLoop_0_i   ][0]
+                                            value:dev_obj.digits[   nSFL_12_i.forLoop_0_i   ][1],
+                                            index:dev_obj.digits[   nSFL_12_i.forLoop_0_i   ][0]
                                         })
                                     },
                                     args:dev_obj //{}
                                 }
-                                ultraObject.forLoop(   nSFL_13_i  )
+                                ultraObject.forLoop(   nSFL_12_i  )
                                 // }  /**/
                                 
                                 /*looping through  nSM to recreate the string!*/ //{
@@ -2882,27 +2897,30 @@
                                     
                                     var nSobjI_0_i = ultraObject.scope.add(   {value:ultraObject.objIO.abelast[   ultraObject.objIO.abelast.length-1   ]}   )
                                     
+                                    var nSFL_0_i = {
+                                        forLoop_0_i:0,
+                                        forLoopLength:ultraObject.nS[   ultraObject.scope[nSNS_0_i]].nSM.length,
+                                        fn:function(   dev_obj   ){
                                         
+                                        
+                                        /* adding the digits according to the nSM*/ //{
+                                        ultraObject.nS[   ultraObject.scope[nSNS_0_i]].add({
+                                            value:ultraObject.nS[   ultraObject.scope[nSNS_0_i]].digits[   ultraObject.nS[   ultraObject.scope[nSNS_0_i]   ].nSM[   nSFL_0_i.forLoop_0_i   ][1]   ],
+                                            index:ultraObject.nS[   ultraObject.scope[nSNS_0_i]   ].nSM[   nSFL_0_i.forLoop_0_i   ][0]
+                                        })
+                                        // }  /**/
+                                                                                        
+                                        },
+                                        args:dev_obj //{}
+                                    }
+                                    
+                                                                        
                                     if(   !ultraObject.isPrimitive(   {type:ultraObject.objIO[   ultraObject.scope[nSobjI_0_i]   ].result}   )   ){
                                         
                                         
                                         if(   ultraObject.objIO[   ultraObject.scope[nSobjI_0_i]   ].result['a'] !== 'b'   ){
                                             
-                                            
-                                            var nSFL_0_i = {
-                                                forLoop_0_i:0,
-                                                forLoopLength:ultraObject.nS[   ultraObject.scope[nSNS_0_i]].nSM.length,
-                                                fn:function(   dev_obj   ){
-                                                    
-                                                /* adding the digits according to the nSM*/ //{
-                                                ultraObject.nS[   ultraObject.scope[nSNS_0_i]].add({
-                                                    value:ultraObject.nS[   ultraObject.scope[nSNS_0_i]].digits[   ultraObject.nS[   ultraObject.scope[nSNS_0_i]   ].nSM[   nSFL_0_i.forLoop_0_i   ]   ]
-                                                })
-                                                // }  /**/
-                                                                                                
-                                                },
-                                                args:dev_obj //{}
-                                            }
+                                                                                        
                                             ultraObject.forLoop(   nSFL_0_i   )
                                             
                                             
@@ -2914,27 +2932,13 @@
                                     
                                     else if(   ultraObject.isPrimitive(   {type:ultraObject.objIO[   ultraObject.scope[nSobjI_0_i]   ].result}   )   ){
                                         
-                                        debugger
-                                        var nSFL_11_i = {
-                                            forLoop_0_i:0,
-                                            forLoopLength:ultraObject.nS[   ultraObject.scope[nSNS_0_i]].nSM.length,
-                                            fn:function(   dev_obj   ){
-                                                
-                                                /* adding the digits according to the nSM*/ //{
-                                                ultraObject.nS[   ultraObject.scope[nSNS_0_i]].add({
-                                                    value:ultraObject.nS[   ultraObject.scope[nSNS_0_i]].digits[   ultraObject.nS[   ultraObject.scope[nSNS_0_i]   ].nSM[   nSFL_11_i.forLoop_0_i   ]   ]
-                                                })
-                                                // }  /**/
-                                                                                            
-                                            },
-                                            args:dev_obj //{}
-                                        }
-                                        ultraObject.forLoop(   nSFL_11_i   )
                                         
+                                        // ultraObject.forLoop(   nSFL_11_i   )
+                                        // hopefully we will never need that
+                                        ultraObject.forLoop(   nSFL_0_i   )
                                         
                                     }
-                                    
-                                                                        
+                                                                                                           
                                     /*objIO -scope -self -abelast */ //{
                                         ultraObject.objIO.minus(   {index:ultraObject.scope[nSobjI_0_i]}   )
                                         ultraObject.objIO.abelast.minus(   {index:ultraObject.objIO.abelast.length -1}   )
@@ -2947,12 +2951,13 @@
 
                             
                             /*adding of current number to nS object*/ //{
+                            // to access a digit in the actaal nS ultraObject.nS[   ultraObject.scope[nSNS_0_i]   ].nSM[   nSFL_6_i.forLoop_0_i   ][0] by iteration
                             ultraObject.nS[   ultraObject.scope[nSNS_0_i]   ].currentNumber = []
                             var nSFL_6_i = {
                                 forLoop_0_i:0,
-                                forLoopLength:ultraObject.nS[   ultraObject.scope[nSNS_0_i]   ].length,
+                                forLoopLength:ultraObject.nS[   ultraObject.scope[nSNS_0_i]   ].nSM.length,
                                 fn:function(   dev_obj   ){
-                                    ultraObject.nS[   ultraObject.scope[nSNS_0_i]   ].currentNumber.push(   ultraObject.nS[   ultraObject.scope[nSNS_0_i]   ][   nSFL_6_i.forLoop_0_i   ][0])
+                                    ultraObject.nS[   ultraObject.scope[nSNS_0_i]   ].currentNumber.push(   ultraObject.nS[   ultraObject.scope[nSNS_0_i]   ][   ultraObject.nS[   ultraObject.scope[nSNS_0_i]   ].nSM[   nSFL_6_i.forLoop_0_i   ][0]   ][0])
                                 },
                                 args:dev_obj //{}
                             }
