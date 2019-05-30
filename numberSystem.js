@@ -233,6 +233,7 @@ function numberSystem(   dev_obj   ){
                                         },
                                         result:'true'
                                     })
+                                    debugger
                                     var nSFL_1_i = {
                                         forLoop_0_i:0,
                                         forLoopLength:ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM.length,
@@ -240,7 +241,8 @@ function numberSystem(   dev_obj   ){
                                             
                                             /*means that the end of the current nSM*/ //{
                                             // the developer wanted to increase the nS so we must increase it and modify the nS
-                                            if(   nSFL_1_i.forLoop_0_i >= ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.length ){
+                                            //hopefully you dont have to use property undefined
+                                            if(   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM[   nSFL_1_i.forLoop_0_i   ]  === undefined   ){
                                             
                                                 
                                                 ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.add(   {value:ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM[   nSFL_1_i.forLoop_0_i   ]}   )
@@ -255,12 +257,17 @@ function numberSystem(   dev_obj   ){
                                             
                                             /*means newnSM can replace an available value in the current nSM*/ //{
                                             // im dynmaically recreating the nS here
-                                            else if(   nSFL_1_i.forLoop_0_i < ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.length   ){
+                                            else if(   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM[   nSFL_1_i.forLoop_0_i   ][0]  === ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM[   nSFL_1_i.forLoop_0_i   ][0]   ){
                                                 
                                                 
-                                                ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM[   nSFL_1_i.forLoop_0_i   ] = ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM[   nSFL_1_i.forLoop_0_i   ]
-                                                ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ][   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM[   nSFL_1_i.forLoop_0_i   ][0]   ] =  ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].digits[   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM[   nSFL_1_i.forLoop_0_i   ][1]   ]
+                                                if(   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM[   nSFL_1_i.forLoop_0_i   ][1]  !== ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM[   nSFL_1_i.forLoop_0_i   ][1]   ){
+                                                    
+                                                    
+                                                    ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM[   nSFL_1_i.forLoop_0_i   ] = ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM[   nSFL_1_i.forLoop_0_i   ]
+                                                    ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ][   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM[   nSFL_1_i.forLoop_0_i   ][0]   ] =  ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].digits[   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM[   nSFL_1_i.forLoop_0_i   ][1]   ]
                                                 
+                                                
+                                                }
                                                 
                                                 
                                             }
@@ -738,7 +745,7 @@ function numberSystem(   dev_obj   ){
                         ultraObject.nS[   ultraObject.scope[nSNS_3_i]   ].currentNumber = []
                         var nSFL_10_i = {
                             forLoop_0_i:0,
-                            forLoopLength:ultraObject.nS[   ultraObject.scope[nSNS_3_i]   ].length,
+                            forLoopLength:ultraObject.nS[   ultraObject.scope[nSNS_3_i]   ].nSM.length,
                             fn:function(   dev_obj   ){
                                 ultraObject.nS[   ultraObject.scope[nSNS_3_i]   ].currentNumber.push(   ultraObject.nS[   ultraObject.scope[nSNS_3_i]   ][   ultraObject.nS[   ultraObject.scope[nSNS_3_i]   ].nSM[    nSFL_10_i.forLoop_0_i   ][0]   ][0])
                             },
