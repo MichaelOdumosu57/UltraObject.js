@@ -2668,7 +2668,6 @@
                                         },
                                         result:'true'
                                     })
-                                    debugger
                                     var nSFL_1_i = {
                                         forLoop_0_i:0,
                                         forLoopLength:ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM.length,
@@ -2677,13 +2676,27 @@
                                             /*means that the end of the current nSM*/ //{
                                             // the developer wanted to increase the nS so we must increase it and modify the nS
                                             //hopefully you dont have to use property undefined
+                                            // if the lengths are not the same you cant use .nSM to fix the nS you must use the newnSM because this loop is iterating according to that index PROBLEMS look at this
                                             if(   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM[   nSFL_1_i.forLoop_0_i   ]  === undefined   ){
                                             
-                                                
+
                                                 ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.add(   {value:ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM[   nSFL_1_i.forLoop_0_i   ]}   )
                                                 ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].add({
                                                     value:ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].digits[   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM[   nSFL_1_i.forLoop_0_i   ][1]   ],
-                                                    index:ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM[   nSFL_1_i.forLoop_0_i   ][0]
+                                                    index:ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM[   nSFL_1_i.forLoop_0_i   ][0]
+                                                })
+                                                
+                                                
+                                            }
+                                            
+                                            
+                                            else if(   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM[   nSFL_1_i.forLoop_0_i   ][0]  !== ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM[   nSFL_1_i.forLoop_0_i   ][0]    ){
+                                            
+
+                                                ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.add(   {value:ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM[   nSFL_1_i.forLoop_0_i   ]}   )
+                                                ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].add({
+                                                    value:ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].digits[   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM[   nSFL_1_i.forLoop_0_i   ][1]   ],
+                                                    index:ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM[   nSFL_1_i.forLoop_0_i   ][0]
                                                 })
                                                 
                                                 
@@ -2707,6 +2720,25 @@
                                                 
                                             }
                                             // }  /**/
+                                            
+                                            ultraObject.sort({
+                                                target: ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM,
+                                                algorithm:'bubble',
+                                                compare:function(   dev_obj   ){
+                                                    
+                                                        
+                                                    if(   dev_obj.val[dev_obj.index][0] > dev_obj.val[dev_obj.index+ 1][0]   ){
+                                                        
+                                                        
+                                                        return 'true'
+                                                        
+                                                        
+                                                    }
+                                                        
+                                                    
+                                                },
+                                                result:'true'
+                                            })
                                             
                                         },
                                         args:dev_obj

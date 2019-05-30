@@ -1,4 +1,4 @@
-    
+
     
                     function wait(   ms   ){
                        var start = new Date().getTime();
@@ -727,24 +727,6 @@
                 if(   dev_obj.nS !== undefined   ){
                     
                     
-                    uO.numberSystem({
-                        operation:'create',
-                        digits:uO.iterify({
-                                iterify:[
-                                    uO.iterify({
-                                        iterify:[0,0,99]
-                                    }),
-                                    uO.iterify({
-                                        iterify:[0,-13,92]
-                                    }),
-                                    uO.iterify({
-                                        iterify:[0,5,71]
-                                    })
-                                ]
-                            }),
-                        nSM:uO.iterify({iterify:[0,1,2]})
-                    })
-                    
                     
                 }
                 // }  /**/
@@ -864,22 +846,33 @@
                                             if(   uO.nS[   uO.scope[eCSNS_0_i]   ][   eCSearchFL_0_i.forLoop_0_i   ] === undefined   ){
                                                     
                                                 /*creating the digits and metadata for the numberSystem*/ //{
-                                                // eCSNS_d_0_i when you have problems accessing h
                                                 debugger
-                                                var eCSNS_d_0_i =  eCSearchFL_1_i.forLoop_0_i
                                                 uO.numberSystem({
                                                     operation:'create',
                                                     nS:eCSNS_0_i,
-                                                    nSM:uO.iterify({iterify:[0,1,2]}),
-                                                    digits:{
-                                                              eCSNS_d_0_i:uO.iterify({
+                                                    nSM:uO.iterify({
+                                                            iterify:[
+                                                                uO.iterify({
                                                                     iterify:[
-                                                                        eCSearchFL_1_i.forLoop_0_i,
-                                                                        eCSearchFL_1_i.forLoop_0_i,
-                                                                        eCSearchFL_1_i.forLoopLength+1]
+                                                                        eCSearchFL_0_i.forLoop_0_i,
+                                                                        eCSearchFL_0_i.forLoop_0_i
+                                                                    ]
                                                                 })
-                                                           }
-                                                })
+                                                            ]
+                                                        }),
+                                                    digits:uO.iterify({
+                                                            iterify:[
+                                                                uO.iterify({
+                                                                    iterify:[
+                                                                        eCSearchFL_0_i.forLoop_0_i,[
+                                                                            eCSearchFL_1_i.forLoop_0_i,
+                                                                            eCSearchFL_1_i.forLoop_0_i,
+                                                                            eCSearchFL_1_i.forLoopLength+1]
+                                                                        ]
+                                                                })
+                                                            ]
+                                                        })
+                                                    })
                                                 // }  /**/
                                                                                                     
                                             }
@@ -896,7 +889,7 @@
                                             }
                                             
                                             /*adjusting this digits itO to that of the numberSystem */ //{
-                                            uO.nS[   uO.scope[eCSNS_0_i]   ][0][0] = eCSearchFL_1_i.forLoop_0_i
+                                            uO.nS[   uO.scope[eCSNS_0_i]   ][   uO.nS[   uO.scope[eCSNS_0_i]   ].nSM[   eCSearchFL_0_i.forLoop_0_i   ][0]   ][0] = eCSearchFL_1_i.forLoop_0_i
                                             //helps change the number when the match is found so the NS doesnt take over
                                             //if problems look here idk if it supposed to follow the nSM or not
                                             uO.selectTags[uO.scope[eCSSelectTags_0_i]][   eCSearchFL_0_i.forLoop_0_i   ].item = uO.allTags[uO.scope[dev_obj.aT]][   eCSearchFL_1_i.forLoop_0_i   ]
@@ -924,20 +917,31 @@
                                                 // key uO.selectTags[uO.scope[eCSSelectTags_0_i]].createdNS, that helps the function know if the related NS is avalible
                                                 if(   uO.selectTags[uO.scope[eCSSelectTags_0_i]].createdNS !== 'true'   ){
                                                     
-                                                   
+
                                                     uO.numberSystem({
                                                         operation:'create',
                                                         digits:uO.iterify({
-                                                            iterify:[
-                                                                uO.iterify({
-                                                                    iterify:[
-                                                                        eCSearchFL_1_i.forLoop_0_i,
-                                                                        eCSearchFL_1_i.forLoop_0_i,
-                                                                        eCSearchFL_1_i.forLoopLength+1]
-                                                                })
-                                                            ]
+                                                                iterify:[
+                                                                    uO.iterify({
+                                                                        iterify:[
+                                                                            eCSearchFL_0_i.forLoop_0_i,[
+                                                                            eCSearchFL_1_i.forLoop_0_i,
+                                                                            eCSearchFL_1_i.forLoop_0_i,
+                                                                            eCSearchFL_1_i.forLoopLength+1]
+                                                                        ]
+                                                                    })
+                                                                ]
                                                         }),
-                                                        nSM:uO.iterify({iterify:[eCSearchFL_0_i.forLoop_0_i]})
+                                                        nSM:uO.iterify({
+                                                                iterify:[
+                                                                    uO.iterify({
+                                                                        iterify:[
+                                                                            eCSearchFL_0_i.forLoop_0_i,
+                                                                            eCSearchFL_0_i.forLoop_0_i
+                                                                        ]
+                                                                    })
+                                                                ]
+                                                        })
                                                     })
                                                     var eCSNS_0_i = uO.scope.add(   {value:uO.nS.abelast[uO.nS.abelast.length-1]}   )
                                                     uO.selectTags[uO.scope[eCSSelectTags_0_i]].createdNS = 'true'
@@ -960,13 +964,20 @@
                                                     
                                                     
                                                     /*creating the digits and metadata for the numberSystem*/ //{
-                                                    uO.nS[   uO.scope[eCSNS_0_i]   ].add({
-                                                        value:uO.iterify({
-                                                            iterify:[
-                                                                eCSearchFL_1_i.forLoop_0_i,
-                                                                eCSearchFL_1_i.forLoop_0_i,
-                                                                eCSearchFL_1_i.forLoopLength+1
-                                                            ]
+                                                    uO.numberSystem({
+                                                        operation:'create',
+                                                        nS:0,
+                                                        digits:uO.iterify({
+                                                                iterify:[
+                                                                    uO.iterify({
+                                                                        iterify:[
+                                                                            eCSearchFL_0_i.forLoop_0_i,[
+                                                                            eCSearchFL_1_i.forLoop_0_i,
+                                                                            eCSearchFL_1_i.forLoop_0_i,
+                                                                            eCSearchFL_1_i.forLoopLength+1]
+                                                                        ]
+                                                                    })
+                                                                ]
                                                         })
                                                     })
                                                     // }  /**/
@@ -976,16 +987,16 @@
                                             
                                                 if(   uO.selectTags[uO.scope[eCSSelectTags_0_i]   ][   eCSearchFL_0_i.forLoop_0_i    ] === undefined   ){
                                                 
-                                                /*creating the ideal select tag for this function*/ //{
-                                                uO.selectTags[uO.scope[eCSSelectTags_0_i]   ].add({
-                                                    value:uO.iterableObject()
-                                                })
-                                                // }  /**/
-                                            }
-                                            
+                                                    /*creating the ideal select tag for this function*/ //{
+                                                    uO.selectTags[uO.scope[eCSSelectTags_0_i]   ].add({
+                                                        value:uO.iterableObject()
+                                                    })
+                                                    // }  /**/
+                                                    
+                                                }
                                                 /*adjusting this digits itO to that of the numberSystem */ //{
                                                 
-                                                uO.nS[   uO.scope[eCSNS_0_i]   ][0][0] = eCSearchFL_1_i.forLoop_0_i
+                                                uO.nS[   uO.scope[eCSNS_0_i]   ][   uO.nS[   uO.scope[eCSNS_0_i]   ].nSM[   eCSearchFL_0_i.forLoop_0_i   ][0]   ][0] = eCSearchFL_1_i.forLoop_0_i
                                                 //helps change the number when the match is found so the NS doesnt take over
                                                 //if problems look here idk if it supposed to follow the nSM or not
                                                 uO.selectTags[uO.scope[eCSSelectTags_0_i]][   eCSearchFL_0_i.forLoop_0_i   ].item = uO.allTags[uO.scope[dev_obj.aT]][   eCSearchFL_1_i.forLoop_0_i   ]
@@ -995,7 +1006,7 @@
                                                 uO.selectTags[uO.scope[eCSSelectTags_0_i]][eCSearchFL_0_i.forLoop_0_i].valuePhrase = uO.misc[uO.scope[dev_obj.list]][eCSearchFL_0_i.forLoop_0_i][1]
                                                 uO.selectTags[uO.scope[eCSSelectTags_0_i]][eCSearchFL_0_i.forLoop_0_i].eCSIndex = eCSearchFL_1_i.forLoop_0_i
                                                 // }  /**/
-                                                
+
                                                 return 'premature'
                                                                                                 
                                             }
@@ -1488,7 +1499,6 @@
                 
             }// in js when a function finds a property undefined when the developer expects something to be there along the bubble to the target inner property it can break the API, instead of write repeated if statements use this function to validate if the target property is availble in the data type
             function iterableObject(   dev_obj   ){
-                //. value the actual item your are adding to the object
                 // .stop for the abelast
                 
                  var iterableObjectO = {
@@ -1535,28 +1545,36 @@
                             
                             delete iterableObjectO[dev_obj.index]
                             iterableObjectO.resetLength()// resets the length
-                            var iterableObjectFL_0_i = {
-                                forLoop_0_i:0,
-                                forLoopLength:iterableObjectO.length,
-                                fn:function(   dev_obj   ){
-                                    
-                                    /*fixing the array part of the itO*/ //{
-                                    if(   dev_obj.index <= iterableObjectFL_0_i.forLoop_0_i && iterableObjectFL_0_i.forLoop_0_i !== iterableObjectO.length   ){ // at that point something must be missing
+                            
+                            
+                            if(   dev_obj.messy !== 'true'   ){
+                                
+                                
+                                var iterableObjectFL_0_i = {
+                                    forLoop_0_i:0,
+                                    forLoopLength:iterableObjectO.length,
+                                    fn:function(   dev_obj   ){
                                         
+                                        /*fixing the array part of the itO*/ //{
+                                        if(   dev_obj.index <= iterableObjectFL_0_i.forLoop_0_i && iterableObjectFL_0_i.forLoop_0_i !== iterableObjectO.length   ){ // at that point something must be missing
+                                            
+                                            
+                                            iterableObjectO[iterableObjectFL_0_i.forLoop_0_i] =  iterableObjectO[iterableObjectFL_0_i.forLoop_0_i+1]
+                                            delete iterableObjectO[iterableObjectFL_0_i.forLoop_0_i+1]//problems look here usually wants a variable or primitive to properly delete
+                                            
+                                            
+                                        }
+                                        // } /**/
                                         
-                                        iterableObjectO[iterableObjectFL_0_i.forLoop_0_i] =  iterableObjectO[iterableObjectFL_0_i.forLoop_0_i+1]
-                                        delete iterableObjectO[iterableObjectFL_0_i.forLoop_0_i+1]//problems look here usually wants a variable or primitive to properly delete
-                                        
-                                        
-                                    }
-                                    // } /**/
-                                    
-                                },
-                                args:{
-                                    index:dev_obj.index
-                                    }
+                                    },
+                                    args:{
+                                        index:dev_obj.index
+                                        }
+                                }
+                                uO.forLoop(   iterableObjectFL_0_i   ) // realigns the iterable so the index are consecutive again
+                            
+                            
                             }
-                            uO.forLoop(   iterableObjectFL_0_i   ) // realigns the iterable so the index are consecutive again
                             
                             
                         }
@@ -1685,30 +1703,37 @@
                             
                             
                             delete iterableObjectO.abelast[dev_obj.index]
-                            // delete iterableObjectO.abelast['q'+dev_obj.index.toString()]
                             iterableObjectO.abelast.resetLength()// resets the length
-                            var iterableObjectFL_0_i = {
-                                forLoop_0_i:0,
-                                forLoopLength:iterableObjectO.abelast.length,
-                                fn:function(   dev_obj   ){
-                                    
-                                    
-                                    if(   dev_obj.index <= iterableObjectFL_0_i.forLoop_0_i && iterableObjectFL_0_i.forLoop_0_i !== iterableObjectO.abelast.length  ){ // at that point something must be missing
+                            
+                            
+                            if(   dev_obj.messy !== 'true'   ){
+                                
+                                
+                                var iterableObjectFL_0_i = {
+                                    forLoop_0_i:0,
+                                    forLoopLength:iterableObjectO.abelast.length,
+                                    fn:function(   dev_obj   ){
                                         
                                         
-                                        iterableObjectO.abelast[iterableObjectFL_0_i.forLoop_0_i] =  iterableObjectO.abelast[iterableObjectFL_0_i.forLoop_0_i+1]
-                                        delete iterableObjectO.abelast[iterableObjectFL_0_i.forLoop_0_i+1]//problems look here usually wants a variable or primitive to properly delete
+                                        if(   dev_obj.index <= iterableObjectFL_0_i.forLoop_0_i && iterableObjectFL_0_i.forLoop_0_i !== iterableObjectO.abelast.length  ){ // at that point something must be missing
+                                            
+                                            
+                                            iterableObjectO.abelast[iterableObjectFL_0_i.forLoop_0_i] =  iterableObjectO.abelast[iterableObjectFL_0_i.forLoop_0_i+1]
+                                            delete iterableObjectO.abelast[iterableObjectFL_0_i.forLoop_0_i+1]//problems look here usually wants a variable or primitive to properly delete
+                                            
+                                            
+                                        }
                                         
                                         
-                                    }
-                                    
-                                    
-                                },
-                                args:{
-                                    index:dev_obj.index
-                                    }
+                                    },
+                                    args:{
+                                        index:dev_obj.index
+                                        }
+                                }
+                                uO.forLoop(   iterableObjectFL_0_i   ) // realigns the iterable so the index are consecutive again
+                            
+                            
                             }
-                            uO.forLoop(   iterableObjectFL_0_i   ) // realigns the iterable so the index are consecutive again
                             
                             
                         }
@@ -2650,13 +2675,28 @@
                                             
                                             /*means that the end of the current nSM*/ //{
                                             // the developer wanted to increase the nS so we must increase it and modify the nS
-                                            if(   nSFL_1_i.forLoop_0_i >= uO.nS[   uO.scope[nSNS_1_i]   ].nSM.length ){
+                                            //hopefully you dont have to use property undefined
+                                            // if the lengths are not the same you cant use .nSM to fix the nS you must use the newnSM because this loop is iterating according to that index PROBLEMS look at this
+                                            if(   uO.nS[   uO.scope[nSNS_1_i]   ].nSM[   nSFL_1_i.forLoop_0_i   ]  === undefined   ){
                                             
-                                                
+
                                                 uO.nS[   uO.scope[nSNS_1_i]   ].nSM.add(   {value:uO.nS[   uO.scope[nSNS_1_i]   ].nSM.newnSM[   nSFL_1_i.forLoop_0_i   ]}   )
                                                 uO.nS[   uO.scope[nSNS_1_i]   ].add({
                                                     value:uO.nS[   uO.scope[nSNS_1_i]   ].digits[   uO.nS[   uO.scope[nSNS_1_i]   ].nSM[   nSFL_1_i.forLoop_0_i   ][1]   ],
-                                                    index:uO.nS[   uO.scope[nSNS_1_i]   ].nSM[   nSFL_1_i.forLoop_0_i   ][0]
+                                                    index:uO.nS[   uO.scope[nSNS_1_i]   ].nSM.newnSM[   nSFL_1_i.forLoop_0_i   ][0]
+                                                })
+                                                
+                                                
+                                            }
+                                            
+                                            
+                                            else if(   uO.nS[   uO.scope[nSNS_1_i]   ].nSM[   nSFL_1_i.forLoop_0_i   ][0]  !== uO.nS[   uO.scope[nSNS_1_i]   ].nSM.newnSM[   nSFL_1_i.forLoop_0_i   ][0]    ){
+                                            
+
+                                                uO.nS[   uO.scope[nSNS_1_i]   ].nSM.add(   {value:uO.nS[   uO.scope[nSNS_1_i]   ].nSM.newnSM[   nSFL_1_i.forLoop_0_i   ]}   )
+                                                uO.nS[   uO.scope[nSNS_1_i]   ].add({
+                                                    value:uO.nS[   uO.scope[nSNS_1_i]   ].digits[   uO.nS[   uO.scope[nSNS_1_i]   ].nSM.newnSM[   nSFL_1_i.forLoop_0_i   ][1]   ],
+                                                    index:uO.nS[   uO.scope[nSNS_1_i]   ].nSM.newnSM[   nSFL_1_i.forLoop_0_i   ][0]
                                                 })
                                                 
                                                 
@@ -2665,16 +2705,40 @@
                                             
                                             /*means newnSM can replace an available value in the current nSM*/ //{
                                             // im dynmaically recreating the nS here
-                                            else if(   nSFL_1_i.forLoop_0_i < uO.nS[   uO.scope[nSNS_1_i]   ].nSM.length   ){
+                                            else if(   uO.nS[   uO.scope[nSNS_1_i]   ].nSM[   nSFL_1_i.forLoop_0_i   ][0]  === uO.nS[   uO.scope[nSNS_1_i]   ].nSM.newnSM[   nSFL_1_i.forLoop_0_i   ][0]   ){
                                                 
                                                 
-                                                uO.nS[   uO.scope[nSNS_1_i]   ].nSM[   nSFL_1_i.forLoop_0_i   ] = uO.nS[   uO.scope[nSNS_1_i]   ].nSM.newnSM[   nSFL_1_i.forLoop_0_i   ]
-                                                uO.nS[   uO.scope[nSNS_1_i]   ][   uO.nS[   uO.scope[nSNS_1_i]   ].nSM[   nSFL_1_i.forLoop_0_i   ][0]   ] =  uO.nS[   uO.scope[nSNS_1_i]   ].digits[   uO.nS[   uO.scope[nSNS_1_i]   ].nSM[   nSFL_1_i.forLoop_0_i   ][1]   ]
+                                                if(   uO.nS[   uO.scope[nSNS_1_i]   ].nSM[   nSFL_1_i.forLoop_0_i   ][1]  !== uO.nS[   uO.scope[nSNS_1_i]   ].nSM.newnSM[   nSFL_1_i.forLoop_0_i   ][1]   ){
+                                                    
+                                                    
+                                                    uO.nS[   uO.scope[nSNS_1_i]   ].nSM[   nSFL_1_i.forLoop_0_i   ] = uO.nS[   uO.scope[nSNS_1_i]   ].nSM.newnSM[   nSFL_1_i.forLoop_0_i   ]
+                                                    uO.nS[   uO.scope[nSNS_1_i]   ][   uO.nS[   uO.scope[nSNS_1_i]   ].nSM[   nSFL_1_i.forLoop_0_i   ][0]   ] =  uO.nS[   uO.scope[nSNS_1_i]   ].digits[   uO.nS[   uO.scope[nSNS_1_i]   ].nSM[   nSFL_1_i.forLoop_0_i   ][1]   ]
                                                 
+                                                
+                                                }
                                                 
                                                 
                                             }
                                             // }  /**/
+                                            
+                                            uO.sort({
+                                                target: uO.nS[   uO.scope[nSNS_1_i]   ].nSM,
+                                                algorithm:'bubble',
+                                                compare:function(   dev_obj   ){
+                                                    
+                                                        
+                                                    if(   dev_obj.val[dev_obj.index][0] > dev_obj.val[dev_obj.index+ 1][0]   ){
+                                                        
+                                                        
+                                                        return 'true'
+                                                        
+                                                        
+                                                    }
+                                                        
+                                                    
+                                                },
+                                                result:'true'
+                                            })
                                             
                                         },
                                         args:dev_obj
@@ -3148,7 +3212,7 @@
                         uO.nS[   uO.scope[nSNS_3_i]   ].currentNumber = []
                         var nSFL_10_i = {
                             forLoop_0_i:0,
-                            forLoopLength:uO.nS[   uO.scope[nSNS_3_i]   ].length,
+                            forLoopLength:uO.nS[   uO.scope[nSNS_3_i]   ].nSM.length,
                             fn:function(   dev_obj   ){
                                 uO.nS[   uO.scope[nSNS_3_i]   ].currentNumber.push(   uO.nS[   uO.scope[nSNS_3_i]   ][   uO.nS[   uO.scope[nSNS_3_i]   ].nSM[    nSFL_10_i.forLoop_0_i   ][0]   ][0])
                             },
