@@ -1,4 +1,4 @@
-
+major update eCSearch, reimplemented numberSystem  and fully modified the function to work properly
     
                     function wait(   ms   ){
                        var start = new Date().getTime();
@@ -846,7 +846,6 @@
                                             if(   uO.nS[   uO.scope[eCSNS_0_i]   ][   eCSearchFL_0_i.forLoop_0_i   ] === undefined   ){
                                                     
                                                 /*creating the digits and metadata for the numberSystem*/ //{
-                                                debugger
                                                 uO.numberSystem({
                                                     operation:'create',
                                                     nS:eCSNS_0_i,
@@ -900,7 +899,7 @@
                                             uO.selectTags[uO.scope[eCSSelectTags_0_i]][eCSearchFL_0_i.forLoop_0_i].eCSIndex = eCSearchFL_1_i.forLoop_0_i
                                             // }  /**/
                                             
-                                            debugger
+                                            
                                             return 'premature'
                                                 
                                                 
@@ -958,6 +957,15 @@
                                                     
                                                     
                                                 }
+                                                
+                                                
+                                                else if(   uO.selectTags[uO.scope[eCSSelectTags_0_i]].createdNS === 'true'){
+                                                    
+                                                    
+                                                    var eCSNS_0_i = uO.scope[   uO.scope.length-1   ]
+                                                    
+                                                    
+                                                }
                                                 // }  /**/
                                                 
                                                 if(   uO.nS[   uO.scope[eCSNS_0_i]   ][   eCSearchFL_0_i.forLoop_0_i   ] === undefined   ){
@@ -965,19 +973,29 @@
                                                     
                                                     /*creating the digits and metadata for the numberSystem*/ //{
                                                     uO.numberSystem({
-                                                        operation:'create',
-                                                        nS:0,
-                                                        digits:uO.iterify({
-                                                                iterify:[
-                                                                    uO.iterify({
-                                                                        iterify:[
-                                                                            eCSearchFL_0_i.forLoop_0_i,[
+                                                    operation:'create',
+                                                    nS:eCSNS_0_i,
+                                                    nSM:uO.iterify({
+                                                            iterify:[
+                                                                uO.iterify({
+                                                                    iterify:[
+                                                                        eCSearchFL_0_i.forLoop_0_i,
+                                                                        eCSearchFL_0_i.forLoop_0_i
+                                                                    ]
+                                                                })
+                                                            ]
+                                                        }),
+                                                    digits:uO.iterify({
+                                                            iterify:[
+                                                                uO.iterify({
+                                                                    iterify:[
+                                                                        eCSearchFL_0_i.forLoop_0_i,[
                                                                             eCSearchFL_1_i.forLoop_0_i,
                                                                             eCSearchFL_1_i.forLoop_0_i,
                                                                             eCSearchFL_1_i.forLoopLength+1]
                                                                         ]
-                                                                    })
-                                                                ]
+                                                                })
+                                                            ]
                                                         })
                                                     })
                                                     // }  /**/
@@ -1006,7 +1024,6 @@
                                                 uO.selectTags[uO.scope[eCSSelectTags_0_i]][eCSearchFL_0_i.forLoop_0_i].valuePhrase = uO.misc[uO.scope[dev_obj.list]][eCSearchFL_0_i.forLoop_0_i][1]
                                                 uO.selectTags[uO.scope[eCSSelectTags_0_i]][eCSearchFL_0_i.forLoop_0_i].eCSIndex = eCSearchFL_1_i.forLoop_0_i
                                                 // }  /**/
-
                                                 return 'premature'
                                                                                                 
                                             }
@@ -1030,37 +1047,9 @@
                     args:dev_obj,
                 }
                 uO.forLoop(   eCSearchFL_0_i   )
-                uO.selectTags[uO.scope[eCSSelectTags_0_i]].sameElement = 'false'
+                delete uO.selectTags[uO.scope[eCSSelectTags_0_i]].sameElement
                 // }  /**/
                 
-                
-                if(   dev_obj.order === undefined   ){
-                    //this makes the instructions for the number map
-                    
-                    if(   uO.selectTags[uO.scope[eCSSelectTags_0_i]].eCSNS.nSM === undefined   ){
-                        
-                        
-                        uO.selectTags[uO.scope[eCSSelectTags_0_i]].eCSNS.nSM = uO.iterableObject()
-                        var eCSearchFL_3_i = {
-                            forLoop_0_i:0,
-                            forLoopLength:uO.selectTags[uO.scope[eCSSelectTags_0_i]].eCSNS.length,
-                            fn:function(   dev_obj   ){
-                                uO.selectTags[uO.scope[eCSSelectTags_0_i]].eCSNS.nSM.add(   {value:eCSearchFL_3_i.forLoop_0_i}   )
-                            },
-                            args:{}
-                        }
-                        uO.forLoop(   eCSearchFL_3_i   )
-                        uO.selectTags[uO.scope[eCSSelectTags_0_i]].eCSNS.ready = 'true'
-                        
-                    }
-                       
-                    
-                }
-                uO.numberSystem({
-                    digits:uO.selectTags[uO.scope[eCSSelectTags_0_i]],
-                    operation:'print',
-                })
-                debugger
                 uO.scope.minus(   {index:eCSSelectTags_0_i}   )
                 // find the first that matches the condition, and hold it when all four match exit, if the form doesn't like what I did each value must try everything in the allTapgs itO before telling the end user they cant figure out whats going on.grabs three and swaps one
                 
@@ -1510,8 +1499,8 @@
                             if(   dev_obj.index !== undefined   ){
                                 
                                 
-                                if(   iterableObjectO[dev_obj.index] === undefined   ){
-                                
+                                if(   Object.keys(iterableObjectO).indexOf(dev_obj.index.toString()) === -1   ){
+                                //hopefully this is es5
                                 
                                     iterableObjectO.length += 1
                                 
@@ -1667,7 +1656,7 @@
                             if(   dev_obj.index !== undefined   ){
                                 
                                 
-                                if(   iterableObjectO.abelast[dev_obj.index] === undefined   ){
+                                if(   Object.keys(iterableObjectO.abelast).indexOf(dev_obj.index.toString()) === -1   ){
                                 
                                 
                                     iterableObjectO.abelast.length += 1
@@ -2648,103 +2637,170 @@
                             /*if the developer wants the nS to be reordered*/ //{
                             if(   uO.isitO(   {type:dev_obj.nSM}   )   ){
                                 
-                                /*node mode choice thread performance */ //{
-                                    uO.nS[   uO.scope[nSNS_1_i]   ].nSM.newnSM = dev_obj.nSM
-                                    uO.sort({
-                                        target: uO.nS[   uO.scope[nSNS_1_i]   ].nSM.newnSM,
-                                        algorithm:'bubble',
-                                        compare:function(   dev_obj   ){
+                                
+                                                                
+                                // /*node mode choice thread performanceReSort */ //{
+                                // // here after each digit operation i resort the nSM because it needs to be that way
+                                //     uO.nS[   uO.scope[nSNS_1_i]   ].nSM.newnSM = dev_obj.nSM
+                                //     uO.sort({
+                                //         target: uO.nS[   uO.scope[nSNS_1_i]   ].nSM.newnSM,
+                                //         algorithm:'bubble',
+                                //         compare:function(   dev_obj   ){
                                             
                                                 
-                                            if(   dev_obj.val[dev_obj.index][0] > dev_obj.val[dev_obj.index+ 1][0]   ){
+                                //             if(   dev_obj.val[dev_obj.index][0] > dev_obj.val[dev_obj.index+ 1][0]   ){
                                                 
                                                 
-                                                return 'true'
+                                //                 return 'true'
                                                 
                                                 
-                                            }
+                                //             }
                                                 
                                             
-                                        },
-                                        result:'true'
-                                    })
-                                    var nSFL_1_i = {
-                                        forLoop_0_i:0,
-                                        forLoopLength:uO.nS[   uO.scope[nSNS_1_i]   ].nSM.newnSM.length,
-                                        fn:function(   dev_obj   ){
+                                //         },
+                                //         result:'true'
+                                //     })
+                                //     var nSFL_1_i = {
+                                //         forLoop_0_i:0,
+                                //         forLoopLength:uO.nS[   uO.scope[nSNS_1_i]   ].nSM.newnSM.length,
+                                //         fn:function(   dev_obj   ){
                                             
-                                            /*means that the end of the current nSM*/ //{
-                                            // the developer wanted to increase the nS so we must increase it and modify the nS
-                                            //hopefully you dont have to use property undefined
-                                            // if the lengths are not the same you cant use .nSM to fix the nS you must use the newnSM because this loop is iterating according to that index PROBLEMS look at this
-                                            if(   uO.nS[   uO.scope[nSNS_1_i]   ].nSM[   nSFL_1_i.forLoop_0_i   ]  === undefined   ){
-                                            
-
-                                                uO.nS[   uO.scope[nSNS_1_i]   ].nSM.add(   {value:uO.nS[   uO.scope[nSNS_1_i]   ].nSM.newnSM[   nSFL_1_i.forLoop_0_i   ]}   )
-                                                uO.nS[   uO.scope[nSNS_1_i]   ].add({
-                                                    value:uO.nS[   uO.scope[nSNS_1_i]   ].digits[   uO.nS[   uO.scope[nSNS_1_i]   ].nSM[   nSFL_1_i.forLoop_0_i   ][1]   ],
-                                                    index:uO.nS[   uO.scope[nSNS_1_i]   ].nSM.newnSM[   nSFL_1_i.forLoop_0_i   ][0]
-                                                })
-                                                
-                                                
-                                            }
-                                            
-                                            
-                                            else if(   uO.nS[   uO.scope[nSNS_1_i]   ].nSM[   nSFL_1_i.forLoop_0_i   ][0]  !== uO.nS[   uO.scope[nSNS_1_i]   ].nSM.newnSM[   nSFL_1_i.forLoop_0_i   ][0]    ){
+                                //             /*means that the end of the current nSM*/ //{
+                                //             // the developer wanted to increase the nS so we must increase it and modify the nS
+                                //             //hopefully you dont have to use property undefined
+                                //             // if the lengths are not the same you cant use .nSM to fix the nS you must use the newnSM because this loop is iterating according to that index PROBLEMS look at this
+                                //             if(   uO.nS[   uO.scope[nSNS_1_i]   ].nSM[   nSFL_1_i.forLoop_0_i   ]  === undefined   ){
                                             
 
-                                                uO.nS[   uO.scope[nSNS_1_i]   ].nSM.add(   {value:uO.nS[   uO.scope[nSNS_1_i]   ].nSM.newnSM[   nSFL_1_i.forLoop_0_i   ]}   )
-                                                uO.nS[   uO.scope[nSNS_1_i]   ].add({
-                                                    value:uO.nS[   uO.scope[nSNS_1_i]   ].digits[   uO.nS[   uO.scope[nSNS_1_i]   ].nSM.newnSM[   nSFL_1_i.forLoop_0_i   ][1]   ],
-                                                    index:uO.nS[   uO.scope[nSNS_1_i]   ].nSM.newnSM[   nSFL_1_i.forLoop_0_i   ][0]
-                                                })
+                                //                 uO.nS[   uO.scope[nSNS_1_i]   ].nSM.add(   {value:uO.nS[   uO.scope[nSNS_1_i]   ].nSM.newnSM[   nSFL_1_i.forLoop_0_i   ]}   )
+                                //                 uO.nS[   uO.scope[nSNS_1_i]   ].add({
+                                //                     value:uO.nS[   uO.scope[nSNS_1_i]   ].digits[   uO.nS[   uO.scope[nSNS_1_i]   ].nSM[   nSFL_1_i.forLoop_0_i   ][1]   ],
+                                //                     index:uO.nS[   uO.scope[nSNS_1_i]   ].nSM.newnSM[   nSFL_1_i.forLoop_0_i   ][0]
+                                //                 })
                                                 
                                                 
-                                            }
-                                            // }  /**/
+                                //             }
                                             
-                                            /*means newnSM can replace an available value in the current nSM*/ //{
-                                            // im dynmaically recreating the nS here
-                                            else if(   uO.nS[   uO.scope[nSNS_1_i]   ].nSM[   nSFL_1_i.forLoop_0_i   ][0]  === uO.nS[   uO.scope[nSNS_1_i]   ].nSM.newnSM[   nSFL_1_i.forLoop_0_i   ][0]   ){
-                                                
-                                                
-                                                if(   uO.nS[   uO.scope[nSNS_1_i]   ].nSM[   nSFL_1_i.forLoop_0_i   ][1]  !== uO.nS[   uO.scope[nSNS_1_i]   ].nSM.newnSM[   nSFL_1_i.forLoop_0_i   ][1]   ){
-                                                    
-                                                    
-                                                    uO.nS[   uO.scope[nSNS_1_i]   ].nSM[   nSFL_1_i.forLoop_0_i   ] = uO.nS[   uO.scope[nSNS_1_i]   ].nSM.newnSM[   nSFL_1_i.forLoop_0_i   ]
-                                                    uO.nS[   uO.scope[nSNS_1_i]   ][   uO.nS[   uO.scope[nSNS_1_i]   ].nSM[   nSFL_1_i.forLoop_0_i   ][0]   ] =  uO.nS[   uO.scope[nSNS_1_i]   ].digits[   uO.nS[   uO.scope[nSNS_1_i]   ].nSM[   nSFL_1_i.forLoop_0_i   ][1]   ]
-                                                
-                                                
-                                                }
-                                                
-                                                
-                                            }
-                                            // }  /**/
                                             
-                                            uO.sort({
-                                                target: uO.nS[   uO.scope[nSNS_1_i]   ].nSM,
-                                                algorithm:'bubble',
-                                                compare:function(   dev_obj   ){
+                                //             else if(   uO.nS[   uO.scope[nSNS_1_i]   ].nSM[   nSFL_1_i.forLoop_0_i   ][0]  !== uO.nS[   uO.scope[nSNS_1_i]   ].nSM.newnSM[   nSFL_1_i.forLoop_0_i   ][0]   ){
+                                            
+
+                                //                 uO.nS[   uO.scope[nSNS_1_i]   ].nSM.add(   {value:uO.nS[   uO.scope[nSNS_1_i]   ].nSM.newnSM[   nSFL_1_i.forLoop_0_i   ]}   )
+                                //                 uO.nS[   uO.scope[nSNS_1_i]   ].add({
+                                //                     value:uO.nS[   uO.scope[nSNS_1_i]   ].digits[   uO.nS[   uO.scope[nSNS_1_i]   ].nSM.newnSM[   nSFL_1_i.forLoop_0_i   ][1]   ],
+                                //                     index:uO.nS[   uO.scope[nSNS_1_i]   ].nSM.newnSM[   nSFL_1_i.forLoop_0_i   ][0]
+                                //                 })
+                                                
+                                                
+                                //             }
+                                //             // }  /**/
+                                            
+                                //             /*means newnSM can replace an available value in the current nSM*/ //{
+                                //             // im dynmaically recreating the nS here
+                                //             else if(   uO.nS[   uO.scope[nSNS_1_i]   ].nSM[   nSFL_1_i.forLoop_0_i   ][0]  === uO.nS[   uO.scope[nSNS_1_i]   ].nSM.newnSM[   nSFL_1_i.forLoop_0_i   ][0]   ){
+                                                
+                                                
+                                //                 if(   uO.nS[   uO.scope[nSNS_1_i]   ].nSM[   nSFL_1_i.forLoop_0_i   ][1]  !== uO.nS[   uO.scope[nSNS_1_i]   ].nSM.newnSM[   nSFL_1_i.forLoop_0_i   ][1]   ){
+                                                    
+                                                    
+                                //                     uO.nS[   uO.scope[nSNS_1_i]   ].nSM[   nSFL_1_i.forLoop_0_i   ] = uO.nS[   uO.scope[nSNS_1_i]   ].nSM.newnSM[   nSFL_1_i.forLoop_0_i   ]
+                                //                     uO.nS[   uO.scope[nSNS_1_i]   ][   uO.nS[   uO.scope[nSNS_1_i]   ].nSM[   nSFL_1_i.forLoop_0_i   ][0]   ] =  uO.nS[   uO.scope[nSNS_1_i]   ].digits[   uO.nS[   uO.scope[nSNS_1_i]   ].nSM[   nSFL_1_i.forLoop_0_i   ][1]   ]
+                                                
+                                                
+                                //                 }
+                                                
+                                                
+                                //             }
+                                //             // }  /**/
+                                            
+                                //             uO.sort({
+                                //                 target: uO.nS[   uO.scope[nSNS_1_i]   ].nSM,
+                                //                 algorithm:'bubble',
+                                //                 compare:function(   dev_obj   ){
                                                     
                                                         
-                                                    if(   dev_obj.val[dev_obj.index][0] > dev_obj.val[dev_obj.index+ 1][0]   ){
+                                //                     if(   dev_obj.val[dev_obj.index][0] > dev_obj.val[dev_obj.index+ 1][0]   ){
                                                         
                                                         
-                                                        return 'true'
+                                //                         return 'true'
+                                                        
+                                                        
+                                //                     }
+                                                        
+                                                    
+                                //                 },
+                                //                 result:'true'
+                                //             })
+                                            
+                                //         },
+                                //         args:dev_obj
+                                //     }
+                                //     uO.forLoop(   nSFL_1_i   )
+                                //     delete uO.nS[   uO.scope[nSNS_1_i]   ].nSM.newnSM
+                                // // }  /**/
+                                
+                                /*node mode choice thread performanceIterateAndAsk  */ //{
+                                // when look at every digit in the newnSM, i loop through the original nSM to see if we have nS digit match then i perform operation
+                                // top in performance because there is no use of sorting
+                                uO.nS[   uO.scope[nSNS_1_i]   ].nSM.newnSM = dev_obj.nSM
+                                var nSFL_15_i = {
+                                            forLoop_0_i:0,
+                                            forLoopLength:uO.nS[   uO.scope[nSNS_1_i]   ].nSM.length,
+                                            fn:function(   dev_obj   ){
+                                                
+                                                
+                                                if(   uO.nS[   uO.scope[nSNS_1_i]   ].nSM[   nSFL_15_i.forLoop_0_i   ][0]  === uO.nS[   uO.scope[nSNS_1_i]   ].nSM.newnSM[   nSFL_14_i.forLoop_0_i   ][0]   ){
+                                                    
+                                                    
+                                                    if(   uO.nS[   uO.scope[nSNS_1_i]   ].nSM[   nSFL_15_i.forLoop_0_i   ][1]  !== uO.nS[   uO.scope[nSNS_1_i]   ].nSM.newnSM[   nSFL_14_i.forLoop_0_i   ][1]   ){
+                                                    // i wanna save space but preventing memory leaks is more important
+                                                        
+                                                        uO.nS[   uO.scope[nSNS_1_i]   ]         .nSM[   nSFL_15_i.forLoop_0_i   ][1]  =               uO.nS[   uO.scope[nSNS_1_i]         ].nSM.newnSM[   nSFL_14_i.forLoop_0_i   ][1]
+                                                        uO.nS[   uO.scope[nSNS_1_i]   ][        uO.nS[   uO.scope[nSNS_1_i]         ].nSM.newnSM[   nSFL_14_i.forLoop_0_i   ][0]  ] =  uO.nS[   uO.scope[nSNS_1_i]   ]         .digits[   uO.nS[   uO              .scope[nSNS_1_i]   ].nSM.newnSM[   nSFL_14_i          .forLoop_0_i   ][1]   ]
+                                                        
                                                         
                                                         
                                                     }
-                                                        
                                                     
-                                                },
-                                                result:'true'
+                                                    
+                                                    uO.nS[   uO.scope[nSNS_1_i]         ].nSM.match = 'true'
+                                                    return 'premature'
+                                                    
+                                                    
+                                                }
+                                                
+                                                
+                                            },
+                                            args:dev_obj //{}
+                                        }
+                                var nSFL_14_i = {
+                                    forLoop_0_i:0,
+                                    forLoopLength:uO.nS[   uO.scope[nSNS_1_i]   ].nSM.newnSM.length,
+                                    fn:function(   dev_obj   ){
+                                        uO.nS[   uO.scope[nSNS_1_i]   ].nSM.match = 'false'
+                                        uO.forLoop(    nSFL_15_i   )
+                                        
+                                        
+                                        if(   uO.nS[   uO.scope[nSNS_1_i]   ].nSM.match === 'false'   ){
+                                            
+                                            
+                                            uO.nS[   uO.scope[nSNS_1_i]   ].nSM.add({
+                                                value:uO.nS[   uO.scope[nSNS_1_i]   ].nSM.newnSM[   nSFL_14_i.forLoop_0_i   ]
+                                            })
+                                            uO.nS[   uO.scope[nSNS_1_i]   ].add({
+                                                value:uO.nS[   uO.scope[nSNS_1_i]   ].digits[   uO.nS[   uO.scope[nSNS_1_i]   ].nSM.newnSM[   nSFL_14_i.forLoop_0_i   ][1]   ],
+                                                index:uO.nS[   uO.scope[nSNS_1_i]   ].nSM.newnSM[   nSFL_14_i.forLoop_0_i   ][0]
                                             })
                                             
-                                        },
-                                        args:dev_obj
-                                    }
-                                    uO.forLoop(   nSFL_1_i   )
-                                    delete uO.nS[   uO.scope[nSNS_1_i]   ].nSM.newnSM
+                                            
+                                        }
+                                        
+                                        
+                                    },
+                                    args:dev_obj //{}
+                                }
+                                uO.forLoop(    nSFL_14_i   )
+                                delete uO.nS[   uO.scope[nSNS_1_i]   ].nSM.newnSM
                                 // }  /**/
                                 
                                 /* node mode choice thread validation */ //{
@@ -2865,8 +2921,6 @@
                             /*if the developer wants the digits to be changed*/ //{
                             if(   dev_obj.digits !== undefined   ){
 
-                                                                
-                                
                                 /* recreating the digits object from dev_obj*/ //{
                                 var nSFL_13_i = {
                                     forLoop_0_i:0,

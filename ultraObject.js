@@ -846,7 +846,6 @@
                                             if(   ultraObject.nS[   ultraObject.scope[eCSNS_0_i]   ][   eCSearchFL_0_i.forLoop_0_i   ] === undefined   ){
                                                     
                                                 /*creating the digits and metadata for the numberSystem*/ //{
-                                                debugger
                                                 ultraObject.numberSystem({
                                                     operation:'create',
                                                     nS:eCSNS_0_i,
@@ -958,6 +957,15 @@
                                                     
                                                     
                                                 }
+                                                
+                                                
+                                                else if(   ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].createdNS === 'true'){
+                                                    
+                                                    
+                                                    var eCSNS_0_i = ultraObject.scope[   ultraObject.scope.length-1   ]
+                                                    
+                                                    
+                                                }
                                                 // }  /**/
                                                 
                                                 if(   ultraObject.nS[   ultraObject.scope[eCSNS_0_i]   ][   eCSearchFL_0_i.forLoop_0_i   ] === undefined   ){
@@ -1039,10 +1047,9 @@
                     args:dev_obj,
                 }
                 ultraObject.forLoop(   eCSearchFL_0_i   )
-                ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].sameElement = 'false'
+                delete ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].sameElement
                 // }  /**/
                 
-                debugger
                 ultraObject.scope.minus(   {index:eCSSelectTags_0_i}   )
                 // find the first that matches the condition, and hold it when all four match exit, if the form doesn't like what I did each value must try everything in the allTapgs itO before telling the end user they cant figure out whats going on.grabs three and swaps one
                 
