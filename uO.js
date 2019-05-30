@@ -122,7 +122,31 @@
                 
                 
             // }
-            
+            /*
+                uO.numberSystem({
+                    operation:'create',
+                    digits:uO.iterify({
+                            iterify:[
+                                uO.iterify({
+                                    iterify:[0,[1,0,1]]
+                                }),
+                                uO.iterify({
+                                    iterify:[2,uO.iterify({iterify:[3,0,1]})]
+                                })
+                            ]
+                        }),
+                    nSM:uO.iterify({
+                            iterify:[
+                                uO.iterify({
+                                    iterify:[0,2]
+                                }),
+                                uO.iterify({
+                                    iterify:[1,0]
+                                })
+                            ]
+                        })
+                })
+            */
             /*
                  /*[meaning block descritpion]*/ //{
                  // }  /**/
@@ -2544,7 +2568,9 @@
                             
                     .nSM, which digit comes first
                     //
-                        
+                        the key point i want you to remeber
+                        the first index is where the digit goes in the nS
+                        the second index is where  the digit goes in .digits
                         determines how the number receive digits min is as 1 then 10 then 1000
                     
                         so forr
@@ -2568,6 +2594,7 @@
                                     ]
                                 })
                         where the first index specifes where the nSM digit should go in the nSM and the sencond index specifies which digit from the .digits
+                        the key point i want i
                     //
                 */
                 /*
@@ -2596,29 +2623,54 @@
                             /*if the developer wants the nS to be reordered*/ //{
                             if(   uO.isitO(   {type:dev_obj.nSM}   )   ){
                                 
-                                /* node mode choice thread performance */ //{
+                                /*node mode choice thread performance */ //{
                                     uO.nS[   uO.scope[nSNS_1_i]   ].nSM.newnSM = dev_obj.nSM
+                                    uO.sort({
+                                        target: uO.nS[   uO.scope[nSNS_1_i]   ].nSM.newnSM,
+                                        algorithm:'bubble',
+                                        compare:function(   dev_obj   ){
+                                            
+                                                
+                                            if(   dev_obj.val[dev_obj.index][0] > dev_obj.val[dev_obj.index+ 1][0]   ){
+                                                
+                                                
+                                                return 'true'
+                                                
+                                                
+                                            }
+                                                
+                                            
+                                        },
+                                        result:'true'
+                                    })
                                     var nSFL_1_i = {
                                         forLoop_0_i:0,
                                         forLoopLength:uO.nS[   uO.scope[nSNS_1_i]   ].nSM.newnSM.length,
                                         fn:function(   dev_obj   ){
                                             
                                             /*means that the end of the current nSM*/ //{
+                                            // the developer wanted to increase the nS so we must increase it and modify the nS
                                             if(   nSFL_1_i.forLoop_0_i >= uO.nS[   uO.scope[nSNS_1_i]   ].nSM.length ){
                                             
-                                            
+                                                
                                                 uO.nS[   uO.scope[nSNS_1_i]   ].nSM.add(   {value:uO.nS[   uO.scope[nSNS_1_i]   ].nSM.newnSM[   nSFL_1_i.forLoop_0_i   ]}   )
+                                                uO.nS[   uO.scope[nSNS_1_i]   ].add({
+                                                    value:uO.nS[   uO.scope[nSNS_1_i]   ].digits[   uO.nS[   uO.scope[nSNS_1_i]   ].nSM[   nSFL_1_i.forLoop_0_i   ][1]   ],
+                                                    index:uO.nS[   uO.scope[nSNS_1_i]   ].nSM[   nSFL_1_i.forLoop_0_i   ][0]
+                                                })
                                                 
                                                 
                                             }
                                             // }  /**/
                                             
                                             /*means newnSM can replace an available value in the current nSM*/ //{
+                                            // im dynmaically recreating the nS here
                                             else if(   nSFL_1_i.forLoop_0_i < uO.nS[   uO.scope[nSNS_1_i]   ].nSM.length   ){
                                                 
                                                 
                                                 uO.nS[   uO.scope[nSNS_1_i]   ].nSM[   nSFL_1_i.forLoop_0_i   ] = uO.nS[   uO.scope[nSNS_1_i]   ].nSM.newnSM[   nSFL_1_i.forLoop_0_i   ]
-                                                uO.nS[   uO.scope[nSNS_1_i]   ][   nSFL_1_i.forLoop_0_i   ] =  uO.nS[   uO.scope[nSNS_1_i]   ].digits[   uO.nS[   uO.scope[nSNS_1_i]   ].nSM[   nSFL_1_i.forLoop_0_i   ]   ]
+                                                uO.nS[   uO.scope[nSNS_1_i]   ][   uO.nS[   uO.scope[nSNS_1_i]   ].nSM[   nSFL_1_i.forLoop_0_i   ][0]   ] =  uO.nS[   uO.scope[nSNS_1_i]   ].digits[   uO.nS[   uO.scope[nSNS_1_i]   ].nSM[   nSFL_1_i.forLoop_0_i   ][1]   ]
+                                                
                                                 
                                                 
                                             }
@@ -2747,58 +2799,54 @@
                             // }  /**/
                             
                             /*if the developer wants the digits to be changed*/ //{
-                            // the actual digits get modified according to given and the original .digits get modified according their respecitve digits in the actual digits
-                            // key uO.nS[   uO.scope[nSNS_1_i]   ].nSM[   uO.nS[   uO.scope[nSNS_1_i]   ].digits.newDigits[   nSFL_5_i.forLoop_0_i   ][0], used to access the orginal digit in the numberSystem to change the digits accordingly
                             if(   dev_obj.digits !== undefined   ){
+
+                                                                
                                 
-                                
-                                uO.nS[   uO.scope[nSNS_1_i]   ].digits.newDigits = Object.entries(   dev_obj.digits   )
-                                
-                                var nSFL_6_i  = {
+                                /* recreating the digits object from dev_obj*/ //{
+                                var nSFL_13_i = {
                                     forLoop_0_i:0,
-                                    forLoopLength:uO.nS[   uO.scope[nSNS_1_i]   ].digits.newDigits.length,
+                                    forLoopLength:dev_obj.digits.length,
                                     fn:function(   dev_obj   ){
                                         
                                         
-                                        if(   uO.isInt(   {type:uO.nS[   uO.scope[nSNS_1_i]   ].digits.newDigits[   nSFL_6_i.forLoop_0_i   ][0]}   )   ){
+                                        if(   uO.isArray({type:dev_obj.digits[   nSFL_13_i.forLoop_0_i   ][1]})   ){
                                             
                                             
-                                            uO.nS[   uO.scope[nSNS_1_i]   ].digits[   uO.nS[   uO.scope[nSNS_1_i]   ].nSM[   uO.nS[   uO.scope[nSNS_1_i]   ].digits.newDigits[   nSFL_6_i.forLoop_0_i   ][0]   ]   ] = uO.nS[   uO.scope[nSNS_1_i]   ].digits.newDigits[   nSFL_6_i.forLoop_0_i   ][1]
+                                            dev_obj.digits[   nSFL_13_i.forLoop_0_i   ][1] = uO.iterify({
+                                                iterify:dev_obj.digits[   nSFL_13_i.forLoop_0_i   ][1]
+                                            })
                                             
                                             
                                         }
                                         
                                         
+                                        uO.nS[   uO.scope[nSNS_1_i]   ].add({
+                                            value:dev_obj.digits[   nSFL_13_i.forLoop_0_i   ][1],
+                                            index:dev_obj.digits[   nSFL_13_i.forLoop_0_i   ][0]
+                                        })
+                                    },
+                                    args:dev_obj //{}
+                                }
+                                delete uO.nS[   uO.scope[nSNS_1_i]   ].digits.newDigits
+                                uO.forLoop(   nSFL_13_i   )
+                                var nSFL_6_i  = {
+                                    forLoop_0_i:0,
+                                    forLoopLength:uO.nS[   uO.scope[nSNS_1_i]   ].nSM.length,
+                                    fn:function(   dev_obj   ){
+                                        uO.nS[   uO.scope[nSNS_1_i]   ].digits.add({
+                                            value:uO.nS[   uO.scope[nSNS_1_i]   ][   uO.nS[   uO.scope[nSNS_1_i]   ].nSM[   nSFL_6_i.forLoop_0_i   ][0]   ],
+                                            index:uO.nS[   uO.scope[nSNS_1_i]   ].nSM[   nSFL_6_i.forLoop_0_i   ][1]
+                                        })
                                     },
                                     args:dev_obj
                                 }
                                 uO.forLoop(   nSFL_6_i    )
-                                var nSFL_5_i  = {
-                                    forLoop_0_i:0,
-                                    forLoopLength:uO.nS[   uO.scope[nSNS_1_i]   ].digits.newDigits.length,
-                                    fn:function(   dev_obj   ){
-                                        
-                                        
-                                        if(   uO.isInt(   {type:uO.nS[   uO.scope[nSNS_1_i]   ].digits.newDigits[   nSFL_5_i.forLoop_0_i   ][0]}   )   ){
-                                            
-                                            
-                                            uO.nS[   uO.scope[nSNS_1_i]   ][   uO.nS[   uO.scope[nSNS_1_i]   ].digits.newDigits[   nSFL_5_i.forLoop_0_i   ][0]  ] = uO.nS[   uO.scope[nSNS_1_i]   ].digits.newDigits[   nSFL_5_i.forLoop_0_i   ][1]
-                                            
-                                            
-                                        }
-                                        
-                                        
-                                    },
-                                    args:dev_obj
-                                }
-                                uO.forLoop(   nSFL_5_i    )
-                                delete uO.nS[   uO.scope[nSNS_1_i]   ].digits.newDigits
-                                
+                                // }  /**/
                                 
                             }
                             // }  /**/
-                            
-                            
+                                                        
                         }
                         // }  /**/
                         
@@ -2806,9 +2854,9 @@
                         uO.nS[   uO.scope[nSNS_1_i]   ].currentNumber = []
                         var nSFL_6_i = {
                             forLoop_0_i:0,
-                            forLoopLength:uO.nS[   uO.scope[nSNS_1_i]   ].length,
+                            forLoopLength:uO.nS[   uO.scope[nSNS_1_i]   ].nSM.length,
                             fn:function(   dev_obj   ){
-                                uO.nS[   uO.scope[nSNS_1_i]   ].currentNumber.push(   uO.nS[   uO.scope[nSNS_1_i]   ][   nSFL_6_i.forLoop_0_i   ][0])
+                                uO.nS[   uO.scope[nSNS_1_i]   ].currentNumber.push(   uO.nS[   uO.scope[nSNS_1_i]   ][   uO.nS[   uO.scope[nSNS_1_i]   ].nSM[   nSFL_6_i.forLoop_0_i   ][0]   ][0])
                             },
                             args:dev_obj //{}
                         }
@@ -2840,7 +2888,7 @@
                                 
                                     /* I need to sort the nSM by nS access index first to make it easier for it to use for the rest of the API*/ //{
                                     uO.sort({
-                                        target: uO.nS[   uO.scope[nSNS_0_i]   ].nSM ,
+                                        target: uO.nS[   uO.scope[nSNS_0_i]   ].nSM,
                                         algorithm:'bubble',
                                         compare:function(   dev_obj   ){
                                             
@@ -2999,15 +3047,15 @@
                             uO.nS[   [uO.scope[nSNS_2_i ]]   ].decimal.currentNumber = 0
                             uO.nS[   [uO.scope[nSNS_2_i ]]   ].decimal.range = 1
                             var nSFL_7_i = {
-                                forLoop_0_i:-uO.nS[   [uO.scope[nSNS_2_i ]]   ].length,
+                                forLoop_0_i:-uO.nS[   [uO.scope[nSNS_2_i ]]   ].nSM.length,
                                 forLoopLength:0,
                                 fn:function(   dev_obj   ){
                                     //1
                                     // uO.nS[   [uO.scope[nSNS_2_i ]]   ].decimal.add(   {value:uO.nS[   [   uO.scope[nSNS_2_i]   ]   ][   (-nSFL_7_i.forLoop_0_i)-1   ]}   )
                                     //2 actual update
-                                    uO.nS[   [uO.scope[nSNS_2_i ]]   ].decimal.currentNumber += (   uO.nS[   [   uO.scope[nSNS_2_i]   ]   ][   (-nSFL_7_i.forLoop_0_i)-1   ][0] - uO.nS[   [   uO.scope[nSNS_2_i]   ]   ][   (-nSFL_7_i.forLoop_0_i)-1   ][1]   ) * (    uO.nS[   [uO.scope[nSNS_2_i ]]   ].decimal.range   )
-                                    //3
-                                    uO.nS[   [uO.scope[nSNS_2_i ]]   ].decimal.range *=( uO.nS[   [   uO.scope[nSNS_2_i]   ]   ][   (-nSFL_7_i.forLoop_0_i)-1   ][2]  - uO.nS[   [   uO.scope[nSNS_2_i]   ]   ][   (-nSFL_7_i.forLoop_0_i)-1   ][1]   )
+                                    uO.nS[   [uO.scope[nSNS_2_i ]]   ].decimal.currentNumber += (   uO.nS[   [   uO.scope[nSNS_2_i]   ]   ][   uO.nS[   [   uO.scope[nSNS_2_i]   ]   ].nSM[   (-nSFL_7_i.forLoop_0_i) -1   ][0]   ][0] - uO.nS[   [   uO.scope[nSNS_2_i]   ]   ][   uO.nS[   [   uO.scope[nSNS_2_i]   ]   ].nSM[   (-nSFL_7_i.forLoop_0_i) -1   ][0]   ][1]   ) * (    uO.nS[   [uO.scope[nSNS_2_i ]]   ].decimal.range   )
+                                    //3 modifying the range for the next digit
+                                    uO.nS[   [uO.scope[nSNS_2_i ]]   ].decimal.range *=( uO.nS[   [   uO.scope[nSNS_2_i]   ]   ][   uO.nS[   [   uO.scope[nSNS_2_i]   ]   ].nSM[   (-nSFL_7_i.forLoop_0_i) -1   ][0]   ][2]  - uO.nS[   [   uO.scope[nSNS_2_i]   ]   ][   uO.nS[   [   uO.scope[nSNS_2_i]   ]   ].nSM[   (-nSFL_7_i.forLoop_0_i) -1   ][0]   ][1]   )
                                 },
                                 args:dev_obj //{}
                             }
@@ -3036,41 +3084,39 @@
                             uO.nS[   [uO.scope[nSNS_2_i ]]   ].decimal.currentNumber = dev_obj.currentNumber
                             uO.nS[   [uO.scope[nSNS_2_i ]]   ].decimal.range = 1
                             
-                            
-                            if(   dev_obj.prevent === 'false'   ){
+                            /*we going to preserve the actual number numberSystem*/ //{
+                            if(   dev_obj.prevent === 'true'   ){
                                 
                                 
                                 
                             }
+                            // }  /**/
                             
                             /*we going to replace the actual number numberSystem*/ //{
-                            else if(   dev_obj.prevent !== 'false'   ){
+                            else if(   dev_obj.prevent !== 'true'   ){
                                 
                                 
                                 var nSFL_8_i = {
                                     forLoop_0_i: 0,
-                                    forLoopLength:uO.nS[   [uO.scope[nSNS_2_i ]]   ].length,
+                                    forLoopLength:uO.nS[   [uO.scope[nSNS_2_i ]]   ].nSM.length,
                                     fn:function(   dev_obj   ){
-                                        uO.nS[   [uO.scope[nSNS_2_i ]]   ][   nSFL_8_i.forLoop_0_i   ][0] = uO.nS[   [uO.scope[nSNS_2_i ]]   ][   nSFL_8_i.forLoop_0_i   ][1]
+                                        uO.nS[   [uO.scope[nSNS_2_i ]]   ][   uO.nS[   [uO.scope[nSNS_2_i ]]   ].nSM[   nSFL_8_i.forLoop_0_i   ][0]   ][0] = uO.nS[   [uO.scope[nSNS_2_i ]]   ][   uO.nS[   [uO.scope[nSNS_2_i ]]   ].nSM[   nSFL_8_i.forLoop_0_i   ][0]   ][1]
                                         var nSFL_9_i = {
-                                            forLoop_0_i: -(uO.nS[   [uO.scope[nSNS_2_i ]]   ].length - 1 ),
+                                            forLoop_0_i: -(uO.nS[   [uO.scope[nSNS_2_i ]]   ].nSM.length - 1 ),
                                             forLoopLength:0-nSFL_8_i.forLoop_0_i,
                                             fn:function(   dev_obj   ){
-                                                uO.nS[   [uO.scope[nSNS_2_i ]]   ].decimal.range *= uO.nS[   [uO.scope[nSNS_2_i ]]   ][   -nSFL_9_i.forLoop_0_i   ][2] - uO.nS[   [uO.scope[nSNS_2_i ]]   ][   -nSFL_9_i.forLoop_0_i   ][1]
+                                                uO.nS[   [uO.scope[nSNS_2_i ]]   ].decimal.range *= uO.nS[   [uO.scope[nSNS_2_i ]]   ][   uO.nS[   [uO.scope[nSNS_2_i ]]   ].nSM[   -nSFL_9_i.forLoop_0_i   ][0]   ][2] - uO.nS[   [uO.scope[nSNS_2_i ]]   ][   uO.nS[   [uO.scope[nSNS_2_i ]]   ].nSM[   -nSFL_9_i.forLoop_0_i   ][0]   ][1]
                                             },
                                             args:dev_obj //{}
                                         }
                                         uO.forLoop(   nSFL_9_i   )
                                         
                                         /*at this point we have the range to work with now computing the actual digit*/ //{
-                                        // the range determines if the number should be subtracted and moved into the current digit
-                                        //if the currentDigit is less than the range move on to the next digit
-                                        // I hope parseInt is a ES5 solution and it always Math.floor
-                                        console.log(   uO.nS[   [uO.scope[nSNS_2_i ]]   ].decimal.range,'what it takes to get to the next digit'   )
-                                        if(   uO.nS[   [uO.scope[nSNS_2_i ]]   ].decimal.currentNumber >= uO.nS[   [uO.scope[nSNS_2_i ]]   ].decimal.range     ){
+                                        // console.log(   uO.nS[   [uO.scope[nSNS_2_i ]]   ].decimal.range,'what it takes to get to the next digit'   )
+                                        if(   uO.nS[   [uO.scope[nSNS_2_i ]]   ].decimal.currentNumber >= uO.nS[   [uO.scope[nSNS_2_i ]]   ].decimal.range   ){
                                             
                                             
-                                            uO.nS[   [uO.scope[nSNS_2_i ]]   ][   nSFL_8_i.forLoop_0_i   ][0] += Math.floor(   uO.nS[   [uO.scope[nSNS_2_i ]]   ].decimal.currentNumber/uO.nS[   [uO.scope[nSNS_2_i ]]   ].decimal.range   )
+                                            uO.nS[   [uO.scope[nSNS_2_i ]]   ][   uO.nS[   [uO.scope[nSNS_2_i ]]   ].nSM[   nSFL_8_i.forLoop_0_i   ][0]   ][0] += Math.floor(   uO.nS[   [uO.scope[nSNS_2_i ]]   ].decimal.currentNumber/uO.nS[   [uO.scope[nSNS_2_i ]]   ].decimal.range   )
                                             uO.nS[   [uO.scope[nSNS_2_i ]]   ].decimal.currentNumber -= (uO.nS[   [uO.scope[nSNS_2_i ]]   ].decimal.range  * Math.floor(   uO.nS[   [uO.scope[nSNS_2_i ]]   ].decimal.currentNumber/uO.nS[   [uO.scope[nSNS_2_i ]]   ].decimal.range   )   )
                                             
                                             
@@ -3104,7 +3150,7 @@
                             forLoop_0_i:0,
                             forLoopLength:uO.nS[   uO.scope[nSNS_3_i]   ].length,
                             fn:function(   dev_obj   ){
-                                uO.nS[   uO.scope[nSNS_3_i]   ].currentNumber.push(   uO.nS[   uO.scope[nSNS_3_i]   ][   nSFL_10_i.forLoop_0_i   ][0])
+                                uO.nS[   uO.scope[nSNS_3_i]   ].currentNumber.push(   uO.nS[   uO.scope[nSNS_3_i]   ][   uO.nS[   uO.scope[nSNS_3_i]   ].nSM[    nSFL_10_i.forLoop_0_i   ][0]   ][0])
                             },
                             args:dev_obj //{}
                         }
