@@ -2648,103 +2648,170 @@
                             /*if the developer wants the nS to be reordered*/ //{
                             if(   ultraObject.isitO(   {type:dev_obj.nSM}   )   ){
                                 
-                                /*node mode choice thread performance */ //{
-                                    ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM = dev_obj.nSM
-                                    ultraObject.sort({
-                                        target: ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM,
-                                        algorithm:'bubble',
-                                        compare:function(   dev_obj   ){
+                                
+                                                                
+                                // /*node mode choice thread performanceReSort */ //{
+                                // // here after each digit operation i resort the nSM because it needs to be that way
+                                //     ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM = dev_obj.nSM
+                                //     ultraObject.sort({
+                                //         target: ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM,
+                                //         algorithm:'bubble',
+                                //         compare:function(   dev_obj   ){
                                             
                                                 
-                                            if(   dev_obj.val[dev_obj.index][0] > dev_obj.val[dev_obj.index+ 1][0]   ){
+                                //             if(   dev_obj.val[dev_obj.index][0] > dev_obj.val[dev_obj.index+ 1][0]   ){
                                                 
                                                 
-                                                return 'true'
+                                //                 return 'true'
                                                 
                                                 
-                                            }
+                                //             }
                                                 
                                             
-                                        },
-                                        result:'true'
-                                    })
-                                    var nSFL_1_i = {
-                                        forLoop_0_i:0,
-                                        forLoopLength:ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM.length,
-                                        fn:function(   dev_obj   ){
+                                //         },
+                                //         result:'true'
+                                //     })
+                                //     var nSFL_1_i = {
+                                //         forLoop_0_i:0,
+                                //         forLoopLength:ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM.length,
+                                //         fn:function(   dev_obj   ){
                                             
-                                            /*means that the end of the current nSM*/ //{
-                                            // the developer wanted to increase the nS so we must increase it and modify the nS
-                                            //hopefully you dont have to use property undefined
-                                            // if the lengths are not the same you cant use .nSM to fix the nS you must use the newnSM because this loop is iterating according to that index PROBLEMS look at this
-                                            if(   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM[   nSFL_1_i.forLoop_0_i   ]  === undefined   ){
-                                            
-
-                                                ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.add(   {value:ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM[   nSFL_1_i.forLoop_0_i   ]}   )
-                                                ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].add({
-                                                    value:ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].digits[   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM[   nSFL_1_i.forLoop_0_i   ][1]   ],
-                                                    index:ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM[   nSFL_1_i.forLoop_0_i   ][0]
-                                                })
-                                                
-                                                
-                                            }
-                                            
-                                            
-                                            else if(   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM[   nSFL_1_i.forLoop_0_i   ][0]  !== ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM[   nSFL_1_i.forLoop_0_i   ][0]    ){
+                                //             /*means that the end of the current nSM*/ //{
+                                //             // the developer wanted to increase the nS so we must increase it and modify the nS
+                                //             //hopefully you dont have to use property undefined
+                                //             // if the lengths are not the same you cant use .nSM to fix the nS you must use the newnSM because this loop is iterating according to that index PROBLEMS look at this
+                                //             if(   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM[   nSFL_1_i.forLoop_0_i   ]  === undefined   ){
                                             
 
-                                                ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.add(   {value:ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM[   nSFL_1_i.forLoop_0_i   ]}   )
-                                                ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].add({
-                                                    value:ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].digits[   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM[   nSFL_1_i.forLoop_0_i   ][1]   ],
-                                                    index:ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM[   nSFL_1_i.forLoop_0_i   ][0]
-                                                })
+                                //                 ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.add(   {value:ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM[   nSFL_1_i.forLoop_0_i   ]}   )
+                                //                 ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].add({
+                                //                     value:ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].digits[   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM[   nSFL_1_i.forLoop_0_i   ][1]   ],
+                                //                     index:ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM[   nSFL_1_i.forLoop_0_i   ][0]
+                                //                 })
                                                 
                                                 
-                                            }
-                                            // }  /**/
+                                //             }
                                             
-                                            /*means newnSM can replace an available value in the current nSM*/ //{
-                                            // im dynmaically recreating the nS here
-                                            else if(   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM[   nSFL_1_i.forLoop_0_i   ][0]  === ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM[   nSFL_1_i.forLoop_0_i   ][0]   ){
-                                                
-                                                
-                                                if(   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM[   nSFL_1_i.forLoop_0_i   ][1]  !== ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM[   nSFL_1_i.forLoop_0_i   ][1]   ){
-                                                    
-                                                    
-                                                    ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM[   nSFL_1_i.forLoop_0_i   ] = ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM[   nSFL_1_i.forLoop_0_i   ]
-                                                    ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ][   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM[   nSFL_1_i.forLoop_0_i   ][0]   ] =  ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].digits[   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM[   nSFL_1_i.forLoop_0_i   ][1]   ]
-                                                
-                                                
-                                                }
-                                                
-                                                
-                                            }
-                                            // }  /**/
                                             
-                                            ultraObject.sort({
-                                                target: ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM,
-                                                algorithm:'bubble',
-                                                compare:function(   dev_obj   ){
+                                //             else if(   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM[   nSFL_1_i.forLoop_0_i   ][0]  !== ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM[   nSFL_1_i.forLoop_0_i   ][0]   ){
+                                            
+
+                                //                 ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.add(   {value:ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM[   nSFL_1_i.forLoop_0_i   ]}   )
+                                //                 ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].add({
+                                //                     value:ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].digits[   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM[   nSFL_1_i.forLoop_0_i   ][1]   ],
+                                //                     index:ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM[   nSFL_1_i.forLoop_0_i   ][0]
+                                //                 })
+                                                
+                                                
+                                //             }
+                                //             // }  /**/
+                                            
+                                //             /*means newnSM can replace an available value in the current nSM*/ //{
+                                //             // im dynmaically recreating the nS here
+                                //             else if(   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM[   nSFL_1_i.forLoop_0_i   ][0]  === ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM[   nSFL_1_i.forLoop_0_i   ][0]   ){
+                                                
+                                                
+                                //                 if(   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM[   nSFL_1_i.forLoop_0_i   ][1]  !== ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM[   nSFL_1_i.forLoop_0_i   ][1]   ){
+                                                    
+                                                    
+                                //                     ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM[   nSFL_1_i.forLoop_0_i   ] = ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM[   nSFL_1_i.forLoop_0_i   ]
+                                //                     ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ][   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM[   nSFL_1_i.forLoop_0_i   ][0]   ] =  ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].digits[   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM[   nSFL_1_i.forLoop_0_i   ][1]   ]
+                                                
+                                                
+                                //                 }
+                                                
+                                                
+                                //             }
+                                //             // }  /**/
+                                            
+                                //             ultraObject.sort({
+                                //                 target: ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM,
+                                //                 algorithm:'bubble',
+                                //                 compare:function(   dev_obj   ){
                                                     
                                                         
-                                                    if(   dev_obj.val[dev_obj.index][0] > dev_obj.val[dev_obj.index+ 1][0]   ){
+                                //                     if(   dev_obj.val[dev_obj.index][0] > dev_obj.val[dev_obj.index+ 1][0]   ){
                                                         
                                                         
-                                                        return 'true'
+                                //                         return 'true'
+                                                        
+                                                        
+                                //                     }
+                                                        
+                                                    
+                                //                 },
+                                //                 result:'true'
+                                //             })
+                                            
+                                //         },
+                                //         args:dev_obj
+                                //     }
+                                //     ultraObject.forLoop(   nSFL_1_i   )
+                                //     delete ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM
+                                // // }  /**/
+                                
+                                /*node mode choice thread performanceIterateAndAsk  */ //{
+                                // when look at every digit in the newnSM, i loop through the original nSM to see if we have nS digit match then i perform operation
+                                // top in performance because there is no use of sorting
+                                ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM = dev_obj.nSM
+                                var nSFL_15_i = {
+                                            forLoop_0_i:0,
+                                            forLoopLength:ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.length,
+                                            fn:function(   dev_obj   ){
+                                                
+                                                
+                                                if(   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM[   nSFL_15_i.forLoop_0_i   ][0]  === ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM[   nSFL_14_i.forLoop_0_i   ][0]   ){
+                                                    
+                                                    
+                                                    if(   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM[   nSFL_15_i.forLoop_0_i   ][1]  !== ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM[   nSFL_14_i.forLoop_0_i   ][1]   ){
+                                                    // i wanna save space but preventing memory leaks is more important
+                                                        
+                                                        ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ]         .nSM[   nSFL_15_i.forLoop_0_i   ][1]  =               ultraObject.nS[   ultraObject.scope[nSNS_1_i]         ].nSM.newnSM[   nSFL_14_i.forLoop_0_i   ][1]
+                                                        ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ][        ultraObject.nS[   ultraObject.scope[nSNS_1_i]         ].nSM.newnSM[   nSFL_14_i.forLoop_0_i   ][0]  ] =  ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ]         .digits[   ultraObject.nS[   ultraObject              .scope[nSNS_1_i]   ].nSM.newnSM[   nSFL_14_i          .forLoop_0_i   ][1]   ]
+                                                        
                                                         
                                                         
                                                     }
-                                                        
                                                     
-                                                },
-                                                result:'true'
+                                                    
+                                                    ultraObject.nS[   ultraObject.scope[nSNS_1_i]         ].nSM.match = 'true'
+                                                    return 'premature'
+                                                    
+                                                    
+                                                }
+                                                
+                                                
+                                            },
+                                            args:dev_obj //{}
+                                        }
+                                var nSFL_14_i = {
+                                    forLoop_0_i:0,
+                                    forLoopLength:ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM.length,
+                                    fn:function(   dev_obj   ){
+                                        ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.match = 'false'
+                                        ultraObject.forLoop(    nSFL_15_i   )
+                                        
+                                        
+                                        if(   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.match === 'false'   ){
+                                            
+                                            
+                                            ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.add({
+                                                value:ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM[   nSFL_14_i.forLoop_0_i   ]
+                                            })
+                                            ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].add({
+                                                value:ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].digits[   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM[   nSFL_14_i.forLoop_0_i   ][1]   ],
+                                                index:ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM[   nSFL_14_i.forLoop_0_i   ][0]
                                             })
                                             
-                                        },
-                                        args:dev_obj
-                                    }
-                                    ultraObject.forLoop(   nSFL_1_i   )
-                                    delete ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM
+                                            
+                                        }
+                                        
+                                        
+                                    },
+                                    args:dev_obj //{}
+                                }
+                                ultraObject.forLoop(    nSFL_14_i   )
+                                delete ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM
                                 // }  /**/
                                 
                                 /* node mode choice thread validation */ //{
@@ -2865,8 +2932,6 @@
                             /*if the developer wants the digits to be changed*/ //{
                             if(   dev_obj.digits !== undefined   ){
 
-                                                                
-                                
                                 /* recreating the digits object from dev_obj*/ //{
                                 var nSFL_13_i = {
                                     forLoop_0_i:0,
