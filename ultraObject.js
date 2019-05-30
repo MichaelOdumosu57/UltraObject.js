@@ -1,4 +1,4 @@
-    
+
     
                     function wait(   ms   ){
                        var start = new Date().getTime();
@@ -2772,8 +2772,6 @@
                             // }  /**/
                             
                             /*if the developer wants the digits to be changed*/ //{
-                            // the actual nS gets modified according to given and the original .digits get modified according their respecitve digits in the actual digits
-                            // key ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM[   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].digits.newDigits[   nSFL_5_i.forLoop_0_i   ][0], used to access the orginal digit in the numberSystem to change the digits accordingly
                             if(   dev_obj.digits !== undefined   ){
 
                                                                 
@@ -3022,15 +3020,15 @@
                             ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.currentNumber = 0
                             ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.range = 1
                             var nSFL_7_i = {
-                                forLoop_0_i:-ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].length,
+                                forLoop_0_i:-ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].nSM.length,
                                 forLoopLength:0,
                                 fn:function(   dev_obj   ){
                                     //1
                                     // ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.add(   {value:ultraObject.nS[   [   ultraObject.scope[nSNS_2_i]   ]   ][   (-nSFL_7_i.forLoop_0_i)-1   ]}   )
                                     //2 actual update
-                                    ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.currentNumber += (   ultraObject.nS[   [   ultraObject.scope[nSNS_2_i]   ]   ][   (-nSFL_7_i.forLoop_0_i)-1   ][0] - ultraObject.nS[   [   ultraObject.scope[nSNS_2_i]   ]   ][   (-nSFL_7_i.forLoop_0_i)-1   ][1]   ) * (    ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.range   )
-                                    //3
-                                    ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.range *=( ultraObject.nS[   [   ultraObject.scope[nSNS_2_i]   ]   ][   (-nSFL_7_i.forLoop_0_i)-1   ][2]  - ultraObject.nS[   [   ultraObject.scope[nSNS_2_i]   ]   ][   (-nSFL_7_i.forLoop_0_i)-1   ][1]   )
+                                    ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.currentNumber += (   ultraObject.nS[   [   ultraObject.scope[nSNS_2_i]   ]   ][   ultraObject.nS[   [   ultraObject.scope[nSNS_2_i]   ]   ].nSM[   (-nSFL_7_i.forLoop_0_i) -1   ][0]   ][0] - ultraObject.nS[   [   ultraObject.scope[nSNS_2_i]   ]   ][   ultraObject.nS[   [   ultraObject.scope[nSNS_2_i]   ]   ].nSM[   (-nSFL_7_i.forLoop_0_i) -1   ][0]   ][1]   ) * (    ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.range   )
+                                    //3 modifying the range for the next digit
+                                    ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.range *=( ultraObject.nS[   [   ultraObject.scope[nSNS_2_i]   ]   ][   ultraObject.nS[   [   ultraObject.scope[nSNS_2_i]   ]   ].nSM[   (-nSFL_7_i.forLoop_0_i) -1   ][0]   ][2]  - ultraObject.nS[   [   ultraObject.scope[nSNS_2_i]   ]   ][   ultraObject.nS[   [   ultraObject.scope[nSNS_2_i]   ]   ].nSM[   (-nSFL_7_i.forLoop_0_i) -1   ][0]   ][1]   )
                                 },
                                 args:dev_obj //{}
                             }
@@ -3127,7 +3125,7 @@
                             forLoop_0_i:0,
                             forLoopLength:ultraObject.nS[   ultraObject.scope[nSNS_3_i]   ].length,
                             fn:function(   dev_obj   ){
-                                ultraObject.nS[   ultraObject.scope[nSNS_3_i]   ].currentNumber.push(   ultraObject.nS[   ultraObject.scope[nSNS_3_i]   ][   nSFL_10_i.forLoop_0_i   ][0])
+                                ultraObject.nS[   ultraObject.scope[nSNS_3_i]   ].currentNumber.push(ultraObject.nS[   ultraObject.scope[nSNS_3_i]   ].currentNumber.push(   ultraObject.nS[   ultraObject.scope[nSNS_3_i]   ][   ultraObject.nS[   ultraObject.scope[nSNS_3_i]   ].nSM[    nSFL_10_i.forLoop_0_i   ][0]   ][0]))
                             },
                             args:dev_obj //{}
                         }
