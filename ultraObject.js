@@ -900,7 +900,7 @@
                                             ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]][eCSearchFL_0_i.forLoop_0_i].eCSIndex = eCSearchFL_1_i.forLoop_0_i
                                             // }  /**/
                                             
-                                            debugger
+                                            
                                             return 'premature'
                                                 
                                                 
@@ -965,19 +965,29 @@
                                                     
                                                     /*creating the digits and metadata for the numberSystem*/ //{
                                                     ultraObject.numberSystem({
-                                                        operation:'create',
-                                                        nS:0,
-                                                        digits:ultraObject.iterify({
-                                                                iterify:[
-                                                                    ultraObject.iterify({
-                                                                        iterify:[
-                                                                            eCSearchFL_0_i.forLoop_0_i,[
+                                                    operation:'create',
+                                                    nS:eCSNS_0_i,
+                                                    nSM:ultraObject.iterify({
+                                                            iterify:[
+                                                                ultraObject.iterify({
+                                                                    iterify:[
+                                                                        eCSearchFL_0_i.forLoop_0_i,
+                                                                        eCSearchFL_0_i.forLoop_0_i
+                                                                    ]
+                                                                })
+                                                            ]
+                                                        }),
+                                                    digits:ultraObject.iterify({
+                                                            iterify:[
+                                                                ultraObject.iterify({
+                                                                    iterify:[
+                                                                        eCSearchFL_0_i.forLoop_0_i,[
                                                                             eCSearchFL_1_i.forLoop_0_i,
                                                                             eCSearchFL_1_i.forLoop_0_i,
                                                                             eCSearchFL_1_i.forLoopLength+1]
                                                                         ]
-                                                                    })
-                                                                ]
+                                                                })
+                                                            ]
                                                         })
                                                     })
                                                     // }  /**/
@@ -1006,7 +1016,6 @@
                                                 ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]][eCSearchFL_0_i.forLoop_0_i].valuePhrase = ultraObject.misc[ultraObject.scope[dev_obj.list]][eCSearchFL_0_i.forLoop_0_i][1]
                                                 ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]][eCSearchFL_0_i.forLoop_0_i].eCSIndex = eCSearchFL_1_i.forLoop_0_i
                                                 // }  /**/
-
                                                 return 'premature'
                                                                                                 
                                             }
@@ -1033,33 +1042,6 @@
                 ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].sameElement = 'false'
                 // }  /**/
                 
-                
-                if(   dev_obj.order === undefined   ){
-                    //this makes the instructions for the number map
-                    
-                    if(   ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].eCSNS.nSM === undefined   ){
-                        
-                        
-                        ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].eCSNS.nSM = ultraObject.iterableObject()
-                        var eCSearchFL_3_i = {
-                            forLoop_0_i:0,
-                            forLoopLength:ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].eCSNS.length,
-                            fn:function(   dev_obj   ){
-                                ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].eCSNS.nSM.add(   {value:eCSearchFL_3_i.forLoop_0_i}   )
-                            },
-                            args:{}
-                        }
-                        ultraObject.forLoop(   eCSearchFL_3_i   )
-                        ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].eCSNS.ready = 'true'
-                        
-                    }
-                       
-                    
-                }
-                ultraObject.numberSystem({
-                    digits:ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]],
-                    operation:'print',
-                })
                 debugger
                 ultraObject.scope.minus(   {index:eCSSelectTags_0_i}   )
                 // find the first that matches the condition, and hold it when all four match exit, if the form doesn't like what I did each value must try everything in the allTapgs itO before telling the end user they cant figure out whats going on.grabs three and swaps one
@@ -1510,8 +1492,8 @@
                             if(   dev_obj.index !== undefined   ){
                                 
                                 
-                                if(   iterableObjectO[dev_obj.index] === undefined   ){
-                                
+                                if(   Object.keys(iterableObjectO).indexOf(dev_obj.index.toString()) === -1   ){
+                                //hopefully this is es5
                                 
                                     iterableObjectO.length += 1
                                 
@@ -1667,7 +1649,7 @@
                             if(   dev_obj.index !== undefined   ){
                                 
                                 
-                                if(   iterableObjectO.abelast[dev_obj.index] === undefined   ){
+                                if(   Object.keys(iterableObjectO.abelast).indexOf(dev_obj.index.toString()) === -1   ){
                                 
                                 
                                     iterableObjectO.abelast.length += 1
