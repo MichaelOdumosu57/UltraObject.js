@@ -119,7 +119,7 @@ if the developer wants the digits to be changed
 // the actual nS gets modified according to given and the original .digits get modified according their respecitve digits in the actual digits
 // key ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM[   ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].digits.newDigits[   nSFL_5_i.forLoop_0_i   ][0], used to access the orginal digit in the numberSystem to change the digits accordingly
 */
-            function numberSystem(   dev_obj   ){
+function numberSystem(   dev_obj   ){
                 /* ablelasts
                     1 for nS
                     1 for misc
@@ -627,15 +627,15 @@ if the developer wants the digits to be changed
                             ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.currentNumber = 0
                             ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.range = 1
                             var nSFL_7_i = {
-                                forLoop_0_i:-ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].length,
+                                forLoop_0_i:-ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].nSM.length,
                                 forLoopLength:0,
                                 fn:function(   dev_obj   ){
                                     //1
                                     // ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.add(   {value:ultraObject.nS[   [   ultraObject.scope[nSNS_2_i]   ]   ][   (-nSFL_7_i.forLoop_0_i)-1   ]}   )
                                     //2 actual update
-                                    ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.currentNumber += (   ultraObject.nS[   [   ultraObject.scope[nSNS_2_i]   ]   ][   (-nSFL_7_i.forLoop_0_i)-1   ][0] - ultraObject.nS[   [   ultraObject.scope[nSNS_2_i]   ]   ][   (-nSFL_7_i.forLoop_0_i)-1   ][1]   ) * (    ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.range   )
-                                    //3
-                                    ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.range *=( ultraObject.nS[   [   ultraObject.scope[nSNS_2_i]   ]   ][   (-nSFL_7_i.forLoop_0_i)-1   ][2]  - ultraObject.nS[   [   ultraObject.scope[nSNS_2_i]   ]   ][   (-nSFL_7_i.forLoop_0_i)-1   ][1]   )
+                                    ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.currentNumber += (   ultraObject.nS[   [   ultraObject.scope[nSNS_2_i]   ]   ][   ultraObject.nS[   [   ultraObject.scope[nSNS_2_i]   ]   ].nSM[   (-nSFL_7_i.forLoop_0_i) -1   ][0]   ][0] - ultraObject.nS[   [   ultraObject.scope[nSNS_2_i]   ]   ][   ultraObject.nS[   [   ultraObject.scope[nSNS_2_i]   ]   ].nSM[   (-nSFL_7_i.forLoop_0_i) -1   ][0]   ][1]   ) * (    ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.range   )
+                                    //3 modifying the range for the next digit
+                                    ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.range *=( ultraObject.nS[   [   ultraObject.scope[nSNS_2_i]   ]   ][   ultraObject.nS[   [   ultraObject.scope[nSNS_2_i]   ]   ].nSM[   (-nSFL_7_i.forLoop_0_i) -1   ][0]   ][2]  - ultraObject.nS[   [   ultraObject.scope[nSNS_2_i]   ]   ][   ultraObject.nS[   [   ultraObject.scope[nSNS_2_i]   ]   ].nSM[   (-nSFL_7_i.forLoop_0_i) -1   ][0]   ][1]   )
                                 },
                                 args:dev_obj //{}
                             }
@@ -664,27 +664,28 @@ if the developer wants the digits to be changed
                             ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.currentNumber = dev_obj.currentNumber
                             ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.range = 1
                             
-                            
-                            if(   dev_obj.prevent === 'false'   ){
+                            /*we going to preserve the actual number numberSystem*/ //{
+                            if(   dev_obj.prevent === 'true'   ){
                                 
                                 
                                 
                             }
+                            // }  /**/
                             
                             /*we going to replace the actual number numberSystem*/ //{
-                            else if(   dev_obj.prevent !== 'false'   ){
+                            else if(   dev_obj.prevent !== 'true'   ){
                                 
                                 
                                 var nSFL_8_i = {
                                     forLoop_0_i: 0,
-                                    forLoopLength:ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].length,
+                                    forLoopLength:ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].nSM.length,
                                     fn:function(   dev_obj   ){
-                                        ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ][   nSFL_8_i.forLoop_0_i   ][0] = ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ][   nSFL_8_i.forLoop_0_i   ][1]
+                                        ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ][   ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].nSM[   nSFL_8_i.forLoop_0_i   ][0]   ][0] = ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ][   ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].nSM[   nSFL_8_i.forLoop_0_i   ][0]   ][1]
                                         var nSFL_9_i = {
-                                            forLoop_0_i: -(ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].length - 1 ),
+                                            forLoop_0_i: -(ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].nSM.length - 1 ),
                                             forLoopLength:0-nSFL_8_i.forLoop_0_i,
                                             fn:function(   dev_obj   ){
-                                                ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.range *= ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ][   -nSFL_9_i.forLoop_0_i   ][2] - ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ][   -nSFL_9_i.forLoop_0_i   ][1]
+                                                ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.range *= ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ][   ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].nSM[   -nSFL_9_i.forLoop_0_i   ][0]   ][2] - ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ][   ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].nSM[   -nSFL_9_i.forLoop_0_i   ][0]   ][1]
                                             },
                                             args:dev_obj //{}
                                         }
@@ -695,7 +696,7 @@ if the developer wants the digits to be changed
                                         //if the currentDigit is less than the range move on to the next digit
                                         // I hope parseInt is a ES5 solution and it always Math.floor
                                         console.log(   ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.range,'what it takes to get to the next digit'   )
-                                        if(   ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.currentNumber >= ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.range     ){
+                                        if(   ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.currentNumber >= ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.range && false   ){
                                             
                                             
                                             ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ][   nSFL_8_i.forLoop_0_i   ][0] += Math.floor(   ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.currentNumber/ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.range   )
@@ -710,6 +711,7 @@ if the developer wants the digits to be changed
                                     args:dev_obj //{}
                                 }
                                 ultraObject.forLoop(   nSFL_8_i   )
+                                debugger
                                 ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.range = 1
                                 
                             }
@@ -732,7 +734,7 @@ if the developer wants the digits to be changed
                             forLoop_0_i:0,
                             forLoopLength:ultraObject.nS[   ultraObject.scope[nSNS_3_i]   ].length,
                             fn:function(   dev_obj   ){
-                                ultraObject.nS[   ultraObject.scope[nSNS_3_i]   ].currentNumber.push(   ultraObject.nS[   ultraObject.scope[nSNS_3_i]   ][   nSFL_10_i.forLoop_0_i   ][0])
+                                ultraObject.nS[   ultraObject.scope[nSNS_3_i]   ].currentNumber.push(ultraObject.nS[   ultraObject.scope[nSNS_3_i]   ].currentNumber.push(   ultraObject.nS[   ultraObject.scope[nSNS_3_i]   ][   ultraObject.nS[   ultraObject.scope[nSNS_3_i]   ].nSM[    nSFL_10_i.forLoop_0_i   ][0]   ][0]))
                             },
                             args:dev_obj //{}
                         }

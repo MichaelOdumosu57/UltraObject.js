@@ -1,4 +1,4 @@
-
+    
     
                     function wait(   ms   ){
                        var start = new Date().getTime();
@@ -3057,27 +3057,28 @@
                             ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.currentNumber = dev_obj.currentNumber
                             ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.range = 1
                             
-                            
-                            if(   dev_obj.prevent === 'false'   ){
+                            /*we going to preserve the actual number numberSystem*/ //{
+                            if(   dev_obj.prevent === 'true'   ){
                                 
                                 
                                 
                             }
+                            // }  /**/
                             
                             /*we going to replace the actual number numberSystem*/ //{
-                            else if(   dev_obj.prevent !== 'false'   ){
+                            else if(   dev_obj.prevent !== 'true'   ){
                                 
                                 
                                 var nSFL_8_i = {
                                     forLoop_0_i: 0,
-                                    forLoopLength:ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].length,
+                                    forLoopLength:ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].nSM.length,
                                     fn:function(   dev_obj   ){
-                                        ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ][   nSFL_8_i.forLoop_0_i   ][0] = ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ][   nSFL_8_i.forLoop_0_i   ][1]
+                                        ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ][   ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].nSM[   nSFL_8_i.forLoop_0_i   ][0]   ][0] = ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ][   ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].nSM[   nSFL_8_i.forLoop_0_i   ][0]   ][1]
                                         var nSFL_9_i = {
-                                            forLoop_0_i: -(ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].length - 1 ),
+                                            forLoop_0_i: -(ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].nSM.length - 1 ),
                                             forLoopLength:0-nSFL_8_i.forLoop_0_i,
                                             fn:function(   dev_obj   ){
-                                                ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.range *= ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ][   -nSFL_9_i.forLoop_0_i   ][2] - ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ][   -nSFL_9_i.forLoop_0_i   ][1]
+                                                ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.range *= ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ][   ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].nSM[   -nSFL_9_i.forLoop_0_i   ][0]   ][2] - ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ][   ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].nSM[   -nSFL_9_i.forLoop_0_i   ][0]   ][1]
                                             },
                                             args:dev_obj //{}
                                         }
@@ -3088,7 +3089,7 @@
                                         //if the currentDigit is less than the range move on to the next digit
                                         // I hope parseInt is a ES5 solution and it always Math.floor
                                         console.log(   ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.range,'what it takes to get to the next digit'   )
-                                        if(   ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.currentNumber >= ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.range     ){
+                                        if(   ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.currentNumber >= ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.range && false   ){
                                             
                                             
                                             ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ][   nSFL_8_i.forLoop_0_i   ][0] += Math.floor(   ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.currentNumber/ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.range   )
@@ -3103,6 +3104,7 @@
                                     args:dev_obj //{}
                                 }
                                 ultraObject.forLoop(   nSFL_8_i   )
+                                debugger
                                 ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.range = 1
                                 
                             }
