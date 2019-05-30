@@ -1,4 +1,4 @@
-    
+
     
                     function wait(   ms   ){
                        var start = new Date().getTime();
@@ -1499,7 +1499,6 @@
                 
             }// in js when a function finds a property undefined when the developer expects something to be there along the bubble to the target inner property it can break the API, instead of write repeated if statements use this function to validate if the target property is availble in the data type
             function iterableObject(   dev_obj   ){
-                //. value the actual item your are adding to the object
                 // .stop for the abelast
                 
                  var iterableObjectO = {
@@ -1546,28 +1545,36 @@
                             
                             delete iterableObjectO[dev_obj.index]
                             iterableObjectO.resetLength()// resets the length
-                            var iterableObjectFL_0_i = {
-                                forLoop_0_i:0,
-                                forLoopLength:iterableObjectO.length,
-                                fn:function(   dev_obj   ){
-                                    
-                                    /*fixing the array part of the itO*/ //{
-                                    if(   dev_obj.index <= iterableObjectFL_0_i.forLoop_0_i && iterableObjectFL_0_i.forLoop_0_i !== iterableObjectO.length   ){ // at that point something must be missing
+                            
+                            
+                            if(   dev_obj.messy !== 'true'   ){
+                                
+                                
+                                var iterableObjectFL_0_i = {
+                                    forLoop_0_i:0,
+                                    forLoopLength:iterableObjectO.length,
+                                    fn:function(   dev_obj   ){
                                         
+                                        /*fixing the array part of the itO*/ //{
+                                        if(   dev_obj.index <= iterableObjectFL_0_i.forLoop_0_i && iterableObjectFL_0_i.forLoop_0_i !== iterableObjectO.length   ){ // at that point something must be missing
+                                            
+                                            
+                                            iterableObjectO[iterableObjectFL_0_i.forLoop_0_i] =  iterableObjectO[iterableObjectFL_0_i.forLoop_0_i+1]
+                                            delete iterableObjectO[iterableObjectFL_0_i.forLoop_0_i+1]//problems look here usually wants a variable or primitive to properly delete
+                                            
+                                            
+                                        }
+                                        // } /**/
                                         
-                                        iterableObjectO[iterableObjectFL_0_i.forLoop_0_i] =  iterableObjectO[iterableObjectFL_0_i.forLoop_0_i+1]
-                                        delete iterableObjectO[iterableObjectFL_0_i.forLoop_0_i+1]//problems look here usually wants a variable or primitive to properly delete
-                                        
-                                        
-                                    }
-                                    // } /**/
-                                    
-                                },
-                                args:{
-                                    index:dev_obj.index
-                                    }
+                                    },
+                                    args:{
+                                        index:dev_obj.index
+                                        }
+                                }
+                                ultraObject.forLoop(   iterableObjectFL_0_i   ) // realigns the iterable so the index are consecutive again
+                            
+                            
                             }
-                            ultraObject.forLoop(   iterableObjectFL_0_i   ) // realigns the iterable so the index are consecutive again
                             
                             
                         }
@@ -1696,30 +1703,37 @@
                             
                             
                             delete iterableObjectO.abelast[dev_obj.index]
-                            // delete iterableObjectO.abelast['q'+dev_obj.index.toString()]
                             iterableObjectO.abelast.resetLength()// resets the length
-                            var iterableObjectFL_0_i = {
-                                forLoop_0_i:0,
-                                forLoopLength:iterableObjectO.abelast.length,
-                                fn:function(   dev_obj   ){
-                                    
-                                    
-                                    if(   dev_obj.index <= iterableObjectFL_0_i.forLoop_0_i && iterableObjectFL_0_i.forLoop_0_i !== iterableObjectO.abelast.length  ){ // at that point something must be missing
+                            
+                            
+                            if(   dev_obj.messy !== 'true'   ){
+                                
+                                
+                                var iterableObjectFL_0_i = {
+                                    forLoop_0_i:0,
+                                    forLoopLength:iterableObjectO.abelast.length,
+                                    fn:function(   dev_obj   ){
                                         
                                         
-                                        iterableObjectO.abelast[iterableObjectFL_0_i.forLoop_0_i] =  iterableObjectO.abelast[iterableObjectFL_0_i.forLoop_0_i+1]
-                                        delete iterableObjectO.abelast[iterableObjectFL_0_i.forLoop_0_i+1]//problems look here usually wants a variable or primitive to properly delete
+                                        if(   dev_obj.index <= iterableObjectFL_0_i.forLoop_0_i && iterableObjectFL_0_i.forLoop_0_i !== iterableObjectO.abelast.length  ){ // at that point something must be missing
+                                            
+                                            
+                                            iterableObjectO.abelast[iterableObjectFL_0_i.forLoop_0_i] =  iterableObjectO.abelast[iterableObjectFL_0_i.forLoop_0_i+1]
+                                            delete iterableObjectO.abelast[iterableObjectFL_0_i.forLoop_0_i+1]//problems look here usually wants a variable or primitive to properly delete
+                                            
+                                            
+                                        }
                                         
                                         
-                                    }
-                                    
-                                    
-                                },
-                                args:{
-                                    index:dev_obj.index
-                                    }
+                                    },
+                                    args:{
+                                        index:dev_obj.index
+                                        }
+                                }
+                                ultraObject.forLoop(   iterableObjectFL_0_i   ) // realigns the iterable so the index are consecutive again
+                            
+                            
                             }
-                            ultraObject.forLoop(   iterableObjectFL_0_i   ) // realigns the iterable so the index are consecutive again
                             
                             
                         }
