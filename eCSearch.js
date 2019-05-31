@@ -59,31 +59,6 @@ function eCSearch(   dev_obj   ){
                 }
                 // }  /**/
                 
-                /*using the correct numberSystem*/ //{
-                if(   dev_obj.nS !== undefined   ){
-                    
-                    
-                    ultraObject.numberSystem({
-                        operation:'create',
-                        digits:ultraObject.iterify({
-                                iterify:[
-                                    ultraObject.iterify({
-                                        iterify:[0,0,99]
-                                    }),
-                                    ultraObject.iterify({
-                                        iterify:[0,-13,92]
-                                    }),
-                                    ultraObject.iterify({
-                                        iterify:[0,5,71]
-                                    })
-                                ]
-                            }),
-                        nSM:ultraObject.iterify({iterify:[0,1,2]})
-                    })
-                    
-                    
-                }
-                // }  /**/
                     
                 console.group(   'items needed to search for elements based on keywords'   )
                 ultraObject.objInvloved(ultraObject.iterify({
@@ -159,15 +134,110 @@ function eCSearch(   dev_obj   ){
                             forLoopLength:ultraObject.allTags[ultraObject.scope[dev_obj.aT]].length,
                             fn:function(   dev_obj   ){
                                 
+                                /* if were looking at the same element*/ //{
+                                // with the same testing properties in ultraObject.misc[ultraObject.scope[dev_obj.look]] how will we know so far it always is
+                                // key ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].sameElement helps the API skip over checking  the same DOMElemnt that moved previous digits in the NS
+                                if(   eCSearchFL_0_i.forLoop_0_i > 0 && ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]][eCSearchFL_0_i.forLoop_0_i-1 ].eCSIndex === eCSearchFL_1_i.forLoop_0_i    ){
+                                                                    
+                                    
+                                    //if PROBLEM use propertyUndefined to validate the selectedTag for interragtion is there as well as its eCSIndex
+                                    
+                                        ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].sameElement = 'true'
+                                    
+                                    
+                                }
+                                
+                                
+                                else if(   eCSearchFL_0_i.forLoop_0_i > 0 && ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]][eCSearchFL_0_i.forLoop_0_i-1 ].eCSIndex !== eCSearchFL_1_i.forLoop_0_i    ){
+                                                                    
+                                    
+                                    //if PROBLEM use propertyUndefined to validate the selectedTag for interragtion is there as well as its eCSIndex
+                                    
+                                        ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].sameElement = 'false'
+                                    
+                                    
+                                }
+                                // }  /**/
+                                
                                 /* possible places to look to fill in the element to satisfy end users query*/ //{
+                                // PROBLEM if you have scoping problems with this fn look here
                                 var eCSearchFL_2_i = {
                                     forLoop_0_i:0,
                                     forLoopLength:ultraObject.misc[ultraObject.scope[dev_obj.look]].length,
                                     fn:function(   dev_obj   ){
                                         
                                         
-                                        if(   ultraObject.allTags[   ultraObject.scope[dev_obj.aT]   ][eCSearchFL_1_i.forLoop_0_i][   ultraObject.misc[ultraObject.scope[dev_obj.look]   ][eCSearchFL_2_i.forLoop_0_i][0]   ] !== undefined   ){
-                                            //means if the comparison from the element property actually produces a string PROBLEM, if all in dev obj look is undefined but dev-obj.all = true the element could be skipped
+                                        if(   ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].sameElement ==='true'   ){
+                                            
+                                            /* it better be in the scope */ //{
+                                            // im really counting on this to be in the proper spot in the scope if not i have to take it from the scope everytime and get it from the abelast
+                                            var eCSNS_0_i = ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].nS
+                                            // }
+                                            if(   ultraObject.nS[   ultraObject.scope[eCSNS_0_i]   ][   eCSearchFL_0_i.forLoop_0_i   ] === undefined   ){
+                                                    
+                                                /*creating the digits and metadata for the numberSystem*/ //{
+                                                ultraObject.numberSystem({
+                                                    operation:'create',
+                                                    nS:ultraObject.scope[   eCSNS_0_i   ],
+                                                    nSM:ultraObject.iterify({
+                                                            iterify:[
+                                                                ultraObject.iterify({
+                                                                    iterify:[
+                                                                        eCSearchFL_0_i.forLoop_0_i,
+                                                                        eCSearchFL_0_i.forLoop_0_i
+                                                                    ]
+                                                                })
+                                                            ]
+                                                        }),
+                                                    digits:ultraObject.iterify({
+                                                            iterify:[
+                                                                ultraObject.iterify({
+                                                                    iterify:[
+                                                                        eCSearchFL_0_i.forLoop_0_i,[
+                                                                            eCSearchFL_1_i.forLoop_0_i,
+                                                                            eCSearchFL_1_i.forLoop_0_i,
+                                                                            eCSearchFL_1_i.forLoopLength+1]
+                                                                        ]
+                                                                })
+                                                            ]
+                                                        })
+                                                    })
+                                                // }  /**/
+                                                                                                    
+                                            }
+                                            
+
+                                            
+                                            if(   ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]   ][   eCSearchFL_0_i.forLoop_0_i    ] === undefined   ){
+                                                
+                                                /*creating the ideal select tag for this function*/ //{
+                                                ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]   ].add({
+                                                    value:ultraObject.iterableObject()
+                                                })
+                                                // }  /**/
+                                            }
+                                            
+                                            /*adjusting this digits itO to that of the numberSystem */ //{
+                                            ultraObject.nS[   ultraObject.scope[eCSNS_0_i]   ][   ultraObject.nS[   ultraObject.scope[eCSNS_0_i]   ].nSM[   eCSearchFL_0_i.forLoop_0_i   ][0]   ][0] = eCSearchFL_1_i.forLoop_0_i
+                                            //helps change the number when the match is found so the NS doesnt take over
+                                            //if problems look here idk if it supposed to follow the nSM or not
+                                            ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]][   eCSearchFL_0_i.forLoop_0_i   ].item = ultraObject.allTags[ultraObject.scope[dev_obj.aT]][   eCSearchFL_1_i.forLoop_0_i   ]
+                                            ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]][   eCSearchFL_0_i.forLoop_0_i   ].query = ultraObject.allTags[ultraObject.scope[dev_obj.aT]][   eCSearchFL_1_i.forLoop_0_i   ][ultraObject.misc[ultraObject.scope[dev_obj.look]][eCSearchFL_2_i.forLoop_0_i][0]]
+                                            ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]][eCSearchFL_0_i.forLoop_0_i].xMark = ultraObject.misc[ultraObject.scope[dev_obj.look]][eCSearchFL_2_i.forLoop_0_i][0]
+                                            ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]][eCSearchFL_0_i.forLoop_0_i].keyword = ultraObject.misc[ultraObject.scope[dev_obj.list]][eCSearchFL_0_i.forLoop_0_i][0]
+                                            ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]][eCSearchFL_0_i.forLoop_0_i].valuePhrase = ultraObject.misc[ultraObject.scope[dev_obj.list]][eCSearchFL_0_i.forLoop_0_i][1]
+                                            ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]][eCSearchFL_0_i.forLoop_0_i].eCSIndex = eCSearchFL_1_i.forLoop_0_i
+                                            // }  /**/
+                                            
+                                            
+                                            return 'premature'
+                                                
+                                                
+                                        }
+                                        
+                                        
+                                        else if(   ultraObject.allTags[   ultraObject.scope[dev_obj.aT]   ][eCSearchFL_1_i.forLoop_0_i][   ultraObject.misc[ultraObject.scope[dev_obj.look]   ][eCSearchFL_2_i.forLoop_0_i][0]   ] !== undefined  || dev_obj.all  === 'true'   ){
+                                            //means if the comparison from the element property actually produces a string PROBLEM, if all in dev obj look is undefined but dev-obj.all = true the element could be skipped now its not
                                                 
                                             if(   ultraObject.allTags[   ultraObject.scope[dev_obj.aT]   ][eCSearchFL_1_i.forLoop_0_i][   ultraObject.misc[ultraObject.scope[dev_obj.look]   ][eCSearchFL_2_i.forLoop_0_i][0]   ].indexOf(   ultraObject.misc[   ultraObject.scope[dev_obj.list]   ][eCSearchFL_0_i.forLoop_0_i][0]   ) !== -1 || dev_obj.all  === 'true'  ){
                                                 //this must mean it found a match amoung title of user input and something in the string of the property of the element or were looking at every value and using advanced techniques to invesitage our answers
@@ -176,11 +246,35 @@ function eCSearch(   dev_obj   ){
                                                 // key ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].createdNS, that helps the function know if the related NS is avalible
                                                 if(   ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].createdNS !== 'true'   ){
                                                     
-                                                   
+
                                                     ultraObject.numberSystem({
-                                                        operation:'create'
+                                                        operation:'create',
+                                                        digits:ultraObject.iterify({
+                                                                iterify:[
+                                                                    ultraObject.iterify({
+                                                                        iterify:[
+                                                                            eCSearchFL_0_i.forLoop_0_i,[
+                                                                            eCSearchFL_1_i.forLoop_0_i,
+                                                                            eCSearchFL_1_i.forLoop_0_i,
+                                                                            eCSearchFL_1_i.forLoopLength+1]
+                                                                        ]
+                                                                    })
+                                                                ]
+                                                        }),
+                                                        nSM:ultraObject.iterify({
+                                                                iterify:[
+                                                                    ultraObject.iterify({
+                                                                        iterify:[
+                                                                            eCSearchFL_0_i.forLoop_0_i,
+                                                                            eCSearchFL_0_i.forLoop_0_i
+                                                                        ]
+                                                                    })
+                                                                ]
+                                                        })
                                                     })
                                                     var eCSNS_0_i = ultraObject.scope.add(   {value:ultraObject.nS.abelast[ultraObject.nS.abelast.length-1]}   )
+                                                    ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].nS =  eCSNS_0_i
+                                                    // i do this because i need a closure so that all algorithms in the loop can access it
                                                     ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].createdNS = 'true'
                                                     
                                                     
@@ -191,39 +285,68 @@ function eCSearch(   dev_obj   ){
                                                     
                                                     
                                                     var eCSNS_0_i = ultraObject.scope.add(   {value:dev_obj.nS}   )
+                                                    ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].nS = eCSNS_0_i
+                                                                                                        
+                                                    
+                                                }
+                                                
+                                                
+                                                else if(   ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].createdNS === 'true'){
+                                                    
+                                                    
+                                                    var eCSNS_0_i = ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].nS
                                                     
                                                     
                                                 }
                                                 // }  /**/
                                                 
                                                 if(   ultraObject.nS[   ultraObject.scope[eCSNS_0_i]   ][   eCSearchFL_0_i.forLoop_0_i   ] === undefined   ){
-                                                        
+                                                    
+                                                    
                                                     /*creating the digits and metadata for the numberSystem*/ //{
-                                                    ultraObject.nS[   ultraObject.scope[eCSNS_0_i]   ].add({
-                                                        value:ultraObject.iterify({
+                                                    ultraObject.numberSystem({
+                                                    operation:'create',
+                                                    nS:ultraObject.scope[   eCSNS_0_i   ],
+                                                    nSM:ultraObject.iterify({
                                                             iterify:[
-                                                                eCSearchFL_1_i.forLoop_0_i,
-                                                                eCSearchFL_1_i.forLoop_0_i,
-                                                                eCSearchFL_1_i.forLoopLength+1
+                                                                ultraObject.iterify({
+                                                                    iterify:[
+                                                                        eCSearchFL_0_i.forLoop_0_i,
+                                                                        eCSearchFL_0_i.forLoop_0_i
+                                                                    ]
+                                                                })
+                                                            ]
+                                                        }),
+                                                    digits:ultraObject.iterify({
+                                                            iterify:[
+                                                                ultraObject.iterify({
+                                                                    iterify:[
+                                                                        eCSearchFL_0_i.forLoop_0_i,[
+                                                                            eCSearchFL_1_i.forLoop_0_i,
+                                                                            eCSearchFL_1_i.forLoop_0_i,
+                                                                            eCSearchFL_1_i.forLoopLength+1]
+                                                                        ]
+                                                                })
                                                             ]
                                                         })
                                                     })
                                                     // }  /**/
                                                                                                         
                                                 }
-                                                
-                                                
+                                            
+                                            
                                                 if(   ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]   ][   eCSearchFL_0_i.forLoop_0_i    ] === undefined   ){
-                                                    
+                                                
                                                     /*creating the ideal select tag for this function*/ //{
                                                     ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]   ].add({
                                                         value:ultraObject.iterableObject()
                                                     })
                                                     // }  /**/
+                                                    
                                                 }
-                                                
                                                 /*adjusting this digits itO to that of the numberSystem */ //{
-                                                ultraObject.nS[   ultraObject.scope[eCSNS_0_i]   ][0] = eCSearchFL_1_i.forLoop_0_i
+                                                
+                                                ultraObject.nS[   ultraObject.scope[eCSNS_0_i]   ][   ultraObject.nS[   ultraObject.scope[eCSNS_0_i]   ].nSM[   eCSearchFL_0_i.forLoop_0_i   ][0]   ][0] = eCSearchFL_1_i.forLoop_0_i
                                                 //helps change the number when the match is found so the NS doesnt take over
                                                 //if problems look here idk if it supposed to follow the nSM or not
                                                 ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]][   eCSearchFL_0_i.forLoop_0_i   ].item = ultraObject.allTags[ultraObject.scope[dev_obj.aT]][   eCSearchFL_1_i.forLoop_0_i   ]
@@ -232,14 +355,9 @@ function eCSearch(   dev_obj   ){
                                                 ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]][eCSearchFL_0_i.forLoop_0_i].keyword = ultraObject.misc[ultraObject.scope[dev_obj.list]][eCSearchFL_0_i.forLoop_0_i][0]
                                                 ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]][eCSearchFL_0_i.forLoop_0_i].valuePhrase = ultraObject.misc[ultraObject.scope[dev_obj.list]][eCSearchFL_0_i.forLoop_0_i][1]
                                                 ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]][eCSearchFL_0_i.forLoop_0_i].eCSIndex = eCSearchFL_1_i.forLoop_0_i
-                                                debugger
                                                 // }  /**/
-                                                
-                                                
-                                                
                                                 return 'premature'
-                                            
-                                            
+                                                                                                
                                             }
                                          
                                             
@@ -261,37 +379,20 @@ function eCSearch(   dev_obj   ){
                     args:dev_obj,
                 }
                 ultraObject.forLoop(   eCSearchFL_0_i   )
+                delete ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].sameElement
                 // }  /**/
                 
-                
-                if(   dev_obj.order === undefined   ){
-                    //this makes the instructions for the number map
-                    
-                    if(   ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].eCSNS.nSM === undefined   ){
-                        
-                        
-                        ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].eCSNS.nSM = ultraObject.iterableObject()
-                        var eCSearchFL_3_i = {
-                            forLoop_0_i:0,
-                            forLoopLength:ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].eCSNS.length,
-                            fn:function(   dev_obj   ){
-                                ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].eCSNS.nSM.add(   {value:eCSearchFL_3_i.forLoop_0_i}   )
-                            },
-                            args:{}
-                        }
-                        ultraObject.forLoop(   eCSearchFL_3_i   )
-                        ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].eCSNS.ready = 'true'
-                        
-                    }
-                       
-                    
-                }
-                ultraObject.numberSystem({
-                    digits:ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]],
-                    operation:'print',
-                })
-                debugger
+                /*selectTags -scope   */ //{
                 ultraObject.scope.minus(   {index:eCSSelectTags_0_i}   )
+                // }  /**/
+                
+                /*nS   */ //{
+                // this is a good example when an itO was never accessed by an outer function
+                // here you never need to take it out the scope it was never in the scope
+                // var eCSNS_0_i = ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].nS
+                // ultraObject.scope.minus(   {index:eCSNS_0_i}   )
+                // }  /**/
+                
                 // find the first that matches the condition, and hold it when all four match exit, if the form doesn't like what I did each value must try everything in the allTapgs itO before telling the end user they cant figure out whats going on.grabs three and swaps one
                 
                 // so like

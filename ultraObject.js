@@ -1,4 +1,4 @@
-
+    
     
                     function wait(   ms   ){
                        var start = new Date().getTime();
@@ -723,13 +723,6 @@
                 }
                 // }  /**/
                 
-                /*using the correct numberSystem*/ //{
-                if(   dev_obj.nS !== undefined   ){
-                    
-                    
-                    
-                }
-                // }  /**/
                     
                 console.group(   'items needed to search for elements based on keywords'   )
                 ultraObject.objInvloved(ultraObject.iterify({
@@ -831,6 +824,7 @@
                                 // }  /**/
                                 
                                 /* possible places to look to fill in the element to satisfy end users query*/ //{
+                                // PROBLEM if you have scoping problems with this fn look here
                                 var eCSearchFL_2_i = {
                                     forLoop_0_i:0,
                                     forLoopLength:ultraObject.misc[ultraObject.scope[dev_obj.look]].length,
@@ -841,14 +835,14 @@
                                             
                                             /* it better be in the scope */ //{
                                             // im really counting on this to be in the proper spot in the scope if not i have to take it from the scope everytime and get it from the abelast
-                                            var eCSNS_0_i = ultraObject.scope[   ultraObject.scope.length-1   ]
+                                            var eCSNS_0_i = ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].nS
                                             // }
                                             if(   ultraObject.nS[   ultraObject.scope[eCSNS_0_i]   ][   eCSearchFL_0_i.forLoop_0_i   ] === undefined   ){
                                                     
                                                 /*creating the digits and metadata for the numberSystem*/ //{
                                                 ultraObject.numberSystem({
                                                     operation:'create',
-                                                    nS:eCSNS_0_i,
+                                                    nS:ultraObject.scope[   eCSNS_0_i   ],
                                                     nSM:ultraObject.iterify({
                                                             iterify:[
                                                                 ultraObject.iterify({
@@ -943,6 +937,8 @@
                                                         })
                                                     })
                                                     var eCSNS_0_i = ultraObject.scope.add(   {value:ultraObject.nS.abelast[ultraObject.nS.abelast.length-1]}   )
+                                                    ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].nS =  eCSNS_0_i
+                                                    // i do this because i need a closure so that all algorithms in the loop can access it
                                                     ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].createdNS = 'true'
                                                     
                                                     
@@ -953,8 +949,8 @@
                                                     
                                                     
                                                     var eCSNS_0_i = ultraObject.scope.add(   {value:dev_obj.nS}   )
-                                                    
-                                                    
+                                                    ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].nS = eCSNS_0_i
+                                                                                                        
                                                     
                                                 }
                                                 
@@ -962,7 +958,7 @@
                                                 else if(   ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].createdNS === 'true'){
                                                     
                                                     
-                                                    var eCSNS_0_i = ultraObject.scope[   ultraObject.scope.length-1   ]
+                                                    var eCSNS_0_i = ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].nS
                                                     
                                                     
                                                 }
@@ -974,7 +970,7 @@
                                                     /*creating the digits and metadata for the numberSystem*/ //{
                                                     ultraObject.numberSystem({
                                                     operation:'create',
-                                                    nS:eCSNS_0_i,
+                                                    nS:ultraObject.scope[   eCSNS_0_i   ],
                                                     nSM:ultraObject.iterify({
                                                             iterify:[
                                                                 ultraObject.iterify({
@@ -1050,7 +1046,17 @@
                 delete ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].sameElement
                 // }  /**/
                 
+                /*selectTags -scope   */ //{
                 ultraObject.scope.minus(   {index:eCSSelectTags_0_i}   )
+                // }  /**/
+                
+                /*nS   */ //{
+                // this is a good example when an itO was never accessed by an outer function
+                // here you never need to take it out the scope it was never in the scope
+                // var eCSNS_0_i = ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].nS
+                // ultraObject.scope.minus(   {index:eCSNS_0_i}   )
+                // }  /**/
+                
                 // find the first that matches the condition, and hold it when all four match exit, if the form doesn't like what I did each value must try everything in the allTapgs itO before telling the end user they cant figure out whats going on.grabs three and swaps one
                 
                 // so like
@@ -1910,11 +1916,20 @@
                             
                             if(   dev_obj.directions[packItFL_0_i.forLoop_0_i] === 'match'   ){
                                 console.group(   'an attempt to fill items'   )
-                                    ultraObject.objInvloved({
-                                            0:packItSA,
-                                            1:dev_obj.order,
-                                            2:ultraObject.subGroupsO
+                                ultraObject.objInvloved(
+                                    ultraObject.iterify({
+                                        iterify:[
+                                            packItSA,
+                                            dev_obj.order,
+                                            ultraObject.subGroupsO]
                                         })
+                                )
+                                
+                                /*objIO -self -ablelast   */ //{
+                                ultraObject.objIO.minus(   {index:ultraObject.objIO.abelast.length-1}   )
+                                ultraObject.objIO.abelast.minus(   {index:ultraObject.objIO.abelast.length-1}   )
+                                // }  /**/
+
                                 console.groupEnd()
                                 var packItFL_1_i = {
                                     forLoop_0_i:0,
@@ -2304,10 +2319,20 @@
                                     nextItem:'complete',
                                 })
                             console.group(   'grabbing the chosen elements from the object'   )
-                                ultraObject.objInvloved({
-                                        0:selectReturn,
-                                        1:selectReturnMD
-                                    })
+                            ultraObject.objInvloved(
+                                ultraObject.iterify({
+                                    iterify:[
+                                        selectReturn,
+                                        selectReturnMD
+                                    ]
+                                })
+                            )
+                            
+                            /*objIO -self -ablelast   */ //{
+                            ultraObject.objIO.minus(   {index:ultraObject.objIO.abelast.length-1}   )
+                            ultraObject.objIO.abelast.minus(   {index:ultraObject.objIO.abelast.length-1}   )
+                            // }  /**/
+                            
                             console.groupEnd()
                             selectReturn.subGroupsMap = selectReturnMD
                             return selectReturn
@@ -2476,11 +2501,19 @@
                                     result:'true'
                                     })
                             console.groupEnd()
-                            ultraObject.objInvloved({
-                                        0:dev_obj.map.ending,
-                                        1:ultraObject.subGroupsO[subGroupsBOOL.spot],
-                                        2:dev_obj.map.MB_0_i
-                                    })
+                            ultraObject.objInvloved(
+                                ultraObject.iterify({iterify:[
+                                    dev_obj.map.ending,
+                                    ultraObject.subGroupsO[subGroupsBOOL.spot],
+                                    dev_obj.map.MB_0_i
+                                ]})
+                            )
+                            
+                            /*objIO -self -ablelast   */ //{
+                            ultraObject.objIO.minus(   {index:ultraObject.objIO.abelast.length-1}   )
+                            ultraObject.objIO.abelast.minus(   {index:ultraObject.objIO.abelast.length-1}   )
+                            // }  /**/
+                            
                         console.groupEnd()
                         
                                     
@@ -4885,6 +4918,7 @@
             function preFillForm(   dev_obj   ){
                 /*abelast
                     3 for selectTags
+                    1 for nS
                 */
                 //findings
                     //i find that form items are not dependent on the number of children, the form can have children than containing the input
@@ -4934,12 +4968,20 @@
                     aT: pFFATI_0_i,
                     all:'true'
                 })
+                debugger
                 console.group(   'at this point the ultraObject has meaningful values for all arguments from the init fn'   )
-                // ultraObject.objInvloved({
-                //     0:ultraObject.allTags[ultraObject.allTags.eCSST],
-                // })
                 console.groupEnd()
+                
+                /*selectTags +scope +abelast */ //{
                 var pFFST_0_i =  ultraObject.scope.add(   {value:ultraObject.selectTags.abelast[0]}   )
+                ultraObject.selectTags.abelast.add(   {value:pFFST_0_i}   )
+                // }  /**/
+                
+                /*nS +scope  +abelast  */ //{
+                var pFFNS_0_i =  ultraObject.scope.add(   {value:ultraObject.nS.abelast[   ultraObject.nS.abelast.length-1   ]}   )
+                ultraObject.selectTags.abelast.add(   {value:pFFNS_0_i}   )
+                // }  /**/
+                
                 ultraObject.selectTags.abelast.minus(   {index:0}   )
                 ultraObject.packIt({
                     order:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]],
@@ -4973,7 +5015,12 @@
                                 ultraObject.selectTags[ultraObject.scope[pFFST_1_i]].add(   {value:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.parentElement}   )
                                 ultraObject.selectTags[ultraObject.scope[pFFST_1_i]].add(   {value:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.parentNode}   )
                                 //siblings retuns HTMLCollection
+                                
+                                /*selectTags +scope + self +abelast  */ //{
                                 var pFFST_2_i = ultraObject.scope.add(   {value:ultraObject.selectTags.add(   {value:ultraObject.iterableObject()}   )}   )
+                                ultraObject.selectTags.abelast.add(   {value:pFFST_2_i}   )
+                                // }  /**/
+                                
                                 var pFFFL_4_i = {
                                     forLoop_0_i:0,
                                     forLoopLength:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.parentElement.children.length,
@@ -4995,7 +5042,12 @@
                                 ultraObject.forLoop(   pFFFL_4_i   )
                                 delete ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.sameChild
                                 //children retuns HTMLCollection
+                                
+                                /*selectTags +scope + self +abelast  */ //{
                                 var pFFST_3_i = ultraObject.scope.add(   {value:ultraObject.selectTags.add(   {value:ultraObject.iterableObject()}   )}   )
+                                ultraObject.selectTags.abelast.add(   {value:pFFST_3_i}   )
+                                // }  /**/
+                                
                                 var pFFFL_5_i = {
                                     forLoop_0_i:0,
                                     forLoopLength:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.children.length,
@@ -5041,8 +5093,8 @@
                                                     console.log(   'index',pFFFL_0_i.forLoop_0_i   )
                                                     var pFFBOOL_0_i = {0:false}
                                                     pFFBOOL_0_i = ultraObject.severalOr({
-                                                        compTo: ultraObject.selectTags[ultraObject.scope[pFFST_0_i]].eCSNS.currentNumber[pFFFL_0_i.forLoop_0_i],
-                                                        compAgn: ultraObject.selectTags[ultraObject.scope[pFFST_0_i]].eCSNS.currentNumber,
+                                                        compTo: ultraObject.nS[ultraObject.scope[pFFNS_0_i]].currentNumber[pFFFL_0_i.forLoop_0_i],
+                                                        compAgn: ultraObject.nS[ultraObject.scope[pFFNS_0_i]].currentNumber,
                                                         boolean:pFFBOOL_0_i,
                                                         which:0,
                                                         how:function(   dev_obj   ){
@@ -5173,11 +5225,11 @@
                                         ['siblings',
                                             {
                                             'tagName':{
-                                                            ultraObject:{
-                                                                   tagOptions:ultraObject.iterify(   {iterify:['label','div']}   ),
-                                                                //   care:ultraObject.iterify(   {iterify:['yes','yes','no']})
-                                                            }
+                                                ultraObject:{
+                                                       tagOptions:ultraObject.iterify({iterify:['label','div']}),
+                                                    //   care:ultraObject.iterify(   {iterify:['yes','yes','no']})
                                                         }
+                                                    }
                                             }
                                         ],
                                         ['children',
