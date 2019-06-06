@@ -1,4 +1,8 @@
-    
+    /*
+        TO DO ,
+        make an itO for endpoint communication
+        which is more to generate an XHR or try to use it again,its better to get it again
+    */
     
                     function wait(   ms   ){
                        var start = new Date().getTime();
@@ -166,7 +170,9 @@
                 eventName:"",           //wants a DOMString event name
                 event_obj:undefined,              //wants an Event
                 DOM_child:iterableObject(), // wants a DOM element
-                addEventListener:addEventListener, //  dev_obj.fn is used for 1st party dev to add their custom function to the listener
+                XHR:iterableObject(), //ajax or XHR choose now
+                endpoint:endpoint,
+                addEventListener:addEventListener, //  dev_obj.fn is used for 1st party dev to add their custom function to the listener .. can do this my self see why other libraries get mad when i make this
                 passing_args: function(   dev_obj   ){
                     console.log(arguments)
                 }, // use this to see parameters from functions that have something to offer
@@ -247,6 +253,47 @@
                 }
             }
             var ultraObject = ultraObjectReset()
+            function endpoint(   dev_obj   ){
+                /*
+                    key points
+                    the developer places into XHR itO what function they will use to make the request
+                    you provide functionality to help make goobly gook easier like inserting all values into a function then giving it a go
+                */
+                /* ablelasts
+                    1 for XHR
+                */
+                /*
+                    .xhttp:the xhr functionality the developer wants to use
+                        what goes here is an itO for all the items the dev needs to get the job done
+                    .instruct: telling the function how to use what in XHR[index] to get the job done
+                    .eventName: in case of  XMLHttpRequest i need to a function as an event handler to make use of the responseText
+                    .eventHandler:in case of  XMLHttpRequest  fn for eventName
+                */
+                
+                /*adding the dev_obj to args*/ //{
+                var endpoint_dev_obj = ultraObject.args.add(   {value:ultraObject.iterify(   {iterify:dev_obj}   )   }   )
+                // }  /**/
+                
+                /*XHR +scope +self +abelast */ //{
+                var ePXHR_0_i = ultraObject.scope.add(   {value:ultraObject.XHR.add(   {value:dev_obj.xhttp}   )}   )
+                ultraObject.XHR.abelast.add(   {value:ultraObject.scope[ePXHR_0_i ]}   )
+                // }  /**/
+                
+                /*XHR +scope +self +abelast */ //{
+                
+                    /* XMLHttpRequest*/ //{
+                    // it expect an XMLHttpRequest in  index 0
+                    if(   dev_obj.instruct === 'XMLHttpRequest'   ){
+                        ultraObject.XHR[   ultraObject.scope[ePXHR_0_i]   ].eventName = dev_obj.eventName
+                        ultraObject.XHR[   ultraObject.scope[ePXHR_0_i]   ].eventHandler = dev_obj.eventHandler
+                        ultraObject.XHR[   ultraObject.scope[ePXHR_0_i]   ][0]
+                    }
+                    // }  /**/
+                    
+                // }  /**/
+                
+                
+            }// function handling all things endpoint
             function objInvloved(   dev_obj   ){
                 /* ablelasts
                     1 for objIO
@@ -371,9 +418,8 @@
                 
                 dev_obj.xhttp.open(   dev_obj.protocol,dev_obj.target,dev_obj.unk_bool   )
             } // gets in contact with the host
-            function xhttpreadystatechange(){
+            function xhttpreadystatechange(   dev_obj   ){
                 console.log(    this   )
-                var dev_obj = undefined
                 
                 if (    this.readyState == 4 && this.status == 200   ) {
                 
@@ -750,46 +796,9 @@
                         var indexSelect = 0
                         // }  /**/
                         
-                        /* if I want to go ahead anad actually add one to our numberSystem*/ //{
-                        if(   ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]] !== undefined   ){
-                            
-                            /* this means i made or in the process of making the nS*/ //{
-                            if(   ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].eCSNS !== undefined   ){
-                                
-                                /* this means that I have made that specific digit*/ //{
-                                if(   ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].eCSNS[eCSearchFL_0_i.forLoop_0_i] !== undefined   ){
-                                
-                                
-                                    if(   dev_obj.same !== 'true'   ){
-                                        //look at the next set of values
-                                        
-                                        if(   eCSearchFL_0_i.forLoop_0_i === 0   ){
-                                            ultraObject.numberSystem({
-                                                digits:ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]],
-                                                operation:'add',
-                                                amount: 1 //helps the function look at the next combination set
-                                            })
-                                        }
-                                        
-                                        
-                                    }
-                                    
-                                    
-                                    /* what element in the document preFillForm will consider for the respecitve list item*/ //{
-                                    indexSelect = ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].eCSNS[eCSearchFL_0_i.forLoop_0_i][0]
-                                    console.log('it tells me to start here', ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].eCSNS[eCSearchFL_0_i.forLoop_0_i][0])
-                                    // }  /**/
-                                               
-                            
-                                }
-                                // }  /**/
-                               
-                                
-                            }
-                            // }  /**/
-                             
-                                
-                        }
+                        /*at this point you need to us the nS to modify indexSelect/ //{
+                        // use propertyUndefined to see if the nS is there then receive external output of an updated nS
+                        //  to properly modify indexSelect so elements are not queired again
                         // }  /**/
                         
                         /* where every tag is looked at in relation to the respective list*/ //{
@@ -1078,7 +1087,6 @@
                 for this we need to make a number system that allows to cover every item
                 */
             }// seaches for elements with the queried filters and does things to them
-        
             function removeCN(   dev_obj   ){// removes specified childNodes from the DOM
                 
                 
@@ -1293,10 +1301,7 @@
                                 }
                                 
                                 
-                                else if(   dev_obj.how !== undefined   ){
-                                    
-                                    
-                                    if(   typeof(   dev_obj.how   ) === 'function'   ){
+                                else if(   typeof(   dev_obj.how   ) === 'function'   ){
                                         
                                         
                                         severalOrFnAnswer = dev_obj.how({
@@ -1329,12 +1334,6 @@
                                         
                                     }
                                     
-                                    
-                                }
-                                
-                                
-            
-                                
                                 
                             },
                         args:{
@@ -1494,6 +1493,10 @@
                 
             }// in js when a function finds a property undefined when the developer expects something to be there along the bubble to the target inner property it can break the API, instead of write repeated if statements use this function to validate if the target property is availble in the data type
             function iterableObject(   dev_obj   ){
+                /*
+                    key points
+                    when you add with index & value NEVER minus with index, ALWAYS minus with index & dev_obj.messy = 'true'
+                */
                 // .stop for the abelast
                 
                  var iterableObjectO = {
@@ -2584,6 +2587,12 @@
                     
             }// returns ordering information about nested items
             function numberSystem(   dev_obj   ){
+                /*
+                    key points
+                    the only thing that is iterable here is the nSM do not EVER try to loop through the nS or digits, you must use the nSM to do it
+                    for each index in nSM 0 represents the digit location in the nS
+                                          1 represents digit location in digits
+                */
                 /* ablelasts
                     1 for nS
                     1 for misc
@@ -2655,7 +2664,6 @@
                 // }  /**/
                 
                 if(   dev_obj !== undefined   ){
-                    
                     
                     /*we have a numberSystem to work with*/ //{
                     if(   ultraObject.isInt(   {type:dev_obj.nS}   ) === 'true'  ){
@@ -2790,7 +2798,6 @@
                                                         
                                                         ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ]         .nSM[   nSFL_15_i.forLoop_0_i   ][1]  =               ultraObject.nS[   ultraObject.scope[nSNS_1_i]         ].nSM.newnSM[   nSFL_14_i.forLoop_0_i   ][1]
                                                         ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ][        ultraObject.nS[   ultraObject.scope[nSNS_1_i]         ].nSM.newnSM[   nSFL_14_i.forLoop_0_i   ][0]  ] =  ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ]         .digits[   ultraObject.nS[   ultraObject              .scope[nSNS_1_i]   ].nSM.newnSM[   nSFL_14_i          .forLoop_0_i   ][1]   ]
-                                                        
                                                         
                                                         
                                                     }
@@ -2961,6 +2968,7 @@
                                     fn:function(   dev_obj   ){
                                         
                                         
+                                        /* remove this if we come up with shorter syntax for the ultraObject*/ //{
                                         if(   ultraObject.isArray({type:dev_obj.digits[   nSFL_13_i.forLoop_0_i   ][1]})   ){
                                             
                                             
@@ -2970,6 +2978,7 @@
                                             
                                             
                                         }
+                                        // }  /**/
                                         
                                         
                                         ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].add({
@@ -3219,7 +3228,6 @@
                         
                         /*converting the decimal number to the numberSystem */ //{
                         //we get the decimal number now we should go to the biggest to smallest the biggest digit is at digit 0 representing all digits, but you must have that max range and you dont know how big the number is so you must start from the back
-                        //
                         else if(   dev_obj.conversion === 'from'   ){
                             
                             
@@ -3247,19 +3255,20 @@
                             else if(   dev_obj.prevent !== 'true'   ){
                                 
                                 
+                                
+                                var nSFL_9_i = {
+                                    forLoop_0_i: -(ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].nSM.length - 1 ),
+                                    forLoopLength:0-nSFL_8_i.forLoop_0_i,
+                                    fn:function(   dev_obj   ){
+                                        ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.range *= ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ][   ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].nSM[   -nSFL_9_i.forLoop_0_i   ][0]   ][2] - ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ][   ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].nSM[   -nSFL_9_i.forLoop_0_i   ][0]   ][1]
+                                    },
+                                    args:dev_obj //{}
+                                }
                                 var nSFL_8_i = {
                                     forLoop_0_i: 0,
                                     forLoopLength:ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].nSM.length,
                                     fn:function(   dev_obj   ){
                                         ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ][   ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].nSM[   nSFL_8_i.forLoop_0_i   ][0]   ][0] = ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ][   ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].nSM[   nSFL_8_i.forLoop_0_i   ][0]   ][1]
-                                        var nSFL_9_i = {
-                                            forLoop_0_i: -(ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].nSM.length - 1 ),
-                                            forLoopLength:0-nSFL_8_i.forLoop_0_i,
-                                            fn:function(   dev_obj   ){
-                                                ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.range *= ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ][   ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].nSM[   -nSFL_9_i.forLoop_0_i   ][0]   ][2] - ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ][   ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].nSM[   -nSFL_9_i.forLoop_0_i   ][0]   ][1]
-                                            },
-                                            args:dev_obj //{}
-                                        }
                                         ultraObject.forLoop(   nSFL_9_i   )
                                         
                                         /*at this point we have the range to work with now computing the actual digit*/ //{
@@ -3268,7 +3277,8 @@
                                             
                                             
                                             ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ][   ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].nSM[   nSFL_8_i.forLoop_0_i   ][0]   ][0] += Math.floor(   ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.currentNumber/ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.range   )
-                                            ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.currentNumber -= (ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.range  * Math.floor(   ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.currentNumber/ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.range   )   )
+                                            ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.currentNumber -= ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.range  * ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ][   ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].nSM[   nSFL_8_i.forLoop_0_i   ][0]   ][0]
+                                            //PROBLEM replace current digit with the operation with Math.floor
                                             
                                             
                                         }
@@ -3331,6 +3341,13 @@
                         each index is held in an itO
                             0. the name of the object
                             1, the actual object
+                            sample
+                                proof:[
+                                        ['element',ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item],
+                                        ['parents',ultraObject.selectTags[ultraObject.scope[pFFST_1_i]]],
+                                        ['siblings',ultraObject.selectTags[ultraObject.scope[pFFST_2_i]]],
+                                        ['children',ultraObject.selectTags[ultraObject.scope[pFFST_3_i]]]
+                                    ]
                     .facts an array
                         this is how I interrogate the objects
                             valuePhrase
@@ -3344,7 +3361,7 @@
                             
                     .pointValue if interrogation at facts passes this is incremented by one
                         v1, just use a simple counting mechanism
-                        v2, use an itO for more complex counting system almost working like PAM in linux
+                        v2, use an itO for more complex counting system (numberSystem) almost working like PAM in linux
                         if not a string or undefined it sets to use v1
                     ultraObject.qC question Chart
                         this object helps to visualize the dev_obj, its mainly the dev_obj with some additional
@@ -3482,15 +3499,19 @@
                                             console.group(   'tagName'   )
                                         
                                             /* accessing desired tagNames given by developer */ // {
-                                            ultraObject.qC[   0   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0]   ].tagCompAgn =  ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][1].ultraObject.tagOptions
+                                            ultraObject.qC[0][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0]   ].tagCompAgn =  ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][1].ultraObject.tagOptions
                                             
                                             /* the element and the desired tags needed by the tagName module */ // {
-                                            ultraObject.objInvloved({
-                                                0:ultraObject.qC[0][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0]   ].tagCompAgn ,
-                                                1:ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[1]
-                                            })
+                                            ultraObject.objInvloved(
+                                                ultraObject.iterify({iterify:[ultraObject.qC[0][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0]   ].tagCompAgn ,ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[1]]})
+                                                )
                                             // } /**/
-                                                                                
+
+                                            /*objIO -self -ablelast   */ //{
+                                            ultraObject.objIO.minus(   {index:ultraObject.objIO.abelast.length-1}   )
+                                            ultraObject.objIO.abelast.minus(   {index:ultraObject.objIO.abelast.length-1}   )
+                                            // }  /**/
+                
                                             // } /**/
                                             
                                             /* default tagName module evalution */ // {
@@ -3516,6 +3537,7 @@
                                                 
                                                 
                                                 console.log(   iBOOL_0_i   )
+                                                    
                                                     
                                             }
                                             
@@ -3578,7 +3600,7 @@
                                         // } /**/
                                         
                                         /* hidden module */ // {
-                                        else if(   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][0] === 'hidden'   ){
+                                        else if(   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][0] === 'hidden'  ){
                                             console.group(   'hidden'   )
                                             
                                             /* if the element is not hidden add one to the pointValue */ // {
@@ -3610,7 +3632,6 @@
                                                 ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[ultraObject.scope[iQC_0_i]].passOn.proofObject[0]   ].classes =  ultraObject.iterify({
                                                         iterify:ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[1][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][0]   ].split(' ')
                                                     })
-                                                
                                                 var iBOOL_2_i = {0:false}
                                                 iBOOL_2_i = ultraObject.severalOr({
                                                     compTo: ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][1].ultraObject.keyword,
@@ -3974,21 +3995,28 @@
                                 args:{}
                             }
                             
-                            if(   ultraObject.isDOMElement(   {type:ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[1]}   ) || ultraObject.isitO(   {type:ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[1]}   )   ){
+                            /* node mode choice thread performance*/ // {
+                            debugger
+                            ultraObject.forLoop(   iFL_3_i   )
+                             // } /**/
+                            
+                            /* node mode choice thread validation*/ //{
+                            // if(   ultraObject.isDOMElement(   {type:ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[1]}   ) || ultraObject.isitO(   {type:ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[1]}   )   ){
                                 
                                 
-                                ultraObject.forLoop(   iFL_3_i   )
+                            //     ultraObject.forLoop(   iFL_3_i   )
                             
                             
-                            }
+                            // }
                             
                             
-                            else if(   !ultraObject.isDOMElement(   {type:ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[1]}   ) && !ultraObject.isitO(   {type:ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[1]}   )   ){
+                            // else if(   !ultraObject.isDOMElement(   {type:ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[1]}   ) && !ultraObject.isitO(   {type:ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[1]}   )   ){
                                 
-                                console.log(   'interrogation needs the element itself or the set in an itO skipped'   )
+                            //     console.log(   'interrogation needs the element itself or the set in an itO skipped'   )
                                 
                                 
-                            }
+                            // }
+                            // } /**/
                             
                             
                             console.groupEnd()
@@ -3998,11 +4026,7 @@
                     }
                     ultraObject.forLoop(   iFL_2_i   )
                     // } /**/
-                                
-                    /*debugging*/ // {
-                    // console.log(   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ]   )
-                    // } /**/
-                    
+                        
                     /*taking the qC out of the scope*/ //{
                     ultraObject.scope.minus(   {index:iQC_0_i}   )
                     // }  /**/
@@ -4135,6 +4159,10 @@
                 }// when you need values swpped
             //templates, can swap in infinite places
             function partialMatch(   dev_obj   ){
+                /*
+                    abelasta
+                    1 for Misc
+                */
                 /*
                     this function expects strings but there can be others objects arrays
                         where objects are compared like this we call them eycems
@@ -4968,7 +4996,6 @@
                     aT: pFFATI_0_i,
                     all:'true'
                 })
-                debugger
                 console.group(   'at this point the ultraObject has meaningful values for all arguments from the init fn'   )
                 console.groupEnd()
                 
@@ -5061,6 +5088,7 @@
                                 ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]]
                             // } /**/
                             
+                            debugger
                             ultraObject.interrogation({
                                 proof:[
                                         ['element',ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item],
@@ -5078,7 +5106,7 @@
                                                     
                                                     ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].noRun = 'true'
                                                     
-                                                                                                                                                    
+                 
                                                 }
                                                 
                                                 
@@ -5086,6 +5114,7 @@
                                                 // } /**/
                                             },
                                             'suspect':function(   dev_obj   ){
+                                                
                                                 /*suspects to see if different values were put in the same spot*/ //{
                                                 if(   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].noRun !== 'true'   ){
                                                     
@@ -5135,6 +5164,7 @@
                                                     
                                                 }
                                                 // } /**/
+                                                
                                             },
                                             'tagName':  {
                                                             ultraObject:{
