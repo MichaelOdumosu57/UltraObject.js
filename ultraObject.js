@@ -268,6 +268,10 @@
                     .instruct: telling the function how to use what in XHR[index] to get the job done
                     .eventName: in case of  XMLHttpRequest i need to a function as an event handler to make use of the responseText
                     .eventHandler:in case of  XMLHttpRequest  fn for eventName
+                    .protocol :  in case of  XMLHttpRequest  HTTP methods for XHR
+                    .target:  string location
+                    .asyncBool: unkwown use best to leave on true
+                    .body: in case of  XMLHttpRequest for certain http methods this is the important data the endpoint needs, should be a string or one object
                 */
                 
                 /*adding the dev_obj to args*/ //{
@@ -279,19 +283,35 @@
                 ultraObject.XHR.abelast.add(   {value:ultraObject.scope[ePXHR_0_i ]}   )
                 // }  /**/
                 
-                /*XHR +scope +self +abelast */ //{
+                /*var endpoint options */ //{
                 
                     /* XMLHttpRequest*/ //{
-                    // it expect an XMLHttpRequest in  index 0
                     if(   dev_obj.instruct === 'XMLHttpRequest'   ){
+                        
+                        
                         ultraObject.XHR[   ultraObject.scope[ePXHR_0_i]   ].eventName = dev_obj.eventName
                         ultraObject.XHR[   ultraObject.scope[ePXHR_0_i]   ].eventHandler = dev_obj.eventHandler
-                        ultraObject.XHR[   ultraObject.scope[ePXHR_0_i]   ][0]
+                        ultraObject.XHR[   ultraObject.scope[ePXHR_0_i]   ][0].addEventListener(   ultraObject.XHR[   ultraObject.scope[ePXHR_0_i]   ].eventName,ultraObject.XHR[   ultraObject.scope[ePXHR_0_i]   ].eventHandler   )
+                        ultraObject.XHR[   ultraObject.scope[ePXHR_0_i]   ].protocol = dev_obj.protocol
+                        ultraObject.XHR[   ultraObject.scope[ePXHR_0_i]   ].target = dev_obj.target
+                        ultraObject.XHR[   ultraObject.scope[ePXHR_0_i]   ].asyncBool = dev_obj.asyncBool
+                        ultraObject.XHR[   ultraObject.scope[ePXHR_0_i]   ].body = dev_obj.body
+                        ultraObject.XHR[   ultraObject.scope[ePXHR_0_i]   ][0].open(
+                            ultraObject.XHR[   ultraObject.scope[ePXHR_0_i]   ].protocol,
+                            ultraObject.XHR[   ultraObject.scope[ePXHR_0_i]   ].target,
+                            ultraObject.XHR[   ultraObject.scope[ePXHR_0_i]   ].asyncBool
+                        )
+                        ultraObject.XHR[   ultraObject.scope[ePXHR_0_i]   ][0].send(   ultraObject.XHR[   ultraObject.scope[ePXHR_0_i]   ].body   )
+                        
+                        
                     }
                     // }  /**/
                     
                 // }  /**/
                 
+                /*XHR -scope */ //{
+                var ePXHR_0_i = ultraObject.scope.minus(   {index:ePXHR_0_i}   )
+                // }  /**/
                 
             }// function handling all things endpoint
             function objInvloved(   dev_obj   ){
@@ -1489,6 +1509,9 @@
                     
                 // }  /**/
                 
+                /*objIO -scope  */ //{
+                ultraObject.scope.minus(   {index:pUobjI_0_i}   )
+                // }  /**/
                 
                 
             }// in js when a function finds a property undefined when the developer expects something to be there along the bubble to the target inner property it can break the API, instead of write repeated if statements use this function to validate if the target property is availble in the data type
