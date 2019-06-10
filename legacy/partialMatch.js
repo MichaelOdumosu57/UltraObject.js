@@ -1,4 +1,5 @@
     function partialMatch(   dev_obj   ){
+        /*major bug in gap full rewrite needed becuase of unstandarized syntax*/
         /*
             this function expects strings but there can be others objects arrays
                 where objects are compared like this we call them eycems
