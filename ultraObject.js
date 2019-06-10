@@ -1,7 +1,8 @@
     /*
         TO DO ,
-        make an itO for endpoint communication
-        which is more to generate an XHR or try to use it again,its better to get it again
+        mabye think about a validator API
+        make a function that handles self, scope and abelast
+        work on recreating the testing module for partialMatch and finding that bug
     */
     
                     function wait(   ms   ){
@@ -318,7 +319,6 @@
                 /* ablelasts
                     1 for objIO
                 */
-                // console.log a list of the dev_obj  values to be outputted to the console to help the dev know how is items are in the middle of an API
     
                     /*adding the dev_obj to args*/ //{
                     var objInvloved_dev_obj = ultraObject.args.add(   {value:ultraObject.iterify(   {iterify:dev_obj}   )   }   )
@@ -331,7 +331,7 @@
                     
                     
                     if(   ultraObject.isInt({type:ultraObject.objIO[   ultraObject.scope[oIobjI_0_i]   ].length}) === 'false'  ){
-                        
+                        // having to fix old implementation
                         
                         throw('fix me at my invocation')
                         
@@ -773,13 +773,16 @@
                     
                     
                     /*[the object handling everything with the choosing tags in addition the numberSystem ]*/ //{
+                    // make this selectTags +scope +abelast +self
                     var eCSSelectTags_0_i = ultraObject.scope.add(   {value:ultraObject.selectTags.add(   {value:ultraObject.iterableObject()}   )}   )
                     ultraObject.selectTags.abelast.add(   {value:ultraObject.scope[eCSSelectTags_0_i]}   )
                     // }  /**/
                     
+                    
                 }
                 
                 /*[if the developer already had the function make the selectTags]*/ //{
+                //make this selectTags +scope
                 else if(    ultraObject.isInt(   {type:dev_obj.sT}   )   ){
                     
                     
@@ -806,6 +809,7 @@
                 // }  /**/
                 
                 console.groupEnd()
+                
                 /* look at each requirement preFillForm must fill in the document by the end user*/ //{
                 var eCSearchFL_0_i = {
                     forLoop_0_i:0,
@@ -1212,7 +1216,7 @@
                     if(   dev_obj.custom !== 'true'   ){
                         
                         
-                        for(   dev_obj.forLoop_0_i; dev_obj.forLoop_0_i !== dev_obj.forLoopLength; dev_obj.forLoop_0_i++   ){ // change this to be a fuctiont that allow the dev to do anything here
+                        for(   dev_obj.forLoop_0_i; dev_obj.forLoop_0_i !== dev_obj.forLoopLength; dev_obj.forLoop_0_i++   ){
                             // console.log(   dev_obj.forLoop_0_i   )
                             forLoopbreak = dev_obj.fn(   dev_obj.args   )// find a better way to do this
                             
@@ -1283,30 +1287,55 @@
                     // . reuslt if dev_obj.how is a function, result is optional for what ever makes it true
                 // .premature ,  bool if the loop should break early
             
-                if(   dev_obj !== undefined   ){
+                
                     
                     
-                    if(   dev_obj.compAgn.length === undefined   ){
-                        
-                        
-                        dev_obj.compAgn.length = Object.keys(   dev_obj.compAgn   ).length
-                        
-                        
-                    }
+                if(   dev_obj.compAgn.length === undefined   ){
                     
                     
-                    var severalOrFnAnswer // if dev_obj.how is a function this holds the return value
-                    var severalOrReturn = dev_obj.boolean
-                    var severalOrFL_O_i  = {
-                        forLoop_0_i:0,
-                        forLoopLength:dev_obj.compAgn.length,//compare Against
-                        fn:function(   dev_obj   ){
-                            
-                                                
-                                if(   dev_obj.how === undefined   ){
-                                                                        
+                    dev_obj.compAgn.length = Object.keys(   dev_obj.compAgn   ).length
+                    
+                    
+                }
+                
+                
+                var severalOrFnAnswer // if dev_obj.how is a function this holds the return value
+                var severalOrReturn = dev_obj.boolean
+                var severalOrFL_O_i  = {
+                    forLoop_0_i:0,
+                    forLoopLength:dev_obj.compAgn.length,//compare Against
+                    fn:function(   dev_obj   ){
+                        
+                                            
+                            if(   dev_obj.how === undefined   ){
+                                                                    
+                                
+                                if(   dev_obj.compTo === dev_obj.compAgn[severalOrFL_O_i.forLoop_0_i]   ){
                                     
-                                    if(   dev_obj.compTo === dev_obj.compAgn[severalOrFL_O_i.forLoop_0_i]   ){
+                                    
+                                    dev_obj.boolean[dev_obj.which] = true // if you have problems remember this wants a object
+                                    severalOrReturn = dev_obj.boolean // just in case  ultraObject can't re-reference the object back
+                                    severalOrReturn.spot = severalOrFL_O_i.forLoop_0_i
+                                    return 'true'
+                                    
+                                    
+                                }
+                                
+                                
+                            }
+                            
+                            
+                            else if(   typeof(   dev_obj.how   ) === 'function'   ){
+                                    
+                                    
+                                    severalOrFnAnswer = dev_obj.how({
+                                        compAgnI:dev_obj.compAgn[severalOrFL_O_i.forLoop_0_i],
+                                        compTo:dev_obj.compTo,
+                                        index:severalOrFL_O_i.forLoop_0_i
+                                    })
+                                    
+                                    
+                                    if(   severalOrFnAnswer === dev_obj.result   ){
                                         
                                         
                                         dev_obj.boolean[dev_obj.which] = true // if you have problems remember this wants a object
@@ -1318,56 +1347,31 @@
                                     }
                                     
                                     
-                                }
-                                
-                                
-                                else if(   typeof(   dev_obj.how   ) === 'function'   ){
+                                    else if(   severalOrFnAnswer === 'premature'   ){
                                         
+                                                                        
+                                        return 'premature'
                                         
-                                        severalOrFnAnswer = dev_obj.how({
-                                            compAgnI:dev_obj.compAgn[severalOrFL_O_i.forLoop_0_i],
-                                            compTo:dev_obj.compTo,
-                                            index:severalOrFL_O_i.forLoop_0_i
-                                        })
-                                        
-                                        
-                                        if(   severalOrFnAnswer === dev_obj.result   ){
-                                            
-                                            
-                                            dev_obj.boolean[dev_obj.which] = true // if you have problems remember this wants a object
-                                            severalOrReturn = dev_obj.boolean // just in case  ultraObject can't re-reference the object back
-                                            severalOrReturn.spot = severalOrFL_O_i.forLoop_0_i
-                                            return 'true'
-                                            
-                                            
-                                        }
-                                        
-                                        
-                                        else if(   severalOrFnAnswer === 'premature'   ){
-                                            
-                                                                            
-                                            return 'premature'
-                                            
-                                            
-                                        }
-                                
                                         
                                     }
+                            
                                     
+                                }
                                 
-                            },
-                        args:{
-                                compTo: dev_obj.compTo,
-                                compAgn:dev_obj.compAgn,
-                                boolean:dev_obj.boolean,
-                                which:dev_obj.which,
-                                how:dev_obj.how,
-                                result:dev_obj.result
-                            }
-                    }
-                    ultraObject.forLoop(   severalOrFL_O_i   )
-                    return severalOrReturn
+                            
+                        },
+                    args:{
+                            compTo: dev_obj.compTo,
+                            compAgn:dev_obj.compAgn,
+                            boolean:dev_obj.boolean,
+                            which:dev_obj.which,
+                            how:dev_obj.how,
+                            result:dev_obj.result
+                        }
                 }
+                ultraObject.forLoop(   severalOrFL_O_i   )
+                return severalOrReturn
+                
                 
                 
             }// if you have several OR comparisons for the same object use it here
@@ -2686,7 +2690,7 @@
                 var numberSystem_dev_obj = ultraObject.args.add(   {value:ultraObject.iterify(   {iterify:dev_obj}   )   }   )
                 // }  /**/
                 
-                if(   dev_obj !== undefined   ){
+                
                     
                     /*we have a numberSystem to work with*/ //{
                     if(   ultraObject.isInt(   {type:dev_obj.nS}   ) === 'true'  ){
@@ -3344,7 +3348,7 @@
                     }
                     // }  /**/
                     
-                }
+                
                 
                 
             }//makes a customized number system for the needs of the eCSearch multiple testing required by prefill form
@@ -4182,8 +4186,38 @@
                 }// when you need values swpped
             //templates, can swap in infinite places
             function partialMatch(   dev_obj   ){
+                
+                /*adding the dev_obj to args*/ //{
+                var partialMatch_dev_obj = ultraObject.args.add(   {value:ultraObject.iterify(   {iterify:dev_obj}   )   }   )
+                // }  /**/
+                                
+                /*handles strings only allow it to do more with the same algorithm*/ //{
+                if(   (   dev_obj.version === 1 || dev_obj.version === undefined   )  && dev_obj.type === 'string'  ){
+
+                    /*turns to case comparision of users desire*/ //{
+                    if(   dev_obj.cCase !== undefined  ){
+                        
+                        
+                        dev_obj.compTo = dev_obj.compTo[dev_obj.cCase]()
+                        dev_obj.compAgn = dev_obj.compAgn[dev_obj.cCase]()
+                        
+                                        
+                    }
+                    // }  /**/
+                
+                    dev_obj.compTo = ultraObject.iterify(    {iterify:dev_obj.compTo}   )
+                    dev_obj.compAgn = ultraObject.iterify(   {iterify:dev_obj.compAgn}   )
+                    
+                    
+                }
+                // }  /**/
+                
+            }
+            function partialMatc(   dev_obj   ){
+                //propertyUndefined can be manifested in partialMatch when comparing 2 objects
+                // just make a dummy object with the path your looking for in the 2 object and make the range 1 therefore if you do not know the set but you know what it will be, but you cannot get complety rid of pU becuase with pU you just need to know the set and or/answer, this method needs to know what it will be so the range can increment or it will be false
                 /*
-                    abelasta
+                    abelasts
                     1 for Misc
                 */
                 /*
