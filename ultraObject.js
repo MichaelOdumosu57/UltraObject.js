@@ -1,3 +1,5 @@
+update partialMatch, working on the range module making sure it can go through both strings
+
     /*
         TO DO ,
         mabye think about a validator API
@@ -237,6 +239,7 @@
                 //if a scope starts in a function it must end in a function
                 // to access  ultraObject.allTags[ultraObject.scope[pFFATI_0_i]]
                 args:iterableObject(), // representing the dev_obj from the project purose
+                nE:iterableObject(), // means not exactly equal ,used for adcnaced comparison moduiles like partialMatch
             
                 sort:sort,
                 swap:swap,
@@ -3063,7 +3066,7 @@
                         /*this code blocks adds subtracts or modifies the numberSystem digits*/ //{
                         if(   dev_obj.operation === 'create'   ){
                             
-                            /*adding of a new NS to the ultraobject*/ //{
+                            /*nS +scope +self +abelast*/ //{
                             var nSNS_0_i = ultraObject.scope.add(   {value:ultraObject.nS.add(   {value:ultraObject.iterableObject()}   )}   )
                             ultraObject.nS.abelast.add(   {value:ultraObject.scope[nSNS_0_i]}   )
                             // }  /**/
@@ -4186,9 +4189,20 @@
                 }// when you need values swpped
             //templates, can swap in infinite places
             function partialMatch(   dev_obj   ){
+                /*
+                    key points
+                    everything is in relation to compAgn
+                */
+                /* ablelasts
+                    1 for nE
+                */
                 
                 /*adding the dev_obj to args*/ //{
                 var partialMatch_dev_obj = ultraObject.args.add(   {value:ultraObject.iterify(   {iterify:dev_obj}   )   }   )
+                // }  /**/
+                
+                /*nE  +scope +self +abelast  */ //{
+                pMNE_0_i = ultraObject.scope.add(   {value:ultraObject.nE.add({value:ultraObject.iterableObject()}   )}   )
                 // }  /**/
                                 
                 /*handles strings only allow it to do more with the same algorithm*/ //{
@@ -4208,9 +4222,32 @@
                     dev_obj.compTo = ultraObject.iterify(    {iterify:dev_obj.compTo}   )
                     dev_obj.compAgn = ultraObject.iterify(   {iterify:dev_obj.compAgn}   )
                     
+                    /* setting up the nE*/ //{
+                    //key  ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster, this is an itO containing the final
+                        // instruction to perform on the nE, after all modules fineshed looking at their part in the nE
+                    ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster = ultraObject.iterableObject()
+                    // }  /**/
+                    
+                    var pMFL_0_i = {
+                        forLoop_0_i:0,
+                        forLoopLength: dev_obj.compTo.length > dev_obj.compAgn.length ? dev_obj.compTo.length + 1 :  dev_obj.compAgn.length + 1,
+                        fn:function(   dev_obj   ){
+                         
+                            /*range module  */ //{
+                            console.log(   dev_obj.compTo[   pMFL_0_i.forLoop_0_i   ],dev_obj.compAgn[   pMFL_0_i.forLoop_0_i   ]   )
+                            // }  /**/
+                                                        
+                            /*scrumMaster module  */ //{
+                            // }  /**/
+                           
+                        },
+                        args:dev_obj //{}
+                    }
+                    ultraObject.forLoop(   pMFL_0_i   )
                     
                 }
                 // }  /**/
+                debugger
                 
             }
             function partialMatc(   dev_obj   ){
@@ -4537,7 +4574,7 @@
                                 //{
                                 // console.group(   'Range Module'   )
                                         
-                                    
+                                    debugger
                                     if(   (   dev_obj.compTo
                                             [   ultraObject.misc
                                                 [   ultraObject.scope[pMMisc_0_i]
@@ -4757,10 +4794,7 @@
                                 // console.group(   'Spaces Module'   )
                                     
                                                                                                     
-                                    if(   dev_obj.compTo
-                                            [   ultraObject.misc
-                                                [   ultraObject.scope[pMMisc_0_i]
-                                                ].pause
+                                    if(   dev_obj.compTo[   ultraObject.misc[   ultraObject.scope[pMMisc_0_i]   ].pause
                                             ] !== dev_obj.compAgn[   pMFL_0_i.forLoop_0_i   ]   ){
                                         // this means the prev was a match and the now isnt so the space has been made
                                         
