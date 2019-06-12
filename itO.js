@@ -306,72 +306,87 @@ function iterableObject(   dev_obj   ){
                  return iterableObjectO
             } //retuns or converts an object with which you can easily iterate but this is an array accroding to chrome 72
 function iterify(   dev_obj   ){
-    //. iterify the item to turn into an iterableObject
-
-    if(   dev_obj !== undefined   ){
-        
-        
-        var iterableO = ultraObject.iterableObject()
-        
-        
-        if(   ultraObject.isArray(   {type:dev_obj.iterify}   ) || ultraObject.isNodeList(   {type:dev_obj.iterify}   )   ){
-            
-            
-            var iterableFL_0_i = {
-                forLoop_0_i:0,
-                forLoopLength:dev_obj.iterify.length,
-                fn:function(   dev_obj   ){
-                    iterableO.add(   {value:dev_obj.iterify[iterableFL_0_i.forLoop_0_i]}   )
-                },
-                args:{iterify:dev_obj.iterify}
-            }
-            ultraObject.forLoop(   iterableFL_0_i   )
-            
-            
-        }
-        
-        
-        else if(   ultraObject.isObject(   {type:dev_obj.iterify}   )   ){
-            //places the key and value inside every index , So 0,1 represents the key and 1 the value
-            
-            var iterableArr = Object.entries(   dev_obj.iterify   )
-            var iterableFL_0_i = {
-                forLoop_0_i:0,
-                forLoopLength:iterableArr.length,
-                fn:function(   dev_obj   ){
-                    iterableO.add({
-                        value:ultraObject.iterify({iterify:iterableArr[iterableFL_0_i.forLoop_0_i]})
-                    })
-                },
-                args:{iterify:dev_obj.iterify}
-            }
-            ultraObject.forLoop(   iterableFL_0_i   )
-            
-            
-        }
-        
-        
-        else if(   ultraObject.isPrimitive(   {type:dev_obj.iterify}   )   ){
-            //for strings it neatly splits it into an itO
-            
-            var iterableFL_0_i = {
-                forLoop_0_i:0,
-                forLoopLength:dev_obj.iterify.length,
-                fn:function(   dev_obj   ){
-                    iterableO.add(   {value:dev_obj.iterify[iterableFL_0_i.forLoop_0_i]}   )
-                },
-                args:{iterify:dev_obj.iterify}
-            }
-            ultraObject.forLoop(   iterableFL_0_i   )
-            
-            
-        }
-        
-        
-        return iterableO
-        
+                    //. iterify the item to turn into an iterableObject
+                
+                    if(   dev_obj !== undefined   ){
                         
-    }
-    
-    
-}//turns anything into an iterableObject
+                        
+                        var iterableO = ultraObject.iterableObject()
+                        
+                        
+                        if(   ultraObject.isArray(   {type:dev_obj.iterify}   ) || ultraObject.isNodeList(   {type:dev_obj.iterify}   )   ){
+                            
+                            
+                            var iterableFL_0_i = {
+                                forLoop_0_i:0,
+                                forLoopLength:dev_obj.iterify.length,
+                                fn:function(   dev_obj   ){
+                                    iterableO.add(   {value:dev_obj.iterify[iterableFL_0_i.forLoop_0_i]}   )
+                                },
+                                args:{iterify:dev_obj.iterify}
+                            }
+                            ultraObject.forLoop(   iterableFL_0_i   )
+                            
+                            
+                        }
+                        
+                        
+                        else if(   ultraObject.isObject(   {type:dev_obj.iterify}   )   ){
+                            //places the key and value inside every index , So 0,1 represents the key and 1 the value
+                            
+                            var iterableArr = Object.entries(   dev_obj.iterify   )
+                            var iterableFL_0_i = {
+                                forLoop_0_i:0,
+                                forLoopLength:iterableArr.length,
+                                fn:function(   dev_obj   ){
+                                    iterableO.add({
+                                        value:ultraObject.iterify({iterify:iterableArr[iterableFL_0_i.forLoop_0_i]})
+                                    })
+                                },
+                                args:{iterify:dev_obj.iterify}
+                            }
+                            ultraObject.forLoop(   iterableFL_0_i   )
+                            
+                            
+                        }
+                        
+                        
+                        else if(   ultraObject.isPrimitive(   {type:dev_obj.iterify}   )   ){
+                            //for strings it neatly splits it into an itO
+                            
+                            if(   ultraObject.isString(   {type:dev_obj.iterify}   )   ){
+                                
+                                
+                                var iterableFL_0_i = {
+                                    forLoop_0_i:0,
+                                    forLoopLength:dev_obj.iterify.length,
+                                    fn:function(   dev_obj   ){
+                                        iterableO.add(   {value:dev_obj.iterify[iterableFL_0_i.forLoop_0_i]}   )
+                                    },
+                                    args:{iterify:dev_obj.iterify}
+                                }
+                                ultraObject.forLoop(   iterableFL_0_i   )
+                                
+                                
+                            }
+                            
+                            
+                            else if(   !ultraObject.isString(   {type:dev_obj.iterify}   )   ){
+                                
+                                
+                                iterableO.add(   {value:dev_obj.iterify}   )
+                                
+                                
+                            }
+                            
+                            
+                        }
+                        
+                        
+                        return iterableO
+                        
+                                        
+                    }
+                    
+                    
+                }//turns anything into an iterableObject
