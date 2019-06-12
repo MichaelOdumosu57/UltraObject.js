@@ -1,5 +1,3 @@
-update partialMatch, working on the range module making sure it can go through both strings
-
     /*
         TO DO ,
         mabye think about a validator API
@@ -4225,12 +4223,14 @@ update partialMatch, working on the range module making sure it can go through b
                     /* setting up the nE*/ //{
                     //key  ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster, this is an itO containing the final
                         // instruction to perform on the nE, after all modules fineshed looking at their part in the nE
+                    // ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls a list of controls
+                    ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls = dev_obj
                     ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster = ultraObject.iterableObject()
                     // }  /**/
                     
                     var pMFL_0_i = {
                         forLoop_0_i:0,
-                        forLoopLength: dev_obj.compTo.length > dev_obj.compAgn.length ? dev_obj.compTo.length + 1 :  dev_obj.compAgn.length + 1,
+                        forLoopLength: ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compTo.length > ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compAgn.length ? ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compTo.length + 1 :  ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compAgn.length + 1,
                         fn:function(   dev_obj   ){
                          
                             /*range module  */ //{
