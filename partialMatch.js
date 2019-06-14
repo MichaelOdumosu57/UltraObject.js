@@ -1,6 +1,9 @@
-/*
+    /*
     for future
     think if you want to write conditionals for each module or have everything availble for some sort of quantum future
+
+    ideas now
+    the modules tell the managment module what to do conerning itself and the other modules, once the management modules gets all instructions from all modules at that point it starts to update the module accordingly
 */
 
 /*
@@ -12,12 +15,38 @@
     // ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].v1Start
     // ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].v2Start
     // where data types related to v1 and v2 are stored in the itO for the given value index to the next
+        //if v1
+    // key ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].range - range v1, itO that handles the range module
+    // key ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].pause - pause v1, itO that handles the pause module
+*/
+/*
+    range module
+    if ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compAgn[   pMFL_0_i.forLoop_0_i   ] === ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compTo[   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][4][0]   ]
+        //key ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.rangePause
+            
+                value
+                true: tells scrum module to increment the range and pause by 1 and reset itself to false and turns also turns ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.spaces to false
+                false: its okat for me to evalutate if if dont execute, do not do what true does
+               
+*/
+/*
+    spaces module
+    // key ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.spaces
+        // tells the scrum module to increment the space by one
+        
+            value
+            true: increment spaces by one
+            standby: ive encountered a spaces already even though the chars arent equal im going through a gap
+            false: the range just ended and I know I have encountered a new space
+                                    
+                                        
 */
 
 function partialMatch(   dev_obj   ){
                     /*
                         key points
                         everything is in relation to compAgn
+                        remember to comment out all .satisfies for debugging only
                     */
                     /* ablelasts
                         1 for nE
@@ -52,31 +81,49 @@ function partialMatch(   dev_obj   ){
                         /* setting up the nE*/ //{
                         ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls = dev_obj
                         ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster = ultraObject.iterableObject()
+                        ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.v1 = 'true'
+                        ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.v2 = 'false'
                         ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].v1Start = 0
                         ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].v2Start = 5
-                        debugger
-                        ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].add({value:ultraObject.iterify({iterify:0})})
+                        ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].range = ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].add({value:ultraObject.iterify({iterify:0})})
+                        ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].spaces = ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].add({value:ultraObject.iterify({iterify:0})})
+                        ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].pause  = ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].add({
+                            value:ultraObject.iterify({iterify:0}),
+                            index:4
+                        })
                         // }  /**/
                         
                         var pMFL_0_i = {
                             forLoop_0_i:0,
-                            forLoopLength: ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compTo.length > ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compAgn.length ? ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compTo.length + 1 :  ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compAgn.length + 1,
+                            forLoopLength: ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compTo.length > ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compAgn.length ? ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compTo.length :  ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compAgn.length ,// PROBLEM add one to the length and deal with the undefined problem at the end of this loop
                             fn:function(   dev_obj   ){
+                                
+
                              
                                 /*range module  */ //{
-                                console.log(   dev_obj.compTo[   pMFL_0_i.forLoop_0_i   ],dev_obj.compAgn[   pMFL_0_i.forLoop_0_i   ]   )
+                                //key ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.rangePause
+                                    /*
+                                        value
+                                        true: tells scrum module to increment the range and pause by 1 and reset itself to false and turns also turns ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.spaces to false
+                                        false: its okat for me to evalutate if if dont execute, do not do what true does
+                                    */
+                                if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compTo[   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].pause   ][0]   ] === ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compAgn[   pMFL_0_i.forLoop_0_i   ]   ){
+                                    
+                                    
+                                    ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.rangePause = 'true'
+                                    
+                                    
+                                }
                                 // }  /**/
-                                                            
-                                /*scrumMaster module  */ //{
-                                // }  /**/
-                               
-                            },
-                            args:dev_obj //{}
-                        }
-                        ultraObject.forLoop(   pMFL_0_i   )
-                        
-                    }
-                    // }  /**/
-                    debugger
-                    
-                }
+
+                                /*spaces module  */ //{
+                                // key ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.spaces
+                                    // tells the scrum module to increment the space by one
+                                    /*
+                                        value
+                                        true: increment spaces by one
+                                        standby: ive encountered a spaces already even though the chars arent equal im going through a gap
+                                        false: the range just ended and I know I have encountered a new space
+                                    
+                                    */
+                                if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compTo

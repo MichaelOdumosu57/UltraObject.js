@@ -187,8 +187,8 @@
                     xhttpreadystatechange:xhttpreadystatechange, // see how you can apply ES6 but for compatability, this helps get the response text
                     xhrResponse:'',// response from the ajax
                     
-                    seperator : 3, // for pretty print represents spaces to seperate
-                    s_key:"-", // how to seperate notes and values
+                    seperator : 3, // for pretty print represents spaces to seperate rename delimiter.length
+                    s_key:"-", // how to seperate notes and values  rename delimiter could make itO
                     max : -Infinity || -9999999999999999999, // conisder if || is supported in the oldest browser
                     notes_object:{
                                      '.altKey': 'true if keydown during event',
@@ -4205,6 +4205,7 @@
                     /*
                         key points
                         everything is in relation to compAgn
+                        remember to comment out all .satisfies for debugging only
                     */
                     /* ablelasts
                         1 for nE
@@ -4239,22 +4240,109 @@
                         /* setting up the nE*/ //{
                         ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls = dev_obj
                         ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster = ultraObject.iterableObject()
+                        ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.v1 = 'true'
+                        ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.v2 = 'false'
                         ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].v1Start = 0
                         ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].v2Start = 5
-                        debugger
-                        ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].add({value:ultraObject.iterify({iterify:0})})
+                        ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].range = ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].add({value:ultraObject.iterify({iterify:0})})
+                        ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].spaces = ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].add({value:ultraObject.iterify({iterify:0})})
+                        ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].pause  = ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].add({
+                            value:ultraObject.iterify({iterify:0}),
+                            index:4
+                        })
                         // }  /**/
                         
                         var pMFL_0_i = {
                             forLoop_0_i:0,
-                            forLoopLength: ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compTo.length > ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compAgn.length ? ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compTo.length + 1 :  ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compAgn.length + 1,
+                            forLoopLength: ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compTo.length > ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compAgn.length ? ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compTo.length :  ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compAgn.length ,// PROBLEM add one to the length and deal with the undefined problem at the end of this loop
                             fn:function(   dev_obj   ){
+                                
+
                              
                                 /*range module  */ //{
-                                console.log(   dev_obj.compTo[   pMFL_0_i.forLoop_0_i   ],dev_obj.compAgn[   pMFL_0_i.forLoop_0_i   ]   )
+                                if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compTo[   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].pause   ][0]   ] === ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compAgn[   pMFL_0_i.forLoop_0_i   ]   ){
+                                    
+                                    
+                                    ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.rangePause = 'true'
+                                    
+                                    
+                                }
                                 // }  /**/
-                                                            
+
+                                /*spaces module  */ //{
+                                if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compTo[   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].pause   ][0]   ] !== ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compAgn[   pMFL_0_i.forLoop_0_i   ] &&  ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.spaces !== 'standby'  ){
+                                    
+                                    
+                                    ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.spaces = 'true'
+                                    
+                                    
+                                }
+                                // }  /**/
+                                
+                                /*pause module  */ //{
+                                
+                                // }  /**/
+                                
                                 /*scrumMaster module  */ //{
+                                if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.rangePause === 'true'   ){
+                                    
+                                    
+                                    ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].range   ][0] += 1
+                                    ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].pause   ][0] += 1
+                                    ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.rangePause = 'false'
+                                    ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.spaces = 'false'
+                                 
+                                    
+                                }
+                                
+                                
+                                if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.spaces === 'true'   ){
+                                    
+                                    
+                                    ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].spaces   ][0] += 1
+                                    ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.spaces = 'standby'
+                                    
+                                    
+                                }
+                                
+                                
+                                    /*reacting to the final range  */ //{
+                                    if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].range   ][0] >= ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.range   ){
+                                        
+                                       
+                                        ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].satisfy = 'true'
+                                        ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].satisfies = ultraObject.iterify({iterify:['true','range']})
+                                        return 'premature'
+                                        
+                                        
+                                    }
+                                                                        
+                                    
+                                    else if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].range   ][0] < ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.range  && pMFL_0_i.forLoopLength -1 ===  pMFL_0_i.forLoop_0_i    ){
+                                        
+                                        
+                                        ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].satisfy = 'false';
+                                        ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].satisfies = ultraObject.iterify({iterify:['false','range']})
+                                        return 'premature'
+                                        
+                                        
+                                    }
+                                    // }  /**/
+                                    
+                                    
+                                    /*reacting to the final of spaces  */ //{
+                                    if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].spaces   ][0] > ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.spaces   ){
+                                        
+                                        
+                                        ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].satisfy = 'false';
+                                        ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].satisfies = ultraObject.iterify({iterify:['false','spaces']})
+                                        return 'premature'
+                                        
+                                        
+                                    }
+                                    // }  /**/
+                                    
+                                    
                                 // }  /**/
                                
                             },
@@ -4264,7 +4352,7 @@
                         
                     }
                     // }  /**/
-                    debugger
+                    
                     
                 }
                 function partialMatc(   dev_obj   ){
