@@ -123,7 +123,6 @@ console.log(   ultraObject.nE[0].satisfy, 'should be there  is just one massive 
 
 
 ultraObject = ultraObjectReset()
-debugger
 ultraObject.partialMatch({
     compTo:'Semper Fi',
     compAgn:'Semper Fi Semper',
@@ -139,7 +138,6 @@ console.log(   ultraObject.nE[0].satisfies, `should be false 1 space as the API 
 
 
 ultraObject = ultraObjectReset()
-debugger
 ultraObject.partialMatch({
     compTo:'Semper Fi',
     compAgn:'Semper Fi Semper',
@@ -151,7 +149,180 @@ ultraObject.partialMatch({
 
 console.log(   ultraObject.nE[0].satisfies, `should be true 0 spaces sinces range has made the api exit before hand'
 `  )
+
 debugger
+//gap module
+
+ultraObject = ultraObjectReset()
+ultraObject.partialMatch({
+    compTo:'agn',
+    compAgn:'agllllllllllllllln',
+    range:3,
+    gap:3,
+    type:'string'
+    
+})
+
+console.log(   ultraObject.nE[0].satisfies, `should be false we got a big gap to cover before we can get to n`   )
+debugger
+
+
+ultraObject = ultraObjectReset()
+ultraObject.partialMatch({
+    compTo:'agn',
+    compAgn:'agllllllllllllllln',
+    range:3,
+    gap:20,
+    type:'string'
+    
+})
+
+console.log(   ultraObject.nE[0].satisfies, `should be true becuase the developer gives gap a chance to get to the n `   )
+debugger
+
+ultraObject = ultraObjectReset()
+ultraObject.partialMatch({
+    compTo:'agn',
+    compAgn:'allllllglllllln',
+    range:3,
+    gap:20,
+    type:'string'
+    
+})
+
+console.log(   ultraObject.nE[0].satisfies, `should be true becuase the developer gives gap a chance to get to the n `   )
+debugger
+
+ultraObject = ultraObjectReset()
+ultraObject.partialMatch({
+    compTo:'agn',
+    compAgn:'algln',
+    range:3,
+    gap:2,
+    type:'string'
+    
+})
+
+console.log(   ultraObject.nE[0].satisfies, `should be true and the gap module should be 0:1,1:1  `   )
+
+debugger
+
+
+ultraObject = ultraObjectReset()
+ultraObject.partialMatch({
+    compTo:'agn',
+    compAgn:'aloglon',
+    range:3,
+    gap:2,
+    type:'string'
+    
+})
+
+console.log(   ultraObject.nE[0].satisfies, `should be true and the gap module should be 0:1,1:1  `   )
+debugger
+
+
+ultraObject = ultraObjectReset()
+ultraObject.partialMatch({
+    compTo:'mmTa',
+    compAgn:'ddTa',
+    range:3,
+    gap:5,
+    type:'string'
+    
+})
+
+console.log(   ultraObject.nE[0].satisfies, `should be false this is a trailer module problem 0:1,1:1  `   )
+
+debugger
+
+ultraObject = ultraObjectReset()
+ultraObject.partialMatch({
+    compTo:'asdfund',
+    compAgn:'fuaaaan',
+    range:3,
+    gap:4,
+    type:'string'
+    
+})
+
+console.log(   ultraObject.nE[0].satisfies   )
+console.log(    `%c trailer problem `,'background: #222; color: #bada55'   )
+
+debugger
+
+ultraObject = ultraObjectReset()
+ultraObject.partialMatch({
+    compTo:'asdfund',
+    compAgn:'fun',
+    range:3,
+    gap:2,
+    type:'string'
+    
+})
+
+console.log(   ultraObject.nE[0].satisfies, `should be false gap like this does just as well when looking for words deep in to context `   )
+
+debugger
+
+    
+
+
+ultraObject = ultraObjectReset()
+ultraObject.partialMatch({
+    compTo:'fudn',
+    compAgn:'safudn',
+    range:3,
+    gap:3,
+    type:'string'
+    
+})
+
+console.log(   ultraObject.nE[0].satisfies, `gap is working when range finally finds the string `   )
+debugger
+
+ultraObject = ultraObjectReset()
+ultraObject.partialMatch({
+    compTo:'azzzug',
+    compAgn:'eeesdfueegwn',
+    range:3,
+    gap:10,
+    type:'string'
+    
+})
+
+console.log(   ultraObject.nE[0].satisfies, `should be false gap depending on if gap gets to 10 it gets to range or gap first and works good`   )
+
+
+    debugger
+ultraObject = ultraObjectReset()
+
+ultraObject.endpoint({
+    xhttp:ultraObject.iterify({iterify:[new XMLHttpRequest()]}),
+    instruct:'XMLHttpRequest',
+    eventName:'load',
+    eventHandler:()=>{
+        ultraObject.partialMatch({
+            compTo:'asdfund',
+            compAgn:ultraObject.XHR[0][0].responseText,
+            range:3,
+            gap:2,
+            type:'string'
+
+        })
+
+        console.log(   ultraObject.nE[0].satisfies, `practical example of above `   )
+        
+
+    },
+    protocol:"GET",
+    target:"https://raw.githubusercontent.com/MichaelOdumosu57/Vipes/master/modal.js",
+    asyncBool:true
+})
+debugger
+    throw('e')
+
+
 
 
 

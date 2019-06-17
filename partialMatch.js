@@ -1,6 +1,7 @@
     /*
     for future
     think if you want to write conditionals for each module or have everything availble for some sort of quantum future
+    remove spaces module for v1 since its === to the length of the gap index
 
     ideas now
     the modules tell the managment module what to do conerning itself and the other modules, once the management modules gets all instructions from all modules at that point it starts to update the module accordingly
@@ -22,7 +23,6 @@
 /*
     range module
     if ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compAgn[   pMFL_0_i.forLoop_0_i   ] === ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compTo[   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][4][0]   ]
-<<<<<<< HEAD
         //key ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.rangePause
             
                 value
@@ -41,9 +41,14 @@
             false: the range just ended and I know I have encountered a new space
                                     
                                         
-=======
->>>>>>> 0e2e6f092897b62d786297d14bfc8990dc6abf70
 */
+/*
+    scrumMaster module
+    do code that doesnt modify first before you do code that modifies
+    evalution of module parts should occur when another module is not being touch, so if looking at gap range should be neutral and vice versa
+    for the if else if dealing with gap, the code block needed to make sure that the range module was not coming into to interefere with the operations
+*/
+
 function partialMatch(   dev_obj   ){
                     /*
                         key points
@@ -88,10 +93,8 @@ function partialMatch(   dev_obj   ){
                         ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].v1Start = 0
                         ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].v2Start = 5
                         ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].range = ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].add({value:ultraObject.iterify({iterify:0})})
-<<<<<<< HEAD
                         ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].spaces = ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].add({value:ultraObject.iterify({iterify:0})})
-=======
->>>>>>> 0e2e6f092897b62d786297d14bfc8990dc6abf70
+                        ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].gap = ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].add({value:ultraObject.iterableObject()})
                         ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].pause  = ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].add({
                             value:ultraObject.iterify({iterify:0}),
                             index:4
@@ -106,13 +109,6 @@ function partialMatch(   dev_obj   ){
 
                              
                                 /*range module  */ //{
-<<<<<<< HEAD
-                                //key ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.rangePause
-                                    /*
-                                        value
-                                        true: tells scrum module to increment the range and pause by 1 and reset itself to false and turns also turns ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.spaces to false
-                                        false: its okat for me to evalutate if if dont execute, do not do what true does
-                                    */
                                 if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compTo[   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].pause   ][0]   ] === ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compAgn[   pMFL_0_i.forLoop_0_i   ]   ){
                                     
                                     
@@ -123,43 +119,86 @@ function partialMatch(   dev_obj   ){
                                 // }  /**/
 
                                 /*spaces module  */ //{
-                                // key ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.spaces
-                                    // tells the scrum module to increment the space by one
-                                    /*
-                                        value
-                                        true: increment spaces by one
-                                        standby: ive encountered a spaces already even though the chars arent equal im going through a gap
-                                        false: the range just ended and I know I have encountered a new space
+                                if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compTo[   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].pause   ][0]   ] !== ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compAgn[   pMFL_0_i.forLoop_0_i   ] &&  ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.spaces !== 'standby'  ){
                                     
-                                    */
-                                if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compTo
-=======
-                                if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compTo[   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].pause   ][0]   ] === ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compAgn[   pMFL_0_i.forLoop_0_i   ]   ){
                                     
-                                    ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.rangePause = 'true'
+                                    ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.spaces = 'true'
+                                    
+                                    
                                 }
                                 // }  /**/
-
+                                
+                                /*gap module  */ //{
+                                if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compTo[   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].pause   ][0]   ] !== ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compAgn[   pMFL_0_i.forLoop_0_i   ]   ){
+                                
+                                
+                                    ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.gap = 'true'
+                                    
+                                    
+                                }
+                                // }  /**/
+                                
                                 /*pause module  */ //{
                                 
                                 // }  /**/
                                 
                                 /*scrumMaster module  */ //{
+                                if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.gap === 'true' && ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.spaces !== 'true' && ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.rangePause !== 'true'   ){
+                                    
+                                    
+                                    ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].gap   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].gap   ].length-1   ] += 1
+                                    
+                                    
+                                                                        
+                                }
+                                
+                                
+                                else if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.gap === 'true' && ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.spaces === 'true' && ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.rangePause !== 'true'  ){
+                                    
+                                    
+                                    ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].gap   ].add({value:1})
+                                    
+                                                                        
+                                }
+                                
+                                
+                                // else if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.gap === 'true' && ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.spaces === 'true' && ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].spaces   ][0]=== 0  ){
+                                    
+                                    
+                                //     ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].gap   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].gap   ].length-1   ] += 1
+                                    
+                                                                        
+                                // }
+                                
                                 if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.rangePause === 'true'   ){
                                     
                                     
                                     ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].range   ][0] += 1
                                     ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].pause   ][0] += 1
                                     ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.rangePause = 'false'
+                                    ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.spaces = 'false'
+                                    ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.gap = 'false'
+                                 
                                     
                                 }
                                 
-                                
+                                                                
+                                if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.spaces === 'true'   ){
+                                    
+                                    
+                                    ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].spaces   ][0] += 1
+                                    ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.spaces = 'standby'
+                                    
+                                    
+                                }
+                                                        
+                                                                
                                     /*reacting to the final range  */ //{
                                     if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].range   ][0] >= ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.range   ){
                                         
-                                        
+                                       
                                         ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].satisfy = 'true'
+                                        ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].satisfies = ultraObject.iterify({iterify:['true','range']})
                                         return 'premature'
                                         
                                         
@@ -169,12 +208,40 @@ function partialMatch(   dev_obj   ){
                                     else if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].range   ][0] < ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.range  && pMFL_0_i.forLoopLength -1 ===  pMFL_0_i.forLoop_0_i    ){
                                         
                                         
-                                        ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].satisfy = 'false'
+                                        ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].satisfy = 'false';
+                                        ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].satisfies = ultraObject.iterify({iterify:['false','range']})
                                         return 'premature'
                                         
                                         
                                     }
                                     // }  /**/
+                                    
+                                    
+                                    /*reacting to the final of spaces  */ //{
+                                    if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].spaces   ][0] > ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.spaces   ){
+                                        
+                                        
+                                        ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].satisfy = 'false';
+                                        ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].satisfies = ultraObject.iterify({iterify:['false','spaces']})
+                                        return 'premature'
+                                        
+                                        
+                                    }
+                                    // }  /**/
+                                    
+                                    
+                                    /*reacting to the final of gap */ //{
+                                    if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].gap   ][0] > ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.gap   ){
+                                        
+                                        
+                                        ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].satisfy = 'false';
+                                        ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].satisfies = ultraObject.iterify({iterify:['false','gap']})
+                                        return 'premature'
+                                        
+                                        
+                                    }
+                                    // }  /**/
+                                    
                                 // }  /**/
                                
                             },
@@ -187,4 +254,3 @@ function partialMatch(   dev_obj   ){
                     
                     
                 }
->>>>>>> 0e2e6f092897b62d786297d14bfc8990dc6abf70
