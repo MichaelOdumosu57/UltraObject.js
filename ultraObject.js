@@ -1,3 +1,5 @@
+
+
         /*
             TO DO ,
             mabye think about a validator API
@@ -355,117 +357,117 @@
                         // }  /**/
                         
                 }
-                function addEventListener(   dev_obj   ){
-                        var fn;
+                // function addEventListener(   dev_obj   ){
+                //         var fn;
                         
                         
-                        if(   dev_obj !== undefined   ){
+                //         if(   dev_obj !== undefined   ){
                             
                             
-                            if(   dev_obj.fn !== undefined   ){
+                //             if(   dev_obj.fn !== undefined   ){
                                 
                                 
-                                fn = dev_obj.fn
+                //                 fn = dev_obj.fn
                                 
                                 
-                            }
+                //             }
                             
                             
-                            else if(   dev_obj.xhttp === 'true'   ){
+                //             else if(   dev_obj.xhttp === 'true'   ){
                                 
                                 
-                                fn= xhttpreadystatechange
+                //                 fn= xhttpreadystatechange
                                 
                                 
-                            }
+                //             }
                             
                             
-                            else if(   dev_obj.fn === undefined   ){
+                //             else if(   dev_obj.fn === undefined   ){
                                 
                                 
-                                fn = ultraObject.passing_args
+                //                 fn = ultraObject.passing_args
                                 
                                 
-                            }
+                //             }
                             
                             
-                        }
+                //         }
                         
                         
-                        else if(   dev_obj === undefined   ){
+                //         else if(   dev_obj === undefined   ){
                             
                             
-                            fn = ultraObject.passing_args
+                //             fn = ultraObject.passing_args
                             
                             
-                        }
-                        
-                        
-                        
-                        ultraObject.DOM_child[0].addEventListener(   ultraObject.eventName,fn   )
-                } //  dev_obj.fn is used for 1st party dev to add their custom function to the listener dev_obj.xhttp is for xhr
-                function xhttp(   dev_obj   ){
-                        
-                        
-                        if(   typeof(   XMLHttpRequest   ) !== 'undefined'   ){
-                            
-                            
-                            if(   dev_obj === undefined   ){
-                                
-                                
-                                var xhttp_0_i = new XMLHttpRequest()
-                                return xhttp_0_i
-                                
-                                
-                            }
-                            
-                            
-                            else if(   dev_obj !== undefined   ){
-                                
-                                
-                                var xhttp_0_i = new XMLHttpRequest()
-                                return xhttp_0_i
-                                
-                                
-                            }
-                            
-                            
-                        }
+                //         }
                         
                         
                         
-                } // creates an xhr obj
-                function open(   dev_obj   ){
+                //         ultraObject.DOM_child[0].addEventListener(   ultraObject.eventName,fn   )
+                // } //  dev_obj.fn is used for 1st party dev to add their custom function to the listener dev_obj.xhttp is for xhr
+                // function xhttp(   dev_obj   ){
+                        
+                        
+                //         if(   typeof(   XMLHttpRequest   ) !== 'undefined'   ){
+                            
+                            
+                //             if(   dev_obj === undefined   ){
+                                
+                                
+                //                 var xhttp_0_i = new XMLHttpRequest()
+                //                 return xhttp_0_i
+                                
+                                
+                //             }
+                            
+                            
+                //             else if(   dev_obj !== undefined   ){
+                                
+                                
+                //                 var xhttp_0_i = new XMLHttpRequest()
+                //                 return xhttp_0_i
+                                
+                                
+                //             }
+                            
+                            
+                //         }
+                        
+                        
+                        
+                // } // creates an xhr obj
+                // function open(   dev_obj   ){
                     
-                    dev_obj.xhttp.open(   dev_obj.protocol,dev_obj.target,dev_obj.unk_bool   )
-                } // gets in contact with the host
-                function xhttpreadystatechange(   dev_obj   ){
-                    console.log(    this   )
+                //     dev_obj.xhttp.open(   dev_obj.protocol,dev_obj.target,dev_obj.unk_bool   )
+                // } // gets in contact with the host
+                // function xhttpreadystatechange(   dev_obj   ){
+                //     console.log(    this   )
                     
-                    if (    this.readyState == 4 && this.status == 200   ) {
+                //     if (    this.readyState == 4 && this.status == 200   ) {
                     
                     
-                        if(   dev_obj !==undefined   ){
+                //         if(   dev_obj !==undefined   ){
                             
                             
-                            dev_obj.fn()
+                //             dev_obj.fn()
                             
                             
-                        }
+                //         }
                         
                         
-                        else if(   dev_obj ===undefined   ){
+                //         else if(   dev_obj ===undefined   ){
                             
                             
-                            ultraObject.xhrResponse = this.responseText
+                //             ultraObject.xhrResponse = this.responseText
                             
                             
-                        }
+                //         }
                         
                         
-                    }
+                //     }
                     
-                } // handles getting remote reposnes
+                // } // handles getting remote reposnes
                 function notes_entries_fn(   dev_obj   ){
                     ultraObject.notes_entries = Object.entries(   ultraObject.notes_object  )
                 }// produces the entries for the pretty_print functionality
@@ -4246,6 +4248,7 @@
                         ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].v2Start = 5
                         ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].range = ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].add({value:ultraObject.iterify({iterify:0})})
                         ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].spaces = ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].add({value:ultraObject.iterify({iterify:0})})
+                        ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].gap = ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].add({value:ultraObject.iterify({iterify:0})})
                         ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].pause  = ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].add({
                             value:ultraObject.iterify({iterify:0}),
                             index:4
@@ -4279,6 +4282,16 @@
                                 }
                                 // }  /**/
                                 
+                                /*gap module  */ //{
+                                if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compTo[   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].pause   ][0]   ] !== ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compAgn[   pMFL_0_i.forLoop_0_i   ]   ){
+                                
+                                
+                                    ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.gap = 'true'
+                                    
+                                    
+                                }
+                                // }  /**/
+                                
                                 /*pause module  */ //{
                                 
                                 // }  /**/
@@ -4303,6 +4316,15 @@
                                     ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.spaces = 'standby'
                                     
                                     
+                                }
+                                
+                                
+                                if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.gap === 'true'   ){
+                                    
+                                    
+                                    ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].gap   ][0] += 1
+                                    
+                                                                        
                                 }
                                 
                                 
@@ -4342,6 +4364,18 @@
                                     }
                                     // }  /**/
                                     
+                                    
+                                    /*reacting to the final of gap */ //{
+                                    if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].gap   ][0] > ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.gap   ){
+                                        
+                                        
+                                        ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].satisfy = 'false';
+                                        ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].satisfies = ultraObject.iterify({iterify:['false','gap']})
+                                        return 'premature'
+                                        
+                                        
+                                    }
+                                    // }  /**/
                                     
                                 // }  /**/
                                
