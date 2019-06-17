@@ -22,6 +22,7 @@
 /*
     range module
     if ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compAgn[   pMFL_0_i.forLoop_0_i   ] === ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compTo[   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][4][0]   ]
+<<<<<<< HEAD
         //key ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.rangePause
             
                 value
@@ -40,8 +41,9 @@
             false: the range just ended and I know I have encountered a new space
                                     
                                         
+=======
+>>>>>>> 0e2e6f092897b62d786297d14bfc8990dc6abf70
 */
-
 function partialMatch(   dev_obj   ){
                     /*
                         key points
@@ -86,7 +88,10 @@ function partialMatch(   dev_obj   ){
                         ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].v1Start = 0
                         ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].v2Start = 5
                         ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].range = ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].add({value:ultraObject.iterify({iterify:0})})
+<<<<<<< HEAD
                         ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].spaces = ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].add({value:ultraObject.iterify({iterify:0})})
+=======
+>>>>>>> 0e2e6f092897b62d786297d14bfc8990dc6abf70
                         ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].pause  = ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].add({
                             value:ultraObject.iterify({iterify:0}),
                             index:4
@@ -101,6 +106,7 @@ function partialMatch(   dev_obj   ){
 
                              
                                 /*range module  */ //{
+<<<<<<< HEAD
                                 //key ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.rangePause
                                     /*
                                         value
@@ -127,3 +133,58 @@ function partialMatch(   dev_obj   ){
                                     
                                     */
                                 if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compTo
+=======
+                                if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compTo[   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].pause   ][0]   ] === ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compAgn[   pMFL_0_i.forLoop_0_i   ]   ){
+                                    
+                                    ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.rangePause = 'true'
+                                }
+                                // }  /**/
+
+                                /*pause module  */ //{
+                                
+                                // }  /**/
+                                
+                                /*scrumMaster module  */ //{
+                                if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.rangePause === 'true'   ){
+                                    
+                                    
+                                    ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].range   ][0] += 1
+                                    ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].pause   ][0] += 1
+                                    ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.rangePause = 'false'
+                                    
+                                }
+                                
+                                
+                                    /*reacting to the final range  */ //{
+                                    if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].range   ][0] >= ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.range   ){
+                                        
+                                        
+                                        ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].satisfy = 'true'
+                                        return 'premature'
+                                        
+                                        
+                                    }
+                                                                        
+                                    
+                                    else if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].range   ][0] < ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.range  && pMFL_0_i.forLoopLength -1 ===  pMFL_0_i.forLoop_0_i    ){
+                                        
+                                        
+                                        ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].satisfy = 'false'
+                                        return 'premature'
+                                        
+                                        
+                                    }
+                                    // }  /**/
+                                // }  /**/
+                               
+                            },
+                            args:dev_obj //{}
+                        }
+                        ultraObject.forLoop(   pMFL_0_i   )
+                        
+                    }
+                    // }  /**/
+                    
+                    
+                }
+>>>>>>> 0e2e6f092897b62d786297d14bfc8990dc6abf70
