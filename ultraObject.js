@@ -1,6 +1,3 @@
-update partailMatch should have made a sepeate test for rthe conditionals from the beginning
-
-// testing needs to be done with the trailer in partialMatch thats all
 
         /*
             TO DO ,
@@ -4247,7 +4244,7 @@ update partailMatch should have made a sepeate test for rthe conditionals from t
                         // when you make this function make all the conditionals go in the index so we can loop through them
                         ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls = dev_obj
                         ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster = ultraObject.iterableObject()
-                        ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy = ultraObject.iterableObject()
+                        ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy = {} // PROBLEM make this an itO
                         ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.v1 = 'true'
                         ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.v2 = 'false'
                         ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].v1Start = 0
@@ -4265,9 +4262,8 @@ update partailMatch should have made a sepeate test for rthe conditionals from t
                             forLoop_0_i:0,
                             forLoopLength: ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compTo.length > ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compAgn.length ? ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compTo.length :  ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compAgn.length ,// PROBLEM add one to the length and deal with the undefined problem at the end of this loop
                             fn:function(   dev_obj   ){
+                                ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy = {}
                                 
-
-                             
                                 /*range module  */ //{
                                 if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compTo[   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].pause   ][0]   ] === ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compAgn[   pMFL_0_i.forLoop_0_i   ]   ){
                                     
@@ -4284,6 +4280,7 @@ update partailMatch should have made a sepeate test for rthe conditionals from t
                                     
                                     
                                     ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.spaces = 'true'
+                                    ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy.spaces = 'true'
                                     
                                     
                                 }
@@ -4361,28 +4358,28 @@ update partailMatch should have made a sepeate test for rthe conditionals from t
                                 // }
                                 
                                 
-                                // if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.trailer !== 'true'  &&  ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.rangePause === 'true'    ){
+                                if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy.trailer !== 'true'  &&  ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy.rangePause === 'true'    ){
                                     
                                     
-                                //     ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].range   ][0] += 1
-                                //     ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].pause   ][0] += 1
-                                //     ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.rangePause = 'false'
-                                //     ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.spaces = 'false'
-                                //     ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.gap = 'false'
-                                //     ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.trailer = 'complete' // LINK1
+                                    ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].range   ][0] += 1
+                                    ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].pause   ][0] += 1
+                                    ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.rangePause = 'false'
+                                    ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.spaces = 'false'
+                                    ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.gap = 'false'
+                                    ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.trailer = 'complete' // LINK1
                                  
                                     
-                                // }
+                                }
                                 
                                                                 
-                                // if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.trailer !== 'true'  && ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.spaces === 'true'   ){
+                                if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy.trailer !== 'true'  && ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy.spaces === 'true'   ){
                                     
                                     
-                                //     ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].spaces   ][0] += 1
-                                //     ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.spaces = 'standby'
+                                    ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].spaces   ][0] += 1
+                                    ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.spaces = 'standby'
                                     
                                     
-                                // }
+                                }
                                 
                                 
                                 // if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.trailer === 'true'   ){
@@ -4397,41 +4394,41 @@ update partailMatch should have made a sepeate test for rthe conditionals from t
                                 // }
                                                         
                                                                 
-                                //     /*reacting to the final range  */ //{
-                                //     if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].range   ][0] >= ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.range   ){
+                                    /*reacting to the final range  */ //{
+                                    if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].range   ][0] >= ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.range   ){
                                         
                                        
-                                //         ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].satisfy = 'true'
-                                //         ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].satisfies = ultraObject.iterify({iterify:['true','range']})
-                                //         return 'premature'
+                                        ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].satisfy = 'true'
+                                        ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].satisfies = ultraObject.iterify({iterify:['true','range']})
+                                        return 'premature'
                                         
                                         
-                                //     }
+                                    }
                                                                         
                                     
-                                //     else if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].range   ][0] < ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.range  && pMFL_0_i.forLoopLength -1 ===  pMFL_0_i.forLoop_0_i    ){
+                                    else if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].range   ][0] < ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.range  && pMFL_0_i.forLoopLength -1 ===  pMFL_0_i.forLoop_0_i    ){
                                         
                                         
-                                //         ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].satisfy = 'false';
-                                //         ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].satisfies = ultraObject.iterify({iterify:['false','range']})
-                                //         return 'premature'
+                                        ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].satisfy = 'false';
+                                        ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].satisfies = ultraObject.iterify({iterify:['false','range']})
+                                        return 'premature'
                                         
                                         
-                                //     }
-                                //     // }  /**/
+                                    }
+                                    // }  /**/
                                     
                                     
-                                //     /*reacting to the final of spaces  */ //{
-                                //     if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].spaces   ][0] > ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.spaces   ){
+                                    /*reacting to the final of spaces  */ //{
+                                    if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].spaces   ][0] > ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.spaces   ){
                                         
                                         
-                                //         ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].satisfy = 'false';
-                                //         ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].satisfies = ultraObject.iterify({iterify:['false','spaces']})
-                                //         return 'premature'
+                                        ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].satisfy = 'false';
+                                        ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].satisfies = ultraObject.iterify({iterify:['false','spaces']})
+                                        return 'premature'
                                         
                                         
-                                //     }
-                                //     // }  /**/
+                                    }
+                                    // }  /**/
                                     
                                     
                                 //     /*reacting to the final of gap */ //{
