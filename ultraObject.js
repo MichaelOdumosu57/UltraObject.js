@@ -176,7 +176,7 @@
                     DOM_child:iterableObject(), // wants a DOM element
                     XHR:iterableObject(), //ajax or XHR choose now
                     endpoint:endpoint,
-                    addEventListener:addEventListener, //  dev_obj.fn is used for 1st party dev to add their custom function to the listener .. can do this my self see why other libraries get mad when i make this
+                    // addEventListener:addEventListener, //  dev_obj.fn is used for 1st party dev to add their custom function to the listener .. can do this my self see why other libraries get mad when i make this
                     passing_args: function(   dev_obj   ){
                         console.log(arguments)
                     }, // use this to see parameters from functions that have something to offer
@@ -4291,6 +4291,7 @@
                                 
                                 
                                     ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.gap = 'true'
+                                    ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy.gap = 'true'
                                     
                                     
                                 }
@@ -4339,23 +4340,23 @@
                                     //the feature is the API is allowing the trailer as a wildcard one time to finish the string row
                                     // so even if rangefinds it first if it comes across a letter in compTo not in compAgn only once
                                     // the trailer module runs comment LINK1 out to enable\disable this feature
-                                // if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.trailer !== 'true'  && ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.gap === 'true' && ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.spaces !== 'true' && ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.rangePause !== 'true'   ){
+                                if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy.trailer !== 'true'  && ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy.gap === 'true' && ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy.spaces !== 'true' && ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy.rangePause !== 'true'   ){
                                     
                                     
-                                //     ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].gap   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].gap   ].length-1   ] += 1
+                                    ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].gap   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].gap   ].length-1   ] += 1
                                     
                                     
                                                                         
-                                // }
+                                }
                                 
                                 
-                                // else if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.trailer !== 'true' && ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.gap === 'true' && ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.spaces === 'true' && ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.rangePause !== 'true'  ){
+                                else if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy.trailer !== 'true' && ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy.gap === 'true' && ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy.spaces === 'true' && ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy.rangePause !== 'true'  ){
                                     
                                     
-                                //     ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].gap   ].add({value:1})
+                                    ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].gap   ].add({value:1})
                                     
                                                                         
-                                // }
+                                }
                                 
                                 
                                 if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy.trailer !== 'true'  &&  ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy.rangePause === 'true'    ){
@@ -4431,17 +4432,17 @@
                                     // }  /**/
                                     
                                     
-                                //     /*reacting to the final of gap */ //{
-                                //     if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].gap   ][0] > ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.gap   ){
+                                    /*reacting to the final of gap */ //
+                                    if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].gap   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].gap   ].length-1   ] > ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.gap   ){
                                         
                                         
-                                //         ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].satisfy = 'false';
-                                //         ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].satisfies = ultraObject.iterify({iterify:['false','gap']})
-                                //         return 'premature'
+                                        ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].satisfy = 'false';
+                                        ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].satisfies = ultraObject.iterify({iterify:['false','gap']})
+                                        return 'premature'
                                         
                                         
-                                //     }
-                                //     // }  /**/
+                                    }
+                                    // }  /**/
                                     
                                 // }  /**/
                                
