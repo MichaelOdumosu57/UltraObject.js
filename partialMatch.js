@@ -49,6 +49,15 @@
     for the if else if dealing with gap, the code block needed to make sure that the range module was not coming into to interefere with the operations
 */
 
+/*trailer module
+    key ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.trailer if 'true'
+        modify the pause module to the index of the match
+        probably increment the range by 1
+    key ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.trailerRange if true
+        disable the whole module make trailer == 'false
+    key ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.trailerLocation , helps the API know
+        where to start in compTo after trailer has found a match, the previous was a bad selection
+*/
 function partialMatch(   dev_obj   ){
                     /*
                         key points
