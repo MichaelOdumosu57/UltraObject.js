@@ -67,6 +67,11 @@
 
 /*
     full module
+        // key points
+        in the code theres the check for full module detecting a problem, but I use range index to evaluate this, theres another spot in trailer where i also
+            use range, keep this module evulation mixing to a minimun
+            dont make range > compTo.length when using this
+        //
     key ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.full helps the scrumMaster know wheter to allow normal operations, or fix the nE
     whats going on here is sometimes the dev want the exact word, or that exact range
     
@@ -76,7 +81,9 @@
     full:'true'
     when full  === 'true', the API must find 'macbo' in compAgn or it will fail
     this is a v2 implementation to work with v1,
-    DO NOT ALLOW IT TO SUPPORT TRAILER AT ALL
+    DO NOT ALLOW IT TO SUPPORT TRAILER AT ALL, however with this code it might work ill try to test it
+    IF YOU TEST IT DO NOT MODIFY TO MAKE IT WORK, IT WORKS OR IT DOESNT rmber this does not exist in v2
+    
     
     so if we have a module handle this
         we know the range starts at 0 and ends at range
@@ -84,12 +91,14 @@
         we know if it fails the gap get incremented by range, our gap itO length === 1 with index 0 representign the only space
         
     happy coding!!
+
 */
 function partialMatch(   dev_obj   ){
                     /*
                         key points
                         everything is in relation to compAgn
                         remember to comment out all .satisfies for debugging only
+                        never use trailer with full!!!
                     */
                     /* ablelasts
                         1 for nE
@@ -145,6 +154,32 @@ function partialMatch(   dev_obj   ){
                             fn:function(   dev_obj   ){
                                 ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy = {}
                                 
+                                /* full module  */ //{
+                                if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.full === 'true'   ){
+                                    
+                                    
+                                    // if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compTo[   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].pause   ][0]   ] === ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compAgn[   pMFL_0_i.forLoop_0_i   ]   ){
+                                        
+                                        
+                                    //     ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.full = 'ok'
+                                    //     ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy.full = 'ok'
+                                        
+                                        
+                                    // }
+                                    
+                                    
+                                    if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compTo[   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].pause   ][0]   ] !== ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compAgn[   pMFL_0_i.forLoop_0_i   ] && ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].range   ][0] > 0  ){
+                                    
+                                    
+                                        ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.full = 'fix'
+                                        ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy.full = 'fix'
+                                        
+                                    }
+                                    
+                                    
+                                }
+                                // }  /**/
+                                
                                 /*range module  */ //{
                                 if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compTo[   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].pause   ][0]   ] === ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compAgn[   pMFL_0_i.forLoop_0_i   ]   ){
                                     
@@ -190,6 +225,7 @@ function partialMatch(   dev_obj   ){
                                             
                                             if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compTo[pMFL_1_i.forLoop_0_i] === ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compAgn[pMFL_0_i.forLoop_0_i]  ){
                                                 //&& ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.rangePause   !== 'true'
+                                                // if placed here remember to take it out the top
                                             
                                                 
                                                 ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.trailer = 'true'
@@ -224,62 +260,75 @@ function partialMatch(   dev_obj   ){
                                 // }  /**/
                                 
                                 /*scrumMaster module  */ //{
-                                // for the range modification, decided whether to offer or omit the feautre
-                                    //the feature is the API is allowing the trailer as a wildcard one time to finish the string row
-                                    // so even if rangefinds it first if it comes across a letter in compTo not in compAgn only once
-                                    // the trailer module runs comment LINK1 out to enable\disable this feature
-                                    // when compAgn is smaller than compTo the gap go to lenght of compTo if nothing is found, allow the developer to put gap the length of compTo if desiored or compAgn must be always greater than compTo
-                                if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy.trailer !== 'true'  && ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy.gap === 'true' && ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy.spaces !== 'true' && ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy.rangePause !== 'true'   ){
-                                    
-                                    
-                                    ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].gap   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].gap   ].length-1   ] += 1
-                                    
-                                    
-                                                                        
-                                }
                                 
+                                    /*carrying out instuctions from the full module  */ //{
+                                    if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy.full === 'fix'   ){
+                                        
+                                        ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].gap   ][0] += ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].range   ][0]
+                                        ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].range   ][0] = 0
+                                        ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].pause   ][0] = 0
+                                        ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.spaces = 'standby'
+                                        // debugger
+                                    }
+                                    // }  /**/
                                 
-                                else if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy.trailer !== 'true' && ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy.gap === 'true' && ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy.spaces === 'true' && ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy.rangePause !== 'true'  ){
+                                else if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy.full !== 'fix'   ){
                                     
                                     
-                                    ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].gap   ].add({value:1})
-                                    
-                                                                        
-                                }
-                                
-                                
-                                if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy.trailer !== 'true'  &&  ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy.rangePause === 'true'    ){
-                                    
-                                    
-                                    ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].range   ][0] += 1
-                                    ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].pause   ][0] += 1
-                                    ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.rangePause = 'false'
-                                    ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.spaces = 'false'
-                                    ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.gap = 'false'
-                                    ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.trailer = 'complete' // LINK1
-                                 
-                                    
-                                }
-                                
-                                                                
-                                if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy.trailer !== 'true'  && ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy.spaces === 'true'   ){
+                                    if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy.trailer !== 'true'  && ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy.gap === 'true' && ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy.spaces !== 'true' && ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy.rangePause !== 'true'   ){
+                                        
+                                        
+                                        ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].gap   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].gap   ].length-1   ] += 1
+                                        
+                                        
+                                                                            
+                                    }
                                     
                                     
-                                    ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].spaces   ][0] += 1
-                                    ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.spaces = 'standby'
+                                    else if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy.trailer !== 'true' && ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy.gap === 'true' && ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy.spaces === 'true' && ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy.rangePause !== 'true'  ){
+                                        
+                                        
+                                        ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].gap   ].add({value:1})
+                                        
+                                                                            
+                                    }
                                     
                                     
-                                }
-                                
-                                
-                                if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy.trailer === 'true'   ){
+                                    if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy.trailer !== 'true'  &&  ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy.rangePause === 'true'    ){
+                                        
+                                        
+                                        ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].range   ][0] += 1
+                                        ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].pause   ][0] += 1
+                                        ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.rangePause = 'false'
+                                        ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.spaces = 'false'
+                                        ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.gap = 'false'
+                                        ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.trailer = 'complete' // LINK1
+                                     
+                                        
+                                    }
+                                    
+                                                                    
+                                    if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy.trailer !== 'true'  && ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy.spaces === 'true'   ){
+                                        
+                                        
+                                        ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].spaces   ][0] += 1
+                                        ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.spaces = 'standby'
+                                        
+                                        
+                                    }
                                     
                                     
-                                    ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].pause   ][0] = ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.trailerLocation + 1
-                                    ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].range   ][0] += 1
-                                    ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.trailer = 'complete'
-                                    ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.spaces = 'false'
-                                    
+                                    if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy.trailer === 'true'   ){
+                                        
+                                        
+                                        ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].pause   ][0] = ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.trailerLocation + 1
+                                        ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].range   ][0] += 1
+                                        ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.trailer = 'complete'
+                                        ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.spaces = 'false'
+                                        
+                                        
+                                        
+                                    }
                                     
                                     
                                 }

@@ -473,6 +473,38 @@ ultraObject.partialMatch({
 console.log(   ultraObject.nE[0].satisfies,`true trailer has enough length to get to the end of the string`   )
 debugger
 
+
+ultraObject = ultraObjectReset()
+ultraObject.partialMatch({
+    compTo:'uia s',
+    compAgn:`tempopaporibuis ea eligendi quod esse. Commodi quaerat
+             quia sequi soluta sit alias. Officia illum recusandae
+             quia omnis suscipit qui debitis. Tempora`,
+    range:3,
+//     trailer:5,
+    full:'true',
+    type:'string'
+    
+})
+console.log(   ultraObject.nE[0].satisfies,`true full module resets the whole nE until range can complete`   )
+debugger
+
+ultraObject = ultraObjectReset()
+ultraObject.partialMatch({
+    compTo:'paporib',
+    compAgn:`temagpaporibuis ea eligendi qu`,
+    range:3,
+//     trailer:5,
+    full:'true',
+    type:'string'
+    
+})
+console.log(   ultraObject.nE[0].satisfies,`true full module resets the whole nE until range can complete`   )
+debugger
+
+
+
+
 // xhttp for gap testing
 ultraObject = ultraObjectReset()
 
