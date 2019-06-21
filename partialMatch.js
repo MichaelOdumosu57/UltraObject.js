@@ -152,12 +152,7 @@ function partialMatch(   dev_obj   ){
                                 // }  /**/
                                 
                                 /*trailer module  */ //{
-                                //key ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.trailer if 'true'
-                                    //modify the pause module to the index of the match
-                                    //probably increment the range by 1
-                                // key ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.trailerRange if true
-                                    //disable the whole module make trailer == 'false
-                                if(   ultraObject.isInt({type:ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.trailer})   ==='true' && ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.trailer !== 'complete'  ){
+                                if(   ultraObject.isInt({type:ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.trailer})   ==='true' && ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.trailer !== 'complete' &&  ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.rangePause   !== 'true'   ){
                                     
                                     
                                     var pMFL_1_i = {
@@ -166,10 +161,12 @@ function partialMatch(   dev_obj   ){
                                         fn:function(   dev_obj   ){
                                             
                                             
-                                            if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compTo[pMFL_1_i.forLoop_0_i] === ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compAgn[pMFL_0_i.forLoop_0_i] && ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.rangePause   !== 'true' ){
+                                            if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compTo[pMFL_1_i.forLoop_0_i] === ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compAgn[pMFL_0_i.forLoop_0_i]  ){
+                                                //&& ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.rangePause   !== 'true'
                                             
                                                 
                                                 ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.trailer = 'true'
+                                                ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.trailerLocation = pMFL_1_i.forLoop_0_i
                                                 ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy.trailer = 'true'
                                                 return 'premature'
                                                 
@@ -177,13 +174,13 @@ function partialMatch(   dev_obj   ){
                                             }
                                             
                                             
-                                            else if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.rangePause   === 'true'   ){
+                                            // else if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.rangePause   === 'true'   ){
                                                 
                                                 
-                                                return 'premature'
+                                            //     return 'premature'
                                                 
                                                 
-                                            }
+                                            // }
                                             
                                             
                                         },
@@ -251,7 +248,7 @@ function partialMatch(   dev_obj   ){
                                 if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy.trailer === 'true'   ){
                                     
                                     
-                                    ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].pause   ][0] = pMFL_0_i.forLoop_0_i + 1
+                                    ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].pause   ][0] = ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.trailerLocation + 1
                                     ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].range   ][0] += 1
                                     ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.trailer = 'complete'
                                     ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.spaces = 'false'
