@@ -1,4 +1,5 @@
 
+
         /*
             TO DO ,
             mabye think about a validator API
@@ -4312,10 +4313,20 @@
                                         fn:function(   dev_obj   ){
                                             
                                             
-                                            if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compTo[pMFL_1_i. forLoop_0_i] === ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compAgn[pMFL_0_i. forLoop_0_i]   ){
+                                            if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compTo[pMFL_1_i.forLoop_0_i] === ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compAgn[pMFL_0_i.forLoop_0_i] && ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.rangePause   !== 'true' ){
                                             
                                                 
                                                 ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.trailer = 'true'
+                                                ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy.trailer = 'true'
+                                                return 'premature'
+                                                
+                                                
+                                            }
+                                            
+                                            
+                                            else if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.rangePause   === 'true'   ){
+                                                
+                                                
                                                 return 'premature'
                                                 
                                                 
@@ -4340,6 +4351,7 @@
                                     //the feature is the API is allowing the trailer as a wildcard one time to finish the string row
                                     // so even if rangefinds it first if it comes across a letter in compTo not in compAgn only once
                                     // the trailer module runs comment LINK1 out to enable\disable this feature
+                                    // when compAgn is smaller than compTo the gap go to lenght of compTo if nothing is found, allow the developer to put gap the length of compTo if desiored or compAgn must be always greater than compTo
                                 if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy.trailer !== 'true'  && ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy.gap === 'true' && ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy.spaces !== 'true' && ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy.rangePause !== 'true'   ){
                                     
                                     
@@ -4383,16 +4395,17 @@
                                 }
                                 
                                 
-                                // if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.trailer === 'true'   ){
+                                if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy.trailer === 'true'   ){
                                     
                                     
-                                //     ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].pause   ][0] = pMFL_0_i.forLoop_0_i + 1
-                                //     ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].range   ][0] += 1
-                                //     ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.trailer = 'complete'
+                                    ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].pause   ][0] = pMFL_0_i.forLoop_0_i + 1
+                                    ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].range   ][0] += 1
+                                    ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.trailer = 'complete'
+                                    ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.spaces = 'false'
                                     
                                     
                                     
-                                // }
+                                }
                                                         
                                                                 
                                     /*reacting to the final range  */ //{

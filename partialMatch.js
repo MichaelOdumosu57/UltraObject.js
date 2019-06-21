@@ -86,8 +86,10 @@ function partialMatch(   dev_obj   ){
                         dev_obj.compAgn = ultraObject.iterify(   {iterify:dev_obj.compAgn}   )
                         
                         /* setting up the nE*/ //{
+                        // when you make this function make all the conditionals go in the index so we can loop through them
                         ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls = dev_obj
                         ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster = ultraObject.iterableObject()
+                        ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy = {} // PROBLEM make this an itO
                         ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.v1 = 'true'
                         ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.v2 = 'false'
                         ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].v1Start = 0
@@ -105,14 +107,14 @@ function partialMatch(   dev_obj   ){
                             forLoop_0_i:0,
                             forLoopLength: ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compTo.length > ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compAgn.length ? ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compTo.length :  ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compAgn.length ,// PROBLEM add one to the length and deal with the undefined problem at the end of this loop
                             fn:function(   dev_obj   ){
+                                ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy = {}
                                 
-
-                             
                                 /*range module  */ //{
                                 if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compTo[   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].pause   ][0]   ] === ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compAgn[   pMFL_0_i.forLoop_0_i   ]   ){
                                     
                                     
                                     ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.rangePause = 'true'
+                                    ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy.rangePause = 'true'
                                     
                                     
                                 }
@@ -123,6 +125,7 @@ function partialMatch(   dev_obj   ){
                                     
                                     
                                     ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.spaces = 'true'
+                                    ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy.spaces = 'true'
                                     
                                     
                                 }
@@ -133,8 +136,53 @@ function partialMatch(   dev_obj   ){
                                 
                                 
                                     ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.gap = 'true'
+                                    ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy.gap = 'true'
                                     
                                     
+                                }
+                                // }  /**/
+                                
+                                /*trailer module  */ //{
+                                //key ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.trailer if 'true'
+                                    //modify the pause module to the index of the match
+                                    //probably increment the range by 1
+                                // key ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.trailerRange if true
+                                    //disable the whole module make trailer == 'false
+                                if(   ultraObject.isInt({type:ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.trailer})   ==='true' && ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.trailer !== 'complete'  ){
+                                    
+                                    
+                                    var pMFL_1_i = {
+                                        forLoop_0_i:ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].pause   ][0],
+                                        forLoopLength:ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].pause   ][0] +ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.trailer,
+                                        fn:function(   dev_obj   ){
+                                            
+                                            
+                                            if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compTo[pMFL_1_i.forLoop_0_i] === ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compAgn[pMFL_0_i.forLoop_0_i] && ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.rangePause   !== 'true' ){
+                                            
+                                                
+                                                ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.trailer = 'true'
+                                                ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy.trailer = 'true'
+                                                return 'premature'
+                                                
+                                                
+                                            }
+                                            
+                                            
+                                            else if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.rangePause   === 'true'   ){
+                                                
+                                                
+                                                return 'premature'
+                                                
+                                                
+                                            }
+                                            
+                                            
+                                        },
+                                        args:undefined //{}
+                                    }
+                                    ultraObject.forLoop(   pMFL_1_i   )
+                                
+                                
                                 }
                                 // }  /**/
                                 
@@ -143,7 +191,12 @@ function partialMatch(   dev_obj   ){
                                 // }  /**/
                                 
                                 /*scrumMaster module  */ //{
-                                if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.gap === 'true' && ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.spaces !== 'true' && ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.rangePause !== 'true'   ){
+                                // for the range modification, decided whether to offer or omit the feautre
+                                    //the feature is the API is allowing the trailer as a wildcard one time to finish the string row
+                                    // so even if rangefinds it first if it comes across a letter in compTo not in compAgn only once
+                                    // the trailer module runs comment LINK1 out to enable\disable this feature
+                                    // when compAgn is smaller than compTo the gap go to lenght of compTo if nothing is found, allow the developer to put gap the length of compTo if desiored or compAgn must be always greater than compTo
+                                if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy.trailer !== 'true'  && ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy.gap === 'true' && ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy.spaces !== 'true' && ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy.rangePause !== 'true'   ){
                                     
                                     
                                     ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].gap   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].gap   ].length-1   ] += 1
@@ -153,7 +206,7 @@ function partialMatch(   dev_obj   ){
                                 }
                                 
                                 
-                                else if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.gap === 'true' && ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.spaces === 'true' && ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.rangePause !== 'true'  ){
+                                else if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy.trailer !== 'true' && ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy.gap === 'true' && ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy.spaces === 'true' && ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy.rangePause !== 'true'  ){
                                     
                                     
                                     ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].gap   ].add({value:1})
@@ -162,15 +215,7 @@ function partialMatch(   dev_obj   ){
                                 }
                                 
                                 
-                                // else if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.gap === 'true' && ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.spaces === 'true' && ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].spaces   ][0]=== 0  ){
-                                    
-                                    
-                                //     ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].gap   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].gap   ].length-1   ] += 1
-                                    
-                                                                        
-                                // }
-                                
-                                if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.rangePause === 'true'   ){
+                                if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy.trailer !== 'true'  &&  ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy.rangePause === 'true'    ){
                                     
                                     
                                     ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].range   ][0] += 1
@@ -178,16 +223,30 @@ function partialMatch(   dev_obj   ){
                                     ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.rangePause = 'false'
                                     ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.spaces = 'false'
                                     ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.gap = 'false'
+                                    ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.trailer = 'complete' // LINK1
                                  
                                     
                                 }
                                 
                                                                 
-                                if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.spaces === 'true'   ){
+                                if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy.trailer !== 'true'  && ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy.spaces === 'true'   ){
                                     
                                     
                                     ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].spaces   ][0] += 1
                                     ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.spaces = 'standby'
+                                    
+                                    
+                                }
+                                
+                                
+                                if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy.trailer === 'true'   ){
+                                    
+                                    
+                                    ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].pause   ][0] = pMFL_0_i.forLoop_0_i + 1
+                                    ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].range   ][0] += 1
+                                    ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.trailer = 'complete'
+                                    ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.spaces = 'false'
+                                    
                                     
                                     
                                 }
@@ -230,8 +289,8 @@ function partialMatch(   dev_obj   ){
                                     // }  /**/
                                     
                                     
-                                    /*reacting to the final of gap */ //{
-                                    if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].gap   ][0] > ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.gap   ){
+                                    /*reacting to the final of gap */ //
+                                    if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].gap   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].gap   ].length-1   ] > ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.gap   ){
                                         
                                         
                                         ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].satisfy = 'false';
