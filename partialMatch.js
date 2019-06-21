@@ -1,10 +1,10 @@
-    /*
+/*
     for future
     think if you want to write conditionals for each module or have everything availble for some sort of quantum future
     remove spaces module for v1 since its === to the length of the gap index
 
     ideas now
-    the modules tell the managment module what to do conerning itself and the other modules, once the management modules gets all instructions from all modules at that point it starts to update the module accordingly
+    the modules tell the managment module what to do conerning itself and the other modules, once the management modules gets all instructions from all modules at that point it starts to update the nE accordingly
 */
 
 /*
@@ -47,9 +47,15 @@
     do code that doesnt modify first before you do code that modifies
     evalution of module parts should occur when another module is not being touch, so if looking at gap range should be neutral and vice versa
     for the if else if dealing with gap, the code block needed to make sure that the range module was not coming into to interefere with the operations
+    for the range modification, decided whether to offer or omit the feautre
+        the feature is the API is allowing the trailer as a wildcard one time to finish the string row
+        so even if rangefinds it first if it comes across a letter in compTo not in compAgn only once
+        the trailer module runs comment LINK1 out to enable\disable this feature
+        when compAgn is smaller than compTo the gap go to lenght of compTo if nothing is found, allow the developer to put gap the length of compTo if desiored or compAgn must be always greater than compTo
 */
 
-/*trailer module
+/*
+    trailer module
     key ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.trailer if 'true'
         modify the pause module to the index of the match
         probably increment the range by 1
@@ -57,6 +63,27 @@
         disable the whole module make trailer == 'false
     key ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.trailerLocation , helps the API know
         where to start in compTo after trailer has found a match, the previous was a bad selection
+*/
+
+/*
+    full module
+    key ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.full helps the scrumMaster know wheter to allow normal operations, or fix the nE
+    whats going on here is sometimes the dev want the exact word, or that exact range
+    
+    compTO: macbook
+    range:5 ( so now were are looking for macbo )
+    compAgn: I love eating toasted cheese and tuna sandwiches while coding on my macbook
+    full:'true'
+    when full  === 'true', the API must find 'macbo' in compAgn or it will fail
+    this is a v2 implementation to work with v1,
+    DO NOT ALLOW IT TO SUPPORT TRAILER AT ALL
+    
+    so if we have a module handle this
+        we know the range starts at 0 and ends at range
+        we know theres one big space and if its fails we still have one big space, and if it succeeds there should be only one big space
+        we know if it fails the gap get incremented by range, our gap itO length === 1 with index 0 representign the only space
+        
+    happy coding!!
 */
 function partialMatch(   dev_obj   ){
                     /*
