@@ -93,6 +93,11 @@
     happy coding!!
 
 */
+/*
+    carrying out instuctions from the full module
+    sometimes the full module might run into range first, and the scrumMaster cannot update the gap and space properly if it fails
+    the conditional there deals with that probblem by generating the space and the gap
+*/
 function partialMatch(   dev_obj   ){
                     /*
                         key points
@@ -264,11 +269,23 @@ function partialMatch(   dev_obj   ){
                                     /*carrying out instuctions from the full module  */ //{
                                     if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy.full === 'fix'   ){
                                         
-                                        ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].gap   ][0] += ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].range   ][0]
+                                        
+                                        if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].spaces   ][0] === 0   ){
+                                        
+                                        
+                                            ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].spaces   ][0] = 1
+                                            ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].gap   ].add({value:0})
+                                            
+                                            
+                                        }
+                                        
+                                        
+                                        ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].gap   ][0] += ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].range   ][0] +1
                                         ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].range   ][0] = 0
                                         ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].pause   ][0] = 0
                                         ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.spaces = 'standby'
-                                        // debugger
+
+
                                     }
                                     // }  /**/
                                 
