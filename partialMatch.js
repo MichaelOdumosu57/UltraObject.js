@@ -2,6 +2,9 @@
     for future
     think if you want to write conditionals for each module or have everything availble for some sort of quantum future
     remove spaces module for v1 since its === to the length of the gap index
+    v2 allows you to get dynamic like range = itO<7,3,5> gap= itO<5,2> so after it satisfies the range it moves to the 2nd index and so on, if all ranges arent filled we fail, also  if an index is greater in lenght the last of the others will be used in the rest  of the index so for index 5 gap wld be 2 and so one
+    v3 allows for testing of multiple compTo
+    v4 mabye a combo of v2 and v3
 
     ideas now
     the modules tell the managment module what to do conerning itself and the other modules, once the management modules gets all instructions from all modules at that point it starts to update the nE accordingly

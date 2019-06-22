@@ -109,7 +109,7 @@ ultraObject.partialMatch({
 })
 console.log(   ultraObject.nE[0].satisfies,`fails too many spaces`   )
 
-debugger
+// debugger
 
 ultraObject = ultraObjectReset()
 ultraObject.partialMatch({
@@ -123,9 +123,142 @@ ultraObject.partialMatch({
 })
 console.log(   ultraObject.nE[0].satisfies,`true range beats it and there just enough spaces`   )
 
-debugger
+// debugger
+
+ultraObject = ultraObjectReset()
+ultraObject.partialMatch({
+    compTo:'ttttt',
+    compAgn:`tptppppppptttt`,
+    range:5,
+    spaces:2,
+    gap:5,
+    type:'string'
+    
+})
+console.log(   ultraObject.nE[0].satisfies,`fails on 2 space gap is too big`   )
+
+// debugger
+
+ultraObject = ultraObjectReset()
+ultraObject.partialMatch({
+    compTo:'ttttt',
+    compAgn:`tptpttt`,
+    range:5,
+    spaces:2,
+    gap:5,
+    type:'string'
+    
+})
+console.log(   ultraObject.nE[0].satisfies,`true gap is never big enough`   )
+
+// debugger
 console.groupEnd()
 
+console.group('range && gap && full')
+
+ultraObject = ultraObjectReset()
+ultraObject.partialMatch({
+    compTo:'jacked',
+    compAgn:`should I help jack  out this mejadia group, i think I Lost their card
+check this site out https://randomwordgenerator.jackecom/sentence.php
+would it be weird if jacked I had a laptop out which I talked about ideas
+infosys just looked me up people really want to hire me
+kafka (search this ull thank me later)`,
+    range:6,
+    gap:120,
+    full:'true',
+    type:'string'
+    
+})
+console.log(   ultraObject.nE[0].satisfies,`false gap is too big before it finds that full jacked word`   )
+
+// debugger
+
+
+ultraObject = ultraObjectReset()
+ultraObject.partialMatch({
+    compTo:'jacked',
+    compAgn:`should I help jack  out this mejadia group, i think I Lost their card
+check this site out https://randomwordgenerator.jackecom/sentence.php
+would it be weird if jacked I had a laptop out which I talked about ideas
+infosys just looked me up people really want to hire me
+kafka (search this ull thank me later)`,
+    range:6,
+    gap:200,
+    full:'true',
+    type:'string'
+    
+})
+console.log(   ultraObject.nE[0].satisfies,`false gap is too big before it finds that full jacked word`   )
+
+// debugger
+console.groupEnd()
+
+
+console.group('range && trailer && space && gap')
+
+ultraObject = ultraObjectReset()
+ultraObject.partialMatch({
+    compTo:'zzzzzzzzzzzzzzjacked',
+    compAgn:`keaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaad`,
+    range:3,
+    trailer:20,
+    spaces:40,
+    gap:20,
+    type:'string'
+    
+})
+console.log(   ultraObject.nE[0].satisfies,`false gap is too big before it finds that full ked word`   )
+
+// debugger
+
+ultraObject = ultraObjectReset()
+ultraObject.partialMatch({
+    compTo:'zzzzzzzzzzzzzzjacked',
+    compAgn:`keaaaaad`,
+    range:3,
+    trailer:20,
+    spaces:40,
+    gap:20,
+    type:'string'
+    
+})
+console.log(   ultraObject.nE[0].satisfies,`true gap is big enough`   )
+
+// debugger
+
+ 
+
+ultraObject = ultraObjectReset()
+ultraObject.partialMatch({
+    compTo:'zzzzzzz   zzzzzzzjackeded',
+    compAgn:`jaffcffkefffdffefffd`,
+    range:7,
+    trailer:30,
+    spaces:3,
+    gap:10,
+    type:'string'
+    
+})
+console.log(   ultraObject.nE[0].satisfies,`false just too many spaces although we got some range `   )
+
+debugger
+
+ultraObject = ultraObjectReset()
+ultraObject.partialMatch({
+    compTo:'zzzzzzz   zzzzzzzjackeded',
+    compAgn:`jacffkedffefffded`,
+    range:7,
+    trailer:30,
+    spaces:3,
+    gap:10,
+    type:'string'
+    
+})
+console.log(   ultraObject.nE[0].satisfies,`true enough spaces alright `   )
+
+debugger
+console.groupEnd()
 
 throw('e')
 
