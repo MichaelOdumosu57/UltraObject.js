@@ -16,6 +16,24 @@
 /*
     where every tag is looked at in relation to the respective list
 */
+/*
+    if were looking at the same element
+    with the same testing properties in ultraObject.misc[ultraObject.scope[dev_obj.look]] how will we know so far it always is
+    key ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].sameElement helps the API skip over checking  the same DOMElemnt that moved previous digits in the NS
+*/
+
+/*
+    possible places to look to fill in the element to satisfy end users query
+    in the 2nd else if statement, we tried to do interrogation, but now we realize that any element can be the element were looking for
+    in other words
+        if the comparison from the element property actually produces a string PROBLEM, if all in dev obj look is undefined but dev-obj.all = true the element could be skipped now its not
+*/
+
+/*
+    numberSystem access or creation
+    key ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].createdNS, that helps the function know if the related NS is avalible
+    key ltraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].createdNS  --  i do this because i need a closure so that all algorithms in the loop can access it
+*/
 function eCSearch(   dev_obj   ){
                 /*
                     abelasts
