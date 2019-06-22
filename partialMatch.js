@@ -63,6 +63,9 @@
         disable the whole module make trailer == 'false
     key ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.trailerLocation , helps the API know
         where to start in compTo after trailer has found a match, the previous was a bad selection
+        
+    when trailer goes to work and gets the char match further in compTo and its not from index 0 in compAgn a space and respective gap is still generated
+    watch for this
 */
 
 /*

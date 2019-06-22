@@ -2,6 +2,139 @@
 
 console.clear()
 
+//combinded testing
+
+console.group('range && trailer')
+ultraObject = ultraObjectReset()
+ultraObject.partialMatch({
+    compTo:'tzzzgapa',
+    compAgn:`gapa`,
+    range:1,
+    trailer:2,
+    type:'string'
+    
+})
+console.log(   ultraObject.nE[0].satisfies,'false cant get to g'   )
+// debugger
+
+
+ultraObject = ultraObjectReset()
+ultraObject.partialMatch({
+    compTo:'tzzzgapa',
+    compAgn:`gzpa`,
+    range:1,
+    trailer:2,
+    type:'string'
+    
+})
+console.log(   ultraObject.nE[0].satisfies,'false cant get to g but it can get to z'   )
+// debugger
+console.groupEnd()
+
+console.group('range && trailer && space')
+ultraObject = ultraObjectReset()
+ultraObject.partialMatch({
+    compTo:'tzpzzgapa',
+    compAgn:`gzopozozog`,
+    range:5,
+    trailer:2,
+    spaces:3,
+    type:'string'
+    
+})
+console.log(   ultraObject.nE[0].satisfies,`false there are 4 o generateing the spaces
+once it get to the foruth space even though trailer has worked it could not get there in time with spaces`   )
+// debugger
+
+
+ultraObject = ultraObjectReset()
+ultraObject.partialMatch({
+    compTo:'tzpzzgapa',
+    compAgn:`gzopozzg`,
+    range:5,
+    trailer:2,
+    spaces:3,
+    type:'string'
+    
+})
+console.log(   ultraObject.nE[0].satisfies,`true because trailer works there are 3 o and range can get it beofre spaces shuts the operation down`   )
+// debugger
+
+
+
+console.groupEnd()
+
+
+console.group('range && trailer && gap')
+ultraObject = ultraObjectReset()
+ultraObject.partialMatch({
+    compTo:'zzzzzradge',
+    compAgn:`yyyyyyyradge`,
+    range:5,
+    trailer:7,
+    gap:6,
+    type:'string'
+    
+})
+console.log(   ultraObject.nE[0].satisfies,`false trailer can get there but gap wot let it`   )
+// debugger
+
+
+ultraObject = ultraObjectReset()
+ultraObject.partialMatch({
+    compTo:'zzzradge',
+    compAgn:`radge`,
+    range:5,
+    trailer:7,
+    spaces:6,
+    type:'string'
+    
+})
+console.log(   ultraObject.nE[0].satisfies,`trailer does it job as there wont be a gap`   )
+// debugger
+console.groupEnd()
+
+
+console.group('range && space && gap')
+
+ultraObject = ultraObjectReset()
+ultraObject.partialMatch({
+    compTo:'jason',
+    compAgn:`zzzjzzzazzzszzzo`,
+    range:4,
+    spaces:3,
+    gap:12,
+    type:'string'
+    
+})
+console.log(   ultraObject.nE[0].satisfies,`fails too many spaces`   )
+
+debugger
+
+ultraObject = ultraObjectReset()
+ultraObject.partialMatch({
+    compTo:'jason',
+    compAgn:`zzzjzzzazzzsozzz`,
+    range:4,
+    spaces:3,
+    gap:12,
+    type:'string'
+    
+})
+console.log(   ultraObject.nE[0].satisfies,`true range beats it and there just enough spaces`   )
+
+debugger
+console.groupEnd()
+
+
+throw('e')
+
+
+
+
+
+
+
 
 
 //range module
@@ -493,14 +626,45 @@ ultraObject = ultraObjectReset()
 ultraObject.partialMatch({
     compTo:'paporib',
     compAgn:`temagpaporibuis ea eligendi qu`,
-    range:3,
+    range:7,
 //     trailer:5,
     full:'true',
     type:'string'
     
 })
-console.log(   ultraObject.nE[0].satisfies,`true full module resets the whole nE until range can complete`   )
+console.log(   ultraObject.nE[0].satisfies,`true if the range figures it out to the purpose of the full, the module is not activated`   )
+
 debugger
+
+ultraObject = ultraObjectReset()
+ultraObject.partialMatch({
+    compTo:'and',
+//     compAgn:`and a and b and c and d`,
+    compAgn:`and c and b`,
+    range:4,
+
+    full:'true',
+    type:'string'
+    
+})
+console.log(   ultraObject.nE[0].satisfies,` unless a char === undfined it will evalute to false`)
+debugger
+
+ultraObject = ultraObjectReset()
+ultraObject.partialMatch({
+    compTo:'and',
+    compAgn:`and a and b`,
+    range:4,
+
+    full:'true',
+    type:'string'
+    
+})
+console.log(   ultraObject.nE[0].satisfies,` unless a char === undfined it will evalute to false`)
+debugger
+
+
+
 
 
 
