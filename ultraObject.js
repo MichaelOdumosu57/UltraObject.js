@@ -639,12 +639,18 @@
                 function isitO(   dev_obj   ){
                     
                             
-                        if(   dev_obj.type.isitO !== undefined && dev_obj.type.isitO() === 'true'   ){
+                        if(   dev_obj.type !== undefined   ){
                             
                             
-                            return true
-                            
-                            
+                            if(   dev_obj.type.isitO !== undefined && dev_obj.type.isitO() === 'true'   ){
+                                
+                                
+                                return true
+                                
+                                
+                            }
+                        
+                        
                         }
                         
                         
@@ -653,12 +659,18 @@
                 function isAbelast(   dev_obj   ){
                         
                         
-                        if(   dev_obj.type.isAbelast !== undefined && dev_obj.type.isAbelast() === 'true'   ){
+                        if(   dev_obj.type !== undefined   ){
                             
                             
-                            return true
-                            
-                            
+                            if(   dev_obj.type.isAbelast !== undefined && dev_obj.type.isAbelast() === 'true'   ){
+                                
+                                
+                                return true
+                                
+                                
+                            }
+                        
+                        
                         }
                         
 
@@ -3240,18 +3252,19 @@
                                     
                                     
                                     var nSFL_9_i = {
-                                        forLoop_0_i: -(ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].nSM.length - 1 ),
-                                        forLoopLength:0-nSFL_8_i.forLoop_0_i,
                                         fn:function(   dev_obj   ){
                                             ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].decimal.range *= ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ][   ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].nSM[   -nSFL_9_i.forLoop_0_i   ][0]   ][2] - ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ][   ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].nSM[   -nSFL_9_i.forLoop_0_i   ][0]   ][1]
-                                        },
-                                        args:dev_obj //{}
+                                        }
                                     }
                                     var nSFL_8_i = {
                                         forLoop_0_i: 0,
                                         forLoopLength:ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].nSM.length,
                                         fn:function(   dev_obj   ){
                                             ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ][   ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].nSM[   nSFL_8_i.forLoop_0_i   ][0]   ][0] = ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ][   ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].nSM[   nSFL_8_i.forLoop_0_i   ][0]   ][1]
+                                            
+                                            nSFL_9_i.forLoop_0_i =  -(ultraObject.nS[   [ultraObject.scope[nSNS_2_i ]]   ].nSM.length - 1 )
+                                            nSFL_9_i.forLoopLength = 0-nSFL_8_i.forLoop_0_i
+                                            nSFL_9_i.dev_obj = dev_obj
                                             ultraObject.forLoop(   nSFL_9_i   )
                                             
                                             /*at this point we have the range to work with now computing the actual digit*/ //{
@@ -4178,6 +4191,35 @@
                         })
                         // }  /**/
                         
+                        var pMFL_1_i = {
+                            fn:function(   dev_obj   ){
+                                
+                                
+                                if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compTo[pMFL_1_i.forLoop_0_i] === ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compAgn[pMFL_0_i.forLoop_0_i]  ){
+                                    //&& ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.rangePause   !== 'true'
+                                    // if placed here remember to take it out the top
+                                
+                                    
+                                    ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.trailer = 'true'
+                                    ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.trailerLocation = pMFL_1_i.forLoop_0_i
+                                    ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy.trailer = 'true'
+                                    return 'premature'
+                                    
+                                    
+                                }
+                                
+                                
+                                // else if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.rangePause   === 'true'   ){
+                                    
+                                    
+                                //     return 'premature'
+                                    
+                                    
+                                // }
+                                
+                                
+                            }
+                        }
                         var pMFL_0_i = {
                             forLoop_0_i:0,
                             forLoopLength: ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compTo.length > ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compAgn.length ? ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compTo.length :  ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compAgn.length ,// PROBLEM add one to the length and deal with the undefined problem at the end of this loop
@@ -4237,38 +4279,9 @@
                                 if(   ultraObject.isInt({type:ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.trailer})   ==='true' && ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.trailer !== 'complete' &&  ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.rangePause   !== 'true'   ){
                                     
                                     
-                                    var pMFL_1_i = {
-                                        forLoop_0_i:ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].pause   ][0],
-                                        forLoopLength:ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].pause   ][0] +ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.trailer,
-                                        fn:function(   dev_obj   ){
-                                            
-                                            
-                                            if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compTo[pMFL_1_i.forLoop_0_i] === ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compAgn[pMFL_0_i.forLoop_0_i]  ){
-                                                //&& ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.rangePause   !== 'true'
-                                                // if placed here remember to take it out the top
-                                            
-                                                
-                                                ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.trailer = 'true'
-                                                ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.trailerLocation = pMFL_1_i.forLoop_0_i
-                                                ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy.trailer = 'true'
-                                                return 'premature'
-                                                
-                                                
-                                            }
-                                            
-                                            
-                                            // else if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.rangePause   === 'true'   ){
-                                                
-                                                
-                                            //     return 'premature'
-                                                
-                                                
-                                            // }
-                                            
-                                            
-                                        },
-                                        args:undefined //{}
-                                    }
+
+                                    pMFL_1_i.forLoop_0_i = ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].pause   ][0]
+                                    pMFL_1_i.forLoopLength =ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].pause   ][0] +ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.trailer
                                     ultraObject.forLoop(   pMFL_1_i   )
                                 
                                 
