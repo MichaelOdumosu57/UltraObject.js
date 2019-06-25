@@ -3089,22 +3089,23 @@
                                     // }  /**/
                                     
                                     /*looping through  nSM to recreate the string!*/ //{
-                                    
-                                        /*an important check to make sure the nSM is availble!*/ //{
-                                        ultraObject.propertyUndefined({
-                                                target:ultraObject.nS[   ultraObject.scope[nSNS_0_i]],
-                                                expected:ultraObject.iterify({iterify:["nSM","length"]}),
-                                                noVal:{'a':'b'}
-                                        })
-                                        // }  /**/
                                         
-                                        var nSobjI_0_i = ultraObject.scope.add(   {value:ultraObject.objIO.abelast[   ultraObject.objIO.abelast.length-1   ]}   )
+                                        // /*node mode choice thread nSMValidator */ //{
+                                            /*an important check to make sure the nSM is availble!*/ //{
+                                            // ultraObject.propertyUndefined({
+                                            //         target:ultraObject.nS[   ultraObject.scope[nSNS_0_i]],
+                                            //         expected:ultraObject.iterify({iterify:["nSM","length"]}),
+                                            //         noVal:{'a':'b'}
+                                            // })
+                                            
+                                        // var nSobjI_0_i = ultraObject.scope.add(   {value:ultraObject.objIO.abelast[   ultraObject.objIO.abelast.length-1   ]}   )
+                                            // }  /**/
+                                        // }  /**/
                                         
                                         var nSFL_0_i = {
                                             forLoop_0_i:0,
                                             forLoopLength:ultraObject.nS[   ultraObject.scope[nSNS_0_i]].nSM.length,
                                             fn:function(   dev_obj   ){
-                                            
                                             
                                             /* adding the digits according to the nSM*/ //{
                                             ultraObject.nS[   ultraObject.scope[nSNS_0_i]].add({
@@ -3116,36 +3117,42 @@
                                             },
                                             args:dev_obj //{}
                                         }
+                                        // /*node mode choice thread nSMPerformance */ //{
+                                        ultraObject.forLoop(   nSFL_0_i   )
+                                        // }  /**/
                                         
-                                                                            
-                                        if(   !ultraObject.isPrimitive(   {type:ultraObject.objIO[   ultraObject.scope[nSobjI_0_i]   ].result}   )   ){
+                                        // /*node mode choice thread nSMValidator */ //{
+                                        // if(   !ultraObject.isPrimitive(   {type:ultraObject.objIO[   ultraObject.scope[nSobjI_0_i]   ].result}   )   ){
                                             
                                             
-                                            if(   ultraObject.objIO[   ultraObject.scope[nSobjI_0_i]   ].result['a'] !== 'b'   ){
+                                        //     if(   ultraObject.objIO[   ultraObject.scope[nSobjI_0_i]   ].result['a'] !== 'b'   ){
                                                 
                                                                                             
-                                                ultraObject.forLoop(   nSFL_0_i   )
+                                        //         ultraObject.forLoop(   nSFL_0_i   )
                                                 
                                                 
-                                            }
+                                        //     }
                                         
                                         
-                                        }
+                                        // }
                                         
                                         
-                                        else if(   ultraObject.isPrimitive(   {type:ultraObject.objIO[   ultraObject.scope[nSobjI_0_i]   ].result}   )   ){
+                                        // else if(   ultraObject.isPrimitive(   {type:ultraObject.objIO[   ultraObject.scope[nSobjI_0_i]   ].result}   )   ){
                                             
                                             
-                                            // ultraObject.forLoop(   nSFL_11_i   )
-                                            // hopefully we will never need that
-                                            ultraObject.forLoop(   nSFL_0_i   )
+                                        //     // ultraObject.forLoop(   nSFL_11_i   )
+                                        //     // hopefully we will never need that
+                                        //     ultraObject.forLoop(   nSFL_0_i   )
                                             
-                                        }
-                                                                                                               
-                                        /*objIO -scope -self -abelast */ //{
-                                            ultraObject.objIO.minus(   {index:ultraObject.scope[nSobjI_0_i]}   )
-                                            ultraObject.objIO.abelast.minus(   {index:ultraObject.objIO.abelast.length -1}   )
-                                            ultraObject.scope.minus(   {index:nSobjI_0_i}   )
+                                        // }
+                                        // }  /**/
+                                        
+                                        //*node mode choice thread nSMValidator */ //{
+                                            /*objIO -scope -self -abelast */ //{
+                                                // ultraObject.objIO.minus(   {index:ultraObject.scope[nSobjI_0_i]}   )
+                                                // ultraObject.objIO.abelast.minus(   {index:ultraObject.objIO.abelast.length -1}   )
+                                                // ultraObject.scope.minus(   {index:nSobjI_0_i}   )
+                                            // }  /**/
                                         // }  /**/
                                         
                                     // }  /**/
