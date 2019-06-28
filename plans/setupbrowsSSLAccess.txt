@@ -1,0 +1,20 @@
+plan.txt
+xtensions on chrome:// URLs
+Enables running extensions on chrome:// URLs, where extensions explicitly request this permission. – Mac, Windows, Linux, Chrome OS, Android
+on
+
+enable
+
+All experimental built-in modules
+Enable all experimental built-in modules, as well as built-in module infrastructure and import maps. The syntax and the APIs exposed are experimental and will change over time. – Mac, Windows, Linux, Chrome OS, Android
+
+enable
+
+Accessibility Object Model
+Enables experimental support for Accessibility Object Model APIs that are in development. – Mac, Windows, Linux, Chrome OS, Android
+
+enalbe
+
+Native Filesystem API
+Enables the experimental Native Filesystem API, giving websites access to the native filesystem – Mac, Windows, Linux, Chrome OS, Android
+left alone lets see if we can grab from the certificate manager

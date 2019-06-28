@@ -1462,7 +1462,7 @@
                         ultraObject.objIO.access = function(   dev_obj   ){
                                 
                                 
-                            if(   dev_obj.access_0_i === ultraObject.objIO[   ultraObject.scope[pUobjI_0_i]   ].expected.length -1  ){
+                            if(   dev_obj.result_0_i === 1 ){
                                 
                                 
                                 return ultraObject.objIO[   ultraObject.scope[pUobjI_0_i]   ].target[   ultraObject.objIO[   ultraObject.scope[pUobjI_0_i]   ].expected[   dev_obj.result_0_i - 1   ]   ]  === undefined ? dev_obj.noVal : ultraObject.objIO[   ultraObject.scope[pUobjI_0_i]   ].target[   ultraObject.objIO[   ultraObject.scope[pUobjI_0_i]   ].expected[   dev_obj.result_0_i - 1   ]   ]
@@ -1471,28 +1471,24 @@
                             }
                             
                             
-                            else if(   dev_obj.access_0_i !== ultraObject.objIO[   ultraObject.scope[pUobjI_0_i]   ].expected.length -1    ){
+                            else if(   dev_obj.result_0_i !== 1  ){
                                 
-                                
-                                dev_obj.access_0_i += 1
+                                                              
                                 dev_obj.result_0_i -= 1
                                 return ultraObject.objIO.access({
-                                    access_0_i:dev_obj.access_0_i,
                                     result_0_i:dev_obj.result_0_i,
                                     noVal:dev_obj.noVal
                                 })[   ultraObject.objIO[   ultraObject.scope[pUobjI_0_i]   ].expected[   dev_obj.result_0_i   ]   ] === undefined ? dev_obj.noVal : ultraObject.objIO.access({
-                                    access_0_i:dev_obj.access_0_i,
                                     result_0_i:dev_obj.result_0_i,
                                     noVal:dev_obj.noVal
                                 })[   ultraObject.objIO[   ultraObject.scope[pUobjI_0_i]   ].expected[   dev_obj.result_0_i   ]   ]
-                                //
+
             
                             }
                                 
                                 
                         }
                         ultraObject.objIO[   ultraObject.scope[pUobjI_0_i]   ].result = ultraObject.objIO.access({
-                            access_0_i:0,
                             result_0_i:ultraObject.objIO[   ultraObject.scope[pUobjI_0_i]   ].expected.length,
                             noVal:dev_obj.noVal
                         })
@@ -1506,6 +1502,7 @@
                     
                     
                 }// in js when a function finds a property undefined when the developer expects something to be there along the bubble to the target inner property it can break the API, instead of write repeated if statements use this function to validate if the target property is availble in the data type
+
                 function iterableObject(   dev_obj   ){
                     /*
                         key points
@@ -2381,6 +2378,7 @@
                         ....
                         */
                         //
+                    debugger
                     var subGroups_dev_obj = ultraObject.args.add(   {value:ultraObject.iterify(   {iterify:dev_obj}   )   }   )
                     var subGroupsBOOL = {0:false}
                     var subGroupsSeperator = ' ' // how to seperate the items
