@@ -18,6 +18,7 @@ var count = 0
 
 navigator.webkitPersistentStorage.requestQuota (
     requestedBytes, function(grantedBytes) {
+        console.log(grantedBytes)
         window.webkitRequestFileSystem(window.PERSISTENT, grantedBytes,
         jacket,
         (err)=>{
@@ -26,6 +27,52 @@ navigator.webkitPersistentStorage.requestQuota (
 
     }, function(e) { console.log('Error', e); }
 );
+
+function clearDir(fs){
+    
+        var dirReader = fs.root.createReader();
+        var entries = [];
+        var dontMakeFiles = 'false'
+      
+        function getEntries() {
+          dirReader.readEntries(function(results) {
+            console.log(results)
+            if (results.length) {
+                results.forEach((a)=>{
+                    a.remove(()=>{},(err)=>{console.log(err)})
+                })
+                getEntries();
+            }
+          }, function(error) {
+            /* handle error -- error is a FileError object */
+            console.log(error)
+            throw(error)
+          });
+        };
+        getEntries()
+}
+
+function seeFs(fs){
+    
+        var dirReader = fs.root.createReader();
+        var entries = [];
+        var dontMakeFiles = 'false'
+      
+        function getEntries() {
+          dirReader.readEntries(function(results) {
+            console.log(results)
+            if (results.length) {
+                getEntries();
+            }
+          }, function(error) {
+            /* handle error -- error is a FileError object */
+            console.log(error)
+            throw(error)
+          });
+        };
+        getEntries()
+    
+}
 
 /*check testing */
 // navigator.webkitPersistentStorage.requestQuota (
@@ -92,6 +139,7 @@ function jacket(fs){
                                     results.forEach((a)=>{
                                         if(   a.isFile   ){
                                             dontMakeFiles = 'true'
+                                            break
                                         }
                                     })
                                     getEntries();
@@ -136,7 +184,7 @@ function jacket(fs){
                     FL_0_i.args.dir = sideDir
                 },
                 args:{
-                        dir:fs.root
+                        dir:fs.root,
                         subdirs:1
                     }
             }
