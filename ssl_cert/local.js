@@ -30,6 +30,53 @@ var count = 0
 
 
 
+function readDirAux(dev_obj) {
+    debugger
+    console.log(dev_obj.results)
+    
+    
+    if (dev_obj.results.length) {
+    
+    
+        dev_obj.totalResults.push(...dev_obj.results)
+        var notDoneReadingEntries
+        return notDoneReadingEntries = new Promise((resolve,reject)=>{
+            dev_obj.dirReader.readEntries(
+                (results)=>{
+                    dev_obj.results = results
+                    resolve(   readDirAux(dev_obj)   )
+                },
+                function(error) {
+                  console.log(error)
+                  throw(error)
+                }
+            )
+        }).then(function(   bubbleUp   ){
+            notDoneReadingEntries.value = bubbleUp // doing this seems to help the complier return what I intended in readDirAux non
+            // recursive calle the string im returning in iths then function
+            console.log(   notDoneReadingEntries   )
+            return bubbleUp
+            //you know when its empty it will bubble up so do you really to explicitly return this?
+        })
+        console.log(   notDoneReadingEntries   )
+        
+    
+    
+    }
+    
+    
+    if(   !dev_obj.results.length   ){
+        
+        
+        return 'resolve'
+        
+        
+    }
+
+
+}
+
+
         function getEntries(   dev_obj   ) {
             
                 
@@ -44,87 +91,70 @@ var count = 0
             
                 var finishReadingEntries = new Promise((resolve,reject)=>{
                     dev_obj.dirReader.readEntries(
-                    function(results) {
-                        debugger
-                        console.log(results)
-                        
-                        
-                        if (results.length) {
-                        
-                        
-                            dev_obj.totalResults.push(...results)
-                            var notDoneReadingEntries = new Promise((resolve,reject)=>{
-                                dev_obj.surroundDir -= 1
-                                getEntries(dev_obj)
-                            })
-                        
-                        
+                        async function(results){
+                            dev_obj.results = results
+                            
+                            var resolveMe = await readDirAux(dev_obj)
+                            console.log(resolveMe) // strange thiungs happen here it calls it a promise but something see it as the string i return in the then of the promise which im fine with but completely bizzare
+                            if(   resolveMe === 'resolve'   ){
+                            
+                            
+                                resolve()
+                            
+                            
+                            }
+                            
+                            
+                        },
+                        function(error) {
+                          console.log(error)
+                          throw(error)
                         }
-                        
-                        
-                        if(   !results.length   ){
-                            
-                            resolve()
-                            
-                            
-                        }
-                    
-                    
-                    }, function(error) {
-                      console.log(error)
-                      throw(error)
-                    })
+                    )
                 }).then(function(){
                     console.groupEnd()
                     console.log(   'groupEnded'   )
                     console.log(   dev_obj.totalResults   )
-                }).catch(errors)
-
-        };
-        
-       
-    // var FL_2_i = {
-    //                     forLoop_0_i:0,
-    //                     forLoopLength:results.length,
-    //                     fn:function(   dev_obj   ){
+                    
+                    
+                    var FL_2_i = {
+                        forLoop_0_i:0,
+                        forLoopLength:dev_obj.totalResults.length,
+                        fn:function(   dev_obj   ){
                             
                             
-    //                         if(   dev_obj.remove === 'true'   ){
-                            
-                            
-    //                             console.log(   results[FL_2_i.forLoop_0_i]   )
-    //                             console.log(   FL_2_i.forLoopLength   )
-                            
-                            
-    //                         }
-                            
-                            
-    //                         if(   results[FL_2_i.forLoop_0_i].isDirectory   ){
+                            if(   dev_obj.totalResults[FL_2_i.forLoop_0_i].isDirectory   ){
     
     
-    //                             getEntries({
-    //                                 dirReader:results[FL_2_i.forLoop_0_i].createReader(),
-    //                                 groupName:results[FL_2_i.forLoop_0_i].fullPath,
-    //                                 dirEntry:results[FL_2_i.forLoop_0_i],
-    //                                 remove:dev_obj.remove
-    //                             })
+                                getEntries({
+                                    dirReader:results[FL_2_i.forLoop_0_i].createReader(),
+                                    groupName:results[FL_2_i.forLoop_0_i].fullPath,
+                                    dirEntry:results[FL_2_i.forLoop_0_i],
+                                    remove:dev_obj.remove
+                                })
                              
                                 
-    //                         }
+                            }
                             
                             
-    //                         if(   dev_obj.remove === 'true'   ){
+                            if(   dev_obj.remove === 'true'   ){
                                 
-    //                             console.log(results[FL_2_i.forLoop_0_i])
-    //                             results[FL_2_i.forLoop_0_i].remove(()=>{},(err)=>{ console.log(err)})
+                                console.log(results[FL_2_i.forLoop_0_i])
+                                dev_obj.totalResults[FL_2_i.forLoop_0_i].isDirectory.remove(()=>{},(err)=>{ console.log(err)})
                                 
                                 
-    //                         }
+                            }
                             
                             
-    //                     },
-    //                     args:dev_obj //{}
-    //                 }
+                        },
+                        args:dev_obj //{}
+                    }
+        
+                }).catch(errors)
+
+        }
+       
+
     // ultraObject.forLoop(   FL_2_i   )
         
     function operate(   dev_obj   ){
@@ -148,8 +178,8 @@ var count = 0
 
 
 function errors(err){
-            console.log(err)
-        }
+    console.log(err)
+}
 
 
 
