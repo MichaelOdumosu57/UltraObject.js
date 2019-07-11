@@ -1,5 +1,10 @@
 // your lucidchart https://www.lucidchart.com/documents/edit/eb66719e-c3c3-4909-955f-badfbafb5962/0
 
+
+//cool stuff
+// very wonky nature of how Promises are powerful when dealing with deprecation like this, since async functions can be places as parameters inside invocation if you are using await and returning a promise from a function a you have a value in that function you want to bubble up, on function containing promiseEnd it will actually give the value amazing
+
+
 var requestedBytes = 1024*1024*1; // 10MB
 
 
@@ -16,26 +21,12 @@ function makeid(length) {
 var subdirs // used to help us not make too many directors and get stuck in an infinite recurisve loop
 var count = 0
 
-// navigator.webkitPersistentStorage.requestQuota (
-//     requestedBytes, function(grantedBytes) {
-//         console.log(grantedBytes)
-//         window.webkitRequestFileSystem(window.PERSISTENT, grantedBytes,
-//         jacket,
-//         (err)=>{
-//             console.log(err)
-//         });
-
-//     }, function(e) { console.log('Error', e); }
-// );
-
-
 
 function readDirAux(dev_obj) {
-    debugger
     console.log(dev_obj.results)
     
     
-    if (dev_obj.results.length) {
+    if (dev_obj.results.length ) {
     
     
         dev_obj.totalResults.push(...dev_obj.results)
@@ -55,8 +46,10 @@ function readDirAux(dev_obj) {
             notDoneReadingEntries.value = bubbleUp // doing this seems to help the complier return what I intended in readDirAux non
             // recursive calle the string im returning in iths then function
             console.log(   notDoneReadingEntries   )
+            
+            debugger
             return bubbleUp
-            //you know when its empty it will bubble up so do you really to explicitly return this?
+            //you know when its empty it will bubble up so do you really to explicitly return this?, when this fails just return then
         })
         console.log(   notDoneReadingEntries   )
         
@@ -67,8 +60,8 @@ function readDirAux(dev_obj) {
     
     if(   !dev_obj.results.length   ){
         
-        
-        return 'resolve'
+        dev_obj.resolve = 'resolve'
+        return dev_obj
         
         
     }
@@ -76,98 +69,134 @@ function readDirAux(dev_obj) {
 
 }
 
+async function containAux(dev_obj){
+                        
+    console.log(   dev_obj.totalResults[dev_obj.totalResultsCounter]   )
+    if(   dev_obj.totalResultsCounter === dev_obj.totalResultsLength   ){
+        return
+        // means directory just had files in it no dirs to traverse
+    }
+    
+    
+    if(   dev_obj.totalResults[dev_obj.totalResultsCounter].isFile   ){
+        
+        
+        dev_obj.totalResultsCounter += 1
+        containAux(dev_obj)
+        
+    }
+    
+    
+    else if(   dev_obj.totalResults[dev_obj.totalResultsCounter].isDirectory   ){
+        
+        
+        dev_obj.neededReader = dev_obj.totalResults[dev_obj.totalResultsCounter].createReader()
+        return new Promise((resolve,reject)=>{
+                        
+                      
+            dev_obj.neededReader.readEntries(
+                async function(results){
+                    console.group(   "directory " + dev_obj.totalResults[dev_obj.totalResultsCounter].fullPath   )
+                    var resolveMe = await readDirAux({
+                                                        dirReader: dev_obj.neededReader,
+                                                        dirEntry: dev_obj.totalResults[dev_obj.totalResultsCounter],
+                                                        groupName: dev_obj.totalResults[dev_obj.totalResultsCounter].fullPath,
+                                                        remove:dev_obj.remove,
+                                                        totalResults:[],
+                                                        results : results,
+                                                        flag: 'inRecursion'
+                                                    })
+                    console.log(resolveMe) // strange thiungs happen here it calls it a promise but something see it as the data i return in the then of the promise which im fine with but completely bizzare
+
+                    if(   resolveMe.resolve === 'resolve'   ){
+                    
+                    
+                        resolve(resolveMe)
+                    
+                    
+                    }
+                    
+                    
+                },
+                function(error) {
+                  console.log(error)
+                  throw(error)
+                }
+            )
+            
+        }).then(function(dev_obj){
+            console.groupEnd()
+            console.log(   'groupEnded'   )
+            console.log(   dev_obj.totalResults   )
+            console.log(`walk through this and hopefully we get out in order
+            remember to be sucessful no two promises can be running at the same time`)
+        })
+        
+        
+    }
+    
+    
+    
+}
+
 
         function getEntries(   dev_obj   ) {
             
                 
-                if(   dev_obj.surroundDir > 0   ){
-                    
-                    
-                    console.group(   "directory " + dev_obj.groupName   )
-                    
-                    
-                }
-                
-            
-                var finishReadingEntries = new Promise((resolve,reject)=>{
-                    dev_obj.dirReader.readEntries(
-                        async function(results){
-                            dev_obj.results = results
-                            
-                            var resolveMe = await readDirAux(dev_obj)
-                            console.log(resolveMe) // strange thiungs happen here it calls it a promise but something see it as the string i return in the then of the promise which im fine with but completely bizzare
-                            if(   resolveMe === 'resolve'   ){
-                            
-                            
-                                resolve()
-                            
-                            
-                            }
-                            
-                            
-                        },
-                        function(error) {
-                          console.log(error)
-                          throw(error)
+            console.group(   "directory " + dev_obj.groupName   )
+            var finishReadingEntries = new Promise((resolve,reject)=>{
+                dev_obj.dirReader.readEntries(
+                    async function(results){
+                        dev_obj.results = results
+                        
+                        var resolveMe = await readDirAux(dev_obj)
+                        console.log(resolveMe) // strange thiungs happen here it calls it a promise but something see it as the data  i return in the then of the promise which im fine with but completely bizzare
+                        if(   resolveMe.resolve === 'resolve'   ){
+                        
+                        
+                            resolve(resolveMe)
+                        
+                        
                         }
-                    )
-                }).then(function(){
-                    console.groupEnd()
-                    console.log(   'groupEnded'   )
-                    console.log(   dev_obj.totalResults   )
-                    
-                    
-                    var FL_2_i = {
-                        forLoop_0_i:0,
-                        forLoopLength:dev_obj.totalResults.length,
-                        fn:function(   dev_obj   ){
-                            
-                            
-                            if(   dev_obj.totalResults[FL_2_i.forLoop_0_i].isDirectory   ){
-    
-    
-                                getEntries({
-                                    dirReader:results[FL_2_i.forLoop_0_i].createReader(),
-                                    groupName:results[FL_2_i.forLoop_0_i].fullPath,
-                                    dirEntry:results[FL_2_i.forLoop_0_i],
-                                    remove:dev_obj.remove
-                                })
-                             
-                                
-                            }
-                            
-                            
-                            if(   dev_obj.remove === 'true'   ){
-                                
-                                console.log(results[FL_2_i.forLoop_0_i])
-                                dev_obj.totalResults[FL_2_i.forLoop_0_i].isDirectory.remove(()=>{},(err)=>{ console.log(err)})
-                                
-                                
-                            }
-                            
-                            
-                        },
-                        args:dev_obj //{}
+                        
+                        
+                    },
+                    function(error) {
+                      console.log(error)
+                      throw(error)
                     }
-        
-                }).catch(errors)
+                )
+            }).then(function(dev_obj){
+                console.groupEnd()
+                console.log(   'groupEnded'   )
+                console.log(   dev_obj.totalResults   )
+                
+                dev_obj.totalResultsLength  = dev_obj.totalResults.length
+                dev_obj.totalResultsCounter = 0
+                debugger
+                var PromiseChain0 = new Promise((resolve,reject)=>{
+                    var toDo = containAux(dev_obj)
+                    resolve()
+                    
+                })
+                
+    
+            }).catch(errors)
+
 
         }
        
-
-    // ultraObject.forLoop(   FL_2_i   )
         
     function operate(   dev_obj   ){
-        var totalResults = [];
-        debugger
         var promise0 = new Promise((reject,resolve)=>{
             getEntries({
                 dirReader:dev_obj.fs.root.createReader(),
                 groupName: dev_obj.fs.root.fullPath,
                 dirEntry:dev_obj.fs.root,
                 remove:dev_obj.remove,
-                totalResults:totalResults,
-                surroundDir:1
+                totalResults:[],
+                //neededReaders:[] // if anything we can make this an array, i dont want to deal with invocations and async
+                // surroundDir:1
             })
             
         }).then(function(){
