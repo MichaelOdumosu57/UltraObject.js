@@ -149,17 +149,18 @@ async function containAux(dev_obj){
             if(   dev_obj.readers.length !== 0   ){
                 
                 
-                throw('err')
+                dev_obj.neededReader =  dev_obj.totalResults[dev_obj.readers[0]].createReader()
+                debugger
                 new Promise((resolve,reject)=>{
                                 
                               
                     dev_obj.neededReader.readEntries(
                         async function(results){
-                            console.group(   "directory " + dev_obj.totalResults[dev_obj.totalResultsCounter].fullPath   )
+                            console.group(   "directory " + dev_obj.totalResults[dev_obj.readers[0]].fullPath   )
                             var resolveMe = await readDirAux({
                                                                 dirReader: dev_obj.neededReader,
-                                                                dirEntry: dev_obj.totalResults[dev_obj.totalResultsCounter],
-                                                                groupName: dev_obj.totalResults[dev_obj.totalResultsCounter].fullPath,
+                                                                dirEntry: dev_obj.totalResults[dev_obj.readers[0]],
+                                                                groupName: dev_obj.totalResults[dev_obj.readers[0]].fullPath,
                                                                 remove:dev_obj.remove,
                                                                 totalResults:[],
                                                                 results : results,
