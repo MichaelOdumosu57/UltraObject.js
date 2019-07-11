@@ -73,7 +73,7 @@ async function containAux(dev_obj){
                         
     console.log(   dev_obj.totalResults[dev_obj.totalResultsCounter]   )
     if(   dev_obj.totalResultsCounter === dev_obj.totalResultsLength   ){
-        return
+        return  dev_obj
         // means directory just had files in it no dirs to traverse
     }
     
@@ -90,47 +90,49 @@ async function containAux(dev_obj){
     else if(   dev_obj.totalResults[dev_obj.totalResultsCounter].isDirectory   ){
         
         
-        dev_obj.neededReader = dev_obj.totalResults[dev_obj.totalResultsCounter].createReader()
-        return new Promise((resolve,reject)=>{
+        dev_obj.totalResults[dev_obj.totalResultsCounter].createReader()
+        // return  new Promise((resolve,reject)=>{
                         
                       
-            dev_obj.neededReader.readEntries(
-                async function(results){
-                    console.group(   "directory " + dev_obj.totalResults[dev_obj.totalResultsCounter].fullPath   )
-                    var resolveMe = await readDirAux({
-                                                        dirReader: dev_obj.neededReader,
-                                                        dirEntry: dev_obj.totalResults[dev_obj.totalResultsCounter],
-                                                        groupName: dev_obj.totalResults[dev_obj.totalResultsCounter].fullPath,
-                                                        remove:dev_obj.remove,
-                                                        totalResults:[],
-                                                        results : results,
-                                                        flag: 'inRecursion'
-                                                    })
-                    console.log(resolveMe) // strange thiungs happen here it calls it a promise but something see it as the data i return in the then of the promise which im fine with but completely bizzare
+        //     dev_obj.neededReader.readEntries(
+        //         async function(results){
+        //             console.group(   "directory " + dev_obj.totalResults[dev_obj.totalResultsCounter].fullPath   )
+        //             var resolveMe = await readDirAux({
+        //                                                 dirReader: dev_obj.neededReader,
+        //                                                 dirEntry: dev_obj.totalResults[dev_obj.totalResultsCounter],
+        //                                                 groupName: dev_obj.totalResults[dev_obj.totalResultsCounter].fullPath,
+        //                                                 remove:dev_obj.remove,
+        //                                                 totalResults:[],
+        //                                                 results : results,
+        //                                                 flag: 'inRecursion'
+        //                                             })
+        //             console.log(resolveMe) // strange thiungs happen here it calls it a promise but something see it as the data i return in the then of the promise which im fine with but completely bizzare
 
-                    if(   resolveMe.resolve === 'resolve'   ){
+        //             if(   resolveMe.resolve === 'resolve'   ){
                     
                     
-                        resolve(resolveMe)
+        //                 resolve(resolveMe)
                     
                     
-                    }
+        //             }
                     
                     
-                },
-                function(error) {
-                  console.log(error)
-                  throw(error)
-                }
-            )
+        //         },
+        //         function(error) {
+        //           console.log(error)
+        //           throw(error)
+        //         }
+        //     )
             
-        }).then(function(dev_obj){
-            console.groupEnd()
-            console.log(   'groupEnded'   )
-            console.log(   dev_obj.totalResults   )
-            console.log(`walk through this and hopefully we get out in order
-            remember to be sucessful no two promises can be running at the same time`)
-        })
+        // }).then(function(dev_obj){
+        //     console.groupEnd()
+        //     console.log(   'groupEnded'   )
+        //     console.log(   dev_obj.totalResults   )
+        //     console.log(`walk through this and hopefully we get out in order
+        //     remember to be sucessful no two promises can be running at the same time`)
+        // })
+        
+    
         
         
     }
@@ -174,11 +176,20 @@ async function containAux(dev_obj){
                 dev_obj.totalResultsLength  = dev_obj.totalResults.length
                 dev_obj.totalResultsCounter = 0
                 debugger
-                var PromiseChain0 = new Promise((resolve,reject)=>{
+                function promiseChain0Resolve(resolve,reject){
                     var toDo = containAux(dev_obj)
-                    resolve()
+                    1+1
+                    debugger
+                    resolve(toDo)
                     
-                })
+                }
+                function promiseChain0Then(  dev_obj   ){
+                    console.log(dev_obj)
+                }
+                function promiseChain0Iterable(   dev_obj   ){
+                    var PromiseChain0 = new Promise(promiseChain0Resolve).then(promiseChain0Then)
+                }
+                promiseChain0Iterable()
                 
     
             }).catch(errors)
