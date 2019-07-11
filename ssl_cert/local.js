@@ -71,18 +71,15 @@ function readDirAux(dev_obj) {
 
 async function containAux(dev_obj){
                         
+    
     console.log(   dev_obj.totalResults[dev_obj.totalResultsCounter]   )
+    
+    
     if(   dev_obj.totalResultsCounter === dev_obj.totalResultsLength   ){
+        
+        
         return  dev_obj
-        // means directory just had files in it no dirs to traverse
-    }
-    
-    
-    if(   dev_obj.totalResults[dev_obj.totalResultsCounter].isFile   ){
-        
-        
-        dev_obj.totalResultsCounter += 1
-        containAux(dev_obj)
+        // means were done traversing the directory
         
     }
     
@@ -90,7 +87,10 @@ async function containAux(dev_obj){
     else if(   dev_obj.totalResults[dev_obj.totalResultsCounter].isDirectory   ){
         
         
-        dev_obj.totalResults[dev_obj.totalResultsCounter].createReader()
+     
+        dev_obj.readers.add({
+            value:dev_obj.totalResults[dev_obj.totalResultsCounter].createReader()
+        })
         // return  new Promise((resolve,reject)=>{
                         
                       
@@ -132,11 +132,13 @@ async function containAux(dev_obj){
         //     remember to be sucessful no two promises can be running at the same time`)
         // })
         
-    
         
         
     }
     
+
+    dev_obj.totalResultsCounter += 1
+    containAux(dev_obj)
     
     
 }
@@ -175,19 +177,22 @@ async function containAux(dev_obj){
                 
                 dev_obj.totalResultsLength  = dev_obj.totalResults.length
                 dev_obj.totalResultsCounter = 0
+                dev_obj.readers = ultraObject.iterableObject()
                 debugger
                 function promiseChain0Resolve(resolve,reject){
                     var toDo = containAux(dev_obj)
-                    1+1
                     debugger
-                    resolve(toDo)
+                    resolve(dev_obj)
                     
                 }
                 function promiseChain0Then(  dev_obj   ){
                     console.log(dev_obj)
+                    return dev_obj
                 }
                 function promiseChain0Iterable(   dev_obj   ){
                     var PromiseChain0 = new Promise(promiseChain0Resolve).then(promiseChain0Then)
+                    debugger
+                    // now we have a function to call it again
                 }
                 promiseChain0Iterable()
                 
