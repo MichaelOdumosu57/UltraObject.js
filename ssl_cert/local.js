@@ -138,9 +138,13 @@ async function containAux(dev_obj){
                 dev_obj.totalResultsLength  = dev_obj.totalResults[   dev_obj.groupName   ].length
                 dev_obj.totalResultsCounter = 0
                 dev_obj.readers = ultraObject.iterableObject()
-        function promiseChain0Resolve(resolve,reject){
-            var toDo = containAux(dev_obj)
-            resolve(dev_obj)
+        function promiseChain0Resolve(  dev_obj   ){
+            return function(resolve,reject){
+            
+                var toDo = containAux(dev_obj)
+                resolve(dev_obj)
+                
+            }
             
         }
         function promiseChain0Then(  dev_obj   ){
@@ -194,8 +198,8 @@ async function containAux(dev_obj){
                     // console.log(   dev_obj.totalResults   )
                     console.log(`walk through this and hopefully we get out in order
                     remember to be sucessful no two promises can be running at the same time`)
-                    //FIX ME at this point we dont get the new dev_obj back because we created fn in the first execution context with
-                    //the old dev_obj
+                    dev_obj.totalResultsLength  = dev_obj.totalResults[   dev_obj.groupName   ].length
+                    dev_obj.totalResultsCounter = 0
                     promiseChain0Iterable(   dev_obj   )
                 })
                 
@@ -204,9 +208,11 @@ async function containAux(dev_obj){
             
         }
         function promiseChain0Iterable(   dev_obj   ){
-            var PromiseChain0 = new Promise(promiseChain0Resolve).then(promiseChain0Then)
+            debugger
+            var PromiseChain0 = new Promise(promiseChain0Resolve(   dev_obj   )).then(promiseChain0Then)
             // now we have a function to call it again
         }
+        
         promiseChain0Iterable(   dev_obj   )
                 
     
