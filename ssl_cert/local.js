@@ -28,8 +28,8 @@ function readDirAux(dev_obj) {
     
     if (dev_obj.results.length ) {
     
-    
-        dev_obj.totalResults.push(...dev_obj.results)
+        debugger
+        dev_obj.totalResults[   dev_obj.groupName   ].push(...dev_obj.results)
         var notDoneReadingEntries
         return notDoneReadingEntries = new Promise((resolve,reject)=>{
             dev_obj.dirReader.readEntries(
@@ -47,7 +47,7 @@ function readDirAux(dev_obj) {
             // recursive calle the string im returning in iths then function
             console.log(   notDoneReadingEntries   )
             
-            debugger
+            // debugger
             return bubbleUp
             //you know when its empty it will bubble up so do you really to explicitly return this?, when this fails just return then
         })
@@ -72,7 +72,7 @@ function readDirAux(dev_obj) {
 async function containAux(dev_obj){
                         
     
-    console.log(   dev_obj.totalResults[dev_obj.totalResultsCounter]   )
+    console.log(   dev_obj.totalResults[   dev_obj.groupName   ][dev_obj.totalResultsCounter]   )
     
     
     if(   dev_obj.totalResultsCounter === dev_obj.totalResultsLength   ){
@@ -84,7 +84,7 @@ async function containAux(dev_obj){
     }
     
     
-    else if(   dev_obj.totalResults[dev_obj.totalResultsCounter].isDirectory   ){
+    else if(   dev_obj.totalResults[   dev_obj.groupName   ][dev_obj.totalResultsCounter].isDirectory   ){
         
         
      
@@ -113,7 +113,7 @@ async function containAux(dev_obj){
                 dev_obj.dirReader.readEntries(
                     async function(results){
                         dev_obj.results = results
-                        
+                        dev_obj.totalResults[   dev_obj.groupName   ] = []
                         var resolveMe = await readDirAux(dev_obj)
                         console.log(resolveMe) // strange thiungs happen here it calls it a promise but something see it as the data  i return in the then of the promise which im fine with but completely bizzare
                         if(   resolveMe.resolve === 'resolve'   ){
@@ -134,9 +134,8 @@ async function containAux(dev_obj){
             }).then(function(dev_obj){
                 console.groupEnd()
                 console.log(   'groupEnded'   )
-                console.log(   dev_obj.totalResults   )
-                
-                dev_obj.totalResultsLength  = dev_obj.totalResults.length
+                // console.log(   dev_obj.totalResults   )
+                dev_obj.totalResultsLength  = dev_obj.totalResults[   dev_obj.groupName   ].length
                 dev_obj.totalResultsCounter = 0
                 dev_obj.readers = ultraObject.iterableObject()
         function promiseChain0Resolve(resolve,reject){
@@ -149,28 +148,29 @@ async function containAux(dev_obj){
             if(   dev_obj.readers.length !== 0   ){
                 
                 
-                dev_obj.neededReader =  dev_obj.totalResults[dev_obj.readers[0]].createReader()
-                debugger
+                dev_obj.neededReader =  dev_obj.totalResults[   dev_obj.groupName   ][dev_obj.readers[0]].createReader()
                 new Promise((resolve,reject)=>{
                                 
                               
                     dev_obj.neededReader.readEntries(
                         async function(results){
-                            console.group(   "directory " + dev_obj.totalResults[dev_obj.readers[0]].fullPath   )
+                            console.group(   "directory " + dev_obj.totalResults[   dev_obj.groupName   ][dev_obj.readers[0]].fullPath   )
+                            dev_obj.totalResults[   dev_obj.totalResults[   dev_obj.groupName   ][dev_obj.readers[0]].fullPath   ] = []
                             var resolveMe = await readDirAux({
                                                                 dirReader: dev_obj.neededReader,
-                                                                dirEntry: dev_obj.totalResults[dev_obj.readers[0]],
-                                                                groupName: dev_obj.totalResults[dev_obj.readers[0]].fullPath,
+                                                                dirEntry: dev_obj.totalResults[   dev_obj.groupName   ][dev_obj.readers[0]],
+                                                                groupName: dev_obj.totalResults[   dev_obj.groupName   ][dev_obj.readers[0]].fullPath,
                                                                 remove:dev_obj.remove,
-                                                                totalResults:[],
+                                                                totalResults:dev_obj.totalResults,
                                                                 results : results,
-                                                                flag: 'inRecursion'
+                                                                flag: 'inRecursion',
+                                                                readers:dev_obj.readers
                                                             })
                             console.log(resolveMe) // strange thiungs happen here it calls it a promise but something see it as the data i return in the then of the promise which im fine with but completely bizzare
         
                             if(   resolveMe.resolve === 'resolve'   ){
                             
-                            
+                                debugger
                                 resolve(resolveMe)
                             
                             
@@ -187,9 +187,15 @@ async function containAux(dev_obj){
                 }).then(function(dev_obj){
                     console.groupEnd()
                     console.log(   'groupEnded'   )
-                    console.log(   dev_obj.totalResults   )
+                    debugger
+                    dev_obj.readers.minus({
+                        index:0
+                    })
+                    // console.log(   dev_obj.totalResults   )
                     console.log(`walk through this and hopefully we get out in order
                     remember to be sucessful no two promises can be running at the same time`)
+                    //FIX ME at this point we dont get the new dev_obj back because we created fn in the first execution context with
+                    //the old dev_obj
                     promiseChain0Iterable(   dev_obj   )
                 })
                 
@@ -201,7 +207,7 @@ async function containAux(dev_obj){
             var PromiseChain0 = new Promise(promiseChain0Resolve).then(promiseChain0Then)
             // now we have a function to call it again
         }
-                promiseChain0Iterable(   dev_obj   )
+        promiseChain0Iterable(   dev_obj   )
                 
     
             }).catch(errors)
@@ -217,7 +223,7 @@ async function containAux(dev_obj){
                 groupName: dev_obj.fs.root.fullPath,
                 dirEntry:dev_obj.fs.root,
                 remove:dev_obj.remove,
-                totalResults:[],
+                totalResults:ultraObject.iterableObject(),
                 //neededReaders:[] // if anything we can make this an array, i dont want to deal with invocations and async
                 // surroundDir:1
             })
@@ -371,18 +377,48 @@ function jacket(dev_obj){
 
 
 function devChosen(   dev_obj   ){
-navigator.webkitPersistentStorage.requestQuota (
-    requestedBytes, function(grantedBytes) {
-        console.log(grantedBytes)
-        window.webkitRequestFileSystem(window.PERSISTENT, grantedBytes,
-        (fs)=>{
-            dev_obj.scssFn({fs:fs,remove:dev_obj.remove})
-        },
-        (err)=>{
-            console.log(err)
+
+
+    if(   dev_obj.quotaRequest === 'true'   ){
+        
+        
+        navigator.webkitPersistentStorage.requestQuota (
+        requestedBytes, function(grantedBytes) {
+            console.log(grantedBytes)
+            window.webkitRequestFileSystem(window.PERSISTENT, grantedBytes,
+            (fs)=>{
+                dev_obj.scssFn({fs:fs,remove:dev_obj.remove})
+            },
+            (err)=>{
+                console.log(err)
+            });
+    
+        }, function(e) { console.log('Error', e); }
+    )
+    
+    
+    }
+    
+    
+    else if(   dev_obj.quotaRequest !== 'true'   ){
+        
+        
+        window.webkitRequestFileSystem(window.PERSISTENT,  requestedBytes,
+            (fs)=>{
+                dev_obj.scssFn({fs:fs,remove:dev_obj.remove})
+            },
+            (err)=>{
+                console.log(err)
         });
+        
+        
+    }
+    
+    
+}
 
-    }, function(e) { console.log('Error', e); }
-)}
-
-devChosen({remove:'false',scssFn:window.operate})
+devChosen({
+    remove:'false',
+    scssFn:window.operate,
+    quotaRequest:'false'
+})
