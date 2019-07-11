@@ -89,48 +89,9 @@ async function containAux(dev_obj){
         
      
         dev_obj.readers.add({
-            value:dev_obj.totalResults[dev_obj.totalResultsCounter].createReader()
+            value:dev_obj.totalResultsCounter
         })
-        // return  new Promise((resolve,reject)=>{
-                        
-                      
-        //     dev_obj.neededReader.readEntries(
-        //         async function(results){
-        //             console.group(   "directory " + dev_obj.totalResults[dev_obj.totalResultsCounter].fullPath   )
-        //             var resolveMe = await readDirAux({
-        //                                                 dirReader: dev_obj.neededReader,
-        //                                                 dirEntry: dev_obj.totalResults[dev_obj.totalResultsCounter],
-        //                                                 groupName: dev_obj.totalResults[dev_obj.totalResultsCounter].fullPath,
-        //                                                 remove:dev_obj.remove,
-        //                                                 totalResults:[],
-        //                                                 results : results,
-        //                                                 flag: 'inRecursion'
-        //                                             })
-        //             console.log(resolveMe) // strange thiungs happen here it calls it a promise but something see it as the data i return in the then of the promise which im fine with but completely bizzare
 
-        //             if(   resolveMe.resolve === 'resolve'   ){
-                    
-                    
-        //                 resolve(resolveMe)
-                    
-                    
-        //             }
-                    
-                    
-        //         },
-        //         function(error) {
-        //           console.log(error)
-        //           throw(error)
-        //         }
-        //     )
-            
-        // }).then(function(dev_obj){
-        //     console.groupEnd()
-        //     console.log(   'groupEnded'   )
-        //     console.log(   dev_obj.totalResults   )
-        //     console.log(`walk through this and hopefully we get out in order
-        //     remember to be sucessful no two promises can be running at the same time`)
-        // })
         
         
         
@@ -178,23 +139,68 @@ async function containAux(dev_obj){
                 dev_obj.totalResultsLength  = dev_obj.totalResults.length
                 dev_obj.totalResultsCounter = 0
                 dev_obj.readers = ultraObject.iterableObject()
-                debugger
-                function promiseChain0Resolve(resolve,reject){
-                    var toDo = containAux(dev_obj)
-                    debugger
-                    resolve(dev_obj)
+        function promiseChain0Resolve(resolve,reject){
+            var toDo = containAux(dev_obj)
+            resolve(dev_obj)
+            
+        }
+        function promiseChain0Then(  dev_obj   ){
+            
+            if(   dev_obj.readers.length !== 0   ){
+                
+                
+                throw('err')
+                new Promise((resolve,reject)=>{
+                                
+                              
+                    dev_obj.neededReader.readEntries(
+                        async function(results){
+                            console.group(   "directory " + dev_obj.totalResults[dev_obj.totalResultsCounter].fullPath   )
+                            var resolveMe = await readDirAux({
+                                                                dirReader: dev_obj.neededReader,
+                                                                dirEntry: dev_obj.totalResults[dev_obj.totalResultsCounter],
+                                                                groupName: dev_obj.totalResults[dev_obj.totalResultsCounter].fullPath,
+                                                                remove:dev_obj.remove,
+                                                                totalResults:[],
+                                                                results : results,
+                                                                flag: 'inRecursion'
+                                                            })
+                            console.log(resolveMe) // strange thiungs happen here it calls it a promise but something see it as the data i return in the then of the promise which im fine with but completely bizzare
+        
+                            if(   resolveMe.resolve === 'resolve'   ){
+                            
+                            
+                                resolve(resolveMe)
+                            
+                            
+                            }
+                            
+                            
+                        },
+                        function(error) {
+                          console.log(error)
+                          throw(error)
+                        }
+                    )
                     
-                }
-                function promiseChain0Then(  dev_obj   ){
-                    console.log(dev_obj)
-                    return dev_obj
-                }
-                function promiseChain0Iterable(   dev_obj   ){
-                    var PromiseChain0 = new Promise(promiseChain0Resolve).then(promiseChain0Then)
-                    debugger
-                    // now we have a function to call it again
-                }
-                promiseChain0Iterable()
+                }).then(function(dev_obj){
+                    console.groupEnd()
+                    console.log(   'groupEnded'   )
+                    console.log(   dev_obj.totalResults   )
+                    console.log(`walk through this and hopefully we get out in order
+                    remember to be sucessful no two promises can be running at the same time`)
+                    promiseChain0Iterable(   dev_obj   )
+                })
+                
+                
+            }
+            
+        }
+        function promiseChain0Iterable(   dev_obj   ){
+            var PromiseChain0 = new Promise(promiseChain0Resolve).then(promiseChain0Then)
+            // now we have a function to call it again
+        }
+                promiseChain0Iterable(   dev_obj   )
                 
     
             }).catch(errors)
