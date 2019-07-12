@@ -1,3 +1,5 @@
+// MAJOR UPDATE, function operated truly traverses the directory  tested from mdn example
+
 // your lucidchart https://www.lucidchart.com/documents/edit/eb66719e-c3c3-4909-955f-badfbafb5962/0
 
 
@@ -155,18 +157,18 @@ async function containAux(dev_obj){
             if(   dev_obj.readers.length !== 0   ){
                 
                 
-                dev_obj.neededReader =  dev_obj.totalResults[   dev_obj.groupName   ][dev_obj.readers[0]].createReader()
+                dev_obj.neededReader =  dev_obj.totalResults[   dev_obj.readers.relativeDir[0]   ][dev_obj.readers[0]].createReader()
                 new Promise((resolve,reject)=>{
                                 
                               
                     dev_obj.neededReader.readEntries(
                         async function(results){
-                            console.group(   "directory " + dev_obj.totalResults[   dev_obj.groupName   ][dev_obj.readers[0]].fullPath   )
-                            dev_obj.totalResults[   dev_obj.totalResults[   dev_obj.groupName   ][dev_obj.readers[0]].fullPath   ] = []
+                            console.group(   "directory " + dev_obj.totalResults[   dev_obj.readers.relativeDir[0]   ][dev_obj.readers[0]].fullPath   )
+                            dev_obj.totalResults[   dev_obj.totalResults[   dev_obj.readers.relativeDir[0]   ][dev_obj.readers[0]].fullPath   ] = []
                             var resolveMe = await readDirAux({
                                                                 dirReader: dev_obj.neededReader,
-                                                                dirEntry: dev_obj.totalResults[   dev_obj.groupName   ][dev_obj.readers[0]],
-                                                                groupName: dev_obj.totalResults[   dev_obj.groupName   ][dev_obj.readers[0]].fullPath,
+                                                                dirEntry: dev_obj.totalResults[   dev_obj.readers.relativeDir[0]   ][dev_obj.readers[0]],
+                                                                groupName: dev_obj.totalResults[   dev_obj.readers.relativeDir[0]   ][dev_obj.readers[0]].fullPath,
                                                                 remove:dev_obj.remove,
                                                                 totalResults:dev_obj.totalResults,
                                                                 results : results,
@@ -196,6 +198,9 @@ async function containAux(dev_obj){
                     console.log(   'groupEnded'   )
                     debugger
                     dev_obj.readers.minus({
+                        index:0
+                    })
+                    dev_obj.readers.relativeDir.minus({
                         index:0
                     })
                     // console.log(   dev_obj.totalResults   )
@@ -426,8 +431,63 @@ function devChosen(   dev_obj   ){
     
 }
 
-devChosen({
-    remove:'false',
-    scssFn:window.operate,
-    quotaRequest:'false'
-})
+
+function traverseDirectory(entry) {
+  const reader = entry.createReader();
+  // Resolved when the entire directory is traversed
+  return new Promise((resolve, reject) => {
+    const iterationAttempts = [];
+    function readEntries() {
+      // According to the FileSystem API spec, readEntries() must be called until
+      // it calls the callback with an empty array.  Seriously??
+      reader.readEntries((entries) => {
+        if (!entries.length) {
+          // Done iterating this particular directory
+          resolve(Promise.all(iterationAttempts));
+        } else {
+          // Add a list of promises for each directory entry.  If the entry is itself
+          // a directory, then that promise won't resolve until it is fully traversed.
+          iterationAttempts.push(Promise.all(entries.map((ientry) => {
+            if (ientry.isFile) {
+              // DO SOMETHING WITH FILES
+              return ientry;
+            }
+            // DO SOMETHING WITH DIRECTORIES
+            return traverseDirectory(ientry);
+          })));
+          // Try calling readEntries() again for the same dir, according to spec
+          readEntries();
+        }
+      }, error => reject(error));
+    }
+    readEntries();
+  });
+}
+
+
+
+
+function testChosen(   dev_obj   ){
+
+
+    window.webkitRequestFileSystem(window.PERSISTENT,  requestedBytes,
+        (fs)=>{
+            
+            traverseDirectory(fs.root).then(result => console.log(result));
+        },
+        (err)=>{
+            console.log(err)
+    });
+    
+        
+}
+
+
+// devChosen({
+//     remove:'false',
+//     scssFn:window.operate,
+//     quotaRequest:'false'
+// })
+
+
+testChosen()
