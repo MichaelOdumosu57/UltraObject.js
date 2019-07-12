@@ -91,7 +91,9 @@ async function containAux(dev_obj){
         dev_obj.readers.add({
             value:dev_obj.totalResultsCounter
         })
-
+        dev_obj.readers.relativeDir.add({
+            value:dev_obj.groupName
+        })
         
         
         
@@ -138,6 +140,7 @@ async function containAux(dev_obj){
                 dev_obj.totalResultsLength  = dev_obj.totalResults[   dev_obj.groupName   ].length
                 dev_obj.totalResultsCounter = 0
                 dev_obj.readers = ultraObject.iterableObject()
+                dev_obj.readers.relativeDir  = ultraObject.iterableObject()
         function promiseChain0Resolve(  dev_obj   ){
             return function(resolve,reject){
             
