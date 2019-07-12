@@ -1,4 +1,16 @@
-// MAJOR UPDATE, function operated truly traverses the directory  tested from mdn example
+// devChosen
+// remove -string false, true decides to remove the whole filesytem
+// selectRemove, selects a specific file or specific directory to remove, for dis, the directory must be
+// scssFn: fn to execute once the API got the filesystem needed
+// quotaRequest: when true, asks the API for a storage amt indicatied by requested bytes
+
+
+// MAJOR UPDATE can now go in a delete a single file or directory
+
+
+
+
+
 
 // your lucidchart https://www.lucidchart.com/documents/edit/eb66719e-c3c3-4909-955f-badfbafb5962/0
 
@@ -30,7 +42,7 @@ function readDirAux(dev_obj) {
     
     if (dev_obj.results.length ) {
     
-        debugger
+
         dev_obj.totalResults[   dev_obj.groupName   ].push(...dev_obj.results)
         var notDoneReadingEntries
         return notDoneReadingEntries = new Promise((resolve,reject)=>{
@@ -86,6 +98,22 @@ async function containAux(dev_obj){
     }
     
     
+    if(   dev_obj.totalResults[   dev_obj.groupName   ][dev_obj.totalResultsCounter].isFile   ){
+        
+        debugger
+        if(   (   dev_obj.remove === 'true'   ) || dev_obj.selectRemove === dev_obj.totalResults[   dev_obj.groupName   ][dev_obj.totalResultsCounter].fullPath   ){
+            
+            
+            dev_obj.totalResults[   dev_obj.groupName   ][dev_obj.totalResultsCounter].remove()
+            console.log('removed')
+         
+            
+        }
+        
+        
+    }
+    
+    
     else if(   dev_obj.totalResults[   dev_obj.groupName   ][dev_obj.totalResultsCounter].isDirectory   ){
         
         
@@ -95,6 +123,9 @@ async function containAux(dev_obj){
         })
         dev_obj.readers.relativeDir.add({
             value:dev_obj.groupName
+        })
+        dev_obj.readers.dirItself.add({
+            value:dev_obj.totalResults[   dev_obj.groupName   ][dev_obj.totalResultsCounter]
         })
         
         
@@ -109,7 +140,7 @@ async function containAux(dev_obj){
 }
 
 
-        function getEntries(   dev_obj   ) {
+    function getEntries(   dev_obj   ) {
             
                 
             console.group(   "directory " + dev_obj.groupName   )
@@ -143,87 +174,113 @@ async function containAux(dev_obj){
                 dev_obj.totalResultsCounter = 0
                 dev_obj.readers = ultraObject.iterableObject()
                 dev_obj.readers.relativeDir  = ultraObject.iterableObject()
-        function promiseChain0Resolve(  dev_obj   ){
-            return function(resolve,reject){
-            
-                var toDo = containAux(dev_obj)
-                resolve(dev_obj)
-                
-            }
-            
-        }
-        function promiseChain0Then(  dev_obj   ){
-            
-            if(   dev_obj.readers.length !== 0   ){
-                
-                
-                dev_obj.neededReader =  dev_obj.totalResults[   dev_obj.readers.relativeDir[0]   ][dev_obj.readers[0]].createReader()
-                new Promise((resolve,reject)=>{
-                                
-                              
-                    dev_obj.neededReader.readEntries(
-                        async function(results){
-                            console.group(   "directory " + dev_obj.totalResults[   dev_obj.readers.relativeDir[0]   ][dev_obj.readers[0]].fullPath   )
-                            dev_obj.totalResults[   dev_obj.totalResults[   dev_obj.readers.relativeDir[0]   ][dev_obj.readers[0]].fullPath   ] = []
-                            var resolveMe = await readDirAux({
-                                                                dirReader: dev_obj.neededReader,
-                                                                dirEntry: dev_obj.totalResults[   dev_obj.readers.relativeDir[0]   ][dev_obj.readers[0]],
-                                                                groupName: dev_obj.totalResults[   dev_obj.readers.relativeDir[0]   ][dev_obj.readers[0]].fullPath,
-                                                                remove:dev_obj.remove,
-                                                                totalResults:dev_obj.totalResults,
-                                                                results : results,
-                                                                flag: 'inRecursion',
-                                                                readers:dev_obj.readers
-                                                            })
-                            console.log(resolveMe) // strange thiungs happen here it calls it a promise but something see it as the data i return in the then of the promise which im fine with but completely bizzare
-        
-                            if(   resolveMe.resolve === 'resolve'   ){
-                            
-                                debugger
-                                resolve(resolveMe)
-                            
-                            
-                            }
-                            
-                            
-                        },
-                        function(error) {
-                          console.log(error)
-                          throw(error)
-                        }
-                    )
+                dev_obj.readers.dirItself = ultraObject.iterableObject()
+                function promiseChain0Resolve(  dev_obj   ){
+                    return function(resolve,reject){
                     
-                }).then(function(dev_obj){
-                    console.groupEnd()
-                    console.log(   'groupEnded'   )
-                    debugger
-                    dev_obj.readers.minus({
-                        index:0
-                    })
-                    dev_obj.readers.relativeDir.minus({
-                        index:0
-                    })
-                    // console.log(   dev_obj.totalResults   )
-                    console.log(`walk through this and hopefully we get out in order
-                    remember to be sucessful no two promises can be running at the same time`)
-                    dev_obj.totalResultsLength  = dev_obj.totalResults[   dev_obj.groupName   ].length
-                    dev_obj.totalResultsCounter = 0
-                    promiseChain0Iterable(   dev_obj   )
-                })
-                
-                
-            }
+                        var toDo = containAux(dev_obj)
+                        resolve(dev_obj)
+                        
+                    }
+                    
+                }
+                function promiseChain0Then(  dev_obj   ){
             
-        }
-        function promiseChain0Iterable(   dev_obj   ){
-            debugger
-            var PromiseChain0 = new Promise(promiseChain0Resolve(   dev_obj   )).then(promiseChain0Then)
-            // now we have a function to call it again
-        }
-        
-        promiseChain0Iterable(   dev_obj   )
+            
+                    if(   dev_obj.readers.length !== 0   ){
                 
-    
+                
+                        dev_obj.neededReader =  dev_obj.totalResults[   dev_obj.readers.relativeDir[0]   ][dev_obj.readers[0]].createReader()
+                        new Promise((resolve,reject)=>{
+                                        
+                                      
+                            dev_obj.neededReader.readEntries(
+                                async function(results){
+                                    console.group(   "directory " + dev_obj.totalResults[   dev_obj.readers.relativeDir[0]   ][dev_obj.readers[0]].fullPath   )
+                                    dev_obj.totalResults[   dev_obj.totalResults[   dev_obj.readers.relativeDir[0]   ][dev_obj.readers[0]].fullPath   ] = []
+                                    var resolveMe = await readDirAux({
+                                                                        dirReader: dev_obj.neededReader,
+                                                                        dirEntry: dev_obj.totalResults[   dev_obj.readers.relativeDir[0]   ][dev_obj.readers[0]],
+                                                                        groupName: dev_obj.totalResults[   dev_obj.readers.relativeDir[0]   ][dev_obj.readers[0]].fullPath,
+                                                                        remove:dev_obj.remove,
+                                                                        totalResults:dev_obj.totalResults,
+                                                                        results : results,
+                                                                        flag: 'inRecursion',
+                                                                        readers:dev_obj.readers,
+                                                                        selectRemove:dev_obj.selectRemove
+                                                                    })
+                                    console.log(resolveMe) // strange thiungs happen here it calls it a promise but something see it as the data i return in the then of the promise which im fine with but completely bizzare
+                
+                                    if(   resolveMe.resolve === 'resolve'   ){
+                                    
+                                        debugger
+                                        resolve(resolveMe)
+                                    
+                                    
+                                    }
+                                    
+                                    
+                                },
+                                function(error) {
+                                  console.log(error)
+                                  throw(error)
+                                }
+                            )
+                            
+                        }).then(function(dev_obj){
+                            console.groupEnd()
+                            console.log(   'groupEnded'   )
+                            dev_obj.readers.minus({
+                                index:0
+                            })
+                            dev_obj.readers.relativeDir.minus({
+                                index:0
+                            })
+                            // console.log(   dev_obj.totalResults   )
+                            // console.log(`walk through this and hopefully we get out in order
+                            // remember to be sucessful no two promises can be running at the same time`)
+                            dev_obj.totalResultsLength  = dev_obj.totalResults[   dev_obj.groupName   ].length
+                            dev_obj.totalResultsCounter = 0
+                            promiseChain0Iterable(   dev_obj   )
+                        })
+                        
+                        
+                    }
+                    
+                    
+                    else if(   dev_obj.readers.length === 0   &&  (   dev_obj.remove === 'true' || dev_obj.selectRemove !== undefined   )   ){
+                        
+                        debugger
+                        var FL_2_i = {
+                            forLoop_0_i:0,
+                            forLoopLength:dev_obj.readers.dirItself.length,
+                            fn:function(   dev_obj   ){
+                               
+                               
+                                if(   (   dev_obj.remove === 'true'   ) || dev_obj.selectRemove === dev_obj.readers.dirItself[   FL_2_i.forLoop_0_i   ].fullPath   ){
+                                    
+                                    
+                                    dev_obj.readers.dirItself[   FL_2_i.forLoop_0_i   ].remove()
+                                    
+                                    
+                                }
+                                
+                                
+                            },
+                            args:dev_obj //{}
+                        }
+                        ultraObject.forLoop(   FL_2_i   )
+                        
+                        
+                    }
+                    
+                    
+                }
+                function promiseChain0Iterable(   dev_obj   ){
+                    var PromiseChain0 = new Promise(promiseChain0Resolve(   dev_obj   )).then(promiseChain0Then)
+                    // now we have a function to call it again
+                }
+                promiseChain0Iterable(   dev_obj   )
             }).catch(errors)
 
 
@@ -238,6 +295,7 @@ async function containAux(dev_obj){
                 dirEntry:dev_obj.fs.root,
                 remove:dev_obj.remove,
                 totalResults:ultraObject.iterableObject(),
+                selectRemove:dev_obj.selectRemove
                 //neededReaders:[] // if anything we can make this an array, i dont want to deal with invocations and async
                 // surroundDir:1
             })
@@ -255,43 +313,6 @@ function errors(err){
 
 
 
-/*check testing */
-// navigator.webkitPersistentStorage.requestQuota (
-//     1024*1024*1, function(grantedBytes) {
-//         window.webkitRequestFileSystem(window.PERSISTENT, grantedBytes,
-//         (fs)=>{
-//                 var dirReader = fs.root.createReader();
-//                 var entries = [];
-//                 var dontMakeFiles = 'false'
-                
-//                 fs.root.getDirectory("Downloads",{create:true},()=>{
-//                     getEntries()
-//                 })
-//                 function getEntries() {
-//                   dirReader.readEntries(function(results) {
-//                       console.log(results)
-//                     if (results.length) {
-//                         results.forEach((a)=>{
-//                             if(   a.isFile   ){
-//                                 dontMakeFiles = 'true'
-//                             }
-//                         })
-//                         getEntries();
-//                     }
-//                   }, function(error) {
-//                     /* handle error -- error is a FileError object */
-//                     console.log(error)
-//                     throw(error)
-//                   });
-//                 };
-//                 getEntries()
-//         },
-//         (err)=>{
-//             console.log(err)
-//         })
-//         }
-// , function(e) { console.log('Error', e) }
-// )
 function jacket(dev_obj){
     var fs = dev_obj.fs
     
@@ -401,7 +422,11 @@ function devChosen(   dev_obj   ){
             console.log(grantedBytes)
             window.webkitRequestFileSystem(window.PERSISTENT, grantedBytes,
             (fs)=>{
-                dev_obj.scssFn({fs:fs,remove:dev_obj.remove})
+                dev_obj.scssFn({
+                    fs:fs,
+                    remove:dev_obj.remove,
+                    selectRemove:dev_obj.selectRemove
+                })
             },
             (err)=>{
                 console.log(err)
@@ -419,7 +444,11 @@ function devChosen(   dev_obj   ){
         
         window.webkitRequestFileSystem(window.PERSISTENT,  requestedBytes,
             (fs)=>{
-                dev_obj.scssFn({fs:fs,remove:dev_obj.remove})
+                dev_obj.scssFn({
+                    fs:fs,
+                    remove:dev_obj.remove,
+                    selectRemove:dev_obj.selectRemove
+                })
             },
             (err)=>{
                 console.log(err)
