@@ -3,6 +3,7 @@
 // selectRemove, selects a specific file or specific directory to remove, for dis, the directory must be
 // scssFn: fn to execute once the API got the filesystem needed
 // quotaRequest: when true, asks the API for a storage amt indicatied by requested bytes
+// dirRemove: when chosen removes everthing only in the specified dir
 
 
 // MAJOR UPDATE can now go in a delete a single file or directory

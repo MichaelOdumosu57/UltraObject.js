@@ -1,0 +1,9 @@
+var c = '/cd/cde'
+
+var d = '/cd/cde/cded'
+
+ c.split('/').reduce((x,i)=>{
+    
+    console.log(i)
+    return i
+})
