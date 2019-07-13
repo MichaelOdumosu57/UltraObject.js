@@ -265,7 +265,7 @@ async function containAux(dev_obj){
                             algorithm:'bubble',
                             compare:function(   dev_obj   ){
                                 
-                                debugger
+
                                 if(   dev_obj.val[dev_obj.index].fullPath.split('/').length < dev_obj.val[dev_obj.index + 1].fullPath.split('/').length    ){
                                     
                                     
@@ -283,7 +283,7 @@ async function containAux(dev_obj){
                             forLoopLength:dev_obj.readers.dirItself.length,
                             fn:function(   dev_obj   ){
                                
-                                debugger
+                                
                                 if(   (   dev_obj.remove === 'true'   ) || (   dev_obj.selectRemove.sR === dev_obj.readers.dirItself[   FL_2_i.forLoop_0_i   ].fullPath   ) || (   dirRemove({
                                                                                             c:dev_obj.selectRemove.dR,
                                                                                             d:dev_obj.readers.dirItself[   FL_2_i .forLoop_0_i   ].fullPath
@@ -347,83 +347,27 @@ function errors(err){
 
 
 function jacket(dev_obj){
+    // one major loop, 5 is length
+    // in each iteration make a random number of dirs that equals 10 and generate them , throw all made dirs into an itO get
+    // get to the next iteration and have a good night
     var fs = dev_obj.fs
-    
+    var count = 0
     var FL_0_i = {
         forLoop_0_i:0,
         forLoopLength:1,
         fn:function(   dev_obj   ){
-            var subdirs = dev_obj.subdirs
-            var sideDir = dev_obj.dir
-            dev_obj.dir.getDirectory(makeid(16),{create:true},
-                (dirEntry)=>{
-                    
-                    debugger
-                    count += 1
-                    if (count > 5000){
-                        throw('stop!!!!')
-                    }
-                    
-                    var dirReader = dev_obj.dir.createReader();
-                    var entries = [];
-                    var makeFiles = 'true'
-                    function getEntries() {
-                      dirReader.readEntries(function(results) {
-                        console.log(results)
-                        if (results.length) {
-                            results.forEach((a)=>{
-                                if(   a.isFile   ){
-                                    makeFiles = 'true'
-                                    return
-                                }
-                            })
-                            getEntries();
-                        }
-                      }, function(error) {
-                        /* handle error -- error is a FileError object */
-                        console.log(error)
-                        throw(error)
-                      });
-                    };
-                    getEntries()
-                                  
-                                  
-                    if(   makeFiles  === 'true'   ){
-                        
-                        
-                        FL_1_i.args = {dir:sideDir}
-                        FL_1_i.forLoopLength = Math.floor(Math.random() * Math.floor(10));
-                        ultraObject.forLoop(   FL_1_i   )
-                        
-                        
-                    }
-                    
-                    
-                    if(   subdirs === 0   ){
-                        
-                        
-                        return
-                        
-                        
-                    }
-                    
-                    
-                    FL_0_i.forLoopLength = Math.floor(Math.random() * Math.floor(10));
-                    FL_0_i.args.dir = dirEntry
-                    FL_0_i.args.subdirs = subdirs - 1
-                    ultraObject.forLoop(   FL_0_i   )
-                },
-                (err)=>{console.log(err)
-            })
-            // FL_0_i.forLoopLength = Math.floor(Math.random() * Math.floor(10));
-            FL_0_i.args.dir = sideDir
+            FL_1_i.args = {dir:dev_obj.dir}
+            FL_2_i.args = {dir:dev_obj.dir}
+            FL_1_i.forLoopLength = Math.floor(Math.random() * Math.floor(10));
+            FL_2_i.forLoopLength  = 10 -  FL_1_i.forLoopLength
+            ultraObject.forLoop(   FL_1_i   )
+            ultraObject.forLoop(   FL_2_i   )
         },
         args:{
                 dir:fs.root,
                 subdirs:1
             }
     }
-    ultraObject.forLoop(   FL_0_i   )
     var FL_1_i = {
         forLoop_0_i:0,
         fn:function(   dev_obj   ){
@@ -439,7 +383,23 @@ function jacket(dev_obj){
         },
         args:undefined //{}
     }
-    count = 0
+    var FL_2_i = {
+        forLoop_0_i:0,
+        fn:function(   dev_obj   ){
+            dev_obj.dir.getDirectory(makeid(16),{create:true},
+                ()=>{
+                    count += 1
+                    if (count > 5000){
+                        throw('stop!!!!')
+                    }
+                },
+                (err)=>{console.log(err)
+            })
+        },
+        args:undefined //{}
+    }
+    ultraObject.forLoop(   FL_0_i   )
+    
 }
 
 
