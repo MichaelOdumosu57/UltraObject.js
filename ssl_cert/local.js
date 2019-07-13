@@ -1,9 +1,11 @@
 // devChosen
 // remove -string false, true decides to remove the whole filesytem
 // selectRemove, selects a specific file or specific directory to remove, for dis, the directory must be
+    //  dR -dirRemove: when chosen removes everthing only in the specified dir
+    // sR - singleRemove: removes one exact file or dir
 // scssFn: fn to execute once the API got the filesystem needed
 // quotaRequest: when true, asks the API for a storage amt indicatied by requested bytes
-// dirRemove: when chosen removes everthing only in the specified dir
+
 
 
 // MAJOR UPDATE can now go in a delete a single file or directory
@@ -102,10 +104,13 @@ async function containAux(dev_obj){
     if(   dev_obj.totalResults[   dev_obj.groupName   ][dev_obj.totalResultsCounter].isFile   ){
         
         debugger
-        if(   (   dev_obj.remove === 'true'   ) || dev_obj.selectRemove === dev_obj.totalResults[   dev_obj.groupName   ][dev_obj.totalResultsCounter].fullPath   ){
+        if(   (   dev_obj.remove === 'true'   ) || (   dev_obj.selectRemove.sR === dev_obj.totalResults[   dev_obj.groupName   ][dev_obj.totalResultsCounter].fullPath   ) || (    dirRemove({
+                                                                            c:dev_obj.selectRemove.dR,
+                                                                            d:dev_obj.totalResults[   dev_obj.groupName   ][dev_obj.totalResultsCounter].fullPath
+                                                                })   === 1  )   ){
             
             
-            dev_obj.totalResults[   dev_obj.groupName   ][dev_obj.totalResultsCounter].remove()
+            // dev_obj.totalResults[   dev_obj.groupName   ][dev_obj.totalResultsCounter].remove()
             console.log('removed')
          
             
@@ -251,18 +256,21 @@ async function containAux(dev_obj){
                     
                     else if(   dev_obj.readers.length === 0   &&  (   dev_obj.remove === 'true' || dev_obj.selectRemove !== undefined   )   ){
                         
-                        debugger
+                        
                         var FL_2_i = {
                             forLoop_0_i:0,
                             forLoopLength:dev_obj.readers.dirItself.length,
                             fn:function(   dev_obj   ){
                                
-                               
-                                if(   (   dev_obj.remove === 'true'   ) || dev_obj.selectRemove === dev_obj.readers.dirItself[   FL_2_i.forLoop_0_i   ].fullPath   ){
+                                debugger
+                                if(   (   dev_obj.remove === 'true'   ) || (   dev_obj.selectRemove.sR === dev_obj.readers.dirItself[   FL_2_i.forLoop_0_i   ].fullPath   ) || (   dirRemove({
+                                                                                            c:dev_obj.selectRemove.dR,
+                                                                                            d:dev_obj.readers.dirItself[   FL_2_i .forLoop_0_i   ].fullPath
+                                                                                        }) === 1   )   ){
                                     
-                                    
-                                    dev_obj.readers.dirItself[   FL_2_i.forLoop_0_i   ].remove()
-                                    
+                       
+                                    // dev_obj.readers.dirItself[   FL_2_i.forLoop_0_i   ].remove()
+                                    console.log('removed')
                                     
                                 }
                                 
@@ -513,11 +521,51 @@ function testChosen(   dev_obj   ){
 }
 
 
-// devChosen({
-//     remove:'false',
-//     scssFn:window.operate,
-//     quotaRequest:'false'
-// })
+function dirRemove(   dev_obj   ){
+    var c = dev_obj.c
+    var d = dev_obj.d
+    var dirSpot = 0
+    return c.split('/').reduce((x,i)=>{
+        console.log('c',i)
+        debugger
+        var fullPathSpot = 0
+        var k = d.split('/').reduce((y,j,m)=>{
+            console.log('d',j)
+            
+            
+            if(   i === j && dirSpot === fullPathSpot   ){
+                
+                dirSpot += 1
+                debugger
+                // var e = d.split("/")
+                // e.splice(m,1)
+                // d = e.join('/')
+                return x === "" ? c.split('/').length - 1 : x -1
+                // if x isnt "" on the first interation we have a problem
+                
+                
+            }
+            
+            
+            fullPathSpot += 1
+            // impt it goes after the conditional so comparison can be in line with \ on comparison
+            
+            
+            return y === "" ? x:y
+        })
+        return k
+    })
+}
+
+devChosen({
+    remove:'true',
+    scssFn:window.operate,
+    quotaRequest:'false',
+    selectRemove:{
+            dR:'',
+            sR:''
+        }
+})
 
 
-testChosen()
+// testChosen()
