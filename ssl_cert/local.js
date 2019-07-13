@@ -8,7 +8,7 @@
 
 
 
-// MAJOR UPDATE can now go in a delete a single file or directory
+// MAJOR UPDATE can now go and delete whole subdirectories that are filled up
 
 
 
@@ -110,8 +110,11 @@ async function containAux(dev_obj){
                                                                 })   === 1  )   ){
             
             
-            // dev_obj.totalResults[   dev_obj.groupName   ][dev_obj.totalResultsCounter].remove()
-            console.log('removed')
+            dev_obj.totalResults[   dev_obj.groupName   ][dev_obj.totalResultsCounter].remove(
+                ()=>{console.log('removed')},
+                ()=>{console.log('could not remove')}
+            )
+            
          
             
         }
@@ -257,6 +260,24 @@ async function containAux(dev_obj){
                     else if(   dev_obj.readers.length === 0   &&  (   dev_obj.remove === 'true' || dev_obj.selectRemove !== undefined   )   ){
                         
                         
+                        ultraObject.sort({
+                            target: dev_obj.readers.dirItself,
+                            algorithm:'bubble',
+                            compare:function(   dev_obj   ){
+                                
+                                debugger
+                                if(   dev_obj.val[dev_obj.index].fullPath.split('/').length < dev_obj.val[dev_obj.index + 1].fullPath.split('/').length    ){
+                                    
+                                    
+                                    return 'true'
+                                    
+                                    
+                                }
+                                    
+                                
+                            },
+                            result:'true'
+                        })
                         var FL_2_i = {
                             forLoop_0_i:0,
                             forLoopLength:dev_obj.readers.dirItself.length,
@@ -269,7 +290,10 @@ async function containAux(dev_obj){
                                                                                         }) === 1   )   ){
                                     
                        
-                                    // dev_obj.readers.dirItself[   FL_2_i.forLoop_0_i   ].remove()
+                                    dev_obj.readers.dirItself[   FL_2_i.forLoop_0_i   ].remove(
+                                        ()=>{console.log('removed')},
+                                        ()=>{console.log('could not remove')}
+                                    )
                                     console.log('removed')
                                     
                                 }
@@ -526,20 +550,17 @@ function dirRemove(   dev_obj   ){
     var d = dev_obj.d
     var dirSpot = 0
     return c.split('/').reduce((x,i)=>{
-        console.log('c',i)
-        debugger
+        // console.log('c',i)
+        // debugger
         var fullPathSpot = 0
         var k = d.split('/').reduce((y,j,m)=>{
-            console.log('d',j)
+            // console.log('d',j)
             
             
             if(   i === j && dirSpot === fullPathSpot   ){
                 
                 dirSpot += 1
-                debugger
-                // var e = d.split("/")
-                // e.splice(m,1)
-                // d = e.join('/')
+                // debugger
                 return x === "" ? c.split('/').length - 1 : x -1
                 // if x isnt "" on the first interation we have a problem
                 

@@ -195,8 +195,8 @@ devChosen({
     scssFn:window.operate,
     quotaRequest:'false',
     selectRemove:{
-            dR:'',
-            sR:'/K00MjBT5kc8BqExn'
+            dR:'/K00MjBT5kc8BqExn',
+            sR:''
         }
 })
 
