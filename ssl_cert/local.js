@@ -352,19 +352,42 @@ function jacket(dev_obj){
     // get to the next iteration and have a good night
     var fs = dev_obj.fs
     var count = 0
+    debugger
+    var jacket_itO = ultraObject.iterableObject()
+    jacket_itO.add({
+        value:ultraObject.iterableObject()
+    })
+    jacket_itO[0].add({
+        value:dev_obj.fs.root
+    })
     var FL_0_i = {
         forLoop_0_i:0,
-        forLoopLength:1,
+        forLoopLength:5,
         fn:function(   dev_obj   ){
-            FL_1_i.args = {dir:dev_obj.dir}
-            FL_2_i.args = {dir:dev_obj.dir}
-            FL_1_i.forLoopLength = Math.floor(Math.random() * Math.floor(10));
-            FL_2_i.forLoopLength  = 10 -  FL_1_i.forLoopLength
-            ultraObject.forLoop(   FL_1_i   )
-            ultraObject.forLoop(   FL_2_i   )
+            
+        var FL_3_i = {
+            forLoop_0_i:0,
+            forLoopLength:jacket_itO[   FL_0_i.forLoop_0_i   ].length,
+            fn:function(   dev_obj   ){
+                debugger
+                FL_1_i.args = {dir:jacket_itO[   FL_0_i.forLoop_0_i   ][   FL_1_i.forLoop_0_i]   }
+                FL_2_i.args = {dir:jacket_itO[   FL_0_i.forLoop_0_i   ][   FL_1_i.forLoop_0_i]   }
+                FL_1_i.forLoopLength = Math.floor(Math.random() * Math.floor(10));
+                FL_2_i.forLoopLength  = 10 -  FL_1_i.forLoopLength
+                jacket_itO.add({
+                    value:ultraObject.iterableObject()
+                })
+                ultraObject.forLoop(   FL_1_i   )
+                ultraObject.forLoop(   FL_2_i   )
+                throw(jacket_itO)
+            },
+            args:dev_obj //{}
+        }
+        ultraObject.forLoop(   FL_3_i   )
+        
         },
         args:{
-                dir:fs.root,
+                // dir:fs.root,
                 subdirs:1
             }
     }
@@ -387,7 +410,10 @@ function jacket(dev_obj){
         forLoop_0_i:0,
         fn:function(   dev_obj   ){
             dev_obj.dir.getDirectory(makeid(16),{create:true},
-                ()=>{
+                (   dirEntry   )=>{
+                    jacket_itO[   FL_0_i.forLoop_0_i +1   ].add({
+                        value:dirEntry
+                    })
                     count += 1
                     if (count > 5000){
                         throw('stop!!!!')
@@ -538,15 +564,25 @@ function dirRemove(   dev_obj   ){
     })
 }
 
-devChosen({
-    remove:'true',
-    scssFn:window.operate,
-    quotaRequest:'false',
-    selectRemove:{
-            dR:'',
-            sR:''
-        }
-})
+// devChosen({
+//     remove:'true',
+//     scssFn:window.operate,
+//     quotaRequest:'false',
+//     selectRemove:{
+//             dR:'',
+//             sR:''
+//         }
+// })
 
+
+devChosen({
+    remove:'false',
+    scssFn:window.jacket,
+    quotaRequest:'false',
+//     selectRemove:{
+//             dR:'/K00MjBT5kc8BqExn',
+//             sR:''
+//         }
+})
 
 // testChosen()
