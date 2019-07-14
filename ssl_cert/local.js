@@ -357,6 +357,7 @@ function errors(err){
     jacket_itO.add({
         value:ultraObject.iterableObject()
     })
+    jacket_itO.instant = 'false'
 
 
 
@@ -366,10 +367,19 @@ function errors(err){
         forLoopLength:1,
         fn: async function(   dev_obj   ){
             
-            // new Promise((resolve,reject)=>{
-            //     resolve(   ultraObject.forLoop(   local_FL3_i   )   )
-            // })
-            // local_FL3_i.args = dev_obj
+            
+            jacket_itO.sys = Math.floor(Math.random() * Math.floor(10));
+            
+            
+            if(   local_FL0_i.args.counter === 3  & jacket_itO.instant === 'false'   ){
+                
+                
+                jacket_itO.sys = 1
+                
+                
+            }
+            
+            
             local_FL3_i.args = {counter: 0}
             await ultraObject.forLoop(   local_FL3_i   )
         
@@ -388,6 +398,28 @@ function errors(err){
             local_FL2_i.args = {dir:jacket_itO[   local_FL0_i.args.counter   ][   local_FL3_i.args.counter   ]   }
             local_FL1_i.forLoopLength = Math.floor(Math.random() * Math.floor(10));
             local_FL2_i.forLoopLength  = 10 -  local_FL1_i.forLoopLength
+            
+            
+            if(   jacket_itO.sys < 5   ){
+                
+                
+                local_FL1_i.args.sys = Math.floor(Math.random() * Math.floor(local_FL1_i.forLoopLength));
+                local_FL2_i.args.sys = null
+                
+                
+            }
+            
+            
+            else if(   jacket_itO.sys > 5   ){
+                
+                
+                local_FL2_i.args.sys = Math.floor(Math.random() * Math.floor(local_FL2_i.forLoopLength));
+                local_FL1_i.args.sys = null
+                
+                
+            }
+            
+            
             jacket_itO.add({
                 value:ultraObject.iterableObject()
             })
@@ -407,6 +439,19 @@ function errors(err){
         fn:async function(   dev_obj   ){
             await dev_obj.dir.getFile(makeid(16),{create:true},
                 ()=>{
+                    local_FL1_i.forLoop_0_i += 1
+                    
+                    
+                    if(   local_FL1_i.forLoop_0_i === local_FL1_i.args.sys   ){
+                        
+                        
+                        jacket_itO.instant = 'true'
+                        debugger
+                        
+                        
+                    }
+                    
+                    
                     count += 1
                     if (count > 5000){
                         throw('stop!!!!')
@@ -434,7 +479,8 @@ function errors(err){
                     
                     if(    local_FL2_i.forLoop_0_i === local_FL2_i.forLoopLength   ){
                         
-                        
+                        //helps to keep counter in the loops of making files and dirs, must be reset for the probmise chain
+                        local_FL1_i.forLoop_0_i = 0
                         local_FL2_i.forLoop_0_i = 0
                         jacket_itO.resolve()
                         
@@ -456,20 +502,34 @@ function jacket(dev_obj){
     // one major loop, 5 is length
     // in each iteration make a random number of dirs that equals 10 and generate them , throw all made dirs into an itO get
     // get to the next iteration and have a good night
+        //args
+        //
     var fs = dev_obj.fs
     jacket_itO[0].add({
         value:dev_obj.fs.root
     })
     function jacketResolve(dev_obj){
         return function(resolve,reject){
+            debugger
             jacket_itO.resolve = resolve
+            
+            
+            if(   jacket_itO.upperResolve === undefined   ){
+            
+            
+                jacket_itO.upperResolve = dev_obj.upperResolve
+                
+                
+            }
+            
+            
             ultraObject.forLoop(   dev_obj.local_FL0_i   )
         }
     }
     function jacketThen(){
         // console.log('walked out of global execution context, or really everything i needed to be in it')
         
-        debugger
+        
         if(   local_FL3_i.args.counter !== jacket_itO[   local_FL0_i.args.counter   ].length -1   ){
               
               
@@ -481,8 +541,17 @@ function jacket(dev_obj){
         
         else if(   local_FL0_i.args.counter === 3   ){
               
-              
-            return 'done'
+
+            debugger
+            jacket_itO.upperResolve(
+                (function(){
+                    jacket_itO = ultraObject.iterableObject()
+                    jacket_itO.add({
+                        value:ultraObject.iterableObject()
+                    })
+                    jacket_itO.instant = 'false'
+                }())
+            )
             
             
         }
@@ -492,7 +561,10 @@ function jacket(dev_obj){
               
               
             local_FL0_i.args.counter += 1
-            jacketPromise(   {local_FL0_i:local_FL0_i}    )
+            jacketPromise({
+                local_FL0_i:local_FL0_i,
+                // upperResolve:jacket_itO.upperResolve
+            })
             
             
         }
@@ -502,12 +574,17 @@ function jacket(dev_obj){
     function jacketPromise(   dev_obj   ){
         new Promise(   jacketResolve(   dev_obj   )   ).then(   jacketThen   )
     }
-    jacketPromise(   {local_FL0_i:local_FL0_i}   )
+    jacketPromise({
+        local_FL0_i:local_FL0_i,
+        upperResolve:dev_obj.upperResolve
+    })
 }
 
 
 
 function devChosen(   dev_obj   ){
+    //upperResolve: used when calling several of the function above, so you can make promise chains among them, its the resolve
+        // of the containing promise in question
 
 
     if(   dev_obj.quotaRequest === 'true'   ){
@@ -521,7 +598,8 @@ function devChosen(   dev_obj   ){
                 dev_obj.scssFn({
                     fs:fs,
                     remove:dev_obj.remove,
-                    selectRemove:dev_obj.selectRemove
+                    selectRemove:dev_obj.selectRemove,
+                    upperResolve:dev_obj.upperResolve
                 })
             },
             (err)=>{
@@ -543,7 +621,8 @@ function devChosen(   dev_obj   ){
                 dev_obj.scssFn({
                     fs:fs,
                     remove:dev_obj.remove,
-                    selectRemove:dev_obj.selectRemove
+                    selectRemove:dev_obj.selectRemove,
+                    upperResolve:dev_obj.upperResolve
                 })
             },
             (err)=>{
