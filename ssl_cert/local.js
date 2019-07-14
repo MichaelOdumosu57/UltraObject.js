@@ -479,7 +479,16 @@ function jacket(dev_obj){
         }
         
         
-        else if(   FL_0_i.args.counter !== 4   ){
+        else if(   FL_0_i.args.counter === 3   ){
+              
+              
+            return 'done'
+            
+            
+        }
+        
+        
+        else if(   FL_0_i.args.counter !== 3   ){
               
               
             FL_0_i.args.counter += 1
