@@ -346,61 +346,58 @@ function errors(err){
 
 
 
-function jacket(dev_obj){
-    // one major loop, 5 is length
-    // in each iteration make a random number of dirs that equals 10 and generate them , throw all made dirs into an itO get
-    // get to the next iteration and have a good night
-    var fs = dev_obj.fs
+/*jacket data*/
+
     var count = 0
     // debugger
     var jacket_itO = ultraObject.iterableObject()
     jacket_itO.add({
         value:ultraObject.iterableObject()
     })
-    jacket_itO[0].add({
-        value:dev_obj.fs.root
-    })
+
+
+
+
     var FL_0_i = {
         forLoop_0_i:0,
         forLoopLength:1,
         fn: async function(   dev_obj   ){
             
-            var FL_3_i = {
-            forLoop_0_i:0,
-            forLoopLength:1,
-            fn:async function(   dev_obj   ){
-                debugger
-                FL_1_i.args = {dir:jacket_itO[   FL_0_i.forLoop_0_i   ][   FL_1_i.forLoop_0_i   ]   }
-                FL_2_i.args = {dir:jacket_itO[   FL_0_i.forLoop_0_i   ][   FL_1_i.forLoop_0_i   ]   }
-                FL_1_i.forLoopLength = Math.floor(Math.random() * Math.floor(10));
-                FL_2_i.forLoopLength  = 10 -  FL_1_i.forLoopLength
-                jacket_itO.add({
-                    value:ultraObject.iterableObject()
-                })
-                debugger
-                new Promise((resolve,reject)=>{
-                    ultraObject.forLoop(   FL_1_i   )
-                    ultraObject.forLoop(   FL_2_i   )
-                    resolve()
-                }).then(()=>{
-                    
-                })
-                // throw(jacket_itO)
-            },
-            args:dev_obj //{}
-        }
-            FL_3_i.args.counter = 0
             // new Promise((resolve,reject)=>{
             //     resolve(   ultraObject.forLoop(   FL_3_i   )   )
             // })
+            // FL_3_i.args = dev_obj
+            FL_3_i.args = {counter: 0}
             await ultraObject.forLoop(   FL_3_i   )
         
         },
         args:{
-                // dir:fs.root,
-                subdirs:1,
-                counter: 0
-            }
+            // dir:fs.root,
+            subdirs:1,
+            counter: 0
+        }
+    }
+    var FL_3_i = {
+        forLoop_0_i:0,
+        forLoopLength:1,
+        fn:async function(   dev_obj   ){
+            FL_1_i.args = {dir:jacket_itO[   FL_0_i.args.counter   ][   FL_3_i.args.counter   ]   }
+            FL_2_i.args = {dir:jacket_itO[   FL_0_i.args.counter   ][   FL_3_i.args.counter   ]   }
+            FL_1_i.forLoopLength = Math.floor(Math.random() * Math.floor(10));
+            FL_2_i.forLoopLength  = 10 -  FL_1_i.forLoopLength
+            jacket_itO.add({
+                value:ultraObject.iterableObject()
+            })
+            new Promise((resolve,reject)=>{
+                ultraObject.forLoop(   FL_1_i   )
+                ultraObject.forLoop(   FL_2_i   )
+                resolve()
+            }).then(()=>{
+                
+            })
+            // throw(jacket_itO)
+        },
+        args:null//{}
     }
     var FL_1_i = {
         forLoop_0_i:0,
@@ -415,14 +412,14 @@ function jacket(dev_obj){
                 (err)=>{console.log(err)
             })
         },
-        args:undefined //{}
+        args:null //{}
     }
     var FL_2_i = {
         forLoop_0_i:0,
         fn:async function(   dev_obj   ){
             await dev_obj.dir.getDirectory(makeid(16),{create:true},
                 (   dirEntry   )=>{
-                    jacket_itO[   FL_0_i.forLoop_0_i +1   ].add({
+                    jacket_itO[   FL_0_i.args.counter +1   ].add({
                         value:dirEntry
                     })
                     count += 1
@@ -434,23 +431,9 @@ function jacket(dev_obj){
                     
                     if(    FL_2_i.forLoop_0_i === FL_2_i.forLoopLength   ){
                         
+                        
+                        FL_2_i.forLoop_0_i = 0
                         jacket_itO.resolve()
-                    //     if(   FL_3_i.dev_obj.counter !== jacket_itO[   FL_0_i.forLoop_0_i   ].length   ){
-                              
-                              
-                    //         FL_3_i.dev_obj.counter += 1
-                    //         ultraObject.forLoop(   FL_3_i   )
-                            
-                    //     }
-                        
-                        
-                    //     else if(   FL_0_i.dev_obj.counter !== 5  ){
-                              
-                              
-                    //         FL_0_i.dev_obj.counter += 1
-                    //         ultraObject.forLoop(   FL_0_i   )
-                            
-                    //     }
                         
                         
                     }
@@ -460,14 +443,46 @@ function jacket(dev_obj){
                 (err)=>{console.log(err)
             })
         },
-        args:{resolve:dev_obj.resolve} //{}
+        args:null //{}
     }
-    debugger
+
+/**/
+
+
+function jacket(dev_obj){
+    // one major loop, 5 is length
+    // in each iteration make a random number of dirs that equals 10 and generate them , throw all made dirs into an itO get
+    // get to the next iteration and have a good night
+    var fs = dev_obj.fs
+    jacket_itO[0].add({
+        value:dev_obj.fs.root
+    })
     new Promise((resolve,reject)=>{
         jacket_itO.resolve = resolve
         ultraObject.forLoop(   FL_0_i   )
     }).then(()=>{
         console.log('walked out of global execution context, or really everything i needed to be in it')
+        
+        debugger
+        if(   FL_3_i.args.counter !== jacket_itO[   FL_0_i.args.counter   ].length -1   ){
+              
+              
+            FL_3_i.args.counter += 1
+            ultraObject.forLoop(   FL_3_i   )
+            
+        }
+        
+        
+        else if(   FL_0_i.args.counter !== 5   ){
+              
+              
+            FL_0_i.args.counter += 1
+            ultraObject.forLoop(   FL_0_i   )
+            
+            
+        }
+        
+        
     })
 }
 
