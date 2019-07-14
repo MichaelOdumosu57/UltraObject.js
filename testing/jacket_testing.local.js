@@ -1,4 +1,4 @@
-debugger;devChosen({
+devChosen({
     remove:'false',
     scssFn:window.jacket,
     quotaRequest:'false',
@@ -14,10 +14,10 @@ devChosen({
     remove:'false',
     scssFn:window.operate,
     quotaRequest:'false',
-//     selectRemove:{
-//             dR:'/K00MjBT5kc8BqExn',
-//             sR:''
-//         }
+    selectRemove:{
+            dR:'',
+            sR:''
+        }
 })
 
 

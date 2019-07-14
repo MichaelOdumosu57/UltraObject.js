@@ -279,19 +279,19 @@ async function containAux(dev_obj){
                             },
                             result:'true'
                         })
-                        var FL_2_i = {
+                        var local_FL2_i = {
                             forLoop_0_i:0,
                             forLoopLength:dev_obj.readers.dirItself.length,
                             fn:function(   dev_obj   ){
                                
                                 
-                                if(   (   dev_obj.remove === 'true'   ) || (   dev_obj.selectRemove.sR === dev_obj.readers.dirItself[   FL_2_i.forLoop_0_i   ].fullPath   ) || (   dirRemove({
+                                if(   (   dev_obj.remove === 'true'   ) || (   dev_obj.selectRemove.sR === dev_obj.readers.dirItself[   local_FL2_i.forLoop_0_i   ].fullPath   ) || (   dirRemove({
                                                                                             c:dev_obj.selectRemove.dR,
-                                                                                            d:dev_obj.readers.dirItself[   FL_2_i .forLoop_0_i   ].fullPath
+                                                                                            d:dev_obj.readers.dirItself[   local_FL2_i .forLoop_0_i   ].fullPath
                                                                                         }) === 1   )   ){
                                     
                        
-                                    dev_obj.readers.dirItself[   FL_2_i.forLoop_0_i   ].remove(
+                                    dev_obj.readers.dirItself[   local_FL2_i.forLoop_0_i   ].remove(
                                         ()=>{console.log('removed')},
                                         ()=>{console.log('could not remove')}
                                     )
@@ -303,7 +303,7 @@ async function containAux(dev_obj){
                             },
                             args:dev_obj //{}
                         }
-                        ultraObject.forLoop(   FL_2_i   )
+                        ultraObject.forLoop(   local_FL2_i   )
                         
                         
                     }
@@ -361,17 +361,17 @@ function errors(err){
 
 
 
-    var FL_0_i = {
+    var local_FL0_i = {
         forLoop_0_i:0,
         forLoopLength:1,
         fn: async function(   dev_obj   ){
             
             // new Promise((resolve,reject)=>{
-            //     resolve(   ultraObject.forLoop(   FL_3_i   )   )
+            //     resolve(   ultraObject.forLoop(   local_FL3_i   )   )
             // })
-            // FL_3_i.args = dev_obj
-            FL_3_i.args = {counter: 0}
-            await ultraObject.forLoop(   FL_3_i   )
+            // local_FL3_i.args = dev_obj
+            local_FL3_i.args = {counter: 0}
+            await ultraObject.forLoop(   local_FL3_i   )
         
         },
         args:{
@@ -380,20 +380,20 @@ function errors(err){
             counter: 0
         }
     }
-    var FL_3_i = {
+    var local_FL3_i = {
         forLoop_0_i:0,
         forLoopLength:1,
         fn:async function(   dev_obj   ){
-            FL_1_i.args = {dir:jacket_itO[   FL_0_i.args.counter   ][   FL_3_i.args.counter   ]   }
-            FL_2_i.args = {dir:jacket_itO[   FL_0_i.args.counter   ][   FL_3_i.args.counter   ]   }
-            FL_1_i.forLoopLength = Math.floor(Math.random() * Math.floor(10));
-            FL_2_i.forLoopLength  = 10 -  FL_1_i.forLoopLength
+            local_FL1_i.args = {dir:jacket_itO[   local_FL0_i.args.counter   ][   local_FL3_i.args.counter   ]   }
+            local_FL2_i.args = {dir:jacket_itO[   local_FL0_i.args.counter   ][   local_FL3_i.args.counter   ]   }
+            local_FL1_i.forLoopLength = Math.floor(Math.random() * Math.floor(10));
+            local_FL2_i.forLoopLength  = 10 -  local_FL1_i.forLoopLength
             jacket_itO.add({
                 value:ultraObject.iterableObject()
             })
             new Promise((resolve,reject)=>{
-                ultraObject.forLoop(   FL_1_i   )
-                ultraObject.forLoop(   FL_2_i   )
+                ultraObject.forLoop(   local_FL1_i   )
+                ultraObject.forLoop(   local_FL2_i   )
                 resolve()
             }).then(()=>{
                 
@@ -402,7 +402,7 @@ function errors(err){
         },
         args:null//{}
     }
-    var FL_1_i = {
+    var local_FL1_i = {
         forLoop_0_i:0,
         fn:async function(   dev_obj   ){
             await dev_obj.dir.getFile(makeid(16),{create:true},
@@ -417,25 +417,25 @@ function errors(err){
         },
         args:null //{}
     }
-    var FL_2_i = {
+    var local_FL2_i = {
         forLoop_0_i:0,
         fn:async function(   dev_obj   ){
             await dev_obj.dir.getDirectory(makeid(16),{create:true},
                 (   dirEntry   )=>{
-                    jacket_itO[   FL_0_i.args.counter +1   ].add({
+                    jacket_itO[   local_FL0_i.args.counter +1   ].add({
                         value:dirEntry
                     })
                     count += 1
-                    FL_2_i.forLoop_0_i += 1; // because of how all methods of this API make *** promises to resolve at the end of the global execution context
+                    local_FL2_i.forLoop_0_i += 1; // because of how all methods of this API make *** promises to resolve at the end of the global execution context
                     if (count > 5000){
                         throw('stop!!!!')
                     }
                     
                     
-                    if(    FL_2_i.forLoop_0_i === FL_2_i.forLoopLength   ){
+                    if(    local_FL2_i.forLoop_0_i === local_FL2_i.forLoopLength   ){
                         
                         
-                        FL_2_i.forLoop_0_i = 0
+                        local_FL2_i.forLoop_0_i = 0
                         jacket_itO.resolve()
                         
                         
@@ -463,23 +463,23 @@ function jacket(dev_obj){
     function jacketResolve(dev_obj){
         return function(resolve,reject){
             jacket_itO.resolve = resolve
-            ultraObject.forLoop(   dev_obj.FL_0_i   )
+            ultraObject.forLoop(   dev_obj.local_FL0_i   )
         }
     }
     function jacketThen(){
         // console.log('walked out of global execution context, or really everything i needed to be in it')
         
         debugger
-        if(   FL_3_i.args.counter !== jacket_itO[   FL_0_i.args.counter   ].length -1   ){
+        if(   local_FL3_i.args.counter !== jacket_itO[   local_FL0_i.args.counter   ].length -1   ){
               
               
-            FL_3_i.args.counter += 1
-            jacketPromise(   {FL_0_i:FL_3_i}    )
+            local_FL3_i.args.counter += 1
+            jacketPromise(   {local_FL0_i:local_FL3_i}    )
             
         }
         
         
-        else if(   FL_0_i.args.counter === 3   ){
+        else if(   local_FL0_i.args.counter === 3   ){
               
               
             return 'done'
@@ -488,11 +488,11 @@ function jacket(dev_obj){
         }
         
         
-        else if(   FL_0_i.args.counter !== 3   ){
+        else if(   local_FL0_i.args.counter !== 3   ){
               
               
-            FL_0_i.args.counter += 1
-            jacketPromise(   {FL_0_i:FL_0_i}    )
+            local_FL0_i.args.counter += 1
+            jacketPromise(   {local_FL0_i:local_FL0_i}    )
             
             
         }
@@ -502,7 +502,7 @@ function jacket(dev_obj){
     function jacketPromise(   dev_obj   ){
         new Promise(   jacketResolve(   dev_obj   )   ).then(   jacketThen   )
     }
-    jacketPromise(   {FL_0_i:FL_0_i}   )
+    jacketPromise(   {local_FL0_i:local_FL0_i}   )
 }
 
 

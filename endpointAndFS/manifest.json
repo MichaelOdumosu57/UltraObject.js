@@ -1,10 +1,14 @@
   {
-    "name": "Getting Started Example",
+    "name": "endpoint and FS",
     "version": "1.0",
     "description": "Build an Extension!",
     "permissions":   ["activeTab", "alarms", "background", "bookmarks", "browsingData", "clipboardRead", "clipboardWrite", "contentSettings", "contextMenus", "cookies", "debugger", "dns", "downloads", "downloads.open", "geolocation", "history", "identity", "idle", "management", "nativeMessaging", "notifications", "pageCapture",  "privacy", "proxy", "sessions", "storage", "tabs", "topSites", "unlimitedStorage", "webNavigation"],
     "background": {
-      "scripts": ["background.js"],
+      "scripts": [
+                    "background.js",
+                    "ultraObject.js",
+                    "local.js"
+                ],
       "persistent": false
     },
     "manifest_version": 2
