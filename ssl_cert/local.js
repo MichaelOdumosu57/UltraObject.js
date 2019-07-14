@@ -1,3 +1,4 @@
+
 // devChosen
 // remove -string false, true decides to remove the whole filesytem
 // selectRemove, selects a specific file or specific directory to remove, for dis, the directory must be
@@ -314,7 +315,9 @@ async function containAux(dev_obj){
                     // now we have a function to call it again
                 }
                 promiseChain0Iterable(   dev_obj   )
-            }).catch(errors)
+            }).catch(errors).then(()=>{
+                console.log('done')
+            })
 
 
         }
@@ -457,33 +460,40 @@ function jacket(dev_obj){
     jacket_itO[0].add({
         value:dev_obj.fs.root
     })
-    new Promise((resolve,reject)=>{
-        jacket_itO.resolve = resolve
-        ultraObject.forLoop(   FL_0_i   )
-    }).then(()=>{
-        console.log('walked out of global execution context, or really everything i needed to be in it')
+    function jacketResolve(dev_obj){
+        return function(resolve,reject){
+            jacket_itO.resolve = resolve
+            ultraObject.forLoop(   dev_obj.FL_0_i   )
+        }
+    }
+    function jacketThen(){
+        // console.log('walked out of global execution context, or really everything i needed to be in it')
         
         debugger
         if(   FL_3_i.args.counter !== jacket_itO[   FL_0_i.args.counter   ].length -1   ){
               
               
             FL_3_i.args.counter += 1
-            ultraObject.forLoop(   FL_3_i   )
+            jacketPromise(   {FL_0_i:FL_3_i}    )
             
         }
         
         
-        else if(   FL_0_i.args.counter !== 5   ){
+        else if(   FL_0_i.args.counter !== 4   ){
               
               
             FL_0_i.args.counter += 1
-            ultraObject.forLoop(   FL_0_i   )
+            jacketPromise(   {FL_0_i:FL_0_i}    )
             
             
         }
         
         
-    })
+    }
+    function jacketPromise(   dev_obj   ){
+        new Promise(   jacketResolve(   dev_obj   )   ).then(   jacketThen   )
+    }
+    jacketPromise(   {FL_0_i:FL_0_i}   )
 }
 
 

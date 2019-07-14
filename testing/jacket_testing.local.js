@@ -31,3 +31,27 @@ devChosen({
 //             sR:''
 //         }
 })
+
+
+
+
+/* to clear the fs */
+new Promise((resolve,reject)=>{
+    
+resolve(
+devChosen({
+    remove:'true',
+    scssFn:window.operate,
+    quotaRequest:'false',
+    selectRemove:{
+            dR:'',
+            sR:''
+        }
+})
+)
+}).then(()=>{
+    console.log('done')
+})
+
+
+/**/
