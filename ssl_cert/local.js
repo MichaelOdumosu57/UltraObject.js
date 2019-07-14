@@ -352,7 +352,7 @@ function jacket(dev_obj){
     // get to the next iteration and have a good night
     var fs = dev_obj.fs
     var count = 0
-    debugger
+    // debugger
     var jacket_itO = ultraObject.iterableObject()
     jacket_itO.add({
         value:ultraObject.iterableObject()
@@ -362,39 +362,50 @@ function jacket(dev_obj){
     })
     var FL_0_i = {
         forLoop_0_i:0,
-        forLoopLength:5,
-        fn:function(   dev_obj   ){
+        forLoopLength:1,
+        fn: async function(   dev_obj   ){
             
-        var FL_3_i = {
+            var FL_3_i = {
             forLoop_0_i:0,
-            forLoopLength:jacket_itO[   FL_0_i.forLoop_0_i   ].length,
-            fn:function(   dev_obj   ){
+            forLoopLength:1,
+            fn:async function(   dev_obj   ){
                 debugger
-                FL_1_i.args = {dir:jacket_itO[   FL_0_i.forLoop_0_i   ][   FL_1_i.forLoop_0_i]   }
-                FL_2_i.args = {dir:jacket_itO[   FL_0_i.forLoop_0_i   ][   FL_1_i.forLoop_0_i]   }
+                FL_1_i.args = {dir:jacket_itO[   FL_0_i.forLoop_0_i   ][   FL_1_i.forLoop_0_i   ]   }
+                FL_2_i.args = {dir:jacket_itO[   FL_0_i.forLoop_0_i   ][   FL_1_i.forLoop_0_i   ]   }
                 FL_1_i.forLoopLength = Math.floor(Math.random() * Math.floor(10));
                 FL_2_i.forLoopLength  = 10 -  FL_1_i.forLoopLength
                 jacket_itO.add({
                     value:ultraObject.iterableObject()
                 })
-                ultraObject.forLoop(   FL_1_i   )
-                ultraObject.forLoop(   FL_2_i   )
-                throw(jacket_itO)
+                debugger
+                new Promise((resolve,reject)=>{
+                    ultraObject.forLoop(   FL_1_i   )
+                    ultraObject.forLoop(   FL_2_i   )
+                    resolve()
+                }).then(()=>{
+                    
+                })
+                // throw(jacket_itO)
             },
             args:dev_obj //{}
         }
-        ultraObject.forLoop(   FL_3_i   )
+            FL_3_i.args.counter = 0
+            // new Promise((resolve,reject)=>{
+            //     resolve(   ultraObject.forLoop(   FL_3_i   )   )
+            // })
+            await ultraObject.forLoop(   FL_3_i   )
         
         },
         args:{
                 // dir:fs.root,
-                subdirs:1
+                subdirs:1,
+                counter: 0
             }
     }
     var FL_1_i = {
         forLoop_0_i:0,
-        fn:function(   dev_obj   ){
-            dev_obj.dir.getFile(makeid(16),{create:true},
+        fn:async function(   dev_obj   ){
+            await dev_obj.dir.getFile(makeid(16),{create:true},
                 ()=>{
                     count += 1
                     if (count > 5000){
@@ -408,24 +419,56 @@ function jacket(dev_obj){
     }
     var FL_2_i = {
         forLoop_0_i:0,
-        fn:function(   dev_obj   ){
-            dev_obj.dir.getDirectory(makeid(16),{create:true},
+        fn:async function(   dev_obj   ){
+            await dev_obj.dir.getDirectory(makeid(16),{create:true},
                 (   dirEntry   )=>{
                     jacket_itO[   FL_0_i.forLoop_0_i +1   ].add({
                         value:dirEntry
                     })
                     count += 1
+                    FL_2_i.forLoop_0_i += 1; // because of how all methods of this API make *** promises to resolve at the end of the global execution context
                     if (count > 5000){
                         throw('stop!!!!')
                     }
+                    
+                    
+                    if(    FL_2_i.forLoop_0_i === FL_2_i.forLoopLength   ){
+                        
+                        jacket_itO.resolve()
+                    //     if(   FL_3_i.dev_obj.counter !== jacket_itO[   FL_0_i.forLoop_0_i   ].length   ){
+                              
+                              
+                    //         FL_3_i.dev_obj.counter += 1
+                    //         ultraObject.forLoop(   FL_3_i   )
+                            
+                    //     }
+                        
+                        
+                    //     else if(   FL_0_i.dev_obj.counter !== 5  ){
+                              
+                              
+                    //         FL_0_i.dev_obj.counter += 1
+                    //         ultraObject.forLoop(   FL_0_i   )
+                            
+                    //     }
+                        
+                        
+                    }
+                    
+                    
                 },
                 (err)=>{console.log(err)
             })
         },
-        args:undefined //{}
+        args:{resolve:dev_obj.resolve} //{}
     }
-    ultraObject.forLoop(   FL_0_i   )
-    
+    debugger
+    new Promise((resolve,reject)=>{
+        jacket_itO.resolve = resolve
+        ultraObject.forLoop(   FL_0_i   )
+    }).then(()=>{
+        console.log('walked out of global execution context, or really everything i needed to be in it')
+    })
 }
 
 
@@ -575,14 +618,14 @@ function dirRemove(   dev_obj   ){
 // })
 
 
-devChosen({
-    remove:'false',
-    scssFn:window.jacket,
-    quotaRequest:'false',
-//     selectRemove:{
-//             dR:'/K00MjBT5kc8BqExn',
-//             sR:''
-//         }
-})
+// devChosen({
+//     remove:'false',
+//     scssFn:window.jacket,
+//     quotaRequest:'false',
+// //     selectRemove:{
+// //             dR:'/K00MjBT5kc8BqExn',
+// //             sR:''
+// //         }
+// })
 
 // testChosen()
