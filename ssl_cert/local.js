@@ -156,7 +156,7 @@ async function containAux(dev_obj){
             console.group(   "directory " + dev_obj.groupName   )
             var finishReadingEntries = new Promise((resolve,reject)=>{
                 dev_obj.dirReader.readEntries(
-                    async function(results){
+                    async function(results){ // they most of the time come out in order mabye u can get yr file like this
                         dev_obj.results = results
                         dev_obj.totalResults[   dev_obj.groupName   ] = []
                         var resolveMe = await readDirAux(dev_obj)
@@ -171,7 +171,7 @@ async function containAux(dev_obj){
                         
                         
                     },
-                    function(error) {
+                    function(error){
                       console.log(error)
                       throw(error)
                     }
@@ -438,11 +438,12 @@ function errors(err){
         forLoop_0_i:0,
         fn:async function(   dev_obj   ){
             await dev_obj.dir.getFile(makeid(16),{create:true},
-                ()=>{
+                (   fileEntry   )=>{
+                    fileEntry.identify = local_FL1_i.forLoop_0_i
                     local_FL1_i.forLoop_0_i += 1
                     
                     
-                    if(   local_FL1_i.forLoop_0_i === local_FL1_i.args.sys   ){
+                    if(   local_FL1_i.forLoop_0_i === local_FL1_i.args.sys && jacket_itO.instant !== 'true'   ){
                         
                         
                         jacket_itO.instant = 'true'
@@ -467,6 +468,7 @@ function errors(err){
         fn:async function(   dev_obj   ){
             await dev_obj.dir.getDirectory(makeid(16),{create:true},
                 (   dirEntry   )=>{
+                    dirEntry.identify = local_FL2_i.forLoop_0_i
                     jacket_itO[   local_FL0_i.args.counter +1   ].add({
                         value:dirEntry
                     })
@@ -543,7 +545,9 @@ function jacket(dev_obj){
               
 
             debugger
-            jacket_itO.upperResolve(
+            if(   jacket_itO.upperResolve === undefined   ){
+            
+            
                 (function(){
                     jacket_itO = ultraObject.iterableObject()
                     jacket_itO.add({
@@ -551,8 +555,26 @@ function jacket(dev_obj){
                     })
                     jacket_itO.instant = 'false'
                 }())
-            )
+                
+                
+            }
             
+            
+            else if(    jacket_itO.upperResolve !== undefined   ){
+            
+            
+                jacket_itO.upperResolve(
+                    (function(){
+                        jacket_itO = ultraObject.iterableObject()
+                        jacket_itO.add({
+                            value:ultraObject.iterableObject()
+                        })
+                        jacket_itO.instant = 'false'
+                    }())
+                )
+            
+            
+            }
             
         }
         
@@ -607,7 +629,7 @@ function devChosen(   dev_obj   ){
             });
     
         }, function(e) { console.log('Error', e); }
-    )
+        )
     
     
     }
