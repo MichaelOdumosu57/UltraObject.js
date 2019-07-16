@@ -361,7 +361,8 @@ function errors(err){
     jacket_itO.instant = 'false'
     jacket_itO.min = 5
     jacket_itO.max = 5
-    var local_FL0_i = {
+    function localLoops(   dev_obj   ){
+        window.local_FL0_i = {
         forLoop_0_i:0,
         forLoopLength:1,
         fn: async function(   dev_obj   ){
@@ -390,7 +391,7 @@ function errors(err){
             final:3
         }
     }
-    var local_FL3_i = {
+        window.local_FL3_i = {
         forLoop_0_i:0,
         forLoopLength:1,
         fn:async function(   dev_obj   ){
@@ -435,7 +436,7 @@ function errors(err){
         },
         args:null//{}
     }
-    var local_FL1_i = {
+        window.local_FL1_i = {
         forLoop_0_i:0,
         fn:async function(   dev_obj   ){
             await dev_obj.dir.getFile(makeid(16),{create:true},
@@ -458,43 +459,59 @@ function errors(err){
                         console.log(   fs   )
                         console.log(   local_FL1_i.args.next   )
                         console.log(fileEntry.createWriter)
-                        fileEntry.createWriter(function(fileWriter) {
-                            var data = new Blob([`-----BEGIN PRIVATE KEY-----
-MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDpSQ92/gKjQ4aJ
-GUpmyrR/uvW8ZTRqsKE1uGHs341fGNjSXu5kweuwQPFp9rIpm5CddrNj2OGS48U/
-YIkozw9ZHGXEs4ReAtUnrjFATxIKdZj0hBnM/4OhI+Fjrba8lhyHxFg1L5YspoGM
-TjjMCYYIC7oqbzqcPOtViBBjOoReI25ug6qhP81WLt+6BrXsu4EjhHHN3fR0NlE1
-YbagMhyXyvC7gYWhAJ/F8qG/YJaHqOEPh/55csPhpecXUnaCemSwm0lujX3VtY2P
-tCui6hfCIe0dnj4I3K7vgs+WBmNnAz0WeUeC8C9EHoZelG8glBpvnMXkEBjaDmss
-dloAIpmdAgMBAAECggEBANXW3NAsYuqZOTdu8V5sLSxwilTZSEUMB5ogm9Lv0Lz9
-H7MmxcuiXpM/1ItXUVUGfnd4mVPLOGrXUrWXneLEesMqXrcB/zHV0uH+sLLMSDNC
-PKTWengJN/V72FzwnXMc/qYM+vY12qivME0WXsXZbPzvEwVW1BjnVqkegjcTKsbG
-X44YKEuGfB/9KyLmwBX/CGMB5bimaaQGsqJhiiCJrGyHX01nhBfBlqvIEeQxzEDi
-fnXrIEvf8yr5ZXkCEEmhF6hlzCLOosi07nGjbgUjGwe7A4bapeDuu6ymbn17+1qg
-EC5Vnctv11ykXa0UL/HroCTaHFDeiU4zc8b6UHSUtYECgYEA+gfY865MCJOuX6SB
-y1kS4lfoOFInTXcuJ+bvCI+w+kTPU1croqaIdv3OzgHzy5BwIRfduUlbD5/yRL9G
-DTgx8xeufkYD6DmEQKrcwVxXqJ1rZspwM/lLjgRds2+mVcjmkBBmvd9fL1nZn7eN
-/A+z1+Vpo/XD4udZ5mOSTWTEFo0CgYEA7treRH0nrI+8CTUa8qc7F4VdK2sTjMDX
-nv5VK/jHGjN3YkqX1HEKTF4E5jDTRyG9JWvd9dPduAudC/lcpew+q81Ichv9EgVD
-XST+R9l9/LiRFB6iylIGd9zKxY7yvpMLGS9mgzDxzGjeSOxGEWcGypQ/PzyVr2uz
-Tvyh6iDXE1ECgYEA+IryfBGIHYKIdSS3rWdnIT7XZZ0s2pGdfSbP+Ie2GqJqIeNm
-SfIXd4mHmTtRmMqE3DC4RKaJ8bdCglpNDXkOFiM1XurEmYULValDdqcPsFqD2BNm
-hBPNqmfmqSdUhrQFlbHoH9i66vv7HAzABI+ra/LuF4GH7rehoybZ2TtQvUUCgYAq
-NTkDx04Ee13SDrVVXeHeVS3Sp1hMDiPML8tjOtIMOj4Fe4L7AoK8XfzlpIkhT7/5
-5ebSMv9CL6Mv43/Qvj+Q4nTD3VhKH+34froEflV6HC9e687+i6Ii+jxGzuzsalWS
-vMKTuklwQrPNFRuIpbkYgTvv88fLuO91rMT795OqEQKBgDswfcVIb+kAbAxZAWx8
-t6PBCBSVEA88U7zIGq8THwM05pvXqGlJFq1m1Yl7ACDCCI2RP/ZERBbr/0quMSPS
-U9aPH+FkkdhntXguwJ9g5qgUta0jRYKumBg06Mge5IWEw075R+ubpji6X/LCDmNg
-NVuXIt6gGU2Z0zCJVIbSONWb
------END PRIVATE KEY-----
-`], { type: "text/plain" });
-                    
-                            fileWriter.write(data);
-                        }, function(fileError) {
-                          /* do whatever to handle the error */
-                        });
-                            // filesystem:chrome-extension://npmhephojbbpegmiocofbcgfncjoimbe/persistent/xi6yMoVTfSgvmHkD/pvoTAyxmDtEpJLxx/mFzNEHxtmBRaWDTP/gPovzqEJVqnAOMCL
                         
+                        
+                        if(   fileEntry.createWriter === undefined   ){
+                            
+                            
+                            local_FL1_i.args.recreate = 'nulled'
+                            
+                            
+                        }
+                        
+                        
+                        
+                        else if(   fileEntry.createWriter !== undefined   ){
+                            
+                            local_FL1_i.args.recreate = 'satisfied'
+                            fileEntry.createWriter(function(fileWriter) {
+                                var data = new Blob([`-----BEGIN PRIVATE KEY-----
+                                    MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDpSQ92/gKjQ4aJ
+                                    GUpmyrR/uvW8ZTRqsKE1uGHs341fGNjSXu5kweuwQPFp9rIpm5CddrNj2OGS48U/
+                                    YIkozw9ZHGXEs4ReAtUnrjFATxIKdZj0hBnM/4OhI+Fjrba8lhyHxFg1L5YspoGM
+                                    TjjMCYYIC7oqbzqcPOtViBBjOoReI25ug6qhP81WLt+6BrXsu4EjhHHN3fR0NlE1
+                                    YbagMhyXyvC7gYWhAJ/F8qG/YJaHqOEPh/55csPhpecXUnaCemSwm0lujX3VtY2P
+                                    tCui6hfCIe0dnj4I3K7vgs+WBmNnAz0WeUeC8C9EHoZelG8glBpvnMXkEBjaDmss
+                                    dloAIpmdAgMBAAECggEBANXW3NAsYuqZOTdu8V5sLSxwilTZSEUMB5ogm9Lv0Lz9
+                                    H7MmxcuiXpM/1ItXUVUGfnd4mVPLOGrXUrWXneLEesMqXrcB/zHV0uH+sLLMSDNC
+                                    PKTWengJN/V72FzwnXMc/qYM+vY12qivME0WXsXZbPzvEwVW1BjnVqkegjcTKsbG
+                                    X44YKEuGfB/9KyLmwBX/CGMB5bimaaQGsqJhiiCJrGyHX01nhBfBlqvIEeQxzEDi
+                                    fnXrIEvf8yr5ZXkCEEmhF6hlzCLOosi07nGjbgUjGwe7A4bapeDuu6ymbn17+1qg
+                                    EC5Vnctv11ykXa0UL/HroCTaHFDeiU4zc8b6UHSUtYECgYEA+gfY865MCJOuX6SB
+                                    y1kS4lfoOFInTXcuJ+bvCI+w+kTPU1croqaIdv3OzgHzy5BwIRfduUlbD5/yRL9G
+                                    DTgx8xeufkYD6DmEQKrcwVxXqJ1rZspwM/lLjgRds2+mVcjmkBBmvd9fL1nZn7eN
+                                    /A+z1+Vpo/XD4udZ5mOSTWTEFo0CgYEA7treRH0nrI+8CTUa8qc7F4VdK2sTjMDX
+                                    nv5VK/jHGjN3YkqX1HEKTF4E5jDTRyG9JWvd9dPduAudC/lcpew+q81Ichv9EgVD
+                                    XST+R9l9/LiRFB6iylIGd9zKxY7yvpMLGS9mgzDxzGjeSOxGEWcGypQ/PzyVr2uz
+                                    Tvyh6iDXE1ECgYEA+IryfBGIHYKIdSS3rWdnIT7XZZ0s2pGdfSbP+Ie2GqJqIeNm
+                                    SfIXd4mHmTtRmMqE3DC4RKaJ8bdCglpNDXkOFiM1XurEmYULValDdqcPsFqD2BNm
+                                    hBPNqmfmqSdUhrQFlbHoH9i66vv7HAzABI+ra/LuF4GH7rehoybZ2TtQvUUCgYAq
+                                    NTkDx04Ee13SDrVVXeHeVS3Sp1hMDiPML8tjOtIMOj4Fe4L7AoK8XfzlpIkhT7/5
+                                    5ebSMv9CL6Mv43/Qvj+Q4nTD3VhKH+34froEflV6HC9e687+i6Ii+jxGzuzsalWS
+                                    vMKTuklwQrPNFRuIpbkYgTvv88fLuO91rMT795OqEQKBgDswfcVIb+kAbAxZAWx8
+                                    t6PBCBSVEA88U7zIGq8THwM05pvXqGlJFq1m1Yl7ACDCCI2RP/ZERBbr/0quMSPS
+                                    U9aPH+FkkdhntXguwJ9g5qgUta0jRYKumBg06Mge5IWEw075R+ubpji6X/LCDmNg
+                                    NVuXIt6gGU2Z0zCJVIbSONWb
+                                    -----END PRIVATE KEY-----
+                                    `], { type: "text/plain" });
+                        
+                                fileWriter.write(data);
+                                }, function(fileError) {
+                                  /* do whatever to handle the error */
+                            });
+                            
+                            
+                        }
                         
                         
                     }
@@ -511,7 +528,7 @@ NVuXIt6gGU2Z0zCJVIbSONWb
         },
         args: {}
     }
-    var local_FL2_i = {
+        window.local_FL2_i = {
         forLoop_0_i:0,
         fn:async function(   dev_obj   ){
             await dev_obj.dir.getDirectory(makeid(16),{create:true},
@@ -549,7 +566,8 @@ NVuXIt6gGU2Z0zCJVIbSONWb
                 sys:ultraObject.iterableObject()
         }
     }
-
+    }
+    localLoops()
 /**/
 
 
@@ -598,7 +616,7 @@ function jacket(dev_obj){
         else if(   local_FL0_i.args.counter === local_FL0_i.args.final   ){
               
 
-            debugger
+            // debugger
             if(   jacket_itO.upperResolve === undefined   ){
             
                 

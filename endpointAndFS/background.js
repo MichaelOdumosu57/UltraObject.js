@@ -27,26 +27,57 @@ chrome.runtime.onInstalled.addListener(function() {
                 }
         })
     }
-    function readSpot(){
+    function readSpot(   dev_obj   ){
         console.log(   fs   )
-        
-            local_FL1_i.args.next.file(
-                (   file   )=>{
-                    var reader = new FileReader();
-                    reader.onload = function() {
-                        console.log(reader.result);
-                    };
-                
-                    reader.onerror = function() {
-                        console.log(reader.error);
+        console.log(   dev_obj  )
+        local_FL1_i.args.next.file(
+            (   file   )=>{
+                var reader = new FileReader();
+                reader.onload = function() {
+                    console.log(reader.result);
+                    
+                    
+                    if(   local_FL1_i.args.recreate === 'nulled'   ){
+                        
+                        
+                        //done wait for listeners now
+                        
+                        
                     }
-                
-                    reader.readAsText(file)
-                },
-                (e)=>{
-                    console.log(e)
+                    
+                    
+                    else if(   local_FL1_i.args.recreate = 'satisfied'   ){
+                        
+                        debugger
+                        
+                        local_FL1_i.args.next.remove(()=>{
+                            globalPromise({
+                                globalResolve:function(resolve,reject){
+                                    localLoops()
+                                    resolve()
+                                },
+                                globalThen:instantiateFS({quotaRequest:'false'})()
+                            })
+                            },
+                        (e)=>{console.log(e)})
+
+                        
+                        
+                    }
+                    
+                    
+                };
+            
+                reader.onerror = function() {
+                    console.log(reader.error);
                 }
-            )
+            
+                reader.readAsText(file)
+            },
+            (e)=>{
+                console.log(e)
+            }
+        )
     }
         
     
