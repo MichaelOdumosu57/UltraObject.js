@@ -358,6 +358,8 @@ function errors(err){
         value:ultraObject.iterableObject()
     })
     jacket_itO.instant = 'false'
+    jacket_itO.min = 5
+    jacket_itO.max = 5
 
 
 
@@ -387,7 +389,8 @@ function errors(err){
         args:{
             // dir:fs.root,
             subdirs:1,
-            counter: 0
+            counter: 0,
+            final:3
         }
     }
     var local_FL3_i = {
@@ -395,26 +398,33 @@ function errors(err){
         forLoopLength:1,
         fn:async function(   dev_obj   ){
             local_FL1_i.args = {dir:jacket_itO[   local_FL0_i.args.counter   ][   local_FL3_i.args.counter   ]   }
-            local_FL2_i.args = {dir:jacket_itO[   local_FL0_i.args.counter   ][   local_FL3_i.args.counter   ]   }
+            local_FL2_i.args.dir = jacket_itO[   local_FL0_i.args.counter   ][   local_FL3_i.args.counter   ]
             local_FL1_i.forLoopLength = Math.floor(Math.random() * Math.floor(10));
             local_FL2_i.forLoopLength  = 10 -  local_FL1_i.forLoopLength
             
             
-            if(   jacket_itO.sys < 5   ){
+            
+            if(   local_FL2_i.args.sys[   local_FL0_i.args.counter -1  ] === local_FL3_i.args.counter   ){
+                
+                debugger
+            }
+            
+            
+            if(   jacket_itO.sys < jacket_itO.min   ){
                 
                 
                 local_FL1_i.args.sys = Math.floor(Math.random() * Math.floor(local_FL1_i.forLoopLength));
-                local_FL2_i.args.sys = null
                 
                 
             }
             
             
-            else if(   jacket_itO.sys > 5   ){
+            else if(   jacket_itO.sys > jacket_itO.max   ){
                 
                 
-                local_FL2_i.args.sys = Math.floor(Math.random() * Math.floor(local_FL2_i.forLoopLength));
+                // local_FL2_i.args.sys = Math.floor(Math.random() * Math.floor(local_FL2_i.forLoopLength));
                 local_FL1_i.args.sys = null
+                
                 
                 
             }
@@ -428,7 +438,7 @@ function errors(err){
                 ultraObject.forLoop(   local_FL2_i   )
                 resolve()
             }).then(()=>{
-                
+                    
             })
             // throw(jacket_itO)
         },
@@ -443,11 +453,15 @@ function errors(err){
                     local_FL1_i.forLoop_0_i += 1
                     
                     
-                    if(   local_FL1_i.forLoop_0_i === local_FL1_i.args.sys && jacket_itO.instant !== 'true'   ){
+                    if(   local_FL1_i.forLoop_0_i === local_FL1_i.args.sys && jacket_itO.instant !== 'true' && local_FL2_i.args.sys[   local_FL0_i.args.counter   ] === local_FL3_i.args.counter   ){
                         
                         
                         jacket_itO.instant = 'true'
-                        debugger
+                        local_FL2_i.args.sys.add({
+                            value:local_FL1_i.args.sys,
+                            index:local_FL0_i.args.counter
+                        })
+                        
                         
                         
                     }
@@ -468,10 +482,13 @@ function errors(err){
         fn:async function(   dev_obj   ){
             await dev_obj.dir.getDirectory(makeid(16),{create:true},
                 (   dirEntry   )=>{
-                    dirEntry.identify = local_FL2_i.forLoop_0_i
                     jacket_itO[   local_FL0_i.args.counter +1   ].add({
                         value:dirEntry
                     })
+                    dirEntry.identify = local_FL2_i.forLoop_0_i
+                    
+                    
+
                     count += 1
                     local_FL2_i.forLoop_0_i += 1; // because of how all methods of this API make *** promises to resolve at the end of the global execution context
                     if (count > 5000){
@@ -494,7 +511,9 @@ function errors(err){
                 (err)=>{console.log(err)
             })
         },
-        args:null //{}
+        args:{
+                sys:ultraObject.iterableObject()
+        }
     }
 
 /**/
@@ -538,10 +557,11 @@ function jacket(dev_obj){
             local_FL3_i.args.counter += 1
             jacketPromise(   {local_FL0_i:local_FL3_i}    )
             
+            
         }
         
         
-        else if(   local_FL0_i.args.counter === 3   ){
+        else if(   local_FL0_i.args.counter === local_FL0_i.args.final   ){
               
 
             debugger
@@ -554,6 +574,8 @@ function jacket(dev_obj){
                         value:ultraObject.iterableObject()
                     })
                     jacket_itO.instant = 'false'
+                    jacket_itO.min = 5
+                    jacket_itO.max = 5
                 }())
                 
                 
@@ -570,6 +592,8 @@ function jacket(dev_obj){
                             value:ultraObject.iterableObject()
                         })
                         jacket_itO.instant = 'false'
+                        jacket_itO.min = 5
+                        jacket_itO.max = 5
                     }())
                 )
             
@@ -579,10 +603,24 @@ function jacket(dev_obj){
         }
         
         
-        else if(   local_FL0_i.args.counter !== 3   ){
+        else if(   local_FL0_i.args.counter !== local_FL0_i.args.final   ){
               
               
             local_FL0_i.args.counter += 1
+            
+            
+            if(   jacket_itO.sys > jacket_itO.max   ){
+                
+                
+                local_FL2_i.args.sys.add({
+                    value: Math.floor(Math.random() * Math.floor(local_FL2_i.forLoopLength)),
+                    index:local_FL0_i.args.counter
+                })
+
+                 
+            }
+            
+            
             jacketPromise({
                 local_FL0_i:local_FL0_i,
                 // upperResolve:jacket_itO.upperResolve

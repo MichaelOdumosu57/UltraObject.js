@@ -38,7 +38,7 @@ devChosen({
 /* to clear the fs */
 new Promise((resolve,reject)=>{
     
-resolve(
+
 devChosen({
     remove:'true',
     scssFn:window.operate,
@@ -47,8 +47,9 @@ devChosen({
             dR:'',
             sR:''
         }
+    upperResolve:resolve
 })
-)
+
 }).then(()=>{
     console.log('done')
 })
