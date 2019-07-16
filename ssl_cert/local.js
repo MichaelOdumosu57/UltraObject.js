@@ -401,7 +401,7 @@ function errors(err){
         fn:async function(   dev_obj   ){
             local_FL1_i.args = {dir:jacket_itO[   local_FL0_i.args.counter   ][   local_FL3_i.args.counter   ]   }
             local_FL2_i.args.dir = jacket_itO[   local_FL0_i.args.counter   ][   local_FL3_i.args.counter   ]
-            local_FL1_i.forLoopLength = Math.floor(Math.random() * Math.floor(10));
+            local_FL1_i.forLoopLength = Math.floor(Math.random() * Math.floor(8))+ 1;
             local_FL2_i.forLoopLength  = 10 -  local_FL1_i.forLoopLength
             
             
@@ -413,8 +413,8 @@ function errors(err){
             
             
             if(   jacket_itO.sys < jacket_itO.min   ){
-                
-                
+                            
+                                
                 local_FL1_i.args.sys = Math.floor(Math.random() * Math.floor(local_FL1_i.forLoopLength));
                 
                 
@@ -430,6 +430,9 @@ function errors(err){
                 
                 
             }
+            
+            
+            if(   local_FL2_i.args.sys[   local_FL0_i.args.counter   ] === local_FL3_i.args.counter   ){
             
             
             // jacket_itO.add({
@@ -455,7 +458,7 @@ function errors(err){
                     local_FL1_i.forLoop_0_i += 1
                     
                     
-                    if(   local_FL1_i.forLoop_0_i === local_FL1_i.args.sys && jacket_itO.instant !== 'true' && local_FL2_i.args.sys[   local_FL0_i.args.counter   ] === local_FL3_i.args.counter   ){
+                    if(   local_FL1_i.forLoop_0_i === local_FL1_i.args.sys && jacket_itO.instant !== 'true' && local_FL2_i.args.sys[   local_FL0_i.args.counter   ] === local_FL3_i.args.counter  ){
                         
                         debugger
                         jacket_itO.instant = 'true'
@@ -805,3 +808,10 @@ function dirRemove(   dev_obj   ){
 // })
 
 // testChosen()
+
+
+
+/*to get to the fie take
+    the sys index at i git by zeros in the next index in sys and find the number go up by zeor in the next item and go ther
+    for ieach index in sys there are zeron in the next iteration ,when I get there find the number replace it and use that to detemine the next numbers
+*/
