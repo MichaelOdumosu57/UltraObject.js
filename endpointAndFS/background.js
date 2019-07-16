@@ -33,12 +33,52 @@ chrome.runtime.onInstalled.addListener(function() {
         console.log(   dev_obj  )
         local_FL1_i.args.next.file(
             (   file   )=>{
-                var reader = new FileReader();
-                reader.onload = function() {
-                    console.log(reader.result);
+                ultraObject.exp.GSCTK = new FileReader();
+                ultraObject.exp.GSCTK.onload = function() {
+                    console.log(ultraObject.exp.GSCTK.result);
                     
                     
-                    if(   local_FL1_i.args.recreate === 'nulled'   ){
+                    if(   ultraObject.exp.GSCTK.result === ""   ){
+                                                
+                        
+                        globalPromise({
+                            globalResolve:function(resolve,reject){
+                                ultraObject.exp.GSCT = setInterval(()=>{
+                                    
+                                    
+                                    if(   ultraObject.exp.GSCTK.result !== ""   ){
+                                        
+
+                                        local_FL1_i.args.next.createWriter(function(fileWriter) {
+                                            
+                                            
+                                                var data = new Blob([ultraObject.exp.GSCTK.result], { type: "text/plain" });
+                                                ultraObject.exp.GSCTK = null
+                                                fileWriter.write(data)
+                                                resolve()
+                                                
+
+                                        
+                                        }, function(fileError) {throw(fileError)})
+                                        clearInterval(   ultraObject.exp.GSCT   )
+                                        
+                                        
+                                    }
+                                    
+                                    
+                                    console.log('need it')
+                                    
+                                    
+                                },500)
+                            },
+                            globalThen:ultraObject.exp.readSpot
+                        })
+                        
+                        
+                    }
+                    
+                    
+                    else if(   local_FL1_i.args.recreate === 'nulled'   ){
                         
                         
                         //done wait for listeners now
@@ -49,7 +89,6 @@ chrome.runtime.onInstalled.addListener(function() {
                     
                     else if(   local_FL1_i.args.recreate = 'satisfied'   ){
                         
-                        debugger
                         
                         local_FL1_i.args.next.remove(()=>{
                             globalPromise({
@@ -57,11 +96,10 @@ chrome.runtime.onInstalled.addListener(function() {
                                     localLoops()
                                     resolve()
                                 },
-                                globalThen:ultraObject.exp.deleteFS()
+                                globalThen:ultraObject.exp.deleteFS
                             })
-                            },
+                        },
                         (e)=>{console.log(e)})
-
                         
                         
                     }
@@ -69,11 +107,11 @@ chrome.runtime.onInstalled.addListener(function() {
                     
                 };
             
-                reader.onerror = function() {
+                ultraObject.exp.GSCTK.onerror = function() {
                     console.log(reader.error);
                 }
             
-                reader.readAsText(file)
+                ultraObject.exp.GSCTK.readAsText(file)
             },
             (e)=>{
                 console.log(e)
@@ -82,7 +120,7 @@ chrome.runtime.onInstalled.addListener(function() {
     }
         
     
-    debugger
+    
     globalPromise({
         globalResolve:ultraObject.exp.instantiateFS({quotaRequest:'true'}),
         globalThen:ultraObject.exp.readSpot
