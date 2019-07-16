@@ -172,12 +172,13 @@
                 function ultraObjectReset(   dev_obj   ){
                     //I know about ES6 but this is an ultraObject right???
                     return {
+                    exp: iterableObject(), // for experminatal stuff you do  not want to finalize in the ultraObject
                     eventName:"",           //wants a DOMString event name
-                    event_obj:undefined,              //wants an Event
+                    event_obj:null,              //wants an Event
                     DOM_child:iterableObject(), // wants a DOM element
                     XHR:iterableObject(), //ajax or XHR choose now
                     endpoint:endpoint,
-                    // addEventListener:addEventListener, //  dev_obj.fn is used for 1st party dev to add their custom function to the listener .. can do this my self see why other libraries get mad when i make this
+                    // addEventListener:addEventListener, //  dev_obj.fn is used for 1st party dev to add their custom function to the listener .. can do this my self see why other libraries get mad when i make thi
                     passing_args: function(   dev_obj   ){
                         console.log(arguments)
                     }, // use this to see parameters from functions that have something to offer

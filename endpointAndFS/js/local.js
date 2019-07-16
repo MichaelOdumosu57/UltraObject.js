@@ -304,7 +304,10 @@ async function containAux(dev_obj){
                             args:dev_obj //{}
                         }
                         ultraObject.forLoop(   local_FL2_i   )
-                        
+                        globalPromise({
+                            globalResolve:ultraObject.exp.instantiateFS({quotaRequest:'false'}),
+                            globalThen:ultraObject.exp.readSpot
+                        })
                         
                     }
                     
@@ -369,7 +372,7 @@ function errors(err){
             jacket_itO.sys = Math.floor(Math.random() * Math.floor(10));
             
             
-            if(   local_FL0_i.args.counter === 3  & jacket_itO.instant === 'false'   ){
+            if(   local_FL0_i.args.counter === local_FL0_i.args.final  & jacket_itO.instant === 'false'   ){
                 
                 
                 jacket_itO.sys = 1
@@ -388,7 +391,7 @@ function errors(err){
             // dir:fs.root,
             subdirs:1,
             counter: 0,
-            final:3
+            final:2
         }
     }
         window.local_FL3_i = {

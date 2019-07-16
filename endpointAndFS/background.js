@@ -2,7 +2,8 @@ function globalPromise(dev_obj){
     new Promise(dev_obj.globalResolve).then(dev_obj.globalThen)
 }
 chrome.runtime.onInstalled.addListener(function() {
-    function instantiateFS(  dev_obj   ){
+    
+    ultraObject.exp.instantiateFS = function(  dev_obj   ){
         return function (resolve,reject){
             devChosen({
                 remove:'false',
@@ -16,7 +17,7 @@ chrome.runtime.onInstalled.addListener(function() {
             })
         }
     }
-    function deleteFS(){
+    ultraObject.exp.deleteFS = function(){
         devChosen({
             remove:'true',
             scssFn:window.operate,
@@ -27,7 +28,7 @@ chrome.runtime.onInstalled.addListener(function() {
                 }
         })
     }
-    function readSpot(   dev_obj   ){
+    ultraObject.exp.readSpot = function(   dev_obj   ){
         console.log(   fs   )
         console.log(   dev_obj  )
         local_FL1_i.args.next.file(
@@ -56,7 +57,7 @@ chrome.runtime.onInstalled.addListener(function() {
                                     localLoops()
                                     resolve()
                                 },
-                                globalThen:instantiateFS({quotaRequest:'false'})()
+                                globalThen:ultraObject.exp.deleteFS()
                             })
                             },
                         (e)=>{console.log(e)})
@@ -83,8 +84,8 @@ chrome.runtime.onInstalled.addListener(function() {
     
     debugger
     globalPromise({
-        globalResolve:instantiateFS({quotaRequest:'true'}),
-        globalThen:readSpot
+        globalResolve:ultraObject.exp.instantiateFS({quotaRequest:'true'}),
+        globalThen:ultraObject.exp.readSpot
     })
     
 
