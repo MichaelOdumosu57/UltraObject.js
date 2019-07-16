@@ -381,7 +381,9 @@ function errors(err){
                 
             }
             
-            
+            jacket_itO.add({
+                value:ultraObject.iterableObject()
+            })
             local_FL3_i.args = {counter: 0}
             await ultraObject.forLoop(   local_FL3_i   )
         
@@ -430,9 +432,9 @@ function errors(err){
             }
             
             
-            jacket_itO.add({
-                value:ultraObject.iterableObject()
-            })
+            // jacket_itO.add({
+            //     value:ultraObject.iterableObject()
+            // })
             new Promise((resolve,reject)=>{
                 ultraObject.forLoop(   local_FL1_i   )
                 ultraObject.forLoop(   local_FL2_i   )
@@ -455,12 +457,13 @@ function errors(err){
                     
                     if(   local_FL1_i.forLoop_0_i === local_FL1_i.args.sys && jacket_itO.instant !== 'true' && local_FL2_i.args.sys[   local_FL0_i.args.counter   ] === local_FL3_i.args.counter   ){
                         
-                        
+                        debugger
                         jacket_itO.instant = 'true'
                         local_FL2_i.args.sys.add({
                             value:local_FL1_i.args.sys,
                             index:local_FL0_i.args.counter
                         })
+                        
                         
                         
                         
@@ -567,7 +570,7 @@ function jacket(dev_obj){
             debugger
             if(   jacket_itO.upperResolve === undefined   ){
             
-            
+                throw('e')
                 (function(){
                     jacket_itO = ultraObject.iterableObject()
                     jacket_itO.add({
