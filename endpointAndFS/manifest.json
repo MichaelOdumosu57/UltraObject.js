@@ -6,11 +6,14 @@
     "background": {
       "scripts": [
                     "background.js",
-                    "ultraObject.js",
-                    "local.js"
+                    "js/ultraObject.js",
+                    "js/local.js"
                 ],
       "persistent": false
     },
-    "manifest_version": 2
-    // "matches":"chrome://*/*"
+    "manifest_version": 2,
+    "icons": {
+      "128": "icon_16.png"
+    }
+    //"matches":"https://*"
   }
