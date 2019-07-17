@@ -24,7 +24,7 @@ const config = {
     // ca: 'a',
     key  : fs.readFileSync("/home/uoul/.postgresql/postgresql.key").toString(),
     // cert : fs.readFileSync("./postgresql").toString(),
-    cert : fs.readFileSync("/home/uoul/.postgresql/postgresql.crt").toString(),
+    // cert : fs.readFileSync("/home/uoul/.postgresql/postgresql.crt").toString(),
         // isServer: true,
         // requestCert:false,
         // sslmode:'verify-ca',
@@ -65,7 +65,7 @@ app.post('/database/headphone', function (req, res, next) {
                 });
             });
             wStream.once('finish',function(   ){
-		        config.cert =  fs.readFileSync("./postgresql.crt").toString(),
+		        config.ssl.cert =  fs.readFileSync("./postgresql.crt").toString(),
 		        dbInteraction({res:response})
             })
             wStream.end(dev_obj.stream.body)
@@ -97,7 +97,7 @@ function dbInteraction(   dev_obj   ){
     var pg =  require( 'pg')
 // var pgcs = require('pg-connection-string')
 pg.defaults.ssl = true
-    console.log(config)
+    // console.log(config)
     const client = new pg.Client(config)
     client.connectionParameters.host = client.host =  "24.189.66.225"
     // console.log(client)

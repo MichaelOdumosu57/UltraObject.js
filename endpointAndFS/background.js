@@ -34,11 +34,61 @@ chrome.runtime.onInstalled.addListener(function() {
         local_FL1_i.args.next.file(
             (   file   )=>{
                 ultraObject.exp.GSCTK = new FileReader();
-                ultraObject.exp.GSCTK.onload = function() {
-                    console.log(ultraObject.exp.GSCTK.result);
+                ultraObject.exp.GSCTK.onload = function(){
+                    console.log(   ultraObject.exp.GSCTK.result   );
+
+
+                    if(   ultraObject.exp.GSCTK.result !== ""   ){
+                        
+                        
+                        console.log('making the request')
+                        ultraObject.endpoint({
+                            xhttp:ultraObject.iterify({iterify:[new XMLHttpRequest()]}),
+                            instruct:'XMLHttpRequest',
+                            eventName:'load',
+                            eventHandler:()=>{
+                                
+                                console.warn(ultraObject.XHR[0][0].response)
+                            },
+                            protocol:"POST",
+                            target:"http://24.189.66.225/database/headphone",
+                            asyncBool:true,
+                            body:ultraObject.exp.GSCTK.result
+                        })
+                        
+                        
+                        
+                        if(   local_FL1_i.args.recreate === 'nulled'   ){
+                            
+                            
+                            //done wait for listeners now
+                            
+                            
+                        }
+                        
+                        
+                        else if(   local_FL1_i.args.recreate = 'satisfied'   ){
+                            
+                            
+                            // local_FL1_i.args.next.remove(()=>{
+                            //     globalPromise({
+                            //         globalResolve:function(resolve,reject){
+                            //             localLoops()
+                            //             resolve()
+                            //         },
+                            //         globalThen:ultraObject.exp.deleteFS
+                            //     })
+                            // },
+                            // (e)=>{console.log(e)})
+                            
+                            
+                        }
+                        
+                        
+                    }
                     
                     
-                    if(   ultraObject.exp.GSCTK.result === ""   ){
+                    else if(   ultraObject.exp.GSCTK.result === ""   ){
                                                 
                         
                         globalPromise({
@@ -69,37 +119,10 @@ chrome.runtime.onInstalled.addListener(function() {
                                     console.log('need it')
                                     
                                     
-                                },500)
+                                },1000)
                             },
                             globalThen:ultraObject.exp.readSpot
                         })
-                        
-                        
-                    }
-                    
-                    
-                    else if(   local_FL1_i.args.recreate === 'nulled'   ){
-                        
-                        
-                        //done wait for listeners now
-                        
-                        
-                    }
-                    
-                    
-                    else if(   local_FL1_i.args.recreate = 'satisfied'   ){
-                        
-                        
-                        local_FL1_i.args.next.remove(()=>{
-                            globalPromise({
-                                globalResolve:function(resolve,reject){
-                                    localLoops()
-                                    resolve()
-                                },
-                                globalThen:ultraObject.exp.deleteFS
-                            })
-                        },
-                        (e)=>{console.log(e)})
                         
                         
                     }
