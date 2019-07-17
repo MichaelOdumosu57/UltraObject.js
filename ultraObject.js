@@ -173,11 +173,11 @@
                     //I know about ES6 but this is an ultraObject right???
                     return {
                     eventName:"",           //wants a DOMString event name
-                    event_obj:undefined,              //wants an Event
+                    event_obj:null,              //wants an Event
                     DOM_child:iterableObject(), // wants a DOM element
                     XHR:iterableObject(), //ajax or XHR choose now
                     endpoint:endpoint,
-                    // addEventListener:addEventListener, //  dev_obj.fn is used for 1st party dev to add their custom function to the listener .. can do this my self see why other libraries get mad when i make this
+                    // addEventListener:addEventListener, //  dev_obj.fn is used for 1st party dev to add their custom function to the listener .. can do this my self see why other libraries get mad when i make thi
                     passing_args: function(   dev_obj   ){
                         console.log(arguments)
                     }, // use this to see parameters from functions that have something to offer
@@ -227,6 +227,7 @@
                     objIO:iterableObject(), // OBKECT FOR  objInvloved propertyUndefined, whend dealing stricly with object specs
                     // objIFL_0_i:{},
                     severalOr:severalOr,
+                    exp: iterableObject(), // for experminatal stuff you do  not want to finalize in the ultraObject
                     packIt:packIt,
                     selectAll:selectAll,
                     
@@ -1646,21 +1647,21 @@
                         },// removes an item from an array if its there
                         resetLength:function(   dev_obj   ){
                             ultraObject.objectLength({
-                                    val:iterableObjectO,
-                                    getLen:function(   dev_obj   ){
+                                val:iterableObjectO,
+                                getLen:function(   dev_obj   ){
+                                    
+                                    
+                                    if(   !isNaN(   Object.keys(   dev_obj.val   )[dev_obj.index]   )   ){
                                         
                                         
-                                        if(   !isNaN(   Object.keys(   dev_obj.val   )[dev_obj.index]   )   ){
-                                            
-                                            
-                                            return 'true'
-                                            
-                                            
-                                        }
+                                        return 'true'
                                         
                                         
-                                    },
-                                    result:'true'
+                                    }
+                                    
+                                    
+                                },
+                                result:'true'
                             })
                         }, //if corrputed resets the lengths
                         isitO:function(   dev_obj   ){
@@ -2670,9 +2671,7 @@
                                 
                                 /*if the developer wants the nS to be reordered*/ //{
                                 if(   ultraObject.isitO(   {type:dev_obj.nSM}   )   ){
-                                    
-                                    
-                                                                    
+                                                                  
                                     // /*node mode choice thread performanceReSort */ //{
                                     // // here after each digit operation i resort the nSM because it needs to be that way
                                     //     ultraObject.nS[   ultraObject.scope[nSNS_1_i]   ].nSM.newnSM = dev_obj.nSM
@@ -2804,7 +2803,7 @@
                                             
                                             
                                         },
-                                        args:dev_obj //{}
+                                        args:dev_obj //{} problem, make this part of 14
                                     }
                                     var nSFL_14_i = {
                                         forLoop_0_i:0,
