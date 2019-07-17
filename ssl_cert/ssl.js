@@ -23,7 +23,8 @@ const config = {
     // ca   : fs.readFileSync("/home/uoul/.postgresql/root.crt").toString(),
     // ca: 'a',
     key  : fs.readFileSync("/home/uoul/.postgresql/postgresql.key").toString(),
-    // cert : fs.readFileSync("./postgresql.crt").toString(),
+    // cert : fs.readFileSync("./postgresql").toString(),
+    cert : fs.readFileSync("/home/uoul/.postgresql/postgresql.crt").toString(),
         // isServer: true,
         // requestCert:false,
         // sslmode:'verify-ca',
@@ -37,6 +38,7 @@ const config = {
  
 
 }
+// dbInteraction(      )
 
 
 // app.use(function(req, res, next) {
@@ -66,7 +68,6 @@ app.post('/database/headphone', function (req, res, next) {
 		        config.cert =  fs.readFileSync("./postgresql.crt").toString(),
 		        dbInteraction({res:response})
             })
-            console.log(dev_obj.stream.body)
             wStream.end(dev_obj.stream.body)
             
 		},
@@ -96,6 +97,7 @@ function dbInteraction(   dev_obj   ){
     var pg =  require( 'pg')
 // var pgcs = require('pg-connection-string')
 pg.defaults.ssl = true
+    console.log(config)
     const client = new pg.Client(config)
     client.connectionParameters.host = client.host =  "24.189.66.225"
     // console.log(client)
@@ -107,33 +109,35 @@ pg.defaults.ssl = true
         console.log('error connecting', err.stack)
         dev_obj.res.send('error connecting', err.stack)
       } else {
-        console.log('error connecting', err.stack)
+        console.log('connected')
+        console.log(   dev_obj.res   )
+        app.get('/database/headphone', function (req, res, next) {
+            ultraObject.reqBody({
+            		stream:req,
+            		fn:function(dev_obj){
+                        client.query(dev_obj.stream.body, (err, res) => {
+                            res.send(err, res.rows)
+                            
+                        })
+            		},
+            		keep:'true',
+            		finish:function(dev_obj){
+            		}
+            		
+            	})
+        })
+        
+        
+        app.get('/database/reset', function (req, res, next) {
+            client.end()
+            res.send('Very Well')
+        })
         dev_obj.res.send('connected')
         
       }
     })
     
-    app.get('/database/headphone', function (req, res, next) {
-        ultraObject.reqBody({
-        		stream:req,
-        		fn:function(dev_obj){
-                    client.query(dev_obj.stream.body, (err, res) => {
-                        res.send(err, res.rows)
-                        
-                    })
-        		},
-        		keep:'true',
-        		finish:function(dev_obj){
-        		}
-        		
-        	})
-    })
-    
-    
-    app.get('/database/reset', function (req, res, next) {
-        client.end()
-        res.send('Very Well')
-    })
+
 
 }
 
