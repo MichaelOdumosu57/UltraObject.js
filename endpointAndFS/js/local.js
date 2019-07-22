@@ -78,6 +78,7 @@ function readDirAux(dev_obj) {
     
     if(   !dev_obj.results.length   ){
         
+        
         dev_obj.resolve = 'resolve'
         return dev_obj
         
