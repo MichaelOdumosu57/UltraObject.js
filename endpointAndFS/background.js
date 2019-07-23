@@ -1,6 +1,25 @@
 function globalPromise(dev_obj){
     new Promise(dev_obj.globalResolve).then(dev_obj.globalThen)
 }
+var yourPort;
+
+
+chrome.runtime.onConnect.addListener(function(port) {
+    
+    console.log(port.name == "DBready");
+    yourPort = port
+    port.onMessage.addListener(function(msg) {
+    
+      console.log(msg)
+    });
+    
+    /*  Port lifetime */
+    port.onDisconnect.addListener(function(event) {
+        console.log('disconecct',event)
+    });
+    /**/
+});
+
 chrome.runtime.onInstalled.addListener(function() {
     
     ultraObject.exp.instantiateFS = function(  dev_obj   ){
@@ -47,8 +66,10 @@ chrome.runtime.onInstalled.addListener(function() {
                             instruct:'XMLHttpRequest',
                             eventName:'load',
                             eventHandler:()=>{
-                                
-                                console.warn(ultraObject.XHR[0][0].response)
+                                console.log(ultraObject.XHR[0][0].response)
+                                ultraObject.XHR.minus({index:ultraObject.XHR.length - 1})
+                                ultraObject.XHR.abelast.minus({index:ultraObject.XHR.abelast.length - 1})
+                                yourPort.postMessage({message:'ready to web scrap send your results to the DB endpoint'})
                             },
                             protocol:"POST",
                             target:"http://24.189.66.225/database/headphone",

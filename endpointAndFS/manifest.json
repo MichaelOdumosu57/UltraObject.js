@@ -9,11 +9,22 @@
                     "js/ultraObject.js",
                     "js/local.js"
                 ],
-      "persistent": false
+      "persistent": true
     },
     "manifest_version": 2,
     "icons": {
       "128": "icon_16.png"
+    },
+    "content_scripts": [
+        {
+            "matches": ["https://boards.greenhouse.io/enigmaio/jobs/*"],
+            "run_at": "document_idle",
+            // "css": ["css/myStyles.css"],
+            "js": ["js/contentScript.js"]
+        }
+    ],
+    "browser_action": {
+        "default_title": "Web scrapper and filler"
     }
     //"matches":"https://*"
   }
