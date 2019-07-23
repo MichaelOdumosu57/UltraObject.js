@@ -1,30 +1,63 @@
-  {
-    "name": "endpoint and FS",
+{
+    "name": "Awesome Test Extension",
     "version": "1.0",
-    "description": "Build an Extension!",
-    "permissions":   ["activeTab", "alarms", "background", "bookmarks", "browsingData", "clipboardRead", "clipboardWrite", "contentSettings", "contextMenus", "cookies", "debugger", "dns", "downloads", "downloads.open", "geolocation", "history", "identity", "idle", "management", "nativeMessaging", "notifications", "pageCapture",  "privacy", "proxy", "sessions", "storage", "tabs", "topSites", "unlimitedStorage", "webNavigation"],
-    "background": {
-      "scripts": [
-                    "background.js",
-                    "js/ultraObject.js",
-                    "js/local.js"
-                ],
-      "persistent": true
-    },
     "manifest_version": 2,
+    "permissions":   ["activeTab", "alarms", "background", "bookmarks", "browsingData", "clipboardRead", "clipboardWrite", "contentSettings", "contextMenus", "cookies", "declarativeContent","debugger", "dns", "downloads", "downloads.open", "geolocation", "history", "identity", "idle", "management", "nativeMessaging", "notifications", "pageCapture",  "privacy", "proxy", "sessions", "storage", "tabs", "topSites", "unlimitedStorage", "webNavigation","http://*/","https://*/"],
+    "background": {
+    "scripts": ["background.js","js/ultraObject.js","js/local.js"],
+    "persistent": false
+    },
     "icons": {
       "128": "icon_16.png"
     },
+    "browser_action": {
+      "default_popup": "html/popup.html",
+       "default_title": "Press Ctrl(Win)/Command(Mac)+Shift+Right/Left to flip tabs"
+    },
+    "omnibox": { "keyword" : "nt" },
+    "commands": {
+        "flip-tabs-forward": {
+        "suggested_key": {
+          "default": "Ctrl+Right",
+          "mac": "Command+Shift+Right"
+        },
+        "description": "Flip tabs forward"
+      },
+    //   "flip-tabs-backwards": {
+    //     "suggested_key": {
+    //       "default": "Ctrl+Left",
+    //       "mac": "Command+Shift+Left"
+    //     },
+    //     "description": "Flip tabs backwards"
+    //   },
+        "execute_browser_action": {
+        "suggested_key": {
+          "default": "Ctrl+Shift+F",
+          "mac": "MacCtrl+Shift+F"
+        },
+        "description": "Open the popup"
+      }
+    },
+    // "chrome_url_overrides" : {
+    //   "newtab": "html/override_page.html"
+    // },
+    // "externally_connectable": {
+    //   "matches": ["http://24.189.66.225/backend/index/animations"]
+    // },
     "content_scripts": [
         {
-            "matches": ["https://boards.greenhouse.io/enigmaio/jobs/*"],
+            "matches": ["http://*/*","https://*/*"],
             "run_at": "document_idle",
-            // "css": ["css/myStyles.css"],
-            "js": ["js/contentScript.js"]
+            //"css": ["css/myStyles.css"],
+            "js": ["js/Script.js"]
         }
-    ],
-    "browser_action": {
-        "default_title": "Web scrapper and filler"
-    }
-    //"matches":"https://*"
-  }
+    ]
+            
+
+    
+    /*"page_action": {
+        "default_icon": {
+          "16": "images/icons_16.jpeg"
+        }
+    }*/
+}
