@@ -1,5 +1,5 @@
 
-
+var XHR_0_i // for when extension initiates simple one time requests
 
 function globalPromise(dev_obj){
     new Promise(dev_obj.globalResolve).then(dev_obj.globalThen)
@@ -27,42 +27,80 @@ chrome.runtime.onConnect.addListener(function(port) {
 });
 
 
-function initiateMesg(   dev_obj   ){
-    var neededTab
-    chrome.tabs.query({currentWindow: false}, function(tabs) {
-      // Sort tabs according to their index in the window.
-        var matchURL = 'https://boards.greenhouse.io/enigmaio/jobs/1056543?gh_src=ceb603551#app'
-        neededTab = tabs.reduce((x,y)=>{
-            
-            
-            if(   x.url === matchURL   ){
-                
-                return x
-            }
-            
-            
-            if(   y.url === matchURL   ){
-                
-                return y
-            }
-            
-            return x
-            
-            
-        })
-        
-        // chrome.tabs.connect({tabId:neededTab.id})
-        console.log(neededTab)
-        // yourPort = chrome.tabs.connect(neededTab.id)
-        // yourPort.postMessage({connected:'true'})
-        // yourPort.onMessage.addListener(function(a,b,c,d,e,f){
-        //     console.log(arguments)
-        // })
-        chrome.tabs.sendMessage(   neededTab.id,    {job:'send those pointValues to the db for the plotly debugger'}  , function(response) {
-            console.log(response);
-        });
-    });
+chrome.runtime.onInstalled.addListener(function() {
+    ultraObject.endpoint({
+        instruct:'chromeExtensionOneTime',
+        incomingFn:function(   dev_obj   ){
+            chrome.runtime.onMessage.addListener(function(response,sender,sendResponse){
+    
+            })
+        },
+        incomingOrigin:'contentScript',
+        sendingFn:function(   dev_obj   ){
+            var neededTab
+            chrome.tabs.query({currentWindow: false}, function(tabs) {
+                  // Sort tabs according to their index in the window.
+                    neededTab = tabs.reduce((x,y)=>{
+                        
+                        
+                        if(   x.url === dev_obj.matchURL   ){
+                            
+                            
+                            return x
+                            
+                            
+                        }
+                        
+                        
+                        if(   y.url === dev_obj.matchURL   ){
+                            
+                            
+                            return y
+                            
+                            
+                        }
+                        
+                        
+                        return x
+                        
+                        
+                    })
+                    
+                    
+                    console.log(neededTab)
+                    chrome.tabs.sendMessage(   neededTab.id,    dev_obj.sendingBody, function(response) {
+                        console.log(response);
+                    });
+            });
+        },
+        sendingBody:{job:'send those pointValues to the db for the plotly debugger'},
+        sendingOrigin:'extension'
+    })
+    XHR_0_i  = ultraObject.scope.add(   {value:ultraObject.XHR.abelast[ultraObject.XHR.abelast.length -1]}   )
+});
+  
+
+function askDB(   dev_obj   ){
+    
+    ultraObject.endpoint({
+        xhttp:ultraObject.iterify({iterify:[new XMLHttpRequest()]}),
+        instruct:'XMLHttpRequest',
+        eventName:'load',
+        eventHandler:()=>{
+            console.log(ultraObject.XHR[ultraObject.XHR.length-1][0].response)
+            ultraObject.XHR.minus({index:ultraObject.XHR.length - 1})
+            ultraObject.XHR.abelast.minus({index:ultraObject.XHR.abelast.length - 1})
+        },
+        protocol:"POST",
+        target:"http://24.189.66.225/database/query",
+        asyncBool:true,
+        body:dev_obj.querySQL
+    })
+    
+    
 }
+
+
 
 chrome.runtime.onInstalled.addListener(function() {
     
@@ -106,17 +144,19 @@ chrome.runtime.onInstalled.addListener(function() {
                         
                         
                         console.log('making the request')
-                        initiateMesg()
                         ultraObject.endpoint({
                             xhttp:ultraObject.iterify({iterify:[new XMLHttpRequest()]}),
                             instruct:'XMLHttpRequest',
                             eventName:'load',
                             eventHandler:()=>{
-                                console.log(ultraObject.XHR[0][0].response)
-                                ultraObject.XHR.minus({index:ultraObject.XHR.length - 1})
-                                ultraObject.XHR.abelast.minus({index:ultraObject.XHR.abelast.length - 1})
-                                
-                                
+                                var XHR_1_i  = ultraObject.scope.add(   {value:ultraObject.XHR.abelast[ultraObject.XHR.abelast.length -1]}   )
+                                console.log(   ultraObject.XHR[   ultraObject.scope[XHR_1_i]   ][0].response   )
+                                ultraObject.XHR.minus(   {index:ultraObject.scope[XHR_1_i]}   )
+                                ultraObject.XHR.abelast.minus(   {index:XHR_1_i}   )
+                                ultraObject.XHR[   ultraObject.scope[XHR_0_i]   ].sending.fn({
+                                    sendingBody:ultraObject.XHR[   ultraObject.scope[XHR_0_i]   ].sending.body,
+                                    matchURL:"https://boards.greenhouse.io/enigmaio/jobs/1056543?gh_src=ceb603551#app"
+                                })
                                 
                             },
                             protocol:"POST",

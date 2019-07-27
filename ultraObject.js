@@ -257,7 +257,12 @@
                     
                     }
                 }
-                window.ultraObject = ultraObjectReset()
+                try{
+                    window.ultraObject = ultraObjectReset()
+                }
+                catch(e){
+                    global.ultraObject = ultraObjectReset()
+                }
                 function endpoint(   dev_obj   ){
                     /*
                         key points
@@ -315,7 +320,7 @@
                         /* chromeExtensionOneTime*/ //{
                         if(   dev_obj.instruct === "chromeExtensionOneTime"   ){
                             
-                            debugger
+                            
                             ultraObject.XHR[   ultraObject.scope[ePXHR_0_i]   ] = ultraObject.iterableObject()
                             ultraObject.XHR[   ultraObject.scope[ePXHR_0_i]   ].incoming =   {
                                 fn:dev_obj.incomingFn,
@@ -3190,7 +3195,6 @@
                                     the proof object fact modules are places in ito
                                         0 module name
                                         1 module function or interrogation default
-                                        
                         dev_obj
                             .keyword  ins string based comparision this is the keyword in quesiton
                             .pM_0_i: the partialMatch dev_obj with out compTo or compAgn
@@ -4650,7 +4654,8 @@
                                                 }
                                             ]
                                         ],
-                                    pointValue:'v1'
+                                    pointValue:'v1',
+                                    debug:'true'
                                 })
                                 ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].pointValue = ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].pointValue // used to deterime if valuePhrasre belongs in the elements value
                                 console.log(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].pointValue   )

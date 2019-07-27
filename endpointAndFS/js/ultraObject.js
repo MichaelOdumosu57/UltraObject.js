@@ -257,7 +257,12 @@
                     
                     }
                 }
-                window.ultraObject = ultraObjectReset()
+                try{
+                    window.ultraObject = ultraObjectReset()
+                }
+                catch(e){
+                    global.ultraObject = ultraObjectReset()
+                }
                 function endpoint(   dev_obj   ){
                     /*
                         key points
@@ -311,6 +316,27 @@
                             
                         }
                         // }  /**/
+                        
+                        /* chromeExtensionOneTime*/ //{
+                        if(   dev_obj.instruct === "chromeExtensionOneTime"   ){
+                            
+                            
+                            ultraObject.XHR[   ultraObject.scope[ePXHR_0_i]   ] = ultraObject.iterableObject()
+                            ultraObject.XHR[   ultraObject.scope[ePXHR_0_i]   ].incoming =   {
+                                fn:dev_obj.incomingFn,
+                                origin:dev_obj.incomingOrigin,
+                                body:dev_obj.incomingBody
+                            }
+                            ultraObject.XHR[   ultraObject.scope[ePXHR_0_i]   ].sending  = {
+                                fn:dev_obj.sendingFn,
+                                body:dev_obj.sendingBody,
+                                origin:dev_obj.sendingOrigin
+                            }
+                            
+                            
+                        }
+                        // }  /**/
+                        
                         
                     // }  /**/
                     
@@ -2174,7 +2200,7 @@
                         ....
                         */
                         //
-                    debugger
+                    
                     var subGroups_dev_obj = ultraObject.args.add(   {value:ultraObject.iterify(   {iterify:dev_obj}   )   }   )
                     var subGroupsBOOL = {0:false}
                     var subGroupsSeperator = ' ' // how to seperate the items
@@ -3169,7 +3195,6 @@
                                     the proof object fact modules are places in ito
                                         0 module name
                                         1 module function or interrogation default
-                                        
                         dev_obj
                             .keyword  ins string based comparision this is the keyword in quesiton
                             .pM_0_i: the partialMatch dev_obj with out compTo or compAgn
@@ -3184,6 +3209,7 @@
                     ultraObject.qC.abelast.add(   {value:ultraObject.scope[iQC_0_i]}   )
                     // }  /**/
                     
+
                     /*setting the point value in the qC*/ //{
                     if(   dev_obj.pointValue === 'v1'   ){
                         
@@ -4306,7 +4332,6 @@
                     console.groupEnd()
                     var pFFList_0_i = ultraObject.scope.add(   {value:ultraObject.misc.add(   {value:ultraObject.iterify(   {iterify:dev_obj.list}   )}   )}   )
                     var pFFLook_0_i = ultraObject.scope.add(   {value:ultraObject.misc.add(   {value:ultraObject.iterify(   {iterify:dev_obj.look}   )}   )}   )
-                    debugger
                     ultraObject.eCSearch({
                         list:pFFList_0_i,
                         look:pFFLook_0_i,
@@ -4403,7 +4428,20 @@
                                     // accessing the qC object ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]]
                                 // } /**/
                                 
-                                
+                                ultraObject.endpoint({
+                                    instruct:'chromeExtensionOneTime',
+                                    incomingFn:function(   dev_obj   ){
+                                        chrome.runtime.onMessage.addListener(function(response,sender,sendResponse){
+                                              
+                                        })
+                                    },
+                                    incomingOrigin:'extension',
+                                    sendingFn:dev_obj.endpointSendingFn,
+                                    sendingBody:{need:'make a table for me'},
+                                    sendingOrigin:'contentScript'
+                                })
+                                var pFFXHR_0_i = ultraObject.scope.add(   {value:ultraObject.XHR.abelast[ultraObject.XHR.abelast.length -1]}   )
+                                ultraObject.XHR[   ultraObject.scope[pFFXHR_0_i]   ].sending.fn(   ultraObject.XHR[   ultraObject.scope[pFFXHR_0_i]   ].sending.body   )
                                 ultraObject.interrogation({
                                     proof:[
                                             ['element',ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item],
@@ -4616,7 +4654,8 @@
                                                 }
                                             ]
                                         ],
-                                    pointValue:'v1'
+                                    pointValue:'v1',
+                                    debug:'true'
                                 })
                                 ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].pointValue = ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].pointValue // used to deterime if valuePhrasre belongs in the elements value
                                 console.log(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].pointValue   )
@@ -4637,7 +4676,7 @@
                             console.groupEnd()
                             
                         },
-                        args:{}
+                        args:{endpointSendingFn:dev_obj.endpointSendingFn}
                     }
                     ultraObject.forLoop(   pFFFL_0_i   )
                     ultraObject.selectTags.minus(   {index:ultraObject.scope[pFFST_0_i]}   )
