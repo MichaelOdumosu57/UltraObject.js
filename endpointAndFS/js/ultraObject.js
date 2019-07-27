@@ -4428,11 +4428,14 @@
                                     // accessing the qC object ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]]
                                 // } /**/
                                 
+                                /*debug*/
+                                chrome.runtime.onMessage.removeListener(   initalOutbound   )
                                 ultraObject.endpoint({
                                     instruct:'chromeExtensionOneTime',
                                     incomingFn:function(   dev_obj   ){
                                         chrome.runtime.onMessage.addListener(function(response,sender,sendResponse){
-                                              
+                                            console.log(   response   )
+                                            ultraObject.XHR[   ultraObject.scope[pFFXHR_0_i]   ].sending.response = response
                                         })
                                     },
                                     incomingOrigin:'extension',
@@ -4441,230 +4444,246 @@
                                     sendingOrigin:'contentScript'
                                 })
                                 var pFFXHR_0_i = ultraObject.scope.add(   {value:ultraObject.XHR.abelast[ultraObject.XHR.abelast.length -1]}   )
+                                ultraObject.XHR[   ultraObject.scope[pFFXHR_0_i]   ].incoming.fn()
                                 ultraObject.XHR[   ultraObject.scope[pFFXHR_0_i]   ].sending.fn(   ultraObject.XHR[   ultraObject.scope[pFFXHR_0_i]   ].sending.body   )
-                                ultraObject.interrogation({
-                                    proof:[
-                                            ['element',ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item],
-                                            ['parents',ultraObject.selectTags[ultraObject.scope[pFFST_1_i]]],
-                                            ['siblings',ultraObject.selectTags[ultraObject.scope[pFFST_2_i]]],
-                                            ['children',ultraObject.selectTags[ultraObject.scope[pFFST_3_i]]]
-                                        ],
-                                    facts:[
-                                            ['element',
-                                                {
-                                                'valuePhrase':function(   dev_obj   ){
-                                                    /*interrogates to see if packIt actually put the right phrase in the right spot*/ //{
-                                                    if(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.value.toLowerCase() === ultraObject.misc[ultraObject.scope[pFFList_0_i]][pFFFL_0_i.forLoop_0_i][1].toLowerCase()   ){
-                                                        
-                                                        
-                                                        ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].noRun = 'true'
-                                                        
-                     
-                                                    }
-                                                    
-                                                    
-                                                    ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].noRun = 'false'
-                                                    // } /**/
-                                                },
-                                                'suspect':function(   dev_obj   ){
-                                                    
-                                                    /*suspects to see if different values were put in the same spot*/ //{
-                                                    if(   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].noRun !== 'true'   ){
-                                                        
-                                                        
-                                                        console.log(   'index',pFFFL_0_i.forLoop_0_i   )
-                                                        var pFFBOOL_0_i = {0:false}
-                                                        pFFBOOL_0_i = ultraObject.severalOr({
-                                                            compTo: ultraObject.nS[ultraObject.scope[pFFNS_0_i]].currentNumber[pFFFL_0_i.forLoop_0_i],
-                                                            compAgn: ultraObject.nS[ultraObject.scope[pFFNS_0_i]].currentNumber,
-                                                            boolean:pFFBOOL_0_i,
-                                                            which:0,
-                                                            how:function(   dev_obj   ){
-                                                                
-                                                                
-                                                                if(   dev_obj.compTo === dev_obj.compAgnI   ){
-                                                                    
-                                                                    
-                                                                    if(   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]][   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].passOn.proofObject[0]   ].suspects === undefined   ){
-                                                                    //if we have suspects to determine who belongs in the elements value. this might need to be reset
-                                                                    
-                                                                        ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]][   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].passOn.proofObject[0]   ].suspects = ultraObject.iterableObject()
-                                                                        ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]][   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].passOn.proofObject[0]   ].suspects.add(   {value:dev_obj.index}   )
-                                                                        //see i wrote for the future here
-                                                                        
-                                                                    }
-                                                                    
-                                                                    
-                                                                    else if(   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]][   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].passOn.proofObject[0]   ].suspects !== undefined   ){
-                                                                        
-                                                                    
-                                                                        ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]][   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].passOn.proofObject[0]   ].suspects.add(   {value:dev_obj.index}   )
-                                                                        
-                                                                        
-                                                                    }
+                                /**/
+                                
+                                debugger
+                                var setInterval_0_i = setInterval(function(){
                                     
                                     
-                                                                }
+                                    if(   ultraObject.XHR[   ultraObject.scope[pFFXHR_0_i]   ].sending.response !== undefined   ){
+                                        
+                                    
+                                        ultraObject.interrogation({
+                                            proof:[
+                                                    ['element',ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item],
+                                                    ['parents',ultraObject.selectTags[ultraObject.scope[pFFST_1_i]]],
+                                                    ['siblings',ultraObject.selectTags[ultraObject.scope[pFFST_2_i]]],
+                                                    ['children',ultraObject.selectTags[ultraObject.scope[pFFST_3_i]]]
+                                                ],
+                                            facts:[
+                                                    ['element',
+                                                        {
+                                                        'valuePhrase':function(   dev_obj   ){
+                                                            /*interrogates to see if packIt actually put the right phrase in the right spot*/ //{
+                                                            if(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.value.toLowerCase() === ultraObject.misc[ultraObject.scope[pFFList_0_i]][pFFFL_0_i.forLoop_0_i][1].toLowerCase()   ){
                                                                 
                                                                 
-                                                                console.log(   dev_obj,pFFFL_0_i.forLoop_0_i   )
-                                                            },
-                                                            result:'a'
-                                                        })
-                                                        //this represents the digits of the NS,which are apparently the same that represents different items in the list however only one in this case should receive the element value here
-                                                        console.log(   'our suspects',ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]][   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].passOn.proofObject[0]   ].suspects  )
-                                                        
-                                                        
-                                                    }
-                                                    // } /**/
-                                                    
-                                                },
-                                                'tagName':  {
-                                                                ultraObject:{
-                                                                       tagOptions:ultraObject.misc[   ultraObject.scope[pFFMisc_1_i]]
-                                                                }
-                                                            },
-                                                'hidden':{},
-                                                'className':{
-                                                                ultraObject:{
-                                                                    keyword:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword,
-                                                                    //FIX ME a better way to make meaninguful
-                                                                    pM_0_i:ultraObject.iterify({
-                                                                        iterify:{
-                                                                            range:20,
-                                                                            spaces:2,
-                                                                            gap:2,
-                                                                            trailer:20,
-                                                                            type:'string',
-                                                                            cCase:'toLowerCase'
-                                                                        }
-                                                                    })
-                                                                }
-                                                            },
-                                                'id':{
-                                                                ultraObject:{
-                                                                    keyword:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword,
-                                                                    //FIX ME a better way to make meaninguful
-                                                                    pM_0_i:ultraObject.iterify({
-                                                                        iterify:{
-                                                                            range:30,
-                                                                            spaces:3,
-                                                                            gap:3,
-                                                                            trailer:30,
-                                                                            type:'string',
-                                                                            cCase:'toLowerCase'
-                                                                        }
-                                                                    }),
-                                                                    care:ultraObject.iterify(   {iterify:['yes','no','no']})
-                                                                }
-                                                            },
-                                                }
-                                            ],
-                                            ['parents',
-                                                {
-                                                'exist':{},
-                                                'tagName':{
-                                                                ultraObject:{
-                                                                       tagOptions:ultraObject.iterify(   {iterify:['label','div']}   ),
-                                                                    //   care:ultraObject.iterify(   {iterify:['yes','yes','no']})
-                                                                }
-                                                            },
-                                                'className':{
-                                                                ultraObject:{
-                                                                    keyword:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword,
-                                                                    //FIX ME a better way to make meaninguful
-                                                                    pM_0_i:ultraObject.iterify({
-                                                                        iterify:{
-                                                                            range:20,
-                                                                            spaces:2,
-                                                                            gap:2,
-                                                                            trailer:20,
-                                                                            type:'string',
-                                                                            cCase:'toLowerCase'
-                                                                        }
-                                                                    }),
-                                                                    // care:ultraObject.iterify(   {iterify:['yes','yes','no']}   )
-                                                                }
-                                                            },
-                                                'id':{
-                                                                ultraObject:{
-                                                                    keyword:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword,
-                                                                    //FIX ME a better way to make meaninguful
-                                                                    pM_0_i:ultraObject.iterify({
-                                                                        iterify:{
-                                                                            range:30,
-                                                                            spaces:3,
-                                                                            gap:3,
-                                                                            trailer:30,
-                                                                            type:'string',
-                                                                            cCase:'toLowerCase'
-                                                                        }
-                                                                    }),
-                                                                    // care:ultraObject.iterify(   {iterify:['yes','yes','no']}   )
-                                                                }
-                                                    },
-                                                }
-                                            ],
-                                            ['siblings',
-                                                {
-                                                'tagName':{
-                                                    ultraObject:{
-                                                           tagOptions:ultraObject.iterify({iterify:['label','div']}),
-                                                        //   care:ultraObject.iterify(   {iterify:['yes','yes','no']})
+                                                                ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].noRun = 'true'
+                                                                
+                             
                                                             }
+                                                            
+                                                            
+                                                            ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].noRun = 'false'
+                                                            // } /**/
+                                                        },
+                                                        'suspect':function(   dev_obj   ){
+                                                            
+                                                            /*suspects to see if different values were put in the same spot*/ //{
+                                                            if(   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].noRun !== 'true'   ){
+                                                                
+                                                                
+                                                                console.log(   'index',pFFFL_0_i.forLoop_0_i   )
+                                                                var pFFBOOL_0_i = {0:false}
+                                                                pFFBOOL_0_i = ultraObject.severalOr({
+                                                                    compTo: ultraObject.nS[ultraObject.scope[pFFNS_0_i]].currentNumber[pFFFL_0_i.forLoop_0_i],
+                                                                    compAgn: ultraObject.nS[ultraObject.scope[pFFNS_0_i]].currentNumber,
+                                                                    boolean:pFFBOOL_0_i,
+                                                                    which:0,
+                                                                    how:function(   dev_obj   ){
+                                                                        
+                                                                        
+                                                                        if(   dev_obj.compTo === dev_obj.compAgnI   ){
+                                                                            
+                                                                            
+                                                                            if(   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]][   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].passOn.proofObject[0]   ].suspects === undefined   ){
+                                                                            //if we have suspects to determine who belongs in the elements value. this might need to be reset
+                                                                            
+                                                                                ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]][   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].passOn.proofObject[0]   ].suspects = ultraObject.iterableObject()
+                                                                                ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]][   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].passOn.proofObject[0]   ].suspects.add(   {value:dev_obj.index}   )
+                                                                                //see i wrote for the future here
+                                                                                
+                                                                            }
+                                                                            
+                                                                            
+                                                                            else if(   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]][   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].passOn.proofObject[0]   ].suspects !== undefined   ){
+                                                                                
+                                                                            
+                                                                                ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]][   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].passOn.proofObject[0]   ].suspects.add(   {value:dev_obj.index}   )
+                                                                                
+                                                                                
+                                                                            }
+                                            
+                                            
+                                                                        }
+                                                                        
+                                                                        
+                                                                        console.log(   dev_obj,pFFFL_0_i.forLoop_0_i   )
+                                                                    },
+                                                                    result:'a'
+                                                                })
+                                                                //this represents the digits of the NS,which are apparently the same that represents different items in the list however only one in this case should receive the element value here
+                                                                console.log(   'our suspects',ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]][   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].passOn.proofObject[0]   ].suspects  )
+                                                                
+                                                                
+                                                            }
+                                                            // } /**/
+                                                            
+                                                        },
+                                                        'tagName':  {
+                                                                        ultraObject:{
+                                                                               tagOptions:ultraObject.misc[   ultraObject.scope[pFFMisc_1_i]]
+                                                                        }
+                                                                    },
+                                                        'hidden':{},
+                                                        'className':{
+                                                                        ultraObject:{
+                                                                            keyword:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword,
+                                                                            //FIX ME a better way to make meaninguful
+                                                                            pM_0_i:ultraObject.iterify({
+                                                                                iterify:{
+                                                                                    range:20,
+                                                                                    spaces:2,
+                                                                                    gap:2,
+                                                                                    trailer:20,
+                                                                                    type:'string',
+                                                                                    cCase:'toLowerCase'
+                                                                                }
+                                                                            })
+                                                                        }
+                                                                    },
+                                                        'id':{
+                                                                        ultraObject:{
+                                                                            keyword:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword,
+                                                                            //FIX ME a better way to make meaninguful
+                                                                            pM_0_i:ultraObject.iterify({
+                                                                                iterify:{
+                                                                                    range:30,
+                                                                                    spaces:3,
+                                                                                    gap:3,
+                                                                                    trailer:30,
+                                                                                    type:'string',
+                                                                                    cCase:'toLowerCase'
+                                                                                }
+                                                                            }),
+                                                                            care:ultraObject.iterify(   {iterify:['yes','no','no']})
+                                                                        }
+                                                                    },
                                                         }
-                                                }
-                                            ],
-                                            ['children',
-                                                {
-                                                'className':{
-                                                                ultraObject:{
-                                                                    keyword:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword,
-                                                                    //FIX ME a better way to make meaninguful
-                                                                    pM_0_i:ultraObject.iterify({
-                                                                        iterify:{
-                                                                            range:20,
-                                                                            spaces:2,
-                                                                            gap:2,
-                                                                            trailer:20,
-                                                                            type:'string',
-                                                                            cCase:'toLowerCase'
+                                                    ],
+                                                    ['parents',
+                                                        {
+                                                        'exist':{},
+                                                        'tagName':{
+                                                                        ultraObject:{
+                                                                               tagOptions:ultraObject.iterify(   {iterify:['label','div']}   ),
+                                                                            //   care:ultraObject.iterify(   {iterify:['yes','yes','no']})
                                                                         }
-                                                                    }),
-                                                                    // care:ultraObject.iterify(   {iterify:['yes','yes','no']}   )
-                                                                }
+                                                                    },
+                                                        'className':{
+                                                                        ultraObject:{
+                                                                            keyword:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword,
+                                                                            //FIX ME a better way to make meaninguful
+                                                                            pM_0_i:ultraObject.iterify({
+                                                                                iterify:{
+                                                                                    range:20,
+                                                                                    spaces:2,
+                                                                                    gap:2,
+                                                                                    trailer:20,
+                                                                                    type:'string',
+                                                                                    cCase:'toLowerCase'
+                                                                                }
+                                                                            }),
+                                                                            // care:ultraObject.iterify(   {iterify:['yes','yes','no']}   )
+                                                                        }
+                                                                    },
+                                                        'id':{
+                                                                        ultraObject:{
+                                                                            keyword:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword,
+                                                                            //FIX ME a better way to make meaninguful
+                                                                            pM_0_i:ultraObject.iterify({
+                                                                                iterify:{
+                                                                                    range:30,
+                                                                                    spaces:3,
+                                                                                    gap:3,
+                                                                                    trailer:30,
+                                                                                    type:'string',
+                                                                                    cCase:'toLowerCase'
+                                                                                }
+                                                                            }),
+                                                                            // care:ultraObject.iterify(   {iterify:['yes','yes','no']}   )
+                                                                        }
                                                             },
-                                                'id':{
-                                                                ultraObject:{
-                                                                    keyword:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword,
-                                                                    //FIX ME a better way to make meaninguful
-                                                                    pM_0_i:ultraObject.iterify({
-                                                                        iterify:{
-                                                                            range:30,
-                                                                            spaces:3,
-                                                                            gap:3,
-                                                                            trailer:30,
-                                                                            type:'string',
-                                                                            cCase:'toLowerCase'
-                                                                        }
-                                                                    }),
-                                                                    // care:ultraObject.iterify(   {iterify:['yes','yes','no']}   )
+                                                        }
+                                                    ],
+                                                    ['siblings',
+                                                        {
+                                                        'tagName':{
+                                                            ultraObject:{
+                                                                   tagOptions:ultraObject.iterify({iterify:['label','div']}),
+                                                                //   care:ultraObject.iterify(   {iterify:['yes','yes','no']})
+                                                                    }
                                                                 }
-                                                    },
-                                                }
-                                            ]
-                                        ],
-                                    pointValue:'v1',
-                                    debug:'true'
-                                })
-                                ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].pointValue = ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].pointValue // used to deterime if valuePhrasre belongs in the elements value
-                                console.log(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].pointValue   )
-                                ultraObject.selectTags.minus(   {index:ultraObject.scope[pFFST_1_i]}   )
-                                ultraObject.scope.minus(   {index:pFFST_1_i}   )
-                                ultraObject.selectTags.minus(   {index:ultraObject.scope[pFFST_2_i]}   )
-                                ultraObject.scope.minus(   {index:pFFST_2_i}   )
-                                ultraObject.selectTags.minus(   {index:ultraObject.scope[pFFST_3_i]}   )
-                                ultraObject.scope.minus(   {index:pFFST_3_i}   )
+                                                        }
+                                                    ],
+                                                    ['children',
+                                                        {
+                                                        'className':{
+                                                                        ultraObject:{
+                                                                            keyword:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword,
+                                                                            //FIX ME a better way to make meaninguful
+                                                                            pM_0_i:ultraObject.iterify({
+                                                                                iterify:{
+                                                                                    range:20,
+                                                                                    spaces:2,
+                                                                                    gap:2,
+                                                                                    trailer:20,
+                                                                                    type:'string',
+                                                                                    cCase:'toLowerCase'
+                                                                                }
+                                                                            }),
+                                                                            // care:ultraObject.iterify(   {iterify:['yes','yes','no']}   )
+                                                                        }
+                                                                    },
+                                                        'id':{
+                                                                        ultraObject:{
+                                                                            keyword:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword,
+                                                                            //FIX ME a better way to make meaninguful
+                                                                            pM_0_i:ultraObject.iterify({
+                                                                                iterify:{
+                                                                                    range:30,
+                                                                                    spaces:3,
+                                                                                    gap:3,
+                                                                                    trailer:30,
+                                                                                    type:'string',
+                                                                                    cCase:'toLowerCase'
+                                                                                }
+                                                                            }),
+                                                                            // care:ultraObject.iterify(   {iterify:['yes','yes','no']}   )
+                                                                        }
+                                                            },
+                                                        }
+                                                    ]
+                                                ],
+                                            pointValue:'v1',
+                                            debug:'true'
+                                        })
+                                        ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].pointValue = ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].pointValue // used to deterime if valuePhrasre belongs in the elements value
+                                        console.log(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].pointValue   )
+                                        ultraObject.selectTags.minus(   {index:ultraObject.scope[pFFST_1_i]}   )
+                                        ultraObject.scope.minus(   {index:pFFST_1_i}   )
+                                        ultraObject.selectTags.minus(   {index:ultraObject.scope[pFFST_2_i]}   )
+                                        ultraObject.scope.minus(   {index:pFFST_2_i}   )
+                                        ultraObject.selectTags.minus(   {index:ultraObject.scope[pFFST_3_i]}   )
+                                        ultraObject.scope.minus(   {index:pFFST_3_i}   )
+                                        clearInterval(   setInterval_0_i   )
+                                    
+                                    }
+                                    
+                                    
+                                },500)
                                 throw('e')
                                 console.log(  'what is the result', ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword  )
                                 ultraObject.objInvolved({

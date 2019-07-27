@@ -32,7 +32,7 @@ chrome.runtime.onInstalled.addListener(function() {
         instruct:'chromeExtensionOneTime',
         incomingFn:function(   dev_obj   ){
             chrome.runtime.onMessage.addListener(function(response,sender,sendResponse){
-    
+                console.log(response)
             })
         },
         incomingOrigin:'contentScript',
@@ -70,10 +70,20 @@ chrome.runtime.onInstalled.addListener(function() {
                     console.log(neededTab)
                     chrome.tabs.sendMessage(   neededTab.id,    dev_obj.sendingBody, function(response) {
                         console.log(response);
+                        
+                        if(   dev_obj.resolve !== undefined   ){
+                            
+                            
+                            dev_obj.resolve()
+                            
+                            
+                        }
+                        
+                        
                     });
             });
         },
-        sendingBody:{job:'send those pointValues to the db for the plotly debugger'},
+        sendingBody:{job:'gimme those pointValues so I can update plotlyDB'},
         sendingOrigin:'extension'
     })
     XHR_0_i  = ultraObject.scope.add(   {value:ultraObject.XHR.abelast[ultraObject.XHR.abelast.length -1]}   )
@@ -98,6 +108,17 @@ function askDB(   dev_obj   ){
     })
     
     
+}
+
+
+function communicateDB(   dev_obj   ){
+    return function(resolve,reject){
+        ultraObject.XHR[   ultraObject.scope[XHR_0_i]   ].sending.fn({
+            sendingBody:dev_obj.message,
+            matchURL:dev_obj.URL,
+            resolve:resolve
+        })
+    }
 }
 
 
@@ -153,11 +174,16 @@ chrome.runtime.onInstalled.addListener(function() {
                                 console.log(   ultraObject.XHR[   ultraObject.scope[XHR_1_i]   ][0].response   )
                                 ultraObject.XHR.minus(   {index:ultraObject.scope[XHR_1_i]}   )
                                 ultraObject.XHR.abelast.minus(   {index:XHR_1_i}   )
-                                ultraObject.XHR[   ultraObject.scope[XHR_0_i]   ].sending.fn({
-                                    sendingBody:ultraObject.XHR[   ultraObject.scope[XHR_0_i]   ].sending.body,
-                                    matchURL:"https://boards.greenhouse.io/enigmaio/jobs/1056543?gh_src=ceb603551#app"
+                                globalPromise({
+                                    globalResolve:communicateDB({
+                                        message:ultraObject.XHR[   ultraObject.scope[XHR_0_i]   ].sending.body,
+                                        URL:"https://boards.greenhouse.io/enigmaio/jobs/1056543?gh_src=ceb603551#app"
+                                    }),
+                                    globalThen:communicateDB({
+                                        message:{job:"made the table start sending me values"},
+                                        URL:"https://boards.greenhouse.io/enigmaio/jobs/1056543?gh_src=ceb603551#app"
+                                    })
                                 })
-                                
                             },
                             protocol:"POST",
                             target:"http://24.189.66.225/database/headphone",

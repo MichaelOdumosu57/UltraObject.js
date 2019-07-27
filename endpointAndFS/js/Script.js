@@ -20,10 +20,7 @@ console.log(chrome.runtime.onConnect)
 // })
 
 
-
-
-  chrome.runtime.onMessage.addListener(
-      function(request, sender, sendResponse) {
+function initalOutbound(request, sender, sendResponse) {
         console.log(sender.tab ?
                     "from a content script:" + sender.tab.url :
                     "from the extension");
@@ -60,7 +57,9 @@ console.log(chrome.runtime.onConnect)
         sendResponse({complete:'I ran the test look at your plotly extension for the results'})
     })
         //   sendResponse({farewell: document.querySelectorAll("body *:not(script)")});
-      });
+      }
+
+  chrome.runtime.onMessage.addListener(initalOutbound);
 
 // chrome.runtime.onConnect.addListener(function(port) {
     
