@@ -95,8 +95,8 @@ app.listen(port, () => console.log(`${file_name} app listening on port ${port}!`
 
 function dbInteraction(   dev_obj   ){
     var pg =  require( 'pg')
-// var pgcs = require('pg-connection-string')
-pg.defaults.ssl = true
+    // var pgcs = require('pg-connection-string')
+    pg.defaults.ssl = true
     // console.log(config)
     const client = new pg.Client(config)
     client.connectionParameters.host = client.host =  "24.189.66.225"
@@ -110,14 +110,13 @@ pg.defaults.ssl = true
         dev_obj.res.send('error connecting', err.stack)
       } else {
         console.log('connected')
-        console.log(   dev_obj.res   )
-        app.get('/database/headphone', function (req, res, next) {
+        app.post('/database/query', function (req, res, next) {
+            console.log('an endpoint wants to make a query')
             ultraObject.reqBody({
             		stream:req,
             		fn:function(dev_obj){
                         client.query(dev_obj.stream.body, (err, res) => {
                             res.send(err, res.rows)
-                            
                         })
             		},
             		keep:'true',

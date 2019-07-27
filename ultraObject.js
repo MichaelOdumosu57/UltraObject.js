@@ -219,8 +219,6 @@
                     isFunction:isFunction,
                     
                     elementFound:iterableObject(), // holds found elements needed by the ultraObject
-                    removeCN:removeCN,
-                    removeOP:removeOP,
                     identifyEO:{}, // object for all needed identified
                     forLoop:forLoop,
                     objInvloved:objInvloved,// to keep track of all items responbile for a purpose at a specific point
@@ -259,7 +257,7 @@
                     
                     }
                 }
-                var ultraObject = ultraObjectReset()
+                window.ultraObject = ultraObjectReset()
                 function endpoint(   dev_obj   ){
                     /*
                         key points
@@ -314,6 +312,27 @@
                         }
                         // }  /**/
                         
+                        /* chromeExtensionOneTime*/ //{
+                        if(   dev_obj.instruct === "chromeExtensionOneTime"   ){
+                            
+                            debugger
+                            ultraObject.XHR[   ultraObject.scope[ePXHR_0_i]   ] = ultraObject.iterableObject()
+                            ultraObject.XHR[   ultraObject.scope[ePXHR_0_i]   ].incoming =   {
+                                fn:dev_obj.incomingFn,
+                                origin:dev_obj.incomingOrigin,
+                                body:dev_obj.incomingBody
+                            }
+                            ultraObject.XHR[   ultraObject.scope[ePXHR_0_i]   ].sending  = {
+                                fn:dev_obj.sendingFn,
+                                body:dev_obj.sendingBody,
+                                origin:dev_obj.sendingOrigin
+                            }
+                            
+                            
+                        }
+                        // }  /**/
+                        
+                        
                     // }  /**/
                     
                     /*XHR -scope */ //{
@@ -332,7 +351,7 @@
                         
                         /*objIO +scope +self +abelast */ //{
                         var oIobjI_0_i = ultraObject.scope.add(   {value:ultraObject.objIO.add(   {value:dev_obj}   )}   )
-                        ultraObject.objIO.abelast.add(   {value:ultraObject.scope[oIobjI_0_i]}   )
+                        ultraObject.objIO.abelast.add(   {value:ultraObject.scope[   oIobjI_0_i   ]}   )
                         // }  /**/
                         
                         
@@ -360,117 +379,6 @@
                         // }  /**/
                         
                 }
-                // function addEventListener(   dev_obj   ){
-                //         var fn;
-                        
-                        
-                //         if(   dev_obj !== undefined   ){
-                            
-                            
-                //             if(   dev_obj.fn !== undefined   ){
-                                
-                                
-                //                 fn = dev_obj.fn
-                                
-                                
-                //             }
-                            
-                            
-                //             else if(   dev_obj.xhttp === 'true'   ){
-                                
-                                
-                //                 fn= xhttpreadystatechange
-                                
-                                
-                //             }
-                            
-                            
-                //             else if(   dev_obj.fn === undefined   ){
-                                
-                                
-                //                 fn = ultraObject.passing_args
-                                
-                                
-                //             }
-                            
-                            
-                //         }
-                        
-                        
-                //         else if(   dev_obj === undefined   ){
-                            
-                            
-                //             fn = ultraObject.passing_args
-                            
-                            
-                //         }
-                        
-                        
-                        
-                //         ultraObject.DOM_child[0].addEventListener(   ultraObject.eventName,fn   )
-                // } //  dev_obj.fn is used for 1st party dev to add their custom function to the listener dev_obj.xhttp is for xhr
-                // function xhttp(   dev_obj   ){
-                        
-                        
-                //         if(   typeof(   XMLHttpRequest   ) !== 'undefined'   ){
-                            
-                            
-                //             if(   dev_obj === undefined   ){
-                                
-                                
-                //                 var xhttp_0_i = new XMLHttpRequest()
-                //                 return xhttp_0_i
-                                
-                                
-                //             }
-                            
-                            
-                //             else if(   dev_obj !== undefined   ){
-                                
-                                
-                //                 var xhttp_0_i = new XMLHttpRequest()
-                //                 return xhttp_0_i
-                                
-                                
-                //             }
-                            
-                            
-                //         }
-                        
-                        
-                        
-                // } // creates an xhr obj
-                // function open(   dev_obj   ){
-                    
-                //     dev_obj.xhttp.open(   dev_obj.protocol,dev_obj.target,dev_obj.unk_bool   )
-                // } // gets in contact with the host
-                // function xhttpreadystatechange(   dev_obj   ){
-                //     console.log(    this   )
-                    
-                //     if (    this.readyState == 4 && this.status == 200   ) {
-                    
-                    
-                //         if(   dev_obj !==undefined   ){
-                            
-                            
-                //             dev_obj.fn()
-                            
-                            
-                //         }
-                        
-                        
-                //         else if(   dev_obj ===undefined   ){
-                            
-                            
-                //             ultraObject.xhrResponse = this.responseText
-                            
-                            
-                //         }
-                        
-                        
-                //     }
-                    
-                // } // handles getting remote reposnes
                 function notes_entries_fn(   dev_obj   ){
                     ultraObject.notes_entries = Object.entries(   ultraObject.notes_object  )
                 }// produces the entries for the pretty_print functionality
@@ -1085,98 +993,6 @@
                     for this we need to make a number system that allows to cover every item
                     */
                 }// seaches for elements with the queried filters and does things to them
-                function removeCN(   dev_obj   ){// removes specified childNodes from the DOM
-                    
-                    
-                    
-                    if(   dev_obj != undefined   ){
-                        
-                        
-                        if(   dev_obj.rules === 'all'   ){
-                            continue;
-                        }
-                        
-                        
-                        else if(   dev_obj.rules === 'duplicates'   ){
-                                
-                        }
-                        
-                        // if the rules are differnent consider before items are removed
-                    }
-                    removeCNLength = Object.keys(   ultraObject.elementFound   ).length
-                    for(   var removeCN_0_i = 0; removeCN_0_i !== removeCNLength;  removeCN_0_i++){
-                        
-                        
-                        if(   ultraObject.elementFound[removeCN_0_i] !== undefined   ){
-                            
-                            
-                            ultraObject.elementFound[removeCN_0_i].remove()
-                            ultraObject.elementFound[removeCN_0_i] = 'elementRemoved'
-                            // is it removed
-                            
-                        
-                        }
-                        
-                            
-                        console.log(   removeCN_0_i   )
-                    }
-                    console.log(   'compeleted'   )
-                }
-                function removeOP(   dev_obj   ){
-                    var removeOPLength;
-                    var removeOPObj = {}
-                    if(   dev_obj !== undefined   ){
-                        
-                                    
-                        if(   dev_obj.rules === 'duplicates'   ){
-                            
-                            
-                            removeOPLength = Object.keys(   this.elementFound   ).length   //be careful for nesting
-                            for(   var removeOP_0_i = 1; removeOP_0_i !== removeOPLength; removeOP_0_i++   ){
-                                
-                                // console.log(removeOP_0_i,this.elementFound[removeOP_0_i].item)
-                                // console.log(   this.elementFound[removeOP_0_i].item === this.elementFound[removeOP_0_i].item   )
-                                
-                                
-                                for(   var removeOP_1_i = 0; removeOP_1_i !== removeOPLength; removeOP_1_i++   ){
-                                    
-                                    // console.log(   removeOP_1_i   )
-                                    
-                                        if(   this.elementFound[removeOP_0_i].item === this.elementFound[removeOP_1_i].item && removeOP_0_i !== removeOP_1_i  ){
-                                            
-                                            
-                                            this.elementFound[removeOP_0_i].item = null
-                                            break
-                                            
-                                            
-                                        }
-                                        
-                                    
-                                }
-                                                
-                                
-                            }
-                            for(   var removeOP_2_i = 0; removeOP_2_i !== removeOPLength; removeOP_2_i++   ){
-                                
-                                
-                                if(   this.elementFound[removeOP_2_i].item !== null   ){
-                                    
-                                    
-                                    removeOPObj[Object.keys(   removeOPObj   ).length] = this.elementFound[removeOP_2_i]
-                                    
-                                    
-                                }
-                                
-                                
-                            }
-                            this.elementFound = removeOPObj
-                        }
-                        
-                        // if the rules are differnent consider before items are removed
-                    }
-                    
-                        
-                } //remove specific properties from obj
                 function forLoop(   dev_obj   ){
                     //.forLoop_0_i the iteration
                     //.forLoopLength the length to iterate to
@@ -2379,7 +2195,7 @@
                         ....
                         */
                         //
-                    debugger
+                    
                     var subGroups_dev_obj = ultraObject.args.add(   {value:ultraObject.iterify(   {iterify:dev_obj}   )   }   )
                     var subGroupsBOOL = {0:false}
                     var subGroupsSeperator = ' ' // how to seperate the items
@@ -3389,6 +3205,7 @@
                     ultraObject.qC.abelast.add(   {value:ultraObject.scope[iQC_0_i]}   )
                     // }  /**/
                     
+
                     /*setting the point value in the qC*/ //{
                     if(   dev_obj.pointValue === 'v1'   ){
                         
@@ -3414,15 +3231,6 @@
                         forLoop_0_i:0,
                         forLoopLength:dev_obj.proof.length,
                         fn:function(   dev_obj   ){
-                            /*helping the sibling module know not to look at the same element again*/
-                            // if(   dev_obj.proof[iFL_0_i.forLoop_0_i][0] === 'element'   ){
-                                
-                                
-                            //     dev_obj.proof[iFL_0_i.forLoop_0_i][1].sameChild = 'true'
-                            //     // but we will leave this to the developer to pop it out
-                                
-                            // }
-                            /**/
                             ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof.add(   {value:ultraObject.iterify(   {iterify:dev_obj.proof[iFL_0_i.forLoop_0_i]}   )}   )
                         },
                         args:{
@@ -3450,7 +3258,7 @@
                         ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn = ultraObject.iterableObject()
                     // } /**/
                     
-                    debugger
+                    // debugger
                     /*beginning interrogation*/ //{
                     var iFL_2_i = {
                         forLoop_0_i:0,
@@ -3462,29 +3270,9 @@
                             ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject = ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i]
                             // } /**/
                             
-                            
                             console.group(   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0] +' proofObject'   )
-
-                            
-                            // if(   ultraObject.isDOMElement(   {type:ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[1]}   ) || ultraObject.isitO(   {type:ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[1]}   )   ){
-                                
-                                
                                 iFL_3_i.forLoopLength = ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0]   ].length
                                 ultraObject.forLoop(   iFL_3_i   )
-                            
-                            
-                            // }
-                            
-                            
-                            // else if(   !ultraObject.isDOMElement(   {type:ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[1]}   ) && !ultraObject.isitO(   {type:ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[1]}   )   ){
-                                
-                                
-                            //     console.log(   'interrogation needs the element itself or the set in an itO skipped'   )
-                                
-                                
-                            // }
-                            
-                            
                             console.groupEnd()
                             /**/
                         },
@@ -4049,6 +3837,7 @@
                                                         
                                     if(   dev_obj.compare(   {val:dev_obj.target,   index:sortFL_0_i.forLoop_0_i}   ) === dev_obj.result    ){
                                         
+                                        
                                             sortFlagO[sortFlagO.bubble]  = 'false'
                                             sortFL_0_i.itO.swapO = sortFL_0_i.itO.add(   {value:ultraObject.iterableObject()}   )
                                             sortFL_0_i.itO[sortFL_0_i.itO.swapO].add(   {value:dev_obj.target[sortFL_0_i.forLoop_0_i]}   )
@@ -4539,7 +4328,6 @@
                     console.groupEnd()
                     var pFFList_0_i = ultraObject.scope.add(   {value:ultraObject.misc.add(   {value:ultraObject.iterify(   {iterify:dev_obj.list}   )}   )}   )
                     var pFFLook_0_i = ultraObject.scope.add(   {value:ultraObject.misc.add(   {value:ultraObject.iterify(   {iterify:dev_obj.look}   )}   )}   )
-                    debugger
                     ultraObject.eCSearch({
                         list:pFFList_0_i,
                         look:pFFLook_0_i,
@@ -4549,14 +4337,13 @@
                     console.group(   'at this point the ultraObject has meaningful values for all arguments from the init fn'   )
                     console.groupEnd()
                     
-                    /*selectTags +scope +abelast */ //{
+                    /*selectTags +scope  */ //{
                     var pFFST_0_i =  ultraObject.scope.add(   {value:ultraObject.selectTags.abelast[0]}   )
-                    ultraObject.selectTags.abelast.add(   {value:pFFST_0_i}   )
                     // }  /**/
                     
                     /*nS +scope  +abelast  */ //{
                     var pFFNS_0_i =  ultraObject.scope.add(   {value:ultraObject.nS.abelast[   ultraObject.nS.abelast.length-1   ]}   )
-                    ultraObject.selectTags.abelast.add(   {value:pFFNS_0_i}   )
+                    ultraObject.nS.abelast.add(   {value:ultraObject.scope[   pFFNS_0_i   ]}   )
                     // }  /**/
                     
                     ultraObject.selectTags.abelast.minus(   {index:0}   )
@@ -4595,7 +4382,7 @@
                                     
                                     /*selectTags +scope + self +abelast  */ //{
                                     var pFFST_2_i = ultraObject.scope.add(   {value:ultraObject.selectTags.add(   {value:ultraObject.iterableObject()}   )}   )
-                                    ultraObject.selectTags.abelast.add(   {value:pFFST_2_i}   )
+                                    ultraObject.selectTags.abelast.add(   {value:ultraObject.scope[   pFFST_2_i   ]}   )
                                     // }  /**/
                                     
                                     var pFFFL_4_i = {
@@ -4637,7 +4424,20 @@
                                     // accessing the qC object ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]]
                                 // } /**/
                                 
-                                
+                                ultraObject.endpoint({
+                                    instruct:'chromeExtensionOneTime',
+                                    incomingFn:function(   dev_obj   ){
+                                        chrome.runtime.onMessage.addListener(function(response,sender,sendResponse){
+                                              
+                                        })
+                                    },
+                                    incomingOrigin:'extension',
+                                    sendingFn:dev_obj.endpointSendingFn,
+                                    sendingBody:{need:'make a table for me'},
+                                    sendingOrigin:'contentScript'
+                                })
+                                var pFFXHR_0_i = ultraObject.scope.add(   {value:ultraObject.XHR.abelast[ultraObject.XHR.abelast.length -1]}   )
+                                ultraObject.XHR[   ultraObject.scope[pFFXHR_0_i]   ].sending.fn(   ultraObject.XHR[   ultraObject.scope[pFFXHR_0_i]   ].sending.body   )
                                 ultraObject.interrogation({
                                     proof:[
                                             ['element',ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item],
@@ -4871,7 +4671,7 @@
                             console.groupEnd()
                             
                         },
-                        args:{}
+                        args:{endpointSendingFn:dev_obj.endpointSendingFn}
                     }
                     ultraObject.forLoop(   pFFFL_0_i   )
                     ultraObject.selectTags.minus(   {index:ultraObject.scope[pFFST_0_i]}   )
@@ -4896,27 +4696,9 @@
                         //     look:{ 'innerHTML':null,'innerText':null,'textContent':null}
                         // })
                     
-                //to make an xhr request
-                function h(   dev_obj   ){
-                            ultraObject.DOM_child[0] = ultraObject.xhttp
-                            ultraObject.eventName = 'readystatechange'
-                            ultraObject.addEventListener({xhttp:'true'}) //your item is here
-                            ultraObject.open({
-                                    protocol: ultraObject.protocol,
-                                    xhttp:ultraObject.xhttp,
-                                    target:ultraObject.target,
-                                    unk_bool:true
-                                })
-                            ultraObject.DOM_child[0].send()
-                        }
+
                 
-                //to add an eventListener
-                function a(   dev_obj   ){
-                    ultraObject.eventName = dev_obj.eventName || 'click'
-                    ultraObject.DOM_child[0] = dev_obj.DOMchild || document
-                    ultraObject.addEventListener()
-                    // you can place a function here
-                }
+
                 
                 //to remove elements from a page
                 function b(   dev_obj   ){
