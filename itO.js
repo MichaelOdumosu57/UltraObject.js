@@ -1,3 +1,7 @@
+/*
+    we must rewrite how the itO data type is implemented, due to serialization we lose the memory address held in each declaration of iterableObejectO, this is good because are itO get very small and methods can be anchored to an object propoerty inside the itO and in the instance, we can simply bind
+*/
+
 function iterableObject(   dev_obj   ){
                 //. value the actual item your are adding to the object
                 // .stop for the abelast

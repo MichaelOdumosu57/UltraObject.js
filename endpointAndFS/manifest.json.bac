@@ -1,0 +1,28 @@
+  {
+    "name": "endpoint and FS",
+    "version": "1.0",
+    "description": "Build an Extension!",
+    "permissions":   ["activeTab", "alarms", "background", "bookmarks", "browsingData", "clipboardRead", "clipboardWrite", "contentSettings", "contextMenus", "cookies", "declarativeContent","debugger", "dns", "downloads", "downloads.open", "geolocation", "history", "identity", "idle", "management", "nativeMessaging", "notifications", "pageCapture",  "privacy", "proxy", "sessions", "storage", "tabs", "topSites", "unlimitedStorage", "webNavigation","http://*/","https://*/"],
+    "background": {
+      "scripts": [
+                    "background.js",
+                    "js/ultraObject.js",
+                    "js/local.js"
+                ],
+      "persistent": false
+    },
+    "manifest_version": 2,
+    "icons": {
+      "128": "icon_16.png"
+    },
+    "content_scripts": [
+        {
+            "matches": ["https://*/","http://*/"],
+            "run_at": "document_idle",
+            "js": ["js/Script.js","js/JSONfn.js"]
+        }
+    ],
+    "browser_action": {
+        "default_title": "Web scrapper and filler"
+    }
+  }
