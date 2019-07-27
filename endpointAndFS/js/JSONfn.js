@@ -27,7 +27,7 @@
 *     @date2obj - Boolean (optional); if true, date string in ISO8061 format
 *                 is converted into a Date object; otherwise, it is left as a String.
 */
-alert('im a content script running !!!')
+// alert('im a content script running !!!')
 (function (exports) {
 "use strict";
 
