@@ -1,0 +1,23 @@
+so each row will contain a column
+ 
+                DROP TABLE IF EXISTS  interrogation_PLOTLY;
+                CREATE TABLE interrogation_PLOTLY (
+                    company_NAME                varchar(5000),
+                    phone_NUMBER                varchar (500),
+                    email                       varchar (200),
+                    date_OF_VISIT               timestamp,
+                    applied                     varchar(100) -- really should be a yes or no
+
+                );
+                
+                
+its best for us to look at one item each in the list, this way we can focus on one item at a time and decide whats best to look for in each item in the list and we can make a better table as a result
+
+
+so for each element we have its parents, its siblings, its children and the element itself, however I want to see details so lets add the factmodules in each as well
+
+
+in intergattion in the circumstances the API sees something we do not like, it can modify the pointValue, partialMatch was a way to interrogate, so we can use more mthods
+
+
+so when we make our table were looking at one value in list at a time

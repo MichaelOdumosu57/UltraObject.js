@@ -82,7 +82,7 @@ chrome.runtime.onInstalled.addListener(function() {
                                         `
                                             DROP TABLE IF EXISTS  interrogation_PLOTLY;
                                             CREATE TABLE interrogation_PLOTLY (
-                                                company_NAME                varchar(5000) ,
+                                                company_NAME                varchar(5000),
                                                 phone_NUMBER                varchar (500),
                                                 email                       varchar (200),
                                                 date_OF_VISIT               timestamp,
@@ -94,6 +94,7 @@ chrome.runtime.onInstalled.addListener(function() {
                                             dev_obj.resolve()
                                         }
                                     })
+
 
                             }
                             
