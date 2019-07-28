@@ -210,50 +210,44 @@ chrome.runtime.onInstalled.addListener(function() {
                                 console.log(   ultraObject.XHR[   ultraObject.scope[XHR_1_i]   ][0].response   )
                                 ultraObject.XHR.minus(   {index:ultraObject.scope[XHR_1_i]}   )
                                 ultraObject.XHR.abelast.minus(   {index:XHR_1_i}   )
-                                globalPromise({
-                                    globalResolve:communicateDB({
-                                        message:ultraObject.XHR[   ultraObject.scope[XHR_0_i]   ].sending.body,
-                                        URL:"https://boards.greenhouse.io/enigmaio/jobs/1056543?gh_src=ceb603551#app"
-                                    }),
-                                    globalThen:communicateDB({
-                                        message:{job:"made the table start sending me values"},
-                                        URL:"https://boards.greenhouse.io/enigmaio/jobs/1056543?gh_src=ceb603551#app"
-                                    })
-                                })
+                                
+                                
+                                
+                            
+                                if(   local_FL1_i.args.recreate === 'satisfied'   ){
+                                    
+                                    
+                                    local_FL1_i.args.next.remove(()=>{
+                                        globalPromise({
+                                            globalResolve:function(resolve,reject){
+                                                localLoops()
+                                                resolve()
+                                            },
+                                            globalThen:ultraObject.exp.deleteFS
+                                        })
+                                    },
+                                    (e)=>{console.log(e)})
+                                    
+                                    
+                                }
+                                
+                                
+                                else if(   local_FL1_i.args.recreate === 'nulled'   ){
+                                    
+                                    
+                                    // resolve() simple listeners now
+                                    
+                                    
+                                }
+                                    
+                                    
+                                
                             },
                             protocol:"POST",
                             target:"http://24.189.66.225/database/headphone",
                             asyncBool:true,
                             body:ultraObject.exp.GSCTK.result
                         })
-                        
-                        
-                        
-                        if(   local_FL1_i.args.recreate === 'nulled'   ){
-                            
-                            
-                            //done wait for listeners now
-                            
-                            
-                        }
-                        
-                        
-                        else if(   local_FL1_i.args.recreate = 'satisfied'   ){
-                            
-                            
-                            // local_FL1_i.args.next.remove(()=>{
-                            //     globalPromise({
-                            //         globalResolve:function(resolve,reject){
-                            //             localLoops()
-                            //             resolve()
-                            //         },
-                            //         globalThen:ultraObject.exp.deleteFS
-                            //     })
-                            // },
-                            // (e)=>{console.log(e)})
-                            
-                            
-                        }
                         
                         
                     }
@@ -312,11 +306,23 @@ chrome.runtime.onInstalled.addListener(function() {
             }
         )
     }
+    ultraObject.exp.endpointDB = function(   dev_obj   ){
+        globalPromise({
+            globalResolve:communicateDB({
+                message:ultraObject.XHR[   ultraObject.scope[XHR_0_i]   ].sending.body,
+                URL:"https://boards.greenhouse.io/enigmaio/jobs/1056543?gh_src=ceb603551#app"
+            }),
+            globalThen:communicateDB({
+                message:{job:"made the table start sending me values"},
+                URL:"https://boards.greenhouse.io/enigmaio/jobs/1056543?gh_src=ceb603551#app"
+            })
+        })
+    }
         
     
     
     globalPromise({
-        globalResolve:ultraObject.exp.instantiateFS({quotaRequest:'false'}),
+        globalResolve:ultraObject.exp.instantiateFS({quotaRequest:'true'}),
         globalThen:ultraObject.exp.readSpot
     })
     

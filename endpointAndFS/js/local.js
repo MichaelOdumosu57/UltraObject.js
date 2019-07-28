@@ -307,7 +307,7 @@ async function containAux(dev_obj){
                         ultraObject.forLoop(   local_FL2_i   )
                         globalPromise({
                             globalResolve:ultraObject.exp.instantiateFS({quotaRequest:'false'}),
-                            globalThen:ultraObject.exp.readSpot
+                            globalThen:ultraObject.exp.endpointDB
                         })
                         
                     }
@@ -477,8 +477,8 @@ function errors(err){
                         
                         else if(   fileEntry.createWriter !== undefined   ){
                             
-                            local_FL1_i.args.recreate = 'satisfied'
                             
+                            local_FL1_i.args.recreate = 'satisfied'
                             fileEntry.createWriter(function(fileWriter) {
                                 
                                 
@@ -486,7 +486,7 @@ function errors(err){
                                     
                                     
                                     var data = new Blob([ultraObject.exp.GSCTK.result], { type: "text/plain" });
-                                    console.log(   ultraObject.exp.GSCTK.result   )
+                                    // console.log(   ultraObject.exp.GSCTK.result   )
                                     ultraObject.exp.GSCTK = null
                                     fileWriter.write(data)
                                     
