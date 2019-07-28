@@ -4429,32 +4429,39 @@
                                 // } /**/
                                 
                                 /*debug*/
-                                chrome.runtime.onMessage.removeListener(   initalOutbound   )
+                                
+                                function debug_0_i(response,sender,sendResponse){
+                                            console.log(   response   )
+                                            debugger
+                                            ultraObject.XHR[   ultraObject.scope[pFFXHR_0_i]   ].sending.response = response
+                                            chrome.runtime.onMessage.removeListener(   debug_0_i   )
+                                        }
                                 ultraObject.endpoint({
                                     instruct:'chromeExtensionOneTime',
                                     incomingFn:function(   dev_obj   ){
-                                        chrome.runtime.onMessage.addListener(function(response,sender,sendResponse){
-                                            console.log(   response   )
-                                            ultraObject.XHR[   ultraObject.scope[pFFXHR_0_i]   ].sending.response = response
-                                        })
+                                        chrome.runtime.onMessage.addListener(   debug_0_i   )
                                     },
                                     incomingOrigin:'extension',
                                     sendingFn:dev_obj.endpointSendingFn,
                                     sendingBody:{need:'make a table for me'},
                                     sendingOrigin:'contentScript'
                                 })
+                                
                                 var pFFXHR_0_i = ultraObject.scope.add(   {value:ultraObject.XHR.abelast[ultraObject.XHR.abelast.length -1]}   )
                                 ultraObject.XHR[   ultraObject.scope[pFFXHR_0_i]   ].incoming.fn()
                                 ultraObject.XHR[   ultraObject.scope[pFFXHR_0_i]   ].sending.fn(   ultraObject.XHR[   ultraObject.scope[pFFXHR_0_i]   ].sending.body   )
                                 /**/
                                 
-                                debugger
+                                
+                                /*debug*/
+                                
                                 var setInterval_0_i = setInterval(function(){
                                     
-                                    
+                                    console.log('this is the response',ultraObject.XHR[   ultraObject.scope[pFFXHR_0_i]   ].sending.response   )
                                     if(   ultraObject.XHR[   ultraObject.scope[pFFXHR_0_i]   ].sending.response !== undefined   ){
+                                /**/
                                         
-                                    
+                                        console.log('table is ready for interrogation')
                                         ultraObject.interrogation({
                                             proof:[
                                                     ['element',ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item],
@@ -4673,33 +4680,50 @@
                                         ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].pointValue = ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].pointValue // used to deterime if valuePhrasre belongs in the elements value
                                         console.log(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].pointValue   )
                                         ultraObject.selectTags.minus(   {index:ultraObject.scope[pFFST_1_i]}   )
-                                        ultraObject.scope.minus(   {index:pFFST_1_i}   )
+                                        ultraObject.scope.minus({
+                                            index:pFFST_1_i,
+                                            messy:'true'
+                                        })
                                         ultraObject.selectTags.minus(   {index:ultraObject.scope[pFFST_2_i]}   )
-                                        ultraObject.scope.minus(   {index:pFFST_2_i}   )
+                                        ultraObject.scope.minus({
+                                            index:pFFST_2_i,
+                                            messy:'true'
+                                        })
                                         ultraObject.selectTags.minus(   {index:ultraObject.scope[pFFST_3_i]}   )
-                                        ultraObject.scope.minus(   {index:pFFST_3_i}   )
+                                        ultraObject.scope.minus({
+                                            index:pFFST_3_i,
+                                            messy:'true'
+                                        })
                                         clearInterval(   setInterval_0_i   )
-                                    
+                                        delete ultraObject.XHR[   ultraObject.scope[pFFXHR_0_i]   ].sending.response
+                                        // throw('e')
+                                        console.log(  'what is the result', ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword  )
+                                        ultraObject.objInvolved({
+                                            0:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.value,
+                                            1:ultraObject.misc[ultraObject.scope[pFFList_0_i]][pFFFL_0_i.forLoop_0_i][1]
+                                        })
+                                        // }
+                                        console.groupEnd()
+                                    console.groupEnd()
+                                /*debug*/
                                     }
                                     
                                     
                                 },500)
-                                throw('e')
-                                console.log(  'what is the result', ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword  )
-                                ultraObject.objInvolved({
-                                    0:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.value,
-                                    1:ultraObject.misc[ultraObject.scope[pFFList_0_i]][pFFFL_0_i.forLoop_0_i][1]
-                                })
-                                // }
-                                console.groupEnd()
-                            console.groupEnd()
+                                // throw('e')
+                                return 'premature'
+                                /**/
+
                             
                         },
                         args:{endpointSendingFn:dev_obj.endpointSendingFn}
                     }
                     ultraObject.forLoop(   pFFFL_0_i   )
-                    ultraObject.selectTags.minus(   {index:ultraObject.scope[pFFST_0_i]}   )
-                    ultraObject.scope.minus(   {index:pFFST_0_i}   )
+                    // ultraObject.selectTags.minus(   {index:ultraObject.scope[pFFST_0_i]}   )
+                    // ultraObject.scope.minus({
+                    //     index:pFFST_0_i,
+                    //     messy:'true'
+                    // })
                     console.groupEnd()
                     ///////////////////////////////////////////////////////////////////////////
                 }

@@ -74,6 +74,30 @@ chrome.runtime.onInstalled.addListener(function() {
                         if(   dev_obj.resolve !== undefined   ){
                             
                             
+                            if(   response.need === "make a table for me"   ){
+                                
+                                
+                                    globalPromise({
+                                        globalResolve:askDB({querySQL:
+                                        `
+                                            DROP TABLE IF EXISTS  interrogation_PLOTLY;
+                                            CREATE TABLE interrogation_PLOTLY (
+                                                company_NAME                varchar(5000) ,
+                                                phone_NUMBER                varchar (500),
+                                                email                       varchar (200),
+                                                date_OF_VISIT               timestamp,
+                                                applied                     varchar(100) -- really should be a yes or no
+
+                                            );
+                                        `}),
+                                        globalThen:function(){
+                                            dev_obj.resolve()
+                                        }
+                                    })
+
+                            }
+                            
+                            
                             dev_obj.resolve()
                             
                             
@@ -89,24 +113,36 @@ chrome.runtime.onInstalled.addListener(function() {
     XHR_0_i  = ultraObject.scope.add(   {value:ultraObject.XHR.abelast[ultraObject.XHR.abelast.length -1]}   )
 });
   
-
+  
 function askDB(   dev_obj   ){
-    
-    ultraObject.endpoint({
-        xhttp:ultraObject.iterify({iterify:[new XMLHttpRequest()]}),
-        instruct:'XMLHttpRequest',
-        eventName:'load',
-        eventHandler:()=>{
-            console.log(ultraObject.XHR[ultraObject.XHR.length-1][0].response)
-            ultraObject.XHR.minus({index:ultraObject.XHR.length - 1})
-            ultraObject.XHR.abelast.minus({index:ultraObject.XHR.abelast.length - 1})
-        },
-        protocol:"POST",
-        target:"http://24.189.66.225/database/query",
-        asyncBool:true,
-        body:dev_obj.querySQL
-    })
-    
+    return function(   resolve,reject   ){
+        ultraObject.endpoint({
+            xhttp:ultraObject.iterify({iterify:[new XMLHttpRequest()]}),
+            instruct:'XMLHttpRequest',
+            eventName:'load',
+            eventHandler:()=>{
+                var XHR_2_i =  ultraObject.scope.add(   {value:ultraObject.XHR.abelast[ultraObject.XHR.abelast.length -1]}   )
+                console.log(ultraObject.XHR[   ultraObject.scope[XHR_2_i]   ][0].response)
+                // ultraObject.XHR.minus({index:ultraObject.XHR.length - 1})
+                // ultraObject.XHR.abelast.minus({index:ultraObject.XHR.abelast.length - 1})
+                
+                
+                if(   resolve !== undefined   ){
+                    
+                    
+                    resolve(   ultraObject.XHR[   ultraObject.scope[XHR_2_i]   ][0].response   )
+                    
+                    
+                }
+                
+                
+            },
+            protocol:"POST",
+            target:"http://24.189.66.225/database/query",
+            asyncBool:true,
+            body:dev_obj.querySQL
+        })
+    }
     
 }
 

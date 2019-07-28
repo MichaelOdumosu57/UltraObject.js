@@ -13,7 +13,7 @@ app.use(cors())
 
 
 const config = {
-    database : "postgres",
+    database : "ultraobject",
     host     : "24.189.66.225",
     user     : "postgres",
     port     : 5432,
@@ -112,11 +112,12 @@ function dbInteraction(   dev_obj   ){
         console.log('connected')
         app.post('/database/query', function (req, res, next) {
             console.log('an endpoint wants to make a query')
+            var response = res
             ultraObject.reqBody({
             		stream:req,
             		fn:function(dev_obj){
                         client.query(dev_obj.stream.body, (err, res) => {
-                            res.send(err, res.rows)
+                            response.status(200).send(err ||  res.rows)
                         })
             		},
             		keep:'true',

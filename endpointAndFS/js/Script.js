@@ -21,6 +21,7 @@ console.log(chrome.runtime.onConnect)
 
 
 function initalOutbound(request, sender, sendResponse) {
+    chrome.runtime.onMessage.removeListener(   initalOutbound   )
         console.log(sender.tab ?
                     "from a content script:" + sender.tab.url :
                     "from the extension");
@@ -38,7 +39,7 @@ function initalOutbound(request, sender, sendResponse) {
     // content11.value =  "allow-insecure-requests"
     // element11.setAttributeNode(   content11   )
     debugger
-    new Promise((resolve,reject)=>{
+    // new Promise((resolve,reject)=>{
         preFillForm({
             // allTags : [document.querySelectorAll("body *")[129],document.querySelectorAll("body *")[135],document.querySelectorAll("body *")[140],document.querySelectorAll("body *")[147]],
             allTags:document.querySelectorAll("body *:not(script)"), // bug it just grabs the whole query
@@ -52,10 +53,10 @@ function initalOutbound(request, sender, sendResponse) {
             look:{ 'innerHTML':null,'innerText':null,'textContent':null},
             endpointSendingFn: sendResponse
         })
-        resolve()
-    }).then(()=>{
-        sendResponse({complete:'I ran the test look at your plotly extension for the results'})
-    })
+        // resolve()
+    // }).then(()=>{
+    //     sendResponse({complete:'I ran the test look at your plotly extension for the results'})
+    // })
         //   sendResponse({farewell: document.querySelectorAll("body *:not(script)")});
       }
 
