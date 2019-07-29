@@ -82,12 +82,24 @@ chrome.runtime.onInstalled.addListener(function() {
                                         `
                                             DROP TABLE IF EXISTS  interrogation_PLOTLY;
                                             CREATE TABLE interrogation_PLOTLY (
-                                                company_NAME                varchar(5000),
-                                                phone_NUMBER                varchar (500),
-                                                email                       varchar (200),
-                                                date_OF_VISIT               timestamp,
-                                                applied                     varchar(100) -- really should be a yes or no
-
+                                                element                     int,
+                                                element_VALUEPHRASE         int,
+                                                element_SUSPECT             int,
+                                                element_TAGNAME             int,
+                                                element_HIDDEN              int,
+                                                element_CLASSNAME           int,
+                                                element_ID                  int,
+                                                parents                     int,
+                                                parents_EXIST               int,
+                                                parents_TAGNAME             int,
+                                                parents_CLASSNAME           int,
+                                                parents_ID                  int,
+                                                siblings                    int,
+                                                siblings_TAGNAME            int,
+                                                children                    int,
+                                                children_CLASSNAME          int,
+                                                children_ID                 int
+                            
                                             );
                                         `}),
                                         globalThen:function(){
