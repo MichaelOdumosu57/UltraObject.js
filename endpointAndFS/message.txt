@@ -1,0 +1,1 @@
+saw our debugger object pop up in the right place in the interrogation

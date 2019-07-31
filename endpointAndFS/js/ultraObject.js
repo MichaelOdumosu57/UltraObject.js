@@ -3201,9 +3201,6 @@
                             .care: an itO if multiple objects are available if no is at the index, the pointValue is left alone, if its undeinfed all are considered
                     */
                     
-                    
-                    
-                    
                     /*adding the first qC along with an abelast*/ //{
                     var iQC_0_i = ultraObject.scope.add(   {value:ultraObject.qC.add(   {value:ultraObject.iterableObject()}   )}   )
                     ultraObject.qC.abelast.add(   {value:ultraObject.scope[iQC_0_i]}   )
@@ -3262,6 +3259,16 @@
                         ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn = ultraObject.iterableObject()
                     // } /**/
                     
+                    /*setting up the debugging object for the developer*/ //{
+                        if(   dev_obj.debug === 'true'   ){
+                            
+                            
+                            ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB = ultraObject.iterableObject()
+                            
+                            
+                        }
+                     // } /**/
+                    
                     // debugger
                     /*beginning interrogation*/ //{
                     var iFL_2_i = {
@@ -3270,8 +3277,18 @@
                         fn:function(   dev_obj   ){
                             /*looking at the interrogation facts for each proof object*/
                             
-                            /* grabbing the proofObject*/ // {
-                            ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject = ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i]
+                                /* grabbing the proofObject*/ // {
+                                ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject = ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i]
+                                // } /**/
+                        
+                            /* debugging*/ // {
+                            if(   dev_obj.debug === 'true'   ){
+                                
+                                
+                                ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB[   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0]   ] = ultraObject.iterableObject()
+                                debugger
+                                
+                            }
                             // } /**/
                             
                             console.group(   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0] +' proofObject'   )
@@ -3280,7 +3297,7 @@
                             console.groupEnd()
                             /**/
                         },
-                        args:{}
+                        args:{debug:dev_obj.debug}
                     }
                     var iFL_3_i = {
                         forLoop_0_i:0,
@@ -3339,6 +3356,13 @@
                                             
                                             
                                             ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].pointValue += 1
+                                            
+                                            
+                                            if(   dev_obj.debug === 'true'   ){
+                                                
+                                                
+                                                
+                                            }
                                          
                                                 
                                         }
@@ -3614,7 +3638,7 @@
                             }
                             // } /**/
                         },
-                        args:undefined
+                        args:{debug:dev_obj.debug}
                     }
                     
                     /* grabbing developer args for partialMatch */ // {
@@ -4431,11 +4455,11 @@
                                 /*debug*/
                                 
                                 function debug_0_i(response,sender,sendResponse){
-                                            console.log(   response   )
-                                            debugger
-                                            ultraObject.XHR[   ultraObject.scope[pFFXHR_0_i]   ].sending.response = response
-                                            chrome.runtime.onMessage.removeListener(   debug_0_i   )
-                                        }
+                                    console.log(   response   )
+                                    debugger
+                                    ultraObject.XHR[   ultraObject.scope[pFFXHR_0_i]   ].sending.response = response
+                                    chrome.runtime.onMessage.removeListener(   debug_0_i   )
+                                }
                                 ultraObject.endpoint({
                                     instruct:'chromeExtensionOneTime',
                                     incomingFn:function(   dev_obj   ){
@@ -4532,7 +4556,7 @@
                                                                     result:'a'
                                                                 })
                                                                 //this represents the digits of the NS,which are apparently the same that represents different items in the list however only one in this case should receive the element value here
-                                                                console.log(   'our suspects',ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]][   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].passOn.proofObject[0]   ].suspects  )
+                                                                console.log(   'our suspects',ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]][   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].passOn.proofObject[0]   ].suspects   )
                                                                 
                                                                 
                                                             }
@@ -4541,7 +4565,7 @@
                                                         },
                                                         'tagName':  {
                                                                         ultraObject:{
-                                                                               tagOptions:ultraObject.misc[   ultraObject.scope[pFFMisc_1_i]]
+                                                                            tagOptions:ultraObject.misc[   ultraObject.scope[pFFMisc_1_i]]
                                                                         }
                                                                     },
                                                         'hidden':{},
@@ -4700,7 +4724,7 @@
                                         console.log(  'what is the result', ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword  )
                                         ultraObject.objInvolved({
                                             0:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.value,
-                                            1:ultraObject.misc[ultraObject.scope[pFFList_0_i]][pFFFL_0_i.forLoop_0_i][1]
+                                            1:ultraObject.misc[ultraObject.scope[pFFList_0_i]][pFFFL_0_i.forLoop_0_i][1] // i probably put it somewhere else
                                         })
                                         // }
                                         console.groupEnd()
@@ -4712,11 +4736,16 @@
                                 },500)
                                 // throw('e')
                                 return 'premature'
+                                // just like when dealing with fs API, setInterval is a nasty little promise, id use wait but idk when the data comes from the background script
                                 /**/
 
                             
                         },
-                        args:{endpointSendingFn:dev_obj.endpointSendingFn}
+                        args:{
+                            /*debug*/
+                            endpointSendingFn:dev_obj.endpointSendingFn
+                            /**/
+                        }
                     }
                     ultraObject.forLoop(   pFFFL_0_i   )
                     // ultraObject.selectTags.minus(   {index:ultraObject.scope[pFFST_0_i]}   )

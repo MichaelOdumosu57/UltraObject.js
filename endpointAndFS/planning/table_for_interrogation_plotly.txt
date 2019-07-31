@@ -3,8 +3,6 @@ so each row will contain a column
                 DROP TABLE IF EXISTS  interrogation_PLOTLY;
                 CREATE TABLE interrogation_PLOTLY (
                     element                     int,
-                    element_VALUEPHRASE         int,
-                    element_SUSPECT             int,
                     element_TAGNAME             int,
                     element_HIDDEN              int,
                     element_CLASSNAME           int,
