@@ -1,1 +1,1 @@
-saw our debugger object pop up in the right place in the interrogation
+update interrogation so now debuggerDB can provide proper values for the background script to end up in the backend
