@@ -3264,6 +3264,7 @@
                             
                             
                             ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB = ultraObject.iterableObject()
+                            ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB.add({value:dev_obj.debug})
                             
                             
                         }
@@ -3285,7 +3286,7 @@
                             if(   dev_obj.debug === 'true'   ){
                                 
                                 
-                                ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB[   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0]   ] = ultraObject.iterableObject()
+                                ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB[   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0]   ] = {}
                                 
                                 
                             }
@@ -3294,7 +3295,17 @@
                             console.group(   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0] +' proofObject'   )
                                 iFL_3_i.forLoopLength = ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0]   ].length
                                 ultraObject.forLoop(   iFL_3_i   )
-                                debugger
+                                /* debugging*/ // {
+                                if(   dev_obj.debug === 'true'   ){
+                                    
+                                    
+                                    ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB[   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0]   ] = ultraObject.iterify({
+                                                                        iterify:ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB[   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0]   ]
+                                                                    })
+                                    
+                                    
+                                }
+                                // } /**/
                             console.groupEnd()
                             /**/
                         },
@@ -3368,7 +3379,7 @@
                                             ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].pointValue += 1
                                             
                                             
-                                            if(   dev_obj.debug === 'true'   ){
+                                            if(   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB[0] === 'true'   ){
                                                 
                                                 
                                                  ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB[   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][0]   ] += 1
@@ -3419,6 +3430,15 @@
                                                         
                                                         
                                                         ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].pointValue += 1
+                                                        
+                                                                    
+                                                        if(   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB[0] === 'true'   ){
+                                                            
+                                                            
+                                                             ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB[   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][0]   ] += 1
+                                                            
+                                                            
+                                                        }
                                                      
                                                             
                                                     }
@@ -3451,6 +3471,15 @@
                                         
                                         
                                         ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].pointValue += 1
+                                        
+                                        
+                                        if(   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB[0] === 'true'   ){
+                                            
+                                            
+                                             ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB[   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][0]   ] += 1
+                                            
+                                            
+                                        }
                                         
                                         
                                     }
@@ -3504,7 +3533,16 @@
                                                     ultraObject.nE.abelast.minus(   {index:ultraObject.nE.abelast.length-1}   )
                                                     ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].pointValue  += 1
                                                     
-                                                    
+                                                            
+                                                    if(   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB[0] === 'true'   ){
+                                                        
+                                                        
+                                                         ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB[   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][0]   ] += 1
+                                                        
+                                                        
+                                                    }
+                                                            
+                                                                                                        
                                                 }
                                                 
                                                 
@@ -3586,6 +3624,15 @@
                                                     ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].pointValue  += 1
                                                     
                                                     
+                                                    if(   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB[0] === 'true'   ){
+                                                        
+                                                        
+                                                         ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB[   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][0]   ] += 1
+                                                        
+                                                        
+                                                    }
+                                                    
+                                                    
                                                 }
                                                 
                                                 
@@ -3626,6 +3673,15 @@
                                             
                                         
                                             ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].pointValue += 1
+                                            
+                                            
+                                            if(   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB[0] === 'true'   ){
+                                                
+                                                
+                                                 ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB[   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][0]   ] += 1
+                                                
+                                                
+                                            }
                                             
                                             
                                         }
@@ -3710,6 +3766,15 @@
                                                 ultraObject.nE.minus(   {index:ultraObject.nE.length-1}   )
                                                 ultraObject.nE.abelast.minus(   {index:ultraObject.nE.abelast.length-1}   )
                                                 ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].pointValue  += 1
+                                                
+
+                                                if(   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB[0] === 'true'   ){
+                                                    
+                                                    
+                                                     ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB[   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][0]   ] += 1
+                                                    
+                                                    
+                                                }
                                                 
                                                 
                                             }
@@ -3799,6 +3864,15 @@
                                             ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].pointValue  += 1
                                             
                                             
+                                            if(   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB[0] === 'true'   ){
+                                                
+                                                
+                                                 ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB[   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][0]   ] += 1
+                                                
+                                                
+                                            }
+                                            
+                                            
                                         }
                                         
                                         
@@ -3833,6 +3907,15 @@
                                 
                                 ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].pointValue += 1
                                 
+                                
+                                if(   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB[0] === 'true'   ){
+                                    
+                                    
+                                     ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB[   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][0]   ] += 1
+                                    
+                                    
+                                }
+                    
                                 
                             }
                             
@@ -4468,7 +4551,6 @@
                                 
                                 function debug_0_i(response,sender,sendResponse){
                                     console.log(   response   )
-                                    debugger
                                     ultraObject.XHR[   ultraObject.scope[pFFXHR_0_i]   ].sending.response = response
                                     chrome.runtime.onMessage.removeListener(   debug_0_i   )
                                 }
@@ -4713,6 +4795,8 @@
                                             pointValue:'v1',
                                             debug:'true'
                                         })
+                                        debugger
+                                        // at this point something most likely needs to get returned
                                         ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].pointValue = ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].pointValue // used to deterime if valuePhrasre belongs in the elements value
                                         console.log(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].pointValue   )
                                         ultraObject.selectTags.minus(   {index:ultraObject.scope[pFFST_1_i]}   )
@@ -4730,8 +4814,10 @@
                                             index:pFFST_3_i,
                                             messy:'true'
                                         })
+                                        /* debug */
                                         clearInterval(   setInterval_0_i   )
                                         delete ultraObject.XHR[   ultraObject.scope[pFFXHR_0_i]   ].sending.response
+                                        /**/
                                         // throw('e')
                                         console.log(  'what is the result', ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword  )
                                         ultraObject.objInvolved({
