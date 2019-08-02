@@ -3288,7 +3288,10 @@
                                 
                                 ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB.add({
                                     value:ultraObject.iterify({
-                                        iterify:[ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0],{}]
+                                        iterify:[
+                                            ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0],
+                                            ultraObject.iterableObject()
+                                        ]
                                     })
                                     
                                 })
@@ -3296,7 +3299,7 @@
                                 
                                 
                             }
-                            debugger
+                            
                             // } /**/
                             
                             console.group(   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0] +' proofObject'   )
@@ -3319,8 +3322,18 @@
                             if(   dev_obj.debug === 'true'   ){
                                 
                                 
-                                ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB[   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][0]   ] = 0
-                            
+                                ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB[   iFL_2_i.forLoop_0_i + 1][1].add({
+                                    value:ultraObject.iterify({
+                                        iterify:[
+                                            ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][0],
+                                            0
+                                        ]
+                                    })
+                                    
+                                })
+                                debugger
+                                
+                                
                             }
                             
                             /*use developer given*/ //{
@@ -3378,7 +3391,7 @@
                                             if(   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB[0] === 'true'   ){
                                                 
                                                 
-                                                 ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB[   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][0]   ] += 1
+                                                 ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB[   iFL_2_i.forLoop_0_i + 1][1][   iFL_3_i.forLoop_0_i   ][1] += 1
                                                 
                                                 
                                             }
@@ -3431,7 +3444,7 @@
                                                         if(   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB[0] === 'true'   ){
                                                             
                                                             
-                                                             ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB[   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][0]   ] += 1
+                                                             ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB[   iFL_2_i.forLoop_0_i + 1][1][   iFL_3_i.forLoop_0_i   ][1] += 1
                                                             
                                                             
                                                         }
@@ -3472,7 +3485,7 @@
                                         if(   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB[0] === 'true'   ){
                                             
                                             
-                                             ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB[   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][0]   ] += 1
+                                             ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB[   iFL_2_i.forLoop_0_i + 1][1][   iFL_3_i.forLoop_0_i   ][1] += 1
                                             
                                             
                                         }
@@ -3533,7 +3546,7 @@
                                                     if(   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB[0] === 'true'   ){
                                                         
                                                         
-                                                         ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB[   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][0]   ] += 1
+                                                         ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB[   iFL_2_i.forLoop_0_i + 1][1][   iFL_3_i.forLoop_0_i   ][1] += 1
                                                         
                                                         
                                                     }
@@ -3623,7 +3636,7 @@
                                                     if(   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB[0] === 'true'   ){
                                                         
                                                         
-                                                         ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB[   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][0]   ] += 1
+                                                         ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB[   iFL_2_i.forLoop_0_i + 1][1][   iFL_3_i.forLoop_0_i   ][1] += 1
                                                         
                                                         
                                                     }
@@ -3674,7 +3687,7 @@
                                             if(   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB[0] === 'true'   ){
                                                 
                                                 
-                                                 ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB[   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][0]   ] += 1
+                                                 ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB[   iFL_2_i.forLoop_0_i + 1][1][   iFL_3_i.forLoop_0_i   ][1] += 1
                                                 
                                                 
                                             }
@@ -3767,7 +3780,7 @@
                                                 if(   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB[0] === 'true'   ){
                                                     
                                                     
-                                                     ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB[   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][0]   ] += 1
+                                                     ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB[   iFL_2_i.forLoop_0_i + 1][1][   iFL_3_i.forLoop_0_i   ][1] += 1
                                                     
                                                     
                                                 }
@@ -3863,7 +3876,7 @@
                                             if(   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB[0] === 'true'   ){
                                                 
                                                 
-                                                 ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB[   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][0]   ] += 1
+                                                 ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB[   iFL_2_i.forLoop_0_i + 1][1][   iFL_3_i.forLoop_0_i   ][1] += 1
                                                 
                                                 
                                             }
@@ -3907,7 +3920,7 @@
                                 if(   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB[0] === 'true'   ){
                                     
                                     
-                                     ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB[   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].proof[iFL_2_i.forLoop_0_i][0]   ][   iFL_3_i.forLoop_0_i   ][0]   ] += 1
+                                     ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB[   iFL_2_i.forLoop_0_i + 1][1][   iFL_3_i.forLoop_0_i   ][1] += 1
                                     
                                     
                                 }
@@ -4564,6 +4577,7 @@
                                 var pFFXHR_0_i = ultraObject.scope.add(   {value:ultraObject.XHR.abelast[ultraObject.XHR.abelast.length -1]}   )
                                 ultraObject.XHR[   ultraObject.scope[pFFXHR_0_i]   ].incoming.fn()
                                 ultraObject.XHR[   ultraObject.scope[pFFXHR_0_i]   ].sending.fn(   ultraObject.XHR[   ultraObject.scope[pFFXHR_0_i]   ].sending.body   )
+                                ultraObject.XHR[   ultraObject.scope[pFFXHR_0_i]   ].setIntervalStop = 0
                                 /**/
                                 
                                 
@@ -4572,9 +4586,10 @@
                                 var setInterval_0_i = setInterval(function(){
                                     
                                     console.log('this is the response',ultraObject.XHR[   ultraObject.scope[pFFXHR_0_i]   ].sending.response   )
-                                    if(   ultraObject.XHR[   ultraObject.scope[pFFXHR_0_i]   ].sending.response !== undefined   ){
+                                    if(   ultraObject.XHR[   ultraObject.scope[pFFXHR_0_i]   ].sending.response !== undefined && ultraObject.XHR[   ultraObject.scope[pFFXHR_0_i]   ].setIntervalStop === 0  ){
                                 /**/
-                                        
+                                
+                                        ultraObject.XHR[   ultraObject.scope[pFFXHR_0_i]   ].setIntervalStop = 1
                                         console.log('table is ready for interrogation')
                                         ultraObject.interrogation({
                                             proof:[
