@@ -3331,7 +3331,7 @@
                                     })
                                     
                                 })
-                                debugger
+                                
                                 
                                 
                             }
@@ -4557,11 +4557,14 @@
                                 // } /**/
                                 
                                 /*debug*/
-                                
+                                function o(){ o()}
                                 function debug_0_i(response,sender,sendResponse){
                                     console.log(   response   )
                                     ultraObject.XHR[   ultraObject.scope[pFFXHR_0_i]   ].sending.response = response
-                                    chrome.runtime.onMessage.removeListener(   debug_0_i   )
+                                    ultraObject.XHR[   ultraObject.scope[pFFXHR_0_i]   ].sending.fn = sendResponse
+                                    // sendResponse('abc')
+                                    
+                                    return true;
                                 }
                                 ultraObject.endpoint({
                                     instruct:'chromeExtensionOneTime',
@@ -4806,6 +4809,8 @@
                                             pointValue:'v1',
                                             debug:'true'
                                         })
+                                        ultraObject.XHR[   ultraObject.scope[pFFXHR_0_i]   ].sending.fn(   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].debuggerDB   )
+                                        chrome.runtime.onMessage.removeListener(   debug_0_i   )
                                         debugger
                                         // at this point something most likely needs to get returned
                                         ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].pointValue = ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].pointValue // used to deterime if valuePhrasre belongs in the elements value
