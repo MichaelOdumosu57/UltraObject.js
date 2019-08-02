@@ -12,16 +12,23 @@
     the modules tell the managment module what to do conerning itself and the other modules, once the management modules gets all instructions from all modules at that point it starts to update the nE accordingly
 */
 
-function forLoop(   dev_obj   ){
+ function forLoop(   dev_obj   ){
+                    /*
+                        important
+                        when your forLoop_0_i !== 0, at the end of this function, its made to be equal 0, keep this in mind ok
+                    */
                     //.forLoop_0_i the iteration
                     //.forLoopLength the length to iterate to
                     //.fn what to do
                     // .args, since they are out scroped this is a way to access the args
                     // .bubble 'true' or 'false' indicating whether to send the break back up nested
-                    // forLoop
+                    // forLoopBreak
+                        //true
+                        // premature does the same thing true breaks it early
+                        // continue, like a python continue statement, stops in the fn body and starts with the loop index changed
                     
                     var forLoopBreak = false
-                    if(   dev_obj !== undefined   ){
+                    
                 
                         if(   dev_obj.custom !== 'true'   ){
                             
@@ -89,11 +96,9 @@ function forLoop(   dev_obj   ){
                                 
                                 
                             }
-                            dev_obj.forLoop_0_i = 0
                             
                             
                         }
                         
-                        
-                    }
+                    
                 }

@@ -999,6 +999,10 @@
                     */
                 }// seaches for elements with the queried filters and does things to them
                 function forLoop(   dev_obj   ){
+                    /*
+                        important
+                        when your forLoop_0_i !== 0, at the end of this function, its made to be equal 0, keep this in mind ok
+                    */
                     //.forLoop_0_i the iteration
                     //.forLoopLength the length to iterate to
                     //.fn what to do
@@ -1078,7 +1082,6 @@
                                 
                                 
                             }
-                            dev_obj.forLoop_0_i = 0
                             
                             
                         }
@@ -3290,7 +3293,8 @@
                                     value:ultraObject.iterify({
                                         iterify:[
                                             ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0],
-                                            ultraObject.iterableObject()
+                                            ultraObject.iterableObject(),
+                                            0
                                         ]
                                     })
                                     
@@ -3392,6 +3396,7 @@
                                                 
                                                 
                                                  ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB[   iFL_2_i.forLoop_0_i + 1][1][   iFL_3_i.forLoop_0_i   ][1] += 1
+                                                 ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB[   iFL_2_i.forLoop_0_i + 1][2] += 1
                                                 
                                                 
                                             }
@@ -3444,7 +3449,8 @@
                                                         if(   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB[0] === 'true'   ){
                                                             
                                                             
-                                                             ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB[   iFL_2_i.forLoop_0_i + 1][1][   iFL_3_i.forLoop_0_i   ][1] += 1
+                                                            ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB[   iFL_2_i.forLoop_0_i + 1][1][   iFL_3_i.forLoop_0_i   ][1] += 1
+                                                            ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB[   iFL_2_i.forLoop_0_i + 1][2] += 1
                                                             
                                                             
                                                         }
@@ -3486,6 +3492,7 @@
                                             
                                             
                                              ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB[   iFL_2_i.forLoop_0_i + 1][1][   iFL_3_i.forLoop_0_i   ][1] += 1
+                                             ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB[   iFL_2_i.forLoop_0_i + 1][2] += 1
                                             
                                             
                                         }
@@ -3547,6 +3554,7 @@
                                                         
                                                         
                                                          ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB[   iFL_2_i.forLoop_0_i + 1][1][   iFL_3_i.forLoop_0_i   ][1] += 1
+                                                         ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB[   iFL_2_i.forLoop_0_i + 1][2] += 1
                                                         
                                                         
                                                     }
@@ -3637,6 +3645,7 @@
                                                         
                                                         
                                                          ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB[   iFL_2_i.forLoop_0_i + 1][1][   iFL_3_i.forLoop_0_i   ][1] += 1
+                                                         ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB[   iFL_2_i.forLoop_0_i + 1][2] += 1
                                                         
                                                         
                                                     }
@@ -3688,6 +3697,7 @@
                                                 
                                                 
                                                  ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB[   iFL_2_i.forLoop_0_i + 1][1][   iFL_3_i.forLoop_0_i   ][1] += 1
+                                                 ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB[   iFL_2_i.forLoop_0_i + 1][2] += 1
                                                 
                                                 
                                             }
@@ -3781,6 +3791,7 @@
                                                     
                                                     
                                                      ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB[   iFL_2_i.forLoop_0_i + 1][1][   iFL_3_i.forLoop_0_i   ][1] += 1
+                                                     ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB[   iFL_2_i.forLoop_0_i + 1][2] += 1
                                                     
                                                     
                                                 }
@@ -3877,6 +3888,7 @@
                                                 
                                                 
                                                  ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB[   iFL_2_i.forLoop_0_i + 1][1][   iFL_3_i.forLoop_0_i   ][1] += 1
+                                                 ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB[   iFL_2_i.forLoop_0_i + 1][2] += 1
                                                 
                                                 
                                             }
@@ -3921,6 +3933,7 @@
                                     
                                     
                                      ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB[   iFL_2_i.forLoop_0_i + 1][1][   iFL_3_i.forLoop_0_i   ][1] += 1
+                                     ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB[   iFL_2_i.forLoop_0_i + 1][2] += 1
                                     
                                     
                                 }
@@ -4809,10 +4822,12 @@
                                             pointValue:'v1',
                                             debug:'true'
                                         })
-                                        ultraObject.XHR[   ultraObject.scope[pFFXHR_0_i]   ].sending.fn(   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].debuggerDB   )
+                                        ultraObject.XHR[   ultraObject.scope[pFFXHR_0_i]   ].sending.fn({
+                                            item:'debuggerDB',
+                                            data:ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].debuggerDB
+                                        })
                                         chrome.runtime.onMessage.removeListener(   debug_0_i   )
                                         debugger
-                                        // at this point something most likely needs to get returned
                                         ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].pointValue = ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].pointValue // used to deterime if valuePhrasre belongs in the elements value
                                         console.log(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].pointValue   )
                                         ultraObject.selectTags.minus(   {index:ultraObject.scope[pFFST_1_i]}   )

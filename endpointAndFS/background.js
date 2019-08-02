@@ -1,5 +1,10 @@
 
-var XHR_0_i // for when extension initiates simple one time requests
+var bkgd_XHR_0_i  // for when extension initiates simple one time requests
+// from the interrogation module
+var bkgd_FL_0_i  // for pointValue data on your proofObject
+var bkgd_FL_1_i  // for pointValue data from your factModule both calcuating how many points needed
+
+
 
 function globalPromise(dev_obj){
     new Promise(dev_obj.globalResolve).then(dev_obj.globalThen)
@@ -7,24 +12,6 @@ function globalPromise(dev_obj){
 var yourPort;
 
 
-chrome.runtime.onConnect.addListener(function(port) {
-    
-    // console.log(port.name === "DBready");
-    // yourPort = port
-    // port.onMessage.addListener(function(msg) {
-    
-    //   console.log(msg)
-    //   port.disconnect()
-    //   debugger
-      
-    // });
-    
-    // /*  Port lifetime */
-    // port.onDisconnect.addListener(function(event) {
-    //     console.log('disconecct',event)
-    // });
-    /**/
-});
 
 
 chrome.runtime.onInstalled.addListener(function() {
@@ -71,6 +58,7 @@ chrome.runtime.onInstalled.addListener(function() {
                     chrome.tabs.sendMessage(   neededTab.id,    dev_obj.sendingBody, function(response) {
                         console.log(response);
                         
+                        
                         if(   dev_obj.resolve !== undefined   ){
                             
                             
@@ -78,30 +66,34 @@ chrome.runtime.onInstalled.addListener(function() {
                                 
                                 
                                     globalPromise({
-                                        globalResolve:askDB({querySQL:
-                                        `
-                                            DROP TABLE IF EXISTS  interrogation_PLOTLY;
-                                            CREATE TABLE interrogation_PLOTLY (
-                                                element                     int,
-                                                element_VALUEPHRASE         int,
-                                                element_SUSPECT             int,
-                                                element_TAGNAME             int,
-                                                element_HIDDEN              int,
-                                                element_CLASSNAME           int,
-                                                element_ID                  int,
-                                                parents                     int,
-                                                parents_EXIST               int,
-                                                parents_TAGNAME             int,
-                                                parents_CLASSNAME           int,
-                                                parents_ID                  int,
-                                                siblings                    int,
-                                                siblings_TAGNAME            int,
-                                                children                    int,
-                                                children_CLASSNAME          int,
-                                                children_ID                 int
-                            
-                                            );
-                                        `}),
+                                        globalResolve:askDB({
+                                            querySQL:
+                                            `
+                                                DROP TABLE IF EXISTS  interrogation_PLOTLY;
+                                                CREATE TABLE interrogation_PLOTLY (
+                                                    element                     int,
+                                                    element_VALUEPHRASE         int,
+                                                    element_SUSPECT             int,
+                                                    element_TAGNAME             int,
+                                                    element_HIDDEN              int,
+                                                    element_CLASSNAME           int,
+                                                    element_ID                  int,
+                                                    parents                     int,
+                                                    parents_EXIST               int,
+                                                    parents_TAGNAME             int,
+                                                    parents_CLASSNAME           int,
+                                                    parents_ID                  int,
+                                                    siblings                    int,
+                                                    siblings_TAGNAME            int,
+                                                    children                    int,
+                                                    children_CLASSNAME          int,
+                                                    children_ID                 int
+                                
+                                                );
+                                            `,
+                                            target:"http://24.189.66.225/database/query",
+                                            protocol:"POST"
+                                        }),
                                         globalThen:function(){
                                             dev_obj.resolve()
                                         }
@@ -117,13 +109,128 @@ chrome.runtime.onInstalled.addListener(function() {
                         }
                         
                         
+                        // else if(   dev_obj.resolve === undefined   ){
+                            
+                            
+                            if(   response.item === 'debuggerDB'   ){
+                            
+
+                                ultraObject.exp.debuggerDB = {}
+                                ultraObject.exp.debuggerDB.data = response.data
+                                ultraObject.exp.debuggerDB.stringDB = {} // there are ticks here its a string
+                                ultraObject.exp.debuggerDB.stringDB.args = ``
+                                ultraObject.exp.debuggerDB.stringDB.values = ``
+                                ultraObject.exp.debuggerDB.stringDB.total = `INSERT INTO interrogation_PLOTLY (`
+                                ultraObject.exp.debuggerDB.stringDB.delimiter = ',\n'
+                                bkgd_FL_0_i = {
+                                    forLoop_0_i:1,
+                                    forLoopLength:ultraObject.exp.debuggerDB.data.length,
+                                    fn:function(   dev_obj   ){
+                                       bkgd_FL_1_i.forLoopLength = ultraObject.exp.debuggerDB.data[    bkgd_FL_0_i.forLoop_0_i   ][1].length
+                                       ultraObject.exp.debuggerDB.stringDB.args  += ultraObject.exp.debuggerDB.data[   bkgd_FL_0_i.forLoop_0_i   ][0] + ultraObject.exp.debuggerDB.stringDB.delimiter
+                                       ultraObject.exp.debuggerDB.stringDB.values += ultraObject.exp.debuggerDB.data[   bkgd_FL_0_i.forLoop_0_i   ][2] + ultraObject.exp.debuggerDB.stringDB.delimiter
+                                       
+                                        
+                                        if(   bkgd_FL_0_i.forLoop_0_i + 1 ===  bkgd_FL_0_i.forLoopLength   ){
+                                        
+                                            
+                                            bkgd_FL_1_i.args.end = 'true'
+                                            
+                                            
+                                        }
+                                        
+                                        
+                                        ultraObject.forLoop(   bkgd_FL_1_i    )
+                                    },
+                                    args:dev_obj //{}
+                                }
+                                bkgd_FL_1_i = {
+                                    forLoop_0_i:0,
+                                    fn:function(   dev_obj   ){
+                                        ultraObject.exp.debuggerDB.stringDB.args += ultraObject.exp.debuggerDB.data[   bkgd_FL_0_i.forLoop_0_i   ][0] + "_" + ultraObject.exp.debuggerDB.data[    bkgd_FL_0_i.forLoop_0_i   ][1][    bkgd_FL_1_i.forLoop_0_i   ][0].toUpperCase() + ultraObject.exp.debuggerDB.stringDB.delimiter
+                                        ultraObject.exp.debuggerDB.stringDB.values += ultraObject.exp.debuggerDB.data[    bkgd_FL_0_i.forLoop_0_i   ][1][    bkgd_FL_1_i.forLoop_0_i   ][1].toString() + ultraObject.exp.debuggerDB.stringDB.delimiter
+                                        
+                                        
+                                        if(   bkgd_FL_1_i.args.end === 'true' && bkgd_FL_1_i.forLoop_0_i + 1 ===  bkgd_FL_1_i.forLoopLength   ){
+                                            
+                                            
+                                            ultraObject.exp.debuggerDB.stringDB.args = ultraObject.exp.debuggerDB.stringDB.args.slice(0,-2)
+                                            ultraObject.exp.debuggerDB.stringDB.values = ultraObject.exp.debuggerDB.stringDB.values.slice(0,-2)
+                                            
+                                            
+                                        }
+                                        
+                                        
+                                    },
+                                    args:dev_obj //{}
+                                }
+                                ultraObject.forLoop(   bkgd_FL_0_i    )
+                                debugger
+                                ultraObject.exp.debuggerDB.stringDB.total  += `INSERT INTO interrogation_PLOTLY (
+                                                                                    company_NAME,
+                                                                                    phone_NUMBER,
+                                                                                    -- email,
+                                                                                    date_OF_VISIT,
+                                                                                    applied,
+                                                                                    -- person,
+                                                                                    address,
+                                                                                    -- fax,
+                                                                                    -- response,
+                                                                                    follow_UP,
+                                                                                    website,
+                                                                                    website_INSTRUCTIONS
+                                                                                    -- add_HELPER
+                                                                                    -- appointment,
+                                                                                    -- appointment_INSTRUCTIONS
+                                                                                )
+                                                                        VALUES (
+                                                                        'Isabella',
+                                                                        '212-674-6123',
+                                                                        '2019-07-17 9:31:30-04',
+                                                                        'no',-- --
+                                                                        '545 Washington Ave, Brooklyn, NY 11238',
+                                                                        0
+                                                                    ); `
+                                askDB({
+                                    querySQL:
+                                    `
+                                        
+                                        CREATE TABLE interrogation_PLOTLY (
+                                            element                     int,
+                                            element_VALUEPHRASE         int,
+                                            element_SUSPECT             int,
+                                            element_TAGNAME             int,
+                                            element_HIDDEN              int,
+                                            element_CLASSNAME           int,
+                                            element_ID                  int,
+                                            parents                     int,
+                                            parents_EXIST               int,
+                                            parents_TAGNAME             int,
+                                            parents_CLASSNAME           int,
+                                            parents_ID                  int,
+                                            siblings                    int,
+                                            siblings_TAGNAME            int,
+                                            children                    int,
+                                            children_CLASSNAME          int,
+                                            children_ID                 int
+                                        );
+                                    `,
+                                    target:"http://24.189.66.225/database/query",
+                                    protocol:"GET"
+                                })
+                                
+                                
+                            }
+                            
+                            
+                        // }
                     });
             });
         },
         sendingBody:{job:'gimme those pointValues so I can update plotlyDB'},
         sendingOrigin:'extension'
     })
-    XHR_0_i  = ultraObject.scope.add(   {value:ultraObject.XHR.abelast[ultraObject.XHR.abelast.length -1]}   )
+    bkgd_XHR_0_i   = ultraObject.scope.add(   {value:ultraObject.XHR.abelast[ultraObject.XHR.abelast.length -1]}   )
 });
   
   
@@ -134,8 +241,8 @@ function askDB(   dev_obj   ){
             instruct:'XMLHttpRequest',
             eventName:'load',
             eventHandler:()=>{
-                var XHR_2_i =  ultraObject.scope.add(   {value:ultraObject.XHR.abelast[ultraObject.XHR.abelast.length -1]}   )
-                console.log(ultraObject.XHR[   ultraObject.scope[XHR_2_i]   ][0].response)
+                var bkgd_XHR_2_i  =  ultraObject.scope.add(   {value:ultraObject.XHR.abelast[ultraObject.XHR.abelast.length -1]}   )
+                console.log(ultraObject.XHR[   ultraObject.scope[bkgd_XHR_2_i ]   ][0].response)
                 // ultraObject.XHR.minus({index:ultraObject.XHR.length - 1})
                 // ultraObject.XHR.abelast.minus({index:ultraObject.XHR.abelast.length - 1})
                 
@@ -143,15 +250,15 @@ function askDB(   dev_obj   ){
                 if(   resolve !== undefined   ){
                     
                     
-                    resolve(   ultraObject.XHR[   ultraObject.scope[XHR_2_i]   ][0].response   )
+                    resolve(   ultraObject.XHR[   ultraObject.scope[bkgd_XHR_2_i ]   ][0].response   )
                     
                     
                 }
                 
                 
             },
-            protocol:"POST",
-            target:"http://24.189.66.225/database/query",
+            protocol:dev_obj.protocol,
+            target:dev_obj.target,
             asyncBool:true,
             body:dev_obj.querySQL
         })
@@ -162,7 +269,7 @@ function askDB(   dev_obj   ){
 
 function communicateDB(   dev_obj   ){
     return function(resolve,reject){
-        ultraObject.XHR[   ultraObject.scope[XHR_0_i]   ].sending.fn({
+        ultraObject.XHR[   ultraObject.scope[bkgd_XHR_0_i ]   ].sending.fn({
             sendingBody:dev_obj.message,
             matchURL:dev_obj.URL,
             resolve:resolve
@@ -219,10 +326,10 @@ chrome.runtime.onInstalled.addListener(function() {
                             instruct:'XMLHttpRequest',
                             eventName:'load',
                             eventHandler:()=>{
-                                var XHR_1_i  = ultraObject.scope.add(   {value:ultraObject.XHR.abelast[ultraObject.XHR.abelast.length -1]}   )
-                                console.log(   ultraObject.XHR[   ultraObject.scope[XHR_1_i]   ][0].response   )
-                                ultraObject.XHR.minus(   {index:ultraObject.scope[XHR_1_i]}   )
-                                ultraObject.XHR.abelast.minus(   {index:XHR_1_i}   )
+                                var bkgd_XHR_1_i   = ultraObject.scope.add(   {value:ultraObject.XHR.abelast[ultraObject.XHR.abelast.length -1]}   )
+                                console.log(   ultraObject.XHR[   ultraObject.scope[bkgd_XHR_1_i ]   ][0].response   )
+                                ultraObject.XHR.minus(   {index:ultraObject.scope[bkgd_XHR_1_i ]}   )
+                                ultraObject.XHR.abelast.minus(   {index:bkgd_XHR_1_i }   )
                                 
                                 
                                 
@@ -287,7 +394,10 @@ chrome.runtime.onInstalled.addListener(function() {
                                                 
 
                                         
-                                        }, function(fileError) {throw(fileError)})
+                                        }, function(fileError) {
+                                            throw(fileError)
+                                            clearInterval(   ultraObject.exp.GSCT   )
+                                        })
                                         clearInterval(   ultraObject.exp.GSCT   )
                                         
                                         
@@ -322,7 +432,7 @@ chrome.runtime.onInstalled.addListener(function() {
     ultraObject.exp.endpointDB = function(   dev_obj   ){
         globalPromise({
             globalResolve:communicateDB({
-                message:ultraObject.XHR[   ultraObject.scope[XHR_0_i]   ].sending.body,
+                message:ultraObject.XHR[   ultraObject.scope[bkgd_XHR_0_i ]   ].sending.body,
                 URL:"https://boards.greenhouse.io/enigmaio/jobs/1056543?gh_src=ceb603551#app"
             }),
             globalThen:communicateDB({
