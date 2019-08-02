@@ -120,7 +120,7 @@ chrome.runtime.onInstalled.addListener(function() {
                                 ultraObject.exp.debuggerDB.stringDB = {} // there are ticks here its a string
                                 ultraObject.exp.debuggerDB.stringDB.args = ``
                                 ultraObject.exp.debuggerDB.stringDB.values = ``
-                                ultraObject.exp.debuggerDB.stringDB.total = `INSERT INTO interrogation_PLOTLY (`
+                                ultraObject.exp.debuggerDB.stringDB.total = `INSERT INTO interrogation_PLOTLY (\n`
                                 ultraObject.exp.debuggerDB.stringDB.delimiter = ',\n'
                                 bkgd_FL_0_i = {
                                     forLoop_0_i:1,
@@ -166,58 +166,13 @@ chrome.runtime.onInstalled.addListener(function() {
                                 }
                                 ultraObject.forLoop(   bkgd_FL_0_i    )
                                 debugger
-                                ultraObject.exp.debuggerDB.stringDB.total  += `INSERT INTO interrogation_PLOTLY (
-                                                                                    company_NAME,
-                                                                                    phone_NUMBER,
-                                                                                    -- email,
-                                                                                    date_OF_VISIT,
-                                                                                    applied,
-                                                                                    -- person,
-                                                                                    address,
-                                                                                    -- fax,
-                                                                                    -- response,
-                                                                                    follow_UP,
-                                                                                    website,
-                                                                                    website_INSTRUCTIONS
-                                                                                    -- add_HELPER
-                                                                                    -- appointment,
-                                                                                    -- appointment_INSTRUCTIONS
-                                                                                )
-                                                                        VALUES (
-                                                                        'Isabella',
-                                                                        '212-674-6123',
-                                                                        '2019-07-17 9:31:30-04',
-                                                                        'no',-- --
-                                                                        '545 Washington Ave, Brooklyn, NY 11238',
-                                                                        0
-                                                                    ); `
                                 askDB({
                                     querySQL:
-                                    `
-                                        
-                                        CREATE TABLE interrogation_PLOTLY (
-                                            element                     int,
-                                            element_VALUEPHRASE         int,
-                                            element_SUSPECT             int,
-                                            element_TAGNAME             int,
-                                            element_HIDDEN              int,
-                                            element_CLASSNAME           int,
-                                            element_ID                  int,
-                                            parents                     int,
-                                            parents_EXIST               int,
-                                            parents_TAGNAME             int,
-                                            parents_CLASSNAME           int,
-                                            parents_ID                  int,
-                                            siblings                    int,
-                                            siblings_TAGNAME            int,
-                                            children                    int,
-                                            children_CLASSNAME          int,
-                                            children_ID                 int
-                                        );
-                                    `,
+                                        ultraObject.exp.debuggerDB.stringDB.total + ultraObject.exp.debuggerDB.stringDB.args + "\n)\nVALUES(\n" + ultraObject.exp.debuggerDB.stringDB.values + "\n);"
+                                    ,
                                     target:"http://24.189.66.225/database/query",
-                                    protocol:"GET"
-                                })
+                                    protocol:"POST"
+                                })()
                                 
                                 
                             }
