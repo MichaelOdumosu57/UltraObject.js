@@ -3286,26 +3286,22 @@
                             if(   dev_obj.debug === 'true'   ){
                                 
                                 
-                                ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB[   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0]   ] = {}
+                                ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB.add({
+                                    value:ultraObject.iterify({
+                                        iterify:[ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0],{}]
+                                    })
+                                    
+                                })
+                              
                                 
                                 
                             }
+                            debugger
                             // } /**/
                             
                             console.group(   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0] +' proofObject'   )
                                 iFL_3_i.forLoopLength = ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0]   ].length
                                 ultraObject.forLoop(   iFL_3_i   )
-                                /* debugging*/ // {
-                                if(   dev_obj.debug === 'true'   ){
-                                    
-                                    
-                                    ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB[   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0]   ] = ultraObject.iterify({
-                                                                        iterify:ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].debuggerDB[   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0]   ]
-                                                                    })
-                                    
-                                    
-                                }
-                                // } /**/
                             console.groupEnd()
                             /**/
                         },

@@ -1,1 +1,1 @@
-update interrogation so now debuggerDB can provide proper values for the background script to end up in the backend
+update interrogation for debugging, I have changed where the proof objects end up in the itO
