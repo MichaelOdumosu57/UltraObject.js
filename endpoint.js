@@ -1,4 +1,8 @@
 /*
+    FIX ME
+    for the XMLHTTPRequest the dev should allow to add as many events before I fire it, your endpoint has to do more not less
+*/
+/*
     XMLHttpRequest
     // it expect an XMLHttpRequest in  index 0
 */
@@ -63,7 +67,10 @@ function endpoint(   dev_obj   ){
                             
                             ultraObject.XHR[   ultraObject.scope[ePXHR_0_i]   ].eventName = dev_obj.eventName
                             ultraObject.XHR[   ultraObject.scope[ePXHR_0_i]   ].eventHandler = dev_obj.eventHandler
+                            ultraObject.XHR[   ultraObject.scope[ePXHR_0_i]   ].errorName = dev_obj.errorName
+                            ultraObject.XHR[   ultraObject.scope[ePXHR_0_i]   ].errortHandler = dev_obj.errorHandler
                             ultraObject.XHR[   ultraObject.scope[ePXHR_0_i]   ][0].addEventListener(   ultraObject.XHR[   ultraObject.scope[ePXHR_0_i]   ].eventName,ultraObject.XHR[   ultraObject.scope[ePXHR_0_i]   ].eventHandler   )
+                            ultraObject.XHR[   ultraObject.scope[ePXHR_0_i]   ][0].addEventListener(   ultraObject.XHR[   ultraObject.scope[ePXHR_0_i]   ].errorName,ultraObject.XHR[   ultraObject.scope[ePXHR_0_i]   ].errorHandler   )
                             ultraObject.XHR[   ultraObject.scope[ePXHR_0_i]   ].protocol = dev_obj.protocol
                             ultraObject.XHR[   ultraObject.scope[ePXHR_0_i]   ].target = dev_obj.target
                             ultraObject.XHR[   ultraObject.scope[ePXHR_0_i]   ].asyncBool = dev_obj.asyncBool
@@ -82,7 +89,7 @@ function endpoint(   dev_obj   ){
                         /* chromeExtensionOneTime*/ //{
                         if(   dev_obj.instruct === "chromeExtensionOneTime"   ){
                             
-                        
+                            
                             ultraObject.XHR[   ultraObject.scope[ePXHR_0_i]   ] = ultraObject.iterableObject()
                             ultraObject.XHR[   ultraObject.scope[ePXHR_0_i]   ].incoming =   {
                                 fn:dev_obj.incomingFn,
