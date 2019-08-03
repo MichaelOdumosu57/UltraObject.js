@@ -301,7 +301,10 @@
                             
                             ultraObject.XHR[   ultraObject.scope[ePXHR_0_i]   ].eventName = dev_obj.eventName
                             ultraObject.XHR[   ultraObject.scope[ePXHR_0_i]   ].eventHandler = dev_obj.eventHandler
+                            ultraObject.XHR[   ultraObject.scope[ePXHR_0_i]   ].errorName = dev_obj.errorName
+                            ultraObject.XHR[   ultraObject.scope[ePXHR_0_i]   ].errorHandler = dev_obj.errorHandler
                             ultraObject.XHR[   ultraObject.scope[ePXHR_0_i]   ][0].addEventListener(   ultraObject.XHR[   ultraObject.scope[ePXHR_0_i]   ].eventName,ultraObject.XHR[   ultraObject.scope[ePXHR_0_i]   ].eventHandler   )
+                            ultraObject.XHR[   ultraObject.scope[ePXHR_0_i]   ][0].addEventListener(   ultraObject.XHR[   ultraObject.scope[ePXHR_0_i]   ].errorName,ultraObject.XHR[   ultraObject.scope[ePXHR_0_i]   ].errorHandler   )
                             ultraObject.XHR[   ultraObject.scope[ePXHR_0_i]   ].protocol = dev_obj.protocol
                             ultraObject.XHR[   ultraObject.scope[ePXHR_0_i]   ].target = dev_obj.target
                             ultraObject.XHR[   ultraObject.scope[ePXHR_0_i]   ].asyncBool = dev_obj.asyncBool

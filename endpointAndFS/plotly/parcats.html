@@ -28,26 +28,36 @@
 
     
         
-    var resolveDiv0 = new Promise((resolve,reject)=>{
-var gd = document.getElementById('myDiv0');
-var categoricalDimensionLabels = [
-  'body-style',
-  'drive-wheels',
-  'aspiration',
-  'symboling',
-  'num-of-doors',
-  'more-type',
-
-];
-
-Plotly.d3.csv(
-    'https://raw.githubusercontent.com/plotly/datasets/master/imports-85.csv',
-    function(carsData) {
-    // Preprocess Data
-    // var mpg = carsData.map(function(row) { return row['highway-mpg'] });
-    // var horsepower = carsData.map(function(row) { return row['horsepower'] });
-    console.log(carsData)
-    var categoricalDimensions = categoricalDimensionLabels.map(
+var resolveDiv0 = new Promise((resolve,reject)=>{
+    var gd = document.getElementById('myDiv0');
+    var categoricalDimensionLabels = [
+      'body-style',
+      'drive-wheels',
+      'aspiration',
+      'symboling',
+      'num-of-doors',
+      'more-type',
+    
+    ];
+    ultraObject.endpoint({
+        xhttp:ultraObject.iterify({iterify:[new XMLHttpRequest()]}),
+        instruct:'XMLHttpRequest',
+        eventName:'load',
+        eventHandler:()=>{
+            var parcats_XHR_2_i  =  ultraObject.scope.add(   {value:ultraObject.XHR.abelast[ultraObject.XHR.abelast.length -1]}   )
+            console.log(ultraObject.XHR[   ultraObject.scope[   parcats_XHR_2_i ]   ][0].response)
+        },
+        protocol:`POST`,
+        target:`http://24.189.66.225/database/query`,
+        asyncBool:false,
+        body:`SELECT * FROM interrogation_PLOTLY;`
+    })
+    function ignoreMe(carsData) {
+        // Preprocess Data
+        // var mpg = carsData.map(function(row) { return row['highway-mpg'] });
+        // var horsepower = carsData.map(function(row) { return row['horsepower'] });
+        console.log(carsData)
+        var categoricalDimensions = categoricalDimensionLabels.map(
       function(dimLabel) {
         // Extract column
         var values = carsData.map(function(row) {
@@ -60,15 +70,15 @@ Plotly.d3.csv(
         };
       }
     );
-
-    // Colors
-    var color = new Int8Array(carsData.length);
-    var colorscale = [[0, 'gray'], [0.33, 'gray'],
-                      [0.33, 'firebrick'], [0.66, 'firebrick'],
-                      [0.66, 'blue'], [1.0, 'blue']];
-
-    // Layout
-    var layout = {
+    
+        // Colors
+        var color = new Int8Array(carsData.length);
+        var colorscale = [[0, 'gray'], [0.33, 'gray'],
+                          [0.33, 'firebrick'], [0.66, 'firebrick'],
+                          [0.66, 'blue'], [1.0, 'blue']];
+    
+        // Layout
+        var layout = {
       width: 6000,
       height: 800,
       xaxis: {title: 'Horsepower'},
@@ -76,21 +86,9 @@ Plotly.d3.csv(
       dragmode: 'lasso',
       hovermode: 'closest'
     };
-
-    // Build Traces
-    var traces = [
-    //   {type: 'scatter',
-    //   x: horsepower,
-    //   y: mpg,
-    //   marker: {color: color,
-    //             colorscale: colorscale,
-    //             cmin: -0.5,
-    //             cmax: 2.5,
-    //             showscale: true,
-    //             colorbar: {tickvals: [0, 1, 2],
-    //                       ticktext: ['None', 'Red', 'Blue']}},
-    //   mode: 'markers',
-    //   },
+    
+        // Build Traces
+        var traces = [
       {type: 'parcats',
        domain: {y: [0, 10.4]},
        dimensions:categoricalDimensions,
@@ -104,12 +102,12 @@ Plotly.d3.csv(
       labelfont: {size: 14}
       }
     ];
-
-    // Make plot
-    Plotly.newPlot(gd, traces, layout);
-
-    // Update color on selection and click
-    var update_color = function(points_data) {
+    
+        // Make plot
+        Plotly.newPlot(gd, traces, layout);
+    
+        // Update color on selection and click
+        var update_color = function(points_data) {
       var new_color = color;
       var color_value = document.querySelector('input[name="rate"]:checked').value;
       console.log(color_value);
@@ -126,217 +124,219 @@ Plotly.d3.csv(
       Plotly.restyle(gd,
                      {'line.color': [new_color]}, 1)
     };
+    
+        gd.on('plotly_selected', update_color);
+        gd.on('plotly_click', update_color);
+    }
+    console.log('synchrounous operation')
+});
 
-    gd.on('plotly_selected', update_color);
-    gd.on('plotly_click', update_color);
-  });
-})
-    var resolveDiv1 = new Promise((resolve,reject)=>{
-var gd = document.getElementById('myDiv1');
-var categoricalDimensionLabels = [
-  'body-style',
-  'drive-wheels',
-  'aspiration',
-  'symboling',
-  'num-of-doors',
-  'more-type',
+//     var resolveDiv1 = new Promise((resolve,reject)=>{
+// var gd = document.getElementById('myDiv1');
+// var categoricalDimensionLabels = [
+//   'body-style',
+//   'drive-wheels',
+//   'aspiration',
+//   'symboling',
+//   'num-of-doors',
+//   'more-type',
 
-];
+// ];
 
-Plotly.d3.csv(
-    'https://raw.githubusercontent.com/plotly/datasets/master/imports-85.csv',
-    function(carsData) {
-    // Preprocess Data
-    // var mpg = carsData.map(function(row) { return row['highway-mpg'] });
-    // var horsepower = carsData.map(function(row) { return row['horsepower'] });
-    console.log(carsData)
-    var categoricalDimensions = categoricalDimensionLabels.map(
-      function(dimLabel) {
-        // Extract column
-        var values = carsData.map(function(row) {
-          return row[dimLabel]
-        });
+// Plotly.d3.csv(
+//     'https://raw.githubusercontent.com/plotly/datasets/master/imports-85.csv',
+//     function(carsData) {
+//     // Preprocess Data
+//     // var mpg = carsData.map(function(row) { return row['highway-mpg'] });
+//     // var horsepower = carsData.map(function(row) { return row['horsepower'] });
+//     console.log(carsData)
+//     var categoricalDimensions = categoricalDimensionLabels.map(
+//       function(dimLabel) {
+//         // Extract column
+//         var values = carsData.map(function(row) {
+//           return row[dimLabel]
+//         });
 
-        return {
-          values: values,
-          label: dimLabel
-        };
-      }
-    );
+//         return {
+//           values: values,
+//           label: dimLabel
+//         };
+//       }
+//     );
 
-    // Colors
-    var color = new Int8Array(carsData.length);
-    var colorscale = [[0, 'gray'], [0.33, 'gray'],
-                      [0.33, 'firebrick'], [0.66, 'firebrick'],
-                      [0.66, 'blue'], [1.0, 'blue']];
+//     // Colors
+//     var color = new Int8Array(carsData.length);
+//     var colorscale = [[0, 'gray'], [0.33, 'gray'],
+//                       [0.33, 'firebrick'], [0.66, 'firebrick'],
+//                       [0.66, 'blue'], [1.0, 'blue']];
 
-    // Layout
-    var layout = {
-      width: 6000,
-      height: 800,
-      xaxis: {title: 'Horsepower'},
-      yaxis: {domain: [0.6, 1], title: 'MPG'},
-      dragmode: 'lasso',
-      hovermode: 'closest'
-    };
+//     // Layout
+//     var layout = {
+//       width: 6000,
+//       height: 800,
+//       xaxis: {title: 'Horsepower'},
+//       yaxis: {domain: [0.6, 1], title: 'MPG'},
+//       dragmode: 'lasso',
+//       hovermode: 'closest'
+//     };
 
-    // Build Traces
-    var traces = [
-    //   {type: 'scatter',
-    //   x: horsepower,
-    //   y: mpg,
-    //   marker: {color: color,
-    //             colorscale: colorscale,
-    //             cmin: -0.5,
-    //             cmax: 2.5,
-    //             showscale: true,
-    //             colorbar: {tickvals: [0, 1, 2],
-    //                       ticktext: ['None', 'Red', 'Blue']}},
-    //   mode: 'markers',
-    //   },
-      {type: 'parcats',
-       domain: {y: [0, 10.4]},
-       dimensions:categoricalDimensions,
-       line: {
-         colorscale: colorscale,
-         cmin: -0.5,
-         cmax: 2.5,
-         //color: color,
-         width:500,
-         shape: 'hspline'},
-      labelfont: {size: 14}
-      }
-    ];
+//     // Build Traces
+//     var traces = [
+//     //   {type: 'scatter',
+//     //   x: horsepower,
+//     //   y: mpg,
+//     //   marker: {color: color,
+//     //             colorscale: colorscale,
+//     //             cmin: -0.5,
+//     //             cmax: 2.5,
+//     //             showscale: true,
+//     //             colorbar: {tickvals: [0, 1, 2],
+//     //                       ticktext: ['None', 'Red', 'Blue']}},
+//     //   mode: 'markers',
+//     //   },
+//       {type: 'parcats',
+//       domain: {y: [0, 10.4]},
+//       dimensions:categoricalDimensions,
+//       line: {
+//          colorscale: colorscale,
+//          cmin: -0.5,
+//          cmax: 2.5,
+//          //color: color,
+//          width:500,
+//          shape: 'hspline'},
+//       labelfont: {size: 14}
+//       }
+//     ];
 
-    // Make plot
-    Plotly.newPlot(gd, traces, layout);
+//     // Make plot
+//     Plotly.newPlot(gd, traces, layout);
 
-    // Update color on selection and click
-    var update_color = function(points_data) {
-      var new_color = color;
-      var color_value = document.querySelector('input[name="rate"]:checked').value;
-      console.log(color_value);
-      var selection = []
-      for(var i = 0; i < points_data.points.length; i++) {
-        new_color[points_data.points[i].pointNumber] = color_value;
-        selection.push(points_data.points[i].pointNumber);
-      }
+//     // Update color on selection and click
+//     var update_color = function(points_data) {
+//       var new_color = color;
+//       var color_value = document.querySelector('input[name="rate"]:checked').value;
+//       console.log(color_value);
+//       var selection = []
+//       for(var i = 0; i < points_data.points.length; i++) {
+//         new_color[points_data.points[i].pointNumber] = color_value;
+//         selection.push(points_data.points[i].pointNumber);
+//       }
 
-      // Update selected points in scatter plot
-      Plotly.restyle(gd, {'marker.color': [new_color]}, 0)
+//       // Update selected points in scatter plot
+//       Plotly.restyle(gd, {'marker.color': [new_color]}, 0)
 
-      // Update color of selected paths in parallel categories diagram
-      Plotly.restyle(gd,
-                     {'line.color': [new_color]}, 1)
-    };
+//       // Update color of selected paths in parallel categories diagram
+//       Plotly.restyle(gd,
+//                      {'line.color': [new_color]}, 1)
+//     };
 
-    gd.on('plotly_selected', update_color);
-    gd.on('plotly_click', update_color);
-  });
-})
-    var resolveDiv2 = new Promise((resolve,reject)=>{
-var gd = document.getElementById('myDiv2');
-var categoricalDimensionLabels = [
-  'body-style',
-  'drive-wheels',
-  'aspiration',
-  'symboling',
-  'num-of-doors',
-  'more-type',
+//     gd.on('plotly_selected', update_color);
+//     gd.on('plotly_click', update_color);
+//   });
+// })
+//     var resolveDiv2 = new Promise((resolve,reject)=>{
+// var gd = document.getElementById('myDiv2');
+// var categoricalDimensionLabels = [
+//   'body-style',
+//   'drive-wheels',
+//   'aspiration',
+//   'symboling',
+//   'num-of-doors',
+//   'more-type',
 
-];
+// ];
 
-Plotly.d3.csv(
-    'https://raw.githubusercontent.com/plotly/datasets/master/imports-85.csv',
-    function(carsData) {
-    // Preprocess Data
-    // var mpg = carsData.map(function(row) { return row['highway-mpg'] });
-    // var horsepower = carsData.map(function(row) { return row['horsepower'] });
-    console.log(carsData)
-    var categoricalDimensions = categoricalDimensionLabels.map(
-      function(dimLabel) {
-        // Extract column
-        var values = carsData.map(function(row) {
-          return row[dimLabel]
-        });
+// Plotly.d3.csv(
+//     'https://raw.githubusercontent.com/plotly/datasets/master/imports-85.csv',
+//     function(carsData) {
+//     // Preprocess Data
+//     // var mpg = carsData.map(function(row) { return row['highway-mpg'] });
+//     // var horsepower = carsData.map(function(row) { return row['horsepower'] });
+//     console.log(carsData)
+//     var categoricalDimensions = categoricalDimensionLabels.map(
+//       function(dimLabel) {
+//         // Extract column
+//         var values = carsData.map(function(row) {
+//           return row[dimLabel]
+//         });
 
-        return {
-          values: values,
-          label: dimLabel
-        };
-      }
-    );
+//         return {
+//           values: values,
+//           label: dimLabel
+//         };
+//       }
+//     );
 
-    // Colors
-    var color = new Int8Array(carsData.length);
-    var colorscale = [[0, 'gray'], [0.33, 'gray'],
-                      [0.33, 'firebrick'], [0.66, 'firebrick'],
-                      [0.66, 'blue'], [1.0, 'blue']];
+//     // Colors
+//     var color = new Int8Array(carsData.length);
+//     var colorscale = [[0, 'gray'], [0.33, 'gray'],
+//                       [0.33, 'firebrick'], [0.66, 'firebrick'],
+//                       [0.66, 'blue'], [1.0, 'blue']];
 
-    // Layout
-    var layout = {
-      width: 6000,
-      height: 800,
-      xaxis: {title: 'Horsepower'},
-      yaxis: {domain: [0.6, 1], title: 'MPG'},
-      dragmode: 'lasso',
-      hovermode: 'closest'
-    };
+//     // Layout
+//     var layout = {
+//       width: 6000,
+//       height: 800,
+//       xaxis: {title: 'Horsepower'},
+//       yaxis: {domain: [0.6, 1], title: 'MPG'},
+//       dragmode: 'lasso',
+//       hovermode: 'closest'
+//     };
 
-    // Build Traces
-    var traces = [
-    //   {type: 'scatter',
-    //   x: horsepower,
-    //   y: mpg,
-    //   marker: {color: color,
-    //             colorscale: colorscale,
-    //             cmin: -0.5,
-    //             cmax: 2.5,
-    //             showscale: true,
-    //             colorbar: {tickvals: [0, 1, 2],
-    //                       ticktext: ['None', 'Red', 'Blue']}},
-    //   mode: 'markers',
-    //   },
-      {type: 'parcats',
-       domain: {y: [0, 10.4]},
-       dimensions:categoricalDimensions,
-       line: {
-         colorscale: colorscale,
-         cmin: -0.5,
-         cmax: 2.5,
-         //color: color,
-         width:500,
-         shape: 'hspline'},
-      labelfont: {size: 14}
-      }
-    ];
+//     // Build Traces
+//     var traces = [
+//     //   {type: 'scatter',
+//     //   x: horsepower,
+//     //   y: mpg,
+//     //   marker: {color: color,
+//     //             colorscale: colorscale,
+//     //             cmin: -0.5,
+//     //             cmax: 2.5,
+//     //             showscale: true,
+//     //             colorbar: {tickvals: [0, 1, 2],
+//     //                       ticktext: ['None', 'Red', 'Blue']}},
+//     //   mode: 'markers',
+//     //   },
+//       {type: 'parcats',
+//       domain: {y: [0, 10.4]},
+//       dimensions:categoricalDimensions,
+//       line: {
+//          colorscale: colorscale,
+//          cmin: -0.5,
+//          cmax: 2.5,
+//          //color: color,
+//          width:500,
+//          shape: 'hspline'},
+//       labelfont: {size: 14}
+//       }
+//     ];
 
-    // Make plot
-    Plotly.newPlot(gd, traces, layout);
+//     // Make plot
+//     Plotly.newPlot(gd, traces, layout);
 
-    // Update color on selection and click
-    var update_color = function(points_data) {
-      var new_color = color;
-      var color_value = document.querySelector('input[name="rate"]:checked').value;
-      console.log(color_value);
-      var selection = []
-      for(var i = 0; i < points_data.points.length; i++) {
-        new_color[points_data.points[i].pointNumber] = color_value;
-        selection.push(points_data.points[i].pointNumber);
-      }
+//     // Update color on selection and click
+//     var update_color = function(points_data) {
+//       var new_color = color;
+//       var color_value = document.querySelector('input[name="rate"]:checked').value;
+//       console.log(color_value);
+//       var selection = []
+//       for(var i = 0; i < points_data.points.length; i++) {
+//         new_color[points_data.points[i].pointNumber] = color_value;
+//         selection.push(points_data.points[i].pointNumber);
+//       }
 
-      // Update selected points in scatter plot
-      Plotly.restyle(gd, {'marker.color': [new_color]}, 0)
+//       // Update selected points in scatter plot
+//       Plotly.restyle(gd, {'marker.color': [new_color]}, 0)
 
-      // Update color of selected paths in parallel categories diagram
-      Plotly.restyle(gd,
-                     {'line.color': [new_color]}, 1)
-    };
+//       // Update color of selected paths in parallel categories diagram
+//       Plotly.restyle(gd,
+//                      {'line.color': [new_color]}, 1)
+//     };
 
-    gd.on('plotly_selected', update_color);
-    gd.on('plotly_click', update_color);
-  });
-})
+//     gd.on('plotly_selected', update_color);
+//     gd.on('plotly_click', update_color);
+//   });
+// })
     
 
 
