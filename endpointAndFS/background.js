@@ -87,7 +87,8 @@ chrome.runtime.onInstalled.addListener(function() {
                                                     siblings_TAGNAME            int,
                                                     children                    int,
                                                     children_CLASSNAME          int,
-                                                    children_ID                 int
+                                                    children_ID                 int,
+                                                    total                       int
                                 
                                                 );
                                             `,
@@ -131,7 +132,7 @@ chrome.runtime.onInstalled.addListener(function() {
                                        ultraObject.exp.debuggerDB.stringDB.values += ultraObject.exp.debuggerDB.data[   bkgd_FL_0_i.forLoop_0_i   ][2] + ultraObject.exp.debuggerDB.stringDB.delimiter
                                        
                                         
-                                        if(   bkgd_FL_0_i.forLoop_0_i + 1 ===  bkgd_FL_0_i.forLoopLength   ){
+                                        if(   bkgd_FL_0_i.forLoop_0_i + 1 ===  bkgd_FL_0_i.forLoopLength && bkgd_FL_1_i.forLoopLength !== 0   ){
                                         
                                             
                                             bkgd_FL_1_i.args.end = 'true'
@@ -140,7 +141,23 @@ chrome.runtime.onInstalled.addListener(function() {
                                         }
                                         
                                         
-                                        ultraObject.forLoop(   bkgd_FL_1_i    )
+                                        else if(   bkgd_FL_0_i.forLoop_0_i + 1 ===  bkgd_FL_0_i.forLoopLength && bkgd_FL_1_i.forLoopLength === 0   ){
+                                        
+                                            
+                                            ultraObject.exp.debuggerDB.stringDB.args = ultraObject.exp.debuggerDB.stringDB.args.slice(0,-2)
+                                            ultraObject.exp.debuggerDB.stringDB.values = ultraObject.exp.debuggerDB.stringDB.values.slice(0,-2)
+                                            
+                                            
+                                        }
+                                        
+                                        
+                                        if(   bkgd_FL_1_i.forLoopLength !== 0   ){
+                                            
+                                            
+                                            ultraObject.forLoop(   bkgd_FL_1_i    )
+                                            
+                                            
+                                        }
                                     },
                                     args:dev_obj //{}
                                 }
