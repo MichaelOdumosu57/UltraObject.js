@@ -1,3 +1,5 @@
 debugger/
 */node_modules
 *.crt
+endpointAndFS/plotly/*.mhtml
+endpointAndFS/plotly/plotly-latest.min.js

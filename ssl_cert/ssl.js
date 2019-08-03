@@ -130,6 +130,7 @@ function dbInteraction(   dev_obj   ){
         
         app.get('/database/reset', function (req, res, next) {
             client.end()
+            fs.unlink('./postgresql.crt',()=>{})
             res.send('Very Well')
         })
         dev_obj.res.send('connected')
