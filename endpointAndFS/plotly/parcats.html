@@ -10,20 +10,54 @@
     <script>
 
 
-    var FL_0_i = {
+    var parcats_FL_0_i = {
         forLoop_0_i:0,
-        forLoopLength:35,
+        forLoopLength:3,
         fn:function(   dev_obj   ){
             var element11 = document.createElement("div")
             document.body.appendChild(element11)
             var node11 = document.querySelector('div')
             id11 = document.createAttribute("id")
-            id11.value = 'myDiv' +FL_0_i.forLoop_0_i
+            id11.value = 'myDiv' +parcats_FL_0_i.forLoop_0_i
             element11.setAttributeNode(id11)
         },
         args: {}
     }
-    ultraObject.forLoop(   FL_0_i   )
+    ultraObject.forLoop(   parcats_FL_0_i   )
+    
+
+    var randomData =  ultraObject.iterableObject()
+    var parcats_FL_1_i = {
+        forLoop_0_i:0,
+        forLoopLength:15,
+        fn:function(   dev_obj   ){
+            
+            randomData.add({
+                value:ultraObject.XHR[   ultraObject.scope[   parcats_XHR_0_i ]   ].data[0]
+            })
+            ultraObject.XHR[   ultraObject.scope[   parcats_XHR_0_i ]   ].data[0] = {}
+            // impt for the pointer to point to a new memory address to avoid your referencing problem
+            parcats_FL_2_i.forLoopLength = Object.keys(   randomData[parcats_FL_1_i.forLoop_0_i ]   ).length,
+            ultraObject.forLoop(   parcats_FL_2_i    )
+            
+        },
+        args: {}
+    }
+    var parcats_FL_2_i = {
+        forLoop_0_i:0,
+        fn:function(   dev_obj   ){
+            ultraObject.XHR[   ultraObject.scope[   parcats_XHR_0_i ]   ].data[0][   Object.keys(   randomData[parcats_FL_1_i.forLoop_0_i]    )[   parcats_FL_2_i.forLoop_0_i   ]   ] = Math.floor(  Math.random() *10 )
+            
+        },
+        args: {}
+    }
+    var parcats_FL_3_i = {
+        forLoop_0_i:0,
+        fn:function(   dev_obj   ){
+            parcats_FL_3_i.args.target.push(   parcats_FL_3_i.args.source[   parcats_FL_3_i.forLoop_0_i   ]   )
+        },
+        args: {}
+    }
     
 
     
@@ -31,12 +65,11 @@ var parcats_XHR_0_i
 var resolveDiv0 = new Promise((resolve,reject)=>{
     var gd = document.getElementById('myDiv0');
     var categoricalDimensionLabels = [
-      'body-style',
-      'drive-wheels',
-      'aspiration',
-      'symboling',
-      'num-of-doors',
-      'more-type',
+      'element',
+      'parents',
+      'siblings',
+      'children',
+
     
     ];
     
@@ -56,11 +89,13 @@ var resolveDiv0 = new Promise((resolve,reject)=>{
     })
     // }  /**/
     
-    function ignoreMe(carsData) {
+    function generateParcat(data) {
         // Preprocess Data
-        // var mpg = carsData.map(function(row) { return row['highway-mpg'] });
-        // var horsepower = carsData.map(function(row) { return row['horsepower'] });
-        console.log(carsData)
+        var carsData = []
+        parcats_FL_3_i.forLoopLength = data.length
+        parcats_FL_3_i.args.target = carsData
+        parcats_FL_3_i.args.source = data
+        ultraObject.forLoop(   parcats_FL_3_i   )
         var categoricalDimensions = categoricalDimensionLabels.map(
       function(dimLabel) {
         // Extract column
@@ -83,29 +118,29 @@ var resolveDiv0 = new Promise((resolve,reject)=>{
     
         // Layout
         var layout = {
-      width: 6000,
-      height: 800,
-      xaxis: {title: 'Horsepower'},
-      yaxis: {domain: [0.6, 1], title: 'MPG'},
-      dragmode: 'lasso',
-      hovermode: 'closest'
-    };
+            width: 1200,
+            height: 800,
+            xaxis: {title: 'Horsepower'},
+            yaxis: {domain: [0.6, 1], title: 'MPG'},
+            dragmode: 'lasso',
+            hovermode: 'closest'
+        };
     
         // Build Traces
         var traces = [
-      {type: 'parcats',
-       domain: {y: [0, 10.4]},
-       dimensions:categoricalDimensions,
-       line: {
-         colorscale: colorscale,
-         cmin: -0.5,
-         cmax: 2.5,
-         //color: color,
-         width:500,
-         shape: 'hspline'},
-      labelfont: {size: 14}
-      }
-    ];
+            {type: 'parcats',
+             domain: {y: [0, 10.4]},
+             dimensions:categoricalDimensions,
+             line: {
+               colorscale: colorscale,
+               cmin: -0.5,
+               cmax: 2.5,
+               //color: color,
+               width:500,
+               shape: 'hspline'},
+            labelfont: {size: 14}
+            }
+        ];
     
         // Make plot
         Plotly.newPlot(gd, traces, layout);
@@ -135,33 +170,9 @@ var resolveDiv0 = new Promise((resolve,reject)=>{
     
     /*generating a  random samplye*/  //{
     parcats_XHR_0_i  =  ultraObject.scope.add(   {value:ultraObject.XHR.abelast[ultraObject.XHR.abelast.length -1]}   )
-    var randomData =  ultraObject.iterableObject()
-    var parcats_FL_1_i = {
-        forLoop_0_i:0,
-        forLoopLength:15,
-        fn:function(   dev_obj   ){
-            
-            randomData.add({
-                value:ultraObject.XHR[   ultraObject.scope[   parcats_XHR_0_i ]   ].data[0]
-            })
-            ultraObject.XHR[   ultraObject.scope[   parcats_XHR_0_i ]   ].data[0] = {}
-            // impt for the pointer to point to a new memory address to avoid your referencing problem
-            parcats_FL_2_i.forLoopLength = Object.keys(   randomData[parcats_FL_1_i.forLoop_0_i ]   ).length,
-            ultraObject.forLoop(   parcats_FL_2_i    )
-            
-        },
-        args: {}
-    }
-    var parcats_FL_2_i = {
-        forLoop_0_i:0,
-        fn:function(   dev_obj   ){
-            ultraObject.XHR[   ultraObject.scope[   parcats_XHR_0_i ]   ].data[0][   Object.keys(   randomData[parcats_FL_1_i.forLoop_0_i]    )[   parcats_FL_2_i.forLoop_0_i   ]   ] = Math.floor(  Math.random() *10 )
-            
-        },
-        args: {}
-    }
     ultraObject.forLoop(   parcats_FL_1_i    )
     console.log(   randomData   )
+    generateParcat(   randomData   )
     // }  /**/
     
 });
