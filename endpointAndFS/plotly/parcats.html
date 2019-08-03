@@ -27,7 +27,7 @@
     
 
     
-        
+var parcats_XHR_0_i
 var resolveDiv0 = new Promise((resolve,reject)=>{
     var gd = document.getElementById('myDiv0');
     var categoricalDimensionLabels = [
@@ -39,19 +39,23 @@ var resolveDiv0 = new Promise((resolve,reject)=>{
       'more-type',
     
     ];
+    
+    /*making the XHR for the db data from interrogation*/  //{
     ultraObject.endpoint({
         xhttp:ultraObject.iterify({iterify:[new XMLHttpRequest()]}),
         instruct:'XMLHttpRequest',
         eventName:'load',
         eventHandler:()=>{
-            var parcats_XHR_2_i  =  ultraObject.scope.add(   {value:ultraObject.XHR.abelast[ultraObject.XHR.abelast.length -1]}   )
-            console.log(ultraObject.XHR[   ultraObject.scope[   parcats_XHR_2_i ]   ][0].response)
+            parcats_XHR_0_i  =  ultraObject.scope.add(   {value:ultraObject.XHR.abelast[ultraObject.XHR.abelast.length -1]}   )
+            ultraObject.XHR[   ultraObject.scope[   parcats_XHR_0_i ]   ].data = JSON.parse(   ultraObject.XHR[   ultraObject.scope[   parcats_XHR_0_i ]   ][0].response   )
         },
         protocol:`POST`,
         target:`http://24.189.66.225/database/query`,
         asyncBool:false,
         body:`SELECT * FROM interrogation_PLOTLY;`
     })
+    // }  /**/
+    
     function ignoreMe(carsData) {
         // Preprocess Data
         // var mpg = carsData.map(function(row) { return row['highway-mpg'] });
@@ -128,7 +132,38 @@ var resolveDiv0 = new Promise((resolve,reject)=>{
         gd.on('plotly_selected', update_color);
         gd.on('plotly_click', update_color);
     }
-    console.log('synchrounous operation')
+    
+    /*generating a  random samplye*/  //{
+    parcats_XHR_0_i  =  ultraObject.scope.add(   {value:ultraObject.XHR.abelast[ultraObject.XHR.abelast.length -1]}   )
+    var randomData =  ultraObject.iterableObject()
+    var parcats_FL_1_i = {
+        forLoop_0_i:0,
+        forLoopLength:15,
+        fn:function(   dev_obj   ){
+            
+            randomData.add({
+                value:ultraObject.XHR[   ultraObject.scope[   parcats_XHR_0_i ]   ].data[0]
+            })
+            ultraObject.XHR[   ultraObject.scope[   parcats_XHR_0_i ]   ].data[0] = {}
+            // impt for the pointer to point to a new memory address to avoid your referencing problem
+            parcats_FL_2_i.forLoopLength = Object.keys(   randomData[parcats_FL_1_i.forLoop_0_i ]   ).length,
+            ultraObject.forLoop(   parcats_FL_2_i    )
+            
+        },
+        args: {}
+    }
+    var parcats_FL_2_i = {
+        forLoop_0_i:0,
+        fn:function(   dev_obj   ){
+            ultraObject.XHR[   ultraObject.scope[   parcats_XHR_0_i ]   ].data[0][   Object.keys(   randomData[parcats_FL_1_i.forLoop_0_i]    )[   parcats_FL_2_i.forLoop_0_i   ]   ] = Math.floor(  Math.random() *10 )
+            
+        },
+        args: {}
+    }
+    ultraObject.forLoop(   parcats_FL_1_i    )
+    console.log(   randomData   )
+    // }  /**/
+    
 });
 
 //     var resolveDiv1 = new Promise((resolve,reject)=>{

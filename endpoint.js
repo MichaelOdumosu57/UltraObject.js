@@ -5,6 +5,7 @@
 /*
     XMLHttpRequest
     // it expect an XMLHttpRequest in  index 0
+    remember in the event handler if u make it go sync it will take the XHR object out of scope, so you must reattch it again of where it is in scope again
 */
 /*
     chromeExtensionOneTime"
