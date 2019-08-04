@@ -123,34 +123,62 @@ function generateParcat(   dev_obj   ) {
         );
     
         // Colors
-        var color = new Int8Array(carsData.length);
-        var colorscale = [[0, 'gray'], [0.33, 'gray'],
-                          [0.33, 'firebrick'], [0.66, 'firebrick'],
-                          [0.66, 'blue'], [1.0, 'blue']];
+        var colorscale = [];
+        var colors = new Int8Array(carsData.length);
+        var color = []
+        colors.map((x,i)=>{
+            color.push(i/15)
+            colorscale.push(   [i/15, 'rgb('+Math.floor(  Math.random() *255 ).toString()+','+Math.floor(  Math.random() *255 ).toString()+','+Math.floor(  Math.random() *255 ).toString()+')']   )
+        })
+        colorscale[0] = [0, "rgb(0,255,255)"]
+        colorscale.push(   [1, "rgb(255,0,0)"]   )
+        
+
     
         // Layout
         var layout = {
             width: dev_obj.dimensions.width,
             height: dev_obj.dimensions.height,
-            xaxis: {title: 'Horsepower'},
-            yaxis: {domain: [0.6, 1], title: 'MPG'},
-            dragmode: 'lasso',
             hovermode: 'closest'
         };
     
         // Build Traces
+        console.log(color)
+        console.log(colorscale)
+        console.log(categoricalDimensions)
         var traces = [
-            {type: 'parcats',
-             domain: {y: [0, 10.4]},
-             dimensions:categoricalDimensions,
-             line: {
-               colorscale: colorscale,
-               cmin: -0.5,
-               cmax: 2.5,
-               //color: color,
-               width:500,
-               shape: 'hspline'},
-            labelfont: {size: 14}
+            {
+            type: 'parcats',
+            // domain: {
+            //           x:[0,2],
+            //           y: [0, 10.4],
+            //           row:12,
+            //           column:14
+            //       },
+            name:'interrogation parcat',
+            hoverinfo:'all',
+            arrangement:"freeform" ,
+            sortpaths:"forward",
+            dimensions:categoricalDimensions,
+            line: {
+                colorscale: colorscale,
+                cmin: 0,
+                cmax: 14,
+                cauto:true,
+                color: color,
+                width:500,
+                shape: 'hspline',
+                showscale:true,
+                colorbar:{
+                    len:.5
+                }
+            },
+            labelfont: {
+                size: 12,
+                family:"Overpass",
+                color:"green"
+            },
+            
             }
         ];
     
@@ -158,22 +186,20 @@ function generateParcat(   dev_obj   ) {
         Plotly.newPlot(gd, traces, layout);
     
         // Update color on selection and click
-        var update_color = function(points_data) {
-      var new_color = color;
-      var color_value = document.querySelector('input[name="rate"]:checked').value;
-      console.log(color_value);
-      var selection = []
-      for(var i = 0; i < points_data.points.length; i++) {
-        new_color[points_data.points[i].pointNumber] = color_value;
-        selection.push(points_data.points[i].pointNumber);
-      }
-
-      // Update selected points in scatter plot
-      Plotly.restyle(gd, {'marker.color': [new_color]}, 0)
-
-      // Update color of selected paths in parallel categories diagram
-      Plotly.restyle(gd,
-                     {'line.color': [new_color]}, 1)
+    var update_color = function(points_data) {
+        var new_color = color;
+        var color_value = document.querySelector('input[name="rate"]:checked').value;
+        console.log(color_value);
+        var selection = []
+        for(var i = 0; i < points_data.points.length; i++) {
+          new_color[points_data.points[i].pointNumber] = color_value;
+          selection.push(points_data.points[i].pointNumber);
+        }
+        // Update selected points in scatter plot
+        Plotly.restyle(gd, {'marker.color': [new_color]}, 0)
+        // Update color of selected paths in parallel categories diagram
+        Plotly.restyle(gd,
+                       {'line.color': [new_color]}, 1)
     };
     
         gd.on('plotly_selected', update_color);
