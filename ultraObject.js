@@ -219,7 +219,6 @@
                     isFunction:isFunction,
                     
                     elementFound:iterableObject(), // holds found elements needed by the ultraObject
-                    identifyEO:{}, // object for all needed identified
                     forLoop:forLoop,
                     objInvloved:objInvloved,// to keep track of all items responbile for a purpose at a specific point
                     objIO:iterableObject(), // OBKECT FOR  objInvloved propertyUndefined, whend dealing stricly with object specs
@@ -252,7 +251,8 @@
                     fG:iterableObject(),
                     numberSystem:numberSystem,
                     nS:iterableObject(),
-                    reqBody:reqBody
+                    reqBody:reqBody,
+                    random:random
             
                     
                     }
@@ -263,6 +263,39 @@
                 catch(e){
                     global.ultraObject = ultraObjectReset()
                 }
+                function random(   dev_obj   ){
+                    /*abelast
+                        1 for misc
+                    */
+                    /*
+                        dev_obj
+                            .type
+                                simple give me a random number according to dev_obj.value
+                            .value
+                                when dev_obj.type === 'simple' this should be a number
+                    */
+                    
+                    /*adding the dev_obj to args*/ //{
+                    var random_dev_obj = ultraObject.args.add(   {value:ultraObject.iterify(   {iterify:dev_obj}   )   }   )
+                    // }  /**/
+                    
+                    if(   dev_obj.type === 'simple'   ){
+                        
+                        
+                        /*MISC +scope +self +abelast */ //{
+                        var rdmMisc_0_i = ultraObject.misc.add(   {value:Math.floor(Math.random() * Math.floor(   dev_obj.value   ))  }   )
+                        ultraObject.misc.abelast.add(   {value:ultraObject.scope[rdmMisc_0_i]}   )
+                        // }  /**/
+                       
+                        
+                        /*MISC -scope */ //{
+                        ultraObject.scope.minus(   {index:rdmMisc_0_i}   )
+                        // }  /**/
+                        
+                    }
+                    
+                    
+                }// anything random is done here
                 function endpoint(   dev_obj   ){
                     /*
                         key points
@@ -344,7 +377,7 @@
                     // }  /**/
                     
                     /*XHR -scope */ //{
-                    var ePXHR_0_i = ultraObject.scope.minus(   {index:ePXHR_0_i}   )
+                    ultraObject.scope.minus(   {index:ePXHR_0_i}   )
                     // }  /**/
                     
                 }// function handling all things endpoint
@@ -4573,7 +4606,6 @@
                                 // } /**/
                                 
                                 /*debug*/
-                                function o(){ o()}
                                 function debug_0_i(response,sender,sendResponse){
                                     console.log(   response   )
                                     ultraObject.XHR[   ultraObject.scope[pFFXHR_0_i]   ].sending.response = response
@@ -4824,6 +4856,15 @@
                                                 ],
                                             pointValue:'v1',
                                             debug:'true'
+                                        })
+                                        ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].debuggerDB.add({
+                                            value:ultraObject.iterify({
+                                                iterify:[
+                                                    'total',
+                                                    [],
+                                                    ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].pointValue
+                                                ]
+                                            })
                                         })
                                         ultraObject.XHR[   ultraObject.scope[pFFXHR_0_i]   ].sending.fn({
                                             item:'debuggerDB',
