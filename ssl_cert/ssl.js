@@ -6,6 +6,7 @@ const path = require('path')
 const fs = require('fs');
 // const compression = require('compression')
 const cors = require('cors')
+const host = "24.189.66.225"
 global.ultraObject = require('./ultraObject.js')
 
 app.use(cors())
@@ -14,7 +15,7 @@ app.use(cors())
 
 const config = {
     database : "ultraobject",
-    host     : "24.189.66.225",
+    host     ,
     user     : "postgres",
     port     : 5432,
     // this object will be passed to the TLSSocket constructor
@@ -99,10 +100,13 @@ function dbInteraction(   dev_obj   ){
     pg.defaults.ssl = true
     // console.log(config)
     const client = new pg.Client(config)
-    client.connectionParameters.host = client.host =  "24.189.66.225"
+    client.connectionParameters.host = client.host =  host
     // console.log(client)
     client.on('error',function(err){
         console.log(err)
+        client.connect((err)=>{
+            if(err) console.log(err)
+        })
     })
     client.connect((err) => {
       if (err) {

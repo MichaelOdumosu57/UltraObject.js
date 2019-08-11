@@ -66,26 +66,29 @@
 
     
     /*making the XHR for the db data from interrogation*/  //{
-var parcats_XHR_0_i
-ultraObject.endpoint({
-    xhttp:ultraObject.iterify({iterify:[new XMLHttpRequest()]}),
-    instruct:'XMLHttpRequest',
-    eventName:'load',
-    eventHandler:()=>{
-        parcats_XHR_0_i  =  ultraObject.scope.add(   {value:ultraObject.XHR.abelast[ultraObject.XHR.abelast.length -1]}   )
-        ultraObject.XHR[   ultraObject.scope[   parcats_XHR_0_i ]   ].data = JSON.parse(   ultraObject.XHR[   ultraObject.scope[   parcats_XHR_0_i ]   ][0].response   )
-    },
-    protocol:`POST`,
-    target:`http://24.189.66.225/database/query`,
-    asyncBool:false,
-    body:`SELECT * FROM interrogation_PLOTLY;`
-})
-// }  /**/
+    var parcats_XHR_0_i
+    ultraObject.endpoint({
+        xhttp:ultraObject.iterify({iterify:[new XMLHttpRequest()]}),
+        instruct:'XMLHttpRequest',
+        eventName:'load',
+        eventHandler:()=>{
+            parcats_XHR_0_i  =  ultraObject.scope.add(   {value:ultraObject.XHR.abelast[ultraObject.XHR.abelast.length -1]}   )
+            ultraObject.XHR[   ultraObject.scope[   parcats_XHR_0_i ]   ].data = JSON.parse(   ultraObject.XHR[   ultraObject.scope[   parcats_XHR_0_i ]   ][0].response   )
+        },
+        protocol:`POST`,
+        target:`http://24.189.66.225/database/query`,
+        asyncBool:false,
+        body:`SELECT * FROM interrogation_PLOTLY;`
+    })
+    // }  /**/
 
-function generateParcat(   dev_obj   ) {
+function generatePlot(   dev_obj   ) {
         var gd = dev_obj.gd
+        
+        /* for parcats */ //{
         // Preprocess Data
         var carsData = []
+        
         ultraObject.sort({
             target: dev_obj.data,
             algorithm:'bubble',
@@ -108,33 +111,36 @@ function generateParcat(   dev_obj   ) {
         parcats_FL_3_i.args.target = carsData
         parcats_FL_3_i.args.source = dev_obj.data
         ultraObject.forLoop(   parcats_FL_3_i   )
-        var categoricalDimensions = dev_obj.labels.map(
-          function(dimLabel) {
-            // Extract column
-            var values = carsData.map(function(row) {
-              return row[dimLabel]
-            });
+        // var categoricalDimensions = dev_obj.labels.map(
+        //   function(dimLabel) {
+        //     // Extract column
+        //     var values = carsData.map(function(row) {
+        //       return row[dimLabel]
+        //     });
     
-            return {
-              values: values,
-              label: dimLabel
-            };
-          }
-        );
+        //     return {
+        //       values,
+        //       label: dimLabel
+        //     };
+        //   }
+        // );
     
-        // Colors
-        var colorscale = [];
-        var colors = new Int8Array(carsData.length);
-        var color = []
-        colors.map((x,i)=>{
-            color.push(i/15)
-            colorscale.push(   [i/15, 'rgb('+Math.floor(  Math.random() *255 ).toString()+','+Math.floor(  Math.random() *255 ).toString()+','+Math.floor(  Math.random() *255 ).toString()+')']   )
-        })
-        colorscale[0] = [0, "rgb(0,255,255)"]
-        colorscale.push(   [1, "rgb(255,0,0)"]   )
+        // // Colors
+        // var colorscale = [];
+        // var colors = new Int8Array(carsData.length);
+        // var color = []
+        // colors.map((x,i)=>{
+        //     color.push(i/15)
+        //     colorscale.push(   [i/15, 'rgb('+Math.floor(  Math.random() *255 ).toString()+','+Math.floor(  Math.random() *255 ).toString()+','+Math.floor(  Math.random() *255 ).toString()+')']   )
+        // })
+        // colorscale[0] = [0, "rgb(0,255,255)"]
+        // colorscale.push(   [1, "rgb(255,0,0)"]
         
+        
+        // console.log(color)
+        // console.log(colorscale)
+        // console.log(categoricalDimensions)
 
-    
         // Layout
         var layout = {
             width: dev_obj.dimensions.width,
@@ -142,68 +148,72 @@ function generateParcat(   dev_obj   ) {
             hovermode: 'closest'
         };
     
-        // Build Traces
-        console.log(color)
-        console.log(colorscale)
-        console.log(categoricalDimensions)
+
+         // } /**/
+        console.log(   dev_obj   )
         var traces = [
-            {
-            type: 'parcats',
-            // domain: {
-            //           x:[0,2],
-            //           y: [0, 10.4],
-            //           row:12,
-            //           column:14
-            //       },
-            name:'interrogation parcat',
-            hoverinfo:'all',
-            arrangement:"freeform" ,
-            sortpaths:"forward",
-            dimensions:categoricalDimensions,
-            line: {
-                colorscale: colorscale,
-                cmin: 0,
-                cmax: 14,
-                cauto:true,
-                color: color,
-                width:500,
-                shape: 'hspline',
-                showscale:true,
-                colorbar:{
-                    len:.5
-                }
-            },
-            labelfont: {
-                size: 12,
-                family:"Overpass",
-                color:"green"
-            },
-            
+        {
+            type: "sankey",
+            orientation: "h",
+            //   customdata://(used for pointing out extra meaning about your
+            node: {
+                pad: 15,
+                thickness: 30,
+                line: {
+                  color: "black",
+                  width: 0.5
+                },
+                label: dev_obj.labels,
+                color: ["blue", "blue", "blue", "blue", "blue"]
+                    },
+            link: {
+                source: [0,1,2,3,4],
+                target: [1,2,3,4,5],
+                value:  [dev_obj.data[0][dev_obj.labels[0]],dev_obj.data[0][dev_obj.labels[1]],dev_obj.data[0][dev_obj.labels[2]],dev_obj.data[0][dev_obj.labels[3]],dev_obj.data[0][dev_obj.labels[4]]],
+            label:   [dev_obj.data[0][dev_obj.labels[0]],dev_obj.data[0][dev_obj.labels[1]],dev_obj.data[0][dev_obj.labels[2]],dev_obj.data[0][dev_obj.labels[3]],dev_obj.data[0][dev_obj.labels[4]]],
             }
+        },
+ //{
+//             type: 'parcats',
+//             // domain: {
+//             //           x:[0,2],
+//             //           y: [0, 10.4],
+//             //           row:12,
+//             //           column:14
+//             //       },
+//             name:'interrogation parcat',
+//             hoverinfo:'all',
+//             arrangement:"freeform" ,
+//             sortpaths:"forward",
+//             dimensions:categoricalDimensions,
+//             line: {
+//                 // colorscale: colorscale,
+//                 cmin: 0,
+//                 cmax: 14,
+//                 // cauto:true,
+//                 // color: color,
+//                 width:500,
+//                 shape: 'hspline',
+//                 showscale:true,
+//                 colorbar:{
+//                     len:.5
+//                 }
+//             },
+//             labelfont: {
+//                 size: 12,
+//                 family:"Overpass",
+//                 color:"green"
+//             },
+            
+//             }
         ];
     
         // Make plot
         Plotly.newPlot(gd, traces, layout);
+        gd.on("plotly_click",(   dataFlow   )=>{
+            console.log(   dataFlow   )
+        })
     
-        // Update color on selection and click
-    var update_color = function(points_data) {
-        var new_color = color;
-        var color_value = document.querySelector('input[name="rate"]:checked').value;
-        console.log(color_value);
-        var selection = []
-        for(var i = 0; i < points_data.points.length; i++) {
-          new_color[points_data.points[i].pointNumber] = color_value;
-          selection.push(points_data.points[i].pointNumber);
-        }
-        // Update selected points in scatter plot
-        Plotly.restyle(gd, {'marker.color': [new_color]}, 0)
-        // Update color of selected paths in parallel categories diagram
-        Plotly.restyle(gd,
-                       {'line.color': [new_color]}, 1)
-    };
-    
-        gd.on('plotly_selected', update_color);
-        gd.on('plotly_click', update_color);
     }
 var resolveDiv0 = new Promise((resolve,reject)=>{
     var gd = document.getElementById('myDiv0');
@@ -212,7 +222,8 @@ var resolveDiv0 = new Promise((resolve,reject)=>{
       'parents',
       'siblings',
       'children',
-      'total'
+      'total',
+      'end'
 
     
     ];
@@ -227,7 +238,7 @@ var resolveDiv0 = new Promise((resolve,reject)=>{
     // }  /**/
     
     /*making my parcat*/ //{
-    generateParcat({
+    generatePlot({
         data:randomData,
         labels:cdLabels,
         gd, // es6 only
@@ -264,7 +275,7 @@ var resolveDiv1 = new Promise((resolve,reject)=>{
 
     
     /*making my parcat*/ //{
-    generateParcat({
+    generatePlot({
         data:randomData,
         labels:cdLabels,
         gd, // es6 only
@@ -298,13 +309,12 @@ var resolveDiv2 = new Promise((resolve,reject)=>{
     "children_id",
     'total'
 
-    
     ];
     
 
     
     /*making my parcat*/ //{
-    generateParcat({
+    generatePlot({
         data:randomData,
         labels:cdLabels,
         gd, // es6 only
