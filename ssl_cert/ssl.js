@@ -104,6 +104,7 @@ function dbInteraction(   dev_obj   ){
     // console.log(client)
     client.on('error',function(err){
         console.log(err)
+        client.end()
         client.connect((err)=>{
             if(err) console.log(err)
         })
