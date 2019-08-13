@@ -77,7 +77,11 @@
                 }
                 
                 
-                dev_obj.positions[   dev_obj.cdLabels[i]   ].push(   randomData[   sankey_FL_0_i.forLoop_0_i   ][   dev_obj.cdLabels[i]   ]   )
+                dev_obj.positions[   dev_obj.cdLabels[i]   ].push([
+                    dev_obj.value.length,
+                    randomData[   sankey_FL_0_i.forLoop_0_i   ][   dev_obj.cdLabels[i]   ],
+                    dev_obj.yVal[   sankey_FL_0_i.forLoop_0_i   ]
+                ])
                 
                 
                 if(   x !== 'end'   ){
@@ -119,6 +123,30 @@
                 }
                 
                 
+            })
+        },
+        args: {}
+    }
+    var sankey_FL_1_i = {
+        forLoop_0_i:0,
+        fn:function(   dev_obj   ){
+            ultraObject.sort({
+                target: sankey_FL_0_i.args.positions[   Object.keys(   sankey_FL_0_i.args.positions   )[   sankey_FL_1_i.forLoop_0_i   ]   ],
+                algorithm:'bubble',
+                compare:function(   dev_obj   ){
+                    
+
+                    if(   dev_obj.val[   dev_obj.index   ][1] > dev_obj.val[   dev_obj.index + 1   ][1]   ){
+                        
+                        
+                        return 'true'
+                        
+                        
+                    }
+                        
+                    
+                },
+                result:'true'
             })
         },
         args: {}
@@ -313,8 +341,15 @@ function generatePlot(   dev_obj   ) {
         sankey_FL_0_i.args.cdLabels = parcatLabels
         sankey_FL_0_i.args.labels = []
         sankey_FL_0_i.args.shows = []
+        sankey_FL_0_i.args.yVal =[.001, .061, .118, .201, .251, .331, .395, .455, .535, .605, .695, .758, .831, .896, .968]
         sankey_FL_0_i.args.positions = {}
         ultraObject.forLoop(   sankey_FL_0_i    )
+        
+            /* deciding poisition of sankey nodes*/  //{
+            sankey_FL_1_i.forLoopLength = Object.keys(   sankey_FL_0_i.args.positions   ).length
+            console.log(   Object.keys(   sankey_FL_0_i.args.positions   ).length   )
+            ultraObject.forLoop(   sankey_FL_1_i    )
+            // }  /**/
         // cdLabels.push('end')
         
 
@@ -434,7 +469,7 @@ function generatePlot(   dev_obj   ) {
     
 /* values */
 // x 0.008, .254, .5, .746, .9919
-// y  .001,
+// y  .001, .061, .118, .201, .251, .331, .395, .455, .535, .605, .695, .758, .831, .896, .968
             
 </script>
 </html>
