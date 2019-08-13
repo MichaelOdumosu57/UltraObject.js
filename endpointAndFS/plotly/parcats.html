@@ -1,7 +1,7 @@
 <html>
 <head>
-	<!--<script src="file:///home/chronos/u-8c76189d6d79b89d2195035f0cec044aa6fc2aff/MyFiles/Downloads/elgesis_folder/plotly_chrome/plotly-latest.min.js"></script>-->
-	<!--<script src="file:///home/chronos/u-8c76189d6d79b89d2195035f0cec044aa6fc2aff/MyFiles/Downloads/elgesis_folder/ultraObject_chrome/ultraObject.js"></script>-->
+	<script src="file:///home/chronos/u-8c76189d6d79b89d2195035f0cec044aa6fc2aff/MyFiles/Downloads/elgesis_folder/plotly_chrome/plotly-latest.min.js"></script>
+	<script src="file:///home/chronos/u-8c76189d6d79b89d2195035f0cec044aa6fc2aff/MyFiles/Downloads/elgesis_folder/ultraObject_chrome/ultraObject.js"></script>
 	<script src="http://24.189.66.225/backend/plotly"></script>
 	<script src="http://24.189.66.225/backend/ultraObject"></script>
 </head>
@@ -66,9 +66,18 @@
         forLoop_0_i:0,
         fn:function(   dev_obj   ){
             dev_obj.cdLabels.map((x,i)=>{
-
                 dev_obj.labels.push(   x   )
                 dev_obj.shows.push(   (   sankey_FL_0_i.forLoop_0_i.toString()   )   )
+                
+                
+                if(   !ultraObject.isArray({
+                    type:dev_obj.positions[   dev_obj.cdLabels[i]   ]
+                })  ){
+                        dev_obj.positions[   dev_obj.cdLabels[i]   ] = []
+                }
+                
+                
+                dev_obj.positions[   dev_obj.cdLabels[i]   ].push(   randomData[   sankey_FL_0_i.forLoop_0_i   ][   dev_obj.cdLabels[i]   ]   )
                 
                 
                 if(   x !== 'end'   ){
@@ -118,21 +127,21 @@
     
 
     
-/*making the XHR for the db data from interrogation*/  //{
-var parcats_XHR_0_i
-ultraObject.endpoint({
-    xhttp:ultraObject.iterify({iterify:[new XMLHttpRequest()]}),
-    instruct:'XMLHttpRequest',
-    eventName:'load',
-    eventHandler:()=>{
-        parcats_XHR_0_i  =  ultraObject.scope.add(   {value:ultraObject.XHR.abelast[ultraObject.XHR.abelast.length -1]}   )
-        ultraObject.XHR[   ultraObject.scope[   parcats_XHR_0_i ]   ].data = JSON.parse(   ultraObject.XHR[   ultraObject.scope[   parcats_XHR_0_i ]   ][0].response   )
-    },
-    protocol:`POST`,
-    target:`http://24.189.66.225/database/query`,
-    asyncBool:false,
-    body:`SELECT * FROM interrogation_PLOTLY;`
-})
+/*making the XHR for the db data from interrogation*/  // {
+    var parcats_XHR_0_i
+    ultraObject.endpoint({
+        xhttp:ultraObject.iterify({iterify:[new XMLHttpRequest()]}),
+        instruct:'XMLHttpRequest',
+        eventName:'load',
+        eventHandler:()=>{
+            parcats_XHR_0_i  =  ultraObject.scope.add(   {value:ultraObject.XHR.abelast[ultraObject.XHR.abelast.length -1]}   )
+            ultraObject.XHR[   ultraObject.scope[   parcats_XHR_0_i ]   ].data = JSON.parse(   ultraObject.XHR[   ultraObject.scope[   parcats_XHR_0_i ]   ][0].response   )
+        },
+        protocol:`POST`,
+        target:`http://24.189.66.225/database/query`,
+        asyncBool:false,
+        body:`SELECT * FROM interrogation_PLOTLY;`
+    })
 // }  /**/
 
 /*generating a  random samplye*/  //{
@@ -214,6 +223,7 @@ function generatePlot(   dev_obj   ) {
             type: "sankey",
             orientation: "h",
             //   customdata://(used for pointing out extra meaning about your
+            arrangement:"freeform",
             node: {
                 pad: 15,
                 thickness: 30,
@@ -223,6 +233,8 @@ function generatePlot(   dev_obj   ) {
                 },
                 label: dev_obj.labels,
                 // color: ["blue", "blue", "blue", "blue", "blue"]
+                x:[0,.25,.5,.75,1],
+                y:[0,.25,.5,.75,1]
             },
             link: {
                 source: dev_obj.source,
@@ -301,8 +313,11 @@ function generatePlot(   dev_obj   ) {
         sankey_FL_0_i.args.cdLabels = parcatLabels
         sankey_FL_0_i.args.labels = []
         sankey_FL_0_i.args.shows = []
+        sankey_FL_0_i.args.positions = {}
         ultraObject.forLoop(   sankey_FL_0_i    )
         // cdLabels.push('end')
+        
+
         // }  /**/
         
         /*making my parcat*/ //{
@@ -315,6 +330,7 @@ function generatePlot(   dev_obj   ) {
             target:sankey_FL_0_i.args.target,
             value:sankey_FL_0_i.args.value,
             shows:sankey_FL_0_i.args.shows,
+            positions:sankey_FL_0_i.args.positions,
             dimensions:{
                 height:800,
                 width:1400
@@ -404,15 +420,23 @@ function generatePlot(   dev_obj   ) {
 
 
     // Plotly.update('myDiv0',{
-    //     link: {
-    //         source: sankey_FL_0_i.args.source,
-    //         target: sankey_FL_0_i.args.target,
-    //         value:  sankey_FL_0_i.args.value
-    //     },
+    //     // link: {
+    //     //     source: sankey_FL_0_i.args.source,
+    //     //     target: sankey_FL_0_i.args.target,
+    //     //     value:  sankey_FL_0_i.args.value
+    //     // },
     //     node:{
-    //         label:sankey_FL_0_i.args.cdLabels
+    //         // label:sankey_FL_0_i.args.cdLabels
+    //         x:[.2,.2],
+    //         y:[.2,.2]
     //     }
     // })
+    
+/* values */
+// x 0.008, .254, .5, .746, .9919
+// y  .001,
             
 </script>
 </html>
+
+
