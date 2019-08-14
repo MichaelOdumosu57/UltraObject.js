@@ -67,6 +67,7 @@
         fn:function(   dev_obj   ){
             dev_obj.cdLabels.map((x,i)=>{
                 dev_obj.labels.push(   x   )
+                xDim.push(   xVal[i]   )
                 dev_obj.shows.push(   (   sankey_FL_0_i.forLoop_0_i.toString()   )   )
                 
                 
@@ -189,7 +190,7 @@ ultraObject.forLoop(   parcats_FL_1_i    )
 
 var xVal = [0.008, .254, .5, .746, .9919]
 var yVal = [.001, .061, .118, .201, .251, .331, .395, .455, .535, .605, .695, .758, .831, .896, .968]
-var xDim
+var xDim = []
 var yDim
 function generatePlot(   dev_obj   ) {
         var gd = dev_obj.gd
@@ -361,7 +362,7 @@ function generatePlot(   dev_obj   ) {
         
         
             /* deciding poisition of sankey nodes*/  //{
-            xDim = new Float32Array(   sankey_FL_0_i.args.source.length   )
+            // xDim = new Float32Array(   sankey_FL_0_i.args.source.length   )
             yDim = new Float32Array(   sankey_FL_0_i.args.source.length   )
             sankey_FL_1_i.forLoopLength = Object.keys(   sankey_FL_0_i.args.positions   ).length
             ultraObject.forLoop(   sankey_FL_1_i    )
