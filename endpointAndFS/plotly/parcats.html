@@ -191,12 +191,13 @@ function generateParcat(   dev_obj   ) {
         var update_color = function(points_data) {
             console.log(   points_data   )
             var new_color = color;
-            var selection = []
+
+            for(var i = 0; i < color.length; i++) {
+                new_color[i] = 0
+            }
             for(var i = 0; i < points_data.points.length; i++) {
                 new_color[points_data.points[i].pointNumber] = .5;
-                selection.push(points_data.points[i].pointNumber);
             }
-        
             // // Update selected points in scatter plot
             // Plotly.restyle(gd, {'marker.color': [new_color]}, 0)
         
