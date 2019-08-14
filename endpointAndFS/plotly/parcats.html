@@ -26,7 +26,11 @@
     ultraObject.forLoop(   parcats_FL_0_i   )
     
 
+    /* vars for generating random data */ //{
     var randomData =  ultraObject.iterableObject()
+    var maxRandom = 10
+    
+    // } /**/
     var parcats_FL_1_i = {
         forLoop_0_i:0,
         forLoopLength:15,
@@ -49,7 +53,7 @@
         forLoop_0_i:0,
         fn:function(   dev_obj   ){
             
-            ultraObject.XHR[   ultraObject.scope[   parcats_XHR_0_i ]   ].data[0][   Object.keys(   randomData[parcats_FL_1_i.forLoop_0_i]    )[   parcats_FL_2_i.forLoop_0_i   ]   ] = Math.floor(  Math.random() *10 )
+            ultraObject.XHR[   ultraObject.scope[   parcats_XHR_0_i ]   ].data[0][   Object.keys(   randomData[parcats_FL_1_i.forLoop_0_i]    )[   parcats_FL_2_i.forLoop_0_i   ]   ] = Math.floor(  Math.random() * maxRandom  )
             parcats_FL_2_i.args.total += ultraObject.XHR[   ultraObject.scope[   parcats_XHR_0_i ]   ].data[0][   Object.keys(   randomData[parcats_FL_1_i.forLoop_0_i]    )[   parcats_FL_2_i.forLoop_0_i   ]   ]
             
         },
@@ -91,7 +95,14 @@
                     dev_obj.target.push((i+1) + (   (    sankey_FL_0_i.forLoop_0_i   ) * dev_obj.cdLabels.length ))
                 
                 
-                    if(    randomData[   sankey_FL_0_i.forLoop_0_i   ][   dev_obj.cdLabels[i]   ] !== 0   ){
+                    if(   x === 'total'   ){
+                        
+                        
+                        dev_obj.value.push(   maxRandom   )
+                    }
+                    
+                    
+                    else if(    randomData[   sankey_FL_0_i.forLoop_0_i   ][   dev_obj.cdLabels[i]   ] !== 0   ){
                         
                         
                         dev_obj.value.push(   randomData[   sankey_FL_0_i.forLoop_0_i   ][   dev_obj.cdLabels[i]   ]   )
@@ -188,7 +199,8 @@ ultraObject.forLoop(   parcats_FL_1_i    )
 // }  /**/
 
 
-var xVal = [0.008, .254, .5, .746, .9919]
+// var xVal = [0.008, .254, .5, .746, .9919]
+var xVal = [.008, .20478, .40156, .59834,.79512,.9919]
 var yVal = [.001, .061, .118, .201, .251, .331, .395, .455, .535, .605, .695, .758, .831, .896, .968]
 var xDim = []
 var yDim
@@ -343,6 +355,7 @@ function generatePlot(   dev_obj   ) {
             'parents',
             'siblings',
             'children',
+            'total',
             'end',
         ];
         var sankeyLabels
