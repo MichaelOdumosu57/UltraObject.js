@@ -79,8 +79,7 @@
                 
                 dev_obj.positions[   dev_obj.cdLabels[i]   ].push([
                     dev_obj.value.length,
-                    randomData[   sankey_FL_0_i.forLoop_0_i   ][   dev_obj.cdLabels[i]   ],
-                    dev_obj.yVal[   sankey_FL_0_i.forLoop_0_i   ]
+                    randomData[   sankey_FL_0_i.forLoop_0_i   ][   dev_obj.cdLabels[i]   ]
                 ])
                 
                 
@@ -148,10 +147,20 @@
                 },
                 result:'true'
             })
+            sankey_FL_2_i.forLoopLength = sankey_FL_0_i.args.positions[   Object.keys(   sankey_FL_0_i.args.positions   )[   sankey_FL_1_i.forLoop_0_i   ]   ].length
+            ultraObject.forLoop(   sankey_FL_2_i   )
+            debugger
         },
         args: {}
     }
-    
+    var sankey_FL_2_i = {
+        forLoop_0_i:0,
+        fn:function(   dev_obj   ){
+            console.log(   sankey_FL_0_i.args.positions[   Object.keys(   sankey_FL_0_i.args.positions   )[   sankey_FL_1_i.forLoop_0_i   ]   ][   sankey_FL_2_i.forLoop_0_i   ]   )
+            yDim[   sankey_FL_0_i.args.positions[   Object.keys(   sankey_FL_0_i.args.positions   )[   sankey_FL_1_i.forLoop_0_i   ]   ][   sankey_FL_2_i.forLoop_0_i   ][0]   ] = yVal[   sankey_FL_2_i.forLoop_0_i   ]
+        },
+        args: {}
+    }
     
 
     
@@ -177,6 +186,11 @@ parcats_XHR_0_i  =  ultraObject.scope.add(   {value:ultraObject.XHR.abelast[ultr
 ultraObject.forLoop(   parcats_FL_1_i    )
 // }  /**/
 
+
+var xVal = [0.008, .254, .5, .746, .9919]
+var yVal = [.001, .061, .118, .201, .251, .331, .395, .455, .535, .605, .695, .758, .831, .896, .968]
+var xDim
+var yDim
 function generatePlot(   dev_obj   ) {
         var gd = dev_obj.gd
         
@@ -231,7 +245,6 @@ function generatePlot(   dev_obj   ) {
         // colorscale[0] = [0, "rgb(0,255,255)"]
         // colorscale.push(   [1, "rgb(255,0,0)"]
         
-        
         // console.log(color)
         // console.log(colorscale)
         // console.log(categoricalDimensions)
@@ -244,8 +257,10 @@ function generatePlot(   dev_obj   ) {
         };
     
 
-         // } /**/
+        // } /**/
         console.log(   dev_obj   )
+        
+
         var traces = [
         {
             type: "sankey",
@@ -261,8 +276,8 @@ function generatePlot(   dev_obj   ) {
                 },
                 label: dev_obj.labels,
                 // color: ["blue", "blue", "blue", "blue", "blue"]
-                x:[0,.25,.5,.75,1],
-                y:[0,.25,.5,.75,1]
+                x:xDim,
+                y:yDim
             },
             link: {
                 source: dev_obj.source,
@@ -341,14 +356,16 @@ function generatePlot(   dev_obj   ) {
         sankey_FL_0_i.args.cdLabels = parcatLabels
         sankey_FL_0_i.args.labels = []
         sankey_FL_0_i.args.shows = []
-        sankey_FL_0_i.args.yVal =[.001, .061, .118, .201, .251, .331, .395, .455, .535, .605, .695, .758, .831, .896, .968]
         sankey_FL_0_i.args.positions = {}
         ultraObject.forLoop(   sankey_FL_0_i    )
         
+        
             /* deciding poisition of sankey nodes*/  //{
+            xDim = new Float32Array(   sankey_FL_0_i.args.source.length   )
+            yDim = new Float32Array(   sankey_FL_0_i.args.source.length   )
             sankey_FL_1_i.forLoopLength = Object.keys(   sankey_FL_0_i.args.positions   ).length
-            console.log(   Object.keys(   sankey_FL_0_i.args.positions   ).length   )
             ultraObject.forLoop(   sankey_FL_1_i    )
+            console.log(   xDim,yDim   )
             // }  /**/
         // cdLabels.push('end')
         
