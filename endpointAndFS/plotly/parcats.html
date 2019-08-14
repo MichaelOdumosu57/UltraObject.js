@@ -128,7 +128,7 @@ function generateParcat(   dev_obj   ) {
         var colors = new Int8Array(carsData.length);
         var color = []
         colors.map((x,i)=>{
-            color.push(i/15)
+            color.push(0)
             colorscale.push(   [i/15, 'rgb('+Math.floor(  Math.random() *255 ).toString()+','+Math.floor(  Math.random() *255 ).toString()+','+Math.floor(  Math.random() *255 ).toString()+')']   )
         })
         colorscale[0] = [0, "rgb(0,255,255)"]
@@ -179,10 +179,7 @@ function generateParcat(   dev_obj   ) {
                 family:"Overpass",
                 color:"green"
             },
-            domain:{
-                x:[.5],
-                y:[.2]
-            }
+
             
             }
         ];
@@ -190,22 +187,26 @@ function generateParcat(   dev_obj   ) {
         // Make plot
         Plotly.newPlot(gd, traces, layout);
     
-        // Update color on selection and click
-    var update_color = function(points_data) {
-        var new_color = color;
-        var color_value = document.querySelector('input[name="rate"]:checked').value;
-        console.log(color_value);
-        var selection = []
-        for(var i = 0; i < points_data.points.length; i++) {
-          new_color[points_data.points[i].pointNumber] = color_value;
-          selection.push(points_data.points[i].pointNumber);
-        }
-        // Update selected points in scatter plot
-        Plotly.restyle(gd, {'marker.color': [new_color]}, 0)
-        // Update color of selected paths in parallel categories diagram
-        Plotly.restyle(gd,
-                       {'line.color': [new_color]}, 1)
-    };
+        // trying to access those parcat ribbons
+        var update_color = function(points_data) {
+            console.log(   points_data   )
+            var new_color = color;
+            var selection = []
+            for(var i = 0; i < points_data.points.length; i++) {
+                new_color[points_data.points[i].pointNumber] = .5;
+                selection.push(points_data.points[i].pointNumber);
+            }
+        
+            // // Update selected points in scatter plot
+            // Plotly.restyle(gd, {'marker.color': [new_color]}, 0)
+        
+            // Update color of selected paths in parallel categories diagram
+            Plotly.restyle(gd,
+                         {'line.color': [new_color]}, 0)
+        };
+
+    document.querySelector('#myDiv0').on('plotly_selected', update_color);
+    document.querySelector('#myDiv0').on('plotly_click', update_color);
     
         gd.on('plotly_selected', update_color);
         gd.on('plotly_click', update_color);
