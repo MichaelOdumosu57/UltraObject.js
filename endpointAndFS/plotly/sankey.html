@@ -1,0 +1,509 @@
+<html>
+<head>
+	<script src="file:///home/chronos/u-8c76189d6d79b89d2195035f0cec044aa6fc2aff/MyFiles/Downloads/elgesis_folder/plotly_chrome/plotly-latest.min.js"></script>
+	<script src="file:///home/chronos/u-8c76189d6d79b89d2195035f0cec044aa6fc2aff/MyFiles/Downloads/elgesis_folder/ultraObject_chrome/ultraObject.js"></script>
+	<script src="http://24.189.66.225/backend/plotly"></script>
+	<script src="http://24.189.66.225/backend/ultraObject"></script>
+</head>
+<body>
+</body>
+    <script>
+
+
+    var parcats_FL_0_i = {
+        forLoop_0_i:0,
+        forLoopLength:3,
+        fn:function(   dev_obj   ){
+            var element11 = document.createElement("div")
+            document.body.appendChild(element11)
+            var node11 = document.querySelector('div')
+            id11 = document.createAttribute("id")
+            id11.value = 'myDiv' +parcats_FL_0_i.forLoop_0_i
+            element11.setAttributeNode(id11)
+        },
+        args: {}
+    }
+    ultraObject.forLoop(   parcats_FL_0_i   )
+    
+
+    /* vars for generating random data */ //{
+    var randomData =  ultraObject.iterableObject()
+    var maxRandom = 10
+    
+    // } /**/
+    var parcats_FL_1_i = {
+        forLoop_0_i:0,
+        forLoopLength:15,
+        fn:function(   dev_obj   ){
+            
+            randomData.add({
+                value:ultraObject.XHR[   ultraObject.scope[   parcats_XHR_0_i ]   ].data[0]
+            })
+            ultraObject.XHR[   ultraObject.scope[   parcats_XHR_0_i ]   ].data[0] = {}
+            // impt for the pointer to point to a new memory address to avoid your referencing problem
+            parcats_FL_2_i.forLoopLength = Object.keys(   randomData[parcats_FL_1_i.forLoop_0_i ]   ).length,
+            parcats_FL_2_i.args.total = 0
+            ultraObject.forLoop(   parcats_FL_2_i    )
+            ultraObject.XHR[   ultraObject.scope[   parcats_XHR_0_i ]   ].data[0].total = parcats_FL_2_i.args.total
+            
+        },
+        args: {}
+    }
+    var parcats_FL_2_i = {
+        forLoop_0_i:0,
+        fn:function(   dev_obj   ){
+            
+            ultraObject.XHR[   ultraObject.scope[   parcats_XHR_0_i ]   ].data[0][   Object.keys(   randomData[parcats_FL_1_i.forLoop_0_i]    )[   parcats_FL_2_i.forLoop_0_i   ]   ] = Math.floor(  Math.random() * maxRandom  )
+            parcats_FL_2_i.args.total += ultraObject.XHR[   ultraObject.scope[   parcats_XHR_0_i ]   ].data[0][   Object.keys(   randomData[parcats_FL_1_i.forLoop_0_i]    )[   parcats_FL_2_i.forLoop_0_i   ]   ]
+            
+        },
+        args: {}
+    }
+    var parcats_FL_3_i = {
+        forLoop_0_i:0,
+        fn:function(   dev_obj   ){
+            parcats_FL_3_i.args.target.push(   parcats_FL_3_i.args.source[   parcats_FL_3_i.forLoop_0_i   ]   )
+        },
+        args: {}
+    }
+    var sankey_FL_0_i = {
+        forLoop_0_i:0,
+        fn:function(   dev_obj   ){
+            dev_obj.cdLabels.map((x,i)=>{
+                dev_obj.labels.push(   x   )
+                xDim.push(   xVal[i]   )
+                dev_obj.shows.push(   (   sankey_FL_0_i.forLoop_0_i.toString()   )   )
+                
+                
+                if(   !ultraObject.isArray({
+                    type:dev_obj.positions[   dev_obj.cdLabels[i]   ]
+                })  ){
+                        dev_obj.positions[   dev_obj.cdLabels[i]   ] = []
+                }
+                
+                
+                dev_obj.positions[   dev_obj.cdLabels[i]   ].push([
+                    dev_obj.value.length,
+                    randomData[   sankey_FL_0_i.forLoop_0_i   ][   dev_obj.cdLabels[i]   ]
+                ])
+                
+                
+                if(   x !== 'end'   ){
+                    
+                    
+                    dev_obj.source.push(i + (   (   sankey_FL_0_i.forLoop_0_i   ) * dev_obj.cdLabels.length )   )
+                    dev_obj.target.push((i+1) + (   (    sankey_FL_0_i.forLoop_0_i   ) * dev_obj.cdLabels.length ))
+                
+                
+                    if(   x === 'total'   ){
+                        
+                        
+                        dev_obj.value.push(   maxRandom   )
+                    }
+                    
+                    
+                    else if(    randomData[   sankey_FL_0_i.forLoop_0_i   ][   dev_obj.cdLabels[i]   ] !== 0   ){
+                        
+                        
+                        dev_obj.value.push(   randomData[   sankey_FL_0_i.forLoop_0_i   ][   dev_obj.cdLabels[i]   ]   )
+                        
+                        
+                    }
+                    
+                    
+                    else if(    randomData[   sankey_FL_0_i.forLoop_0_i   ][   dev_obj.cdLabels[i]   ] === 0   ){
+                        
+                        
+                        dev_obj.value.push(  1   )
+                        
+                        
+                    }
+                    
+                    
+                }
+                
+                
+                else if(   x === 'end'   ){
+                    
+                    
+                    dev_obj.source.push(   0   )
+                    dev_obj.target.push(   0   )
+                    dev_obj.value.push(  0  )
+                    
+                    
+                }
+                
+                
+            })
+        },
+        args: {}
+    }
+    var sankey_FL_1_i = {
+        forLoop_0_i:0,
+        fn:function(   dev_obj   ){
+            ultraObject.sort({
+                target: sankey_FL_0_i.args.positions[   Object.keys(   sankey_FL_0_i.args.positions   )[   sankey_FL_1_i.forLoop_0_i   ]   ],
+                algorithm:'bubble',
+                compare:function(   dev_obj   ){
+                    
+
+                    if(   dev_obj.val[   dev_obj.index   ][1] > dev_obj.val[   dev_obj.index + 1   ][1]   ){
+                        
+                        
+                        return 'true'
+                        
+                        
+                    }
+                        
+                    
+                },
+                result:'true'
+            })
+            sankey_FL_2_i.forLoopLength = sankey_FL_0_i.args.positions[   Object.keys(   sankey_FL_0_i.args.positions   )[   sankey_FL_1_i.forLoop_0_i   ]   ].length
+            ultraObject.forLoop(   sankey_FL_2_i   )
+            debugger
+        },
+        args: {}
+    }
+    var sankey_FL_2_i = {
+        forLoop_0_i:0,
+        fn:function(   dev_obj   ){
+            console.log(   sankey_FL_0_i.args.positions[   Object.keys(   sankey_FL_0_i.args.positions   )[   sankey_FL_1_i.forLoop_0_i   ]   ][   sankey_FL_2_i.forLoop_0_i   ]   )
+            yDim[   sankey_FL_0_i.args.positions[   Object.keys(   sankey_FL_0_i.args.positions   )[   sankey_FL_1_i.forLoop_0_i   ]   ][   sankey_FL_2_i.forLoop_0_i   ][0]   ] = yVal[   sankey_FL_2_i.forLoop_0_i   ]
+        },
+        args: {}
+    }
+    
+
+    
+/*making the XHR for the db data from interrogation*/  // {
+    var parcats_XHR_0_i
+    ultraObject.endpoint({
+        xhttp:ultraObject.iterify({iterify:[new XMLHttpRequest()]}),
+        instruct:'XMLHttpRequest',
+        eventName:'load',
+        eventHandler:()=>{
+            parcats_XHR_0_i  =  ultraObject.scope.add(   {value:ultraObject.XHR.abelast[ultraObject.XHR.abelast.length -1]}   )
+            ultraObject.XHR[   ultraObject.scope[   parcats_XHR_0_i ]   ].data = JSON.parse(   ultraObject.XHR[   ultraObject.scope[   parcats_XHR_0_i ]   ][0].response   )
+        },
+        protocol:`POST`,
+        target:`http://24.189.66.225/database/query`,
+        asyncBool:false,
+        body:`SELECT * FROM interrogation_PLOTLY;`
+    })
+// }  /**/
+
+/*generating a  random samplye*/  //{
+parcats_XHR_0_i  =  ultraObject.scope.add(   {value:ultraObject.XHR.abelast[ultraObject.XHR.abelast.length -1]}   )
+ultraObject.forLoop(   parcats_FL_1_i    )
+// }  /**/
+
+
+// var xVal = [0.008, .254, .5, .746, .9919]
+var xVal = [.008, .20478, .40156, .59834,.79512,.9919]
+// its strange whats happening but to get the vertical or horizontal amnt of rows you need to divide by .9919 -.008, each multiplier of as you add from the beginning is the horizontal index
+var yVal = [.001, .061, .118, .201, .251, .331, .395, .455, .535, .605, .695, .758, .831, .896, .968]
+var xDim = []
+var yDim
+function generatePlot(   dev_obj   ) {
+        var gd = dev_obj.gd
+        
+        /* for parcats */ //{
+        // Preprocess Data
+        var carsData = []
+        
+        ultraObject.sort({
+            target: dev_obj.data,
+            algorithm:'bubble',
+            compare:function(   dev_obj   ){
+                
+                
+                if(   dev_obj.val[dev_obj.index].total < dev_obj.val[dev_obj.index+ 1].total    ){
+                    
+                    
+                    return 'true'
+                    
+                    
+                }
+                
+                
+            },
+            result:'true'
+        })
+        parcats_FL_3_i.forLoopLength = dev_obj.data.length
+        parcats_FL_3_i.args.target = carsData
+        parcats_FL_3_i.args.source = dev_obj.data
+        ultraObject.forLoop(   parcats_FL_3_i   )
+        // var categoricalDimensions = dev_obj.labels.map(
+        //   function(dimLabel) {
+        //     // Extract column
+        //     var values = carsData.map(function(row) {
+        //       return row[dimLabel]
+        //     });
+    
+        //     return {
+        //       values,
+        //       label: dimLabel
+        //     };
+        //   }
+        // );
+    
+        // // Colors
+        // var colorscale = [];
+        // var colors = new Int8Array(carsData.length);
+        // var color = []
+        // colors.map((x,i)=>{
+        //     color.push(i/15)
+        //     colorscale.push(   [i/15, 'rgb('+Math.floor(  Math.random() *255 ).toString()+','+Math.floor(  Math.random() *255 ).toString()+','+Math.floor(  Math.random() *255 ).toString()+')']   )
+        // })
+        // colorscale[0] = [0, "rgb(0,255,255)"]
+        // colorscale.push(   [1, "rgb(255,0,0)"]
+        
+        // console.log(color)
+        // console.log(colorscale)
+        // console.log(categoricalDimensions)
+
+        // Layout
+        var layout = {
+            width: dev_obj.dimensions.width,
+            height: dev_obj.dimensions.height,
+            hovermode: 'closest'
+        };
+    
+
+        // } /**/
+        console.log(   dev_obj   )
+        
+
+        var traces = [
+        {
+            type: "sankey",
+            orientation: "h",
+            //   customdata://(used for pointing out extra meaning about your
+            arrangement:"freeform",
+            node: {
+                pad: 15,
+                thickness: 30,
+                line: {
+                  color: "green",
+                  width: 0.5
+                },
+                label: dev_obj.labels,
+                // color: ["blue", "blue", "blue", "blue", "blue"]
+                x:xDim,
+                y:yDim
+            },
+            link: {
+                source: dev_obj.source,
+                target: dev_obj.target,
+                value:  dev_obj.value,
+                label: dev_obj.shows
+                
+            }
+        },
+ //{
+//             type: 'parcats',
+//             // domain: {
+//             //           x:[0,2],
+//             //           y: [0, 10.4],
+//             //           row:12,
+//             //           column:14
+//             //       },
+//             name:'interrogation parcat',
+//             hoverinfo:'all',
+//             arrangement:"freeform" ,
+//             sortpaths:"forward",
+//             dimensions:categoricalDimensions,
+//             line: {
+//                 // colorscale: colorscale,
+//                 cmin: 0,
+//                 cmax: 14,
+//                 // cauto:true,
+//                 // color: color,
+//                 width:500,
+//                 shape: 'hspline',
+//                 showscale:true,
+//                 colorbar:{
+//                     len:.5
+//                 }
+//             },
+//             labelfont: {
+//                 size: 12,
+//                 family:"Overpass",
+//                 color:"green"
+//             },
+            
+//             }
+        ];
+    
+    
+            // link: {
+            //     source: [0,1,2,3],
+            //     target: [1,2,3,4],
+            //     value:  [1,2,0,5],
+            // }
+        // Make plot
+        Plotly.newPlot(gd, traces, layout);
+        gd.on("plotly_click",(   dataFlow   )=>{
+            console.log(   dataFlow   )
+        })
+    
+    }
+    var resolveDiv0 = new Promise((resolve,reject)=>{
+        var gd = document.getElementById('myDiv0');
+        var parcatLabels = [
+            'element',
+            'parents',
+            'siblings',
+            'children',
+            'total',
+            'end',
+        ];
+        var sankeyLabels
+        
+    
+        
+        /* generating data for the sankey*/  //{
+        sankey_FL_0_i.forLoopLength = randomData.length
+        sankey_FL_0_i.args.source = []
+        sankey_FL_0_i.args.target = []
+        sankey_FL_0_i.args.value = []
+        sankey_FL_0_i.args.cdLabels = parcatLabels
+        sankey_FL_0_i.args.labels = []
+        sankey_FL_0_i.args.shows = []
+        sankey_FL_0_i.args.positions = {}
+        ultraObject.forLoop(   sankey_FL_0_i    )
+        
+        
+            /* deciding poisition of sankey nodes*/  //{
+            // xDim = new Float32Array(   sankey_FL_0_i.args.source.length   )
+            yDim = new Float32Array(   sankey_FL_0_i.args.source.length   )
+            sankey_FL_1_i.forLoopLength = Object.keys(   sankey_FL_0_i.args.positions   ).length
+            ultraObject.forLoop(   sankey_FL_1_i    )
+            console.log(   xDim,yDim   )
+            // }  /**/
+        // cdLabels.push('end')
+        
+
+        // }  /**/
+        
+        /*making my parcat*/ //{
+        generatePlot({
+            data:randomData,
+            labels:sankey_FL_0_i.args.labels,
+            // labels:parcatLabels,
+            gd, // es6 only
+            source:sankey_FL_0_i.args.source,
+            target:sankey_FL_0_i.args.target,
+            value:sankey_FL_0_i.args.value,
+            shows:sankey_FL_0_i.args.shows,
+            positions:sankey_FL_0_i.args.positions,
+            dimensions:{
+                height:800,
+                width:1400
+            }
+        })
+        // }  /**/
+        
+    });
+    
+//     var resolveDiv1 = new Promise((resolve,reject)=>{
+//     var gd = document.getElementById('myDiv1');
+//     var cdLabels = [
+
+//     "element_tagname",
+//     "element_hidden",
+//     "element_classname",
+//     "element_id",
+//     "parents_exist",
+//     "parents_tagname",
+//     "parents_classname",
+//     "parents_id",
+//     "siblings_tagname",
+//     "children_classname",
+//     "children_id",
+//     'total'
+
+    
+//     ];
+    
+
+    
+//     /*making my parcat*/ //{
+//     generatePlot({
+//         data:randomData,
+//         labels:cdLabels,
+//         gd, // es6 only
+//         dimensions:{
+//             height:1000,
+//             width:1700
+//         }
+        
+//     })
+//     // }  /**/
+    
+// });
+    
+//     var resolveDiv2 = new Promise((resolve,reject)=>{
+//     var gd = document.getElementById('myDiv2');
+//     var cdLabels = [
+//     "element",
+//     "element_tagname",
+//     "element_hidden",
+//     "element_classname",
+//     "element_id",
+//     "parents",
+//     "parents_exist",
+//     "parents_tagname",
+//     "parents_classname",
+//     "parents_id",
+//     "siblings",
+//     "siblings_tagname",
+//     "children",
+//     "children_classname",
+//     "children_id",
+//     'total'
+
+//     ];
+    
+
+    
+//     /*making my parcat*/ //{
+//     generatePlot({
+//         data:randomData,
+//         labels:cdLabels,
+//         gd, // es6 only
+//         dimensions:{
+//             height:1200,
+//             width:2000
+//         }
+        
+//     })
+//     // }  /**/
+    
+// });
+    
+
+
+
+    // Plotly.update('myDiv0',{
+    //     // link: {
+    //     //     source: sankey_FL_0_i.args.source,
+    //     //     target: sankey_FL_0_i.args.target,
+    //     //     value:  sankey_FL_0_i.args.value
+    //     // },
+    //     node:{
+    //         // label:sankey_FL_0_i.args.cdLabels
+    //         x:[.2,.2],
+    //         y:[.2,.2]
+    //     }
+    // })
+    
+/* values */
+// x 0.008, .254, .5, .746, .9919
+// y  .001, .061, .118, .201, .251, .331, .395, .455, .535, .605, .695, .758, .831, .896, .968
+            
+</script>
+</html>
+
+
