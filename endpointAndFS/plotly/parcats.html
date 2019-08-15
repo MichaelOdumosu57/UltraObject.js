@@ -206,10 +206,8 @@ function generateParcat(   dev_obj   ) {
                          {'line.color': [new_color]}, 0)
         };
 
-    document.querySelector('#myDiv0').on('plotly_selected', update_color);
-    document.querySelector('#myDiv0').on('plotly_click', update_color);
     
-        gd.on('plotly_selected', update_color);
+        // gd.on('plotly_selected', update_color);
         gd.on('plotly_click', update_color);
     }
 var resolveDiv0 = new Promise((resolve,reject)=>{
