@@ -159,6 +159,35 @@ function partialMatch(   dev_obj   ){
                         })
                         // }  /**/
                         
+                        var pMFL_1_i = {
+                            fn:function(   dev_obj   ){
+                                
+                                
+                                if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compTo[pMFL_1_i.forLoop_0_i] === ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compAgn[pMFL_0_i.forLoop_0_i]  ){
+                                    //&& ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.rangePause   !== 'true'
+                                    // if placed here remember to take it out the top
+                                
+                                    
+                                    ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.trailer = 'true'
+                                    ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.trailerLocation = pMFL_1_i.forLoop_0_i
+                                    ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy.trailer = 'true'
+                                    return 'premature'
+                                    
+                                    
+                                }
+                                
+                                
+                                // else if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.rangePause   === 'true'   ){
+                                    
+                                    
+                                //     return 'premature'
+                                    
+                                    
+                                // }
+                                
+                                
+                            }
+                        }
                         var pMFL_0_i = {
                             forLoop_0_i:0,
                             forLoopLength: ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compTo.length > ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compAgn.length ? ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compTo.length :  ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compAgn.length ,// PROBLEM add one to the length and deal with the undefined problem at the end of this loop
@@ -167,16 +196,6 @@ function partialMatch(   dev_obj   ){
                                 
                                 /* full module  */ //{
                                 if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.full === 'true'   ){
-                                    
-                                    
-                                    // if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compTo[   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].pause   ][0]   ] === ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compAgn[   pMFL_0_i.forLoop_0_i   ]   ){
-                                        
-                                        
-                                    //     ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.full = 'ok'
-                                    //     ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy.full = 'ok'
-                                        
-                                        
-                                    // }
                                     
                                     
                                     if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compTo[   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].pause   ][0]   ] !== ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compAgn[   pMFL_0_i.forLoop_0_i   ] && ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].range   ][0] > 0  ){
@@ -228,38 +247,9 @@ function partialMatch(   dev_obj   ){
                                 if(   ultraObject.isInt({type:ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.trailer})   ==='true' && ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.trailer !== 'complete' &&  ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.rangePause   !== 'true'   ){
                                     
                                     
-                                    var pMFL_1_i = {
-                                        forLoop_0_i:ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].pause   ][0],
-                                        forLoopLength:ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].pause   ][0] +ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.trailer,
-                                        fn:function(   dev_obj   ){
-                                            
-                                            
-                                            if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compTo[pMFL_1_i.forLoop_0_i] === ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.compAgn[pMFL_0_i.forLoop_0_i]  ){
-                                                //&& ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.rangePause   !== 'true'
-                                                // if placed here remember to take it out the top
-                                            
-                                                
-                                                ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.trailer = 'true'
-                                                ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.trailerLocation = pMFL_1_i.forLoop_0_i
-                                                ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.copy.trailer = 'true'
-                                                return 'premature'
-                                                
-                                                
-                                            }
-                                            
-                                            
-                                            // else if(   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].scrumMaster.rangePause   === 'true'   ){
-                                                
-                                                
-                                            //     return 'premature'
-                                                
-                                                
-                                            // }
-                                            
-                                            
-                                        },
-                                        args:undefined //{}
-                                    }
+
+                                    pMFL_1_i.forLoop_0_i = ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].pause   ][0]
+                                    pMFL_1_i.forLoopLength =ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ][   ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].pause   ][0] +ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].controls.trailer
                                     ultraObject.forLoop(   pMFL_1_i   )
                                 
                                 
@@ -362,7 +352,7 @@ function partialMatch(   dev_obj   ){
                                         
                                        
                                         ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].satisfy = 'true'
-                                        ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].satisfies = ultraObject.iterify({iterify:['true','range']})
+                                        // ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].satisfies = ultraObject.iterify({iterify:['true','range']})
                                         return 'premature'
                                         
                                         
@@ -373,7 +363,7 @@ function partialMatch(   dev_obj   ){
                                         
                                         
                                         ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].satisfy = 'false';
-                                        ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].satisfies = ultraObject.iterify({iterify:['false','range']})
+                                        // ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].satisfies = ultraObject.iterify({iterify:['false','range']})
                                         return 'premature'
                                         
                                         
@@ -386,7 +376,7 @@ function partialMatch(   dev_obj   ){
                                         
                                         
                                         ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].satisfy = 'false';
-                                        ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].satisfies = ultraObject.iterify({iterify:['false','spaces']})
+                                        // ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].satisfies = ultraObject.iterify({iterify:['false','spaces']})
                                         return 'premature'
                                         
                                         
@@ -399,7 +389,7 @@ function partialMatch(   dev_obj   ){
                                         
                                         
                                         ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].satisfy = 'false';
-                                        ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].satisfies = ultraObject.iterify({iterify:['false','gap']})
+                                        // ultraObject.nE[   ultraObject.scope[pMNE_0_i]   ].satisfies = ultraObject.iterify({iterify:['false','gap']})
                                         return 'premature'
                                         
                                         
@@ -412,6 +402,10 @@ function partialMatch(   dev_obj   ){
                             args:dev_obj //{}
                         }
                         ultraObject.forLoop(   pMFL_0_i   )
+                        
+                        /*nE  -scope   */ //{
+                        ultraObject.scope.minus(   {index:pMNE_0_i }   )
+                        // }  /**/
                         
                     }
                     // }  /**/

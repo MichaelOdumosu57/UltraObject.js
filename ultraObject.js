@@ -432,7 +432,7 @@
                             args:undefined
                         }
                         ultraObject.forLoop(   objIFL_0_i   )
-                        
+                        debugger
                         /*objIO -scope   */ //{
                         ultraObject.scope.minus(   {index:oIobjI_0_i}   )
                         // }  /**/
@@ -751,6 +751,7 @@
                         })
                     )
                     
+                    
                     /*objIO -self -ablelast   */ //{
                     ultraObject.objIO.minus(   {index:ultraObject.objIO.abelast.length-1}   )
                     ultraObject.objIO.abelast.minus(   {index:ultraObject.objIO.abelast.length-1}   )
@@ -776,7 +777,7 @@
                             
                             else if(   dev_obj.nS !== undefined   ){
                                 
-                                debugger
+                                
                                 ultraObject.selectTags[   ultraObject.scope[eCSSelectTags_0_i]   ].indexSelect = ultraObject.nS[   ultraObject.scope[eCSNS_0_i]   ][   eCSearchFL_0_i.forLoop_0_i   ][0]
                                 
                                 
@@ -1046,6 +1047,10 @@
                     // }  /**/
                     ultraObject.forLoop(   eCSearchFL_0_i   )
                     delete ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].sameElement
+                    // }  /**/
+
+                    /*nS -scope   */ //{
+                    ultraObject.scope.minus(   {index:ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]].nS}   )
                     // }  /**/
                     
                     /*selectTags -scope   */ //{
@@ -2244,6 +2249,7 @@
                         
                     }
                     
+                    
                     /*taking the misc that holds the function out the scope*/ //{
                     ultraObject.scope.minus(   {index:selectAllMisc_0_i}   )
                     // }  /**/
@@ -3440,6 +3446,11 @@
                                             ]
                                         })
                                     )
+                                    
+                                        /*objIO -self -ablelast   */ //{
+                                        ultraObject.objIO.minus(   {index:ultraObject.objIO.length-1}   )
+                                        ultraObject.objIO.abelast.minus(   {index:ultraObject.objIO.abelast.length-1}   )
+                                        // }  /**/
                                     // } /**/
                                                                         
                                     // } /**/
@@ -4444,6 +4455,10 @@
                         }
                         ultraObject.forLoop(   pMFL_0_i   )
                         
+                        /*nE  -scope   */ //{
+                        ultraObject.scope.minus(   {index:pMNE_0_i }   )
+                        // }  /**/
+                        
                     }
                     // }  /**/
                     
@@ -4535,7 +4550,7 @@
                             ultraObject.args
                         ]})
                     )
-                    
+
                     /*objIO -self -ablelast   */ //{
                     ultraObject.objIO.minus(   {index:ultraObject.objIO.abelast.length-1}   )
                     ultraObject.objIO.abelast.minus(   {index:ultraObject.objIO.abelast.length-1}   )
@@ -4558,11 +4573,13 @@
                     // }  /**/
                     
                     /*nS +scope  +abelast  */ //{
+                    // dont delete the code in there, we might have abelast mem leak so  check here to help
                     var pFFNS_0_i =  ultraObject.scope.add(   {value:ultraObject.nS.abelast[   ultraObject.nS.abelast.length-1   ]}   )
-                    ultraObject.nS.abelast.add(   {value:ultraObject.scope[   pFFNS_0_i   ]}   )
+                    // ultraObject.nS.abelast.add(   {value:ultraObject.scope[   pFFNS_0_i   ]}   )
                     // }  /**/
                     
                     ultraObject.selectTags.abelast.minus(   {index:0}   )
+                    
                     ultraObject.packIt({
                         order:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]],
                         directions: ultraObject.iterify(   {iterify:['gather element','match']}   ),
@@ -4588,9 +4605,12 @@
                                 
                                 /* setting up needed objects for proof*/ //{
                                     //element
+                                    
                                     ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.sameChild = 'true'
                                     //parents
                                     var pFFST_1_i = ultraObject.scope.add(   {value:ultraObject.selectTags.add(   {value:ultraObject.iterableObject()}   )}   )
+                                    
+                                    // ask if they are dom elements before doing anything
                                     ultraObject.selectTags[ultraObject.scope[pFFST_1_i]].add(   {value:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.offsetParent}   )
                                     ultraObject.selectTags[ultraObject.scope[pFFST_1_i]].add(   {value:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.parentElement}   )
                                     ultraObject.selectTags[ultraObject.scope[pFFST_1_i]].add(   {value:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.parentNode}   )
@@ -4872,29 +4892,30 @@
                                             })
                                             ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].pointValue = ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].pointValue // used to deterime if valuePhrasre belongs in the elements value
                                             console.log(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].pointValue   )
-                                            ultraObject.selectTags.minus({
-                                                index:ultraObject.scope[pFFST_1_i],
-                                                messy:'true'
-                                            })
-                                            ultraObject.scope.minus({
-                                                index:pFFST_1_i,
-                                                messy:'true'
-                                            })
-                                            ultraObject.selectTags.minus({
-                                                index:ultraObject.scope[pFFST_2_i],
-                                                messy:'true'
-                                            })
-                                            ultraObject.scope.minus({
-                                                index:pFFST_2_i,
-                                                messy:'true'
-                                            })
+                                            debugger
                                             ultraObject.selectTags.minus({
                                                 index:ultraObject.scope[pFFST_3_i],
-                                                messy:'true'
+                                                // messy:'true'
                                             })
                                             ultraObject.scope.minus({
                                                 index:pFFST_3_i,
-                                                messy:'true'
+                                                // messy:'true'
+                                            })
+                                           ultraObject.selectTags.minus({
+                                                index:ultraObject.scope[pFFST_2_i],
+                                                // messy:'true'
+                                            })
+                                            ultraObject.scope.minus({
+                                                index:pFFST_2_i,
+                                                // messy:'true'
+                                            })
+                                            ultraObject.selectTags.minus({
+                                                index:ultraObject.scope[pFFST_1_i],
+                                                // messy:'true'
+                                            })
+                                            ultraObject.scope.minus({
+                                                index:pFFST_1_i,
+                                                // messy:'true'
                                             })
                                             // throw('e')
                                             console.log(  'what is the result', ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword  )
@@ -5228,11 +5249,12 @@
                         }
                     }
                     ultraObject.forLoop(   pFFFL_0_i   )
+                    debugger
                     ultraObject.selectTags.minus(   {index:ultraObject.scope[pFFST_0_i]}   )
-                    ultraObject.scope.minus({
-                        index:pFFST_0_i,
-                        messy:'true'
-                    })
+                    // ultraObject.scope.minus({
+                    //     index:pFFST_0_i,
+                    //     messy:'true'
+                    // })
                     ultraObject.numberSystem({
                         operation:'decimal',
                         conversion:'to',
@@ -5250,7 +5272,7 @@
                     })
                     var pFFFL_1_i = {
                         forLoop_0_i:0,
-                        forLoopLength:1,
+                        forLoopLength:ultraObject.allTags[   ultraObject.scope[pFFATI_0_i]   ].length,
                         fn:function(   dev_obj   ){
                             ultraObject.eCSearch({
                                 list:pFFList_0_i,
@@ -5258,11 +5280,68 @@
                                 aT: pFFATI_0_i,
                                 all:'true',
                                 nS:ultraObject.scope[   pFFNS_0_i   ]
-                                
+                            })
+                            
+                            // /*  selectTags +scope  */ //{
+                            // //for loop on this to see if you can find empty places within the scope
+                            // pFFFL_2_i.forLoopLength:ultraObject.scope.length,
+                            // ultraObject.forLoop(   pFFFL_2_i   )
+                            // // } /**/
+                            
+                            /* filling the value for each element  */ //{
+                            ultraObject.packIt({
+                                order:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]],
+                                directions: ultraObject.iterify(   {iterify:['gather element','match']}   ),
+                                fill:'value',
+                                write:'valuePhrase'
+                            })
+                            // } /**/
+                            
+                            ultraObject.forLoop(   pFFFL_0_i   )
+                            ultraObject.selectTags.minus(   {index:ultraObject.scope[pFFST_0_i]}   )
+                            // ultraObject.scope.minus({
+                            //     index:pFFST_0_i,
+                            //     messy:'true'
+                            // })
+                            ultraObject.numberSystem({
+                                operation:'decimal',
+                                conversion:'to',
+                                nS:ultraObject.scope[   pFFNS_0_i   ],
+                            })
+                            ultraObject.numberSystem({
+                                operation:'decimal',
+                                conversion:'from',
+                                nS:ultraObject.scope[   pFFNS_0_i   ],
+                                currentNumber:ultraObject.nS[   ultraObject.scope[pFFNS_0_i]   ].decimal.currentNumber + 1
+                            })
+                            ultraObject.numberSystem({
+                                operation:'update',
+                                nS:ultraObject.scope[   pFFNS_0_i   ]
                             })
                         },
                         args:dev_obj //{}
                     }
+                    // var pFFFL_2_i = {
+                    //     forLoop_0_i:0,
+                    //     fn:function(   dev_obj   ){
+                            
+                            
+                    //         if(   ultraObject.scope[   pFFFL_2_i.forLoop_0_i   ] === undefined   ){
+                                
+                                
+                    //             pFFST_0_i =  ultraObject.scope.add({
+                    //                 value:ultraObject.selectTags.abelast[ultraObject.selectTags.abelast.length-1],
+                    //                 index:pFFFL_2_i.forLoop_0_i
+                    //             })
+                                
+                                
+                    //             return 'true'
+                    //         }
+                            
+                            
+                    //     },
+                    //     args:dev_obj //{}
+                    // }
                     ultraObject.forLoop(   pFFFL_1_i   )
                 
                 console.groupEnd()
