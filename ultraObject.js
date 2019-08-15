@@ -527,11 +527,16 @@
                 function isDOMElement(   dev_obj   ){ //checks if item is HTML or XML tag
                     //.type the item in question
 
-                        
-                        if(   ultraObject.isObject({type:dev_obj.type}) && dev_obj.type.ownerDocument !== undefined   ){
+                        if(   dev_obj.type.ownerDocument !== undefined   ){
                             
                             
-                            return true
+                            if(   ultraObject.isObject({type:dev_obj.type})    ){
+                                
+                                
+                                return true
+                                
+                                
+                            }
                             
                             
                         }
@@ -4611,9 +4616,30 @@
                                     var pFFST_1_i = ultraObject.scope.add(   {value:ultraObject.selectTags.add(   {value:ultraObject.iterableObject()}   )}   )
                                     
                                     // ask if they are dom elements before doing anything
-                                    ultraObject.selectTags[ultraObject.scope[pFFST_1_i]].add(   {value:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.offsetParent}   )
-                                    ultraObject.selectTags[ultraObject.scope[pFFST_1_i]].add(   {value:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.parentElement}   )
-                                    ultraObject.selectTags[ultraObject.scope[pFFST_1_i]].add(   {value:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.parentNode}   )
+                                    if(   ultraObject.isDOMElement({type:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.offsetParent})   ){
+                                        
+                                        
+                                        ultraObject.selectTags[ultraObject.scope[pFFST_1_i]].add(   {value:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.offsetParent}   )
+                                    
+                                    
+                                    }
+                                    
+                                    
+                                    if(   ultraObject.isDOMElement({type:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.parentElement})   ){
+                                        
+                                        
+                                        ultraObject.selectTags[ultraObject.scope[pFFST_1_i]].add(   {value:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.parentElement}   )
+                                    
+                                    
+                                    }
+                                    
+                                    
+                                    if(   ultraObject.isDOMElement({type:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.parentNode})   ){
+                                        
+                                        ultraObject.selectTags[ultraObject.scope[pFFST_1_i]].add(   {value:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.parentNode}   )
+                                    
+                                    
+                                    }
                                     //siblings retuns HTMLCollection
                                     
                                     /*selectTags +scope + self +abelast  */ //{
