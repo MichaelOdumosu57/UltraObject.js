@@ -5355,7 +5355,7 @@
                         }
                     }
                     ultraObject.forLoop(   pFFFL_0_i   )
-                    debugger
+                    // debugger
                     ultraObject.selectTags.minus(   {index:ultraObject.scope[pFFST_0_i]}   )
                     // ultraObject.scope.minus({
                     //     index:pFFST_0_i,
@@ -5378,7 +5378,7 @@
                     })
                     var pFFFL_1_i = {
                         forLoop_0_i:0,
-                        forLoopLength:ultraObject.allTags[   ultraObject.scope[pFFATI_0_i]   ].length,
+                        forLoopLength:ultraObject.allTags[   ultraObject.scope[pFFATI_0_i]   ].length - 1,
                         fn:function(   dev_obj   ){
                             ultraObject.eCSearch({
                                 list:pFFList_0_i,
@@ -5441,30 +5441,10 @@
                                 operation:'update',
                                 nS:ultraObject.scope[   pFFNS_0_i   ]
                             })
+                            ultraObject.args = ultraObject.iterableObject()
                         },
                         args:dev_obj //{}
                     }
-                    // var pFFFL_2_i = {
-                    //     forLoop_0_i:0,
-                    //     fn:function(   dev_obj   ){
-                            
-                            
-                    //         if(   ultraObject.scope[   pFFFL_2_i.forLoop_0_i   ] === undefined   ){
-                                
-                                
-                    //             pFFST_0_i =  ultraObject.scope.add({
-                    //                 value:ultraObject.selectTags.abelast[ultraObject.selectTags.abelast.length-1],
-                    //                 index:pFFFL_2_i.forLoop_0_i
-                    //             })
-                                
-                                
-                    //             return 'true'
-                    //         }
-                            
-                            
-                    //     },
-                    //     args:dev_obj //{}
-                    // }
                     ultraObject.forLoop(   pFFFL_1_i   )
                 
                 console.groupEnd()
