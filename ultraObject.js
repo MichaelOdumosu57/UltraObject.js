@@ -432,7 +432,7 @@
                             args:undefined
                         }
                         ultraObject.forLoop(   objIFL_0_i   )
-                        debugger
+                        // debugger
                         /*objIO -scope   */ //{
                         ultraObject.scope.minus(   {index:oIobjI_0_i}   )
                         // }  /**/
@@ -527,18 +527,24 @@
                 function isDOMElement(   dev_obj   ){ //checks if item is HTML or XML tag
                     //.type the item in question
 
-                        if(   dev_obj.type.ownerDocument !== undefined   ){
-                            
-                            
-                            if(   ultraObject.isObject({type:dev_obj.type})    ){
+                        if(   !ultraObject.isPrimitive({type:dev_obj.type})   ){
+                        
+                        
+                            if(   dev_obj.type.ownerDocument !== undefined   ){
                                 
                                 
-                                return true
+                                if(   ultraObject.isObject({type:dev_obj.type})    ){
+                                    
+                                    
+                                    return true
+                                    
+                                    
+                                }
                                 
                                 
                             }
-                            
-                            
+                        
+                        
                         }
                         
                         
@@ -749,7 +755,7 @@
                     console.group(   'items needed to search for elements based on keywords'   )
                     ultraObject.objInvloved(ultraObject.iterify({
                             iterify:[
-                                ultraObject.allTags[ultraObject.scope[dev_obj.aT]],
+                                // ultraObject.allTags[ultraObject.scope[dev_obj.aT]],
                                 ultraObject.misc[ultraObject.scope[dev_obj.list]],
                                 ultraObject.selectTags[ultraObject.scope[eCSSelectTags_0_i]]
                             ]
@@ -1836,6 +1842,10 @@
                          .matchMap if .directions === match map keys and fill values
                          .fill  where to place the items
                          .write what to place for each fill value
+                         for match
+                            .prevent some attributes of an element might not allowed certain value to pack into certain properti
+                                of the element, the API will use these fn or vales I havent decided coming in an itO to try to avoid errors
+                            
                     */
                     var packIt_dev_obj = ultraObject.args.add(   {value:ultraObject.iterify(   {iterify:dev_obj}   )   }   )
                     ultraObject.args.abelast.add(   {value:packIt_dev_obj}   )
@@ -1867,7 +1877,32 @@
                                     forLoop_0_i:0,
                                     forLoopLength:packItSA.subGroupsMap.MB_0_i.length,
                                     fn:function(   dev_obj   ){
-                                        packItSA[packItFL_1_i.forLoop_0_i][dev_obj.fill] = dev_obj.order[packItFL_1_i.forLoop_0_i][dev_obj.write]
+                                        var packItBOOL_0_i = {0:false}
+                                        packItBOOL_0_i = ultraObject.severalOr({
+                                            compTo: null,
+                                            compAgn: dev_obj.prevent,
+                                            boolean:packItBOOL_0_i,
+                                            which:0,
+                                            how:function(   dev_obj   ){
+                                            //this removes bad list that do not lead to an element
+                                            
+                                                return dev_obj.compAgnI({element:packItSA[packItFL_1_i.forLoop_0_i]})
+                                                
+                                            },
+                                            result:'cantFill'
+                                        })
+                                        console.log(   packItBOOL_0_i   )
+                                        
+                                        
+                                        if(   !packItBOOL_0_i[0]   ){
+                                            
+                                            
+                                            packItSA[packItFL_1_i.forLoop_0_i][dev_obj.fill] = dev_obj.order[packItFL_1_i.forLoop_0_i][dev_obj.write]
+                                        
+                                        
+                                        }
+                                        
+                                        
                                         //properly writes to the item that should be filled
                                         // console.log(   dev_obj.order[packItFL_1_i.forLoop_0_i][dev_obj.write]   )
                                         // console.log(   packItSA[packItFL_1_i.forLoop_0_i].value   )
@@ -1875,7 +1910,8 @@
                                     args:{
                                         fill:dev_obj.fill,
                                         order:dev_obj.order,
-                                        write:dev_obj.write
+                                        write:dev_obj.write,
+                                        prevent:dev_obj.prevent
                                     }
                                 }
                                 ultraObject.forLoop(   packItFL_1_i   )
@@ -1927,7 +1963,8 @@
                             directions:dev_obj.directions,
                             order:dev_obj.order,
                             fill:dev_obj.fill,
-                            write:dev_obj.write
+                            write:dev_obj.write,
+                            prevent:dev_obj.prevent
                         }
                     }
                     ultraObject.forLoop(   packItFL_0_i   )
@@ -2233,6 +2270,11 @@
                                 map:selectReturnMD,
                                 nextItem:'complete',
                             })
+                        
+                        /*helps reset subGroups   */ //{
+                        ultraObject.subGroupsO.length = 0
+                        ultraObject.MB_0_i.minus({index:ultraObject.MB_0_i.length -1 })
+                        // }  /**/
                         console.group(   'grabbing the chosen elements from the object'   )
                         ultraObject.objInvloved(
                             ultraObject.iterify({
@@ -4589,7 +4631,24 @@
                         order:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]],
                         directions: ultraObject.iterify(   {iterify:['gather element','match']}   ),
                         fill:'value',
-                        write:'valuePhrase'
+                        write:'valuePhrase',
+                        prevent:ultraObject.iterify({
+                                    iterify:[
+                                        function(   dev_obj   ){
+                                            
+                                            
+                                            if(   dev_obj.element.type === 'file'   ){
+                                                
+                                                
+                                                return 'cantFill'
+                                                
+                                                
+                                            }
+                                            
+                                            
+                                        }
+                                    ]
+                                })
                     })
                     // should also make sure value is not empty
                     ///////////////////////////////////////////////////////////////////////////
@@ -4704,12 +4763,33 @@
                                                             {
                                                             'valuePhrase':function(   dev_obj   ){
                                                                 /*interrogates to see if packIt actually put the right phrase in the right spot*/ //{
-                                                                if(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.value.toLowerCase() === ultraObject.misc[ultraObject.scope[pFFList_0_i]][pFFFL_0_i.forLoop_0_i][1].toLowerCase()   ){
+                                                                if(   ultraObject.isFunction({type:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.value.toLowerCase}   )   ){
                                                                     
                                                                     
-                                                                    ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].noRun = 'true'
+                                                                    if(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.value.toLowerCase() === ultraObject.misc[ultraObject.scope[pFFList_0_i]][pFFFL_0_i.forLoop_0_i][1].toLowerCase()   ){
+                                                                        
+                                                                        
+                                                                        ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].noRun = 'true'
+                                                                        
+                                     
+                                                                    }
                                                                     
-                                 
+                                                                    
+                                                                }
+                                                                
+                                                                
+                                                                else if(   !ultraObject.isFunction({type:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.value.toLowerCase})   ){
+                                                                    
+                                                                    
+                                                                    if(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.value === ultraObject.misc[ultraObject.scope[pFFList_0_i]][pFFFL_0_i.forLoop_0_i][1]   ){
+                                                                        
+                                                                        
+                                                                        ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].noRun = 'true'
+                                                                        
+                                     
+                                                                    }
+                                                                    
+                                                                    
                                                                 }
                                                                 
                                                                 
@@ -5319,8 +5399,25 @@
                                 order:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]],
                                 directions: ultraObject.iterify(   {iterify:['gather element','match']}   ),
                                 fill:'value',
-                                write:'valuePhrase'
-                            })
+                                write:'valuePhrase',
+                                prevent:ultraObject.iterify({
+                                                        iterify:[
+                                                            function(   dev_obj   ){
+                                                                
+                                                                
+                                                                if(   dev_obj.element.type === 'file'   ){
+                                                                    
+                                                                    
+                                                                    return 'cantFill'
+                                                                    
+                                                                    
+                                                                }
+                                                                
+                                                                
+                                                            }
+                                                        ]
+                                                    })
+                                                })
                             // } /**/
                             
                             ultraObject.forLoop(   pFFFL_0_i   )

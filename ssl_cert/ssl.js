@@ -15,6 +15,7 @@ app.use(cors())
 
 const config = {
     database : "ultraobject",
+    // database : "jobs",
     host     ,
     user     : "postgres",
     port     : 5432,
