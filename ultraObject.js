@@ -3670,12 +3670,14 @@
                                                 
                                                 ultraObject.partialMatch(   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0]   ].iPM_0_i   )
                                                 // } /**/
-                                                                                            
-                                                if(   ultraObject.nE[ultraObject.nE.length-1].satisfy === 'true'   ){
+                                                ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].satisfy = ultraObject.nE[ultraObject.nE          .length-1].satisfy
+                                                ultraObject.nE.minus(   {index:ultraObject.nE.length-1}   )
+                                                ultraObject.nE.abelast.minus(   {index:ultraObject.nE.abelast.length-1}   )
+                                                
+                                                
+                                                if(   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].satisfy === 'true'   ){
                                                     
-                                                    
-                                                    ultraObject.nE.minus(   {index:ultraObject.nE.length-1}   )
-                                                    ultraObject.nE.abelast.minus(   {index:ultraObject.nE.abelast.length-1}   )
+
                                                     ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].pointValue  += 1
                                                     
                                                             
@@ -3690,6 +3692,7 @@
                                                             
                                                                                                         
                                                 }
+                                                // debugger
                                                 
                                                 
                                                 // ultraObject.misc.minus(   {index:ultraObject.misc.length-1}   )
@@ -3761,12 +3764,15 @@
                                                 
                                                 ultraObject.partialMatch(   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0]   ].iPM_0_i   )
                                                 // } /**/
-                                                                                            
-                                                if(   ultraObject.nE[ultraObject.nE.length-1].satisfy === 'true'   ){
+
+                                                ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].satisfy = ultraObject.nE[ultraObject.nE          .length-1].satisfy
+                                                ultraObject.nE.minus(   {index:ultraObject.nE.length-1}   )
+                                                ultraObject.nE.abelast.minus(   {index:ultraObject.nE.abelast.length-1}   )
+                                                
+                                                
+                                                if(   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].satisfy === 'true'   ){
                                                     
                                                     
-                                                    ultraObject.nE.minus(   {index:ultraObject.nE.length-1}   )
-                                                    ultraObject.nE.abelast.minus(   {index:ultraObject.nE.abelast.length-1}   )
                                                     ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].pointValue  += 1
                                                     
                                                     
@@ -3781,7 +3787,7 @@
                                                     
                                                     
                                                 }
-                                                
+                                                // debugger
                                                 
                                                 // ultraObject.misc.minus(   {index:ultraObject.misc.length-1}   )
                                                 // ultraObject.misc.abelast.minus(   {index:ultraObject.misc.abelast.length-1}   )
@@ -3907,12 +3913,15 @@
                                             
                                             ultraObject.partialMatch(   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0]   ].iPM_0_i   )
                                             // } /**/
-                                                                                        
-                                            if(   ultraObject.nE[ultraObject.nE.length-1].satisfy === 'true'   ){
+                                                     
+                                            ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].satisfy = ultraObject.nE[ultraObject.nE      .length-1].satisfy
+                                            ultraObject.nE.minus(   {index:ultraObject.nE.length-1}   )
+                                            ultraObject.nE.abelast.minus(   {index:ultraObject.nE.abelast.length-1}   )
+                                            
+                                            
+                                            if(   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].satisfy === 'true'   ){
                                                 
                                                 
-                                                ultraObject.nE.minus(   {index:ultraObject.nE.length-1}   )
-                                                ultraObject.nE.abelast.minus(   {index:ultraObject.nE.abelast.length-1}   )
                                                 ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].pointValue  += 1
                                                 
 
@@ -3927,6 +3936,7 @@
                                                 
                                                 
                                             }
+                                            // debugger
                                             
                                             
                                             // ultraObject.misc.minus(   {index:ultraObject.misc.length-1}   )
@@ -4004,12 +4014,16 @@
                                         
                                         ultraObject.partialMatch(   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ][   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].passOn.proofObject[0]   ].iPM_0_i   )
                                         // } /**/
-                                                                                    
-                                        if(   ultraObject.nE[ultraObject.nE.length-1].satisfy === 'true'   ){
+                                        
+                                        
+                                        ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].satisfy = ultraObject.nE[ultraObject.nE.length-1].satisfy
+                                        ultraObject.nE.minus(   {index:ultraObject.nE.length-1}   )
+                                        ultraObject.nE.abelast.minus(   {index:ultraObject.nE.abelast.length-1}   )
+                                        
+                                        
+                                        if(   ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].satisfy === 'true'   ){
                                             
-                                            
-                                            ultraObject.nE.minus(   {index:ultraObject.nE.length-1}   )
-                                            ultraObject.nE.abelast.minus(   {index:ultraObject.nE.abelast.length-1}   )
+                                        
                                             ultraObject.qC[   ultraObject.scope[iQC_0_i]   ].pointValue  += 1
                                             
                                             
@@ -4026,6 +4040,7 @@
                                         }
                                         
                                         
+
                                         // ultraObject.misc.minus(   {index:ultraObject.misc.length-1}   )
                                         // ultraObject.misc.abelast.minus(   {index:ultraObject.misc.abelast.length-1}   )
                                     },
