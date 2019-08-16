@@ -5780,7 +5780,9 @@
                                         eventListener:debug_0_i
                                     })
                                     ultraObject.XHR[   ultraObject.scope[pFFXHR_0_i]   ].sending.fn(   ultraObject.XHR[     ultraObject.scope[pFFXHR_0_i]   ].sending.body   )
-                                    ultraObject.forLoop(   pFFFL_6_i   )
+                                    console.log(`here I want to add debug_0_i as an eventListnener to chrome.runtime.onMessage, it adds it because hasListeners says true but before the message comes it this execution context dies I need to keep this execution context alive until the eventListnener completes`)
+                                    debugger
+                                    // ultraObject.forLoop(   pFFFL_6_i   )
                                 // } /**/
                                     
 
