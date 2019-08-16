@@ -246,7 +246,7 @@ chrome.runtime.onInstalled.addListener(function() {
         sendingOrigin:'extension'
     })
     bkgd_XHR_0_i   = ultraObject.scope.add(   {value:ultraObject.XHR.abelast[ultraObject.XHR.abelast.length -1]}   )
-    ultraObject.XHR[   ultraObject.scope[   bkgd_XHR_0_i   ]   ].targetURL =  "https://ualbanyasist.github.io/"
+    ultraObject.XHR[   ultraObject.scope[   bkgd_XHR_0_i   ]   ].targetURL =  "https://boards.greenhouse.io/enigmaio/jobs/1056543?gh_src=ceb603551#app"
     ultraObject.exp.instantiateFS = function(  dev_obj   ){
         return function (resolve,reject){
             devChosen({
@@ -407,40 +407,10 @@ chrome.runtime.onInstalled.addListener(function() {
         })
     }
     
-    // globalPromise({
-    //     globalResolve:ultraObject.exp.instantiateFS({quotaRequest:'true'}),
-    //     globalThen:ultraObject.exp.readSpot
-    // })
-    
-new Promise((resolve,reject)=>{
-    ultraObject.a = 1
-    
-            var b = setInterval(()=>{
-                
-                
-                if(   ultraObject.a === 2   ){
-                    
-
-
-                    clearInterval(   b   )
-                    resolve()
-                    
-                    
-                }
-                
-                
-                console.log(`head over to `+ ultraObject.XHR[   ultraObject.scope[   bkgd_XHR_0_i   ]   ].targetURL +` in  a new tab in the same browser, open the developer tools allow for debugging then make ultraObject.a  =2
-                and see the error`)
-                
-                
-            },2000)
-
-}).then(()=>{
-     ultraObject.exp.endpointDB()
-})
-
-    
-
+    globalPromise({
+        globalResolve:ultraObject.exp.instantiateFS({quotaRequest:'true'}),
+        globalThen:ultraObject.exp.readSpot
+    })
 });
   
   

@@ -4755,6 +4755,8 @@
                         ultraObject.forLoop(   pFFFL_1_i   )
                     }
                     // } /**/
+                    
+                    
                     /*  node mode choice thread data visualization by chromelistener*/ //{
                     var pFFXHR_0_i = ScriptXHR_0_i
                     function debug_0_i(response,sender,sendResponse){
@@ -4762,7 +4764,6 @@
                         console.log(   response   )
                         ultraObject.XHR[   ultraObject.scope[pFFXHR_0_i]   ].sending.response = response
                         ultraObject.XHR[   ultraObject.scope[pFFXHR_0_i]   ].sending.fn = sendResponse
-                        debugger
                         console.log('table is ready for interrogation')
                         ultraObject.interrogation({
                             proof:[
@@ -5041,25 +5042,24 @@
                         })
                         // debugger
                         delete ultraObject.XHR[   ultraObject.scope[pFFXHR_0_i]   ].sending.response
-
+                        debugger
                         console.log(  'what is the result', ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword  )
-                        ultraObject.objInvolved(
-                            ultraObject.iterify({iterify:
-                                [
-                                    ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item    .value,
-                                    ultraObject.misc[ultraObject.scope[pFFList_0_i]][pFFFL_0_i.forLoop_0_i][1]
-                                ]// i probably put it somewhere else
-                            })
-                        )
+                        // ultraObject.objInvolved(
+                        //     ultraObject.iterify({iterify:
+                        //         [
+                        //             ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item    .value,
+                        //             ultraObject.misc[ultraObject.scope[pFFList_0_i]][pFFFL_0_i.forLoop_0_i][1]
+                        //         ]// i probably put it somewhere else
+                        //     })
+                        // )
                     
                         
                         console.groupEnd()
                     console.groupEnd()
+                    debugger
                     ultraObject.selectTags.nextSet()
-                    return true
+                    
                 }
-
-                     // } /**/
                     var pFFFL_6_i = {
                         forLoop_0_i:0,
                         fn:function(   dev_obj   ){
@@ -5069,8 +5069,15 @@
                                 return 'premature'
                             }
                         },
-                        // args:dev_obj //{}
+                        
                     }
+                    // } /**/
+                    
+                    var pFFST_1_i
+                    var pFFST_2_i
+                    var pFFFL_4_i
+                    var pFFST_3_i
+                    var pFFFL_5_i
                     var pFFFL_0_i = {
                         //these for spots, the amount that claims the element, the objects related properties the family and the string matching all help determine where this object belongs
                         //POINT VALUE the spot where we add points
@@ -5089,7 +5096,7 @@
                                     
                                     ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.sameChild = 'true'
                                     //parents
-                                    var pFFST_1_i = ultraObject.scope.add(   {value:ultraObject.selectTags.add(   {value:ultraObject.iterableObject()}   )}   )
+                                    pFFST_1_i = ultraObject.scope.add(   {value:ultraObject.selectTags.add(   {value:ultraObject.iterableObject()}   )}   )
                                     
                                     // ask if they are dom elements before doing anything
                                     if(   ultraObject.isDOMElement({type:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.offsetParent})   ){
@@ -5119,11 +5126,11 @@
                                     //siblings retuns HTMLCollection
                                     
                                     /*selectTags +scope + self +abelast  */ //{
-                                    var pFFST_2_i = ultraObject.scope.add(   {value:ultraObject.selectTags.add(   {value:ultraObject.iterableObject()}   )}   )
+                                    pFFST_2_i = ultraObject.scope.add(   {value:ultraObject.selectTags.add(   {value:ultraObject.iterableObject()}   )}   )
                                     ultraObject.selectTags.abelast.add(   {value:ultraObject.scope[   pFFST_2_i   ]}   )
                                     // }  /**/
                                     
-                                    var pFFFL_4_i = {
+                                    pFFFL_4_i = {
                                         forLoop_0_i:0,
                                         forLoopLength: ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.parentElement.children.length,
                                         fn:function(   dev_obj   ){
@@ -5146,12 +5153,12 @@
                                     //children retuns HTMLCollection
                                     
                                     /*selectTags +scope + self +abelast  */ //{
-                                    var pFFST_3_i = ultraObject.scope.add(   {value:ultraObject.selectTags.add(   {value:ultraObject.iterableObject()}   )}   )
+                                    pFFST_3_i = ultraObject.scope.add(   {value:ultraObject.selectTags.add(   {value:ultraObject.iterableObject()}   )}   )
                                     ultraObject.selectTags.abelast.add(   {value:pFFST_3_i}   )
                                     // }  /**/
                                     
 
-                                    var pFFFL_5_i = {
+                                    pFFFL_5_i = {
                                         forLoop_0_i:0,
                                         forLoopLength:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.children.length,
                                         fn:function(   dev_obj   ){
@@ -5780,8 +5787,6 @@
                                         eventListener:debug_0_i
                                     })
                                     ultraObject.XHR[   ultraObject.scope[pFFXHR_0_i]   ].sending.fn(   ultraObject.XHR[     ultraObject.scope[pFFXHR_0_i]   ].sending.body   )
-                                    console.log(`here I want to add debug_0_i as an eventListnener to chrome.runtime.onMessage, it adds it because hasListeners says true but before the message comes it this execution context dies I need to keep this execution context alive until the eventListnener completes`)
-                                    debugger
                                     // ultraObject.forLoop(   pFFFL_6_i   )
                                 // } /**/
                                     

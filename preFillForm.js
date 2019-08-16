@@ -3,6 +3,12 @@
     setInterval acts as an async operation, there is really no way to make it a blocker we must keep everything in the listener
 */
 
+ /*
+    node mode choice thread data visualization by chromelistener
+    pFFFL_6_i was for trying to keep the context alive while waiting for the eventListener to completed, dont delete it keep it  hopefully i get it fixed very soon
+*/
+
+
  function preFillForm(   dev_obj   ){
                     /*abelast
                         3 for selectTags
