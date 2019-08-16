@@ -11,8 +11,53 @@ function globalPromise(dev_obj){
 }
 var yourPort;
 
+  
+function askDB(   dev_obj   ){
+    return function(   resolve,reject   ){
+        ultraObject.endpoint({
+            xhttp:ultraObject.iterify({iterify:[new XMLHttpRequest()]}),
+            instruct:'XMLHttpRequest',
+            eventName:'load',
+            eventHandler:()=>{
+                var bkgd_XHR_2_i  =  ultraObject.scope.add(   {value:ultraObject.XHR.abelast[ultraObject.XHR.abelast.length -1]}   )
+                console.log(ultraObject.XHR[   ultraObject.scope[bkgd_XHR_2_i ]   ][0].response)
+                // ultraObject.XHR.minus({index:ultraObject.XHR.length - 1})
+                // ultraObject.XHR.abelast.minus({index:ultraObject.XHR.abelast.length - 1})
+                
+                
+                if(   resolve !== undefined   ){
+                    
+                    
+                    resolve(   ultraObject.XHR[   ultraObject.scope[bkgd_XHR_2_i ]   ][0].response   )
+                    
+                    
+                }
+                
+                
+            },
+            protocol:dev_obj.protocol,
+            target:dev_obj.target,
+            asyncBool:true,
+            body:dev_obj.querySQL
+        })
+    }
+    
+}
 
 
+function communicateDB(   dev_obj   ){
+    return function(resolve,reject){
+        ultraObject.XHR[   ultraObject.scope[bkgd_XHR_0_i ]   ].sending.fn({
+            sendingBody:dev_obj.message,
+            matchURL:dev_obj.URL,
+            resolve:resolve
+        })
+    }
+}
+
+
+
+    
 
 chrome.runtime.onInstalled.addListener(function() {
     ultraObject.endpoint({
@@ -89,7 +134,6 @@ chrome.runtime.onInstalled.addListener(function() {
                                                     children_CLASSNAME          int,
                                                     children_ID                 int,
                                                     total                       int
-                                
                                                 );
                                             `,
                                             target:"http://24.189.66.225/database/query",
@@ -109,11 +153,8 @@ chrome.runtime.onInstalled.addListener(function() {
                             
                         }
                         
-                        
-                        // else if(   dev_obj.resolve === undefined   ){
-                            
-                            
-                            if(   response.item === 'debuggerDB'   ){
+
+                        if(   response.item === 'debuggerDB'   ){
                             
 
                                 ultraObject.exp.debuggerDB = {}
@@ -182,7 +223,6 @@ chrome.runtime.onInstalled.addListener(function() {
                                     args:dev_obj //{}
                                 }
                                 ultraObject.forLoop(   bkgd_FL_0_i    )
-                                debugger
                                 askDB({
                                     querySQL:
                                         ultraObject.exp.debuggerDB.stringDB.total + ultraObject.exp.debuggerDB.stringDB.args + "\n)\nVALUES(\n" + ultraObject.exp.debuggerDB.stringDB.values + "\n);"
@@ -190,12 +230,15 @@ chrome.runtime.onInstalled.addListener(function() {
                                     target:"http://24.189.66.225/database/query",
                                     protocol:"POST"
                                 })()
+                                ultraObject.XHR[   ultraObject.scope[bkgd_XHR_0_i ]   ].sending.fn({
+                                    sendingBody:"nextSet",
+                                    matchURL:ultraObject.XHR[   ultraObject.scope[   bkgd_XHR_0_i   ]   ].targetURL,
+                                })
                                 
                                 
                             }
                             
                             
-                        // }
                     });
             });
         },
@@ -203,57 +246,7 @@ chrome.runtime.onInstalled.addListener(function() {
         sendingOrigin:'extension'
     })
     bkgd_XHR_0_i   = ultraObject.scope.add(   {value:ultraObject.XHR.abelast[ultraObject.XHR.abelast.length -1]}   )
-});
-  
-  
-function askDB(   dev_obj   ){
-    return function(   resolve,reject   ){
-        ultraObject.endpoint({
-            xhttp:ultraObject.iterify({iterify:[new XMLHttpRequest()]}),
-            instruct:'XMLHttpRequest',
-            eventName:'load',
-            eventHandler:()=>{
-                var bkgd_XHR_2_i  =  ultraObject.scope.add(   {value:ultraObject.XHR.abelast[ultraObject.XHR.abelast.length -1]}   )
-                console.log(ultraObject.XHR[   ultraObject.scope[bkgd_XHR_2_i ]   ][0].response)
-                // ultraObject.XHR.minus({index:ultraObject.XHR.length - 1})
-                // ultraObject.XHR.abelast.minus({index:ultraObject.XHR.abelast.length - 1})
-                
-                
-                if(   resolve !== undefined   ){
-                    
-                    
-                    resolve(   ultraObject.XHR[   ultraObject.scope[bkgd_XHR_2_i ]   ][0].response   )
-                    
-                    
-                }
-                
-                
-            },
-            protocol:dev_obj.protocol,
-            target:dev_obj.target,
-            asyncBool:true,
-            body:dev_obj.querySQL
-        })
-    }
-    
-}
-
-
-function communicateDB(   dev_obj   ){
-    return function(resolve,reject){
-        ultraObject.XHR[   ultraObject.scope[bkgd_XHR_0_i ]   ].sending.fn({
-            sendingBody:dev_obj.message,
-            matchURL:dev_obj.URL,
-            resolve:resolve
-        })
-    }
-}
-
-
-
-chrome.runtime.onInstalled.addListener(function() {
-    
-
+    ultraObject.XHR[   ultraObject.scope[   bkgd_XHR_0_i   ]   ].targetURL =  "https://boards.greenhouse.io/enigmaio/jobs/1056543?gh_src=ceb603551#app"
     ultraObject.exp.instantiateFS = function(  dev_obj   ){
         return function (resolve,reject){
             devChosen({
@@ -315,7 +308,7 @@ chrome.runtime.onInstalled.addListener(function() {
                                                 localLoops()
                                                 resolve()
                                             },
-                                            globalThen:ultraObject.exp.deleteFS
+                                            globalThen:ultraObject.exp.endpointDB
                                         })
                                     },
                                     (e)=>{console.log(e)})
@@ -379,7 +372,7 @@ chrome.runtime.onInstalled.addListener(function() {
                                     console.log('need it')
                                     
                                     
-                                },1000)
+                                },2500)
                             },
                             globalThen:ultraObject.exp.readSpot
                         })
@@ -405,16 +398,14 @@ chrome.runtime.onInstalled.addListener(function() {
         globalPromise({
             globalResolve:communicateDB({
                 message:ultraObject.XHR[   ultraObject.scope[bkgd_XHR_0_i ]   ].sending.body,
-                URL:"https://boards.greenhouse.io/enigmaio/jobs/1056543?gh_src=ceb603551#app"
+                URL:ultraObject.XHR[   ultraObject.scope[   bkgd_XHR_0_i   ]   ].targetURL
             }),
             globalThen:communicateDB({
                 message:{job:"made the table start sending me values"},
-                URL:"https://boards.greenhouse.io/enigmaio/jobs/1056543?gh_src=ceb603551#app"
+                URL:ultraObject.XHR[   ultraObject.scope[   bkgd_XHR_0_i   ]   ].targetURL
             })
         })
     }
-        
-    
     
     globalPromise({
         globalResolve:ultraObject.exp.instantiateFS({quotaRequest:'true'}),
