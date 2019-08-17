@@ -68,84 +68,87 @@ chrome.runtime.onInstalled.addListener(function() {
                 
                 if(   response.item === 'debuggerDB'   ){
                             
-
-                                ultraObject.exp.debuggerDB = {}
-                                ultraObject.exp.debuggerDB.data = response.data
-                                ultraObject.exp.debuggerDB.stringDB = {} // there are ticks here its a string
-                                ultraObject.exp.debuggerDB.stringDB.args = ``
-                                ultraObject.exp.debuggerDB.stringDB.values = ``
-                                ultraObject.exp.debuggerDB.stringDB.total = `INSERT INTO interrogation_PLOTLY (\n`
-                                ultraObject.exp.debuggerDB.stringDB.delimiter = ',\n'
-                                bkgd_FL_0_i = {
-                                    forLoop_0_i:1,
-                                    forLoopLength:ultraObject.exp.debuggerDB.data.length,
-                                    fn:function(   dev_obj   ){
-                                       bkgd_FL_1_i.forLoopLength = ultraObject.exp.debuggerDB.data[    bkgd_FL_0_i.forLoop_0_i   ][1].length
-                                       ultraObject.exp.debuggerDB.stringDB.args  += ultraObject.exp.debuggerDB.data[   bkgd_FL_0_i.forLoop_0_i   ][0] + ultraObject.exp.debuggerDB.stringDB.delimiter
-                                       ultraObject.exp.debuggerDB.stringDB.values += ultraObject.exp.debuggerDB.data[   bkgd_FL_0_i.forLoop_0_i   ][2] + ultraObject.exp.debuggerDB.stringDB.delimiter
-                                       
-                                        
-                                        if(   bkgd_FL_0_i.forLoop_0_i + 1 ===  bkgd_FL_0_i.forLoopLength && bkgd_FL_1_i.forLoopLength !== 0   ){
-                                        
-                                            
-                                            bkgd_FL_1_i.args.end = 'true'
-                                            
-                                            
-                                        }
-                                        
-                                        
-                                        else if(   bkgd_FL_0_i.forLoop_0_i + 1 ===  bkgd_FL_0_i.forLoopLength && bkgd_FL_1_i.forLoopLength === 0   ){
-                                        
-                                            
-                                            ultraObject.exp.debuggerDB.stringDB.args = ultraObject.exp.debuggerDB.stringDB.args.slice(0,-2)
-                                            ultraObject.exp.debuggerDB.stringDB.values = ultraObject.exp.debuggerDB.stringDB.values.slice(0,-2)
-                                            
-                                            
-                                        }
-                                        
-                                        
-                                        if(   bkgd_FL_1_i.forLoopLength !== 0   ){
-                                            
-                                            
-                                            ultraObject.forLoop(   bkgd_FL_1_i    )
-                                            
-                                            
-                                        }
-                                    },
-                                    args:dev_obj //{}
+                            
+                        
+                        ultraObject.exp.debuggerDB = {}
+                        ultraObject.exp.debuggerDB.data = response.data
+                        ultraObject.exp.debuggerDB.stringDB = {} // there are ticks here its a string
+                        ultraObject.exp.debuggerDB.stringDB.args = ``
+                        ultraObject.exp.debuggerDB.stringDB.values = ``
+                        ultraObject.exp.debuggerDB.stringDB.total = `INSERT INTO interrogation_PLOTLY (\n`
+                        ultraObject.exp.debuggerDB.stringDB.delimiter = ',\n'
+                        bkgd_FL_0_i = {
+                            forLoop_0_i:1,
+                            forLoopLength:ultraObject.exp.debuggerDB.data.length,
+                            fn:function(   dev_obj   ){
+                               bkgd_FL_1_i.forLoopLength = ultraObject.exp.debuggerDB.data[    bkgd_FL_0_i.forLoop_0_i   ][1].length
+                               ultraObject.exp.debuggerDB.stringDB.args  += ultraObject.exp.debuggerDB.data[   bkgd_FL_0_i.forLoop_0_i   ][0] + ultraObject.exp.debuggerDB.stringDB.delimiter
+                               ultraObject.exp.debuggerDB.stringDB.values += ultraObject.exp.debuggerDB.data[   bkgd_FL_0_i.forLoop_0_i   ][2] + ultraObject.exp.debuggerDB.stringDB.delimiter
+                               
+                                
+                                if(   bkgd_FL_0_i.forLoop_0_i + 1 ===  bkgd_FL_0_i.forLoopLength && bkgd_FL_1_i.forLoopLength !== 0   ){
+                                
+                                    
+                                    bkgd_FL_1_i.args.end = 'true'
+                                    
+                                    
                                 }
-                                bkgd_FL_1_i = {
-                                    forLoop_0_i:0,
-                                    fn:function(   dev_obj   ){
-                                        ultraObject.exp.debuggerDB.stringDB.args += ultraObject.exp.debuggerDB.data[   bkgd_FL_0_i.forLoop_0_i   ][0] + "_" + ultraObject.exp.debuggerDB.data[    bkgd_FL_0_i.forLoop_0_i   ][1][    bkgd_FL_1_i.forLoop_0_i   ][0].toUpperCase() + ultraObject.exp.debuggerDB.stringDB.delimiter
-                                        ultraObject.exp.debuggerDB.stringDB.values += ultraObject.exp.debuggerDB.data[    bkgd_FL_0_i.forLoop_0_i   ][1][    bkgd_FL_1_i.forLoop_0_i   ][1].toString() + ultraObject.exp.debuggerDB.stringDB.delimiter
-                                        
-                                        
-                                        if(   bkgd_FL_1_i.args.end === 'true' && bkgd_FL_1_i.forLoop_0_i + 1 ===  bkgd_FL_1_i.forLoopLength   ){
-                                            
-                                            
-                                            ultraObject.exp.debuggerDB.stringDB.args = ultraObject.exp.debuggerDB.stringDB.args.slice(0,-2)
-                                            ultraObject.exp.debuggerDB.stringDB.values = ultraObject.exp.debuggerDB.stringDB.values.slice(0,-2)
-                                            
-                                            
-                                        }
-                                        
-                                        
-                                    },
-                                    args:dev_obj //{}
-                                }
-                                ultraObject.forLoop(   bkgd_FL_0_i    )
-                                askDB({
-                                    querySQL:
-                                        ultraObject.exp.debuggerDB.stringDB.total + ultraObject.exp.debuggerDB.stringDB.args + "\n)\nVALUES(\n" + ultraObject.exp.debuggerDB.stringDB.values + "\n);"
-                                    ,
-                                    target:"http://24.189.66.225/database/query",
-                                    protocol:"POST"
-                                })()
-                                sendResponse(   dev_obj.sendingBody   )
                                 
                                 
+                                else if(   bkgd_FL_0_i.forLoop_0_i + 1 ===  bkgd_FL_0_i.forLoopLength && bkgd_FL_1_i.forLoopLength === 0   ){
+                                
+                                    
+                                    ultraObject.exp.debuggerDB.stringDB.args = ultraObject.exp.debuggerDB.stringDB.args.slice(0,-2)
+                                    ultraObject.exp.debuggerDB.stringDB.values = ultraObject.exp.debuggerDB.stringDB.values.slice(0,-2)
+                                    
+                                    
+                                }
+                                
+                                
+                                if(   bkgd_FL_1_i.forLoopLength !== 0   ){
+                                    
+                                    
+                                    ultraObject.forLoop(   bkgd_FL_1_i    )
+                                    
+                                    
+                                }
+                            },
+                            args:dev_obj //{}
                         }
+                        bkgd_FL_1_i = {
+                            forLoop_0_i:0,
+                            fn:function(   dev_obj   ){
+                                ultraObject.exp.debuggerDB.stringDB.args += ultraObject.exp.debuggerDB.data[   bkgd_FL_0_i.forLoop_0_i   ][0] + "_" + ultraObject.exp.debuggerDB.data[    bkgd_FL_0_i.forLoop_0_i   ][1][    bkgd_FL_1_i.forLoop_0_i   ][0].toUpperCase() + ultraObject.exp.debuggerDB.stringDB.delimiter
+                                ultraObject.exp.debuggerDB.stringDB.values += ultraObject.exp.debuggerDB.data[    bkgd_FL_0_i.forLoop_0_i   ][1][    bkgd_FL_1_i.forLoop_0_i   ][1].toString() + ultraObject.exp.debuggerDB.stringDB.delimiter
+                                
+                                
+                                if(   bkgd_FL_1_i.args.end === 'true' && bkgd_FL_1_i.forLoop_0_i + 1 ===  bkgd_FL_1_i.forLoopLength   ){
+                                    
+                                    
+                                    ultraObject.exp.debuggerDB.stringDB.args = ultraObject.exp.debuggerDB.stringDB.args.slice(0,-2)
+                                    ultraObject.exp.debuggerDB.stringDB.values = ultraObject.exp.debuggerDB.stringDB.values.slice(0,-2)
+                                    
+                                    
+                                }
+                                
+                                
+                            },
+                            args:dev_obj //{}
+                        }
+                        ultraObject.forLoop(   bkgd_FL_0_i    )
+                        console.log(   ultraObject.exp.debuggerDB.stringDB.total + ultraObject.exp.debuggerDB.stringDB.args + "\n)\nVALUES(\n" + ultraObject.exp.debuggerDB.stringDB.values + "\n);"   )
+                        askDB({
+                            querySQL:
+                                ultraObject.exp.debuggerDB.stringDB.total + ultraObject.exp.debuggerDB.stringDB.args + "\n)\nVALUES(\n" + ultraObject.exp.debuggerDB.stringDB.values + "\n);"
+                            ,
+                            target:"http://24.189.66.225/database/query",
+                            protocol:"POST"
+                        })()
+                        console.log(   'i sent something back no' +   dev_obj.sendingBody  )
+                        sendResponse(   dev_obj.sendingBody   )
+                        
+                        
+                }
                         
                         
             })
@@ -306,6 +309,7 @@ chrome.runtime.onInstalled.addListener(function() {
                                     args:dev_obj //{}
                                 }
                                 ultraObject.forLoop(   bkgd_FL_0_i    )
+                                console.log(   ultraObject.exp.debuggerDB.stringDB.total + ultraObject.exp.debuggerDB.stringDB.args + "\n)\nVALUES(\n" + ultraObject.exp.debuggerDB.stringDB.values + "\n);"   )
                                 askDB({
                                     querySQL:
                                         ultraObject.exp.debuggerDB.stringDB.total + ultraObject.exp.debuggerDB.stringDB.args + "\n)\nVALUES(\n" + ultraObject.exp.debuggerDB.stringDB.values + "\n);"
@@ -313,6 +317,7 @@ chrome.runtime.onInstalled.addListener(function() {
                                     target:"http://24.189.66.225/database/query",
                                     protocol:"POST"
                                 })()
+                                
                                 ultraObject.XHR[   ultraObject.scope[bkgd_XHR_0_i ]   ].incoming.fn({
                                     sendingBody:"nextSet",
                                     // matchURL:ultraObject.XHR[   ultraObject.scope[   bkgd_XHR_0_i   ]   ].targetURL,

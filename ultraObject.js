@@ -4665,11 +4665,535 @@
                                     ]
                                 })
                     })
+                    // debugger
                     // should also make sure value is not empty
                     ///////////////////////////////////////////////////////////////////////////
                     console.group(   'answers'   )
                     var pFFMisc_0_i = ultraObject.scope.add(   {value:ultraObject.misc.add(   {value:ultraObject.iterify(   {iterify:['tagName','className','hidden','id']}   )}   )}   );
                     var pFFMisc_1_i = ultraObject.scope.add(   {value:ultraObject.misc.add(   {value:ultraObject.iterify(   {iterify:['input','select','textarea','option']}   )}   )}   );
+                   
+                    /*  node mode choice thread production  */ //{
+                        /*  the forLoop object responsible for going throught the rest of the webpage */ //{
+                        // var pFFFL_1_i = {
+                        //     forLoop_0_i:0,
+                        //     forLoopLength:ultraObject.allTags[   ultraObject.scope[pFFATI_0_i]   ].length - 1,
+                        //     fn:function(   dev_obj   ){
+                        //         ultraObject.eCSearch({
+                        //             list:pFFList_0_i,
+                        //             look:pFFLook_0_i,
+                        //             aT: pFFATI_0_i,
+                        //             all:'true',
+                        //             nS:ultraObject.scope[   pFFNS_0_i   ]
+                        //         })
+                        //         try{
+                        //             throw('see')
+                        //             }
+                        //         catch(e){}
+                                
+                        //         /* filling the value for each element  */ //{
+                        //         ultraObject.packIt({
+                        //             order:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]],
+                        //             directions: ultraObject.iterify(   {iterify:['gather element','match']}   ),
+                        //             fill:'value',
+                        //             write:'valuePhrase',
+                        //             prevent:ultraObject.iterify({
+                        //                                     iterify:[
+                        //                                         function(   dev_obj   ){
+                                                                    
+                                                                    
+                        //                                             if(   dev_obj.element.type === 'file'   ){
+                                                                        
+                                                                        
+                        //                                                 return 'cantFill'
+                                                                        
+                                                                        
+                        //                                             }
+                                                                    
+                                                                    
+                        //                                         }
+                        //                                     ]
+                        //                                 })
+                        //                             })
+                        //         // } /**/
+                        //         pFFFL_0_i.args.changeSending = 'true'
+                        //         ultraObject.forLoop(   pFFFL_0_i   )
+                                
+                        //         /* node mode choice thread production */ // {
+                        //         // ultraObject.selectTags.minus(   {index:ultraObject.scope[pFFST_0_i]}   )
+                        //         /**/ //}
+                                
+                        //         ultraObject.numberSystem({
+                        //             operation:'decimal',
+                        //             conversion:'to',
+                        //             nS:ultraObject.scope[   pFFNS_0_i   ],
+                        //         })
+                        //         ultraObject.numberSystem({
+                        //             operation:'decimal',
+                        //             conversion:'from',
+                        //             nS:ultraObject.scope[   pFFNS_0_i   ],
+                        //             currentNumber:ultraObject.nS[   ultraObject.scope[pFFNS_0_i]   ].decimal.currentNumber + 1
+                        //         })
+                        //         ultraObject.numberSystem({
+                        //             operation:'update',
+                        //             nS:ultraObject.scope[   pFFNS_0_i   ]
+                        //         })
+                        //         ultraObject.args = ultraObject.iterableObject()
+                        //     },
+                        //     args:dev_obj //{}
+                        // }
+                        // } /**/
+                    // } /**/
+                    
+                    /*  node mode choice thread data visualization by chromelistener  */ //{
+                        /*  the forLoop object responsible for going throught the rest of the webpage */ //{
+                        var pFFFL_1_i = {
+                            forLoop_0_i:0,
+                            forLoopLength:1,
+                            fn:function(   dev_obj   ){
+                                if(   dev_obj.counter === 126   ){
+                                    debugger
+                                }
+                                ultraObject.eCSearch({
+                                    list:pFFList_0_i,
+                                    look:pFFLook_0_i,
+                                    aT: pFFATI_0_i,
+                                    all:'true',
+                                    nS:ultraObject.scope[   pFFNS_0_i   ]
+                                })
+                                // try{
+                                //     throw('see')
+                                //     }
+                                // catch(e){}
+                                
+                                /* filling the value for each element  */ //{
+                                ultraObject.packIt({
+                                    order:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]],
+                                    directions: ultraObject.iterify(   {iterify:['gather element','match']}   ),
+                                    fill:'value',
+                                    write:'valuePhrase',
+                                    prevent:ultraObject.iterify({
+                                                            iterify:[
+                                                                function(   dev_obj   ){
+                                                                    
+                                                                    
+                                                                    if(   dev_obj.element.type === 'file'   ){
+                                                                        
+                                                                        
+                                                                        return 'cantFill'
+                                                                        
+                                                                        
+                                                                    }
+                                                                    
+                                                                    
+                                                                }
+                                                            ]
+                                                        })
+                                                    })
+                                // } /**/
+                                pFFFL_0_i.args.changeSending = 'true'
+                                ultraObject.forLoop(   pFFFL_0_i   )
+                                
+                                /* node mode choice thread production */ // {
+                                // ultraObject.selectTags.minus(   {index:ultraObject.scope[pFFST_0_i]}   )
+                                /**/ //}
+                                
+                                ultraObject.numberSystem({
+                                    operation:'decimal',
+                                    conversion:'to',
+                                    nS:ultraObject.scope[   pFFNS_0_i   ],
+                                })
+                                ultraObject.numberSystem({
+                                    operation:'decimal',
+                                    conversion:'from',
+                                    nS:ultraObject.scope[   pFFNS_0_i   ],
+                                    currentNumber:pFFFL_1_i.args.counter
+                                })
+                                ultraObject.numberSystem({
+                                    operation:'update',
+                                    nS:ultraObject.scope[   pFFNS_0_i   ]
+                                })
+                                ultraObject.args = ultraObject.iterableObject()
+                            },
+                            args:dev_obj //{}
+                        }
+                        pFFFL_1_i.args.realLength = ultraObject.allTags[   ultraObject.scope[pFFATI_0_i]   ].length - 1
+                        pFFFL_1_i.args.counter = 0
+                        // } /**/
+                    // } /**/
+                    
+                    /*  node mode choice thread data visualization by chromelistener  */ //{
+                    ultraObject.selectTags.nextSet = function(   dev_obj   ){
+                        ultraObject.numberSystem({
+                            operation:'decimal',
+                            conversion:'to',
+                            nS:ultraObject.scope[   pFFNS_0_i   ],
+                        })
+                        ultraObject.numberSystem({
+                            operation:'decimal',
+                            conversion:'from',
+                            nS:ultraObject.scope[   pFFNS_0_i   ],
+                            currentNumber:ultraObject.nS[   ultraObject.scope[pFFNS_0_i]   ].decimal.currentNumber + 1
+                        })
+                        ultraObject.numberSystem({
+                            operation:'update',
+                            nS:ultraObject.scope[   pFFNS_0_i   ]
+                        })
+                        if(   pFFFL_1_i.args.realLength !== pFFFL_1_i.args.counter   ){
+                            
+                            
+                            pFFFL_1_i.args.counter +=1
+                            ultraObject.forLoop(   pFFFL_1_i   )
+                            
+                            
+                        }
+                    }
+                    // } /**/
+                    
+                    
+                    /*  node mode choice thread data visualization by chromelistener*/ //{
+                    var pFFXHR_0_i = ScriptXHR_0_i
+                    function debug_0_i(response,sender,sendResponse){
+                        chrome.runtime.onMessage.removeListener(   debug_0_i   )
+                        console.log(   response   )
+                        ultraObject.XHR[   ultraObject.scope[pFFXHR_0_i]   ].sending.response = response
+                        ultraObject.XHR[   ultraObject.scope[pFFXHR_0_i]   ].sending.fn = sendResponse
+                        console.log('table is ready for interrogation')
+                        ultraObject.interrogation({
+                            proof:[
+                                    ['element',ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item],
+                                    ['parents',ultraObject.selectTags[ultraObject.scope[pFFST_1_i]]],
+                                    ['siblings',ultraObject.selectTags[ultraObject.scope[pFFST_2_i]]],
+                                    ['children',ultraObject.selectTags[ultraObject.scope[pFFST_3_i]]]
+                                ],
+                            facts:[
+                                    ['element',
+                                        {
+                                        'valuePhrase':function(   dev_obj   ){
+                                            /*interrogates to see if packIt actually put the right phrase in the right spot*/ //{
+                                            if(   ultraObject.isFunction({type:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.value.toLowerCase}   )   ){
+                                                
+                                                
+                                                if(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.value.toLowerCase() === ultraObject.misc[ultraObject.scope[pFFList_0_i]][pFFFL_0_i.forLoop_0_i][1].toLowerCase()   ){
+                                                    
+                                                    
+                                                    ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].noRun = 'true'
+                                                    
+                 
+                                                }
+                                                
+                                                
+                                            }
+                                            
+                                            
+                                            else if(   !ultraObject.isFunction({type:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.value.toLowerCase})   ){
+                                                
+                                                
+                                                if(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.value === ultraObject.misc[ultraObject.scope[pFFList_0_i]][pFFFL_0_i.forLoop_0_i][1]   ){
+                                                    
+                                                    
+                                                    ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].noRun = 'true'
+                                                    
+                 
+                                                }
+                                                
+                                                
+                                            }
+                                            
+                                            
+                                            ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].noRun = 'false'
+                                            // } /**/
+                                        },
+                                        'suspect':function(   dev_obj   ){
+                                            
+                                            /*suspects to see if different values were put in the same spot*/ //{
+                                            if(   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].noRun !== 'true'   ){
+                                                
+                                                
+                                                console.log(   'index',pFFFL_0_i.forLoop_0_i   )
+                                                var pFFBOOL_0_i = {0:false}
+                                                pFFBOOL_0_i = ultraObject.severalOr({
+                                                    compTo: ultraObject.nS[ultraObject.scope[pFFNS_0_i]].currentNumber[pFFFL_0_i.forLoop_0_i],
+                                                    compAgn: ultraObject.nS[ultraObject.scope[pFFNS_0_i]].currentNumber,
+                                                    boolean:pFFBOOL_0_i,
+                                                    which:0,
+                                                    how:function(   dev_obj   ){
+                                                        
+                                                        
+                                                        if(   dev_obj.compTo === dev_obj.compAgnI   ){
+                                                            
+                                                            
+                                                            if(   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]][   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].passOn.proofObject[0]   ].suspects === undefined   ){
+                                                            //if we have suspects to determine who belongs in the elements value. this might need to be reset
+                                                            
+                                                                ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]][   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].passOn.proofObject[0]   ].suspects = ultraObject.iterableObject()
+                                                                ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]][   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].passOn.proofObject[0]   ].suspects.add(   {value:dev_obj.index}   )
+                                                                //see i wrote for the future here
+                                                                
+                                                            }
+                                                            
+                                                            
+                                                            else if(   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]][   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].passOn.proofObject[0]   ].suspects !== undefined   ){
+                                                                
+                                                            
+                                                                ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]][   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].passOn.proofObject[0]   ].suspects.add(   {value:dev_obj.index}   )
+                                                                
+                                                                
+                                                            }
+                            
+                            
+                                                        }
+                                                        
+                                                        
+                                                        console.log(   dev_obj,pFFFL_0_i.forLoop_0_i   )
+                                                    },
+                                                    result:'a'
+                                                })
+                                                //this represents the digits of the NS,which are apparently the same that represents different items in the list however only one in this case should receive the element value here
+                                                console.log(   'our suspects',ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]][   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].passOn.proofObject[0]   ].suspects   )
+                                                
+                                                
+                                            }
+                                            // } /**/
+                                            
+                                        },
+                                        'tagName':  {
+                                                        ultraObject:{
+                                                            tagOptions:ultraObject.misc[   ultraObject.scope[pFFMisc_1_i]]
+                                                        }
+                                                    },
+                                        'hidden':{},
+                                        'className':{
+                                                        ultraObject:{
+                                                            keyword:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword,
+                                                            //FIX ME a better way to make meaninguful
+                                                            pM_0_i:ultraObject.iterify({
+                                                                iterify:{
+                                                                    range:20,
+                                                                    spaces:2,
+                                                                    gap:2,
+                                                                    trailer:20,
+                                                                    type:'string',
+                                                                    cCase:'toLowerCase'
+                                                                }
+                                                            })
+                                                        }
+                                                    },
+                                        'id':{
+                                                        ultraObject:{
+                                                            keyword:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword,
+                                                            //FIX ME a better way to make meaninguful
+                                                            pM_0_i:ultraObject.iterify({
+                                                                iterify:{
+                                                                    range:30,
+                                                                    spaces:3,
+                                                                    gap:3,
+                                                                    trailer:30,
+                                                                    type:'string',
+                                                                    cCase:'toLowerCase'
+                                                                }
+                                                            }),
+                                                            care:ultraObject.iterify(   {iterify:['yes','no','no']})
+                                                        }
+                                                    },
+                                        }
+                                    ],
+                                    ['parents',
+                                        {
+                                        'exist':{},
+                                        'tagName':{
+                                                        ultraObject:{
+                                                               tagOptions:ultraObject.iterify(   {iterify:['label','div']}   ),
+                                                            //   care:ultraObject.iterify(   {iterify:['yes','yes','no']})
+                                                        }
+                                                    },
+                                        'className':{
+                                                        ultraObject:{
+                                                            keyword:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword,
+                                                            //FIX ME a better way to make meaninguful
+                                                            pM_0_i:ultraObject.iterify({
+                                                                iterify:{
+                                                                    range:20,
+                                                                    spaces:2,
+                                                                    gap:2,
+                                                                    trailer:20,
+                                                                    type:'string',
+                                                                    cCase:'toLowerCase'
+                                                                }
+                                                            }),
+                                                            // care:ultraObject.iterify(   {iterify:['yes','yes','no']}   )
+                                                        }
+                                                    },
+                                        'id':{
+                                                        ultraObject:{
+                                                            keyword:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword,
+                                                            //FIX ME a better way to make meaninguful
+                                                            pM_0_i:ultraObject.iterify({
+                                                                iterify:{
+                                                                    range:30,
+                                                                    spaces:3,
+                                                                    gap:3,
+                                                                    trailer:30,
+                                                                    type:'string',
+                                                                    cCase:'toLowerCase'
+                                                                }
+                                                            }),
+                                                            // care:ultraObject.iterify(   {iterify:['yes','yes','no']}   )
+                                                        }
+                                            },
+                                        }
+                                    ],
+                                    ['siblings',
+                                        {
+                                        'tagName':{
+                                            ultraObject:{
+                                                   tagOptions:ultraObject.iterify({iterify:['label','div']}),
+                                                //   care:ultraObject.iterify(   {iterify:['yes','yes','no']})
+                                                    }
+                                                }
+                                        }
+                                    ],
+                                    ['children',
+                                        {
+                                        'className':{
+                                                        ultraObject:{
+                                                            keyword:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword,
+                                                            //FIX ME a better way to make meaninguful
+                                                            pM_0_i:ultraObject.iterify({
+                                                                iterify:{
+                                                                    range:20,
+                                                                    spaces:2,
+                                                                    gap:2,
+                                                                    trailer:20,
+                                                                    type:'string',
+                                                                    cCase:'toLowerCase'
+                                                                }
+                                                            }),
+                                                            // care:ultraObject.iterify(   {iterify:['yes','yes','no']}   )
+                                                        }
+                                                    },
+                                        'id':{
+                                                        ultraObject:{
+                                                            keyword:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword,
+                                                            //FIX ME a better way to make meaninguful
+                                                            pM_0_i:ultraObject.iterify({
+                                                                iterify:{
+                                                                    range:30,
+                                                                    spaces:3,
+                                                                    gap:3,
+                                                                    trailer:30,
+                                                                    type:'string',
+                                                                    cCase:'toLowerCase'
+                                                                }
+                                                            }),
+                                                            // care:ultraObject.iterify(   {iterify:['yes','yes','no']}   )
+                                                        }
+                                            },
+                                        }
+                                    ]
+                                ],
+                            pointValue:'v1',
+                            debug:'true'
+                        })
+                        ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].debuggerDB.add({
+                            value:ultraObject.iterify({
+                                iterify:[
+                                    'total',
+                                    [],
+                                    ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].pointValue
+                                ]
+                            })
+                        })
+                        
+                        if(   pFFFL_0_i.args.changeSending !== 'true'   ){
+                            
+                            
+                            ultraObject.XHR[   ultraObject.scope[pFFXHR_0_i]   ].sending.fn({
+                                item:'debuggerDB',
+                                data:ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].debuggerDB
+                            })
+                            
+                            
+                        }
+                        
+                        
+                        else if(   pFFFL_0_i.args.changeSending === 'true'   ){
+                            
+                            
+                            ultraObject.XHR[     ultraObject.scope[pFFXHR_0_i]   ].sending.body = {
+                                item:'debuggerDB',
+                                data:ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].debuggerDB
+                            }
+                            
+                            
+                        }
+                        ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].pointValue = ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].pointValue // used to deterime if valuePhrasre belongs in the elements value
+                        console.log(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].pointValue   )
+                        ultraObject.selectTags.minus({
+                            index:ultraObject.scope[pFFST_3_i],
+
+                        })
+                        ultraObject.scope.minus({
+                            index:pFFST_3_i,
+                            
+                        })
+                        ultraObject.selectTags.minus({
+                            index:ultraObject.scope[pFFST_2_i],
+                            
+                        })
+                        ultraObject.scope.minus({
+                            index:pFFST_2_i,
+                            
+                        })
+                        ultraObject.selectTags.minus({
+                            index:ultraObject.scope[pFFST_1_i],
+                            
+                        })
+                        ultraObject.scope.minus({
+                            index:pFFST_1_i,
+                            
+                        })
+                        // debugger
+                        delete ultraObject.XHR[   ultraObject.scope[pFFXHR_0_i]   ].sending.response
+                        // try{
+                        //     throw('see')
+                        //     }
+                        // catch(e){}
+                        console.log(  'what is the result', ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword  )
+                        // ultraObject.objInvolved(
+                        //     ultraObject.iterify({iterify:
+                        //         [
+                        //             ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item    .value,
+                        //             ultraObject.misc[ultraObject.scope[pFFList_0_i]][pFFFL_0_i.forLoop_0_i][1]
+                        //         ]// i probably put it somewhere else
+                        //     })
+                        // )
+                    
+                        
+                        console.groupEnd()
+                    console.groupEnd()
+                    // debugger
+                    ultraObject.selectTags.minus(   {index:ultraObject.scope[pFFST_0_i]}   )
+                    ultraObject.selectTags.nextSet({changeSending:'true'})
+                    return true
+                }
+                    var pFFFL_6_i = {
+                        forLoop_0_i:0,
+                        fn:function(   dev_obj   ){
+                            console.log('blocking')
+                            debugger
+                            if(   ultraObject.XHR[   ultraObject.scope[pFFXHR_0_i]   ].sending.response !== undefined   ){
+                                return 'premature'
+                            }
+                        },
+                        
+                    }
+                    // } /**/
+                    
+                    var pFFST_1_i
+                    var pFFST_2_i
+                    var pFFFL_4_i
+                    var pFFST_3_i
+                    var pFFFL_5_i
                     var pFFFL_0_i = {
                         //these for spots, the amount that claims the element, the objects related properties the family and the string matching all help determine where this object belongs
                         //POINT VALUE the spot where we add points
@@ -4685,9 +5209,10 @@
                                 /* setting up needed objects for proof*/ //{
                                     //element
                                     
+                                    
                                     ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.sameChild = 'true'
                                     //parents
-                                    var pFFST_1_i = ultraObject.scope.add(   {value:ultraObject.selectTags.add(   {value:ultraObject.iterableObject()}   )}   )
+                                    pFFST_1_i = ultraObject.scope.add(   {value:ultraObject.selectTags.add(   {value:ultraObject.iterableObject()}   )}   )
                                     
                                     // ask if they are dom elements before doing anything
                                     if(   ultraObject.isDOMElement({type:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.offsetParent})   ){
@@ -4717,13 +5242,13 @@
                                     //siblings retuns HTMLCollection
                                     
                                     /*selectTags +scope + self +abelast  */ //{
-                                    var pFFST_2_i = ultraObject.scope.add(   {value:ultraObject.selectTags.add(   {value:ultraObject.iterableObject()}   )}   )
+                                    pFFST_2_i = ultraObject.scope.add(   {value:ultraObject.selectTags.add(   {value:ultraObject.iterableObject()}   )}   )
                                     ultraObject.selectTags.abelast.add(   {value:ultraObject.scope[   pFFST_2_i   ]}   )
                                     // }  /**/
                                     
-                                    var pFFFL_4_i = {
+                                    pFFFL_4_i = {
                                         forLoop_0_i:0,
-                                        forLoopLength:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.parentElement.children.length,
+                                        forLoopLength: ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.parentElement.children.length,
                                         fn:function(   dev_obj   ){
                                             
                                             
@@ -4744,11 +5269,12 @@
                                     //children retuns HTMLCollection
                                     
                                     /*selectTags +scope + self +abelast  */ //{
-                                    var pFFST_3_i = ultraObject.scope.add(   {value:ultraObject.selectTags.add(   {value:ultraObject.iterableObject()}   )}   )
+                                    pFFST_3_i = ultraObject.scope.add(   {value:ultraObject.selectTags.add(   {value:ultraObject.iterableObject()}   )}   )
                                     ultraObject.selectTags.abelast.add(   {value:pFFST_3_i}   )
                                     // }  /**/
                                     
-                                    var pFFFL_5_i = {
+
+                                    pFFFL_5_i = {
                                         forLoop_0_i:0,
                                         forLoopLength:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.children.length,
                                         fn:function(   dev_obj   ){
@@ -4760,333 +5286,310 @@
                                     // accessing the qC object ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]]
                                 // } /**/
                                 
-                                /*  node mode choice thread production */ //{
-
-                                    /**/
-                                    
-                                            
-                                            
-                                            ultraObject.interrogation({
-                                                proof:[
-                                                        ['element',ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item],
-                                                        ['parents',ultraObject.selectTags[ultraObject.scope[pFFST_1_i]]],
-                                                        ['siblings',ultraObject.selectTags[ultraObject.scope[pFFST_2_i]]],
-                                                        ['children',ultraObject.selectTags[ultraObject.scope[pFFST_3_i]]]
-                                                    ],
-                                                facts:[
-                                                        ['element',
-                                                            {
-                                                            'valuePhrase':function(   dev_obj   ){
-                                                                /*interrogates to see if packIt actually put the right phrase in the right spot*/ //{
-                                                                if(   ultraObject.isFunction({type:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.value.toLowerCase}   )   ){
-                                                                    
-                                                                    
-                                                                    if(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.value.toLowerCase() === ultraObject.misc[ultraObject.scope[pFFList_0_i]][pFFFL_0_i.forLoop_0_i][1].toLowerCase()   ){
-                                                                        
-                                                                        
-                                                                        ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].noRun = 'true'
-                                                                        
-                                     
-                                                                    }
-                                                                    
-                                                                    
-                                                                }
-                                                                
-                                                                
-                                                                else if(   !ultraObject.isFunction({type:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.value.toLowerCase})   ){
-                                                                    
-                                                                    
-                                                                    if(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.value === ultraObject.misc[ultraObject.scope[pFFList_0_i]][pFFFL_0_i.forLoop_0_i][1]   ){
-                                                                        
-                                                                        
-                                                                        ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].noRun = 'true'
-                                                                        
-                                     
-                                                                    }
-                                                                    
-                                                                    
-                                                                }
-                                                                
-                                                                
-                                                                ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].noRun = 'false'
-                                                                // } /**/
-                                                            },
-                                                            'suspect':function(   dev_obj   ){
-                                                                
-                                                                /*suspects to see if different values were put in the same spot*/ //{
-                                                                if(   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].noRun !== 'true'   ){
-                                                                    
-                                                                    
-                                                                    console.log(   'index',pFFFL_0_i.forLoop_0_i   )
-                                                                    var pFFBOOL_0_i = {0:false}
-                                                                    pFFBOOL_0_i = ultraObject.severalOr({
-                                                                        compTo: ultraObject.nS[ultraObject.scope[pFFNS_0_i]].currentNumber[pFFFL_0_i.forLoop_0_i],
-                                                                        compAgn: ultraObject.nS[ultraObject.scope[pFFNS_0_i]].currentNumber,
-                                                                        boolean:pFFBOOL_0_i,
-                                                                        which:0,
-                                                                        how:function(   dev_obj   ){
-                                                                            
-                                                                            
-                                                                            if(   dev_obj.compTo === dev_obj.compAgnI   ){
-                                                                                
-                                                                                
-                                                                                if(   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]][   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].passOn.proofObject[0]   ].suspects === undefined   ){
-                                                                                //if we have suspects to determine who belongs in the elements value. this might need to be reset
-                                                                                
-                                                                                    ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]][   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].passOn.proofObject[0]   ].suspects = ultraObject.iterableObject()
-                                                                                    ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]][   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].passOn.proofObject[0]   ].suspects.add(   {value:dev_obj.index}   )
-                                                                                    //see i wrote for the future here
-                                                                                    
-                                                                                }
-                                                                                
-                                                                                
-                                                                                else if(   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]][   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].passOn.proofObject[0]   ].suspects !== undefined   ){
-                                                                                    
-                                                                                
-                                                                                    ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]][   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].passOn.proofObject[0]   ].suspects.add(   {value:dev_obj.index}   )
-                                                                                    
-                                                                                    
-                                                                                }
-                                                
-                                                
-                                                                            }
-                                                                            
-                                                                            
-                                                                            console.log(   dev_obj,pFFFL_0_i.forLoop_0_i   )
-                                                                        },
-                                                                        result:'a'
-                                                                    })
-                                                                    //this represents the digits of the NS,which are apparently the same that represents different items in the list however only one in this case should receive the element value here
-                                                                    console.log(   'our suspects',ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]][   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].passOn.proofObject[0]   ].suspects   )
-                                                                    
-                                                                    
-                                                                }
-                                                                // } /**/
-                                                                
-                                                            },
-                                                            'tagName':  {
-                                                                            ultraObject:{
-                                                                                tagOptions:ultraObject.misc[   ultraObject.scope[pFFMisc_1_i]]
-                                                                            }
-                                                                        },
-                                                            'hidden':{},
-                                                            'className':{
-                                                                            ultraObject:{
-                                                                                keyword:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword,
-                                                                                //FIX ME a better way to make meaninguful
-                                                                                pM_0_i:ultraObject.iterify({
-                                                                                    iterify:{
-                                                                                        range:20,
-                                                                                        spaces:2,
-                                                                                        gap:2,
-                                                                                        trailer:20,
-                                                                                        type:'string',
-                                                                                        cCase:'toLowerCase'
-                                                                                    }
-                                                                                })
-                                                                            }
-                                                                        },
-                                                            'id':{
-                                                                            ultraObject:{
-                                                                                keyword:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword,
-                                                                                //FIX ME a better way to make meaninguful
-                                                                                pM_0_i:ultraObject.iterify({
-                                                                                    iterify:{
-                                                                                        range:30,
-                                                                                        spaces:3,
-                                                                                        gap:3,
-                                                                                        trailer:30,
-                                                                                        type:'string',
-                                                                                        cCase:'toLowerCase'
-                                                                                    }
-                                                                                }),
-                                                                                care:ultraObject.iterify(   {iterify:['yes','no','no']})
-                                                                            }
-                                                                        },
-                                                            }
-                                                        ],
-                                                        ['parents',
-                                                            {
-                                                            'exist':{},
-                                                            'tagName':{
-                                                                            ultraObject:{
-                                                                                   tagOptions:ultraObject.iterify(   {iterify:['label','div']}   ),
-                                                                                //   care:ultraObject.iterify(   {iterify:['yes','yes','no']})
-                                                                            }
-                                                                        },
-                                                            'className':{
-                                                                            ultraObject:{
-                                                                                keyword:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword,
-                                                                                //FIX ME a better way to make meaninguful
-                                                                                pM_0_i:ultraObject.iterify({
-                                                                                    iterify:{
-                                                                                        range:20,
-                                                                                        spaces:2,
-                                                                                        gap:2,
-                                                                                        trailer:20,
-                                                                                        type:'string',
-                                                                                        cCase:'toLowerCase'
-                                                                                    }
-                                                                                }),
-                                                                                // care:ultraObject.iterify(   {iterify:['yes','yes','no']}   )
-                                                                            }
-                                                                        },
-                                                            'id':{
-                                                                            ultraObject:{
-                                                                                keyword:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword,
-                                                                                //FIX ME a better way to make meaninguful
-                                                                                pM_0_i:ultraObject.iterify({
-                                                                                    iterify:{
-                                                                                        range:30,
-                                                                                        spaces:3,
-                                                                                        gap:3,
-                                                                                        trailer:30,
-                                                                                        type:'string',
-                                                                                        cCase:'toLowerCase'
-                                                                                    }
-                                                                                }),
-                                                                                // care:ultraObject.iterify(   {iterify:['yes','yes','no']}   )
-                                                                            }
-                                                                },
-                                                            }
-                                                        ],
-                                                        ['siblings',
-                                                            {
-                                                            'tagName':{
-                                                                ultraObject:{
-                                                                       tagOptions:ultraObject.iterify({iterify:['label','div']}),
-                                                                    //   care:ultraObject.iterify(   {iterify:['yes','yes','no']})
-                                                                        }
-                                                                    }
-                                                            }
-                                                        ],
-                                                        ['children',
-                                                            {
-                                                            'className':{
-                                                                            ultraObject:{
-                                                                                keyword:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword,
-                                                                                //FIX ME a better way to make meaninguful
-                                                                                pM_0_i:ultraObject.iterify({
-                                                                                    iterify:{
-                                                                                        range:20,
-                                                                                        spaces:2,
-                                                                                        gap:2,
-                                                                                        trailer:20,
-                                                                                        type:'string',
-                                                                                        cCase:'toLowerCase'
-                                                                                    }
-                                                                                }),
-                                                                                // care:ultraObject.iterify(   {iterify:['yes','yes','no']}   )
-                                                                            }
-                                                                        },
-                                                            'id':{
-                                                                            ultraObject:{
-                                                                                keyword:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword,
-                                                                                //FIX ME a better way to make meaninguful
-                                                                                pM_0_i:ultraObject.iterify({
-                                                                                    iterify:{
-                                                                                        range:30,
-                                                                                        spaces:3,
-                                                                                        gap:3,
-                                                                                        trailer:30,
-                                                                                        type:'string',
-                                                                                        cCase:'toLowerCase'
-                                                                                    }
-                                                                                }),
-                                                                                // care:ultraObject.iterify(   {iterify:['yes','yes','no']}   )
-                                                                            }
-                                                                },
-                                                            }
-                                                        ]
-                                                    ],
-                                                pointValue:'v1',
-                                                debug:'true'
-                                            })
-                                            ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].debuggerDB.add({
-                                                value:ultraObject.iterify({
-                                                    iterify:[
-                                                        'total',
-                                                        [],
-                                                        ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].pointValue
-                                                    ]
-                                                })
-                                            })
-                                            ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].pointValue = ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].pointValue // used to deterime if valuePhrasre belongs in the elements value
-                                            console.log(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].pointValue   )
-                                            debugger
-                                            ultraObject.selectTags.minus({
-                                                index:ultraObject.scope[pFFST_3_i],
-                                                // messy:'true'
-                                            })
-                                            ultraObject.scope.minus({
-                                                index:pFFST_3_i,
-                                                // messy:'true'
-                                            })
-                                           ultraObject.selectTags.minus({
-                                                index:ultraObject.scope[pFFST_2_i],
-                                                // messy:'true'
-                                            })
-                                            ultraObject.scope.minus({
-                                                index:pFFST_2_i,
-                                                // messy:'true'
-                                            })
-                                            ultraObject.selectTags.minus({
-                                                index:ultraObject.scope[pFFST_1_i],
-                                                // messy:'true'
-                                            })
-                                            ultraObject.scope.minus({
-                                                index:pFFST_1_i,
-                                                // messy:'true'
-                                            })
-                                            // throw('e')
-                                            console.log(  'what is the result', ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword  )
-                                            // ultraObject.objInvolved(
-                                            //     ultraObject.iterify({iterify:
-                                            //         [
-                                            //             ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.value,
-                                            //             ultraObject.misc[ultraObject.scope[pFFList_0_i]][pFFFL_0_i.forLoop_0_i][1]
-                                            //         ]// i probably put it somewhere else
-                                            //     })
-                                            // )
-                                            // }
-                                            
-                                            console.groupEnd()
-                                        console.groupEnd()
-                                                                        
-                                // } /**/
+                                // /*  node mode choice thread production */ //{
                                 
-                                // /*  node mode choice thread data visualization*/ //{
-                                    
-                                //     function debug_0_i(response,sender,sendResponse){
-                                //         console.log(   response   )
-                                //         ultraObject.XHR[   ultraObject.scope[pFFXHR_0_i]   ].sending.response = response
-                                //         ultraObject.XHR[   ultraObject.scope[pFFXHR_0_i]   ].sending.fn = sendResponse
-                                //         // sendResponse('abc')
+                                //         ultraObject.interrogation({
+                                //             proof:[
+                                //                     ['element',ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item],
+                                //                     ['parents',ultraObject.selectTags[ultraObject.scope[pFFST_1_i]]],
+                                //                     ['siblings',ultraObject.selectTags[ultraObject.scope[pFFST_2_i]]],
+                                //                     ['children',ultraObject.selectTags[ultraObject.scope[pFFST_3_i]]]
+                                //                 ],
+                                //             facts:[
+                                //                     ['element',
+                                //                         {
+                                //                         'valuePhrase':function(   dev_obj   ){
+                                //                             /*interrogates to see if packIt actually put the right phrase in the right spot*/ //{
+                                //                             if(   ultraObject.isFunction({type:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.value.toLowerCase}   )   ){
+                                                                
+                                                                
+                                //                                 if(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.value.toLowerCase() === ultraObject.misc[ultraObject.scope[pFFList_0_i]][pFFFL_0_i.forLoop_0_i][1].toLowerCase()   ){
+                                                                    
+                                                                    
+                                //                                     ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].noRun = 'true'
+                                                                    
+                                 
+                                //                                 }
+                                                                
+                                                                
+                                //                             }
+                                                            
+                                                            
+                                //                             else if(   !ultraObject.isFunction({type:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.value.toLowerCase})   ){
+                                                                
+                                                                
+                                //                                 if(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.value === ultraObject.misc[ultraObject.scope[pFFList_0_i]][pFFFL_0_i.forLoop_0_i][1]   ){
+                                                                    
+                                                                    
+                                //                                     ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].noRun = 'true'
+                                                                    
+                                 
+                                //                                 }
+                                                                
+                                                                
+                                //                             }
+                                                            
+                                                            
+                                //                             ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].noRun = 'false'
+                                //                             // } /**/
+                                //                         },
+                                //                         'suspect':function(   dev_obj   ){
+                                                            
+                                //                             /*suspects to see if different values were put in the same spot*/ //{
+                                //                             if(   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].noRun !== 'true'   ){
+                                                                
+                                                                
+                                //                                 console.log(   'index',pFFFL_0_i.forLoop_0_i   )
+                                //                                 var pFFBOOL_0_i = {0:false}
+                                //                                 pFFBOOL_0_i = ultraObject.severalOr({
+                                //                                     compTo: ultraObject.nS[ultraObject.scope[pFFNS_0_i]].currentNumber[pFFFL_0_i.forLoop_0_i],
+                                //                                     compAgn: ultraObject.nS[ultraObject.scope[pFFNS_0_i]].currentNumber,
+                                //                                     boolean:pFFBOOL_0_i,
+                                //                                     which:0,
+                                //                                     how:function(   dev_obj   ){
+                                                                        
+                                                                        
+                                //                                         if(   dev_obj.compTo === dev_obj.compAgnI   ){
+                                                                            
+                                                                            
+                                //                                             if(   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]][   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].passOn.proofObject[0]   ].suspects === undefined   ){
+                                //                                             //if we have suspects to determine who belongs in the elements value. this might need to be reset
+                                                                            
+                                //                                                 ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]][   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].passOn.proofObject[0]   ].suspects = ultraObject.iterableObject()
+                                //                                                 ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]][   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].passOn.proofObject[0]   ].suspects.add(   {value:dev_obj.index}   )
+                                //                                                 //see i wrote for the future here
+                                                                                
+                                //                                             }
+                                                                            
+                                                                            
+                                //                                             else if(   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]][   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].passOn.proofObject[0]   ].suspects !== undefined   ){
+                                                                                
+                                                                            
+                                //                                                 ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]][   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].passOn.proofObject[0]   ].suspects.add(   {value:dev_obj.index}   )
+                                                                                
+                                                                                
+                                //                                             }
+                                            
+                                            
+                                //                                         }
+                                                                        
+                                                                        
+                                //                                         console.log(   dev_obj,pFFFL_0_i.forLoop_0_i   )
+                                //                                     },
+                                //                                     result:'a'
+                                //                                 })
+                                //                                 //this represents the digits of the NS,which are apparently the same that represents different items in the list however only one in this case should receive the element value here
+                                //                                 console.log(   'our suspects',ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]][   ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].passOn.proofObject[0]   ].suspects   )
+                                                                
+                                                                
+                                //                             }
+                                //                             // } /**/
+                                                            
+                                //                         },
+                                //                         'tagName':  {
+                                //                                         ultraObject:{
+                                //                                             tagOptions:ultraObject.misc[   ultraObject.scope[pFFMisc_1_i]]
+                                //                                         }
+                                //                                     },
+                                //                         'hidden':{},
+                                //                         'className':{
+                                //                                         ultraObject:{
+                                //                                             keyword:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword,
+                                //                                             //FIX ME a better way to make meaninguful
+                                //                                             pM_0_i:ultraObject.iterify({
+                                //                                                 iterify:{
+                                //                                                     range:20,
+                                //                                                     spaces:2,
+                                //                                                     gap:2,
+                                //                                                     trailer:20,
+                                //                                                     type:'string',
+                                //                                                     cCase:'toLowerCase'
+                                //                                                 }
+                                //                                             })
+                                //                                         }
+                                //                                     },
+                                //                         'id':{
+                                //                                         ultraObject:{
+                                //                                             keyword:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword,
+                                //                                             //FIX ME a better way to make meaninguful
+                                //                                             pM_0_i:ultraObject.iterify({
+                                //                                                 iterify:{
+                                //                                                     range:30,
+                                //                                                     spaces:3,
+                                //                                                     gap:3,
+                                //                                                     trailer:30,
+                                //                                                     type:'string',
+                                //                                                     cCase:'toLowerCase'
+                                //                                                 }
+                                //                                             }),
+                                //                                             care:ultraObject.iterify(   {iterify:['yes','no','no']})
+                                //                                         }
+                                //                                     },
+                                //                         }
+                                //                     ],
+                                //                     ['parents',
+                                //                         {
+                                //                         'exist':{},
+                                //                         'tagName':{
+                                //                                         ultraObject:{
+                                //                                               tagOptions:ultraObject.iterify(   {iterify:['label','div']}   ),
+                                //                                             //   care:ultraObject.iterify(   {iterify:['yes','yes','no']})
+                                //                                         }
+                                //                                     },
+                                //                         'className':{
+                                //                                         ultraObject:{
+                                //                                             keyword:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword,
+                                //                                             //FIX ME a better way to make meaninguful
+                                //                                             pM_0_i:ultraObject.iterify({
+                                //                                                 iterify:{
+                                //                                                     range:20,
+                                //                                                     spaces:2,
+                                //                                                     gap:2,
+                                //                                                     trailer:20,
+                                //                                                     type:'string',
+                                //                                                     cCase:'toLowerCase'
+                                //                                                 }
+                                //                                             }),
+                                //                                             // care:ultraObject.iterify(   {iterify:['yes','yes','no']}   )
+                                //                                         }
+                                //                                     },
+                                //                         'id':{
+                                //                                         ultraObject:{
+                                //                                             keyword:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword,
+                                //                                             //FIX ME a better way to make meaninguful
+                                //                                             pM_0_i:ultraObject.iterify({
+                                //                                                 iterify:{
+                                //                                                     range:30,
+                                //                                                     spaces:3,
+                                //                                                     gap:3,
+                                //                                                     trailer:30,
+                                //                                                     type:'string',
+                                //                                                     cCase:'toLowerCase'
+                                //                                                 }
+                                //                                             }),
+                                //                                             // care:ultraObject.iterify(   {iterify:['yes','yes','no']}   )
+                                //                                         }
+                                //                             },
+                                //                         }
+                                //                     ],
+                                //                     ['siblings',
+                                //                         {
+                                //                         'tagName':{
+                                //                             ultraObject:{
+                                //                                   tagOptions:ultraObject.iterify({iterify:['label','div']}),
+                                //                                 //   care:ultraObject.iterify(   {iterify:['yes','yes','no']})
+                                //                                     }
+                                //                                 }
+                                //                         }
+                                //                     ],
+                                //                     ['children',
+                                //                         {
+                                //                         'className':{
+                                //                                         ultraObject:{
+                                //                                             keyword:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword,
+                                //                                             //FIX ME a better way to make meaninguful
+                                //                                             pM_0_i:ultraObject.iterify({
+                                //                                                 iterify:{
+                                //                                                     range:20,
+                                //                                                     spaces:2,
+                                //                                                     gap:2,
+                                //                                                     trailer:20,
+                                //                                                     type:'string',
+                                //                                                     cCase:'toLowerCase'
+                                //                                                 }
+                                //                                             }),
+                                //                                             // care:ultraObject.iterify(   {iterify:['yes','yes','no']}   )
+                                //                                         }
+                                //                                     },
+                                //                         'id':{
+                                //                                         ultraObject:{
+                                //                                             keyword:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword,
+                                //                                             //FIX ME a better way to make meaninguful
+                                //                                             pM_0_i:ultraObject.iterify({
+                                //                                                 iterify:{
+                                //                                                     range:30,
+                                //                                                     spaces:3,
+                                //                                                     gap:3,
+                                //                                                     trailer:30,
+                                //                                                     type:'string',
+                                //                                                     cCase:'toLowerCase'
+                                //                                                 }
+                                //                                             }),
+                                //                                             // care:ultraObject.iterify(   {iterify:['yes','yes','no']}   )
+                                //                                         }
+                                //                             },
+                                //                         }
+                                //                     ]
+                                //                 ],
+                                //             pointValue:'v1',
+                                //             debug:'true'
+                                //         })
+                                //         ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].debuggerDB.add({
+                                //             value:ultraObject.iterify({
+                                //                 iterify:[
+                                //                     'total',
+                                //                     [],
+                                //                     ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].pointValue
+                                //                 ]
+                                //             })
+                                //         })
+                                //         ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].pointValue = ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].pointValue // used to deterime if valuePhrasre belongs in the elements value
+                                //         console.log(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].pointValue   )
+                                //         debugger
+                                //         ultraObject.selectTags.minus({
+                                //             index:ultraObject.scope[pFFST_3_i],
+                                //
+                                //         })
+                                //         ultraObject.scope.minus({
+                                //             index:pFFST_3_i,
+                                //
+                                //         })
+                                //       ultraObject.selectTags.minus({
+                                //             index:ultraObject.scope[pFFST_2_i],
+                                //
+                                //         })
+                                //         ultraObject.scope.minus({
+                                //             index:pFFST_2_i,
+                                //
+                                //         })
+                                //         ultraObject.selectTags.minus({
+                                //             index:ultraObject.scope[pFFST_1_i],
+                                //
+                                //         })
+                                //         ultraObject.scope.minus({
+                                //             index:pFFST_1_i,
+                                //
+                                //         })
+                                //         // throw('e')
+                                //         console.log(  'what is the result', ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword  )
+                                //         // ultraObject.objInvolved(
+                                //         //     ultraObject.iterify({iterify:
+                                //         //         [
+                                //         //             ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.value,
+                                //         //             ultraObject.misc[ultraObject.scope[pFFList_0_i]][pFFFL_0_i.forLoop_0_i][1]
+                                //         //         ]// i probably put it somewhere else
+                                //         //     })
+                                //         // )
                                         
-                                //         return true;
-                                //     }
-                                //     ultraObject.endpoint({
-                                //         instruct:'chromeExtensionOneTime',
-                                //         incomingFn:function(   dev_obj   ){
-                                //             chrome.runtime.onMessage.addListener(   debug_0_i   )
-                                //         },
-                                //         incomingOrigin:'extension',
-                                //         sendingFn:dev_obj.endpointSendingFn,
-                                //         sendingBody:{need:'make a table for me'},
-                                //         sendingOrigin:'contentScript'
-                                //     })
+                                //         console.groupEnd()
+                                //     console.groupEnd()
+                                                                        
+                                // // } /**/
+                                
+                                // /*  node mode choice thread data visualization by setInterval*/ //{
+                                    
                                     
                                 //     var pFFXHR_0_i = ultraObject.scope.add(   {value:ultraObject.XHR.abelast[ultraObject.XHR.abelast.length -1]}   )
                                 //     ultraObject.XHR[   ultraObject.scope[pFFXHR_0_i]   ].incoming.fn()
                                 //     ultraObject.XHR[   ultraObject.scope[pFFXHR_0_i]   ].sending.fn(   ultraObject.XHR[   ultraObject.scope[pFFXHR_0_i]   ].sending.body   )
                                 //     ultraObject.XHR[   ultraObject.scope[pFFXHR_0_i]   ].setIntervalStop = 0
                                     
-                                //     /*debug*/
+                                    
                                 //     var setInterval_0_i = setInterval(function(){
                                         
                                 //         console.log('this is the response',ultraObject.XHR[   ultraObject.scope[pFFXHR_0_i]   ].sending.response   )
                                 //         if(   ultraObject.XHR[   ultraObject.scope[pFFXHR_0_i]   ].sending.response !== undefined && ultraObject.XHR[   ultraObject.scope[pFFXHR_0_i]   ].setIntervalStop === 0  ){
-                                //     /**/
+
                                     
                                 //             ultraObject.XHR[   ultraObject.scope[pFFXHR_0_i]   ].setIntervalStop = 1
                                 //             console.log('table is ready for interrogation')
@@ -5102,12 +5605,33 @@
                                 //                             {
                                 //                             'valuePhrase':function(   dev_obj   ){
                                 //                                 /*interrogates to see if packIt actually put the right phrase in the right spot*/ //{
-                                //                                 if(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.value.toLowerCase() === ultraObject.misc[ultraObject.scope[pFFList_0_i]][pFFFL_0_i.forLoop_0_i][1].toLowerCase()   ){
+                                //                                 if(   ultraObject.isFunction({type:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.value.toLowerCase}   )   ){
                                                                     
                                                                     
-                                //                                     ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].noRun = 'true'
+                                //                                     if(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.value.toLowerCase() === ultraObject.misc[ultraObject.scope[pFFList_0_i]][pFFFL_0_i.forLoop_0_i][1].toLowerCase()   ){
+                                                                        
+                                                                        
+                                //                                         ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].noRun = 'true'
+                                                                        
+                                     
+                                //                                     }
                                                                     
-                                 
+                                                                    
+                                //                                 }
+                                                                
+                                                                
+                                //                                 else if(   !ultraObject.isFunction({type:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.value.toLowerCase})   ){
+                                                                    
+                                                                    
+                                //                                     if(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.value === ultraObject.misc[ultraObject.scope[pFFList_0_i]][pFFFL_0_i.forLoop_0_i][1]   ){
+                                                                        
+                                                                        
+                                //                                         ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].noRun = 'true'
+                                                                        
+                                     
+                                //                                     }
+                                                                    
+                                                                    
                                 //                                 }
                                                                 
                                                                 
@@ -5318,24 +5842,33 @@
                                 //                 item:'debuggerDB',
                                 //                 data:ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].debuggerDB
                                 //             })
-                                //             chrome.runtime.onMessage.removeListener(   debug_0_i   )
                                 //             debugger
+                                //             chrome.runtime.onMessage.removeListener(   debug_0_i   )
                                 //             ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].pointValue = ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].pointValue // used to deterime if valuePhrasre belongs in the elements value
                                 //             console.log(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].pointValue   )
-                                //             ultraObject.selectTags.minus(   {index:ultraObject.scope[pFFST_1_i]}   )
-                                //             ultraObject.scope.minus({
-                                //                 index:pFFST_1_i,
-                                //                 messy:'true'
+                                //             ultraObject.selectTags.minus({
+                                //                 index:ultraObject.scope[pFFST_3_i],
+                                //
                                 //             })
-                                //             ultraObject.selectTags.minus(   {index:ultraObject.scope[pFFST_2_i]}   )
-                                //             ultraObject.scope.minus({
-                                //                 index:pFFST_2_i,
-                                //                 messy:'true'
-                                //             })
-                                //             ultraObject.selectTags.minus(   {index:ultraObject.scope[pFFST_3_i]}   )
                                 //             ultraObject.scope.minus({
                                 //                 index:pFFST_3_i,
-                                //                 messy:'true'
+                                //
+                                //             })
+                                //           ultraObject.selectTags.minus({
+                                //                 index:ultraObject.scope[pFFST_2_i],
+                                //
+                                //             })
+                                //             ultraObject.scope.minus({
+                                //                 index:pFFST_2_i,
+                                //
+                                //             })
+                                //             ultraObject.selectTags.minus({
+                                //                 index:ultraObject.scope[pFFST_1_i],
+                                //
+                                //             })
+                                //             ultraObject.scope.minus({
+                                //                 index:pFFST_1_i,
+                                //
                                 //             })
                                 //             /* debug */
                                 //             clearInterval(   setInterval_0_i   )
@@ -5343,23 +5876,54 @@
                                 //             /**/
                                 //             // throw('e')
                                 //             console.log(  'what is the result', ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword  )
-                                //             ultraObject.objInvolved({
-                                //                 0:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.value,
-                                //                 1:ultraObject.misc[ultraObject.scope[pFFList_0_i]][pFFFL_0_i.forLoop_0_i][1] // i probably put it somewhere else
-                                //             })
-                                //             // }
+                                //             ultraObject.objInvolved(
+                                //                 ultraObject.iterify({iterify:
+                                //                     [
+                                //                         ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item    .value,
+                                //                         ultraObject.misc[ultraObject.scope[pFFList_0_i]][pFFFL_0_i.forLoop_0_i][1]
+                                //                     ]// i probably put it somewhere else
+                                //                 })
+                                //             )
+                                        
+                                            
                                 //             console.groupEnd()
                                 //         console.groupEnd()
-                                //     /*debug*/
+
                                 //         }
                                         
                                         
                                 //     },500)
-                                //     // throw('e')
-                                //     return 'premature'
-                                //     // just like when dealing with fs API, setInterval is a nasty little promise, id use wait but idk when the data comes from the background script
-                                //     /**/
-                                // // } /**/
+
+                                // //     // just like when dealing with fs API, setInterval is a nasty little promise, id use wait but idk when the data comes from the background script
+                                
+                                // } /**/
+
+                                /*  node mode choice thread data visualization by chromelistener*/ //{
+                                
+                                    if(   dev_obj.changeSending !== 'true'   ){
+                                        
+                                        
+                                        ultraObject.XHR[   ultraObject.scope[pFFXHR_0_i]   ].incoming.fn({
+                                            eventListener:debug_0_i
+                                        })
+                                        ultraObject.XHR[   ultraObject.scope[pFFXHR_0_i]   ].sending.fn(   ultraObject.XHR[     ultraObject.scope[pFFXHR_0_i]   ].sending.body   )
+                                        
+                                    
+                                    }
+                                    
+                                    else if(   dev_obj.changeSending === 'true'   ){
+                                        
+                                        
+                                        pFFFL_0_i.args.changeSending = 'true'
+                                        chrome.runtime.sendMessage(ultraObject.XHR[     ultraObject.scope[pFFXHR_0_i]   ].sending.body, debug_0_i);
+                                        
+                                        
+                                    }
+                                    // ultraObject.forLoop(   pFFFL_6_i   )
+                                // } /**/
+                                    
+
+
 
                             
                         },
@@ -5371,96 +5935,30 @@
                     }
                     ultraObject.forLoop(   pFFFL_0_i   )
                     // debugger
-                    ultraObject.selectTags.minus(   {index:ultraObject.scope[pFFST_0_i]}   )
-                    // ultraObject.scope.minus({
-                    //     index:pFFST_0_i,
-                    //     messy:'true'
+                    
+                   
+                    
+                    /*  node mode choice thread production  */ //{
+                    // ultraObject.selectTags.minus(   {index:ultraObject.scope[pFFST_0_i]}   )
+                    // ultraObject.numberSystem({
+                    //     operation:'decimal',
+                    //     conversion:'to',
+                    //     nS:ultraObject.scope[   pFFNS_0_i   ],
                     // })
-                    ultraObject.numberSystem({
-                        operation:'decimal',
-                        conversion:'to',
-                        nS:ultraObject.scope[   pFFNS_0_i   ],
-                    })
-                    ultraObject.numberSystem({
-                        operation:'decimal',
-                        conversion:'from',
-                        nS:ultraObject.scope[   pFFNS_0_i   ],
-                        currentNumber:ultraObject.nS[   ultraObject.scope[pFFNS_0_i]   ].decimal.currentNumber + 1
-                    })
-                    ultraObject.numberSystem({
-                        operation:'update',
-                        nS:ultraObject.scope[   pFFNS_0_i   ]
-                    })
-                    var pFFFL_1_i = {
-                        forLoop_0_i:0,
-                        forLoopLength:ultraObject.allTags[   ultraObject.scope[pFFATI_0_i]   ].length - 1,
-                        fn:function(   dev_obj   ){
-                            ultraObject.eCSearch({
-                                list:pFFList_0_i,
-                                look:pFFLook_0_i,
-                                aT: pFFATI_0_i,
-                                all:'true',
-                                nS:ultraObject.scope[   pFFNS_0_i   ]
-                            })
-                            
-                            // /*  selectTags +scope  */ //{
-                            // //for loop on this to see if you can find empty places within the scope
-                            // pFFFL_2_i.forLoopLength:ultraObject.scope.length,
-                            // ultraObject.forLoop(   pFFFL_2_i   )
-                            // // } /**/
-                            
-                            /* filling the value for each element  */ //{
-                            ultraObject.packIt({
-                                order:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]],
-                                directions: ultraObject.iterify(   {iterify:['gather element','match']}   ),
-                                fill:'value',
-                                write:'valuePhrase',
-                                prevent:ultraObject.iterify({
-                                                        iterify:[
-                                                            function(   dev_obj   ){
-                                                                
-                                                                
-                                                                if(   dev_obj.element.type === 'file'   ){
-                                                                    
-                                                                    
-                                                                    return 'cantFill'
-                                                                    
-                                                                    
-                                                                }
-                                                                
-                                                                
-                                                            }
-                                                        ]
-                                                    })
-                                                })
-                            // } /**/
-                            
-                            ultraObject.forLoop(   pFFFL_0_i   )
-                            ultraObject.selectTags.minus(   {index:ultraObject.scope[pFFST_0_i]}   )
-                            // ultraObject.scope.minus({
-                            //     index:pFFST_0_i,
-                            //     messy:'true'
-                            // })
-                            ultraObject.numberSystem({
-                                operation:'decimal',
-                                conversion:'to',
-                                nS:ultraObject.scope[   pFFNS_0_i   ],
-                            })
-                            ultraObject.numberSystem({
-                                operation:'decimal',
-                                conversion:'from',
-                                nS:ultraObject.scope[   pFFNS_0_i   ],
-                                currentNumber:ultraObject.nS[   ultraObject.scope[pFFNS_0_i]   ].decimal.currentNumber + 1
-                            })
-                            ultraObject.numberSystem({
-                                operation:'update',
-                                nS:ultraObject.scope[   pFFNS_0_i   ]
-                            })
-                            ultraObject.args = ultraObject.iterableObject()
-                        },
-                        args:dev_obj //{}
-                    }
-                    ultraObject.forLoop(   pFFFL_1_i   )
+                    // ultraObject.numberSystem({
+                    //     operation:'decimal',
+                    //     conversion:'from',
+                    //     nS:ultraObject.scope[   pFFNS_0_i   ],
+                    //     currentNumber:ultraObject.nS[   ultraObject.scope[pFFNS_0_i]   ].decimal.currentNumber + 1
+                    // })
+                    // ultraObject.numberSystem({
+                    //     operation:'update',
+                    //     nS:ultraObject.scope[   pFFNS_0_i   ]
+                    // })
+                    // ultraObject.forLoop(   pFFFL_1_i   )
+                    // } /**/
+                    
+
                 
                 console.groupEnd()
                     ///////////////////////////////////////////////////////////////////////////

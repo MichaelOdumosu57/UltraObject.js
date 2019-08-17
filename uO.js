@@ -169,7 +169,7 @@
                     absolute primitive values like Infinity or XMLHTTPRequest
                         
                  */
-                function uOReset(   dev_obj   ){
+                function ultraObjectReset(   dev_obj   ){
                     //I know about ES6 but this is an uO right???
                     return {
                     eventName:"",           //wants a DOMString event name
@@ -258,10 +258,10 @@
                     }
                 }
                 try{
-                    window.uO = uOReset()
+                    window.uO = ultraObjectReset()
                 }
                 catch(e){
-                    global.uO = uOReset()
+                    global.uO = ultraObjectReset()
                 }
                 function random(   dev_obj   ){
                     /*abelast
@@ -3670,12 +3670,14 @@
                                                 
                                                 uO.partialMatch(   uO.qC[   uO.scope[iQC_0_i]   ][   uO.qC[   uO.scope[iQC_0_i]   ].passOn.proofObject[0]   ].iPM_0_i   )
                                                 // } /**/
-                                                                                            
-                                                if(   uO.nE[uO.nE.length-1].satisfy === 'true'   ){
+                                                uO.qC[   uO.scope[iQC_0_i]   ].satisfy = uO.nE[uO.nE          .length-1].satisfy
+                                                uO.nE.minus(   {index:uO.nE.length-1}   )
+                                                uO.nE.abelast.minus(   {index:uO.nE.abelast.length-1}   )
+                                                
+                                                
+                                                if(   uO.qC[   uO.scope[iQC_0_i]   ].satisfy === 'true'   ){
                                                     
-                                                    
-                                                    uO.nE.minus(   {index:uO.nE.length-1}   )
-                                                    uO.nE.abelast.minus(   {index:uO.nE.abelast.length-1}   )
+
                                                     uO.qC[   uO.scope[iQC_0_i]   ].pointValue  += 1
                                                     
                                                             
@@ -3690,6 +3692,7 @@
                                                             
                                                                                                         
                                                 }
+                                                // debugger
                                                 
                                                 
                                                 // uO.misc.minus(   {index:uO.misc.length-1}   )
@@ -3761,12 +3764,15 @@
                                                 
                                                 uO.partialMatch(   uO.qC[   uO.scope[iQC_0_i]   ][   uO.qC[   uO.scope[iQC_0_i]   ].passOn.proofObject[0]   ].iPM_0_i   )
                                                 // } /**/
-                                                                                            
-                                                if(   uO.nE[uO.nE.length-1].satisfy === 'true'   ){
+
+                                                uO.qC[   uO.scope[iQC_0_i]   ].satisfy = uO.nE[uO.nE          .length-1].satisfy
+                                                uO.nE.minus(   {index:uO.nE.length-1}   )
+                                                uO.nE.abelast.minus(   {index:uO.nE.abelast.length-1}   )
+                                                
+                                                
+                                                if(   uO.qC[   uO.scope[iQC_0_i]   ].satisfy === 'true'   ){
                                                     
                                                     
-                                                    uO.nE.minus(   {index:uO.nE.length-1}   )
-                                                    uO.nE.abelast.minus(   {index:uO.nE.abelast.length-1}   )
                                                     uO.qC[   uO.scope[iQC_0_i]   ].pointValue  += 1
                                                     
                                                     
@@ -3781,7 +3787,7 @@
                                                     
                                                     
                                                 }
-                                                
+                                                // debugger
                                                 
                                                 // uO.misc.minus(   {index:uO.misc.length-1}   )
                                                 // uO.misc.abelast.minus(   {index:uO.misc.abelast.length-1}   )
@@ -3907,12 +3913,15 @@
                                             
                                             uO.partialMatch(   uO.qC[   uO.scope[iQC_0_i]   ][   uO.qC[   uO.scope[iQC_0_i]   ].passOn.proofObject[0]   ].iPM_0_i   )
                                             // } /**/
-                                                                                        
-                                            if(   uO.nE[uO.nE.length-1].satisfy === 'true'   ){
+                                                     
+                                            uO.qC[   uO.scope[iQC_0_i]   ].satisfy = uO.nE[uO.nE      .length-1].satisfy
+                                            uO.nE.minus(   {index:uO.nE.length-1}   )
+                                            uO.nE.abelast.minus(   {index:uO.nE.abelast.length-1}   )
+                                            
+                                            
+                                            if(   uO.qC[   uO.scope[iQC_0_i]   ].satisfy === 'true'   ){
                                                 
                                                 
-                                                uO.nE.minus(   {index:uO.nE.length-1}   )
-                                                uO.nE.abelast.minus(   {index:uO.nE.abelast.length-1}   )
                                                 uO.qC[   uO.scope[iQC_0_i]   ].pointValue  += 1
                                                 
 
@@ -3927,6 +3936,7 @@
                                                 
                                                 
                                             }
+                                            // debugger
                                             
                                             
                                             // uO.misc.minus(   {index:uO.misc.length-1}   )
@@ -4004,12 +4014,16 @@
                                         
                                         uO.partialMatch(   uO.qC[   uO.scope[iQC_0_i]   ][   uO.qC[   uO.scope[iQC_0_i]   ].passOn.proofObject[0]   ].iPM_0_i   )
                                         // } /**/
-                                                                                    
-                                        if(   uO.nE[uO.nE.length-1].satisfy === 'true'   ){
+                                        
+                                        
+                                        uO.qC[   uO.scope[iQC_0_i]   ].satisfy = uO.nE[uO.nE.length-1].satisfy
+                                        uO.nE.minus(   {index:uO.nE.length-1}   )
+                                        uO.nE.abelast.minus(   {index:uO.nE.abelast.length-1}   )
+                                        
+                                        
+                                        if(   uO.qC[   uO.scope[iQC_0_i]   ].satisfy === 'true'   ){
                                             
-                                            
-                                            uO.nE.minus(   {index:uO.nE.length-1}   )
-                                            uO.nE.abelast.minus(   {index:uO.nE.abelast.length-1}   )
+                                        
                                             uO.qC[   uO.scope[iQC_0_i]   ].pointValue  += 1
                                             
                                             
@@ -4026,6 +4040,7 @@
                                         }
                                         
                                         
+
                                         // uO.misc.minus(   {index:uO.misc.length-1}   )
                                         // uO.misc.abelast.minus(   {index:uO.misc.abelast.length-1}   )
                                     },
@@ -4650,11 +4665,535 @@
                                     ]
                                 })
                     })
+                    // debugger
                     // should also make sure value is not empty
                     ///////////////////////////////////////////////////////////////////////////
                     console.group(   'answers'   )
                     var pFFMisc_0_i = uO.scope.add(   {value:uO.misc.add(   {value:uO.iterify(   {iterify:['tagName','className','hidden','id']}   )}   )}   );
                     var pFFMisc_1_i = uO.scope.add(   {value:uO.misc.add(   {value:uO.iterify(   {iterify:['input','select','textarea','option']}   )}   )}   );
+                   
+                    /*  node mode choice thread production  */ //{
+                        /*  the forLoop object responsible for going throught the rest of the webpage */ //{
+                        // var pFFFL_1_i = {
+                        //     forLoop_0_i:0,
+                        //     forLoopLength:uO.allTags[   uO.scope[pFFATI_0_i]   ].length - 1,
+                        //     fn:function(   dev_obj   ){
+                        //         uO.eCSearch({
+                        //             list:pFFList_0_i,
+                        //             look:pFFLook_0_i,
+                        //             aT: pFFATI_0_i,
+                        //             all:'true',
+                        //             nS:uO.scope[   pFFNS_0_i   ]
+                        //         })
+                        //         try{
+                        //             throw('see')
+                        //             }
+                        //         catch(e){}
+                                
+                        //         /* filling the value for each element  */ //{
+                        //         uO.packIt({
+                        //             order:uO.selectTags[uO.scope[pFFST_0_i]],
+                        //             directions: uO.iterify(   {iterify:['gather element','match']}   ),
+                        //             fill:'value',
+                        //             write:'valuePhrase',
+                        //             prevent:uO.iterify({
+                        //                                     iterify:[
+                        //                                         function(   dev_obj   ){
+                                                                    
+                                                                    
+                        //                                             if(   dev_obj.element.type === 'file'   ){
+                                                                        
+                                                                        
+                        //                                                 return 'cantFill'
+                                                                        
+                                                                        
+                        //                                             }
+                                                                    
+                                                                    
+                        //                                         }
+                        //                                     ]
+                        //                                 })
+                        //                             })
+                        //         // } /**/
+                        //         pFFFL_0_i.args.changeSending = 'true'
+                        //         uO.forLoop(   pFFFL_0_i   )
+                                
+                        //         /* node mode choice thread production */ // {
+                        //         // uO.selectTags.minus(   {index:uO.scope[pFFST_0_i]}   )
+                        //         /**/ //}
+                                
+                        //         uO.numberSystem({
+                        //             operation:'decimal',
+                        //             conversion:'to',
+                        //             nS:uO.scope[   pFFNS_0_i   ],
+                        //         })
+                        //         uO.numberSystem({
+                        //             operation:'decimal',
+                        //             conversion:'from',
+                        //             nS:uO.scope[   pFFNS_0_i   ],
+                        //             currentNumber:uO.nS[   uO.scope[pFFNS_0_i]   ].decimal.currentNumber + 1
+                        //         })
+                        //         uO.numberSystem({
+                        //             operation:'update',
+                        //             nS:uO.scope[   pFFNS_0_i   ]
+                        //         })
+                        //         uO.args = uO.iterableObject()
+                        //     },
+                        //     args:dev_obj //{}
+                        // }
+                        // } /**/
+                    // } /**/
+                    
+                    /*  node mode choice thread data visualization by chromelistener  */ //{
+                        /*  the forLoop object responsible for going throught the rest of the webpage */ //{
+                        var pFFFL_1_i = {
+                            forLoop_0_i:0,
+                            forLoopLength:1,
+                            fn:function(   dev_obj   ){
+                                if(   dev_obj.counter === 126   ){
+                                    debugger
+                                }
+                                uO.eCSearch({
+                                    list:pFFList_0_i,
+                                    look:pFFLook_0_i,
+                                    aT: pFFATI_0_i,
+                                    all:'true',
+                                    nS:uO.scope[   pFFNS_0_i   ]
+                                })
+                                // try{
+                                //     throw('see')
+                                //     }
+                                // catch(e){}
+                                
+                                /* filling the value for each element  */ //{
+                                uO.packIt({
+                                    order:uO.selectTags[uO.scope[pFFST_0_i]],
+                                    directions: uO.iterify(   {iterify:['gather element','match']}   ),
+                                    fill:'value',
+                                    write:'valuePhrase',
+                                    prevent:uO.iterify({
+                                                            iterify:[
+                                                                function(   dev_obj   ){
+                                                                    
+                                                                    
+                                                                    if(   dev_obj.element.type === 'file'   ){
+                                                                        
+                                                                        
+                                                                        return 'cantFill'
+                                                                        
+                                                                        
+                                                                    }
+                                                                    
+                                                                    
+                                                                }
+                                                            ]
+                                                        })
+                                                    })
+                                // } /**/
+                                pFFFL_0_i.args.changeSending = 'true'
+                                uO.forLoop(   pFFFL_0_i   )
+                                
+                                /* node mode choice thread production */ // {
+                                // uO.selectTags.minus(   {index:uO.scope[pFFST_0_i]}   )
+                                /**/ //}
+                                
+                                uO.numberSystem({
+                                    operation:'decimal',
+                                    conversion:'to',
+                                    nS:uO.scope[   pFFNS_0_i   ],
+                                })
+                                uO.numberSystem({
+                                    operation:'decimal',
+                                    conversion:'from',
+                                    nS:uO.scope[   pFFNS_0_i   ],
+                                    currentNumber:pFFFL_1_i.args.counter
+                                })
+                                uO.numberSystem({
+                                    operation:'update',
+                                    nS:uO.scope[   pFFNS_0_i   ]
+                                })
+                                uO.args = uO.iterableObject()
+                            },
+                            args:dev_obj //{}
+                        }
+                        pFFFL_1_i.args.realLength = uO.allTags[   uO.scope[pFFATI_0_i]   ].length - 1
+                        pFFFL_1_i.args.counter = 0
+                        // } /**/
+                    // } /**/
+                    
+                    /*  node mode choice thread data visualization by chromelistener  */ //{
+                    uO.selectTags.nextSet = function(   dev_obj   ){
+                        uO.numberSystem({
+                            operation:'decimal',
+                            conversion:'to',
+                            nS:uO.scope[   pFFNS_0_i   ],
+                        })
+                        uO.numberSystem({
+                            operation:'decimal',
+                            conversion:'from',
+                            nS:uO.scope[   pFFNS_0_i   ],
+                            currentNumber:uO.nS[   uO.scope[pFFNS_0_i]   ].decimal.currentNumber + 1
+                        })
+                        uO.numberSystem({
+                            operation:'update',
+                            nS:uO.scope[   pFFNS_0_i   ]
+                        })
+                        if(   pFFFL_1_i.args.realLength !== pFFFL_1_i.args.counter   ){
+                            
+                            
+                            pFFFL_1_i.args.counter +=1
+                            uO.forLoop(   pFFFL_1_i   )
+                            
+                            
+                        }
+                    }
+                    // } /**/
+                    
+                    
+                    /*  node mode choice thread data visualization by chromelistener*/ //{
+                    var pFFXHR_0_i = ScriptXHR_0_i
+                    function debug_0_i(response,sender,sendResponse){
+                        chrome.runtime.onMessage.removeListener(   debug_0_i   )
+                        console.log(   response   )
+                        uO.XHR[   uO.scope[pFFXHR_0_i]   ].sending.response = response
+                        uO.XHR[   uO.scope[pFFXHR_0_i]   ].sending.fn = sendResponse
+                        console.log('table is ready for interrogation')
+                        uO.interrogation({
+                            proof:[
+                                    ['element',uO.selectTags[uO.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item],
+                                    ['parents',uO.selectTags[uO.scope[pFFST_1_i]]],
+                                    ['siblings',uO.selectTags[uO.scope[pFFST_2_i]]],
+                                    ['children',uO.selectTags[uO.scope[pFFST_3_i]]]
+                                ],
+                            facts:[
+                                    ['element',
+                                        {
+                                        'valuePhrase':function(   dev_obj   ){
+                                            /*interrogates to see if packIt actually put the right phrase in the right spot*/ //{
+                                            if(   uO.isFunction({type:uO.selectTags[uO.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.value.toLowerCase}   )   ){
+                                                
+                                                
+                                                if(   uO.selectTags[uO.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.value.toLowerCase() === uO.misc[uO.scope[pFFList_0_i]][pFFFL_0_i.forLoop_0_i][1].toLowerCase()   ){
+                                                    
+                                                    
+                                                    uO.qC[uO.qC.abelast[uO.qC.abelast.length-1]].noRun = 'true'
+                                                    
+                 
+                                                }
+                                                
+                                                
+                                            }
+                                            
+                                            
+                                            else if(   !uO.isFunction({type:uO.selectTags[uO.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.value.toLowerCase})   ){
+                                                
+                                                
+                                                if(   uO.selectTags[uO.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.value === uO.misc[uO.scope[pFFList_0_i]][pFFFL_0_i.forLoop_0_i][1]   ){
+                                                    
+                                                    
+                                                    uO.qC[uO.qC.abelast[uO.qC.abelast.length-1]].noRun = 'true'
+                                                    
+                 
+                                                }
+                                                
+                                                
+                                            }
+                                            
+                                            
+                                            uO.qC[uO.qC.abelast[uO.qC.abelast.length-1]].noRun = 'false'
+                                            // } /**/
+                                        },
+                                        'suspect':function(   dev_obj   ){
+                                            
+                                            /*suspects to see if different values were put in the same spot*/ //{
+                                            if(   uO.qC[uO.qC.abelast[uO.qC.abelast.length-1]].noRun !== 'true'   ){
+                                                
+                                                
+                                                console.log(   'index',pFFFL_0_i.forLoop_0_i   )
+                                                var pFFBOOL_0_i = {0:false}
+                                                pFFBOOL_0_i = uO.severalOr({
+                                                    compTo: uO.nS[uO.scope[pFFNS_0_i]].currentNumber[pFFFL_0_i.forLoop_0_i],
+                                                    compAgn: uO.nS[uO.scope[pFFNS_0_i]].currentNumber,
+                                                    boolean:pFFBOOL_0_i,
+                                                    which:0,
+                                                    how:function(   dev_obj   ){
+                                                        
+                                                        
+                                                        if(   dev_obj.compTo === dev_obj.compAgnI   ){
+                                                            
+                                                            
+                                                            if(   uO.qC[uO.qC.abelast[uO.qC.abelast.length-1]][   uO.qC[uO.qC.abelast[uO.qC.abelast.length-1]].passOn.proofObject[0]   ].suspects === undefined   ){
+                                                            //if we have suspects to determine who belongs in the elements value. this might need to be reset
+                                                            
+                                                                uO.qC[uO.qC.abelast[uO.qC.abelast.length-1]][   uO.qC[uO.qC.abelast[uO.qC.abelast.length-1]].passOn.proofObject[0]   ].suspects = uO.iterableObject()
+                                                                uO.qC[uO.qC.abelast[uO.qC.abelast.length-1]][   uO.qC[uO.qC.abelast[uO.qC.abelast.length-1]].passOn.proofObject[0]   ].suspects.add(   {value:dev_obj.index}   )
+                                                                //see i wrote for the future here
+                                                                
+                                                            }
+                                                            
+                                                            
+                                                            else if(   uO.qC[uO.qC.abelast[uO.qC.abelast.length-1]][   uO.qC[uO.qC.abelast[uO.qC.abelast.length-1]].passOn.proofObject[0]   ].suspects !== undefined   ){
+                                                                
+                                                            
+                                                                uO.qC[uO.qC.abelast[uO.qC.abelast.length-1]][   uO.qC[uO.qC.abelast[uO.qC.abelast.length-1]].passOn.proofObject[0]   ].suspects.add(   {value:dev_obj.index}   )
+                                                                
+                                                                
+                                                            }
+                            
+                            
+                                                        }
+                                                        
+                                                        
+                                                        console.log(   dev_obj,pFFFL_0_i.forLoop_0_i   )
+                                                    },
+                                                    result:'a'
+                                                })
+                                                //this represents the digits of the NS,which are apparently the same that represents different items in the list however only one in this case should receive the element value here
+                                                console.log(   'our suspects',uO.qC[uO.qC.abelast[uO.qC.abelast.length-1]][   uO.qC[uO.qC.abelast[uO.qC.abelast.length-1]].passOn.proofObject[0]   ].suspects   )
+                                                
+                                                
+                                            }
+                                            // } /**/
+                                            
+                                        },
+                                        'tagName':  {
+                                                        uO:{
+                                                            tagOptions:uO.misc[   uO.scope[pFFMisc_1_i]]
+                                                        }
+                                                    },
+                                        'hidden':{},
+                                        'className':{
+                                                        uO:{
+                                                            keyword:uO.selectTags[uO.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword,
+                                                            //FIX ME a better way to make meaninguful
+                                                            pM_0_i:uO.iterify({
+                                                                iterify:{
+                                                                    range:20,
+                                                                    spaces:2,
+                                                                    gap:2,
+                                                                    trailer:20,
+                                                                    type:'string',
+                                                                    cCase:'toLowerCase'
+                                                                }
+                                                            })
+                                                        }
+                                                    },
+                                        'id':{
+                                                        uO:{
+                                                            keyword:uO.selectTags[uO.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword,
+                                                            //FIX ME a better way to make meaninguful
+                                                            pM_0_i:uO.iterify({
+                                                                iterify:{
+                                                                    range:30,
+                                                                    spaces:3,
+                                                                    gap:3,
+                                                                    trailer:30,
+                                                                    type:'string',
+                                                                    cCase:'toLowerCase'
+                                                                }
+                                                            }),
+                                                            care:uO.iterify(   {iterify:['yes','no','no']})
+                                                        }
+                                                    },
+                                        }
+                                    ],
+                                    ['parents',
+                                        {
+                                        'exist':{},
+                                        'tagName':{
+                                                        uO:{
+                                                               tagOptions:uO.iterify(   {iterify:['label','div']}   ),
+                                                            //   care:uO.iterify(   {iterify:['yes','yes','no']})
+                                                        }
+                                                    },
+                                        'className':{
+                                                        uO:{
+                                                            keyword:uO.selectTags[uO.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword,
+                                                            //FIX ME a better way to make meaninguful
+                                                            pM_0_i:uO.iterify({
+                                                                iterify:{
+                                                                    range:20,
+                                                                    spaces:2,
+                                                                    gap:2,
+                                                                    trailer:20,
+                                                                    type:'string',
+                                                                    cCase:'toLowerCase'
+                                                                }
+                                                            }),
+                                                            // care:uO.iterify(   {iterify:['yes','yes','no']}   )
+                                                        }
+                                                    },
+                                        'id':{
+                                                        uO:{
+                                                            keyword:uO.selectTags[uO.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword,
+                                                            //FIX ME a better way to make meaninguful
+                                                            pM_0_i:uO.iterify({
+                                                                iterify:{
+                                                                    range:30,
+                                                                    spaces:3,
+                                                                    gap:3,
+                                                                    trailer:30,
+                                                                    type:'string',
+                                                                    cCase:'toLowerCase'
+                                                                }
+                                                            }),
+                                                            // care:uO.iterify(   {iterify:['yes','yes','no']}   )
+                                                        }
+                                            },
+                                        }
+                                    ],
+                                    ['siblings',
+                                        {
+                                        'tagName':{
+                                            uO:{
+                                                   tagOptions:uO.iterify({iterify:['label','div']}),
+                                                //   care:uO.iterify(   {iterify:['yes','yes','no']})
+                                                    }
+                                                }
+                                        }
+                                    ],
+                                    ['children',
+                                        {
+                                        'className':{
+                                                        uO:{
+                                                            keyword:uO.selectTags[uO.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword,
+                                                            //FIX ME a better way to make meaninguful
+                                                            pM_0_i:uO.iterify({
+                                                                iterify:{
+                                                                    range:20,
+                                                                    spaces:2,
+                                                                    gap:2,
+                                                                    trailer:20,
+                                                                    type:'string',
+                                                                    cCase:'toLowerCase'
+                                                                }
+                                                            }),
+                                                            // care:uO.iterify(   {iterify:['yes','yes','no']}   )
+                                                        }
+                                                    },
+                                        'id':{
+                                                        uO:{
+                                                            keyword:uO.selectTags[uO.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword,
+                                                            //FIX ME a better way to make meaninguful
+                                                            pM_0_i:uO.iterify({
+                                                                iterify:{
+                                                                    range:30,
+                                                                    spaces:3,
+                                                                    gap:3,
+                                                                    trailer:30,
+                                                                    type:'string',
+                                                                    cCase:'toLowerCase'
+                                                                }
+                                                            }),
+                                                            // care:uO.iterify(   {iterify:['yes','yes','no']}   )
+                                                        }
+                                            },
+                                        }
+                                    ]
+                                ],
+                            pointValue:'v1',
+                            debug:'true'
+                        })
+                        uO.qC[uO.qC.abelast[uO.qC.abelast.length-1]].debuggerDB.add({
+                            value:uO.iterify({
+                                iterify:[
+                                    'total',
+                                    [],
+                                    uO.qC[uO.qC.abelast[uO.qC.abelast.length-1]].pointValue
+                                ]
+                            })
+                        })
+                        
+                        if(   pFFFL_0_i.args.changeSending !== 'true'   ){
+                            
+                            
+                            uO.XHR[   uO.scope[pFFXHR_0_i]   ].sending.fn({
+                                item:'debuggerDB',
+                                data:uO.qC[uO.qC.abelast[uO.qC.abelast.length-1]].debuggerDB
+                            })
+                            
+                            
+                        }
+                        
+                        
+                        else if(   pFFFL_0_i.args.changeSending === 'true'   ){
+                            
+                            
+                            uO.XHR[     uO.scope[pFFXHR_0_i]   ].sending.body = {
+                                item:'debuggerDB',
+                                data:uO.qC[uO.qC.abelast[uO.qC.abelast.length-1]].debuggerDB
+                            }
+                            
+                            
+                        }
+                        uO.selectTags[uO.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].pointValue = uO.qC[uO.qC.abelast[uO.qC.abelast.length-1]].pointValue // used to deterime if valuePhrasre belongs in the elements value
+                        console.log(   uO.selectTags[uO.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].pointValue   )
+                        uO.selectTags.minus({
+                            index:uO.scope[pFFST_3_i],
+
+                        })
+                        uO.scope.minus({
+                            index:pFFST_3_i,
+                            
+                        })
+                        uO.selectTags.minus({
+                            index:uO.scope[pFFST_2_i],
+                            
+                        })
+                        uO.scope.minus({
+                            index:pFFST_2_i,
+                            
+                        })
+                        uO.selectTags.minus({
+                            index:uO.scope[pFFST_1_i],
+                            
+                        })
+                        uO.scope.minus({
+                            index:pFFST_1_i,
+                            
+                        })
+                        // debugger
+                        delete uO.XHR[   uO.scope[pFFXHR_0_i]   ].sending.response
+                        // try{
+                        //     throw('see')
+                        //     }
+                        // catch(e){}
+                        console.log(  'what is the result', uO.selectTags[uO.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword  )
+                        // uO.objInvolved(
+                        //     uO.iterify({iterify:
+                        //         [
+                        //             uO.selectTags[uO.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item    .value,
+                        //             uO.misc[uO.scope[pFFList_0_i]][pFFFL_0_i.forLoop_0_i][1]
+                        //         ]// i probably put it somewhere else
+                        //     })
+                        // )
+                    
+                        
+                        console.groupEnd()
+                    console.groupEnd()
+                    // debugger
+                    uO.selectTags.minus(   {index:uO.scope[pFFST_0_i]}   )
+                    uO.selectTags.nextSet({changeSending:'true'})
+                    return true
+                }
+                    var pFFFL_6_i = {
+                        forLoop_0_i:0,
+                        fn:function(   dev_obj   ){
+                            console.log('blocking')
+                            debugger
+                            if(   uO.XHR[   uO.scope[pFFXHR_0_i]   ].sending.response !== undefined   ){
+                                return 'premature'
+                            }
+                        },
+                        
+                    }
+                    // } /**/
+                    
+                    var pFFST_1_i
+                    var pFFST_2_i
+                    var pFFFL_4_i
+                    var pFFST_3_i
+                    var pFFFL_5_i
                     var pFFFL_0_i = {
                         //these for spots, the amount that claims the element, the objects related properties the family and the string matching all help determine where this object belongs
                         //POINT VALUE the spot where we add points
@@ -4670,9 +5209,10 @@
                                 /* setting up needed objects for proof*/ //{
                                     //element
                                     
+                                    
                                     uO.selectTags[uO.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.sameChild = 'true'
                                     //parents
-                                    var pFFST_1_i = uO.scope.add(   {value:uO.selectTags.add(   {value:uO.iterableObject()}   )}   )
+                                    pFFST_1_i = uO.scope.add(   {value:uO.selectTags.add(   {value:uO.iterableObject()}   )}   )
                                     
                                     // ask if they are dom elements before doing anything
                                     if(   uO.isDOMElement({type:uO.selectTags[uO.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.offsetParent})   ){
@@ -4702,13 +5242,13 @@
                                     //siblings retuns HTMLCollection
                                     
                                     /*selectTags +scope + self +abelast  */ //{
-                                    var pFFST_2_i = uO.scope.add(   {value:uO.selectTags.add(   {value:uO.iterableObject()}   )}   )
+                                    pFFST_2_i = uO.scope.add(   {value:uO.selectTags.add(   {value:uO.iterableObject()}   )}   )
                                     uO.selectTags.abelast.add(   {value:uO.scope[   pFFST_2_i   ]}   )
                                     // }  /**/
                                     
-                                    var pFFFL_4_i = {
+                                    pFFFL_4_i = {
                                         forLoop_0_i:0,
-                                        forLoopLength:uO.selectTags[uO.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.parentElement.children.length,
+                                        forLoopLength: uO.selectTags[uO.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.parentElement.children.length,
                                         fn:function(   dev_obj   ){
                                             
                                             
@@ -4729,11 +5269,12 @@
                                     //children retuns HTMLCollection
                                     
                                     /*selectTags +scope + self +abelast  */ //{
-                                    var pFFST_3_i = uO.scope.add(   {value:uO.selectTags.add(   {value:uO.iterableObject()}   )}   )
+                                    pFFST_3_i = uO.scope.add(   {value:uO.selectTags.add(   {value:uO.iterableObject()}   )}   )
                                     uO.selectTags.abelast.add(   {value:pFFST_3_i}   )
                                     // }  /**/
                                     
-                                    var pFFFL_5_i = {
+
+                                    pFFFL_5_i = {
                                         forLoop_0_i:0,
                                         forLoopLength:uO.selectTags[uO.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.children.length,
                                         fn:function(   dev_obj   ){
@@ -4745,333 +5286,310 @@
                                     // accessing the qC object uO.qC[uO.qC.abelast[uO.qC.abelast.length-1]]
                                 // } /**/
                                 
-                                /*  node mode choice thread production */ //{
-
-                                    /**/
-                                    
-                                            
-                                            
-                                            uO.interrogation({
-                                                proof:[
-                                                        ['element',uO.selectTags[uO.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item],
-                                                        ['parents',uO.selectTags[uO.scope[pFFST_1_i]]],
-                                                        ['siblings',uO.selectTags[uO.scope[pFFST_2_i]]],
-                                                        ['children',uO.selectTags[uO.scope[pFFST_3_i]]]
-                                                    ],
-                                                facts:[
-                                                        ['element',
-                                                            {
-                                                            'valuePhrase':function(   dev_obj   ){
-                                                                /*interrogates to see if packIt actually put the right phrase in the right spot*/ //{
-                                                                if(   uO.isFunction({type:uO.selectTags[uO.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.value.toLowerCase}   )   ){
-                                                                    
-                                                                    
-                                                                    if(   uO.selectTags[uO.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.value.toLowerCase() === uO.misc[uO.scope[pFFList_0_i]][pFFFL_0_i.forLoop_0_i][1].toLowerCase()   ){
-                                                                        
-                                                                        
-                                                                        uO.qC[uO.qC.abelast[uO.qC.abelast.length-1]].noRun = 'true'
-                                                                        
-                                     
-                                                                    }
-                                                                    
-                                                                    
-                                                                }
-                                                                
-                                                                
-                                                                else if(   !uO.isFunction({type:uO.selectTags[uO.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.value.toLowerCase})   ){
-                                                                    
-                                                                    
-                                                                    if(   uO.selectTags[uO.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.value === uO.misc[uO.scope[pFFList_0_i]][pFFFL_0_i.forLoop_0_i][1]   ){
-                                                                        
-                                                                        
-                                                                        uO.qC[uO.qC.abelast[uO.qC.abelast.length-1]].noRun = 'true'
-                                                                        
-                                     
-                                                                    }
-                                                                    
-                                                                    
-                                                                }
-                                                                
-                                                                
-                                                                uO.qC[uO.qC.abelast[uO.qC.abelast.length-1]].noRun = 'false'
-                                                                // } /**/
-                                                            },
-                                                            'suspect':function(   dev_obj   ){
-                                                                
-                                                                /*suspects to see if different values were put in the same spot*/ //{
-                                                                if(   uO.qC[uO.qC.abelast[uO.qC.abelast.length-1]].noRun !== 'true'   ){
-                                                                    
-                                                                    
-                                                                    console.log(   'index',pFFFL_0_i.forLoop_0_i   )
-                                                                    var pFFBOOL_0_i = {0:false}
-                                                                    pFFBOOL_0_i = uO.severalOr({
-                                                                        compTo: uO.nS[uO.scope[pFFNS_0_i]].currentNumber[pFFFL_0_i.forLoop_0_i],
-                                                                        compAgn: uO.nS[uO.scope[pFFNS_0_i]].currentNumber,
-                                                                        boolean:pFFBOOL_0_i,
-                                                                        which:0,
-                                                                        how:function(   dev_obj   ){
-                                                                            
-                                                                            
-                                                                            if(   dev_obj.compTo === dev_obj.compAgnI   ){
-                                                                                
-                                                                                
-                                                                                if(   uO.qC[uO.qC.abelast[uO.qC.abelast.length-1]][   uO.qC[uO.qC.abelast[uO.qC.abelast.length-1]].passOn.proofObject[0]   ].suspects === undefined   ){
-                                                                                //if we have suspects to determine who belongs in the elements value. this might need to be reset
-                                                                                
-                                                                                    uO.qC[uO.qC.abelast[uO.qC.abelast.length-1]][   uO.qC[uO.qC.abelast[uO.qC.abelast.length-1]].passOn.proofObject[0]   ].suspects = uO.iterableObject()
-                                                                                    uO.qC[uO.qC.abelast[uO.qC.abelast.length-1]][   uO.qC[uO.qC.abelast[uO.qC.abelast.length-1]].passOn.proofObject[0]   ].suspects.add(   {value:dev_obj.index}   )
-                                                                                    //see i wrote for the future here
-                                                                                    
-                                                                                }
-                                                                                
-                                                                                
-                                                                                else if(   uO.qC[uO.qC.abelast[uO.qC.abelast.length-1]][   uO.qC[uO.qC.abelast[uO.qC.abelast.length-1]].passOn.proofObject[0]   ].suspects !== undefined   ){
-                                                                                    
-                                                                                
-                                                                                    uO.qC[uO.qC.abelast[uO.qC.abelast.length-1]][   uO.qC[uO.qC.abelast[uO.qC.abelast.length-1]].passOn.proofObject[0]   ].suspects.add(   {value:dev_obj.index}   )
-                                                                                    
-                                                                                    
-                                                                                }
-                                                
-                                                
-                                                                            }
-                                                                            
-                                                                            
-                                                                            console.log(   dev_obj,pFFFL_0_i.forLoop_0_i   )
-                                                                        },
-                                                                        result:'a'
-                                                                    })
-                                                                    //this represents the digits of the NS,which are apparently the same that represents different items in the list however only one in this case should receive the element value here
-                                                                    console.log(   'our suspects',uO.qC[uO.qC.abelast[uO.qC.abelast.length-1]][   uO.qC[uO.qC.abelast[uO.qC.abelast.length-1]].passOn.proofObject[0]   ].suspects   )
-                                                                    
-                                                                    
-                                                                }
-                                                                // } /**/
-                                                                
-                                                            },
-                                                            'tagName':  {
-                                                                            uO:{
-                                                                                tagOptions:uO.misc[   uO.scope[pFFMisc_1_i]]
-                                                                            }
-                                                                        },
-                                                            'hidden':{},
-                                                            'className':{
-                                                                            uO:{
-                                                                                keyword:uO.selectTags[uO.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword,
-                                                                                //FIX ME a better way to make meaninguful
-                                                                                pM_0_i:uO.iterify({
-                                                                                    iterify:{
-                                                                                        range:20,
-                                                                                        spaces:2,
-                                                                                        gap:2,
-                                                                                        trailer:20,
-                                                                                        type:'string',
-                                                                                        cCase:'toLowerCase'
-                                                                                    }
-                                                                                })
-                                                                            }
-                                                                        },
-                                                            'id':{
-                                                                            uO:{
-                                                                                keyword:uO.selectTags[uO.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword,
-                                                                                //FIX ME a better way to make meaninguful
-                                                                                pM_0_i:uO.iterify({
-                                                                                    iterify:{
-                                                                                        range:30,
-                                                                                        spaces:3,
-                                                                                        gap:3,
-                                                                                        trailer:30,
-                                                                                        type:'string',
-                                                                                        cCase:'toLowerCase'
-                                                                                    }
-                                                                                }),
-                                                                                care:uO.iterify(   {iterify:['yes','no','no']})
-                                                                            }
-                                                                        },
-                                                            }
-                                                        ],
-                                                        ['parents',
-                                                            {
-                                                            'exist':{},
-                                                            'tagName':{
-                                                                            uO:{
-                                                                                   tagOptions:uO.iterify(   {iterify:['label','div']}   ),
-                                                                                //   care:uO.iterify(   {iterify:['yes','yes','no']})
-                                                                            }
-                                                                        },
-                                                            'className':{
-                                                                            uO:{
-                                                                                keyword:uO.selectTags[uO.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword,
-                                                                                //FIX ME a better way to make meaninguful
-                                                                                pM_0_i:uO.iterify({
-                                                                                    iterify:{
-                                                                                        range:20,
-                                                                                        spaces:2,
-                                                                                        gap:2,
-                                                                                        trailer:20,
-                                                                                        type:'string',
-                                                                                        cCase:'toLowerCase'
-                                                                                    }
-                                                                                }),
-                                                                                // care:uO.iterify(   {iterify:['yes','yes','no']}   )
-                                                                            }
-                                                                        },
-                                                            'id':{
-                                                                            uO:{
-                                                                                keyword:uO.selectTags[uO.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword,
-                                                                                //FIX ME a better way to make meaninguful
-                                                                                pM_0_i:uO.iterify({
-                                                                                    iterify:{
-                                                                                        range:30,
-                                                                                        spaces:3,
-                                                                                        gap:3,
-                                                                                        trailer:30,
-                                                                                        type:'string',
-                                                                                        cCase:'toLowerCase'
-                                                                                    }
-                                                                                }),
-                                                                                // care:uO.iterify(   {iterify:['yes','yes','no']}   )
-                                                                            }
-                                                                },
-                                                            }
-                                                        ],
-                                                        ['siblings',
-                                                            {
-                                                            'tagName':{
-                                                                uO:{
-                                                                       tagOptions:uO.iterify({iterify:['label','div']}),
-                                                                    //   care:uO.iterify(   {iterify:['yes','yes','no']})
-                                                                        }
-                                                                    }
-                                                            }
-                                                        ],
-                                                        ['children',
-                                                            {
-                                                            'className':{
-                                                                            uO:{
-                                                                                keyword:uO.selectTags[uO.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword,
-                                                                                //FIX ME a better way to make meaninguful
-                                                                                pM_0_i:uO.iterify({
-                                                                                    iterify:{
-                                                                                        range:20,
-                                                                                        spaces:2,
-                                                                                        gap:2,
-                                                                                        trailer:20,
-                                                                                        type:'string',
-                                                                                        cCase:'toLowerCase'
-                                                                                    }
-                                                                                }),
-                                                                                // care:uO.iterify(   {iterify:['yes','yes','no']}   )
-                                                                            }
-                                                                        },
-                                                            'id':{
-                                                                            uO:{
-                                                                                keyword:uO.selectTags[uO.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword,
-                                                                                //FIX ME a better way to make meaninguful
-                                                                                pM_0_i:uO.iterify({
-                                                                                    iterify:{
-                                                                                        range:30,
-                                                                                        spaces:3,
-                                                                                        gap:3,
-                                                                                        trailer:30,
-                                                                                        type:'string',
-                                                                                        cCase:'toLowerCase'
-                                                                                    }
-                                                                                }),
-                                                                                // care:uO.iterify(   {iterify:['yes','yes','no']}   )
-                                                                            }
-                                                                },
-                                                            }
-                                                        ]
-                                                    ],
-                                                pointValue:'v1',
-                                                debug:'true'
-                                            })
-                                            uO.qC[uO.qC.abelast[uO.qC.abelast.length-1]].debuggerDB.add({
-                                                value:uO.iterify({
-                                                    iterify:[
-                                                        'total',
-                                                        [],
-                                                        uO.qC[uO.qC.abelast[uO.qC.abelast.length-1]].pointValue
-                                                    ]
-                                                })
-                                            })
-                                            uO.selectTags[uO.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].pointValue = uO.qC[uO.qC.abelast[uO.qC.abelast.length-1]].pointValue // used to deterime if valuePhrasre belongs in the elements value
-                                            console.log(   uO.selectTags[uO.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].pointValue   )
-                                            debugger
-                                            uO.selectTags.minus({
-                                                index:uO.scope[pFFST_3_i],
-                                                // messy:'true'
-                                            })
-                                            uO.scope.minus({
-                                                index:pFFST_3_i,
-                                                // messy:'true'
-                                            })
-                                           uO.selectTags.minus({
-                                                index:uO.scope[pFFST_2_i],
-                                                // messy:'true'
-                                            })
-                                            uO.scope.minus({
-                                                index:pFFST_2_i,
-                                                // messy:'true'
-                                            })
-                                            uO.selectTags.minus({
-                                                index:uO.scope[pFFST_1_i],
-                                                // messy:'true'
-                                            })
-                                            uO.scope.minus({
-                                                index:pFFST_1_i,
-                                                // messy:'true'
-                                            })
-                                            // throw('e')
-                                            console.log(  'what is the result', uO.selectTags[uO.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword  )
-                                            // uO.objInvolved(
-                                            //     uO.iterify({iterify:
-                                            //         [
-                                            //             uO.selectTags[uO.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.value,
-                                            //             uO.misc[uO.scope[pFFList_0_i]][pFFFL_0_i.forLoop_0_i][1]
-                                            //         ]// i probably put it somewhere else
-                                            //     })
-                                            // )
-                                            // }
-                                            
-                                            console.groupEnd()
-                                        console.groupEnd()
-                                                                        
-                                // } /**/
+                                // /*  node mode choice thread production */ //{
                                 
-                                // /*  node mode choice thread data visualization*/ //{
-                                    
-                                //     function debug_0_i(response,sender,sendResponse){
-                                //         console.log(   response   )
-                                //         uO.XHR[   uO.scope[pFFXHR_0_i]   ].sending.response = response
-                                //         uO.XHR[   uO.scope[pFFXHR_0_i]   ].sending.fn = sendResponse
-                                //         // sendResponse('abc')
+                                //         uO.interrogation({
+                                //             proof:[
+                                //                     ['element',uO.selectTags[uO.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item],
+                                //                     ['parents',uO.selectTags[uO.scope[pFFST_1_i]]],
+                                //                     ['siblings',uO.selectTags[uO.scope[pFFST_2_i]]],
+                                //                     ['children',uO.selectTags[uO.scope[pFFST_3_i]]]
+                                //                 ],
+                                //             facts:[
+                                //                     ['element',
+                                //                         {
+                                //                         'valuePhrase':function(   dev_obj   ){
+                                //                             /*interrogates to see if packIt actually put the right phrase in the right spot*/ //{
+                                //                             if(   uO.isFunction({type:uO.selectTags[uO.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.value.toLowerCase}   )   ){
+                                                                
+                                                                
+                                //                                 if(   uO.selectTags[uO.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.value.toLowerCase() === uO.misc[uO.scope[pFFList_0_i]][pFFFL_0_i.forLoop_0_i][1].toLowerCase()   ){
+                                                                    
+                                                                    
+                                //                                     uO.qC[uO.qC.abelast[uO.qC.abelast.length-1]].noRun = 'true'
+                                                                    
+                                 
+                                //                                 }
+                                                                
+                                                                
+                                //                             }
+                                                            
+                                                            
+                                //                             else if(   !uO.isFunction({type:uO.selectTags[uO.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.value.toLowerCase})   ){
+                                                                
+                                                                
+                                //                                 if(   uO.selectTags[uO.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.value === uO.misc[uO.scope[pFFList_0_i]][pFFFL_0_i.forLoop_0_i][1]   ){
+                                                                    
+                                                                    
+                                //                                     uO.qC[uO.qC.abelast[uO.qC.abelast.length-1]].noRun = 'true'
+                                                                    
+                                 
+                                //                                 }
+                                                                
+                                                                
+                                //                             }
+                                                            
+                                                            
+                                //                             uO.qC[uO.qC.abelast[uO.qC.abelast.length-1]].noRun = 'false'
+                                //                             // } /**/
+                                //                         },
+                                //                         'suspect':function(   dev_obj   ){
+                                                            
+                                //                             /*suspects to see if different values were put in the same spot*/ //{
+                                //                             if(   uO.qC[uO.qC.abelast[uO.qC.abelast.length-1]].noRun !== 'true'   ){
+                                                                
+                                                                
+                                //                                 console.log(   'index',pFFFL_0_i.forLoop_0_i   )
+                                //                                 var pFFBOOL_0_i = {0:false}
+                                //                                 pFFBOOL_0_i = uO.severalOr({
+                                //                                     compTo: uO.nS[uO.scope[pFFNS_0_i]].currentNumber[pFFFL_0_i.forLoop_0_i],
+                                //                                     compAgn: uO.nS[uO.scope[pFFNS_0_i]].currentNumber,
+                                //                                     boolean:pFFBOOL_0_i,
+                                //                                     which:0,
+                                //                                     how:function(   dev_obj   ){
+                                                                        
+                                                                        
+                                //                                         if(   dev_obj.compTo === dev_obj.compAgnI   ){
+                                                                            
+                                                                            
+                                //                                             if(   uO.qC[uO.qC.abelast[uO.qC.abelast.length-1]][   uO.qC[uO.qC.abelast[uO.qC.abelast.length-1]].passOn.proofObject[0]   ].suspects === undefined   ){
+                                //                                             //if we have suspects to determine who belongs in the elements value. this might need to be reset
+                                                                            
+                                //                                                 uO.qC[uO.qC.abelast[uO.qC.abelast.length-1]][   uO.qC[uO.qC.abelast[uO.qC.abelast.length-1]].passOn.proofObject[0]   ].suspects = uO.iterableObject()
+                                //                                                 uO.qC[uO.qC.abelast[uO.qC.abelast.length-1]][   uO.qC[uO.qC.abelast[uO.qC.abelast.length-1]].passOn.proofObject[0]   ].suspects.add(   {value:dev_obj.index}   )
+                                //                                                 //see i wrote for the future here
+                                                                                
+                                //                                             }
+                                                                            
+                                                                            
+                                //                                             else if(   uO.qC[uO.qC.abelast[uO.qC.abelast.length-1]][   uO.qC[uO.qC.abelast[uO.qC.abelast.length-1]].passOn.proofObject[0]   ].suspects !== undefined   ){
+                                                                                
+                                                                            
+                                //                                                 uO.qC[uO.qC.abelast[uO.qC.abelast.length-1]][   uO.qC[uO.qC.abelast[uO.qC.abelast.length-1]].passOn.proofObject[0]   ].suspects.add(   {value:dev_obj.index}   )
+                                                                                
+                                                                                
+                                //                                             }
+                                            
+                                            
+                                //                                         }
+                                                                        
+                                                                        
+                                //                                         console.log(   dev_obj,pFFFL_0_i.forLoop_0_i   )
+                                //                                     },
+                                //                                     result:'a'
+                                //                                 })
+                                //                                 //this represents the digits of the NS,which are apparently the same that represents different items in the list however only one in this case should receive the element value here
+                                //                                 console.log(   'our suspects',uO.qC[uO.qC.abelast[uO.qC.abelast.length-1]][   uO.qC[uO.qC.abelast[uO.qC.abelast.length-1]].passOn.proofObject[0]   ].suspects   )
+                                                                
+                                                                
+                                //                             }
+                                //                             // } /**/
+                                                            
+                                //                         },
+                                //                         'tagName':  {
+                                //                                         uO:{
+                                //                                             tagOptions:uO.misc[   uO.scope[pFFMisc_1_i]]
+                                //                                         }
+                                //                                     },
+                                //                         'hidden':{},
+                                //                         'className':{
+                                //                                         uO:{
+                                //                                             keyword:uO.selectTags[uO.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword,
+                                //                                             //FIX ME a better way to make meaninguful
+                                //                                             pM_0_i:uO.iterify({
+                                //                                                 iterify:{
+                                //                                                     range:20,
+                                //                                                     spaces:2,
+                                //                                                     gap:2,
+                                //                                                     trailer:20,
+                                //                                                     type:'string',
+                                //                                                     cCase:'toLowerCase'
+                                //                                                 }
+                                //                                             })
+                                //                                         }
+                                //                                     },
+                                //                         'id':{
+                                //                                         uO:{
+                                //                                             keyword:uO.selectTags[uO.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword,
+                                //                                             //FIX ME a better way to make meaninguful
+                                //                                             pM_0_i:uO.iterify({
+                                //                                                 iterify:{
+                                //                                                     range:30,
+                                //                                                     spaces:3,
+                                //                                                     gap:3,
+                                //                                                     trailer:30,
+                                //                                                     type:'string',
+                                //                                                     cCase:'toLowerCase'
+                                //                                                 }
+                                //                                             }),
+                                //                                             care:uO.iterify(   {iterify:['yes','no','no']})
+                                //                                         }
+                                //                                     },
+                                //                         }
+                                //                     ],
+                                //                     ['parents',
+                                //                         {
+                                //                         'exist':{},
+                                //                         'tagName':{
+                                //                                         uO:{
+                                //                                               tagOptions:uO.iterify(   {iterify:['label','div']}   ),
+                                //                                             //   care:uO.iterify(   {iterify:['yes','yes','no']})
+                                //                                         }
+                                //                                     },
+                                //                         'className':{
+                                //                                         uO:{
+                                //                                             keyword:uO.selectTags[uO.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword,
+                                //                                             //FIX ME a better way to make meaninguful
+                                //                                             pM_0_i:uO.iterify({
+                                //                                                 iterify:{
+                                //                                                     range:20,
+                                //                                                     spaces:2,
+                                //                                                     gap:2,
+                                //                                                     trailer:20,
+                                //                                                     type:'string',
+                                //                                                     cCase:'toLowerCase'
+                                //                                                 }
+                                //                                             }),
+                                //                                             // care:uO.iterify(   {iterify:['yes','yes','no']}   )
+                                //                                         }
+                                //                                     },
+                                //                         'id':{
+                                //                                         uO:{
+                                //                                             keyword:uO.selectTags[uO.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword,
+                                //                                             //FIX ME a better way to make meaninguful
+                                //                                             pM_0_i:uO.iterify({
+                                //                                                 iterify:{
+                                //                                                     range:30,
+                                //                                                     spaces:3,
+                                //                                                     gap:3,
+                                //                                                     trailer:30,
+                                //                                                     type:'string',
+                                //                                                     cCase:'toLowerCase'
+                                //                                                 }
+                                //                                             }),
+                                //                                             // care:uO.iterify(   {iterify:['yes','yes','no']}   )
+                                //                                         }
+                                //                             },
+                                //                         }
+                                //                     ],
+                                //                     ['siblings',
+                                //                         {
+                                //                         'tagName':{
+                                //                             uO:{
+                                //                                   tagOptions:uO.iterify({iterify:['label','div']}),
+                                //                                 //   care:uO.iterify(   {iterify:['yes','yes','no']})
+                                //                                     }
+                                //                                 }
+                                //                         }
+                                //                     ],
+                                //                     ['children',
+                                //                         {
+                                //                         'className':{
+                                //                                         uO:{
+                                //                                             keyword:uO.selectTags[uO.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword,
+                                //                                             //FIX ME a better way to make meaninguful
+                                //                                             pM_0_i:uO.iterify({
+                                //                                                 iterify:{
+                                //                                                     range:20,
+                                //                                                     spaces:2,
+                                //                                                     gap:2,
+                                //                                                     trailer:20,
+                                //                                                     type:'string',
+                                //                                                     cCase:'toLowerCase'
+                                //                                                 }
+                                //                                             }),
+                                //                                             // care:uO.iterify(   {iterify:['yes','yes','no']}   )
+                                //                                         }
+                                //                                     },
+                                //                         'id':{
+                                //                                         uO:{
+                                //                                             keyword:uO.selectTags[uO.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword,
+                                //                                             //FIX ME a better way to make meaninguful
+                                //                                             pM_0_i:uO.iterify({
+                                //                                                 iterify:{
+                                //                                                     range:30,
+                                //                                                     spaces:3,
+                                //                                                     gap:3,
+                                //                                                     trailer:30,
+                                //                                                     type:'string',
+                                //                                                     cCase:'toLowerCase'
+                                //                                                 }
+                                //                                             }),
+                                //                                             // care:uO.iterify(   {iterify:['yes','yes','no']}   )
+                                //                                         }
+                                //                             },
+                                //                         }
+                                //                     ]
+                                //                 ],
+                                //             pointValue:'v1',
+                                //             debug:'true'
+                                //         })
+                                //         uO.qC[uO.qC.abelast[uO.qC.abelast.length-1]].debuggerDB.add({
+                                //             value:uO.iterify({
+                                //                 iterify:[
+                                //                     'total',
+                                //                     [],
+                                //                     uO.qC[uO.qC.abelast[uO.qC.abelast.length-1]].pointValue
+                                //                 ]
+                                //             })
+                                //         })
+                                //         uO.selectTags[uO.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].pointValue = uO.qC[uO.qC.abelast[uO.qC.abelast.length-1]].pointValue // used to deterime if valuePhrasre belongs in the elements value
+                                //         console.log(   uO.selectTags[uO.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].pointValue   )
+                                //         debugger
+                                //         uO.selectTags.minus({
+                                //             index:uO.scope[pFFST_3_i],
+                                //
+                                //         })
+                                //         uO.scope.minus({
+                                //             index:pFFST_3_i,
+                                //
+                                //         })
+                                //       uO.selectTags.minus({
+                                //             index:uO.scope[pFFST_2_i],
+                                //
+                                //         })
+                                //         uO.scope.minus({
+                                //             index:pFFST_2_i,
+                                //
+                                //         })
+                                //         uO.selectTags.minus({
+                                //             index:uO.scope[pFFST_1_i],
+                                //
+                                //         })
+                                //         uO.scope.minus({
+                                //             index:pFFST_1_i,
+                                //
+                                //         })
+                                //         // throw('e')
+                                //         console.log(  'what is the result', uO.selectTags[uO.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword  )
+                                //         // uO.objInvolved(
+                                //         //     uO.iterify({iterify:
+                                //         //         [
+                                //         //             uO.selectTags[uO.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.value,
+                                //         //             uO.misc[uO.scope[pFFList_0_i]][pFFFL_0_i.forLoop_0_i][1]
+                                //         //         ]// i probably put it somewhere else
+                                //         //     })
+                                //         // )
                                         
-                                //         return true;
-                                //     }
-                                //     uO.endpoint({
-                                //         instruct:'chromeExtensionOneTime',
-                                //         incomingFn:function(   dev_obj   ){
-                                //             chrome.runtime.onMessage.addListener(   debug_0_i   )
-                                //         },
-                                //         incomingOrigin:'extension',
-                                //         sendingFn:dev_obj.endpointSendingFn,
-                                //         sendingBody:{need:'make a table for me'},
-                                //         sendingOrigin:'contentScript'
-                                //     })
+                                //         console.groupEnd()
+                                //     console.groupEnd()
+                                                                        
+                                // // } /**/
+                                
+                                // /*  node mode choice thread data visualization by setInterval*/ //{
+                                    
                                     
                                 //     var pFFXHR_0_i = uO.scope.add(   {value:uO.XHR.abelast[uO.XHR.abelast.length -1]}   )
                                 //     uO.XHR[   uO.scope[pFFXHR_0_i]   ].incoming.fn()
                                 //     uO.XHR[   uO.scope[pFFXHR_0_i]   ].sending.fn(   uO.XHR[   uO.scope[pFFXHR_0_i]   ].sending.body   )
                                 //     uO.XHR[   uO.scope[pFFXHR_0_i]   ].setIntervalStop = 0
                                     
-                                //     /*debug*/
+                                    
                                 //     var setInterval_0_i = setInterval(function(){
                                         
                                 //         console.log('this is the response',uO.XHR[   uO.scope[pFFXHR_0_i]   ].sending.response   )
                                 //         if(   uO.XHR[   uO.scope[pFFXHR_0_i]   ].sending.response !== undefined && uO.XHR[   uO.scope[pFFXHR_0_i]   ].setIntervalStop === 0  ){
-                                //     /**/
+
                                     
                                 //             uO.XHR[   uO.scope[pFFXHR_0_i]   ].setIntervalStop = 1
                                 //             console.log('table is ready for interrogation')
@@ -5087,12 +5605,33 @@
                                 //                             {
                                 //                             'valuePhrase':function(   dev_obj   ){
                                 //                                 /*interrogates to see if packIt actually put the right phrase in the right spot*/ //{
-                                //                                 if(   uO.selectTags[uO.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.value.toLowerCase() === uO.misc[uO.scope[pFFList_0_i]][pFFFL_0_i.forLoop_0_i][1].toLowerCase()   ){
+                                //                                 if(   uO.isFunction({type:uO.selectTags[uO.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.value.toLowerCase}   )   ){
                                                                     
                                                                     
-                                //                                     uO.qC[uO.qC.abelast[uO.qC.abelast.length-1]].noRun = 'true'
+                                //                                     if(   uO.selectTags[uO.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.value.toLowerCase() === uO.misc[uO.scope[pFFList_0_i]][pFFFL_0_i.forLoop_0_i][1].toLowerCase()   ){
+                                                                        
+                                                                        
+                                //                                         uO.qC[uO.qC.abelast[uO.qC.abelast.length-1]].noRun = 'true'
+                                                                        
+                                     
+                                //                                     }
                                                                     
-                                 
+                                                                    
+                                //                                 }
+                                                                
+                                                                
+                                //                                 else if(   !uO.isFunction({type:uO.selectTags[uO.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.value.toLowerCase})   ){
+                                                                    
+                                                                    
+                                //                                     if(   uO.selectTags[uO.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.value === uO.misc[uO.scope[pFFList_0_i]][pFFFL_0_i.forLoop_0_i][1]   ){
+                                                                        
+                                                                        
+                                //                                         uO.qC[uO.qC.abelast[uO.qC.abelast.length-1]].noRun = 'true'
+                                                                        
+                                     
+                                //                                     }
+                                                                    
+                                                                    
                                 //                                 }
                                                                 
                                                                 
@@ -5303,24 +5842,33 @@
                                 //                 item:'debuggerDB',
                                 //                 data:uO.qC[uO.qC.abelast[uO.qC.abelast.length-1]].debuggerDB
                                 //             })
-                                //             chrome.runtime.onMessage.removeListener(   debug_0_i   )
                                 //             debugger
+                                //             chrome.runtime.onMessage.removeListener(   debug_0_i   )
                                 //             uO.selectTags[uO.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].pointValue = uO.qC[uO.qC.abelast[uO.qC.abelast.length-1]].pointValue // used to deterime if valuePhrasre belongs in the elements value
                                 //             console.log(   uO.selectTags[uO.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].pointValue   )
-                                //             uO.selectTags.minus(   {index:uO.scope[pFFST_1_i]}   )
-                                //             uO.scope.minus({
-                                //                 index:pFFST_1_i,
-                                //                 messy:'true'
+                                //             uO.selectTags.minus({
+                                //                 index:uO.scope[pFFST_3_i],
+                                //
                                 //             })
-                                //             uO.selectTags.minus(   {index:uO.scope[pFFST_2_i]}   )
-                                //             uO.scope.minus({
-                                //                 index:pFFST_2_i,
-                                //                 messy:'true'
-                                //             })
-                                //             uO.selectTags.minus(   {index:uO.scope[pFFST_3_i]}   )
                                 //             uO.scope.minus({
                                 //                 index:pFFST_3_i,
-                                //                 messy:'true'
+                                //
+                                //             })
+                                //           uO.selectTags.minus({
+                                //                 index:uO.scope[pFFST_2_i],
+                                //
+                                //             })
+                                //             uO.scope.minus({
+                                //                 index:pFFST_2_i,
+                                //
+                                //             })
+                                //             uO.selectTags.minus({
+                                //                 index:uO.scope[pFFST_1_i],
+                                //
+                                //             })
+                                //             uO.scope.minus({
+                                //                 index:pFFST_1_i,
+                                //
                                 //             })
                                 //             /* debug */
                                 //             clearInterval(   setInterval_0_i   )
@@ -5328,23 +5876,54 @@
                                 //             /**/
                                 //             // throw('e')
                                 //             console.log(  'what is the result', uO.selectTags[uO.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword  )
-                                //             uO.objInvolved({
-                                //                 0:uO.selectTags[uO.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item.value,
-                                //                 1:uO.misc[uO.scope[pFFList_0_i]][pFFFL_0_i.forLoop_0_i][1] // i probably put it somewhere else
-                                //             })
-                                //             // }
+                                //             uO.objInvolved(
+                                //                 uO.iterify({iterify:
+                                //                     [
+                                //                         uO.selectTags[uO.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].item    .value,
+                                //                         uO.misc[uO.scope[pFFList_0_i]][pFFFL_0_i.forLoop_0_i][1]
+                                //                     ]// i probably put it somewhere else
+                                //                 })
+                                //             )
+                                        
+                                            
                                 //             console.groupEnd()
                                 //         console.groupEnd()
-                                //     /*debug*/
+
                                 //         }
                                         
                                         
                                 //     },500)
-                                //     // throw('e')
-                                //     return 'premature'
-                                //     // just like when dealing with fs API, setInterval is a nasty little promise, id use wait but idk when the data comes from the background script
-                                //     /**/
-                                // // } /**/
+
+                                // //     // just like when dealing with fs API, setInterval is a nasty little promise, id use wait but idk when the data comes from the background script
+                                
+                                // } /**/
+
+                                /*  node mode choice thread data visualization by chromelistener*/ //{
+                                
+                                    if(   dev_obj.changeSending !== 'true'   ){
+                                        
+                                        
+                                        uO.XHR[   uO.scope[pFFXHR_0_i]   ].incoming.fn({
+                                            eventListener:debug_0_i
+                                        })
+                                        uO.XHR[   uO.scope[pFFXHR_0_i]   ].sending.fn(   uO.XHR[     uO.scope[pFFXHR_0_i]   ].sending.body   )
+                                        
+                                    
+                                    }
+                                    
+                                    else if(   dev_obj.changeSending === 'true'   ){
+                                        
+                                        
+                                        pFFFL_0_i.args.changeSending = 'true'
+                                        chrome.runtime.sendMessage(uO.XHR[     uO.scope[pFFXHR_0_i]   ].sending.body, debug_0_i);
+                                        
+                                        
+                                    }
+                                    // uO.forLoop(   pFFFL_6_i   )
+                                // } /**/
+                                    
+
+
 
                             
                         },
@@ -5356,96 +5935,30 @@
                     }
                     uO.forLoop(   pFFFL_0_i   )
                     // debugger
-                    uO.selectTags.minus(   {index:uO.scope[pFFST_0_i]}   )
-                    // uO.scope.minus({
-                    //     index:pFFST_0_i,
-                    //     messy:'true'
+                    
+                   
+                    
+                    /*  node mode choice thread production  */ //{
+                    // uO.selectTags.minus(   {index:uO.scope[pFFST_0_i]}   )
+                    // uO.numberSystem({
+                    //     operation:'decimal',
+                    //     conversion:'to',
+                    //     nS:uO.scope[   pFFNS_0_i   ],
                     // })
-                    uO.numberSystem({
-                        operation:'decimal',
-                        conversion:'to',
-                        nS:uO.scope[   pFFNS_0_i   ],
-                    })
-                    uO.numberSystem({
-                        operation:'decimal',
-                        conversion:'from',
-                        nS:uO.scope[   pFFNS_0_i   ],
-                        currentNumber:uO.nS[   uO.scope[pFFNS_0_i]   ].decimal.currentNumber + 1
-                    })
-                    uO.numberSystem({
-                        operation:'update',
-                        nS:uO.scope[   pFFNS_0_i   ]
-                    })
-                    var pFFFL_1_i = {
-                        forLoop_0_i:0,
-                        forLoopLength:uO.allTags[   uO.scope[pFFATI_0_i]   ].length - 1,
-                        fn:function(   dev_obj   ){
-                            uO.eCSearch({
-                                list:pFFList_0_i,
-                                look:pFFLook_0_i,
-                                aT: pFFATI_0_i,
-                                all:'true',
-                                nS:uO.scope[   pFFNS_0_i   ]
-                            })
-                            
-                            // /*  selectTags +scope  */ //{
-                            // //for loop on this to see if you can find empty places within the scope
-                            // pFFFL_2_i.forLoopLength:uO.scope.length,
-                            // uO.forLoop(   pFFFL_2_i   )
-                            // // } /**/
-                            
-                            /* filling the value for each element  */ //{
-                            uO.packIt({
-                                order:uO.selectTags[uO.scope[pFFST_0_i]],
-                                directions: uO.iterify(   {iterify:['gather element','match']}   ),
-                                fill:'value',
-                                write:'valuePhrase',
-                                prevent:uO.iterify({
-                                                        iterify:[
-                                                            function(   dev_obj   ){
-                                                                
-                                                                
-                                                                if(   dev_obj.element.type === 'file'   ){
-                                                                    
-                                                                    
-                                                                    return 'cantFill'
-                                                                    
-                                                                    
-                                                                }
-                                                                
-                                                                
-                                                            }
-                                                        ]
-                                                    })
-                                                })
-                            // } /**/
-                            
-                            uO.forLoop(   pFFFL_0_i   )
-                            uO.selectTags.minus(   {index:uO.scope[pFFST_0_i]}   )
-                            // uO.scope.minus({
-                            //     index:pFFST_0_i,
-                            //     messy:'true'
-                            // })
-                            uO.numberSystem({
-                                operation:'decimal',
-                                conversion:'to',
-                                nS:uO.scope[   pFFNS_0_i   ],
-                            })
-                            uO.numberSystem({
-                                operation:'decimal',
-                                conversion:'from',
-                                nS:uO.scope[   pFFNS_0_i   ],
-                                currentNumber:uO.nS[   uO.scope[pFFNS_0_i]   ].decimal.currentNumber + 1
-                            })
-                            uO.numberSystem({
-                                operation:'update',
-                                nS:uO.scope[   pFFNS_0_i   ]
-                            })
-                            uO.args = uO.iterableObject()
-                        },
-                        args:dev_obj //{}
-                    }
-                    uO.forLoop(   pFFFL_1_i   )
+                    // uO.numberSystem({
+                    //     operation:'decimal',
+                    //     conversion:'from',
+                    //     nS:uO.scope[   pFFNS_0_i   ],
+                    //     currentNumber:uO.nS[   uO.scope[pFFNS_0_i]   ].decimal.currentNumber + 1
+                    // })
+                    // uO.numberSystem({
+                    //     operation:'update',
+                    //     nS:uO.scope[   pFFNS_0_i   ]
+                    // })
+                    // uO.forLoop(   pFFFL_1_i   )
+                    // } /**/
+                    
+
                 
                 console.groupEnd()
                     ///////////////////////////////////////////////////////////////////////////

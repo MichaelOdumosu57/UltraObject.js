@@ -4672,79 +4672,157 @@
                     var pFFMisc_0_i = ultraObject.scope.add(   {value:ultraObject.misc.add(   {value:ultraObject.iterify(   {iterify:['tagName','className','hidden','id']}   )}   )}   );
                     var pFFMisc_1_i = ultraObject.scope.add(   {value:ultraObject.misc.add(   {value:ultraObject.iterify(   {iterify:['input','select','textarea','option']}   )}   )}   );
                    
-                     /*  the forLoop object responsible for going throught the rest of the webpage */ //{
-                    var pFFFL_1_i = {
-                        forLoop_0_i:0,
-                        forLoopLength:ultraObject.allTags[   ultraObject.scope[pFFATI_0_i]   ].length - 1,
-                        fn:function(   dev_obj   ){
-                            ultraObject.eCSearch({
-                                list:pFFList_0_i,
-                                look:pFFLook_0_i,
-                                aT: pFFATI_0_i,
-                                all:'true',
-                                nS:ultraObject.scope[   pFFNS_0_i   ]
-                            })
-                            try{
-                                throw('see')
+                    /*  node mode choice thread production  */ //{
+                        /*  the forLoop object responsible for going throught the rest of the webpage */ //{
+                        // var pFFFL_1_i = {
+                        //     forLoop_0_i:0,
+                        //     forLoopLength:ultraObject.allTags[   ultraObject.scope[pFFATI_0_i]   ].length - 1,
+                        //     fn:function(   dev_obj   ){
+                        //         ultraObject.eCSearch({
+                        //             list:pFFList_0_i,
+                        //             look:pFFLook_0_i,
+                        //             aT: pFFATI_0_i,
+                        //             all:'true',
+                        //             nS:ultraObject.scope[   pFFNS_0_i   ]
+                        //         })
+                        //         try{
+                        //             throw('see')
+                        //             }
+                        //         catch(e){}
+                                
+                        //         /* filling the value for each element  */ //{
+                        //         ultraObject.packIt({
+                        //             order:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]],
+                        //             directions: ultraObject.iterify(   {iterify:['gather element','match']}   ),
+                        //             fill:'value',
+                        //             write:'valuePhrase',
+                        //             prevent:ultraObject.iterify({
+                        //                                     iterify:[
+                        //                                         function(   dev_obj   ){
+                                                                    
+                                                                    
+                        //                                             if(   dev_obj.element.type === 'file'   ){
+                                                                        
+                                                                        
+                        //                                                 return 'cantFill'
+                                                                        
+                                                                        
+                        //                                             }
+                                                                    
+                                                                    
+                        //                                         }
+                        //                                     ]
+                        //                                 })
+                        //                             })
+                        //         // } /**/
+                        //         pFFFL_0_i.args.changeSending = 'true'
+                        //         ultraObject.forLoop(   pFFFL_0_i   )
+                                
+                        //         /* node mode choice thread production */ // {
+                        //         // ultraObject.selectTags.minus(   {index:ultraObject.scope[pFFST_0_i]}   )
+                        //         /**/ //}
+                                
+                        //         ultraObject.numberSystem({
+                        //             operation:'decimal',
+                        //             conversion:'to',
+                        //             nS:ultraObject.scope[   pFFNS_0_i   ],
+                        //         })
+                        //         ultraObject.numberSystem({
+                        //             operation:'decimal',
+                        //             conversion:'from',
+                        //             nS:ultraObject.scope[   pFFNS_0_i   ],
+                        //             currentNumber:ultraObject.nS[   ultraObject.scope[pFFNS_0_i]   ].decimal.currentNumber + 1
+                        //         })
+                        //         ultraObject.numberSystem({
+                        //             operation:'update',
+                        //             nS:ultraObject.scope[   pFFNS_0_i   ]
+                        //         })
+                        //         ultraObject.args = ultraObject.iterableObject()
+                        //     },
+                        //     args:dev_obj //{}
+                        // }
+                        // } /**/
+                    // } /**/
+                    
+                    /*  node mode choice thread data visualization by chromelistener  */ //{
+                        /*  the forLoop object responsible for going throught the rest of the webpage */ //{
+                        var pFFFL_1_i = {
+                            forLoop_0_i:0,
+                            forLoopLength:1,
+                            fn:function(   dev_obj   ){
+                                if(   dev_obj.counter === 126   ){
+                                    debugger
                                 }
-                            catch(e){}
-                            
-                            /* filling the value for each element  */ //{
-                            ultraObject.packIt({
-                                order:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]],
-                                directions: ultraObject.iterify(   {iterify:['gather element','match']}   ),
-                                fill:'value',
-                                write:'valuePhrase',
-                                prevent:ultraObject.iterify({
-                                                        iterify:[
-                                                            function(   dev_obj   ){
-                                                                
-                                                                
-                                                                if(   dev_obj.element.type === 'file'   ){
+                                ultraObject.eCSearch({
+                                    list:pFFList_0_i,
+                                    look:pFFLook_0_i,
+                                    aT: pFFATI_0_i,
+                                    all:'true',
+                                    nS:ultraObject.scope[   pFFNS_0_i   ]
+                                })
+                                // try{
+                                //     throw('see')
+                                //     }
+                                // catch(e){}
+                                
+                                /* filling the value for each element  */ //{
+                                ultraObject.packIt({
+                                    order:ultraObject.selectTags[ultraObject.scope[pFFST_0_i]],
+                                    directions: ultraObject.iterify(   {iterify:['gather element','match']}   ),
+                                    fill:'value',
+                                    write:'valuePhrase',
+                                    prevent:ultraObject.iterify({
+                                                            iterify:[
+                                                                function(   dev_obj   ){
                                                                     
                                                                     
-                                                                    return 'cantFill'
+                                                                    if(   dev_obj.element.type === 'file'   ){
+                                                                        
+                                                                        
+                                                                        return 'cantFill'
+                                                                        
+                                                                        
+                                                                    }
                                                                     
                                                                     
                                                                 }
-                                                                
-                                                                
-                                                            }
-                                                        ]
+                                                            ]
+                                                        })
                                                     })
-                                                })
-                            // } /**/
-                            
-                            ultraObject.forLoop(   pFFFL_0_i   )
-                            
-                            /* node mode choice thread production */ // {
-                            // ultraObject.selectTags.minus(   {index:ultraObject.scope[pFFST_0_i]}   )
-                            /**/ //}
-                            
-                            ultraObject.numberSystem({
-                                operation:'decimal',
-                                conversion:'to',
-                                nS:ultraObject.scope[   pFFNS_0_i   ],
-                            })
-                            ultraObject.numberSystem({
-                                operation:'decimal',
-                                conversion:'from',
-                                nS:ultraObject.scope[   pFFNS_0_i   ],
-                                currentNumber:ultraObject.nS[   ultraObject.scope[pFFNS_0_i]   ].decimal.currentNumber + 1
-                            })
-                            ultraObject.numberSystem({
-                                operation:'update',
-                                nS:ultraObject.scope[   pFFNS_0_i   ]
-                            })
-                            ultraObject.args = ultraObject.iterableObject()
-                        },
-                        args:dev_obj //{}
-                    }
+                                // } /**/
+                                pFFFL_0_i.args.changeSending = 'true'
+                                ultraObject.forLoop(   pFFFL_0_i   )
+                                
+                                /* node mode choice thread production */ // {
+                                // ultraObject.selectTags.minus(   {index:ultraObject.scope[pFFST_0_i]}   )
+                                /**/ //}
+                                
+                                ultraObject.numberSystem({
+                                    operation:'decimal',
+                                    conversion:'to',
+                                    nS:ultraObject.scope[   pFFNS_0_i   ],
+                                })
+                                ultraObject.numberSystem({
+                                    operation:'decimal',
+                                    conversion:'from',
+                                    nS:ultraObject.scope[   pFFNS_0_i   ],
+                                    currentNumber:pFFFL_1_i.args.counter
+                                })
+                                ultraObject.numberSystem({
+                                    operation:'update',
+                                    nS:ultraObject.scope[   pFFNS_0_i   ]
+                                })
+                                ultraObject.args = ultraObject.iterableObject()
+                            },
+                            args:dev_obj //{}
+                        }
+                        pFFFL_1_i.args.realLength = ultraObject.allTags[   ultraObject.scope[pFFATI_0_i]   ].length - 1
+                        pFFFL_1_i.args.counter = 0
+                        // } /**/
                     // } /**/
                     
                     /*  node mode choice thread data visualization by chromelistener  */ //{
                     ultraObject.selectTags.nextSet = function(   dev_obj   ){
-                        ultraObject.selectTags.minus(   {index:ultraObject.scope[pFFST_0_i]}   )
                         ultraObject.numberSystem({
                             operation:'decimal',
                             conversion:'to',
@@ -4760,7 +4838,14 @@
                             operation:'update',
                             nS:ultraObject.scope[   pFFNS_0_i   ]
                         })
-                        ultraObject.forLoop(   pFFFL_1_i   )
+                        if(   pFFFL_1_i.args.realLength !== pFFFL_1_i.args.counter   ){
+                            
+                            
+                            pFFFL_1_i.args.counter +=1
+                            ultraObject.forLoop(   pFFFL_1_i   )
+                            
+                            
+                        }
                     }
                     // } /**/
                     
@@ -5018,10 +5103,29 @@
                                 ]
                             })
                         })
-                        ultraObject.XHR[   ultraObject.scope[pFFXHR_0_i]   ].sending.fn({
-                            item:'debuggerDB',
-                            data:ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].debuggerDB
-                        })
+                        
+                        if(   pFFFL_0_i.args.changeSending !== 'true'   ){
+                            
+                            
+                            ultraObject.XHR[   ultraObject.scope[pFFXHR_0_i]   ].sending.fn({
+                                item:'debuggerDB',
+                                data:ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].debuggerDB
+                            })
+                            
+                            
+                        }
+                        
+                        
+                        else if(   pFFFL_0_i.args.changeSending === 'true'   ){
+                            
+                            
+                            ultraObject.XHR[     ultraObject.scope[pFFXHR_0_i]   ].sending.body = {
+                                item:'debuggerDB',
+                                data:ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].debuggerDB
+                            }
+                            
+                            
+                        }
                         ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].pointValue = ultraObject.qC[ultraObject.qC.abelast[ultraObject.qC.abelast.length-1]].pointValue // used to deterime if valuePhrasre belongs in the elements value
                         console.log(   ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].pointValue   )
                         ultraObject.selectTags.minus({
@@ -5050,10 +5154,10 @@
                         })
                         // debugger
                         delete ultraObject.XHR[   ultraObject.scope[pFFXHR_0_i]   ].sending.response
-                        try{
-                            throw('see')
-                            }
-                        catch(e){}
+                        // try{
+                        //     throw('see')
+                        //     }
+                        // catch(e){}
                         console.log(  'what is the result', ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword  )
                         // ultraObject.objInvolved(
                         //     ultraObject.iterify({iterify:
@@ -5069,8 +5173,8 @@
                     console.groupEnd()
                     // debugger
                     ultraObject.selectTags.minus(   {index:ultraObject.scope[pFFST_0_i]}   )
-                    ultraObject.selectTags.nextSet()
-                    
+                    ultraObject.selectTags.nextSet({changeSending:'true'})
+                    return true
                 }
                     var pFFFL_6_i = {
                         forLoop_0_i:0,
@@ -5795,10 +5899,26 @@
                                 // } /**/
 
                                 /*  node mode choice thread data visualization by chromelistener*/ //{
-                                    ultraObject.XHR[   ultraObject.scope[pFFXHR_0_i]   ].incoming.fn({
-                                        eventListener:debug_0_i
-                                    })
-                                    ultraObject.XHR[   ultraObject.scope[pFFXHR_0_i]   ].sending.fn(   ultraObject.XHR[     ultraObject.scope[pFFXHR_0_i]   ].sending.body   )
+                                
+                                    if(   dev_obj.changeSending !== 'true'   ){
+                                        
+                                        
+                                        ultraObject.XHR[   ultraObject.scope[pFFXHR_0_i]   ].incoming.fn({
+                                            eventListener:debug_0_i
+                                        })
+                                        ultraObject.XHR[   ultraObject.scope[pFFXHR_0_i]   ].sending.fn(   ultraObject.XHR[     ultraObject.scope[pFFXHR_0_i]   ].sending.body   )
+                                        
+                                    
+                                    }
+                                    
+                                    else if(   dev_obj.changeSending === 'true'   ){
+                                        
+                                        
+                                        pFFFL_0_i.args.changeSending = 'true'
+                                        chrome.runtime.sendMessage(ultraObject.XHR[     ultraObject.scope[pFFXHR_0_i]   ].sending.body, debug_0_i);
+                                        
+                                        
+                                    }
                                     // ultraObject.forLoop(   pFFFL_6_i   )
                                 // } /**/
                                     
