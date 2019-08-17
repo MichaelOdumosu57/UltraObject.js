@@ -4684,6 +4684,10 @@
                                 all:'true',
                                 nS:ultraObject.scope[   pFFNS_0_i   ]
                             })
+                            try{
+                                throw('see')
+                                }
+                            catch(e){}
                             
                             /* filling the value for each element  */ //{
                             ultraObject.packIt({
@@ -4712,7 +4716,11 @@
                             // } /**/
                             
                             ultraObject.forLoop(   pFFFL_0_i   )
-                            ultraObject.selectTags.minus(   {index:ultraObject.scope[pFFST_0_i]}   )
+                            
+                            /* node mode choice thread production */ // {
+                            // ultraObject.selectTags.minus(   {index:ultraObject.scope[pFFST_0_i]}   )
+                            /**/ //}
+                            
                             ultraObject.numberSystem({
                                 operation:'decimal',
                                 conversion:'to',
@@ -5042,7 +5050,10 @@
                         })
                         // debugger
                         delete ultraObject.XHR[   ultraObject.scope[pFFXHR_0_i]   ].sending.response
-                        debugger
+                        try{
+                            throw('see')
+                            }
+                        catch(e){}
                         console.log(  'what is the result', ultraObject.selectTags[ultraObject.scope[pFFST_0_i]][pFFFL_0_i.forLoop_0_i].keyword  )
                         // ultraObject.objInvolved(
                         //     ultraObject.iterify({iterify:
@@ -5056,7 +5067,8 @@
                         
                         console.groupEnd()
                     console.groupEnd()
-                    debugger
+                    // debugger
+                    ultraObject.selectTags.minus(   {index:ultraObject.scope[pFFST_0_i]}   )
                     ultraObject.selectTags.nextSet()
                     
                 }
